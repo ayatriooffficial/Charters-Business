@@ -26,20 +26,11 @@ const app = express();
 // Security middleware
 app.use(helmet());
 
-// CORS
-app.use(cors({
-  origin: [
-    "https://charters-business.vercel.app",
-    "http://localhost:3000"
-    
-  ],
-  methods: ["GET","POST","PUT","DELETE","OPTIONS"],
-  credentials: true
-}));
-
-//preflight request handling
-app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
+// CORS configuration
+const corsOptions = { origin: [ "https://charters-business.vercel.app", "http://localhost:3000", ],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], credentials: true, };
+  app.use(cors(corsOptions));
+  app.options("*", cors(corsOptions));
 
 // Body parser
 app.use(express.json({ limit: "10mb" }));
