@@ -8,37 +8,36 @@ import {
 } from "@/lib/Tracking";
 
 export default function TrackingBootstrap() {
-
   usePageTracking();
 
   useEffect(() => {
-
     const api = process.env.NEXT_PUBLIC_API_URL;
+    if (!api) return;
 
-    // ⭐ clear anonymous data if user closes tab without login
+    let interval: NodeJS.Timeout;
+
+    // Detect login state
+    const isLoggedIn = () => {
+      return (
+        document.cookie.includes("connect.sid") ||
+        localStorage.getItem("token")
+      );
+    };
+
+    // Clear anonymous session if user leaves without login
     const handleUnload = () => {
-
-      // adjust this based on your auth storage
-      const isLoggedIn =
-        document.cookie.includes("connect.sid") ||   // cookie session example
-        localStorage.getItem("token");               // JWT example
-
-      if (!isLoggedIn) {
+      if (!isLoggedIn()) {
         clearAnonSession();
       }
     };
 
-    window.addEventListener("beforeunload", handleUnload);
-
-    const interval = setInterval(async () => {
-
-      if (!api) return;
-
-      const session = getOrCreateAnonSession();
-
-      if (!session) return;
-
+    // Heartbeat function
+    const sendHeartbeat = async () => {
       try {
+        if (document.hidden) return;
+
+        const session = getOrCreateAnonSession();
+        if (!session) return;
 
         await fetch(`${api}/api/v1/users/heartbeat`, {
           method: "POST",
@@ -51,18 +50,21 @@ export default function TrackingBootstrap() {
             deviceId: session.deviceId,
           }),
         });
-
-      } catch {
-        console.log("heartbeat failed");
+      } catch (error) {
+        console.debug("Heartbeat failed", error);
       }
+    };
 
-    }, 15000);
+    // Start heartbeat
+    interval = setInterval(sendHeartbeat, 30000);
+
+    // Event listeners
+    window.addEventListener("beforeunload", handleUnload);
 
     return () => {
       clearInterval(interval);
       window.removeEventListener("beforeunload", handleUnload);
     };
-
   }, []);
 
   return null;

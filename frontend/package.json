@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^16.1.6",
     "@studio-freight/lenis": "^1.0.42",
     "@tailwindcss/typography": "^0.5.19",
     "@tiptap/extension-placeholder": "^2.10.4",
