@@ -1,10 +1,8 @@
-'use client';
-
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
-import { createInternshipPosting } from '@/lib/api';
+import { createInternshipPosting } from '@/lib/server/api';
 import RichTextEditor from '@/components/admin/RichTextEditor';
 
 export default function CreateInternshipPage() {

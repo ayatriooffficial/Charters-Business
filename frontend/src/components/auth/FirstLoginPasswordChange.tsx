@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { changePasswordFirstLogin } from '@/lib/api';
+import { changePasswordFirstLogin } from '@/lib/server/api';
 import { useAuth } from '@/context/AuthContext';
 
 interface FirstLoginPasswordChangeProps {

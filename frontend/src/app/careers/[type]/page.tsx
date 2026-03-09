@@ -1,9 +1,7 @@
-'use client';
-
 import { use, useState, useEffect } from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { getAllJobs, getAllInternships } from '@/lib/api';
+import { getAllJobs, getAllInternships } from '@/lib/server/api';
 
 type PageType = 'jobs' | 'internships';
 

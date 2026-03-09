@@ -2,7 +2,7 @@
 import React, { memo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { programmes } from "@/data/programmes";
+import { programmes } from "@/lib/server/programmes";
 
 const OurProgrammesSection = () => {
   return (

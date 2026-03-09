@@ -1,10 +1,8 @@
-"use client";
-
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
-import { getMyJobPostings, deleteJobPosting } from "@/lib/api";
+import { getMyJobPostings, deleteJobPosting } from "@/lib/server/api";
 
 export default function AdminJobsPage() {
   const router = useRouter();

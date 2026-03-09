@@ -1,10 +1,8 @@
-'use client';
-
 import { useState, useEffect, use } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
-import { getJobById, updateJobPosting, JobPosting } from '@/lib/api';
+import { getJobById, updateJobPosting, JobPosting } from '@/lib/server/api';
 import RichTextEditor from '@/components/admin/RichTextEditor';
 
 export default function EditJobPage({ params }: { params: Promise<{ id: string }> }) {

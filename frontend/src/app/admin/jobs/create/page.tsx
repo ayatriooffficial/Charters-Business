@@ -1,10 +1,8 @@
-"use client";
-
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
-import { createJobPosting } from "@/lib/api";
+import { createJobPosting } from "@/lib/server/api";
 import RichTextEditor from "@/components/admin/RichTextEditor";
 
 export default function CreateJobPage() {

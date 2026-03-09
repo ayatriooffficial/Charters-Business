@@ -2,7 +2,7 @@
 
 import { useState, forwardRef } from 'react';
 import Image from 'next/image';
-import { getAllDropdownData, getAllProgrammes, type ProgramKey } from '@/data/programmes';
+import { getAllDropdownData, getAllProgrammes, type ProgramKey } from '@/lib/server/programmes';
 
 interface AcademicsDropdownProps {
   isOpen: boolean;

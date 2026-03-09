@@ -16,7 +16,7 @@ const config: Config = {
       },
       
       screens: {
-        'custom-xl': '1100px', 
+        'custom-xl': '1100px',
       },
     },
   },

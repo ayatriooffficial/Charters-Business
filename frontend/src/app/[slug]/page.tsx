@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { getProgrammeBySlug, getAllProgrammeSlugs } from "@/data/programmes";
+import { getProgrammeBySlug, getAllProgrammeSlugs } from "@/lib/server/programmes";
 import type { Viewport } from "next";
 import ProgramHero from "@/components/programmes/ProgramHero";
 import CurriculumSection from "@/components/programmes/CurriculumSection";

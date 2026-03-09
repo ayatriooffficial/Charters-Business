@@ -1,9 +1,7 @@
-'use client';
-
 import { use, useState, useEffect } from 'react';
 import { notFound, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { getJobById, getInternshipById, applyForPosition } from '@/lib/api';
+import { getJobById, getInternshipById, applyForPosition } from '@/lib/server/api';
 import { useAuth } from '@/context/AuthContext';
 
 type PageType = 'jobs' | 'internships';

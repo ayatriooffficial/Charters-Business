@@ -11,7 +11,7 @@ import {
     disconnectMeetingOAuth,
     MeetingFormData,
     ScheduleMeetingFormData,
-} from "@/lib/api";
+} from "@/lib/server/api";
 
 interface MeetingModalProps {
     isOpen: boolean;

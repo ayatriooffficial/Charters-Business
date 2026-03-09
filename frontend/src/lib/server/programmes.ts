@@ -1,5 +1,4 @@
-import { getCloudinaryUrl } from "@/lib/cloudinary";
-
+import "server-only";
 export type ProgramKey = "mba" | "pgdm" | "executive" | "diploma";
 
 // BASE INTERFACES

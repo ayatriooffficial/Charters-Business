@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { submitApplication, submitCounseling } from '@/lib/api';
+import { submitApplication, submitCounseling } from '@/lib/server/api';
 import { countryCodes } from '@/data/applyPageData';
 import { getAllProgrammes } from '@/data/programmes';
 import { useAuth } from '@/context/AuthContext';

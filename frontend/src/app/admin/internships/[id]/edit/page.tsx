@@ -1,10 +1,8 @@
-'use client';
-
 import { useState, useEffect, use } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
-import { getInternshipById, updateInternshipPosting, InternshipPosting } from '@/lib/api';
+import { getInternshipById, updateInternshipPosting, InternshipPosting } from '@/lib/server/api';
 import RichTextEditor from '@/components/admin/RichTextEditor';
 
 export default function EditInternshipPage({

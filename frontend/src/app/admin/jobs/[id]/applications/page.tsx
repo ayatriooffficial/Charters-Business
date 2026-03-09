@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
@@ -10,7 +8,7 @@ import {
   getJobById,
   type JobApplication,
   type JobPosting,
-} from "@/lib/api";
+} from "@/lib/server/api";
 
 export default function JobApplicationsPage() {
   const params = useParams();
