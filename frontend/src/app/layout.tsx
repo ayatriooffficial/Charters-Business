@@ -1,11 +1,20 @@
 import type { Metadata } from "next";
 import { Inter, Fraunces } from "next/font/google";
 import Script from "next/script";
+import dynamic from "next/dynamic";
 import "./globals.css";
 import CookieConsent from "@/components/shared/CookieConsent";
-import TrackingBootstrap from "@/components/shared/TrackingBootstrap";
 import Providers from "./providers";
-import ChatbotClient from "@/components/shared/chatBotClient";
+
+const TrackingBootstrap = dynamic(
+  () => import("@/components/shared/TrackingBootstrap"),
+  { ssr: false }
+);
+
+const ChatbotClient = dynamic(
+  () => import("@/components/shared/chatBotClient"),
+  { ssr: false }
+);
 
 const inter = Inter({
   subsets: ["latin"],
@@ -54,7 +63,10 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
     >
       <head>
-        <link rel="preconnect" href="https://res.cloudinary.com" />
+        {/* Faster external connections */}
+        <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
         {/* LCP Image Preload */}
         <link
@@ -64,6 +76,7 @@ export default function RootLayout({
           href="https://res.cloudinary.com/ducgcl4dg/image/upload/f_auto,q_auto,w_1920/charters-business/background"
           media="(min-width: 768px)"
         />
+
         <link
           rel="preload"
           as="image"
@@ -79,22 +92,25 @@ export default function RootLayout({
       </head>
 
       <body className={`${inter.className} antialiased`}>
-
-        {/* Lazy Loaded Google Tag Manager */}
+        
+        {/* Google Tag Manager — deferred */}
         <Script
-          src="https://www.googletagmanager.com/gtm.js?id=GTM-KJ2D3MLL"
-          strategy="lazyOnload"
+          id="gtm-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){
+                w[l]=w[l]||[];
+                w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+                var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+                j.async=true;
+                j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+                f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-KJ2D3MLL');
+            `,
+          }}
         />
-
-        <Script id="gtm-init" strategy="lazyOnload">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-              'gtm.start': new Date().getTime(),
-              event: 'gtm.js'
-            });
-          `}
-        </Script>
 
         <noscript>
           <iframe
@@ -106,14 +122,19 @@ export default function RootLayout({
         </noscript>
 
         <Providers>
+
+          {/* Lazy tracking */}
           <TrackingBootstrap />
 
           <div className="flex flex-col min-h-screen">
             {children}
           </div>
 
+          {/* Lazy loaded chatbot */}
           <ChatbotClient />
+
           <CookieConsent />
+
         </Providers>
 
       </body>
