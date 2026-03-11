@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { LearnApplyData } from "@/data/programmes";
+import { LearnApplyData } from "@/lib/server/programmes";
 
 interface LearnApplyReflectRepeatProps {
   data: LearnApplyData;

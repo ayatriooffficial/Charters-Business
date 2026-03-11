@@ -1,4 +1,4 @@
-import { Programme } from "@/data/programmes";
+import { Programme } from "@/lib/server/programmes";
 
 // Base Organization Schema
 export const organizationSchema = {

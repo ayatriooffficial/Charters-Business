@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Plus, Minus } from "lucide-react";
-import { ScholarshipData } from "@/data/programmes";
+import { ScholarshipData } from "@/lib/server/programmes";
 
 interface ScholarshipsSectionProps {
   scholarships: ScholarshipData[];

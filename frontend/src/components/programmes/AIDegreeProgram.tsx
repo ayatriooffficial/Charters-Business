@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import Image from "next/image";
-import { DegreeProgramData } from "@/data/programmes";
+import { DegreeProgramData } from "@/lib/server/programmes";
 
 interface AIDegreeComponentProps {
   data: DegreeProgramData;

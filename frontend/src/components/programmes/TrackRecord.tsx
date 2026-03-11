@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { TrackRecordData } from "@/data/programmes";
+import { TrackRecordData } from "@/lib/server/programmes";
 
 interface TrackRecordProps {
   data: TrackRecordData;

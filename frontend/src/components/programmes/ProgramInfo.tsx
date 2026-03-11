@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { ProgramInfoData } from '@/data/programmes';
+import { ProgramInfoData } from "@/lib/server/programmes";
 
 interface ProgramInfoProps {
   data: ProgramInfoData;

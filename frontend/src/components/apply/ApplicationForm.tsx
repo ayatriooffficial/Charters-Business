@@ -4,8 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { submitApplication, submitCounseling } from '@/lib/server/api';
-import { countryCodes } from '@/data/applyPageData';
-import { getAllProgrammes } from '@/data/programmes';
+import { getAllProgrammes } from "@/lib/server/programmes";
 import { useAuth } from '@/context/AuthContext';
 import PhoneOtpLogin from '../auth/PhoneOtpLogin';
 

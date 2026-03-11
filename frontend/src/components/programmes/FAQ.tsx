@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import { FAQData } from '@/data/programmes';
+import { FAQData } from "@/lib/server/programmes";
 
 interface FAQProps {
   data: FAQData;

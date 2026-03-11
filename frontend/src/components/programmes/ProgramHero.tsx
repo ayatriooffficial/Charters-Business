@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { HeroData } from '@/data/programmes';
+import { HeroData } from "@/lib/server/programmes";
 import Link from 'next/link';
 
 interface ProgramHeroProps {
