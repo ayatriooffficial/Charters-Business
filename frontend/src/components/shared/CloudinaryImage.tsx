@@ -38,8 +38,8 @@ export default function CloudinaryImage({
   const [isLoading, setLoading] = useState(true);
 
   const imageUrl = getCloudinaryUrl(publicId, {
-    width,
-    height,
+    ...(width ? { width } : {}),
+    ...(height ? { height } : {}),
     quality,
     format: "auto",
     crop,
@@ -52,7 +52,7 @@ export default function CloudinaryImage({
     <Image
       src={imageUrl}
       alt={alt}
-      className={`${className} ${
+      className={`${className || ""} ${
         isLoading ? "blur-sm" : "blur-0"
       } transition-all duration-300`}
       fill={fill}
@@ -64,6 +64,9 @@ export default function CloudinaryImage({
       sizes={sizes}
       placeholder="blur"
       blurDataURL={blurDataURL}
+
+      // IMPORTANT: prevents Next.js from re-processing Cloudinary images
+      unoptimized
     />
   );
 }
