@@ -54,21 +54,23 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
     >
       <head>
-        {/* Faster external connections */}
-        <link
-          rel="preconnect"
-          href="https://res.cloudinary.com"
-          crossOrigin=""
-        />
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        {/* DNS Prefetch + Preconnect for faster external resources */}
 
-        {/* LCP Image Preload */}
+        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+        <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="" />
+
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+
+        {/* LCP Image Preload (optimized Cloudinary parameters) */}
+
         <link
           rel="preload"
           as="image"
           fetchPriority="high"
-          href="https://res.cloudinary.com/ducgcl4dg/image/upload/f_auto,q_auto,w_1920/charters-business/background"
+          href="https://res.cloudinary.com/ducgcl4dg/image/upload/f_auto,q_auto:eco,dpr_auto,w_1920/charters-business/background"
           media="(min-width: 768px)"
         />
 
@@ -76,9 +78,11 @@ export default function RootLayout({
           rel="preload"
           as="image"
           fetchPriority="high"
-          href="https://res.cloudinary.com/ducgcl4dg/image/upload/f_auto,q_auto,w_750/charters-business/Background-M"
+          href="https://res.cloudinary.com/ducgcl4dg/image/upload/f_auto,q_auto:eco,dpr_auto,w_750/charters-business/Background-M"
           media="(max-width: 767px)"
         />
+
+        {/* PWA + Theme */}
 
         <meta name="theme-color" content="#B30437" />
         <link rel="icon" href="/favicon.ico" />
@@ -87,10 +91,11 @@ export default function RootLayout({
       </head>
 
       <body className={`${inter.className} antialiased`}>
-        {/* Google Tag Manager */}
+        {/* Google Tag Manager (lazy loaded for better performance) */}
+
         <Script
           id="gtm-script"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               (function(w,d,s,l,i){
@@ -106,6 +111,8 @@ export default function RootLayout({
           }}
         />
 
+        {/* GTM Fallback */}
+
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-KJ2D3MLL"
@@ -116,10 +123,17 @@ export default function RootLayout({
         </noscript>
 
         <Providers>
-          {/* Client-only lazy components */}
+          {/* Lazy loaded client-only scripts (chatbot, tracking etc.) */}
+
           <ClientOnlyComponents />
 
-          <div className="flex flex-col min-h-screen">{children}</div>
+          {/* Main App */}
+
+          <div className="flex flex-col min-h-screen">
+            {children}
+          </div>
+
+          {/* Cookie Consent */}
 
           <CookieConsent />
         </Providers>

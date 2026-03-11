@@ -9,25 +9,22 @@ if (!CLOUDINARY_CLOUD_NAME) {
 
 /**
  * Generate Cloudinary URL with optimizations
- * @param publicId - The public ID of the image in Cloudinary
- * @param options - Transformation options
- * @returns Optimized Cloudinary URL
  */
 export function getCloudinaryUrl(
   publicId: string,
   options: {
     width?: number;
     height?: number;
-    quality?: number | "auto";
+    quality?: number | string;
     format?: "auto" | "webp" | "avif" | "jpg" | "png";
     crop?: "fill" | "fit" | "scale" | "crop" | "thumb";
     gravity?: "auto" | "face" | "center" | "north" | "south" | "east" | "west";
     blur?: number;
     effect?: string;
+    dpr?: number | "auto";
   } = {},
 ): string {
   if (!CLOUDINARY_CLOUD_NAME) {
-    // Fallback to local images if Cloudinary is not configured
     return publicId.startsWith("/") ? publicId : `/${publicId}`;
   }
 
@@ -40,17 +37,21 @@ export function getCloudinaryUrl(
     gravity = "auto",
     blur,
     effect,
+    dpr,
   } = options;
 
   const transformations: string[] = [];
 
-  // Add quality
-  transformations.push(`q_${quality}`);
+  // Quality
+  if (quality) transformations.push(`q_${quality}`);
 
-  // Add format
-  transformations.push(`f_${format}`);
+  // Format
+  if (format) transformations.push(`f_${format}`);
 
-  // Add dimensions and crop
+  // DPR (retina optimization)
+  if (dpr) transformations.push(`dpr_${dpr}`);
+
+  // Dimensions
   if (width || height) {
     const dims: string[] = [`c_${crop}`];
     if (width) dims.push(`w_${width}`);
@@ -59,12 +60,12 @@ export function getCloudinaryUrl(
     transformations.push(dims.join(","));
   }
 
-  // Add blur
+  // Blur
   if (blur) {
     transformations.push(`e_blur:${blur}`);
   }
 
-  // Add custom effect
+  // Effects
   if (effect) {
     transformations.push(`e_${effect}`);
   }
@@ -73,11 +74,9 @@ export function getCloudinaryUrl(
 
   return `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/image/upload/${transformString}/${publicId}`;
 }
+
 /**
  * Generate responsive srcSet for Cloudinary images
- * @param publicId - The public ID of the image in Cloudinary
- * @param widths - Array of widths for responsive images
- * @returns srcSet string
  */
 export function getCloudinarySrcSet(
   publicId: string,
@@ -87,8 +86,9 @@ export function getCloudinarySrcSet(
     .map((width) => {
       const url = getCloudinaryUrl(publicId, {
         width,
-        quality: "auto",
+        quality: "auto:eco",
         format: "auto",
+        dpr: "auto",
       });
       return `${url} ${width}w`;
     })
@@ -96,9 +96,7 @@ export function getCloudinarySrcSet(
 }
 
 /**
- * Generate blur placeholder for Cloudinary images
- * @param publicId - The public ID of the image in Cloudinary
- * @returns Blur placeholder URL
+ * Generate blur placeholder
  */
 export function getCloudinaryBlurUrl(publicId: string): string {
   return getCloudinaryUrl(publicId, {
@@ -110,17 +108,14 @@ export function getCloudinaryBlurUrl(publicId: string): string {
 }
 
 /**
- * Cloudinary image paths mapping
- * Maps local image paths to Cloudinary public IDs
+ * Cloudinary image mapping
  */
 export const CLOUDINARY_IMAGES = {
-  // Background images
   background: {
     hero: "charters-business/background",
     heroMobile: "charters-business/Background-M",
   },
 
-  // Brand logos
   brands: {
     hsbc: "charters-business/brands/HSBC_Logo_2018",
     bsis: "charters-business/brands/BSIS-Partners-Pantone-1024x462",
@@ -131,7 +126,6 @@ export const CLOUDINARY_IMAGES = {
     subway: "charters-business/brands/subway",
   },
 
-  // Faculty images
   faculty: {
     lanMa: "charters-business/faculty/LanMa",
     photo: "charters-business/faculty/Photo",
@@ -150,7 +144,6 @@ export const CLOUDINARY_IMAGES = {
     zalPhiroz: "charters-business/faculty/zalPhiroz",
   },
 
-  // Student testimonials
   students: {
     anurag: "charters-business/students/userAnurag",
     chadraye: "charters-business/students/userChadraye",
@@ -159,7 +152,6 @@ export const CLOUDINARY_IMAGES = {
     yash: "charters-business/students/userYash",
   },
 
-  // Programme images
   programmes: {
     diploma: "charters-business/programmes/diploma",
     executive: "charters-business/programmes/executive",
@@ -170,7 +162,6 @@ export const CLOUDINARY_IMAGES = {
     p10714292: "charters-business/programmes/P10714292",
   },
 
-  // News slider
   news: {
     news1: "charters-business/newsslider/news1",
     news2: "charters-business/newsslider/news2",
@@ -181,7 +172,6 @@ export const CLOUDINARY_IMAGES = {
     news7: "charters-business/newsslider/news7",
   },
 
-  // Curriculum section
   curriculum: {
     argentina: "charters-business/curriculumsection/argentina",
     dubai: "charters-business/curriculumsection/dubaicurriculum",
@@ -192,7 +182,6 @@ export const CLOUDINARY_IMAGES = {
     us: "charters-business/curriculumsection/us",
   },
 
-  // Tetr programme images
   tetr: {
     ghanaNew: "charters-business/tetr/7ghanaNew",
     fmcgBrand: "charters-business/tetr/FMCGBrandNew",
@@ -202,24 +191,20 @@ export const CLOUDINARY_IMAGES = {
     arGrobo: "charters-business/tetr/arGrobo",
   },
 
-  // Apply section
   apply: {
     businessLearning: "charters-business/apply/business-learning",
   },
 
-  // Home section
   home: {
     intern: "charters-business/home/intern",
   },
 
-  // Misc
   misc: {
     chartersUnion: "charters-business/images/Chaters_Union",
     customerService: "charters-business/customer-service",
     businessStrategy: "charters-business/business-strategy",
   },
 
-  // University logos for BuiltByHarvard
   universities: {
     tecDeMonterrey: "Tec-de-Monterrey-logo-horizontal-blue_nvbdev",
     michigan: "University-of-Michigan-Logo_ngv6gv",
@@ -230,13 +215,6 @@ export const CLOUDINARY_IMAGES = {
   },
 } as const;
 
-/**
- * Helper to get image URL from the mapping
- * @param category - Image category
- * @param name - Image name
- * @param options - Transformation options
- * @returns Cloudinary URL
- */
 export function getImageUrl(
   category: keyof typeof CLOUDINARY_IMAGES,
   name: string,
