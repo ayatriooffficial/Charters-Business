@@ -1,20 +1,11 @@
 import type { Metadata } from "next";
 import { Inter, Fraunces } from "next/font/google";
 import Script from "next/script";
-import dynamic from "next/dynamic";
 import "./globals.css";
+
 import CookieConsent from "@/components/shared/CookieConsent";
 import Providers from "./providers";
-
-const TrackingBootstrap = dynamic(
-  () => import("@/components/shared/TrackingBootstrap"),
-  { ssr: false }
-);
-
-const ChatbotClient = dynamic(
-  () => import("@/components/shared/chatBotClient"),
-  { ssr: false }
-);
+import ClientOnlyComponents from "@/components/client/ClientOnlyComponents";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -64,7 +55,11 @@ export default function RootLayout({
     >
       <head>
         {/* Faster external connections */}
-        <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="" />
+        <link
+          rel="preconnect"
+          href="https://res.cloudinary.com"
+          crossOrigin=""
+        />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
@@ -92,8 +87,7 @@ export default function RootLayout({
       </head>
 
       <body className={`${inter.className} antialiased`}>
-        
-        {/* Google Tag Manager — deferred */}
+        {/* Google Tag Manager */}
         <Script
           id="gtm-script"
           strategy="afterInteractive"
@@ -122,21 +116,13 @@ export default function RootLayout({
         </noscript>
 
         <Providers>
+          {/* Client-only lazy components */}
+          <ClientOnlyComponents />
 
-          {/* Lazy tracking */}
-          <TrackingBootstrap />
-
-          <div className="flex flex-col min-h-screen">
-            {children}
-          </div>
-
-          {/* Lazy loaded chatbot */}
-          <ChatbotClient />
+          <div className="flex flex-col min-h-screen">{children}</div>
 
           <CookieConsent />
-
         </Providers>
-
       </body>
     </html>
   );
