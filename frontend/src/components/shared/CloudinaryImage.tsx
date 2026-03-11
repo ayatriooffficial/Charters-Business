@@ -25,7 +25,7 @@ interface CloudinaryImageProps {
 export default function CloudinaryImage({
   publicId,
   alt,
-  className,
+  className = "",
   fill,
   width,
   height,
@@ -52,20 +52,20 @@ export default function CloudinaryImage({
     <Image
       src={imageUrl}
       alt={alt}
-      className={`${className || ""} ${
+      className={`${className} ${
         isLoading ? "blur-sm" : "blur-0"
       } transition-all duration-300`}
       fill={fill}
       width={width}
       height={height}
-      onLoad={() => setLoading(false)}
+      sizes={fill ? sizes : undefined}
       priority={priority}
       loading={priority ? "eager" : "lazy"}
-      sizes={sizes}
       placeholder="blur"
       blurDataURL={blurDataURL}
+      onLoad={() => setLoading(false)}
 
-      // IMPORTANT: prevents Next.js from re-processing Cloudinary images
+      // Cloudinary already optimizes images
       unoptimized
     />
   );
