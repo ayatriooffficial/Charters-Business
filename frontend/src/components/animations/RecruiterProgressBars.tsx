@@ -1,5 +1,14 @@
 "use client";
-import React, { useEffect, useState, useMemo, useCallback } from "react";
+
+import React, {
+  useEffect,
+  useState,
+  useMemo,
+  useCallback,
+  useRef,
+  memo,
+} from "react";
+import useInViewPlay from "@/components/micro/useInViewPlay";
 
 interface RecruiterProgressBarsProps {
   isHovered: boolean;
@@ -10,6 +19,9 @@ const RecruiterProgressBars: React.FC<RecruiterProgressBarsProps> = ({
   isHovered,
   value,
 }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const inView = useInViewPlay(containerRef, "200px", 0.1);
+
   const [animatedBars, setAnimatedBars] = useState<{ [key: string]: number }>(
     {},
   );
@@ -43,67 +55,70 @@ const RecruiterProgressBars: React.FC<RecruiterProgressBarsProps> = ({
   );
 
   useEffect(() => {
+    if (!inView || !isHovered) return;
+
     const timeouts: ReturnType<typeof setTimeout>[] = [];
     const animationFrameIds: number[] = [];
 
-    if (isHovered) {
-      recruiterData.forEach((item, index) => {
-        // Show item with stagger
-        const showTimeout = setTimeout(() => {
-          setVisibleItems((prev) => ({ ...prev, [item.year]: true }));
-        }, index * 200);
-        timeouts.push(showTimeout);
+    recruiterData.forEach((item, index) => {
+      const showTimeout = setTimeout(() => {
+        setVisibleItems((prev) => ({ ...prev, [item.year]: true }));
+      }, index * 200);
 
-        // Animate bar with stagger
-        const animateTimeout = setTimeout(
-          () => {
-            const startTime = Date.now();
-            const duration = 1500;
-            const targetPercentage = getBarPercentage(item.value);
+      timeouts.push(showTimeout);
 
-            const animateBar = () => {
-              const elapsed = Date.now() - startTime;
-              const progress = Math.min(elapsed / duration, 1);
-              const easedProgress = 1 - Math.pow(1 - progress, 3);
+      const animateTimeout = setTimeout(() => {
+        const startTime = performance.now();
+        const duration = 1500;
+        const targetPercentage = getBarPercentage(item.value);
 
-              setAnimatedBars((prev) => ({
-                ...prev,
-                [item.year]: targetPercentage * easedProgress,
-              }));
+        const animateBar = (now: number) => {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
 
-              if (progress < 1) {
-                const frameId = requestAnimationFrame(animateBar);
-                animationFrameIds.push(frameId);
-              }
-            };
+          const easedProgress = 1 - Math.pow(1 - progress, 3);
 
+          setAnimatedBars((prev) => ({
+            ...prev,
+            [item.year]: targetPercentage * easedProgress,
+          }));
+
+          if (progress < 1) {
             const frameId = requestAnimationFrame(animateBar);
             animationFrameIds.push(frameId);
-          },
-          500 + index * 300,
-        );
-        timeouts.push(animateTimeout);
-      });
-    } else {
-      setAnimatedBars({});
-      setVisibleItems({});
-    }
+          }
+        };
 
-    // Cleanup
+        const frameId = requestAnimationFrame(animateBar);
+        animationFrameIds.push(frameId);
+      }, 500 + index * 300);
+
+      timeouts.push(animateTimeout);
+    });
+
     return () => {
       timeouts.forEach((timeout) => clearTimeout(timeout));
       animationFrameIds.forEach((frameId) => cancelAnimationFrame(frameId));
     };
-  }, [isHovered, recruiterData, getBarPercentage]);
+  }, [inView, isHovered, recruiterData, getBarPercentage]);
 
   return (
-    <div className="w-full bg-white flex flex-col justify-between gap-1  px-1 sm:px-2">
+    <div
+      ref={containerRef}
+      className="w-full bg-white flex flex-col justify-between gap-1 px-1 sm:px-2"
+    >
       {/* Heading */}
       <div className="mb-4 flex-shrink-0">
         <h4 className="flex flex-row">
-          <p className="text-3xl font-bold">+1523 MNCs</p><span className="pl-[5px] pt-[15px] text-[10px]"> | Growth 39% </span>
+          <p className="text-3xl font-bold">+1523 MNCs</p>
+          <span className="pl-[5px] pt-[15px] text-[10px]">
+            {" "}
+            | Growth 39%{" "}
+          </span>
         </h4>
-        <p className="text-sm text-gray-600">33% International + 67% Indian Recruiters</p>
+        <p className="text-sm text-gray-600">
+          33% International + 67% Indian Recruiters
+        </p>
       </div>
 
       <div className="flex-1 min-h-0">
@@ -115,6 +130,7 @@ const RecruiterProgressBars: React.FC<RecruiterProgressBarsProps> = ({
               opacity: visibleItems[item.year] ? 1 : 0,
               transform: `translateX(${visibleItems[item.year] ? 0 : -50}px)`,
               transition: "all 0.6s ease-out",
+              willChange: "transform, opacity",
             }}
           >
             <span className="text-[8px] sm:text-[9px] md:text-[10px] lg:text-[11px] text-gray-400 font-light w-6 sm:w-7 text-right flex-shrink-0">
@@ -136,6 +152,7 @@ const RecruiterProgressBars: React.FC<RecruiterProgressBarsProps> = ({
                   maxWidth: "100%",
                 }}
               />
+
               <div
                 className="absolute bottom-0 left-0 bg-white h-1"
                 style={{
@@ -155,11 +172,13 @@ const RecruiterProgressBars: React.FC<RecruiterProgressBarsProps> = ({
                   animatedBars[item.year] > getBarPercentage(item.value) * 0.9
                     ? 1
                     : 0,
-                transform: `scale(${animatedBars[item.year] > getBarPercentage(item.value) * 0.9
-                  ? 1
-                  : 0.8
-                  })`,
+                transform: `scale(${
+                  animatedBars[item.year] > getBarPercentage(item.value) * 0.9
+                    ? 1
+                    : 0.8
+                })`,
                 transition: "all 0.4s ease-out",
+                willChange: "transform, opacity",
               }}
             >
               {item.value}
@@ -184,6 +203,7 @@ const RecruiterProgressBars: React.FC<RecruiterProgressBarsProps> = ({
             </span>
           ))}
         </div>
+
         <div className="text-center text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] text-gray-500">
           No. of Recruiters
         </div>
@@ -192,4 +212,4 @@ const RecruiterProgressBars: React.FC<RecruiterProgressBarsProps> = ({
   );
 };
 
-export default RecruiterProgressBars;
+export default memo(RecruiterProgressBars);

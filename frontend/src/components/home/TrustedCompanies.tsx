@@ -1,8 +1,9 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Image from 'next/image';
-import { getCloudinaryUrl } from '@/lib/cloudinary';
+import React, { memo, useRef } from "react";
+import Image from "next/image";
+import { getCloudinaryUrl } from "@/lib/cloudinary";
+import useInViewPlay from "@/components/micro/useInViewPlay";
 
 const POPULAR_COMPANIES = [
   {
@@ -157,38 +158,45 @@ const POPULAR_COMPANIES = [
   }
 ];
 
-export default function TrustedCompanies() {
+function TrustedCompanies() {
+
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isVisible = useInViewPlay(sectionRef, "200px", 0.1);
+
   const mobileImageUrl = getCloudinaryUrl('hiring-companies-mobile_htt4q8', {
     quality: 'auto',
     format: 'auto',
   });
 
   return (
-    <section className="mx-[0%] relative z-10 bg-white pb-8 overflow-visible" role="region" aria-labelledby="trusted-companies-heading">
+    <section ref={sectionRef} className="mx-[0%] relative z-10 bg-white pb-8 overflow-visible">
+
+      {isVisible && (
+
       <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
+
         <header className="text-center mb-10 sm:mb-12 lg:mb-16">
           <p className="text-base sm:text-lg lg:text-xl text-black mx-auto">
             Our graduates work at the world&apos;s most innovative companies
           </p>
         </header>
 
-        {/* Company Logos */}
         <div className="w-full mb-12 sm:mb-16">
-          {/* Desktop Version */}
+
           <div className="hidden md:flex flex-wrap justify-center items-center gap-x-12 lg:gap-x-16 gap-y-12 lg:gap-y-16 max-w-6xl mx-auto px-10">
+
             {POPULAR_COMPANIES.map((company, index) => (
+
               <div key={index} className="relative group flex flex-col items-center justify-end cursor-pointer z-10 hover:z-50 w-[140px] h-20">
-                {/* Company Logo */}
+
                 <div className="h-10 flex items-center justify-center mb-3 w-full">
                   <img src={company.logo} alt={company.name} className="max-h-full max-w-full object-contain" />
                 </div>
 
-                {/* Case Study Badge */}
                 <div className="bg-[#f3f4f6] text-[#4b5563] text-[11px] font-medium px-4 py-1.5 rounded-full whitespace-nowrap group-hover:bg-[#e5e7eb] transition-colors border border-transparent group-hover:border-gray-200">
                   Case Study
                 </div>
 
-                {/* Popover */}
                 <div className="absolute bottom-[calc(100%+12px)] w-[340px] left-1/2 -translate-x-1/2 bg-white rounded-2xl shadow-[0_12px_40px_rgba(0,0,0,0.12)] p-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 text-left border border-gray-100 pointer-events-none group-hover:pointer-events-auto">
                   <p className="text-[#374151] text-[15px] leading-relaxed mb-6 font-medium">
                     "{company.caseStudy.quote}"
@@ -201,17 +209,17 @@ export default function TrustedCompanies() {
                     </div>
                   </div>
 
-                  {/* Arrow Pointing Down */}
                   <div className="absolute top-full left-1/2 -translate-x-1/2 w-4 h-4 bg-white rotate-45 -mt-[9px] shadow-[4px_4px_10px_rgba(0,0,0,0.03)] border-r border-b border-gray-100 z-0"></div>
 
-                  {/* Invisible block to keep hovering smooth when moving cursor from item to popover */}
                   <div className="absolute top-full left-1/2 -translate-x-1/2 w-full h-8 bg-transparent z-0"></div>
                 </div>
+
               </div>
+
             ))}
+
           </div>
 
-          {/* Mobile Version */}
           <div className="flex justify-center md:hidden px-4">
             <Image
               src={mobileImageUrl}
@@ -223,9 +231,9 @@ export default function TrustedCompanies() {
               sizes="(max-width: 768px) 448px, 0vw"
             />
           </div>
+
         </div>
 
-        {/* See All Companies Button */}
         <div className="flex justify-center">
           <button
             className="px-6 py-3 bg-[#B30437] hover:bg-[#8B0329] text-white font-semibold rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
@@ -236,7 +244,13 @@ export default function TrustedCompanies() {
             See All Companies
           </button>
         </div>
+
       </div>
+
+      )}
+
     </section>
   );
 }
+
+export default memo(TrustedCompanies);

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, memo, useCallback, useRef, useEffect } from "react";
 import Image from "next/image";
+import useInViewPlay from "@/components/micro/useInViewPlay";
 
 interface CardData {
     id: string;
@@ -447,7 +448,7 @@ const getIcon = (iconName: string) => {
 
 // Icons for the feature items
 const DocumentIcon = () => (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
     </svg>
 );
@@ -483,12 +484,6 @@ const WrenchIcon = () => (
     </svg>
 );
 
-const TruckIcon = () => (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
-    </svg>
-);
-
 const DatabaseIcon = () => (
     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
@@ -507,14 +502,6 @@ const ChartIcon = () => (
     </svg>
 );
 
-// Charters Icon (double arrow pointing down)
-const ChartersIcon = ({ className = "" }: { className?: string }) => (
-    <svg className={`w-5 h-5 ${className}`} viewBox="0 0 24 24" fill="currentColor">
-        <path d="M7 10l5 5 5-5H7z" />
-        <path d="M7 4l5 5 5-5H7z" />
-    </svg>
-);
-
 // Stats icon
 const StatsIcon = () => (
     <svg className="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -525,8 +512,11 @@ const StatsIcon = () => (
 );
 
 const StrategicExpansion: React.FC = () => {
+    const sectionRef = useRef<HTMLDivElement | null>(null);
+    const isVisible = useInViewPlay(sectionRef, "200px", 0.1);
+
     const [selectedCard, setSelectedCard] = useState<string>("shadow-cxos");
-    const currentContent = contentData[selectedCard];
+    const currentContent = React.useMemo(() => contentData[selectedCard], [selectedCard]);
     const sliderRef = useRef<HTMLDivElement>(null);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(true);
@@ -548,9 +538,9 @@ const StrategicExpansion: React.FC = () => {
         handleScroll(); // Initial check
         slider.addEventListener('scroll', handleScroll);
         return () => slider.removeEventListener('scroll', handleScroll);
-    }, [currentContent]);
+    }, [selectedCard]);
 
-    const scrollSlider = (direction: number) => {
+    const scrollSlider = useCallback((direction: number) => {
         const slider = sliderRef.current;
         if (!slider) return;
         const cardWidth = slider.clientWidth * 0.82; // 82vw card width
@@ -558,44 +548,46 @@ const StrategicExpansion: React.FC = () => {
             left: slider.scrollLeft + (direction * cardWidth),
             behavior: 'smooth'
         });
-    };
+    }, []);
 
     return (
-        <section className="mx-[0%] pt-12 bg-white">
-            <div className="flex-shrink-0 text-center mb-13 sm:mb-13">
-                <h2 className="leading-normal text-[35px] font-semibold text-black">
-                    Career Labs at <span className="text-[#B30437]">Charters</span>
-                </h2>
-                <div className="flex justify-center">
-                    <p className="text-black text-sm sm:text-base md:text-lg max-w-4xl">
-                        Learn from industry leaders, academic experts, and seasoned
-                        practitioners who bring real-world experience to your education.
-                    </p>
-                </div>
-            </div>
-            {/* Tabs at the top */}
-            <div aria-label="Career Labs categories" className="border-b border-gray-300">
-                <ul className="flex w-[93%] mx-auto overflow-scroll scrollbar-hide">
-                    {cardsData.map((card) => (
-                        <li key={card.id} className="flex-1">
-                            <button
-                                onClick={() => handleCardClick(card.id)}
-                                className={`w-full px-3 text-nowrap sm:px-4 py-2 transition-all focus-visible:outline-none focus-visible:border-b-2 focus-visible:border-[#B30437] text-sm ${selectedCard === card.id
-                                    ? "text-black border-b-2 border-black"
-                                    : "text-gray-700 hover:bg-gray-50"
-                                    }`}
-                                aria-label={`${card.title} program`}
-                                aria-pressed={selectedCard === card.id}
-                            >
-                                <span className="block text-xs text-gray-500">{card.description}</span>
-                                <span className="block font-semibold">{card.title}</span>
-                            </button>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+        <section ref={sectionRef} className="mx-[0%] pt-12 bg-white">
+            {isVisible && (
+                <>
+                    <div className="flex-shrink-0 text-center mb-13 sm:mb-13">
+                        <h2 className="leading-normal text-[35px] font-semibold text-black">
+                            Career Labs at <span className="text-[#B30437]">Charters</span>
+                        </h2>
+                        <div className="flex justify-center">
+                            <p className="text-black text-sm sm:text-base md:text-lg max-w-4xl">
+                                Learn from industry leaders, academic experts, and seasoned
+                                practitioners who bring real-world experience to your education.
+                            </p>
+                        </div>
+                    </div>
+                    {/* Tabs at the top */}
+                    <div aria-label="Career Labs categories" className="border-b border-gray-300">
+                        <ul className="flex w-[93%] mx-auto overflow-x-auto scrollbar-hide">
+                            {cardsData.map((card) => (
+                                <li key={card.id} className="flex-1">
+                                    <button
+                                        onClick={() => handleCardClick(card.id)}
+                                        className={`w-full px-3 text-nowrap sm:px-4 py-2 transition-all focus-visible:outline-none focus-visible:border-b-2 focus-visible:border-[#B30437] text-sm ${selectedCard === card.id
+                                            ? "text-black border-b-2 border-black"
+                                            : "text-gray-700 hover:bg-gray-50"
+                                            }`}
+                                        aria-label={`${card.title} program`}
+                                        aria-pressed={selectedCard === card.id}
+                                    >
+                                        <span className="block text-xs text-gray-500">{card.description}</span>
+                                        <span className="block font-semibold">{card.title}</span>
+                                    </button>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
 
-            <div className="max-w-[85rem] mx-auto">
+                    <div className="max-w-[85rem] mx-auto">
 
                 {/* Strategic Expansion Header Section with Tabs */}
                 <div className="bg-[#F6F4F2] p-4 sm:p-6 md:p-8 ">
@@ -666,6 +658,8 @@ const StrategicExpansion: React.FC = () => {
                                         src={currentContent.imageSrc}
                                         alt={currentContent.imageAlt}
                                         fill
+                                        loading="lazy"
+                                        priority={false}
                                         className="object-cover"
                                         sizes="(max-width: 768px) 100vw, 320px"
                                     />
@@ -881,7 +875,9 @@ const StrategicExpansion: React.FC = () => {
                     </div>
                 </div>
 
-            </div>
+                    </div>
+                </>
+            )}
         </section>
     );
 };

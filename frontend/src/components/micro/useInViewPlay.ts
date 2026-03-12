@@ -1,22 +1,32 @@
-'use client';
-import { useEffect, useRef, useState } from 'react';
+"use client";
 
-export default function useInViewPlay<T extends HTMLElement>(options?: IntersectionObserverInit) {
-  const ref = useRef<T | null>(null);
-  const [play, setPlay] = useState(false);
+import { useEffect, useState } from "react";
+
+export default function useInViewPlay<T extends HTMLElement>(
+  ref: React.RefObject<HTMLElement | null>,
+  rootMargin: string = "0px",
+  threshold: number = 0.25
+) {
+  const [inView, setInView] = useState(false);
 
   useEffect(() => {
-    if (!ref.current) return;
-    const el = ref.current;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setPlay(true);
-      },
-      { root: null, threshold: 0.35, ...options }
-    );
-    io.observe(el);
-    return () => io.unobserve(el);
-  }, [options]);
+    const node = ref.current;
+    if (!node) return;
 
-  return { ref, play };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin, threshold }
+    );
+
+    observer.observe(node);
+
+    return () => observer.disconnect();
+  }, [ref, rootMargin, threshold]);
+
+  return inView;
 }
