@@ -8,6 +8,7 @@ import { useAuth } from "@/context/AuthContext";
 import UserDropdown from "@/components/dashboard/UserDropdown";
 import AcademicsDropdown from "./AcademicsDropdown";
 
+
 function Navbar() {
   const [isAcademicsOpen, setIsAcademicsOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

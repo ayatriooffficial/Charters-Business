@@ -1,8 +1,16 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+} from "react";
 import { useRouter } from "next/navigation";
 import { flushTrackingToBackend } from "@/lib/Tracking";
+import { getAuthToken } from "@/lib/utils/cookies";
 
 interface User {
   id: string;
@@ -39,9 +47,18 @@ interface AuthContextType {
   isLoading: boolean;
   login: (email: string, password: string) => Promise<string | undefined>;
   loginWithPhone: (idToken: string) => Promise<string | undefined>;
-  signupWithPhone: (idToken: string, name: string, email: string) => Promise<string | undefined>;
+  signupWithPhone: (
+    idToken: string,
+    name: string,
+    email: string
+  ) => Promise<string | undefined>;
   logout: () => void;
-  setAuth: (user: User, token: string, applications?: Application[], counselings?: Counseling[]) => void;
+  setAuth: (
+    user: User,
+    token: string,
+    applications?: Application[],
+    counselings?: Counseling[]
+  ) => void;
   updateUser: (userData: Partial<User>) => void;
   refreshApplications: () => Promise<void>;
   refreshCounselings: () => Promise<void>;
@@ -72,7 +89,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (!isMounted) return;
 
-    const storedToken = localStorage.getItem("token");
+    const storedToken = localStorage.getItem("token") || getAuthToken();
     const storedUser = localStorage.getItem("user");
     const storedApplications = localStorage.getItem("applications");
     const storedCounselings = localStorage.getItem("counselings");
@@ -81,8 +98,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       try {
         setToken(storedToken);
         setUser(JSON.parse(storedUser));
-        if (storedApplications) setApplications(JSON.parse(storedApplications));
-        if (storedCounselings) setCounselings(JSON.parse(storedCounselings));
+
+        if (storedApplications)
+          setApplications(JSON.parse(storedApplications));
+
+        if (storedCounselings)
+          setCounselings(JSON.parse(storedCounselings));
       } catch (error) {
         console.error("Error loading auth data:", error);
         localStorage.clear();
@@ -93,148 +114,182 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setIsLoading(false);
   }, [isMounted]);
 
-  const refreshApplications = async (authToken?: string) => {
-    const tkn = authToken || token;
-    if (!tkn) return;
+  const refreshApplications = useCallback(
+    async (authToken?: string) => {
+      const tkn = authToken || token;
+      if (!tkn) return;
 
-    try {
-      const response = await fetch(`${API_V1}/applications/user`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${tkn}`,
-        },
+      try {
+        const response = await fetch(`${API_V1}/applications/user`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${tkn}`,
+          },
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.data) {
+          setApplications(data.data);
+          if (isMounted)
+            localStorage.setItem(
+              "applications",
+              JSON.stringify(data.data)
+            );
+        }
+      } catch (error) {
+        console.error("Error fetching applications:", error);
+      }
+    },
+    [token, API_V1, isMounted]
+  );
+
+  const refreshCounselings = useCallback(
+    async (authToken?: string) => {
+      const tkn = authToken || token;
+      if (!tkn) return;
+
+      try {
+        const response = await fetch(`${API_V1}/counseling/user`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${tkn}`,
+          },
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.data) {
+          setCounselings(data.data);
+          if (isMounted)
+            localStorage.setItem(
+              "counselings",
+              JSON.stringify(data.data)
+            );
+        }
+      } catch (error) {
+        console.error("Error fetching counselings:", error);
+      }
+    },
+    [token, API_V1, isMounted]
+  );
+
+  const finalizeLogin = useCallback(
+    async (payload: any): Promise<string | undefined> => {
+      const tokenFromApi: string | undefined =
+        payload?.data?.token ?? payload?.token;
+
+      const apiUser = payload?.data?.user ?? payload?.user;
+
+      if (!tokenFromApi || !apiUser) {
+        console.error("Login response missing token or user:", payload);
+        throw new Error("Login response invalid (missing token/user)");
+      }
+
+      const userData: User = {
+        id: apiUser.id,
+        name: apiUser.name,
+        email: apiUser.email,
+        avatar: apiUser.avatar || null,
+        role: apiUser.role,
+        isFirstLogin: apiUser.isFirstLogin || false,
+        lastResumeUrl: apiUser.lastResumeUrl || null,
+        lastResumeUploadedAt: apiUser.lastResumeUploadedAt || null,
+      };
+
+      setUser(userData);
+      setToken(tokenFromApi);
+      setApplications(payload?.data?.applications || []);
+      setCounselings(payload?.data?.counselings || []);
+
+      if (isMounted) {
+        localStorage.setItem("token", tokenFromApi);
+        localStorage.setItem("user", JSON.stringify(userData));
+
+        if (payload?.data?.applications) {
+          localStorage.setItem(
+            "applications",
+            JSON.stringify(payload.data.applications)
+          );
+        }
+
+        if (payload?.data?.counselings) {
+          localStorage.setItem(
+            "counselings",
+            JSON.stringify(payload.data.counselings)
+          );
+        }
+
+        sessionStorage.setItem("justLoggedIn", "true");
+      }
+
+      try {
+        const RAW_BASE = API_V1.replace(/\/api\/v1$/, "");
+        await flushTrackingToBackend(RAW_BASE, tokenFromApi);
+      } catch (e) {
+        console.warn("Tracking flush failed:", e);
+      }
+
+      return userData.role;
+    },
+    [API_V1, isMounted]
+  );
+
+  const login = useCallback(
+    async (email: string, password: string) => {
+      const response = await fetch(`${API_V1}/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
       });
 
       const data = await response.json();
 
-      if (response.ok && data.data) {
-        setApplications(data.data);
-        if (isMounted) localStorage.setItem("applications", JSON.stringify(data.data));
-      }
-    } catch (error) {
-      console.error("Error fetching applications:", error);
-    }
-  };
+      if (!response.ok)
+        throw new Error(data.message || "Login failed");
 
-  const refreshCounselings = async (authToken?: string) => {
-    const tkn = authToken || token;
-    if (!tkn) return;
+      return finalizeLogin(data);
+    },
+    [API_V1, finalizeLogin]
+  );
 
-    try {
-      const response = await fetch(`${API_V1}/counseling/user`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${tkn}`,
-        },
+  const loginWithPhone = useCallback(
+    async (idToken: string) => {
+      const response = await fetch(`${API_V1}/auth/firebase-login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ idToken }),
       });
 
       const data = await response.json();
 
-      if (response.ok && data.data) {
-        setCounselings(data.data);
-        if (isMounted) localStorage.setItem("counselings", JSON.stringify(data.data));
-      }
-    } catch (error) {
-      console.error("Error fetching counselings:", error);
-    }
-  };
+      if (!response.ok)
+        throw new Error(data.message || "Phone login failed");
 
-  const finalizeLogin = async (payload: any): Promise<string | undefined> => {
-    const tokenFromApi: string | undefined = payload?.data?.token ?? payload?.token;
-    const apiUser = payload?.data?.user ?? payload?.user;
+      return finalizeLogin(data);
+    },
+    [API_V1, finalizeLogin]
+  );
 
-    if (!tokenFromApi || !apiUser) {
-      console.error("Login response missing token or user:", payload);
-      throw new Error("Login response invalid (missing token/user)");
-    }
+  const signupWithPhone = useCallback(
+    async (idToken: string, name: string, email: string) => {
+      const response = await fetch(`${API_V1}/auth/firebase-signup`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ idToken, name, email }),
+      });
 
-    const userData: User = {
-      id: apiUser.id,
-      name: apiUser.name,
-      email: apiUser.email,
-      avatar: apiUser.avatar || null,
-      role: apiUser.role,
-      isFirstLogin: apiUser.isFirstLogin || false,
-      lastResumeUrl: apiUser.lastResumeUrl || null,
-      lastResumeUploadedAt: apiUser.lastResumeUploadedAt || null,
-    };
+      const data = await response.json();
 
-    setUser(userData);
-    setToken(tokenFromApi);
-    setApplications(payload?.data?.applications || []);
-    setCounselings(payload?.data?.counselings || []);
+      if (!response.ok)
+        throw new Error(data.message || "Phone signup failed");
 
-    if (isMounted) {
-      localStorage.setItem("token", tokenFromApi);
-      localStorage.setItem("user", JSON.stringify(userData));
+      return finalizeLogin(data);
+    },
+    [API_V1, finalizeLogin]
+  );
 
-      if (payload?.data?.applications) {
-        localStorage.setItem("applications", JSON.stringify(payload.data.applications));
-      }
-      if (payload?.data?.counselings) {
-        localStorage.setItem("counselings", JSON.stringify(payload.data.counselings));
-      }
-      sessionStorage.setItem("justLoggedIn", "true");
-    }
-
-    // IMPORTANT: Tracking flush expects base server URL, not /api/v1
-    // If your Tracking.ts expects API root, pass RAW base.
-    // Here we pass raw base by stripping /api/v1.
-    try {
-      const RAW_BASE = API_V1.replace(/\/api\/v1$/, "");
-      await flushTrackingToBackend(RAW_BASE, tokenFromApi);
-    } catch (e) {
-      console.warn("Tracking flush failed (non-blocking):", e);
-    }
-
-    return userData.role;
-  };
-
-  const login = async (email: string, password: string) => {
-    const response = await fetch(`${API_V1}/auth/login`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
-
-    const data = await response.json();
-    if (!response.ok) throw new Error(data.message || "Login failed");
-
-    return finalizeLogin(data);
-  };
-
-  const loginWithPhone = async (idToken: string) => {
-    const response = await fetch(`${API_V1}/auth/firebase-login`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ idToken }),
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      const error = new Error(data.message || "Phone login failed");
-      (error as any).status = response.status;
-      throw error;
-    }
-
-    return finalizeLogin(data);
-  };
-
-  const signupWithPhone = async (idToken: string, name: string, email: string) => {
-    const response = await fetch(`${API_V1}/auth/firebase-signup`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ idToken, name, email }),
-    });
-
-    const data = await response.json();
-    if (!response.ok) throw new Error(data.message || "Phone signup failed");
-
-    return finalizeLogin(data);
-  };
-
-  const logout = () => {
+  const logout = useCallback(() => {
     setUser(null);
     setToken(null);
     setApplications([]);
@@ -246,55 +301,79 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
 
     router.push("/");
-  };
+  }, [router, isMounted]);
 
-  const setAuth = (newUser: User, newToken: string, newApplications?: Application[], newCounselings?: Counseling[]) => {
-    setUser(newUser);
-    setToken(newToken);
+  const setAuth = useCallback(
+    (
+      newUser: User,
+      newToken: string,
+      newApplications?: Application[],
+      newCounselings?: Counseling[]
+    ) => {
+      setUser(newUser);
+      setToken(newToken);
 
-    if (newApplications) {
-      setApplications(newApplications);
-      if (isMounted) localStorage.setItem("applications", JSON.stringify(newApplications));
-    }
+      if (newApplications) setApplications(newApplications);
+      if (newCounselings) setCounselings(newCounselings);
 
-    if (newCounselings) {
-      setCounselings(newCounselings);
-      if (isMounted) localStorage.setItem("counselings", JSON.stringify(newCounselings));
-    }
+      if (isMounted) {
+        localStorage.setItem("token", newToken);
+        localStorage.setItem("user", JSON.stringify(newUser));
+      }
+    },
+    [isMounted]
+  );
 
-    if (isMounted) {
-      localStorage.setItem("token", newToken);
-      localStorage.setItem("user", JSON.stringify(newUser));
-    }
-  };
+  const updateUser = useCallback(
+    (userData: Partial<User>) => {
+      if (!user) return;
 
-  const updateUser = (userData: Partial<User>) => {
-    if (!user) return;
-    const updatedUser = { ...user, ...userData };
-    setUser(updatedUser);
-    if (isMounted) localStorage.setItem("user", JSON.stringify(updatedUser));
-  };
+      const updatedUser = { ...user, ...userData };
+      setUser(updatedUser);
+
+      if (isMounted)
+        localStorage.setItem("user", JSON.stringify(updatedUser));
+    },
+    [user, isMounted]
+  );
+
+  const contextValue = useMemo(
+    () => ({
+      user,
+      applications,
+      counselings,
+      token,
+      isLoading,
+      login,
+      loginWithPhone,
+      signupWithPhone,
+      logout,
+      setAuth,
+      updateUser,
+      refreshApplications,
+      refreshCounselings,
+    }),
+    [
+      user,
+      applications,
+      counselings,
+      token,
+      isLoading,
+      login,
+      loginWithPhone,
+      signupWithPhone,
+      logout,
+      setAuth,
+      updateUser,
+      refreshApplications,
+      refreshCounselings,
+    ]
+  );
 
   if (!isMounted) return null;
 
   return (
-    <AuthContext.Provider
-      value={{
-        user,
-        applications,
-        counselings,
-        token,
-        isLoading,
-        login,
-        loginWithPhone,
-        signupWithPhone,
-        logout,
-        setAuth,
-        updateUser,
-        refreshApplications: () => refreshApplications(),
-        refreshCounselings: () => refreshCounselings(),
-      }}
-    >
+    <AuthContext.Provider value={contextValue}>
       {children}
     </AuthContext.Provider>
   );
@@ -302,6 +381,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
 export function useAuth() {
   const context = useContext(AuthContext);
-  if (context === undefined) throw new Error("useAuth must be used within an AuthProvider");
+  if (context === undefined)
+    throw new Error("useAuth must be used within an AuthProvider");
+
   return context;
 }
