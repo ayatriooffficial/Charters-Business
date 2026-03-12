@@ -6,8 +6,3 @@ export default {
   corsOrigin: process.env.CORS_ORIGIN || 'http://localhost:3000',
   mongodbUri: process.env.MONGODB_URI,
 };
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true",
-});
-
-module.exports = withBundleAnalyzer({});
