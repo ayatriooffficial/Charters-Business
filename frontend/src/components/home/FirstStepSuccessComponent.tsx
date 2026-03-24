@@ -257,7 +257,7 @@ const videoCardsByCompany: Record<string, Array<{
 const universityLogos = [
   { name: 'Stanford University', logo: '/logos/stanford.svg' },
   { name: 'Google', logo: '/logos/google.svg' },
-  { name: 'IIT Bombay', logo: '/logos/iit_bombay.svg.png' },
+  { name: 'IIT Bombay', logo: '/logos/iit_bombay.svg' },
 ];
 
 export default function FirstStepSuccessComponent() {

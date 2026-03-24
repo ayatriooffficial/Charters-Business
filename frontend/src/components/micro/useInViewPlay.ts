@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import type { RefObject } from "react";
 
 export default function useInViewPlay(
-  ref: RefObject<HTMLElement>,
+  ref: RefObject<HTMLElement | null>,
   rootMargin: string = "0px",
   threshold: number = 0.25
 ) {

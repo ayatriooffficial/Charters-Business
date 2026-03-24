@@ -57,11 +57,21 @@ export default function RootLayout({
         {/* DNS Prefetch + Preconnect */}
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="" />
-
-        {/* GTM preconnect only makes sense alongside lazyOnload — keep dns-prefetch only */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-
-        {/* fonts.gstatic.com preconnect flagged as unused — next/font handles fonts internally, removed */}
+        <link
+          rel="preload"
+          href="/_next/static/media/1bffadaabf893a1e.7cd81963.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/_next/static/media/03bda585a99c6450-s.ad37b9d9.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
 
         {/* LCP Image Preload */}
         <link
