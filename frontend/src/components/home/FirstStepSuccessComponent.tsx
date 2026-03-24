@@ -5,12 +5,12 @@ import { Play } from 'lucide-react';
 
 // Company tabs data
 const companyTabs = [
-  { id: 'google', name: 'Google', logo: '/logos/google.svg.png' },
-  { id: 'amazon', name: 'amazon', logo: '/logos/amazon.svg.png' },
-  { id: 'nvidia', name: 'NVIDIA', logo: '/logos/nvidia.svg.png' },
-  { id: 'accenture', name: 'accenture', logo: '/logos/accenture.svg.png' },
-  { id: 'deloitte', name: 'Deloitte.', logo: '/logos/deloitte.svg.png' },
-  { id: 'bofa', name: 'Bank of America', logo: '/logos/bofa.svg.png' },
+  { id: 'google', name: 'Google', logo: '/logos/google.svg' },
+  { id: 'amazon', name: 'amazon', logo: '/logos/amazon.svg' },
+  { id: 'nvidia', name: 'NVIDIA', logo: '/logos/nvidia.svg' },
+  { id: 'accenture', name: 'accenture', logo: '/logos/accenture.svg' },
+  { id: 'deloitte', name: 'Deloitte.', logo: '/logos/deloitte.png' },
+  { id: 'bofa', name: 'Bank of America', logo: '/logos/bofa.png' },
 ];
 
 // Video cards data by company
@@ -255,8 +255,8 @@ const videoCardsByCompany: Record<string, Array<{
 
 // University logos for featured section
 const universityLogos = [
-  { name: 'Stanford University', logo: '/logos/stanford.svg.png' },
-  { name: 'Google', logo: '/logos/google.svg.png' },
+  { name: 'Stanford University', logo: '/logos/stanford.svg' },
+  { name: 'Google', logo: '/logos/google.svg' },
   { name: 'IIT Bombay', logo: '/logos/iit_bombay.svg.png' },
 ];
 

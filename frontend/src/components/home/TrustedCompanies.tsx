@@ -8,7 +8,7 @@ import useInViewPlay from '../micro/useInViewPlay';
 const POPULAR_COMPANIES = [
   {
     name: "Square",
-    logo: "/logos/square.svg.png",
+    logo: "/logos/square.png",
     caseStudy: {
       quote: "Square has enabled our merchants to easily adopt omnichannel strategies that drive higher conversion and satisfaction rates across all our diverse consumer touchpoints.",
       author: "Jane Doe",
@@ -48,7 +48,7 @@ const POPULAR_COMPANIES = [
   },
   {
     name: "Atlassian",
-    logo: "/logos/atlassian.svg.png",
+    logo: "/logos/Atlassian.png",
     caseStudy: {
       quote: "Our collaboration processes have improved vastly since the integration, giving teams a clearer view into their ongoing progress and metrics.",
       author: "Alice Johnson",
@@ -68,7 +68,7 @@ const POPULAR_COMPANIES = [
   },
   {
     name: "Adidas",
-    logo: "/logos/adidas.svg.png",
+    logo: "/logos/Adidas.svg.png",
     caseStudy: {
       quote: "Innovation in athletic wear requires understanding our athletes better than anyone else, relying on continuous data flows.",
       author: "Emma Wilson",
@@ -78,7 +78,7 @@ const POPULAR_COMPANIES = [
   },
   {
     name: "Capital One",
-    logo: "/logos/capitalone.svg.png",
+    logo: "/logos/Capital_One.svg.png",
     caseStudy: {
       quote: "Financial technology moves fast, and our tooling must keep up to ensure reliability, security, and top-notch user experiences for our customers.",
       author: "David Chen",
@@ -88,7 +88,7 @@ const POPULAR_COMPANIES = [
   },
   {
     name: "NBCUniversal",
-    logo: "/logos/nbcuniversal.svg.png",
+    logo: "/logos/NBCUniversal.svg",
     caseStudy: {
       quote: "Media delivery at scale requires extremely robust backend architectures, especially when broadcasting major live events worldwide.",
       author: "Tom Baker",
@@ -98,7 +98,7 @@ const POPULAR_COMPANIES = [
   },
   {
     name: "Qualtrics",
-    logo: "/logos/qualtrics.svg.png",
+    logo: "/logos/Qualtrics.svg",
     caseStudy: {
       quote: "Experience management relies heavily on precise survey data and fast processing. The platform provides insights at unprecedented speeds.",
       author: "Olivia Clark",
@@ -108,7 +108,7 @@ const POPULAR_COMPANIES = [
   },
   {
     name: "Google",
-    logo: "/logos/google.svg.png",
+    logo: "/logos/google.svg",
     caseStudy: {
       quote: "Our massive-scale applications rely on well-architected systems to deliver sub-second responses globally, improving our overall user experience.",
       author: "Sundar Chen",
@@ -118,7 +118,7 @@ const POPULAR_COMPANIES = [
   },
   {
     name: "Microsoft",
-    logo: "/logos/microsoft.svg.png",
+    logo: "/logos/Microsoft.svg.png",
     caseStudy: {
       quote: "Cloud infrastructure is at the core of our business, and ensuring 99.999% uptime requires incredibly talented engineers and rigorous processes.",
       author: "Satya Nadella",
@@ -128,7 +128,7 @@ const POPULAR_COMPANIES = [
   },
   {
     name: "Meta",
-    logo: "/logos/meta.svg.png",
+    logo: "/logos/Meta.svg.png",
     caseStudy: {
       quote: "Connecting billions of people requires innovative data structures and networking protocols that push the boundaries of modern computing.",
       author: "Mark Evans",
@@ -138,7 +138,7 @@ const POPULAR_COMPANIES = [
   },
   {
     name: "Netflix",
-    logo: "/logos/netflix.svg.png",
+    logo: "/logos/Netflix.svg.png",
     caseStudy: {
       quote: "Delivering high-quality video content to every device across the globe seamlessly relies heavily on our advanced content delivery networks.",
       author: "Reed Hastings",
@@ -148,7 +148,7 @@ const POPULAR_COMPANIES = [
   },
   {
     name: "Amazon",
-    logo: "/logos/amazon.svg.png",
+    logo: "/logos/amazon.svg",
     caseStudy: {
       quote: "From e-commerce to cloud computing, operational efficiency is our main priority, driven by data science and machine learning models.",
       author: "Jeff Wilke",

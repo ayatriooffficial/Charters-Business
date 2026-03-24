@@ -54,18 +54,16 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
     >
       <head>
-        {/* DNS Prefetch + Preconnect for faster external resources */}
-
+        {/* DNS Prefetch + Preconnect */}
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="" />
 
+        {/* GTM preconnect only makes sense alongside lazyOnload — keep dns-prefetch only */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
 
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        {/* fonts.gstatic.com preconnect flagged as unused — next/font handles fonts internally, removed */}
 
-        {/* LCP Image Preload (optimized Cloudinary parameters) */}
-
+        {/* LCP Image Preload */}
         <link
           rel="preload"
           as="image"
@@ -73,7 +71,6 @@ export default function RootLayout({
           href="https://res.cloudinary.com/ducgcl4dg/image/upload/f_auto,q_auto:eco,dpr_auto,w_1920/charters-business/background"
           media="(min-width: 768px)"
         />
-
         <link
           rel="preload"
           as="image"
@@ -83,7 +80,6 @@ export default function RootLayout({
         />
 
         {/* PWA + Theme */}
-
         <meta name="theme-color" content="#B30437" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
@@ -91,44 +87,39 @@ export default function RootLayout({
       </head>
 
       <body className={`${inter.className} antialiased`}>
-        {/* Google Tag Manager - Optimized */}
+        {/* GTM: dataLayer init must run before gtm.js loads */}
+        <Script id="gtm-datalayer" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              'gtm.start': new Date().getTime(),
+              event: 'gtm.js'
+            });
+          `}
+        </Script>
+
+        {/* GTM script deferred until after page is interactive */}
         <Script
           src="https://www.googletagmanager.com/gtm.js?id=GTM-KJ2D3MLL"
           strategy="lazyOnload"
         />
 
-        <Script id="gtm-datalayer" strategy="lazyOnload">
-        {`
-           window.dataLayer = window.dataLayer || [];
-           window.dataLayer.push({
-            'gtm.start': new Date().getTime(),
-           event: 'gtm.js'
-    });
-  `}
-</Script>
-
-{/* GTM Fallback */}
-<noscript>
-  <iframe
-    src="https://www.googletagmanager.com/ns.html?id=GTM-KJ2D3MLL"
-    height="0"
-    width="0"
-    style={{ display: "none", visibility: "hidden" }}
-  />
-</noscript>
+        {/* GTM noscript fallback */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-KJ2D3MLL"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
 
         <Providers>
-          {/* Lazy loaded client-only scripts (chatbot, tracking etc.) */}
-
           <ClientOnlyComponents />
-
-          {/* Main App */}
 
           <div className="flex flex-col min-h-screen">
             {children}
           </div>
-
-          {/* Cookie Consent */}
 
           <CookieConsent />
         </Providers>

@@ -4,10 +4,6 @@ import { useState, useEffect, useRef, memo } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Brain, Hospital, Clipboard, BarChart3 } from "lucide-react";
-import TinyBarChart from "@/components/micro/TinyBarChart";
-import TinyLineChart from "@/components/micro/TinyLineChart";
-import { TinyLogos } from "@/components/micro/TinyLogos";
-import { TinyAvatars } from "@/components/micro/TinyAvatars";
 
 const features = [
   { icon: Brain, title: "AI in Healthcare" },
