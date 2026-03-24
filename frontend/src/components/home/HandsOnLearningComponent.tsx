@@ -984,7 +984,7 @@ function HandsOnLearningComponent() {
     <section className="mx-[0%] relative">
       {/* Header Section  */}
       <div
-        className="relative z-[5] flex items-start justify-center pt-8 sm:pt-12 md:pt-16 lg:pt-18 bg-white"
+        className="relative z-[5] flex items-start justify-center pt-4 sm:pt-6 md:pt-8 lg:pt-9 bg-white"
         role="region"
         aria-labelledby="hands-on-heading"
       >

@@ -146,8 +146,6 @@ export default async function ProgrammePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-
-      <main role="main" className="w-full overflow-x-hidden">
         {/* Hero Section */}
         <ProgramHero data={programme.hero} programmeSlug={slug} />
 
@@ -184,7 +182,6 @@ export default async function ProgrammePage({
             <FAQ data={programme.faq} />
           </SectionWrapper>
         </div>
-      </main>
     </>
   );
 }

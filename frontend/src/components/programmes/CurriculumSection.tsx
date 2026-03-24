@@ -198,7 +198,7 @@ const CurriculumSection = () => {
             className="text-2xl sm:text-3xl lg:text-4xl font-light text-black mb-3 lg:mb-4 leading-tight text-center"
           >
             Dive into the{" "}
-            <span className="italic font-serif text-[#B30437]">
+            <span className="italic text-[#B30437]">
               hands-on curriculum
             </span>
           </h1>

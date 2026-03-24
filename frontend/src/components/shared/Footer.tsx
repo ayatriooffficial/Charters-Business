@@ -70,7 +70,7 @@ const Footer = () => {
             </div>
             <p className="text-sm text-gray-600 leading-relaxed max-w-xs">
               Empowering the next generation of{" "}
-              <span className="italic font-serif text-[#B30437]">
+              <span className="italic text-[#B30437]">
                 business leaders
               </span>{" "}
               through innovative education.

@@ -18,7 +18,7 @@ export default function PrivacyPolicyContent() {
           </p>
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-black leading-tight mb-4">
             Your{" "}
-            <span className="italic font-serif text-[#B30437]">
+            <span className="italic text-[#B30437]">
               privacy matters
             </span>{" "}
             to us

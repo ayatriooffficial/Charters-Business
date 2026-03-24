@@ -282,12 +282,12 @@ function FacultyModel() {
         }
       `}</style>
       <section
-        className="mx-[0%] relative z-[5] bg-white text-black pb-12 overflow-x-hidden"
+        className="mx-[0%] relative z-[5] bg-white text-black pb-12 overflow-x-hidden pt-12"
         role="region"
         aria-labelledby="faculty-heading"
       >
 
-        <div className="max-w-[85rem] w-full mx-auto pt-12 mt-12 border-t border-gray-200">
+        <div className="max-w-[85rem] w-full mx-auto border-gray-200">
           {/* Section Header */}
           <div className="relative text-center pb-[3.25rem] sm:pb-[3.25rem]">
             <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-4 sm:mb-6">
@@ -311,7 +311,7 @@ function FacultyModel() {
                 {/* TEXT ABOVE IMAGE */}
                 <span
                   className="relative z-10 text-[#B30437] font-medium px-3"
-                  style={{ fontFamily: "Fraunces, serif", fontWeight: 700 }}
+                  style={{ fontWeight: 700 }}
                 >
                   Faculty
                 </span>
@@ -383,7 +383,6 @@ function FacultyModel() {
                         <h3
                           id={`faculty-name-${index}`}
                           className="font-semibold text-black text-[15px] leading-tight"
-                          style={{ fontFamily: "Fraunces, Georgia, serif" }}
                         >
                           {faculty.name}
                         </h3>

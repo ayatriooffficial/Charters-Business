@@ -356,7 +356,7 @@ const PremiumFeaturesSection = () => {
           <header className="mb-8">
             <h2 id="enrich-learning-heading" className="text-3xl md:text-4xl lg:text-5xl font-light text-black mb-8">
               Enrich and{" "}
-              <span className="italic font-serif text-[#B30437]">personalize learning</span>
+              <span className="italic text-[#B30437]">personalize learning</span>
             </h2>
             <p className="text-xl lg:text-xl text-black mx-auto leading-relaxed">
               Drive student agency with tools that meet students where they are – and build skills for their future.
@@ -370,18 +370,13 @@ const PremiumFeaturesSection = () => {
             <header>
               <h2 id="premium-features-heading" className="text-xl lg:text-3xl font-light text-black mb-6">
                 Premium features{" "}
-                <span className="italic font-serif text-[#B30437]">that inspire new ways of teaching and learning</span>
+                <span className="italic text-[#B30437]">that inspire new ways of teaching and learning</span>
               </h2>
             </header>
             <div className="space-y-10" role="list" aria-label="Premium learning features">
               {features.map((feature) => (
                 <FeatureItem key={feature.id} feature={feature} />
               ))}
-            </div>
-            <div className="flex items-center mt-8">
-              <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center" role="img" aria-label="Information">
-                <span className="text-[#B30437] text-sm font-bold">i</span>
-              </div>
             </div>
           </div>
           <div className="lg:pl-8">{renderFeatureContent()}</div>
@@ -392,7 +387,7 @@ const PremiumFeaturesSection = () => {
           <header className="mb-8">
             <h2 id="premium-features-heading-mobile" className="text-xl font-light text-black mb-6">
               Premium features{" "}
-              <span className="italic font-serif text-[#B30437]">that inspire new ways of teaching and learning</span>
+              <span className="italic text-[#B30437]">that inspire new ways of teaching and learning</span>
             </h2>
           </header>
           <div className="space-y-6" role="list" aria-label="Premium learning features">
@@ -404,11 +399,6 @@ const PremiumFeaturesSection = () => {
                 )}
               </div>
             ))}
-          </div>
-          <div className="flex items-center mt-8">
-            <div className="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center" role="img" aria-label="Information">
-              <span className="text-[#B30437] text-sm font-bold">i</span>
-            </div>
           </div>
         </div>
       </div>

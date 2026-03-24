@@ -264,7 +264,7 @@ export default function ComprehensivePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section - full width, outside bordered container (like home page) */}
-      <section className="relative z-[5] pt-[72px] sm:pt-[96px] md:pt-[100px] pb-8 md:pb-12 bg-white">
+      <section className="relative z-[5] pt-[36px] sm:pt-[48px] md:pt-[50px] pb-8 md:pb-12 bg-white">
         <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="text-black">
@@ -273,7 +273,7 @@ export default function ComprehensivePage() {
               </p>
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-tight mb-4 sm:mb-6">
                 Learn from the{' '}
-                <span className="italic font-serif text-[#B30437]">finest minds</span> in business
+                <span className="italic text-[#B30437]">finest minds</span> in business
               </h1>
 
               <p className="text-base sm:text-lg mb-6 sm:mb-8 leading-relaxed max-w-lg">
@@ -312,7 +312,7 @@ export default function ComprehensivePage() {
               INSPIRING EDUCATORS
             </p>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-black leading-tight">
-              Faculty that <span className="italic font-serif text-[#B30437]">inspire and empower</span>
+              Faculty that <span className="italic text-[#B30437]">inspire and empower</span>
             </h2>
           </div>
         </div>
@@ -569,7 +569,7 @@ export default function ComprehensivePage() {
 
                   <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 sm:mb-5 leading-tight">
                     Access{' '}
-                    <span className="italic font-serif font-normal">real-time mentorship</span>{' '}
+                    <span className="italic font-normal">real-time mentorship</span>{' '}
                     from 100+ experts
                   </h3>
 
@@ -621,7 +621,7 @@ export default function ComprehensivePage() {
                 </p>
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-black leading-tight">
                   Lessons from the{' '}
-                  <span className="italic font-serif text-[#B30437]">best in the business</span>
+                  <span className="italic text-[#B30437]">best in the business</span>
                 </h2>
               </div>
 

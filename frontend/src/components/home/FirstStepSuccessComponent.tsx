@@ -308,7 +308,7 @@ export default function FirstStepSuccessComponent() {
             BUILD YOUR FOUNDATION
           </p>
           <h2 id="courses-heading" className="leading-normal text-[35px] font-semibold text-black">
-            Your first step to <span className="italic font-serif text-[#B30437]">success</span>
+            Your first step to <span className="italic text-[#B30437]">success</span>
           </h2>
           <p className="sr-only">Explore our upcoming courses to advance your career</p>
         </div>
@@ -346,7 +346,7 @@ export default function FirstStepSuccessComponent() {
                   <div>
                     <h2 id="behind-scenes-heading" className="text-3xl sm:text-4xl lg:text-5xl font-light leading-tight mb-2">
                       Go Behind<br />
-                      the Scenes at <span className="italic font-serif">Tetr</span>
+                      the Scenes at <span className="italic">Tetr</span>
                     </h2>
                   </div>
 
@@ -522,7 +522,7 @@ export default function FirstStepSuccessComponent() {
                   <div>
                     <h2 id="behind-scenes-heading" className="text-3xl sm:text-4xl lg:text-5xl font-light leading-tight mb-2">
                       Go Behind<br />
-                      the Scenes at <span className="italic font-serif">Tetr</span>
+                      the Scenes at <span className="italic">Tetr</span>
                     </h2>
                   </div>
 

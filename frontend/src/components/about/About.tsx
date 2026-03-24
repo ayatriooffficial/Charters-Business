@@ -325,7 +325,7 @@ const TetrLandingPage = () => {
               </p>
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-4 text-black leading-tight">
                 Rooted in{" "}
-                <span className="italic font-serif text-[#B30437]">
+                <span className="italic text-[#B30437]">
                   science & first principles
                 </span>
               </h2>
@@ -705,7 +705,7 @@ const TetrLandingPage = () => {
               </p>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-black leading-tight">
                 Meet our{" "}
-                <span className="italic font-serif text-[#B30437]">
+                <span className="italic text-[#B30437]">
                   founding academic council
                 </span>
               </h2>
@@ -774,7 +774,7 @@ const TetrLandingPage = () => {
               </p>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-light leading-tight text-black">
                 Its time to get{" "}
-                <span className="italic font-serif text-[#B30437]">
+                <span className="italic text-[#B30437]">
                   out there
                 </span>
                 .

@@ -17,7 +17,7 @@ function PhotoTile({ image, number, numberSub, label, className = "" }: {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/5 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
-                <p className="font-serif text-4xl sm:text-5xl font-bold text-white leading-none">
+                <p className="text-4xl sm:text-5xl font-bold text-white leading-none">
                     {number}
                     {numberSub && (
                         <span className="font-sans text-2xl font-normal text-white/50 ml-1">
@@ -38,11 +38,11 @@ function DarkTile({ className = "" }: { className?: string }) {
         <div className={`bg-[#1c1c1c] flex flex-col justify-center px-6 py-7 ${className}`}>
             <div className="flex gap-6 mb-5">
                 <div>
-                    <p className="font-serif text-4xl font-bold text-white leading-none">50+</p>
+                    <p className="text-4xl font-bold text-white leading-none">50+</p>
                     <p className="text-white/40 text-[10px] font-semibold tracking-widest uppercase mt-1.5">Countries</p>
                 </div>
                 <div>
-                    <p className="font-serif text-4xl font-bold text-white leading-none">45+</p>
+                    <p className="text-4xl font-bold text-white leading-none">45+</p>
                     <p className="text-white/40 text-[10px] font-semibold tracking-widest uppercase mt-1.5">Languages</p>
                 </div>
             </div>
@@ -64,7 +64,7 @@ function GenderTile({ className = "" }: { className?: string }) {
                     <div key={label}>
                         <div className="flex justify-between items-baseline mb-1.5">
                             <span className="text-xs font-medium text-gray-500">{label}</span>
-                            <span className="font-serif text-2xl font-bold text-gray-900">{pct}%</span>
+                            <span className="text-2xl font-bold text-gray-900">{pct}%</span>
                         </div>
                         <div className="w-full h-1 bg-gray-100 rounded-full overflow-hidden">
                             <div
@@ -84,7 +84,7 @@ export default function Diversity() {
         <section className="bg-white py-16">
             <h2 className="text-center text-3xl sm:text-4xl font-light text-gray-900 mb-10 tracking-tight">
                 A{" "}
-                <em className="font-serif italic font-bold not-italic">
+                <em className="italic font-bold">
                     Kaleidoscope
                 </em>{" "}
                 of Diversity

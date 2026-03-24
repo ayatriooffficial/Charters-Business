@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Fraunces } from "next/font/google";
+import { Inter} from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
@@ -9,6 +9,7 @@ import ClientOnlyComponents from "@/components/client/ClientOnlyComponents";
 
 const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-inter",
   display: "swap",
   preload: true,
   fallback: [
@@ -22,13 +23,6 @@ const inter = Inter({
   ],
 });
 
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["600", "700"],
-  variable: "--font-fraunces",
-  preload: false,
-});
 
 export const metadata: Metadata = {
   title: {
@@ -50,7 +44,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`scroll-smooth ${fraunces.variable}`}
+      // className={`scroll-smooth ${fraunces.variable}`}
+      className={`${inter.variable} scroll-smooth`}
       data-scroll-behavior="smooth"
     >
       <head>
@@ -58,20 +53,6 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link
-          rel="preload"
-          href="/_next/static/media/1bffadaabf893a1e.7cd81963.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/_next/static/media/03bda585a99c6450-s.ad37b9d9.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
 
         {/* LCP Image Preload */}
         <link
@@ -96,7 +77,7 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.webmanifest" />
       </head>
 
-      <body className={`${inter.className} antialiased`}>
+      <body className="font-sans antialiased">
         {/* GTM: dataLayer init must run before gtm.js loads */}
         <Script id="gtm-datalayer" strategy="beforeInteractive">
           {`

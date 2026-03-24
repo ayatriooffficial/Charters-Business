@@ -123,7 +123,7 @@ export default function LifeAtCharters() {
                 <p className="text-gray-900 text-2xl sm:text-3xl font-normal leading-snug">
                     Life at Charters
                     <br />
-                    <em className="font-serif italic text-3xl sm:text-4xl text-gray-700">
+                    <em className="italic text-3xl sm:text-4xl text-gray-700">
                         Real-World Learning in Action
                     </em>
                 </p>

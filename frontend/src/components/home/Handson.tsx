@@ -186,7 +186,8 @@ interface HealthGridCardProps {
 
 function HealthGridCard({ card }: HealthGridCardProps) {
   return (
-    <section className="flex flex-col h-full w-full bg-[#F4F2EE] overflow-y-visible lg:overflow-y-auto">
+    <section className="flex flex-col w-full bg-[#F4F2EE] overflow-hidden">
+      {/* Mobile banner image */}
       <div className="block lg:hidden w-full h-32 flex-shrink-0 overflow-hidden">
         <Image
           src={card.mediaSrc || "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1600&h=1200&fit=crop"}
@@ -198,7 +199,9 @@ function HealthGridCard({ card }: HealthGridCardProps) {
         />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 flex-1">
+      {/* Main grid — min-h capped at 65vh so it never causes scroll on small laptops */}
+      <div className="grid grid-cols-1 lg:grid-cols-12" style={{ minHeight: "min(560px, 65vh)" }}>
+        {/* Left content column */}
         <div className="lg:col-span-6 flex flex-col px-3 sm:px-6 lg:px-7 py-2">
           <span className="inline-flex w-fit items-center mt-3 sm:mt-[30px] pb-1 sm:pb-[10px] text-gray-600 text-[10px] sm:text-[11px] font-medium tracking-wide">
             Content Creator Challenge
@@ -264,49 +267,16 @@ function HealthGridCard({ card }: HealthGridCardProps) {
           </div>
         </div>
 
-        <div className="lg:col-span-6 flex flex-col lg:flex-row h-full bg-[#f5f4f2]">
-          <div className="lg:w-[40%] w-full px-4 sm:px-6 md:px-8 lg:px-10 pt-8 md:pt-[50px] flex flex-col">
-            <div className="mb-5">
-              <p className="text-[11px] text-purple-700 uppercase tracking-wide">
-                Charter's has seen
-              </p>
-              <h3 className="text-3xl font-semibold text-black leading-none">11M+</h3>
-              <p className="text-[12px] text-gray-500 mt-1 max-w-[36ch]">
-                IT certification preparation enrollments across our platform in the last 12 months.
-              </p>
-            </div>
-
-            <div className="mb-5">
-              <h3 className="text-3xl font-semibold text-black leading-none">2M</h3>
-              <p className="text-[12px] text-gray-500 mt-1">
-                learners enrolled during that time period
-              </p>
-            </div>
-
-            <div>
-              <p className="text-[11px] text-gray-400 uppercase tracking-wide mb-2">
-                Top 5 by certification enrollments
-              </p>
-              <ol className="space-y-[2px] text-[13px] text-gray-800">
-                <li><span className="text-purple-600 mr-2">1</span>AWS</li>
-                <li><span className="text-purple-600 mr-2">2</span>Azure</li>
-                <li><span className="text-purple-600 mr-2">3</span>CompTIA</li>
-                <li><span className="text-purple-600 mr-2">4</span>Cisco</li>
-                <li><span className="text-purple-600 mr-2">5</span>Google Cloud</li>
-              </ol>
-            </div>
-          </div>
-
-          <div className="hidden lg:block relative lg:w-[60%] w-full lg:h-auto overflow-hidden">
-            <Image
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80"
-              alt="Learner portrait"
-              fill
-              priority
-              sizes="(max-width:768px) 100vw, (max-width:1024px) 50vw, 600px"
-              className="object-cover object-center"
-            />
-          </div>
+        {/* Right image column */}
+        <div className="hidden lg:block lg:col-span-6 relative">
+          <Image
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80"
+            alt="Learner portrait"
+            fill
+            priority
+            sizes="(max-width:768px) 100vw, (max-width:1024px) 50vw, 600px"
+            className="object-cover object-center"
+          />
         </div>
       </div>
     </section>
@@ -332,7 +302,7 @@ function FlagshipCard({ card }: FlagshipCardProps) {
   };
 
   return (
-    <section className="flex flex-col h-full w-full bg-[#E6F4EA] overflow-y-auto">
+    <section className="flex flex-col w-full bg-[#E6F4EA] overflow-hidden">
       <div className="block lg:hidden w-full h-32 flex-shrink-0 overflow-hidden">
         <Image
           src={card.mediaSrc || "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1600&h=1200&fit=crop"}
@@ -344,8 +314,11 @@ function FlagshipCard({ card }: FlagshipCardProps) {
         />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-0 flex-1">
-        <div className="lg:col-span-6 flex flex-col pt-3 sm:pt-[30px] px-3 sm:px-6 lg:px-8">
+      <div
+        className="grid grid-cols-1 lg:grid-cols-12 gap-x-0"
+        style={{ minHeight: "min(560px, 65vh)" }}
+      >
+        <div className="lg:col-span-6 flex flex-col pt-3 sm:pt-[30px] px-3 sm:px-6 lg:px-8 pb-4 sm:pb-6 lg:pb-8">
           <div className="flex items-center mb-2 sm:mb-3">
             <div className="flex -space-x-2">
               {[
@@ -394,34 +367,16 @@ function FlagshipCard({ card }: FlagshipCardProps) {
           </div>
         </div>
 
-        <div className="lg:col-span-6 flex flex-col lg:flex-row h-full">
-          <div className="lg:w-[40%] w-full px-4 sm:px-6 md:px-8 lg:px-10 mt-6 md:mt-[70px] flex flex-col">
-            <div className="space-y-4 md:space-y-8">
-              {[
-                { label: "Gen Z", range: "(18–27)", born: "Born 1997 to 2012" },
-                { label: "Millennials", range: "(28–43)", born: "Born 1981 to 1996" },
-                { label: "Gen X", range: "(44–59)", born: "Born 1965 to 1980" },
-                { label: "Boomers", range: "(60–78)", born: "Born 1946 to 1964" },
-              ].map((g) => (
-                <div key={g.label}>
-                  <h3 className="text-lg md:text-[22px] font-semibold text-black leading-tight">{g.label}</h3>
-                  <p className="text-xs md:text-[13px] text-gray-600 inline-block border-b border-gray-300 pb-0.5 mt-1">{g.range}</p>
-                  <p className="text-[11px] md:text-[12px] text-gray-500 mt-1">{g.born}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="hidden lg:block relative lg:w-[60%] w-full lg:h-auto overflow-hidden">
-            <Image
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80"
-              alt="Learner portrait"
-              fill
-              priority
-              sizes="(min-width:1024px) 60vw, 100vw"
-              className="object-cover object-center"
-            />
-          </div>
+        {/* Right image column */}
+        <div className="lg:col-span-6 hidden lg:block relative">
+          <Image
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80"
+            alt="Learner portrait"
+            fill
+            priority
+            sizes="(min-width:1024px) 60vw, 100vw"
+            className="object-cover object-center"
+          />
         </div>
       </div>
     </section>
@@ -492,7 +447,7 @@ const CardComponent = memo(
       <article
         className={`absolute left-0 right-0 bottom-2 sm:bottom-4 md:bottom-6 top-2 sm:top-4 md:top-8 lg:top-10 mx-1 sm:mx-2 md:mx-4 lg:mx-auto bg-white text-black overflow-hidden masters-union-card-transition max-w-[85rem] transition-all duration-200 ${isScaling
           ? "border border-gray-200"
-          : "border-t border-b border-gray-200"
+          : "border-t border-gray-200"
           }`}
         style={{
           transform: `translate3d(0, ${y}px, 0) scale(${scale})`,
@@ -616,7 +571,7 @@ function Handson() {
                   EXPERIENTIAL EDUCATION
                 </p>
                 <h2 id="programs-heading" className="leading-normal text-[35px] font-semibold text-black">
-                  <span className="bg-[#B30437] text-[#ffffff] px-1" style={{ fontFamily: "Fraunces, serif", fontWeight: 700 }}>
+                  <span className="bg-[#B30437] text-[#ffffff] px-1" style={{ fontWeight: 700 }}>
                     'Global Carrululam'
                   </span>
                   with Top MNC's
@@ -645,7 +600,7 @@ function Handson() {
               EXPERIENTIAL EDUCATION
             </p>
 
-            <h2 id="programs-heading" className="leading-normal text-[35px] font-semibold text-black">
+            <h2 id="programs-heading" className="leading-normal text-[35px] font-bold text-black">
               Train with{" "}
               <span className="relative inline-block mx-2">
                 <img
@@ -654,7 +609,7 @@ function Handson() {
                   aria-hidden="true"
                   className="absolute inset-0 w-[120%] h-[150%] -left-[10%] -top-[25%] pointer-events-none object-fill"
                 />
-                <span className="relative z-10 text-[#B30437] font-medium" style={{ fontFamily: "Fraunces, serif", fontWeight: 700 }}>
+                <span className="relative z-10 text-[#B30437] font-medium" style={{ fontWeight: 700 }}>
                   'Global curriculum'
                 </span>
               </span>
@@ -666,7 +621,7 @@ function Handson() {
                   aria-hidden="true"
                   className="absolute inset-0 w-[120%] h-[150%] -left-[10%] -top-[25%] pointer-events-none object-fill"
                 />
-                <span className="relative z-10 text-[#B30437] font-medium" style={{ fontFamily: "Fraunces, serif", fontWeight: 700 }}>
+                <span className="relative z-10 text-[#B30437] font-medium" style={{ fontWeight: 700 }}>
                   MNC's
                 </span>
               </span>
@@ -677,7 +632,7 @@ function Handson() {
             </p>
           </div>
 
-          <div className="sticky top-0 h-dvh sm:h-screen overflow-hidden mb-12">
+          <div className="sticky top-0 h-dvh sm:h-screen overflow-hidden">
             {cardsData.map((card, index) => (
               <CardComponent
                 key={card.id}

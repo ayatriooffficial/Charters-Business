@@ -41,12 +41,12 @@ const PlacementReportDashboard = () => {
             </p>
             <h2
               id="placement-report-heading"
-              className="leading-tight sm:leading-normal text-2xl sm:text-3xl md:text-[35px] font-semibold text-black"
+              className="leading-tight sm:leading-normal font-bold text-2xl sm:text-3xl md:text-[35px] bg-gradient-to-r from-black to-gray-400 bg-clip-text text-transparent"
             >
               {placementReportData.title}
             </h2>
           </div>
-          <p className="text-sm sm:text-base md:text-lg text-[#5f6368] mt-3 sm:mt-[14px] max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg text-gray-500 mt-3 sm:mt-[14px] max-w-2xl mx-auto">
             {placementReportData.description}
           </p>
         </div>

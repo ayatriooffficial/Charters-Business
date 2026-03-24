@@ -599,7 +599,7 @@ const StrategicExpansion: React.FC = () => {
                                 <div className="flex-1 space-y-6">
                                     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-black leading-tight">
                                         {currentContent.title}{" "}
-                                        <em className="italic font-serif text-[#B30437]">
+                                        <em className="italic text-[#B30437]">
                                             {currentContent.highlightText}
                                         </em>
                                     </h2>
