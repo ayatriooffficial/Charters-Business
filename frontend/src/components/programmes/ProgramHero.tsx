@@ -12,7 +12,7 @@ interface ProgramHeroProps {
 const ProgramHero = ({ data, programmeSlug }: ProgramHeroProps) => {
   return (
     <div
-      className="mx-[1%] sm:mx-[2%] md:mx-[3%] relative z-[5] mt-[var(--navbar-height,86px)] bg-white py-4 sm:py-6 md:py-8"
+      className="mx-[1%] sm:mx-[2%] md:mx-[3%] relative z-[5] mt-[var(--navbar-height,56px)] bg-white pb-4 sm:pb-6 md:pb-8"
       aria-labelledby="programme-heading"
       role="region"
     >

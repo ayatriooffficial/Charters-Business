@@ -207,30 +207,31 @@
                 Our graduates work at the world&apos;s most innovative companies
               </p>
             </header>
-  
+
             <div className="mb-12 w-full sm:mb-16">
-              <div className="mx-auto hidden max-w-6xl flex-wrap items-center justify-center gap-x-12 gap-y-12 px-10 md:flex lg:gap-x-16 lg:gap-y-16">
+              <div className="mx-auto hidden max-w-6xl flex-wrap items-center justify-center gap-x-12 gap-y-10 px-10 md:flex lg:gap-x-16 lg:gap-y-10">
                 {POPULAR_COMPANIES.map((company) => (
                   <div
                     key={company.name}
-                    className="group relative z-10 flex h-20 w-[140px] cursor-pointer flex-col items-center justify-end hover:z-50"
+                    className="group relative z-10 h-10 w-[140px] cursor-pointer hover:z-50"
                   >
-                    <div className="mb-3 flex h-10 w-full items-center justify-center">
-                      <div className="relative h-10 w-full">
-                        <Image
-                          src={company.logo}
-                          alt={company.name}
-                          fill
-                          sizes="140px"
-                          className="object-contain"
-                        />
-                      </div>
+                    {/* Logo — defines the item height */}
+                    <div className="relative h-10 w-full">
+                      <Image
+                        src={company.logo}
+                        alt={company.name}
+                        fill
+                        sizes="140px"
+                        className="object-contain"
+                      />
                     </div>
-  
-                    <div className="whitespace-nowrap rounded-full border border-transparent bg-[#f3f4f6] px-4 py-1.5 text-[11px] font-medium text-[#4b5563] transition-colors group-hover:border-gray-200 group-hover:bg-[#e5e7eb]">
+
+                    {/* Case Study button */}
+                    <div className="absolute left-1/2 top-[calc(100%+8px)] -translate-x-1/2 whitespace-nowrap rounded-full border border-transparent bg-[#f3f4f6] px-4 py-1.5 text-[11px] font-medium text-[#4b5563] transition-colors group-hover:border-gray-200 group-hover:bg-[#e5e7eb]">
                       Case Study
                     </div>
-  
+
+                    {/* Tooltip */}
                     <div className="pointer-events-none absolute bottom-[calc(100%+12px)] left-1/2 z-50 invisible w-[340px] -translate-x-1/2 rounded-2xl border border-gray-100 bg-white p-6 text-left opacity-0 shadow-[0_12px_40px_rgba(0,0,0,0.12)] transition-all duration-300 group-hover:pointer-events-auto group-hover:visible group-hover:opacity-100">
                       <p className="mb-6 text-[15px] font-medium leading-relaxed text-[#374151]">
                         &quot;{company.caseStudy.quote}&quot;
@@ -253,14 +254,14 @@
                           </div>
                         </div>
                       </div>
-  
+
                       <div className="absolute left-1/2 top-full z-0 h-4 w-4 -translate-x-1/2 -mt-[9px] rotate-45 border-b border-r border-gray-100 bg-white shadow-[4px_4px_10px_rgba(0,0,0,0.03)]" />
                       <div className="absolute left-1/2 top-full z-0 h-8 w-full -translate-x-1/2 bg-transparent" />
                     </div>
                   </div>
                 ))}
               </div>
-  
+
               <div className="flex justify-center px-4 md:hidden">
                 <Image
                   src={mobileImageUrl}
@@ -273,7 +274,7 @@
                 />
               </div>
             </div>
-  
+
             <div className="flex justify-center">
               <button
                 type="button"

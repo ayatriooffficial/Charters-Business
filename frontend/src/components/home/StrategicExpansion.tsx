@@ -555,8 +555,13 @@ const StrategicExpansion: React.FC = () => {
             {isVisible && (
                 <>
                     <div className="flex-shrink-0 text-center mb-13 sm:mb-13">
-                        <h2 className="leading-normal text-[35px] font-semibold text-black">
-                            Career Labs at <span className="text-[#B30437]">Charters</span>
+                        <h2 className="leading-normal text-[35px] font-semibold">
+                            <span className="font-bold bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent">
+                                Career Labs at
+                            </span>{" "}
+                            <span className="font-bold bg-gradient-to-r from-gray-700 to-gray-500 bg-clip-text text-transparent">
+                                Charters
+                            </span>
                         </h2>
                         <div className="flex justify-center">
                             <p className="text-black text-sm sm:text-base md:text-lg max-w-4xl">
@@ -599,7 +604,7 @@ const StrategicExpansion: React.FC = () => {
                                 <div className="flex-1 space-y-6">
                                     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-black leading-tight">
                                         {currentContent.title}{" "}
-                                        <em className="italic font-serif text-[#B30437]">
+                                        <em className="italic text-[#B30437]">
                                             {currentContent.highlightText}
                                         </em>
                                     </h2>

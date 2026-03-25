@@ -136,14 +136,14 @@ export default function CareerTransitions() {
         </div>
 
         <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-gray-300">
+          <div className="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-gray-300 border-t border-b border-gray-300">
             {YLC_LAUNCHES.map((column, colIndex) => (
               <div
                 key={colIndex}
                 className="space-y-4 sm:space-y-6 pt-6 lg:pt-0 first:pt-0"
               >
                 {/* Header — touches divider and outer boundary */}
-                <div className="flex items-center justify-center gap-2 sm:gap-3 pb-4 sm:pb-6 border-b border-gray-200 px-4 sm:px-5">
+                <div className="flex items-center justify-center gap-2 sm:gap-3 py-2 sm:py-3 border-b border-gray-300 px-4 sm:px-5">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
                     <Image
                       src={ICON_BUILDING}
@@ -159,7 +159,7 @@ export default function CareerTransitions() {
                 </div>
 
                 {/* Items — padded inward */}
-                <div className="space-y-4 sm:space-y-5 px-4 sm:px-5">
+                <div className="space-y-4 sm:space-y-5 px-4 sm:px-5 pb-2">
                   {column.items.map((item, itemIndex) => (
                     <div
                       key={itemIndex}
@@ -208,14 +208,14 @@ export default function CareerTransitions() {
         </div>
 
         <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-gray-300">
+          <div className="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-gray-300 border-t border-b border-gray-300">
             {TBM_TRANSITIONS.map((column, colIndex) => (
               <div
                 key={colIndex}
                 className="space-y-4 sm:space-y-6 pt-6 lg:pt-0 first:pt-0"
               >
                 {/* Header — touches divider and outer boundary */}
-                <div className="flex items-center justify-center gap-2 sm:gap-3 pb-3 sm:pb-4 border-b border-gray-300 px-4 sm:px-5">
+                <div className="flex items-center justify-center gap-2 sm:gap-3 py-2 sm:py-3 border-b border-gray-300 px-4 sm:px-5">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center flex-shrink-0">
                     <Image
                       src={ICON_BUILDING}
@@ -230,19 +230,8 @@ export default function CareerTransitions() {
                   </span>
                 </div>
 
-                {/* From / To labels */}
-                <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 sm:gap-3 pb-1 px-4 sm:px-5">
-                  <p className="text-xs sm:text-sm font-semibold text-gray-600 text-left">
-                    From
-                  </p>
-                  <div className="w-6 sm:w-10" />
-                  <p className="text-xs sm:text-sm font-semibold text-gray-600 text-left px-4 sm:px-5">
-                    To
-                  </p>
-                </div>
-
                 {/* Items — padded inward */}
-                <div className="space-y-4 sm:space-y-5 px-4 sm:px-5">
+                <div className="space-y-4 sm:space-y-5 px-4 sm:px-5 pb-2">
                   {column.items.map((item, itemIndex) => (
                     <div
                       key={itemIndex}

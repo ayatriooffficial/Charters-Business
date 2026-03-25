@@ -23,12 +23,12 @@ const OurProgrammesSection = () => {
             </p>
             <h2
               id="programmes-heading"
-              className="leading-normal text-[35px] font-semibold text-black"
+              className="leading-normal text-[35px] font-bold bg-gradient-to-r from-black to-gray-400 bg-clip-text text-transparent"
             >
               Explore Programmes
             </h2>
           </div>
-          <p className="text-base sm:text-lg text-[#5f6368] mt-[14px]">
+          <p className="text-base sm:text-lg text-gray-500 mt-[14px]">
             Choose from our range of programmes designed to build future leaders
             and entrepreneurs.
           </p>

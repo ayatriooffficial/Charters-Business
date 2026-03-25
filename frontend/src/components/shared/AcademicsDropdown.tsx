@@ -86,7 +86,7 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
       ref={ref}
       role="navigation"
       aria-label="Academic Programs Menu"
-      style={{ top: dropdownTop + 12 }}
+      style={{ top: dropdownTop }}
       className={`fixed left-0 right-0 w-full text-gray-800 bg-white border-b border-gray-200 z-50 transition-all duration-300 ease-out font-sans
     ${isOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}
   `}

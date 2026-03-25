@@ -269,7 +269,7 @@ export default function Home() {
         <SectionWrapper>
           <OurProgrammesSection />
         </SectionWrapper>
-        <SectionWrapper fullWidthBg>
+        <SectionWrapper>
           <BuiltByHarvard />
           <HandsOnLearningComponent />
         </SectionWrapper>

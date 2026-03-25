@@ -20,7 +20,7 @@ const Contact = () => {
             </p>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-light leading-tight text-black">
                 Its time to get{" "}
-                <span className="italic font-serif text-[#B30437]">
+                <span className="italic text-[#B30437]">
                     out there
                 </span>
                 .

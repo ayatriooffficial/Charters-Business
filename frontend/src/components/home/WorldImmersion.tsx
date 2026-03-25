@@ -202,21 +202,21 @@ function WorldImmersion() {
       {/* Header Section */}
       <div className="max-w-[85rem] mx-auto">
         <div className="text-center mb-8 sm:mb-12">
-          <h2 className="leading-normal text-[35px] font-semibold text-black">
-            Intranship,{" "}
+          <h2 className="leading-normal text-[35px] font-semibold">
+            <span className="font-bold bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent">
+              Internship,
+            </span>{" "}
+
             <span className="relative inline-block mx-2">
-              {/* IMAGE BEHIND TEXT */}
               <img
                 src="/rojor1.svg"
                 alt="rojor1"
                 aria-hidden="true"
                 className="absolute inset-0 w-full h-full scale-x-400 scale-y-150 pt-8 pointer-events-none"
               />
-
-              {/* TEXT ABOVE IMAGE */}
               <span
-                className="relative z-10 text-[#B30437] font-medium px-3"
-                style={{ fontFamily: "Fraunces, serif", fontWeight: 700 }}
+                className="font-bold relative z-10 font-bold px-3 bg-gradient-to-r from-gray-700 to-gray-500 bg-clip-text text-transparent"
+                style={{ fontWeight: 700 }}
               >
                 Across the World
               </span>
@@ -253,19 +253,18 @@ function WorldImmersion() {
         </div>
 
         {/* Content Section  */}
-        <div className="w-full relative group">
+        <div className="w-full relative group mt-2">
           <div
             className={`transition-opacity duration-300 ${isTransitioning ? "opacity-0" : "opacity-100"
               }`}
           >
-            {/* Wrapper for slider and buttons */}
             <div className="relative w-full">
-              {/* Scrolling Container */}
-              <div className="w-full overflow-x-auto lg:overflow-x-visible scrollbar-hide snap-x snap-mandatory lg:snap-none scroll-smooth">
-                {/* Cards Flex Container - Justified & Centered */}
+
+              <div className="w-full bg-gray-200 overflow-x-auto lg:overflow-x-visible scrollbar-hide snap-x snap-mandatory lg:snap-none scroll-smooth">
+
                 <div
                   ref={slidesContainerRef}
-                  className="w-full flex flex-nowrap lg:flex-nowrap justify-start lg:justify-center "
+                  className="w-full flex flex-nowrap lg:flex-nowrap justify-start lg:justify-center"
                 >
                   {[
                     { type: "biz", data: active.business },
@@ -275,7 +274,7 @@ function WorldImmersion() {
                   ].map((item, index) => (
                     <article
                       key={`${item.type}-${activeIndex}`}
-                      className="flex flex-col shrink-0 lg:shrink bg-white border border-b-0 border-l-0 last:border-r-0 border-gray-300 p-8 min-h-[420px] lg:min-h-[480px] w-[85vw] sm:w-[calc(50%-1.5rem)] lg:flex-1 snap-center lg:snap-align-none hover:shadow-sm transition-shadow"
+                      className="flex flex-col shrink-0 lg:shrink bg-white rounded-t-xl border-r border-t border-gray-200 p-8 min-h-[420px] lg:min-h-[480px] w-[85vw] sm:w-[calc(50%-0.25rem)] lg:flex-1 snap-center lg:snap-align-none hover:shadow-sm transition-shadow first:rounded-tl-none last:rounded-tr-none"
                     >
                       <div className="w-full mb-4">
                         <div className="relative w-40 h-28 overflow-hidden bg-gray-50">
@@ -297,13 +296,11 @@ function WorldImmersion() {
                         <p className="">
                           {item.data.description}
                         </p>
-                        {/* <p className="text-sm text-gray-500 leading-relaxed font-light mt-a uto">
-                          {item.data.description}
-                        </p> */}
                       </div>
                     </article>
                   ))}
                 </div>
+
               </div>
 
               {/* Navigation Buttons (Visible on Mobile/Tablet if overflow exists) */}

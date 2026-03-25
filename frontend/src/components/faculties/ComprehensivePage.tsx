@@ -264,7 +264,7 @@ export default function ComprehensivePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section - full width, outside bordered container (like home page) */}
-      <section className="relative z-[5] pt-[72px] sm:pt-[96px] md:pt-[100px] pb-8 md:pb-12 bg-white">
+      <section className="relative z-[5] pt-[72px] sm:pt-[48px] md:pt-[50px] pb-8 md:pb-12 bg-white">
         <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="text-black">
@@ -272,8 +272,15 @@ export default function ComprehensivePage() {
                 WORLD-CLASS EDUCATORS
               </p>
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-tight mb-4 sm:mb-6">
-                Learn from the{' '}
-                <span className="italic font-serif text-[#B30437]">finest minds</span> in business
+                <span className="font-bold bg-gradient-to-r from-black to-gray-800 bg-clip-text text-transparent">
+                  Learn from the
+                </span>{" "}
+                <span className="font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+                  finest minds
+                </span>{" "}
+                <span className="font-bold bg-gradient-to-r from-gray-600 to-gray-500 bg-clip-text text-transparent">
+                  in business
+                </span>
               </h1>
 
               <p className="text-base sm:text-lg mb-6 sm:mb-8 leading-relaxed max-w-lg">
@@ -304,15 +311,20 @@ export default function ComprehensivePage() {
         </div>
       </section>
 
-      {/* Faculty Section - Header (outside bordered container, like PlacementReport, no corners) */}
+      {/* Faculty Section - Header */}
       <section className="mx-[0%] border-b border-gray-200 bg-white text-black relative z-[5]">
         <div className="max-w-[85rem] mx-auto pt-8">
           <div className="text-center">
             <p className="text-xs sm:text-sm font-semibold text-[#B30437] tracking-wider mb-2 sm:mb-3" role="text">
               INSPIRING EDUCATORS
             </p>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-black leading-tight">
-              Faculty that <span className="italic font-serif text-[#B30437]">inspire and empower</span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light leading-tight">
+              <span className="font-bold bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent">
+                Faculty that
+              </span>{" "}
+              <span className="font-bold bg-gradient-to-r from-gray-700 to-gray-500 bg-clip-text text-transparent">
+                inspire and empower
+              </span>
             </h2>
           </div>
         </div>
@@ -556,20 +568,13 @@ export default function ComprehensivePage() {
                 {/* Text block */}
                 <div className="w-full md:w-1/2 bg-white text-black p-4 sm:p-6 md:p-8 flex flex-col justify-center">
 
-                  <div
-                    className="inline-flex items-center bg-[#B30437] text-white px-4 sm:px-5 py-2 rounded-full text-xs font-medium mb-3 sm:mb-4 self-start"
-                    role="status"
-                  >
-                    <span>Real-Time Support</span>
-                  </div>
-
                   <p className="text-xs font-semibold text-[#B30437] tracking-wider mb-2 sm:mb-3">
                     EXPERT MENTORSHIP
                   </p>
 
                   <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 sm:mb-5 leading-tight">
                     Access{' '}
-                    <span className="italic font-serif font-normal">real-time mentorship</span>{' '}
+                    <span className="italic font-normal">real-time mentorship</span>{' '}
                     from 100+ experts
                   </h3>
 
@@ -610,18 +615,16 @@ export default function ComprehensivePage() {
           <section className="relative z-[5] py-8 sm:py-10 bg-white">
             <div className="max-w-7xl w-full mx-auto">
               <div className="mb-8 sm:mb-12 text-center">
-                <div
-                  className="inline-flex items-center bg-[#B30437] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6"
-                  role="status"
-                >
-                  <span>Business Leaders</span>
-                </div>
                 <p className="text-xs sm:text-sm font-semibold text-[#B30437] tracking-wider mb-2 sm:mb-3" role="text">
                   INDUSTRY EXPERTISE
                 </p>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-black leading-tight">
-                  Lessons from the{' '}
-                  <span className="italic font-serif text-[#B30437]">best in the business</span>
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight">
+                  <span className="bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent">
+                    Lessons from the
+                  </span>{" "}
+                  <span className="bg-gradient-to-r from-gray-700 to-gray-500 bg-clip-text text-transparent">
+                    best in the business
+                  </span>
                 </h2>
               </div>
 

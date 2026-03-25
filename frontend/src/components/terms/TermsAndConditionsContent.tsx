@@ -18,7 +18,7 @@ export default function TermsAndConditionsContent() {
           </p>
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-black leading-tight mb-4">
             Our{" "}
-            <span className="italic font-serif text-[#B30437]">
+            <span className="italic text-[#B30437]">
               terms of service
             </span>
           </h1>

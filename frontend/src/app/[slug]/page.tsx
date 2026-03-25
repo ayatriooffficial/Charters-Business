@@ -146,14 +146,12 @@ export default async function ProgrammePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-
-      <main role="main" className="w-full overflow-x-hidden">
         {/* Hero Section */}
         <ProgramHero data={programme.hero} programmeSlug={slug} />
 
         {/* Other Sections */}
         <ProgramInfo data={programme.programInfo} />
-        <div className="border-x sm:mx-[2%] md:mx-[5%] border-gray-200 max-w-[95rem] mx-auto">
+      <div className="md:border-x border-gray-200 max-w-[85rem] w-full md:w-[90%] mx-auto overflow-x-clip md:overflow-x-visible">
           <SectionWrapper className="no-top-corners">
             <TrackRecord data={programme.trackRecord} />
           </SectionWrapper>
@@ -184,7 +182,6 @@ export default async function ProgrammePage({
             <FAQ data={programme.faq} />
           </SectionWrapper>
         </div>
-      </main>
     </>
   );
 }

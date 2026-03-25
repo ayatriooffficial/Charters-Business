@@ -156,7 +156,7 @@ function FacultyModel() {
                 {/* TEXT ABOVE IMAGE */}
                 <span
                   className="relative z-10 text-[#B30437] font-medium px-3"
-                  style={{ fontFamily: "Fraunces, serif", fontWeight: 700 }}
+                  style={{ fontWeight: 700 }}
                 >
                   Founder
                 </span>
@@ -205,7 +205,6 @@ function FacultyModel() {
                         <h3
                           id={`faculty-name-${index}`}
                           className="font-semibold text-black text-[15px] leading-tight"
-                          style={{ fontFamily: "Fraunces, Georgia, serif" }}
                         >
                           {faculty.name}
                         </h3>

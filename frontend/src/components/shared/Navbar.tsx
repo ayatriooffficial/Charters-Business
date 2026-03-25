@@ -105,20 +105,15 @@ function Navbar() {
     return () => window.removeEventListener("resize", handleResize);
   }, [calculateDropdownPosition]);
 
-  // Set navbar height CSS custom property once on mount (full height with both bars visible)
-  // so sticky elements below always have a consistent offset
-  // In Navbar.tsx — replace the existing useEffect that sets --navbar-height
-
   useEffect(() => {
     const updateNavbarHeight = () => {
       const primaryHeight = primaryRef.current?.offsetHeight || 0;
-      // secondaryRef is hidden on mobile via CSS, offsetHeight will be 0 when hidden
       const secondaryHeight = secondaryRef.current?.offsetHeight || 0;
       const fullHeight = primaryHeight + secondaryHeight;
       document.documentElement.style.setProperty('--navbar-height', `${fullHeight}px`);
     };
 
-    updateNavbarHeight(); // run on mount
+    updateNavbarHeight();
 
     window.addEventListener('resize', updateNavbarHeight);
     return () => window.removeEventListener('resize', updateNavbarHeight);
@@ -142,12 +137,10 @@ function Navbar() {
       } else if (scrollingDown) {
         setIsNavbarVisible(false);
         setIsSecondaryVisible(false);
-        // Navbar fully hidden — sticky should go to top (0)
         document.documentElement.style.setProperty('--navbar-height', `0px`);
       } else {
         setIsNavbarVisible(true);
         setIsSecondaryVisible(false);
-        // Only primary visible
         document.documentElement.style.setProperty('--navbar-height', `${primaryHeight}px`);
       }
 
@@ -167,7 +160,7 @@ function Navbar() {
   return (
     <div
       ref={headerRef}
-      className={`fixed left-0 right-0 z-[100] bg-white text-gray-900 w-full font-sans navbar-transition ${isNavbarVisible ? "translate-y-0" : "-translate-y-full"
+      className={`fixed left-0 right-0 z-[100] text-gray-900 w-full font-sans navbar-transition ${isNavbarVisible ? "translate-y-0" : "-translate-y-full"
         }`}
       style={{ top: 0 }}
       role="banner"
@@ -278,14 +271,17 @@ function Navbar() {
           </div>
         </div>
 
-        {/* Primary Navigation */}
+        {/* Primary Navigation*/}
         <nav
           ref={primaryRef}
-          className={`border-[#efefef] border-solid navbar-primary-slide bg-white relative z-[110] ${isNavbarVisible
+          className={`border-white/30 navbar-primary-slide relative z-[110] ${isNavbarVisible
             ? "translate-y-0 opacity-100"
             : "-translate-y-4 opacity-0"
             }`}
           style={{
+            background: "rgba(255, 255, 255, 0.8)",
+            backdropFilter: "blur(10px)",
+            WebkitBackdropFilter: "blur(10px)",
             transitionDelay:
               isNavbarVisible && isSecondaryVisible ? "100ms" : "0ms",
           }}
@@ -311,11 +307,6 @@ function Navbar() {
               </div>
 
               <ul className="hidden lg:flex text-[14px] uppercase font-semibold justify-start text-[#000] items-center space-x-4 xl:space-x-6 2xl:space-x-8">
-                {/* <li>
-                  <a href="/about" className="gap-2 hover:text-[#B30437] transition-colors duration-300 cursor-pointer">
-                    <span>ABOUT</span>
-                  </a>
-                </li> */}
                 <li className="relative">
                   <button
                     ref={academicsButtonRef}
@@ -346,7 +337,7 @@ function Navbar() {
                     href="/student-life"
                     className="gap-2 hover:text-[#B30437] transition-colors duration-300 cursor-pointer"
                   >
-                    <span>STUDENT LIFE </span>
+                    <span>STUDENT LIFE</span>
                   </a>
                 </li>
                 <li>
@@ -376,7 +367,7 @@ function Navbar() {
                   APPLY
                 </a>
                 <button
-                  className="p-2 rounded-md hover:bg-gray-100 transition-colors duration-150 relative z-[9999]"
+                  className="p-2 rounded-md hover:bg-gray-100/60 transition-colors duration-150 relative z-[9999]"
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                   aria-expanded={isMobileMenuOpen}
                   aria-label="Toggle navigation menu"

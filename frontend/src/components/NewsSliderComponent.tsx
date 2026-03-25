@@ -177,7 +177,7 @@ const NewsSliderComponent: React.FC<NewsSliderComponentProps> = ({
           <div>
             <h2
               id="programmes-heading"
-              className="leading-normal text-[35px] font-semibold text-black"
+              className="font-bold leading-normal text-[35px] bg-gradient-to-r from-black to-gray-400 bg-clip-text text-transparent"
             >
               Charter's in the News
             </h2>

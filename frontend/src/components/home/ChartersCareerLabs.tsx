@@ -276,7 +276,7 @@ const TetrCareerLabs: React.FC = () => {
             <div className="flex-1 text-black space-y-6">
               <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-light">
                 {currentContent.title}{" "}
-                <em className="italic font-serif text-[#B30437]">
+                <em className="italic text-[#B30437]">
                   {currentContent.highlightText}
                 </em>
               </h3>
