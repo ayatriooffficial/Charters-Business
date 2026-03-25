@@ -90,6 +90,7 @@ function EditorialCard({ card }: EditorialCardProps) {
           height={128}
           className="w-full h-full object-cover"
           loading="lazy"
+          sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 3rem), 505px"
         />
       </div>
 
@@ -196,6 +197,7 @@ function HealthGridCard({ card }: HealthGridCardProps) {
           height={128}
           className="w-full h-full object-cover"
           loading="lazy"
+          sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 3rem), 505px"
         />
       </div>
 
@@ -311,6 +313,7 @@ function FlagshipCard({ card }: FlagshipCardProps) {
           height={128}
           className="w-full h-full object-cover"
           loading="lazy"
+          sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 3rem), 505px"
         />
       </div>
 

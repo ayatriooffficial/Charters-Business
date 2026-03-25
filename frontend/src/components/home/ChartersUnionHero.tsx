@@ -55,7 +55,7 @@ function ChartersUnionHero() {
           fill
           priority
           fetchPriority="high"
-          sizes="100vw"
+          sizes="(max-width: 768px) 100vw, 515px"
           className="object-contain object-center"
         />
       </div>

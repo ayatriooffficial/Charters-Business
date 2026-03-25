@@ -54,7 +54,7 @@ const OurProgrammesSection = () => {
                     alt={programme.card.title}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 640px) 100%, (max-width: 1024px) 50%, 50%"
+                    sizes="(max-width: 640px) 330px, (max-width: 1024px) 450px, 525px"
                     priority={index < 2}
                     loading={index < 2 ? "eager" : "lazy"}
                   />
@@ -159,7 +159,7 @@ const OurProgrammesSection = () => {
                         </div>
                         <div className="flex-1 min-w-0">
                           <p className="text-xs text-gray-700 font-medium">
-                            2.12 Cr (Time's News)
+                            2.12 Cr (Time&apos;s News)
                             <sup className="text-xs text-gray-500">**</sup>
                           </p>
                         </div>
