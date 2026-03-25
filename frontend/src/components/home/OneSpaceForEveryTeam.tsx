@@ -506,9 +506,13 @@ const OneSpaceForEveryTeam = () => {
           >
             In class intranshiph at Top Companys{" "}
           </p>
-          <h2 className="leading-normal text-[35px] font-semibold text-black">
-            Class curriculum aling{" "}
-            <span className=" text-[#B30437]">every Sector</span>
+          <h2 className="leading-normal text-[35px] font-semibold">
+            <span className="font-bold bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent">
+              Class curriculum aling
+            </span>{" "}
+            <span className="font-bold bg-gradient-to-r from-gray-700 to-gray-500 bg-clip-text text-transparent">
+              every Sector
+            </span>
           </h2>
           <div className="flex justify-center">
             <p className="text-black text-sm sm:text-base md:text-lg max-w-4xl">

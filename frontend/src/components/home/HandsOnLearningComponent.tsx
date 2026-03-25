@@ -1000,24 +1000,27 @@ function HandsOnLearningComponent() {
               </p>
               <h2
                 id="hands-on-heading"
-                className="leading-normal text-[35px] font-semibold text-black"
+                className="leading-normal text-[35px] font-semibold"
               >
-                Hands-on.
+                <span className="font-bold bg-gradient-to-r from-black to-black bg-clip-text text-transparent">
+                  Hands-on.
+                </span>
+
                 <span className="relative inline-block mx-1 sm:mx-2">
-                  {/* IMAGE BEHIND TEXT */}
                   <img
                     src="/roundline.svg"
                     alt="roundline"
                     aria-hidden="true"
                     className="absolute inset-0 w-full h-full scale-x-[2.7] md:scale-x-[3.5] scale-y-[1.5] pointer-events-none"
                   />
-
-                  {/* TEXT ABOVE IMAGE */}
-                  <span className="leading-normal text-[35px] font-semibold text-black">
+                  <span className="relative z-10 leading-normal text-[35px] font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
                     Disruptive.
                   </span>
                 </span>
-                Experiential.
+
+                <span className="font-bold bg-gradient-to-r from-gray-600 to-gray-500 bg-clip-text text-transparent">
+                  Experiential.
+                </span>
               </h2>
             </div>
 

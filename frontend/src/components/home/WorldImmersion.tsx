@@ -202,20 +202,20 @@ function WorldImmersion() {
       {/* Header Section */}
       <div className="max-w-[85rem] mx-auto">
         <div className="text-center mb-8 sm:mb-12">
-          <h2 className="leading-normal text-[35px] font-semibold text-black">
-            Intranship,{" "}
+          <h2 className="leading-normal text-[35px] font-semibold">
+            <span className="font-bold bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent">
+              Internship,
+            </span>{" "}
+
             <span className="relative inline-block mx-2">
-              {/* IMAGE BEHIND TEXT */}
               <img
                 src="/rojor1.svg"
                 alt="rojor1"
                 aria-hidden="true"
                 className="absolute inset-0 w-full h-full scale-x-400 scale-y-150 pt-8 pointer-events-none"
               />
-
-              {/* TEXT ABOVE IMAGE */}
               <span
-                className="relative z-10 text-[#B30437] font-medium px-3"
+                className="font-bold relative z-10 font-bold px-3 bg-gradient-to-r from-gray-700 to-gray-500 bg-clip-text text-transparent"
                 style={{ fontWeight: 700 }}
               >
                 Across the World

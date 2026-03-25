@@ -296,21 +296,21 @@ function FacultyModel() {
 
             <h2
               id="faculty-heading"
-              className="leading-normal text-[35px] font-semibold text-black"
+              className="leading-normal text-2xl sm:text-3xl md:text-[35px] font-bold"
             >
-              Meet your{" "}
-              <span className="relative inline-block mx-2">
-                {/* IMAGE BEHIND TEXT */}
+              <span className="bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent">
+                Meet your
+              </span>{" "}
+
+              <span className="relative inline-block mx-1 sm:mx-2">
                 <img
                   src="/highlight line.svg"
                   alt="highlight line"
                   aria-hidden="true"
-                  className="absolute inset-0 w-full h-full scale-x-300 scale-y-155 pointer-events-none"
+                  className="absolute inset-0 w-full h-full scale-x-[2.5] sm:scale-x-[3] scale-y-[1.5] pointer-events-none"
                 />
-
-                {/* TEXT ABOVE IMAGE */}
                 <span
-                  className="relative z-10 text-[#B30437] font-medium px-3"
+                  className="relative z-10 font-bold px-3 bg-gradient-to-r from-gray-700 to-gray-500 bg-clip-text text-transparent"
                   style={{ fontWeight: 700 }}
                 >
                   Faculty

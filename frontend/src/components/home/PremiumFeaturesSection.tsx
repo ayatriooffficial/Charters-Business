@@ -298,7 +298,8 @@ const PremiumFeaturesSection = () => {
     return (
       <article
         key={feature.id}
-        className={`relative pl-${isMobile ? "6" : "8"} ${isMobile ? "py-2 cursor-pointer" : "transition-all duration-500 cursor-pointer"}`}
+        className={`relative ${isMobile ? "pl-6" : "pl-8"} ${isMobile ? " cursor-pointer" : "transition-all duration-500 cursor-pointer"
+          }`}
         role="listitem"
         aria-labelledby={titleId}
         onClick={() => handleFeatureClick(feature.id)}
@@ -344,7 +345,7 @@ const PremiumFeaturesSection = () => {
 
   return (
     <section
-      className="mx-[0%] relative z-[5] mb-8 bg-white pt-16 pb-8 border-b border-gray-300"
+      className="mx-[0%] relative z-[5] bg-white pt-16 pb-8"
       aria-labelledby="enrich-learning-heading"
       role="region"
     >
@@ -354,9 +355,13 @@ const PremiumFeaturesSection = () => {
             PERSONALIZED LEARNING
           </p>
           <header className="mb-8">
-            <h2 id="enrich-learning-heading" className="text-3xl md:text-4xl lg:text-5xl font-light text-black mb-8">
-              Enrich and{" "}
-              <span className="italic text-[#B30437]">personalize learning</span>
+            <h2 id="enrich-learning-heading" className="text-2xl md:text-3xl lg:text-4xl font-light mb-8">
+              <span className="font-bold bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent">
+                Enrich and
+              </span>{" "}
+              <span className="font-bold bg-gradient-to-r from-gray-700 to-gray-500 bg-clip-text text-transparent">
+                personalize learning
+              </span>
             </h2>
             <p className="text-xl lg:text-xl text-black mx-auto leading-relaxed">
               Drive student agency with tools that meet students where they are – and build skills for their future.

@@ -226,7 +226,7 @@
                       />
                     </div>
 
-                    {/* Case Study button — absolutely positioned, won't affect row height */}
+                    {/* Case Study button */}
                     <div className="absolute left-1/2 top-[calc(100%+8px)] -translate-x-1/2 whitespace-nowrap rounded-full border border-transparent bg-[#f3f4f6] px-4 py-1.5 text-[11px] font-medium text-[#4b5563] transition-colors group-hover:border-gray-200 group-hover:bg-[#e5e7eb]">
                       Case Study
                     </div>

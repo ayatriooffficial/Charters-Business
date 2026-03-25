@@ -133,18 +133,18 @@ const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
 
           {/* ── DESKTOP: original grid ── */}
           <div className="hidden md:block w-full">
-            <div className="w-full h-full border-b border-gray-200 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200">
-              <article className="bg-white p-3 sm:p-4 flex flex-col min-h-[280px] sm:min-h-[320px]">
+            <div className="w-full h-full border-b border-gray-200 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200 bg-gray-200">
+              <article className="bg-white p-3 sm:p-4 flex flex-col min-h-[280px] sm:min-h-[320px] rounded-t-xl first:rounded-tl-none last:rounded-tr-none hover:shadow-sm transition-shadow">
                 {shouldMount ? (
                   <SalaryGrowthChart isHovered={isVisible} value={stats.salaryJump} />
                 ) : <SkeletonCard />}
               </article>
-              <article className="bg-white p-3 sm:p-4 flex flex-col min-h-[280px] sm:min-h-[320px]">
+              <article className="bg-white p-3 sm:p-4 flex flex-col min-h-[280px] sm:min-h-[320px] rounded-t-xl first:rounded-tl-none last:rounded-tr-none hover:shadow-sm transition-shadow">
                 {shouldMount ? (
                   <SalaryBarsChart isHovered={isVisible} value={stats.highestSalary} />
                 ) : <SkeletonCard />}
               </article>
-              <article className="bg-white p-3 sm:p-4 flex flex-col min-h-[280px] sm:min-h-[320px]">
+              <article className="bg-white p-3 sm:p-4 flex flex-col min-h-[280px] sm:min-h-[320px] rounded-t-xl first:rounded-tl-none last:rounded-tr-none hover:shadow-sm transition-shadow">
                 {shouldMount ? (
                   <RecruiterProgressBars isHovered={isVisible} value={stats.recruiters} />
                 ) : <SkeletonCard />}
@@ -154,7 +154,6 @@ const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
 
         </div>
 
-        {/* Download Section — unchanged */}
         <div
           className="px-4 sm:px-6 lg:px-8 text-center border-b border-gray-200 pb-6"
           role="region"

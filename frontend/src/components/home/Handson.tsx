@@ -186,7 +186,7 @@ interface HealthGridCardProps {
 
 function HealthGridCard({ card }: HealthGridCardProps) {
   return (
-    <section className="flex flex-col w-full bg-[#F4F2EE] overflow-hidden">
+    <section className="flex flex-col w-full bg-[#F4F2EE] overflow-hidden h-full">
       {/* Mobile banner image */}
       <div className="block lg:hidden w-full h-32 flex-shrink-0 overflow-hidden">
         <Image
@@ -200,7 +200,7 @@ function HealthGridCard({ card }: HealthGridCardProps) {
       </div>
 
       {/* Main grid — min-h capped at 65vh so it never causes scroll on small laptops */}
-      <div className="grid grid-cols-1 lg:grid-cols-12" style={{ minHeight: "min(560px, 65vh)" }}>
+      <div className="grid grid-cols-1 lg:grid-cols-12 h-full">
         {/* Left content column */}
         <div className="lg:col-span-6 flex flex-col px-3 sm:px-6 lg:px-7 py-2">
           <span className="inline-flex w-fit items-center mt-3 sm:mt-[30px] pb-1 sm:pb-[10px] text-gray-600 text-[10px] sm:text-[11px] font-medium tracking-wide">
@@ -270,7 +270,7 @@ function HealthGridCard({ card }: HealthGridCardProps) {
         {/* Right image column */}
         <div className="hidden lg:block lg:col-span-6 relative">
           <Image
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80"
+            src="/home/ima2a.png"
             alt="Learner portrait"
             fill
             priority
@@ -302,7 +302,7 @@ function FlagshipCard({ card }: FlagshipCardProps) {
   };
 
   return (
-    <section className="flex flex-col w-full bg-[#E6F4EA] overflow-hidden">
+    <section className="flex flex-col w-full bg-[#E6F4EA] overflow-hidden h-full">
       <div className="block lg:hidden w-full h-32 flex-shrink-0 overflow-hidden">
         <Image
           src={card.mediaSrc || "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1600&h=1200&fit=crop"}
@@ -315,8 +315,7 @@ function FlagshipCard({ card }: FlagshipCardProps) {
       </div>
 
       <div
-        className="grid grid-cols-1 lg:grid-cols-12 gap-x-0"
-        style={{ minHeight: "min(560px, 65vh)" }}
+        className="grid grid-cols-1 lg:grid-cols-12 gap-x-0 h-full"
       >
         <div className="lg:col-span-6 flex flex-col pt-3 sm:pt-[30px] px-3 sm:px-6 lg:px-8 pb-4 sm:pb-6 lg:pb-8">
           <div className="flex items-center mb-2 sm:mb-3">
@@ -370,7 +369,7 @@ function FlagshipCard({ card }: FlagshipCardProps) {
         {/* Right image column */}
         <div className="lg:col-span-6 hidden lg:block relative">
           <Image
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80"
+            src="/home/ima2.png"
             alt="Learner portrait"
             fill
             priority
@@ -566,7 +565,7 @@ function Handson() {
         >
           <div className="relative w-full mx-auto">
             <div className="h-screen overflow-hidden">
-              <div className="text-center lg:text-center mx-auto relative bg-white pb-2 sm:pb-3">
+              <div className="text-center lg:text-center mx-auto relative bg-white pb-2 sm:pb-3 ">
                 <p className="text-xs sm:text-sm font-semibold text-[#B30437] tracking-wider mb-2 sm:mb-3" role="text">
                   EXPERIENTIAL EDUCATION
                 </p>
@@ -595,13 +594,16 @@ function Handson() {
           aria-label="Scroll through learning programs"
         >
           {/* Sticky Header */}
-          <div className="text-center lg:text-center mx-auto relative bg-white">
+          <div className="text-center lg:text-center mx-auto relative bg-white ">
             <p className="text-xs sm:text-sm font-semibold text-[#B30437] tracking-wider mb-2 sm:mb-3" role="text">
               EXPERIENTIAL EDUCATION
             </p>
 
-            <h2 id="programs-heading" className="leading-normal text-[35px] font-bold text-black">
-              Train with{" "}
+            <h2 className="text-[35px] font-bold leading-normal">
+              <span className="bg-gradient-to-r from-black to-black bg-clip-text text-transparent">
+                Train with
+              </span>{" "}
+
               <span className="relative inline-block mx-2">
                 <img
                   src="/roundline.svg"
@@ -609,19 +611,23 @@ function Handson() {
                   aria-hidden="true"
                   className="absolute inset-0 w-[120%] h-[150%] -left-[10%] -top-[25%] pointer-events-none object-fill"
                 />
-                <span className="relative z-10 text-[#B30437] font-medium" style={{ fontWeight: 700 }}>
-                  'Global curriculum'
+                <span className="relative z-10 font-bold bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent">
+                  Global curriculum
                 </span>
-              </span>
-              {" "}along with{" "}
-              <span className="relative inline-block whitespace-nowrap px-2 md:px-3 mx-1 md:mx-2 mt-2 md:mt-0">
+              </span>{" "}
+
+              <span className="bg-gradient-to-r from-gray-700 to-gray-600 bg-clip-text text-transparent">
+                along with
+              </span>{" "}
+
+              <span className="relative inline-block px-2 mx-2">
                 <img
                   src="/roundline.svg"
                   alt=""
                   aria-hidden="true"
                   className="absolute inset-0 w-[120%] h-[150%] -left-[10%] -top-[25%] pointer-events-none object-fill"
                 />
-                <span className="relative z-10 text-[#B30437] font-medium" style={{ fontWeight: 700 }}>
+                <span className="relative z-10 font-bold bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent">
                   MNC's
                 </span>
               </span>

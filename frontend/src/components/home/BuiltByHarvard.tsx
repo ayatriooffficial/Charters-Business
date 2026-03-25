@@ -39,9 +39,12 @@ function BuiltByHarvard() {
       <div className="text-center mb-8 sm:mb-10">
         <h2
           id="trusted-companies-heading"
-          className="leading-normal text-[35px] font-semibold text-black"
+          className="leading-normal text-[35px] font-semibold"
         >
-          The most{" "}
+          <span className="bg-gradient-to-r from-black to-black bg-clip-text text-transparent">
+            The most
+          </span>{" "}
+
           <span className="relative inline-block mx-2">
             <Image
               src="/highlight line.svg"
@@ -51,11 +54,14 @@ function BuiltByHarvard() {
               height={40}
               className="absolute inset-0 w-full h-full scale-x-300 scale-y-155 pointer-events-none"
             />
-            <span className="relative z-10 text-[#B30437] px-3 font-fraunces font-bold">
+            <span className="relative z-10 px-3 font-fraunces font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
               innovative
             </span>
           </span>{" "}
-          Institution
+
+          <span className="bg-gradient-to-r from-gray-600 to-gray-500 bg-clip-text text-transparent">
+            Institution
+          </span>
         </h2>
 
         <p className="text-[#5f6368] text-sm sm:text-base md:text-lg max-w-4xl mx-auto leading-relaxed px-4">
