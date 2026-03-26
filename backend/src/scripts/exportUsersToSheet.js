@@ -9,6 +9,8 @@ import User from "../models/User.model.js";
 const SHEET_ID = process.env.GOOGLE_SHEET_ID;
 const KEY_PATH = process.env.GOOGLE_SERVICE_ACCOUNT_JSON;
 const MONGO_URI = process.env.MONGODB_URI;
+const SHEET_RANGE = "Sheet1!A:ZZ";
+const SHEET_TITLE = "Sheet1";
 
 if (!SHEET_ID) throw new Error("Missing GOOGLE_SHEET_ID");
 if (!KEY_PATH) throw new Error("Missing GOOGLE_SERVICE_ACCOUNT_JSON");
@@ -18,6 +20,150 @@ function toISO(d) {
   if (!d) return "";
   const dt = new Date(d);
   return isNaN(dt.getTime()) ? "" : dt.toISOString();
+}
+
+function toDisplayText(value, fallback = "N/A") {
+  if (value === null || value === undefined) {
+    return fallback;
+  }
+
+  const text = String(value).trim();
+  return text ? text : fallback;
+}
+
+function toDisplayDate(value) {
+  const iso = toISO(value);
+  if (!iso) {
+    return "N/A";
+  }
+
+  const date = new Date(iso);
+  return date.toLocaleString("en-IN", {
+    year: "numeric",
+    month: "short",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+    timeZone: "Asia/Kolkata",
+  });
+}
+
+function getProfileStatus(user) {
+  const hasName = Boolean(user.name?.trim());
+  const hasEmail = Boolean(user.email?.trim());
+  const hasPhone = Boolean(user.phoneNumber?.trim());
+
+  if (hasName && hasEmail && hasPhone) {
+    return "Complete";
+  }
+
+  if (hasName || hasEmail || hasPhone) {
+    return "Partial";
+  }
+
+  return "Missing";
+}
+
+function getTrackingStatus(user) {
+  const visits = user.viewerMetrics?.visitCount ?? 0;
+  const pages = user.viewerMetrics?.pagesNavigated ?? 0;
+  const chats = user.viewerMetrics?.chatInteractions ?? 0;
+  const score = typeof user.viewerScore === "number" ? user.viewerScore : 0;
+
+  if (visits > 0 || pages > 0 || chats > 0 || score > 0) {
+    return "Tracked";
+  }
+
+  return "No analytics yet";
+}
+
+function getEngagementBand(score) {
+  if (typeof score !== "number" || score <= 0) {
+    return "N/A";
+  }
+
+  if (score >= 75) {
+    return "High";
+  }
+
+  if (score >= 35) {
+    return "Medium";
+  }
+
+  return "Low";
+}
+
+async function formatSheet(header) {
+  const spreadsheet = await sheets.spreadsheets.get({
+    spreadsheetId: SHEET_ID,
+  });
+
+  const targetSheet = spreadsheet.data.sheets?.find(
+    (sheet) => sheet.properties?.title === SHEET_TITLE,
+  );
+  const sheetId = targetSheet?.properties?.sheetId;
+
+  if (sheetId === undefined) {
+    return;
+  }
+
+  await sheets.spreadsheets.batchUpdate({
+    spreadsheetId: SHEET_ID,
+    requestBody: {
+      requests: [
+        {
+          updateSheetProperties: {
+            properties: {
+              sheetId,
+              gridProperties: {
+                frozenRowCount: 1,
+              },
+            },
+            fields: "gridProperties.frozenRowCount",
+          },
+        },
+        {
+          repeatCell: {
+            range: {
+              sheetId,
+              startRowIndex: 0,
+              endRowIndex: 1,
+            },
+            cell: {
+              userEnteredFormat: {
+                backgroundColor: {
+                  red: 0.07,
+                  green: 0.2,
+                  blue: 0.29,
+                },
+                textFormat: {
+                  bold: true,
+                  foregroundColor: {
+                    red: 1,
+                    green: 1,
+                    blue: 1,
+                  },
+                },
+              },
+            },
+            fields:
+              "userEnteredFormat(backgroundColor,textFormat.foregroundColor,textFormat.bold)",
+          },
+        },
+        {
+          autoResizeDimensions: {
+            dimensions: {
+              sheetId,
+              dimension: "COLUMNS",
+              startIndex: 0,
+              endIndex: header.length,
+            },
+          },
+        },
+      ],
+    },
+  });
 }
 
 let sheets;
@@ -73,67 +219,72 @@ async function exportUsers() {
         "viewerMetrics.visitCount": 1,
         "viewerMetrics.pagesNavigated": 1,
         "viewerMetrics.chatInteractions": 1,
-        "viewerMetrics.loggedIn": 1,
-        "viewerMetrics.deviceId": 1,
-        "viewerMetrics.sessionId": 1,
         updatedAt: 1,
         createdAt: 1,
       }
-    ).lean();
+    )
+      .sort({ createdAt: -1, name: 1 })
+      .lean();
 
     console.log("Users found:", users.length);
 
     const header = [
-      "mongo_id",
-      "name",
-      "email",
-      "role",
-      "phoneNumber",
-      "courseInterestedIn",
-      "lastLogin",
-      "viewerScore",
-      "visitCount",
-      "pagesNavigated",
-      "chatInteractions",
-      "loggedIn",
-      "deviceId",
-      "sessionId",
-      "createdAt",
-      "updatedAt",
+      "User ID",
+      "Name",
+      "Email",
+      "Phone Number",
+      "Course Interested In",
+      "Role",
+      "Profile Status",
+      "Signed Up On",
+      "Last Login",
+      "Tracking Status",
+      "Viewer Score",
+      "Engagement Band",
+      "Visits",
+      "Unique Pages",
+      "Chat Interactions",
+      "Last Updated",
     ];
 
-    const rows = users.map((u) => [
-      String(u._id || ""),
-      u.name || "",
-      u.email || "",
-      u.role || "",
-      u.phoneNumber || "",
-      u.courseInterestedIn || "",
-      toISO(u.lastLogin),
-      typeof u.viewerScore === "number" ? u.viewerScore : "",
-      u.viewerMetrics?.visitCount ?? 0,
-      u.viewerMetrics?.pagesNavigated ?? 0,
-      u.viewerMetrics?.chatInteractions ?? 0,
-      u.viewerMetrics?.loggedIn ?? false,
-      u.viewerMetrics?.deviceId ?? "",
-      u.viewerMetrics?.sessionId ?? "",
-      toISO(u.createdAt),
-      toISO(u.updatedAt),
-    ]);
+    const rows = users.map((u) => {
+      const score = typeof u.viewerScore === "number" ? u.viewerScore : 0;
+
+      return [
+        String(u._id || ""),
+        toDisplayText(u.name),
+        toDisplayText(u.email),
+        toDisplayText(u.phoneNumber),
+        toDisplayText(u.courseInterestedIn),
+        toDisplayText(u.role),
+        getProfileStatus(u),
+        toDisplayDate(u.createdAt),
+        toDisplayDate(u.lastLogin),
+        getTrackingStatus(u),
+        score || "N/A",
+        getEngagementBand(score),
+        u.viewerMetrics?.visitCount ?? 0,
+        u.viewerMetrics?.pagesNavigated ?? 0,
+        u.viewerMetrics?.chatInteractions ?? 0,
+        toDisplayDate(u.updatedAt),
+      ];
+    });
 
     await sheets.spreadsheets.values.clear({
       spreadsheetId: SHEET_ID,
-      range: "Sheet1!A1:Z",
+      range: SHEET_RANGE,
     });
 
     await sheets.spreadsheets.values.update({
       spreadsheetId: SHEET_ID,
-      range: "Sheet1!A1",
+      range: `${SHEET_TITLE}!A1`,
       valueInputOption: "RAW",
       requestBody: {
         values: [header, ...rows],
       },
     });
+
+    await formatSheet(header);
 
     console.log(
       `Exported ${rows.length} users to Google Sheet at ${new Date().toLocaleTimeString()}`

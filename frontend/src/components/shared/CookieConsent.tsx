@@ -1,8 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState, useCallback } from "react";
-
-const CONSENT_KEY = "cookie_consent_v1";
+import { CONSENT_KEY, setConsentChoice } from "@/lib/Tracking";
 
 export default function CookieConsent() {
   const [show, setShow] = useState(false);
@@ -12,19 +12,19 @@ export default function CookieConsent() {
   }, []);
 
   const acceptAll = useCallback(() => {
-    localStorage.setItem(CONSENT_KEY, "accepted");
+    setConsentChoice("accepted");
     setShow(false);
     window.dispatchEvent(new Event("consent:accepted"));
   }, []);
 
   const onlyNecessary = useCallback(() => {
-    localStorage.setItem(CONSENT_KEY, "necessary");
+    setConsentChoice("necessary");
     setShow(false);
     window.dispatchEvent(new Event("consent:necessary"));
   }, []);
 
   const rejectAll = useCallback(() => {
-    localStorage.setItem(CONSENT_KEY, "rejected");
+    setConsentChoice("rejected");
     setShow(false);
     window.dispatchEvent(new Event("consent:rejected"));
   }, []);
@@ -47,13 +47,14 @@ export default function CookieConsent() {
         &ldquo;Accept all cookies&rdquo;, you consent to the use of cookies to
         enhance site navigation, analyze site usage, and support our services,
         as outlined in our{" "}
-        <a href="/privacy-policy" className="underline text-black font-medium">
+        <Link href="/privacy-policy" className="underline text-black font-medium">
           Privacy Policy
-        </a>.
+        </Link>.
       </p>
 
       <div className="mt-5 flex flex-col gap-2">
         <button
+          type="button"
           onClick={acceptAll}
           className="w-full bg-[#0339F8] text-white px-5 py-2.5 text-[13.5px] font-medium rounded-sm hover:bg-[#022fcc] transition"
         >
@@ -62,6 +63,7 @@ export default function CookieConsent() {
 
         <div className="flex gap-2">
           <button
+            type="button"
             onClick={onlyNecessary}
             className="flex-1 border border-gray-300 px-4 py-2.5 text-[13px] font-medium rounded-sm hover:bg-gray-50 transition"
           >
@@ -69,6 +71,7 @@ export default function CookieConsent() {
           </button>
 
           <button
+            type="button"
             onClick={rejectAll}
             className="flex-1 border border-red-200 px-4 py-2.5 text-[13px] font-medium rounded-sm text-red-600 hover:bg-red-50 transition"
           >
