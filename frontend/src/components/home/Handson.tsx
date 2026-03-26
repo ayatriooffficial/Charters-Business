@@ -89,6 +89,7 @@ function EditorialCard({ card }: EditorialCardProps) {
           fill
           className="w-full h-full object-cover"
           loading="lazy"
+          quality={60}
           sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 3rem), 505px"
         />
       </div>
@@ -166,6 +167,7 @@ function EditorialCard({ card }: EditorialCardProps) {
             src={card.mediaSrc}
             alt={`${card.title} visual`}
             fill
+            quality={60}
             sizes="(max-width:768px) 100vw, 493px"
             className="object-center scale-[0.99] h-auto object-contain w-full relative!"
           />
@@ -195,6 +197,7 @@ function HealthGridCard({ card }: HealthGridCardProps) {
           fill
           className="w-full h-full object-cover"
           loading="lazy"
+          quality={60}
           sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 3rem), 505px"
         />
       </div>
@@ -310,6 +313,7 @@ function FlagshipCard({ card }: FlagshipCardProps) {
           fill
           className="w-full h-full object-cover"
           loading="lazy"
+          quality={60}
           sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 3rem), 505px"
         />
       </div>
@@ -355,7 +359,7 @@ function FlagshipCard({ card }: FlagshipCardProps) {
             </div>
 
             <div ref={sliderRef} className="flex overflow-x-auto scrollbar-hide h-[180px] sm:h-[200px] gap-1 items-stretch scroll-smooth">
-              {card.programs?.map((p: any) => (
+              {card.programs?.map((p: { name: string; duration: string }) => (
                 <div key={p.name} className="min-w-[140px] sm:min-w-[170px] h-full mr-1 bg-[#A2C1B9] px-3 sm:px-4 py-4 sm:py-5 flex flex-col justify-between">
                   <span className="text-[9px] bg-black text-white px-2 py-[2px] w-fit">PROGRAM</span>
                   <h3 className="mt-3 text-sm font-semibold text-black leading-snug">{p.name}</h3>
@@ -468,34 +472,6 @@ const CardComponent = memo(
 
 CardComponent.displayName = "CardComponent";
 
-type VisibleChild = (visible: boolean) => React.ReactNode;
-
-function UseVisibility({
-  threshold = 0.4,
-  rootMargin = "0px 0px -10% 0px",
-  children,
-}: {
-  threshold?: number;
-  rootMargin?: string;
-  children: VisibleChild;
-}) {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([entry]) => setVisible(entry.isIntersecting),
-      { threshold, rootMargin },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [threshold, rootMargin]);
-
-  return <div ref={ref}>{children(visible)}</div>;
-}
-
 function Handson() {
   const pathname = usePathname();
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -571,9 +547,9 @@ function Handson() {
                 </p>
                 <h2 id="programs-heading" className="leading-normal text-[35px] font-semibold text-black">
                   <span className="bg-[#B30437] text-[#ffffff] px-1" style={{ fontWeight: 700 }}>
-                    'Global Carrululam'
+                    &apos;Global Carrululam&apos;
                   </span>
-                  with Top MNC's
+                  with Top MNC&apos;s
                 </h2>
               </div>
             </div>
@@ -605,11 +581,13 @@ function Handson() {
               </span>{" "}
 
               <span className="relative inline-block mx-2">
-                <img
+                <Image
                   src="/roundline.svg"
                   alt=""
+                  fill
+                  sizes="200px"
                   aria-hidden="true"
-                  className="absolute inset-0 w-[120%] h-[150%] -left-[10%] -top-[25%] pointer-events-none object-fill"
+                  className="pointer-events-none absolute -left-[10%] -top-[25%] h-[150%] w-[120%] object-fill"
                 />
                 <span className="relative z-10 font-bold bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent">
                   Global curriculum
@@ -621,14 +599,16 @@ function Handson() {
               </span>{" "}
 
               <span className="relative inline-block px-2 mx-2">
-                <img
+                <Image
                   src="/roundline.svg"
                   alt=""
+                  fill
+                  sizes="200px"
                   aria-hidden="true"
-                  className="absolute inset-0 w-[120%] h-[150%] -left-[10%] -top-[25%] pointer-events-none object-fill"
+                  className="pointer-events-none absolute -left-[10%] -top-[25%] h-[150%] w-[120%] object-fill"
                 />
                 <span className="relative z-10 font-bold bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent">
-                  MNC's
+                  MNC&apos;s
                 </span>
               </span>
             </h2>
