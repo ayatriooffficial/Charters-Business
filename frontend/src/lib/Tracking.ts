@@ -1,8 +1,10 @@
 import { v4 as uuidv4 } from "uuid";
 
-const CONSENT_KEY = "cookie_consent_v1";
+export const CONSENT_KEY = "cookie_consent_v1";
 const DEVICE_KEY = "device_id_v1";
 const SESSION_KEY = "anon_session_v1";
+
+export type ConsentChoice = "accepted" | "necessary" | "rejected";
 
 export type AnonSession = {
   sessionId: string;
@@ -14,8 +16,26 @@ export type AnonSession = {
   lastSeenAt: number;
 };
 
-function hasConsent(): boolean {
-  return localStorage.getItem(CONSENT_KEY) === "accepted";
+export function getConsentChoice(): ConsentChoice | null {
+  const storedConsent = localStorage.getItem(CONSENT_KEY);
+
+  if (
+    storedConsent === "accepted" ||
+    storedConsent === "necessary" ||
+    storedConsent === "rejected"
+  ) {
+    return storedConsent;
+  }
+
+  return null;
+}
+
+export function setConsentChoice(choice: ConsentChoice) {
+  localStorage.setItem(CONSENT_KEY, choice);
+}
+
+export function hasTrackingConsent(): boolean {
+  return getConsentChoice() === "accepted";
 }
 
 function getOrCreateDeviceId(): string {
@@ -31,15 +51,34 @@ export function clearAnonSession() {
   localStorage.removeItem(SESSION_KEY);
 }
 
-export function getOrCreateAnonSession(): AnonSession | null {
-  if (!hasConsent()) return null;
+export function clearTrackingData() {
+  clearAnonSession();
+  localStorage.removeItem(DEVICE_KEY);
+}
 
-  const deviceId = getOrCreateDeviceId();
+function getStoredAnonSession(): AnonSession | null {
   const raw = localStorage.getItem(SESSION_KEY);
 
-  if (raw) {
-    const parsed: AnonSession = JSON.parse(raw);
-    return parsed;
+  if (!raw) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(raw) as AnonSession;
+  } catch {
+    clearAnonSession();
+    return null;
+  }
+}
+
+export function getOrCreateAnonSession(): AnonSession | null {
+  if (!hasTrackingConsent()) return null;
+
+  const deviceId = getOrCreateDeviceId();
+  const existingSession = getStoredAnonSession();
+
+  if (existingSession) {
+    return existingSession;
   }
 
   const fresh: AnonSession = {
@@ -82,10 +121,8 @@ export function trackChatInteraction() {
  It sends the anon session to backend and clears local data.
  */
 export async function flushTrackingToBackend(apiBaseUrl: string, authToken: string) {
-  const sessionRaw = localStorage.getItem(SESSION_KEY);
-  if (!sessionRaw) return;
-
-  const payload = JSON.parse(sessionRaw);
+  const payload = getStoredAnonSession();
+  if (!payload) return;
 
   await fetch(`${apiBaseUrl}/api/v1/users/merge-tracking`, {
     method: "POST",
@@ -97,4 +134,48 @@ export async function flushTrackingToBackend(apiBaseUrl: string, authToken: stri
   });
 
   clearAnonSession();
+}
+
+export async function sendHeartbeat(apiBaseUrl: string) {
+  const session = getOrCreateAnonSession();
+
+  if (!session) {
+    return;
+  }
+
+  await fetch(`${apiBaseUrl}/api/v1/users/heartbeat`, {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      sessionId: session.sessionId,
+      deviceId: session.deviceId,
+    }),
+  });
+}
+
+export async function clearHeartbeatSession(apiBaseUrl: string) {
+  const session = getStoredAnonSession();
+
+  if (!session?.sessionId) {
+    clearTrackingData();
+    return;
+  }
+
+  try {
+    await fetch(`${apiBaseUrl}/api/v1/users/heartbeat/clear`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        sessionId: session.sessionId,
+      }),
+    });
+  } finally {
+    clearTrackingData();
+  }
 }

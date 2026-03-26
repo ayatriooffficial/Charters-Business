@@ -10,13 +10,15 @@ const immersionData = [
       imageSrc: "/images/tetr/indiaMarket.webp",
       title: "Business Immersions",
       subtitle: "Gurgaon's Banjara Market",
-      description: "See how street vendors often outperform startups.",
+      description:
+        "Learn grassroots selling strategies | Observe real-time bargaining skills | Understand high-volume, low-margin business models",
     },
     cultural: {
       imageSrc: "/images/tetr/indiaParade.webp",
       title: "Cultural Immersions",
       subtitle: "Republic Day Parade",
-      description: "Witness spectacular cultural pageantry in New Delhi.",
+      description:
+        "Experience national pride and unity | Witness military and cultural showcases | Explore India's diverse traditions in one event",
     },
   },
   {
@@ -25,13 +27,15 @@ const immersionData = [
       imageSrc: "/images/tetr/usGoogle.webp",
       title: "Business Immersions",
       subtitle: "Googleplex",
-      description: "Peek into research and upcoming products.",
+      description:
+        "Explore cutting-edge tech innovation | Understand product development cycles | Observe workplace culture in top tech firms",
     },
     cultural: {
       imageSrc: "/images/tetr/usNasdaq.webp",
       title: "Cultural Immersions",
       subtitle: "NASDAQ, NYC",
-      description: "Witness a live IPO ceremony.",
+      description:
+        "Witness high-stakes financial moments | Learn about IPO processes | Experience the energy of Wall Street",
     },
   },
   {
@@ -40,13 +44,15 @@ const immersionData = [
       imageSrc: "/images/tetr/arGrobo.webp",
       title: "Business Immersions",
       subtitle: "Los Grobo HQ",
-      description: "See how agribusiness drives innovation.",
+      description:
+        "Understand agribusiness operations | Learn about large-scale supply chains | Explore innovation in farming technology",
     },
     cultural: {
       imageSrc: "/images/tetr/arFootball.webp",
       title: "Cultural Immersions",
       subtitle: "La Bombonera",
-      description: "Immerse in Argentina's football passion.",
+      description:
+        "Experience passionate football culture | Engage with local fan traditions | Feel the intensity of live matches",
     },
   },
   {
@@ -55,13 +61,15 @@ const immersionData = [
       imageSrc: "/images/tetr/dubaiEmirates.webp",
       title: "Business Immersions",
       subtitle: "Dubai World Expo",
-      description: "Explore global trade and luxury at the Expo and Gold Souk.",
+      description:
+        "Explore global innovation showcases | Understand international trade dynamics | Experience luxury retail ecosystems",
     },
     cultural: {
       imageSrc: "/images/tetr/dubaiSafari.webp",
       title: "Cultural Immersions",
       subtitle: "Desert Safari",
-      description: "Experience a traditional safari and Bedouin dinner.",
+      description:
+        "Experience traditional desert life | Enjoy cultural performances and cuisine | Learn Bedouin heritage and customs",
     },
   },
   {
@@ -70,13 +78,15 @@ const immersionData = [
       imageSrc: "/images/tetr/dubaiEmirates.webp",
       title: "Business Immersions",
       subtitle: "Dubai World Expo",
-      description: "Explore global trade and luxury at the Expo and Gold Souk.",
+      description:
+        "Explore global innovation showcases | Understand international trade dynamics | Experience luxury retail ecosystems",
     },
     cultural: {
       imageSrc: "/images/tetr/dubaiSafari.webp",
       title: "Cultural Immersions",
       subtitle: "Desert Safari",
-      description: "Experience a traditional safari and Bedouin dinner.",
+      description:
+        "Experience traditional desert life | Enjoy cultural performances and cuisine | Learn Bedouin heritage and customs",
     },
   },
   {
@@ -85,13 +95,15 @@ const immersionData = [
       imageSrc: "/images/tetr/dubaiEmirates.webp",
       title: "Business Immersions",
       subtitle: "Dubai World Expo",
-      description: "Explore global trade and luxury at the Expo and Gold Souk.",
+      description:
+        "Explore global innovation showcases | Understand international trade dynamics | Experience luxury retail ecosystems",
     },
     cultural: {
       imageSrc: "/images/tetr/dubaiSafari.webp",
       title: "Cultural Immersions",
       subtitle: "Desert Safari",
-      description: "Experience a traditional safari and Bedouin dinner.",
+      description:
+        "Experience traditional desert life | Enjoy cultural performances and cuisine | Learn Bedouin heritage and customs",
     },
   },
   {
@@ -100,13 +112,15 @@ const immersionData = [
       imageSrc: "/images/tetr/singSkyline.webp",
       title: "Business Immersions",
       subtitle: "MAS, Singapore",
-      description: "Explore Singapore's financial horizon.",
+      description:
+        "Learn global financial systems | Explore fintech innovation | Understand regulatory frameworks in banking",
     },
     cultural: {
       imageSrc: "/images/tetr/singVip.webp",
       title: "Cultural Immersions",
       subtitle: "National Day",
-      description: "Grand parades and fireworks on Aug 9.",
+      description:
+        "Celebrate national identity and unity | Enjoy grand parades and fireworks | Experience multicultural performances",
     },
   },
 ];
@@ -202,20 +216,20 @@ function WorldImmersion() {
       {/* Header Section */}
       <div className="max-w-[85rem] mx-auto">
         <div className="text-center mb-8 sm:mb-12">
-          <h2 className="leading-normal text-[35px] font-semibold">
-            <span className="font-bold bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent">
-              Internship,
-            </span>{" "}
-
+          <h2 className="leading-normal text-[35px] font-semibold text-black">
+            Intranship,{" "}
             <span className="relative inline-block mx-2">
+              {/* IMAGE BEHIND TEXT */}
               <img
                 src="/rojor1.svg"
                 alt="rojor1"
                 aria-hidden="true"
                 className="absolute inset-0 w-full h-full scale-x-400 scale-y-150 pt-8 pointer-events-none"
               />
+
+              {/* TEXT ABOVE IMAGE */}
               <span
-                className="font-bold relative z-10 font-bold px-3 bg-gradient-to-r from-gray-700 to-gray-500 bg-clip-text text-transparent"
+                className="relative z-10 text-[#B30437] font-medium px-3"
                 style={{ fontWeight: 700 }}
               >
                 Across the World
@@ -274,7 +288,7 @@ function WorldImmersion() {
                   ].map((item, index) => (
                     <article
                       key={`${item.type}-${activeIndex}`}
-                      className="flex flex-col shrink-0 lg:shrink bg-white rounded-t-xl border-r border-t border-gray-200 p-8 min-h-[420px] lg:min-h-[480px] w-[85vw] sm:w-[calc(50%-0.25rem)] lg:flex-1 snap-center lg:snap-align-none hover:shadow-sm transition-shadow first:rounded-tl-none last:rounded-tr-none"
+                      className="flex flex-col shrink-0 lg:shrink bg-white rounded-t-xl border-r border-t border-gray-200 p-8 min-h-[420px] lg:min-h-[480px] w-[85vw] sm:w-[calc(50%-0.25rem)] lg:flex-1 snap-center lg:snap-align-none hover:shadow-sm transition-shadow"
                     >
                       <div className="w-full mb-4">
                         <div className="relative w-40 h-28 overflow-hidden bg-gray-50">
@@ -293,9 +307,21 @@ function WorldImmersion() {
                         <h3 className="text-xl font-medium text-black mb-8 leading-tight">
                           {item.data.title}
                         </h3>
-                        <p className="">
-                          {item.data.description}
-                        </p>
+                        <div className="flex flex-col gap-2 mt-2">
+                          {item.data.description.split("|").map((point: string, i: number) => (
+                            <div key={i} className="flex items-start gap-2">
+                              <img
+                                src="/dot-icon.svg"
+                                alt=""
+                                className="w-4 h-4 mt-0.5 flex-shrink-0"
+                                aria-hidden="true"
+                              />
+                              <span className="text-sm text-gray-700 font-medium leading-snug">
+                                {point.trim()}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     </article>
                   ))}

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 import { Play } from 'lucide-react';
 
 // Company tabs data
@@ -255,7 +256,7 @@ const videoCardsByCompany: Record<string, Array<{
 
 // University logos for featured section
 const universityLogos = [
-  { name: 'Stanford University', logo: '/logos/stanford.svg' },
+  { name: 'Stanford University', logo: '/logos/Stanford.svg' },
   { name: 'Google', logo: '/logos/google.svg' },
   { name: 'IIT Bombay', logo: '/logos/iit_bombay.svg' },
 ];
@@ -307,13 +308,8 @@ export default function FirstStepSuccessComponent() {
           <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-3" role="text">
             BUILD YOUR FOUNDATION
           </p>
-          <h2 id="courses-heading" className="leading-normal text-[35px] font-semibold">
-            <span className="font-bold bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent">
-              Your first step to
-            </span>{" "}
-            <span className="font-bold bg-gradient-to-r from-gray-700 to-gray-500 bg-clip-text text-transparent">
-              success
-            </span>
+          <h2 id="courses-heading" className="leading-normal text-[35px] font-semibold text-black">
+            Your first step to <span className="italic text-[#B30437]">success</span>
           </h2>
           <p className="sr-only">Explore our upcoming courses to advance your career</p>
         </div>
@@ -366,15 +362,13 @@ export default function FirstStepSuccessComponent() {
                   <div className="flex items-center gap-6 pt-2">
                     {universityLogos.map((uni) => (
                       <div key={uni.name} className="flex items-center gap-2">
-                        <div className="relative h-6 w-auto">
-                          <img
-                            src={uni.logo}
-                            alt={uni.name}
-                            width={80}
-                            height={24}
-                            className="h-6 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                          />
-                        </div>
+                        <Image
+                          src={uni.logo}
+                          alt={uni.name}
+                          width={80}
+                          height={24}
+                          className="h-6 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                        />
                       </div>
                     ))}
                   </div>
@@ -383,11 +377,12 @@ export default function FirstStepSuccessComponent() {
                 {/* Right: Content */}
                 <div className="relative group">
                   <div className="relative aspect-video rounded-lg overflow-hidden bg-gray-100">
-                    <img
+                    <Image
                       src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop"
                       alt="Featured video thumbnail"
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      fill
                       sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                     {/* Play button overlay */}
                     <div className="absolute inset-0 flex items-center justify-center">
@@ -417,7 +412,7 @@ export default function FirstStepSuccessComponent() {
                     aria-pressed={activeTab === company.id}
                     aria-label={`View ${company.name} videos`}
                   >
-                    <img
+                    <Image
                       src={company.logo}
                       alt={company.name}
                       width={100}
@@ -448,11 +443,12 @@ export default function FirstStepSuccessComponent() {
                   >
                     {/* Video Thumbnail */}
                     <div className="relative aspect-video overflow-hidden bg-gray-100">
-                      <img
+                      <Image
                         src={video.thumbnail}
                         alt={video.title}
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        fill
                         sizes="(max-width: 640px) 80vw, (max-width: 1024px) 320px, 25vw"
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
                         loading="lazy"
                       />
                       {/* Play button overlay */}
@@ -542,15 +538,13 @@ export default function FirstStepSuccessComponent() {
                   <div className="flex items-center gap-6 pt-2">
                     {universityLogos.map((uni) => (
                       <div key={uni.name} className="flex items-center gap-2">
-                        <div className="relative h-6 w-auto">
-                          <img
-                            src={uni.logo}
-                            alt={uni.name}
-                            width={80}
-                            height={24}
-                            className="h-6 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                          />
-                        </div>
+                        <Image
+                          src={uni.logo}
+                          alt={uni.name}
+                          width={80}
+                          height={24}
+                          className="h-6 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                        />
                       </div>
                     ))}
                   </div>
@@ -559,11 +553,12 @@ export default function FirstStepSuccessComponent() {
                 {/* Right: Content */}
                 <div className="relative group">
                   <div className="relative aspect-video rounded-lg overflow-hidden bg-gray-100">
-                    <img
+                    <Image
                       src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop"
                       alt="Featured video thumbnail"
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      fill
                       sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                     {/* Play button overlay */}
                     <div className="absolute inset-0 flex items-center justify-center">

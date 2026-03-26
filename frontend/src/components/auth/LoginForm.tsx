@@ -1,10 +1,17 @@
 'use client';
 
-import React from 'react';
 import Link from 'next/link';
 import PhoneOtpLogin from './PhoneOtpLogin';
 
-export default function LoginForm() {
+type LoginFormMode = 'login' | 'signup';
+
+export default function LoginForm({
+  mode = 'login',
+}: {
+  mode?: LoginFormMode;
+}) {
+  const isSignup = mode === 'signup';
+
   return (
     <div className="bg-white  p-6 sm:p-8">
       <div className="mb-6">
@@ -25,26 +32,42 @@ export default function LoginForm() {
         </div>
 
         <h2 className="text-2xl font-bold text-gray-900 text-center mb-2">
-          Login to Your Account
+          {isSignup ? 'Create Your Account' : 'Login to Your Account'}
         </h2>
         <p className="text-gray-600 text-center">
-          Access your dashboard and track your application
+          {isSignup
+            ? 'Verify your phone and complete your account details'
+            : 'Access your dashboard and track your application'}
         </p>
       </div>
 
       <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
-        <PhoneOtpLogin />
+        <PhoneOtpLogin mode={mode} />
       </div>
 
       <div className="mt-6 text-center">
         <p className="text-gray-600 text-sm">
-          Don't have an account?{' '}
-          <Link
-            href="/apply"
-            className="text-[#B30437] hover:text-[#8B0329] font-semibold underline"
-          >
-            Apply Now
-          </Link>
+          {isSignup ? (
+            <>
+              Already have an account?{' '}
+              <Link
+                href="/login"
+                className="text-[#B30437] hover:text-[#8B0329] font-semibold underline"
+              >
+                Log In
+              </Link>
+            </>
+          ) : (
+            <>
+              Don&apos;t have an account?{' '}
+              <Link
+                href="/signup"
+                className="text-[#B30437] hover:text-[#8B0329] font-semibold underline"
+              >
+                Sign Up
+              </Link>
+            </>
+          )}
         </p>
       </div>
     </div>

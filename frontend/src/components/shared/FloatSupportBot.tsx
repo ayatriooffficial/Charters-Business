@@ -19,8 +19,9 @@
    "Eligibility criteria",
  ];
  
- export default function FloatSupportBot() {
-   const [open, setOpen] = useState(false);
+export default function FloatSupportBot() {
+  const [showQueryPill, setShowQueryPill] = useState(true);
+  const [open, setOpen] = useState(false);
    const [messages, setMessages] = useState<ChatMessage[]>([]);
    const [input, setInput] = useState("");
    const [showSuggestions, setShowSuggestions] = useState(true);
@@ -98,24 +99,48 @@
    return (
      <>
        {!open && (
-         <button
-           onClick={() => setOpen(true)}
-           className="fixed bottom-3 right-3 z-30 group"
-           aria-label="Open support chat"
-         >
-           <div className="rounded-full bg-[#B30437] p-[3px] shadow-xl transition-all duration-300 group-hover:scale-110">
-             <div className="rounded-full bg-white p-1 shadow-[0_0_10px_rgba(179,4,55,0.3)]">
-               <Image
-                 src="/customer-service.webp"
-                 alt="Chat"
-                 width={48}
-                 height={48}
-                 sizes="48px"
-                 className="h-12 w-12 rounded-full object-cover"
-               />
+         <div className="fixed bottom-2 right-3 z-30 flex items-center gap-1">
+
+           {showQueryPill && (
+             <div className="relative flex items-center rounded-2xl bg-white border border-[#B30437] shadow-md px-4 py-2">
+               <button
+                 type="button"
+                 onClick={() => setShowQueryPill(false)}
+                 className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-gray-100 border border-gray-300 flex items-center justify-center shadow-sm hover:bg-gray-200 transition"
+                 aria-label="Dismiss query pill"
+               >
+                 <X size={10} className="text-gray-600" />
+               </button>
+
+               <button
+                 type="button"
+                 onClick={() => setOpen(true)}
+                 className="text-sm font-medium text-gray-700 whitespace-nowrap hover:text-[#B30437] transition"
+               >
+                 Any Query?
+               </button>
              </div>
-           </div>
-         </button>
+           )}
+
+           <button
+             onClick={() => setOpen(true)}
+             className="group"
+             aria-label="Open support chat"
+           >
+             <div className="rounded-full bg-[#B30437] p-[3px] shadow-xl transition-all duration-300 group-hover:scale-110">
+               <div className="rounded-full bg-white p-1 shadow-[0_0_10px_rgba(179,4,55,0.3)]">
+                 <Image
+                   src="/customer-service.webp"
+                   alt="Chat"
+                   width={48}
+                   height={48}
+                   sizes="48px"
+                   className="h-12 w-12 rounded-full object-cover"
+                 />
+               </div>
+             </div>
+           </button>
+         </div>
        )}
  
        {open && (

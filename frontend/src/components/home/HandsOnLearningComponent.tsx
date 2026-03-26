@@ -17,6 +17,10 @@ import {
   Rocket,
 } from "lucide-react";
 
+const hanson_heading = {
+  description: "Innovative learning programs | Practical, hands-on experience | Real-world business exposure"
+}
+
 type CategoryKey =
   | "No-code AI Development"
   | "Creator Challenge"
@@ -984,7 +988,7 @@ function HandsOnLearningComponent() {
     <section className="mx-[0%] relative">
       {/* Header Section  */}
       <div
-        className="relative z-[5] flex items-start justify-center pt-4 sm:pt-6 md:pt-8 lg:pt-9 bg-white"
+        className="relative z-[5] flex items-start justify-center py-2 sm:py-3 md:py-4 lg:py-5 bg-white"
         role="region"
         aria-labelledby="hands-on-heading"
       >
@@ -1000,12 +1004,9 @@ function HandsOnLearningComponent() {
               </p>
               <h2
                 id="hands-on-heading"
-                className="leading-normal text-[35px] font-semibold"
+                className="leading-normal text-[35px] font-semibold text-black"
               >
-                <span className="font-bold bg-gradient-to-r from-black to-black bg-clip-text text-transparent">
-                  Hands-on.
-                </span>
-
+                Hands-on.
                 <span className="relative inline-block mx-1 sm:mx-2">
                   <img
                     src="/roundline.svg"
@@ -1013,24 +1014,30 @@ function HandsOnLearningComponent() {
                     aria-hidden="true"
                     className="absolute inset-0 w-full h-full scale-x-[2.7] md:scale-x-[3.5] scale-y-[1.5] pointer-events-none"
                   />
-                  <span className="relative z-10 leading-normal text-[35px] font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+
+                  <span className="font-bold leading-normal text-[35px] text-[#B30437]">
                     Disruptive.
                   </span>
                 </span>
-
-                <span className="font-bold bg-gradient-to-r from-gray-600 to-gray-500 bg-clip-text text-transparent">
-                  Experiential.
-                </span>
+                Experiential.
               </h2>
             </div>
 
             {/* Description */}
-            <div className="flex justify-center ">
-              <p className="text-base sm:text-lg text-[#5f6368] mt-[14px] mb-4 sm:mb-6 md:mb-8  leading-relaxed text-center">
-                Discover our innovative learning programs that combine practical
-                experience with real business challenges and entrepreneurial
-                opportunities.
-              </p>
+            <div className="flex flex-col items-start sm:flex-row sm:flex-wrap sm:justify-center sm:items-center gap-3 sm:gap-6 mt-4 sm:mt-6 w-fit mx-auto sm:w-full">
+              {hanson_heading.description.split("|").map((item: string, index: number) => (
+                <div key={index} className="flex items-center gap-2">
+                  <img
+                    src="/dot-icon.svg"
+                    alt=""
+                    className="w-4 h-4 flex-shrink-0"
+                    aria-hidden="true"
+                  />
+                  <span className="text-sm sm:text-base text-gray-700 font-medium leading-snug whitespace-nowrap">
+                    {item.trim()}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         </div>

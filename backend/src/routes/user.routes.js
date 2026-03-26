@@ -1,14 +1,23 @@
 import express from "express";
-import { getAllUsers, getUserById, updateUser, deleteUser, mergeTracking, getMyViewerScore, getViewerLeaderboard,
+import {
+  getAllUsers,
+  getUserById,
+  updateUser,
+  deleteUser,
+  mergeTracking,
+  getMyViewerScore,
+  getViewerLeaderboard,
+  heartbeat,
+  clearHeartbeat,
+  concurrentCount,
 } from "../controllers/user.controller.js";
-
 import { protect, authorize, optionalAuth } from "../middlewares/auth.middleware.js";
-import { heartbeat, concurrentCount } from "../controllers/user.controller.js";
 
 const router = express.Router();
 
 /* Routes */
 router.post("/heartbeat", optionalAuth, heartbeat);
+router.post("/heartbeat/clear", optionalAuth, clearHeartbeat);
 router.get("/concurrent", concurrentCount);
 router.use(protect);
 router.post("/merge-tracking", mergeTracking);

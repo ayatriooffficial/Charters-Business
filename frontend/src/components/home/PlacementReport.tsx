@@ -1,18 +1,15 @@
 import React from "react";
 import PlacementReportClient from "./PlacementReportClient";
 
-// Placement Report Data (Server-side static data)
 const placementReportData = {
   title: "Charter's Career Transition '24",
   description:
-    "Top roles, disruptive startups and industry-leading firms. See where our graduates landed and their career transformations.",
-
+    "Top roles, disruptive startups | industry-leading firms | From graduation to career success",
   stats: {
     salaryJump: 3.05,
     highestSalary: 12.3,
     recruiters: 3120,
   },
-
   verification: {
     by: "B2K Analytics",
     verified: true,
@@ -41,28 +38,50 @@ const PlacementReportDashboard = () => {
             </p>
             <h2
               id="placement-report-heading"
-              className="leading-tight sm:leading-normal font-bold text-2xl sm:text-3xl md:text-[35px] bg-gradient-to-r from-black to-gray-400 bg-clip-text text-transparent"
+              className="leading-tight sm:leading-normal text-2xl sm:text-3xl md:text-[35px] font-bold"
             >
               {placementReportData.title}
             </h2>
           </div>
-          <p className="text-sm sm:text-base md:text-lg text-gray-500 mt-3 sm:mt-[14px] max-w-2xl mx-auto">
-            {placementReportData.description}
-          </p>
+
+          <div className="flex flex-col items-start sm:flex-row sm:flex-wrap sm:justify-center sm:items-center gap-3 sm:gap-6 mt-4 sm:mt-6 w-fit mx-auto sm:w-full">
+            {placementReportData.description
+              .split("|")
+              .map((item: string, index: number) => (
+                <div key={index} className="flex items-center gap-2">
+                  <img
+                    src="/dot-icon.svg"
+                    alt=""
+                    className="w-4 h-4 flex-shrink-0"
+                    aria-hidden="true"
+                  />
+                  <span className="text-sm sm:text-base text-gray-700 font-medium leading-snug whitespace-nowrap">
+                    {item.trim()}
+                  </span>
+                </div>
+              ))}
+          </div>
         </div>
       </div>
-      <div className="md:border-x md:w-[90%] max-w-[85rem] mx-auto border-gray-200 h-13 hidden md:block" >
 
-      </div>
-      {/* Statistics Section - Client Component */}
-      <div className="w-full">
-        <PlacementReportClient
-          stats={placementReportData.stats}
-          verification={placementReportData.verification}
-        />
-      </div>
+      <div className="md:border-x md:w-[90%] max-w-[85rem] mx-auto border-gray-200 h-13 hidden md:block" />
 
-      {/* Download Section - Moved to Client Component */}
+      <div className="flex flex-row w-full">
+        <div className="flex-1 bg-gray-200 hidden md:block">
+          <div className="bg-white w-full h-full rounded-tr-xl border-t border-gray-200" />
+        </div>
+
+        {/* Main client component */}
+        <div className="md:w-[90%] max-w-[85rem] w-full">
+          <PlacementReportClient
+            stats={placementReportData.stats}
+            verification={placementReportData.verification}
+          />
+        </div>
+        <div className="flex-1 bg-gray-200 hidden md:block">
+          <div className="bg-white w-full h-full rounded-tl-xl border-t border-gray-200" />
+        </div>
+      </div>
     </section>
   );
 };

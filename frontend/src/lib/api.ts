@@ -1,5 +1,4 @@
-const RAW = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-export const API_BASE_URL = RAW.replace(/\/$/, "") + "/api/v1";
+export const API_BASE_URL = "/api/backend/api/v1";
 
 // TYPES
 

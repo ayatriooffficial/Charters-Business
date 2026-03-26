@@ -12,10 +12,10 @@ export default function Template({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
   const isDashboard = pathname?.startsWith('/dashboard');
-  const isLogin = pathname === '/login';
+  const isAuthPage = pathname === '/login' || pathname === '/signup';
   const iscareers = pathname?.startsWith('/careers/');
   const isadmin = pathname?.startsWith('/admin/');
-  const hideNavFooter = isDashboard || isLogin || iscareers || isadmin;
+  const hideNavFooter = isDashboard || isAuthPage || iscareers || isadmin;
 
   return (
     <>

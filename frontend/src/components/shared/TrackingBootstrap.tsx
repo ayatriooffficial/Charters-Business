@@ -3,25 +3,39 @@
 import { useEffect } from "react";
 import usePageTracking from "@/hooks/usePageTracking";
 import {
-  getOrCreateAnonSession,
+  clearHeartbeatSession,
   clearAnonSession,
+  hasTrackingConsent,
+  sendHeartbeat,
 } from "@/lib/Tracking";
 
 export default function TrackingBootstrap() {
-
   usePageTracking();
 
   useEffect(() => {
+    const api = "/api/backend";
 
-    const api = process.env.NEXT_PUBLIC_API_URL;
+    const syncHeartbeat = async () => {
+      try {
+        await sendHeartbeat(api);
+      } catch {
+        console.log("heartbeat failed");
+      }
+    };
 
-    // ⭐ clear anonymous data if user closes tab without login
+    const handleConsentDisabled = async () => {
+      try {
+        await clearHeartbeatSession(api);
+      } catch {
+        console.log("heartbeat clear failed");
+      }
+    };
+
+    // Clear anonymous session storage when a guest closes the tab.
     const handleUnload = () => {
-
-      // adjust this based on your auth storage
       const isLoggedIn =
-        document.cookie.includes("connect.sid") ||   // cookie session example
-        localStorage.getItem("token");               // JWT example
+        document.cookie.includes("connect.sid") ||
+        Boolean(localStorage.getItem("token"));
 
       if (!isLoggedIn) {
         clearAnonSession();
@@ -29,38 +43,24 @@ export default function TrackingBootstrap() {
     };
 
     window.addEventListener("beforeunload", handleUnload);
+    window.addEventListener("consent:accepted", syncHeartbeat);
+    window.addEventListener("consent:necessary", handleConsentDisabled);
+    window.addEventListener("consent:rejected", handleConsentDisabled);
 
-    const interval = setInterval(async () => {
+    if (hasTrackingConsent()) {
+      void syncHeartbeat();
+    }
 
-      if (!api) return;
-
-      const session = getOrCreateAnonSession();
-
-      if (!session) return;
-
-      try {
-
-        await fetch(`${api}/api/v1/users/heartbeat`, {
-          method: "POST",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            sessionId: session.sessionId,
-            deviceId: session.deviceId,
-          }),
-        });
-
-      } catch {
-        console.log("heartbeat failed");
-      }
-
+    const interval = setInterval(() => {
+      void syncHeartbeat();
     }, 15000);
 
     return () => {
       clearInterval(interval);
       window.removeEventListener("beforeunload", handleUnload);
+      window.removeEventListener("consent:accepted", syncHeartbeat);
+      window.removeEventListener("consent:necessary", handleConsentDisabled);
+      window.removeEventListener("consent:rejected", handleConsentDisabled);
     };
   }, []);
 

@@ -14,7 +14,7 @@ export const CAREERS_NAV_ITEMS: NavItem[] = [
 ];
 
 type Props = {
-  offsetTop?: number;
+  offsetTop?: number; 
 };
 
 

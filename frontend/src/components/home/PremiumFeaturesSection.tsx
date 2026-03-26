@@ -355,13 +355,9 @@ const PremiumFeaturesSection = () => {
             PERSONALIZED LEARNING
           </p>
           <header className="mb-8">
-            <h2 id="enrich-learning-heading" className="text-2xl md:text-3xl lg:text-4xl font-light mb-8">
-              <span className="font-bold bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent">
-                Enrich and
-              </span>{" "}
-              <span className="font-bold bg-gradient-to-r from-gray-700 to-gray-500 bg-clip-text text-transparent">
-                personalize learning
-              </span>
+            <h2 id="enrich-learning-heading" className="text-2xl md:text-3xl lg:text-4xl font-semibold text-black mb-8">
+              Enrich and{" "}
+              <span className="italic text-[#B30437]">personalize learning</span>
             </h2>
             <p className="text-xl lg:text-xl text-black mx-auto leading-relaxed">
               Drive student agency with tools that meet students where they are – and build skills for their future.

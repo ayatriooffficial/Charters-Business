@@ -142,6 +142,18 @@ export const heartbeat = asyncHandler(async (req, res) => {
   res.status(200).json(new ApiResponse(200, null, "Heartbeat updated"));
 });
 
+export const clearHeartbeat = asyncHandler(async (req, res) => {
+  const { sessionId } = req.body;
+
+  if (!sessionId) {
+    throw new ApiError(400, "sessionId required");
+  }
+
+  await ActiveSession.findOneAndDelete({ sessionId });
+
+  res.status(200).json(new ApiResponse(200, null, "Heartbeat cleared"));
+});
+
 // GET /api/v1/users/concurrent
 export const concurrentCount = asyncHandler(async (req, res) => {
   const count = await ActiveSession.countDocuments({});

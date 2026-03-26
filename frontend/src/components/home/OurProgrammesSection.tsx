@@ -1,10 +1,8 @@
-"use client";
-import React, { memo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { programmes } from "@/data/programmes";
 
-const OurProgrammesSection = () => {
+export default function OurProgrammesSection() {
   return (
     <section
       className="mx-[0%]  bg-white text-black relative overflow-hidden"
@@ -23,12 +21,12 @@ const OurProgrammesSection = () => {
             </p>
             <h2
               id="programmes-heading"
-              className="leading-normal text-[35px] font-bold bg-gradient-to-r from-black to-gray-400 bg-clip-text text-transparent"
+              className="leading-normal text-[35px] font-bold text-black"
             >
               Explore Programmes
             </h2>
           </div>
-          <p className="text-base sm:text-lg text-gray-500 mt-[14px]">
+          <p className="text-base sm:text-lg text-[#5f6368] mt-[14px]">
             Choose from our range of programmes designed to build future leaders
             and entrepreneurs.
           </p>
@@ -54,9 +52,10 @@ const OurProgrammesSection = () => {
                     alt={programme.card.title}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 640px) 100%, (max-width: 1024px) 50%, 50%"
-                    priority={index < 2}
-                    loading={index < 2 ? "eager" : "lazy"}
+                    sizes="(max-width: 639px) calc(100vw - 1rem), (max-width: 1023px) 450px, 525px"
+                    quality={60}
+                    priority={index === 0}
+                    loading={index === 0 ? "eager" : "lazy"}
                   />
                 </figure>
 
@@ -159,7 +158,7 @@ const OurProgrammesSection = () => {
                         </div>
                         <div className="flex-1 min-w-0">
                           <p className="text-xs text-gray-700 font-medium">
-                            2.12 Cr (Time's News)
+                            2.12 Cr (Time&apos;s News)
                             <sup className="text-xs text-gray-500">**</sup>
                           </p>
                         </div>
@@ -366,6 +365,4 @@ const OurProgrammesSection = () => {
       </div>
     </section>
   );
-};
-
-export default memo(OurProgrammesSection);
+}
