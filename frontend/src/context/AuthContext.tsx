@@ -18,6 +18,7 @@ interface User {
   email: string;
   avatar: string | null;
   role: string;
+  courseInterestedIn?: string | null;
   isFirstLogin?: boolean;
   lastResumeUrl?: string | null;
   lastResumeUploadedAt?: string | null;
@@ -50,7 +51,8 @@ interface AuthContextType {
   signupWithPhone: (
     idToken: string,
     name: string,
-    email: string
+    email: string,
+    program?: string
   ) => Promise<string | undefined>;
   logout: () => void;
   setAuth: (
@@ -66,9 +68,65 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-function getApiV1Base(): string {
-  const raw = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-  return raw.replace(/\/$/, "") + "/api/v1";
+const API_V1 = "/api/backend/api/v1";
+
+function createHttpError(message: string, status: number) {
+  const error = new Error(message) as Error & { status?: number };
+  error.status = status;
+  return error;
+}
+
+async function readJsonSafely<T>(response: Response): Promise<T | null> {
+  const text = await response.text();
+
+  if (!text) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(text) as T;
+  } catch {
+    return null;
+  }
+}
+
+function getResponseMessage(
+  data: { message?: string } | null,
+  fallbackMessage: string,
+  status: number,
+) {
+  if (data?.message) {
+    return data.message;
+  }
+
+  if (status >= 500) {
+    return "We couldn't reach the server. Please try again in a moment.";
+  }
+
+  return fallbackMessage;
+}
+
+interface LoginPayloadUser {
+  id: string;
+  name: string;
+  email: string;
+  avatar?: string | null;
+  role: string;
+  courseInterestedIn?: string | null;
+  isFirstLogin?: boolean;
+  lastResumeUrl?: string | null;
+  lastResumeUploadedAt?: string | null;
+}
+
+interface LoginPayload {
+  token?: string;
+  user?: LoginPayloadUser;
+  data?: {
+    token?: string;
+    user?: LoginPayloadUser;
+    applications?: Application[];
+    counselings?: Counseling[];
+  };
 }
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
@@ -80,8 +138,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isMounted, setIsMounted] = useState(false);
 
   const router = useRouter();
-  const API_V1 = getApiV1Base();
-
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -127,9 +183,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           },
         });
 
-        const data = await response.json();
+        const data = await readJsonSafely<{ data?: Application[] }>(response);
 
-        if (response.ok && data.data) {
+        if (response.ok && data?.data) {
           setApplications(data.data);
           if (isMounted)
             localStorage.setItem(
@@ -141,7 +197,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         console.error("Error fetching applications:", error);
       }
     },
-    [token, API_V1, isMounted]
+    [token, isMounted]
   );
 
   const refreshCounselings = useCallback(
@@ -157,9 +213,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           },
         });
 
-        const data = await response.json();
+        const data = await readJsonSafely<{ data?: Counseling[] }>(response);
 
-        if (response.ok && data.data) {
+        if (response.ok && data?.data) {
           setCounselings(data.data);
           if (isMounted)
             localStorage.setItem(
@@ -171,11 +227,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         console.error("Error fetching counselings:", error);
       }
     },
-    [token, API_V1, isMounted]
+    [token, isMounted]
   );
 
   const finalizeLogin = useCallback(
-    async (payload: any): Promise<string | undefined> => {
+    async (payload: LoginPayload): Promise<string | undefined> => {
       const tokenFromApi: string | undefined =
         payload?.data?.token ?? payload?.token;
 
@@ -192,6 +248,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         email: apiUser.email,
         avatar: apiUser.avatar || null,
         role: apiUser.role,
+        courseInterestedIn: apiUser.courseInterestedIn || null,
         isFirstLogin: apiUser.isFirstLogin || false,
         lastResumeUrl: apiUser.lastResumeUrl || null,
         lastResumeUploadedAt: apiUser.lastResumeUploadedAt || null,
@@ -224,15 +281,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
 
       try {
-        const RAW_BASE = API_V1.replace(/\/api\/v1$/, "");
-        await flushTrackingToBackend(RAW_BASE, tokenFromApi);
+        await flushTrackingToBackend("/api/backend", tokenFromApi);
       } catch (e) {
         console.warn("Tracking flush failed:", e);
       }
 
       return userData.role;
     },
-    [API_V1, isMounted]
+    [isMounted]
   );
 
   const login = useCallback(
@@ -243,14 +299,26 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         body: JSON.stringify({ email, password }),
       });
 
-      const data = await response.json();
+      const data = await readJsonSafely<LoginPayload & { message?: string }>(
+        response,
+      );
 
       if (!response.ok)
-        throw new Error(data.message || "Login failed");
+        throw createHttpError(
+          getResponseMessage(data, "Login failed", response.status),
+          response.status,
+        );
+
+      if (!data) {
+        throw createHttpError(
+          "Login failed. The server returned an empty response.",
+          response.status || 500,
+        );
+      }
 
       return finalizeLogin(data);
     },
-    [API_V1, finalizeLogin]
+    [finalizeLogin]
   );
 
   const loginWithPhone = useCallback(
@@ -261,32 +329,61 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         body: JSON.stringify({ idToken }),
       });
 
-      const data = await response.json();
+      const data = await readJsonSafely<LoginPayload & { message?: string }>(
+        response,
+      );
 
       if (!response.ok)
-        throw new Error(data.message || "Phone login failed");
+        throw createHttpError(
+          getResponseMessage(data, "Phone login failed", response.status),
+          response.status
+        );
+
+      if (!data) {
+        throw createHttpError(
+          "Phone login failed. The server returned an empty response.",
+          response.status || 500,
+        );
+      }
 
       return finalizeLogin(data);
     },
-    [API_V1, finalizeLogin]
+    [finalizeLogin]
   );
 
   const signupWithPhone = useCallback(
-    async (idToken: string, name: string, email: string) => {
+    async (
+      idToken: string,
+      name: string,
+      email: string,
+      program?: string
+    ) => {
       const response = await fetch(`${API_V1}/auth/firebase-signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ idToken, name, email }),
+        body: JSON.stringify({ idToken, name, email, program }),
       });
 
-      const data = await response.json();
+      const data = await readJsonSafely<LoginPayload & { message?: string }>(
+        response,
+      );
 
       if (!response.ok)
-        throw new Error(data.message || "Phone signup failed");
+        throw createHttpError(
+          getResponseMessage(data, "Phone signup failed", response.status),
+          response.status
+        );
+
+      if (!data) {
+        throw createHttpError(
+          "Phone signup failed. The server returned an empty response.",
+          response.status || 500,
+        );
+      }
 
       return finalizeLogin(data);
     },
-    [API_V1, finalizeLogin]
+    [finalizeLogin]
   );
 
   const logout = useCallback(() => {

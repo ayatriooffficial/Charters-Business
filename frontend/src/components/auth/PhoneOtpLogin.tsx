@@ -1,17 +1,44 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
-import { signInWithPhoneNumber, ConfirmationResult } from 'firebase/auth';
+import { useState, useRef, useEffect } from 'react';
+import {
+  signInWithPhoneNumber,
+  ConfirmationResult,
+  RecaptchaVerifier,
+} from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import { auth, setupRecaptcha } from '@/lib/firebase';
 import { countryCodes } from '@/data/applyPageData';
 import { useAuth } from '@/context/AuthContext';
+import { COURSE_OPTIONS } from '@/data/courseOptions';
 
 type Step = 'phone' | 'otp' | 'details';
 
-export default function PhoneOtpLogin({ onSuccess }: { onSuccess?: () => void }) {
+type AuthMode = 'login' | 'signup';
+
+type AuthError = Error & {
+  code?: string;
+  status?: number;
+};
+
+function getAuthError(error: unknown): AuthError {
+  if (error instanceof Error) {
+    return error as AuthError;
+  }
+
+  return new Error('Unexpected error') as AuthError;
+}
+
+export default function PhoneOtpLogin({
+  onSuccess,
+  mode = 'login',
+}: {
+  onSuccess?: () => void;
+  mode?: AuthMode;
+}) {
     const { loginWithPhone, signupWithPhone } = useAuth();
     const router = useRouter();
+    const isSignupMode = mode === 'signup';
 
     const [step, setStep] = useState<Step>('phone');
     const [countryCode, setCountryCode] = useState('+91');
@@ -19,6 +46,7 @@ export default function PhoneOtpLogin({ onSuccess }: { onSuccess?: () => void })
     const [otp, setOtp] = useState(['', '', '', '', '', '']);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [program, setProgram] = useState('');
     const [idToken, setIdToken] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
@@ -26,7 +54,7 @@ export default function PhoneOtpLogin({ onSuccess }: { onSuccess?: () => void })
     const [resendTimer, setResendTimer] = useState(0);
 
     const otpRefs = useRef<(HTMLInputElement | null)[]>([]);
-    const recaptchaVerifierRef = useRef<any>(null);
+    const recaptchaVerifierRef = useRef<RecaptchaVerifier | null>(null);
 
     // Countdown timer for resend
     useEffect(() => {
@@ -66,14 +94,15 @@ export default function PhoneOtpLogin({ onSuccess }: { onSuccess?: () => void })
             setConfirmationResult(result);
             setStep('otp');
             setResendTimer(30);
-        } catch (err: any) {
-            console.error('OTP send error:', err);
-            if (err.code === 'auth/too-many-requests') {
+        } catch (err: unknown) {
+            const authError = getAuthError(err);
+            console.error('OTP send error:', authError);
+            if (authError.code === 'auth/too-many-requests') {
                 setError('Too many attempts. Please try again later.');
-            } else if (err.code === 'auth/invalid-phone-number') {
+            } else if (authError.code === 'auth/invalid-phone-number') {
                 setError('Invalid phone number. Please check and try again.');
             } else {
-                setError(err.message || 'Failed to send OTP. Please try again.');
+                setError(authError.message || 'Failed to send OTP. Please try again.');
             }
         } finally {
             setIsLoading(false);
@@ -149,11 +178,12 @@ export default function PhoneOtpLogin({ onSuccess }: { onSuccess?: () => void })
                     router.push('/dashboard');
                 }
             }
-        } catch (err: any) {
-            console.error('OTP verify error:', err);
+        } catch (err: unknown) {
+            const authError = getAuthError(err);
+            console.error('OTP verify error:', authError);
 
             // If user not found (404), proceed to signup details step
-            if (err.status === 404) {
+            if (authError.status === 404) {
                 if (token) {
                     setIdToken(token);
                     setStep('details');
@@ -161,12 +191,14 @@ export default function PhoneOtpLogin({ onSuccess }: { onSuccess?: () => void })
                 } else {
                     setError('Authentication completed but user data missing. Please try again.');
                 }
-            } else if (err.code === 'auth/invalid-verification-code') {
+            } else if (authError.code === 'auth/invalid-verification-code') {
                 setError('Incorrect OTP. Please check and try again.');
-            } else if (err.code === 'auth/code-expired') {
+            } else if (authError.code === 'auth/code-expired') {
                 setError('OTP has expired. Please resend.');
+            } else if (authError.status === 502 || authError.status === 503) {
+                setError('We could not reach the server. Please try again in a moment.');
             } else {
-                setError(err.message || 'Verification failed. Please try again.');
+                setError(authError.message || 'Verification failed. Please try again.');
             }
         } finally {
             setIsLoading(false);
@@ -176,8 +208,8 @@ export default function PhoneOtpLogin({ onSuccess }: { onSuccess?: () => void })
     const handleSignup = async () => {
         setError('');
 
-        if (!name.trim() || !email.trim()) {
-            setError('Please enter your name and email');
+        if (!name.trim() || !email.trim() || !program) {
+            setError('Please enter your name, email, and select a course');
             return;
         }
 
@@ -190,7 +222,7 @@ export default function PhoneOtpLogin({ onSuccess }: { onSuccess?: () => void })
         setIsLoading(true);
 
         try {
-            const role = await signupWithPhone(idToken, name, email);
+            const role = await signupWithPhone(idToken, name, email, program);
 
             if (onSuccess) {
                 onSuccess();
@@ -201,9 +233,14 @@ export default function PhoneOtpLogin({ onSuccess }: { onSuccess?: () => void })
                     router.push('/dashboard');
                 }
             }
-        } catch (err: any) {
-            console.error('Signup error:', err);
-            setError(err.message || 'Signup failed. Please try again.');
+        } catch (err: unknown) {
+            const authError = getAuthError(err);
+            console.error('Signup error:', authError);
+            if (authError.status === 502 || authError.status === 503) {
+                setError('We could not reach the server. Please try again in a moment.');
+            } else {
+                setError(authError.message || 'Signup failed. Please try again.');
+            }
         } finally {
             setIsLoading(false);
         }
@@ -341,7 +378,7 @@ export default function PhoneOtpLogin({ onSuccess }: { onSuccess?: () => void })
                                 Verifying...
                             </span>
                         ) : (
-                            'Verify & Login'
+                            isSignupMode ? 'Verify & Continue' : 'Verify & Login'
                         )}
                     </button>
 
@@ -367,7 +404,7 @@ export default function PhoneOtpLogin({ onSuccess }: { onSuccess?: () => void })
                 <div className="space-y-4">
                     <div className="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
                         <p className="text-sm text-green-800">
-                            Phone verified! Please complete your profile.
+                            Phone verified! Please complete your profile{isSignupMode ? ' and choose your course.' : '.'}
                         </p>
                     </div>
 
@@ -403,6 +440,27 @@ export default function PhoneOtpLogin({ onSuccess }: { onSuccess?: () => void })
                         />
                     </div>
 
+                    {/* Course Selection */}
+                    <div>
+                        <label htmlFor="program" className="block text-sm font-medium text-gray-700 mb-1">
+                            Course Interested In *
+                        </label>
+                        <select
+                            id="program"
+                            value={program}
+                            onChange={(e) => setProgram(e.target.value)}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#B30437] focus:border-transparent bg-white"
+                            required
+                        >
+                            <option value="">Select a course</option>
+                            {COURSE_OPTIONS.map((courseOption) => (
+                                <option key={courseOption} value={courseOption}>
+                                    {courseOption}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+
                     {/* Error */}
                     {error && (
                         <div className="bg-red-50 border border-red-200 rounded-lg p-3">
@@ -414,7 +472,7 @@ export default function PhoneOtpLogin({ onSuccess }: { onSuccess?: () => void })
                     <button
                         type="button"
                         onClick={handleSignup}
-                        disabled={isLoading || !name.trim() || !email.trim()}
+                        disabled={isLoading || !name.trim() || !email.trim() || !program}
                         className="w-full bg-[#B30437] hover:bg-[#8B0329] text-white font-bold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-lg"
                     >
                         {isLoading ? (

@@ -82,14 +82,15 @@ interface EditorialCardProps {
 function EditorialCard({ card }: EditorialCardProps) {
   return (
     <div className="flex flex-col h-full w-full overflow-y-visible lg:overflow-y-auto">
-      <div className="block lg:hidden w-full h-32 flex-shrink-0 overflow-hidden">
+      <div className="relative block h-32 w-full flex-shrink-0 overflow-hidden lg:hidden">
         <Image
           src={card.mediaSrc}
           alt={`${card.title} visual`}
-          width={640}
-          height={128}
+          fill
           className="w-full h-full object-cover"
           loading="lazy"
+          quality={45}
+          sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 3rem), 505px"
         />
       </div>
 
@@ -166,7 +167,8 @@ function EditorialCard({ card }: EditorialCardProps) {
             src={card.mediaSrc}
             alt={`${card.title} visual`}
             fill
-            sizes="(max-width:768px) 100vw, 493px"
+            quality={45}
+            sizes="(min-width: 1024px) 493px, 100vw"
             className="object-center scale-[0.99] h-auto object-contain w-full relative!"
           />
           <p className="absolute bottom-2 left-8 right-8 text-[8px] text-gray-500 bg-white bg-opacity-75 p-1 rounded">
@@ -188,14 +190,15 @@ function HealthGridCard({ card }: HealthGridCardProps) {
   return (
     <section className="flex flex-col w-full bg-[#F4F2EE] overflow-hidden h-full">
       {/* Mobile banner image */}
-      <div className="block lg:hidden w-full h-32 flex-shrink-0 overflow-hidden">
+      <div className="relative block h-32 w-full flex-shrink-0 overflow-hidden lg:hidden">
         <Image
           src={card.mediaSrc || "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1600&h=1200&fit=crop"}
           alt={`${card.title} visual`}
-          width={640}
-          height={128}
+          fill
           className="w-full h-full object-cover"
           loading="lazy"
+          quality={45}
+          sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 3rem), 505px"
         />
       </div>
 
@@ -303,14 +306,15 @@ function FlagshipCard({ card }: FlagshipCardProps) {
 
   return (
     <section className="flex flex-col w-full bg-[#E6F4EA] overflow-hidden h-full">
-      <div className="block lg:hidden w-full h-32 flex-shrink-0 overflow-hidden">
+      <div className="relative block h-32 w-full flex-shrink-0 overflow-hidden lg:hidden">
         <Image
           src={card.mediaSrc || "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1600&h=1200&fit=crop"}
           alt={`${card.title} visual`}
-          width={640}
-          height={128}
+          fill
           className="w-full h-full object-cover"
           loading="lazy"
+          quality={45}
+          sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 3rem), 505px"
         />
       </div>
 
@@ -355,7 +359,7 @@ function FlagshipCard({ card }: FlagshipCardProps) {
             </div>
 
             <div ref={sliderRef} className="flex overflow-x-auto scrollbar-hide h-[180px] sm:h-[200px] gap-1 items-stretch scroll-smooth">
-              {card.programs?.map((p: any) => (
+              {card.programs?.map((p: { name: string; duration: string }) => (
                 <div key={p.name} className="min-w-[140px] sm:min-w-[170px] h-full mr-1 bg-[#A2C1B9] px-3 sm:px-4 py-4 sm:py-5 flex flex-col justify-between">
                   <span className="text-[9px] bg-black text-white px-2 py-[2px] w-fit">PROGRAM</span>
                   <h3 className="mt-3 text-sm font-semibold text-black leading-snug">{p.name}</h3>
@@ -468,34 +472,6 @@ const CardComponent = memo(
 
 CardComponent.displayName = "CardComponent";
 
-type VisibleChild = (visible: boolean) => React.ReactNode;
-
-function UseVisibility({
-  threshold = 0.4,
-  rootMargin = "0px 0px -10% 0px",
-  children,
-}: {
-  threshold?: number;
-  rootMargin?: string;
-  children: VisibleChild;
-}) {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([entry]) => setVisible(entry.isIntersecting),
-      { threshold, rootMargin },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [threshold, rootMargin]);
-
-  return <div ref={ref}>{children(visible)}</div>;
-}
-
 function Handson() {
   const pathname = usePathname();
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -571,9 +547,9 @@ function Handson() {
                 </p>
                 <h2 id="programs-heading" className="leading-normal text-[35px] font-semibold text-black">
                   <span className="bg-[#B30437] text-[#ffffff] px-1" style={{ fontWeight: 700 }}>
-                    'Global Carrululam'
+                    &apos;Global Carrululam&apos;
                   </span>
-                  with Top MNC's
+                  with Top MNC&apos;s
                 </h2>
               </div>
             </div>
@@ -602,11 +578,13 @@ function Handson() {
             <h2 id="programs-heading" className="leading-normal text-[35px] font-bold text-black ">
               Train with{" "}
               <span className="relative inline-block mx-2">
-                <img
+                <Image
                   src="/roundline.svg"
                   alt=""
+                  fill
+                  sizes="200px"
                   aria-hidden="true"
-                  className="absolute inset-0 w-[120%] h-[150%] -left-[10%] -top-[25%] pointer-events-none object-fill"
+                  className="pointer-events-none absolute -left-[10%] -top-[25%] h-[150%] w-[120%] object-fill"
                 />
                 <span className="relative z-10 text-[#B30437] font-medium" style={{ fontWeight: 700 }}>
                   'Global curriculum'
@@ -617,8 +595,9 @@ function Handson() {
                 <img
                   src="/roundline.svg"
                   alt=""
+                  sizes="200px"
                   aria-hidden="true"
-                  className="absolute inset-0 w-[120%] h-[150%] -left-[10%] -top-[25%] pointer-events-none object-fill"
+                  className="pointer-events-none absolute -left-[10%] -top-[25%] h-[150%] w-[120%] object-fill"
                 />
                 <span className="relative z-10 text-[#B30437] font-medium" style={{ fontWeight: 700 }}>
                   MNC's

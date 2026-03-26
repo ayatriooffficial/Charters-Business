@@ -86,6 +86,12 @@ const userSchema = new mongoose.Schema(
       index: true,
     },
 
+    courseInterestedIn: {
+      type: String,
+      trim: true,
+      default: null,
+    },
+
     // ✅ Viewer scoring + tracking (NEW)
     viewerScore: {
       type: Number,

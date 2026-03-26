@@ -67,6 +67,7 @@ export const login = asyncHandler(async (req, res) => {
           name: user.name,
           email: user.email,
           avatar: user.avatar,
+          courseInterestedIn: user.courseInterestedIn || null,
           role: user.role,
           lastLogin: user.lastLogin,
           isFirstLogin: user.isFirstLogin,
@@ -293,6 +294,7 @@ export const firebaseLogin = asyncHandler(async (req, res) => {
             name: user.name,
             email: user.email,
             avatar: user.avatar,
+            courseInterestedIn: user.courseInterestedIn || null,
             role: user.role,
             lastLogin: user.lastLogin,
             isFirstLogin: user.isFirstLogin,
@@ -315,10 +317,13 @@ export const firebaseLogin = asyncHandler(async (req, res) => {
 
 // Firebase OTP Signup
 export const firebaseSignup = asyncHandler(async (req, res) => {
-  const { idToken, name, email } = req.body;
+  const { idToken, name, email, program } = req.body;
 
-  if (!idToken || !name || !email) {
-    throw new ApiError(400, "Please provide ID token, name, and email");
+  if (!idToken || !name || !email || !program) {
+    throw new ApiError(
+      400,
+      "Please provide ID token, name, email, and course selection",
+    );
   }
 
   try {
@@ -345,6 +350,7 @@ export const firebaseSignup = asyncHandler(async (req, res) => {
       email,
       password: User.generateRandomPassword(), // Dummy password
       phoneNumber: phone_number,
+      courseInterestedIn: program,
       isFirstLogin: false,
     });
 
@@ -360,6 +366,7 @@ export const firebaseSignup = asyncHandler(async (req, res) => {
             name: user.name,
             email: user.email,
             avatar: user.avatar,
+            courseInterestedIn: user.courseInterestedIn || null,
             role: user.role,
             lastLogin: user.lastLogin,
             isFirstLogin: user.isFirstLogin,

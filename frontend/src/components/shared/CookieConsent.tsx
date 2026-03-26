@@ -1,85 +1,84 @@
 "use client";
 
-import { useEffect, useState, useCallback, memo } from "react";
+import Link from "next/link";
+import { useEffect, useState, useCallback } from "react";
+import { CONSENT_KEY, setConsentChoice } from "@/lib/Tracking";
 
-const CONSENT_KEY = "cookie_consent_v1";
-
-function CookieConsent() {
+export default function CookieConsent() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const existing = localStorage.getItem(CONSENT_KEY);
-    if (!existing) setShow(true);
+    if (!localStorage.getItem(CONSENT_KEY)) setShow(true);
   }, []);
 
   const acceptAll = useCallback(() => {
-    localStorage.setItem(CONSENT_KEY, "accepted");
+    setConsentChoice("accepted");
     setShow(false);
     window.dispatchEvent(new Event("consent:accepted"));
   }, []);
 
-  const essentialOnly = useCallback(() => {
-    localStorage.setItem(CONSENT_KEY, "declined");
+  const onlyNecessary = useCallback(() => {
+    setConsentChoice("necessary");
     setShow(false);
-    window.dispatchEvent(new Event("consent:declined"));
+    window.dispatchEvent(new Event("consent:necessary"));
+  }, []);
+
+  const rejectAll = useCallback(() => {
+    setConsentChoice("rejected");
+    setShow(false);
+    window.dispatchEvent(new Event("consent:rejected"));
   }, []);
 
   if (!show) return null;
 
   return (
-    <>
-      {/* Overlay */}
-      <div className="fixed inset-0 bg-black/10 backdrop-blur-[1px] z-[9998]" />
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="cookie-title"
+      className="fixed z-[9999] left-8 bottom-8 w-[360px] sm:w-[400px] bg-white border border-black/10 shadow-[0_20px_60px_rgba(0,0,0,0.12)] rounded-sm p-6"
+    >
+      <h3 id="cookie-title" className="text-[15px] font-semibold text-gray-900 tracking-tight">
+        We respect your Privacy
+      </h3>
 
-      {/* Card */}
-      <div className="fixed z-[9999] left-8 bottom-8 w-[360px] sm:w-[400px] bg-white border border-black/10 shadow-[0_20px_60px_rgba(0,0,0,0.12)] rounded-sm p-6">
-        
-        {/* Close */}
+      <p className="mt-3 text-[13.5px] leading-[1.65] text-gray-600">
+        We use cookies to improve your experience on our website. By clicking
+        &ldquo;Accept all cookies&rdquo;, you consent to the use of cookies to
+        enhance site navigation, analyze site usage, and support our services,
+        as outlined in our{" "}
+        <Link href="/privacy-policy" className="underline text-black font-medium">
+          Privacy Policy
+        </Link>.
+      </p>
+
+      <div className="mt-5 flex flex-col gap-2">
         <button
-          onClick={essentialOnly}
-          className="absolute top-4 right-4 text-gray-400 hover:text-black text-base"
+          type="button"
+          onClick={acceptAll}
+          className="w-full bg-[#0339F8] text-white px-5 py-2.5 text-[13.5px] font-medium rounded-sm hover:bg-[#022fcc] transition"
         >
-          ✕
+          Accept all cookies
         </button>
 
-        {/* Title */}
-        <h3 className="text-[15px] font-semibold text-gray-900 tracking-tight">
-          We respect your Privacy
-        </h3>
-
-        {/* Description */}
-        <p className="mt-3 text-[13.5px] leading-[1.65] text-gray-600">
-          We use cookies to improve your experience on our website. By clicking
-          “Accept all cookies”, you consent to the use of cookies to enhance site
-          navigation, analyze site usage, and support our services, as outlined
-          in our{" "}
-          <a
-            href="/privacy-policy"
-            className="underline text-black font-medium"
-          >
-            Privacy Policy
-          </a>.
-        </p>
-
-        {/* Buttons */}
-        <div className="mt-5 flex items-center gap-3">
+        <div className="flex gap-2">
           <button
-            onClick={acceptAll}
-            className="bg-[#0339F8] text-white px-5 py-2.5 text-[13.5px] font-medium rounded-sm hover:bg-[#022fcc] transition"
+            type="button"
+            onClick={onlyNecessary}
+            className="flex-1 border border-gray-300 px-4 py-2.5 text-[13px] font-medium rounded-sm hover:bg-gray-50 transition"
           >
-            Accept all cookies
+            Only necessary
           </button>
 
           <button
-            onClick={essentialOnly}
-            className="border border-gray-300 px-5 py-2.5 text-[13.5px] font-medium rounded-sm hover:bg-gray-50 transition"
+            type="button"
+            onClick={rejectAll}
+            className="flex-1 border border-red-200 px-4 py-2.5 text-[13px] font-medium rounded-sm text-red-600 hover:bg-red-50 transition"
           >
-            Manage preferences
+            Reject cookies
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
-
-export default memo(CookieConsent);
