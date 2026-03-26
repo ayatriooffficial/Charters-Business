@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter} from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 
 import CookieConsent from "@/components/shared/CookieConsent";
+import GoogleTagManager from "@/components/shared/GoogleTagManager";
 import Providers from "./providers";
 import ClientOnlyComponents from "@/components/client/ClientOnlyComponents";
 
@@ -52,7 +52,6 @@ export default function RootLayout({
         {/* DNS Prefetch + Preconnect */}
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
         {/* PWA + Theme */}
         <meta name="theme-color" content="#B30437" />
@@ -62,34 +61,8 @@ export default function RootLayout({
       </head>
 
       <body className="font-sans antialiased">
-        {/* GTM: dataLayer init must run before gtm.js loads */}
-        <Script id="gtm-datalayer" strategy="beforeInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-              'gtm.start': new Date().getTime(),
-              event: 'gtm.js'
-            });
-          `}
-        </Script>
-
-        {/* GTM script deferred until after page is interactive */}
-        <Script
-          src="https://www.googletagmanager.com/gtm.js?id=GTM-KJ2D3MLL"
-          strategy="lazyOnload"
-        />
-
-        {/* GTM noscript fallback */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-KJ2D3MLL"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
-
         <Providers>
+          <GoogleTagManager />
           <ClientOnlyComponents />
 
           <div className="flex flex-col min-h-screen">

@@ -1,10 +1,8 @@
-"use client";
-import React, { memo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { programmes } from "@/data/programmes";
 
-const OurProgrammesSection = () => {
+export default function OurProgrammesSection() {
   return (
     <section
       className="mx-[0%]  bg-white text-black relative overflow-hidden"
@@ -54,9 +52,10 @@ const OurProgrammesSection = () => {
                     alt={programme.card.title}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 640px) 330px, (max-width: 1024px) 450px, 525px"
-                    priority={index < 2}
-                    loading={index < 2 ? "eager" : "lazy"}
+                    sizes="(max-width: 639px) calc(100vw - 1rem), (max-width: 1023px) 450px, 525px"
+                    quality={60}
+                    priority={index === 0}
+                    loading={index === 0 ? "eager" : "lazy"}
                   />
                 </figure>
 
@@ -366,6 +365,4 @@ const OurProgrammesSection = () => {
       </div>
     </section>
   );
-};
-
-export default memo(OurProgrammesSection);
+}

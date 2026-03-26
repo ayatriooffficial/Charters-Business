@@ -1,5 +1,4 @@
-import Image from "next/image";
-import { getCloudinaryUrl } from "@/lib/cloudinary";
+import { getCloudinarySrcSet, getCloudinaryUrl } from "@/lib/cloudinary";
 
 const heroData = {
   availableBadge: "Available Now",
@@ -8,13 +7,22 @@ const heroData = {
   description:
     "Learn Professional Accounting in Kolkata with 3-month foundation + 4-month paid internship. Work with top companies from USA, Canada, Qatar, Singapore, Australia & UK. Join now!",
   backgroundImage: getCloudinaryUrl("charters-business/background", {
+    width: 1536,
     quality: "auto",
     format: "auto",
   }),
+  backgroundImageSrcSet: getCloudinarySrcSet("charters-business/background", [
+    828, 1080, 1366, 1536, 1920,
+  ]),
   mobileBackgroundImage: getCloudinaryUrl("charters-business/Background-M", {
+    width: 640,
     quality: "auto",
     format: "auto",
   }),
+  mobileBackgroundImageSrcSet: getCloudinarySrcSet(
+    "charters-business/Background-M",
+    [320, 390, 412, 515, 640, 750],
+  ),
   cta: {
     buttonText: "Join Webinar",
     buttonAriaLabel: "Join Mastering the Management webinar",
@@ -32,30 +40,25 @@ function ChartersUnionHero() {
         {heroData.title} {heroData.titleHighlight}
       </h1>
 
-      {/* Desktop Background Image */}
-      <div className="absolute inset-0 -z-10 hidden md:block">
-        <Image
-          src={heroData.backgroundImage}
-          alt="Professional Accountant Training in Kolkata"
-          fill
-          priority
-          fetchPriority="high"
-          sizes="100vw"
-          className="object-contain object-center"
-        />
-      </div>
-
-      {/* Mobile Background Image */}
-      <div className="absolute inset-0 -z-10 md:hidden">
-        <Image
-          src={heroData.mobileBackgroundImage}
-          alt="Professional Accountant Training in Kolkata Mobile Background"
-          fill
-          priority
-          fetchPriority="high"
-          sizes="100vw"
-          className="object-contain object-center"
-        />
+      <div className="absolute inset-0 -z-10">
+        <picture>
+          <source
+            media="(min-width: 768px)"
+            srcSet={heroData.backgroundImageSrcSet}
+            sizes="100vw"
+          />
+          {/* Use art-directed sources so the browser fetches only one hero image per viewport. */}
+          <img
+            src={heroData.mobileBackgroundImage}
+            srcSet={heroData.mobileBackgroundImageSrcSet}
+            sizes="100vw"
+            alt="Professional Accountant Training in Kolkata Background"
+            fetchPriority="high"
+            loading="eager"
+            decoding="async"
+            className="h-full w-full object-contain object-center"
+          />
+        </picture>
       </div>
 
       {/* Mobile Content — hidden on md+ */}

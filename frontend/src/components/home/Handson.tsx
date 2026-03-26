@@ -89,7 +89,7 @@ function EditorialCard({ card }: EditorialCardProps) {
           fill
           className="w-full h-full object-cover"
           loading="lazy"
-          quality={60}
+          quality={45}
           sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 3rem), 505px"
         />
       </div>
@@ -167,8 +167,8 @@ function EditorialCard({ card }: EditorialCardProps) {
             src={card.mediaSrc}
             alt={`${card.title} visual`}
             fill
-            quality={60}
-            sizes="(max-width:768px) 100vw, 493px"
+            quality={45}
+            sizes="(min-width: 1024px) 493px, 100vw"
             className="object-center scale-[0.99] h-auto object-contain w-full relative!"
           />
           <p className="absolute bottom-2 left-8 right-8 text-[8px] text-gray-500 bg-white bg-opacity-75 p-1 rounded">
@@ -197,7 +197,7 @@ function HealthGridCard({ card }: HealthGridCardProps) {
           fill
           className="w-full h-full object-cover"
           loading="lazy"
-          quality={60}
+          quality={45}
           sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 3rem), 505px"
         />
       </div>
@@ -313,7 +313,7 @@ function FlagshipCard({ card }: FlagshipCardProps) {
           fill
           className="w-full h-full object-cover"
           loading="lazy"
-          quality={60}
+          quality={45}
           sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 3rem), 505px"
         />
       </div>
