@@ -66,9 +66,28 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-function getApiV1Base(): string {
-  const raw = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-  return raw.replace(/\/$/, "") + "/api/v1";
+const API_V1 = "/api/backend/api/v1";
+
+interface LoginPayloadUser {
+  id: string;
+  name: string;
+  email: string;
+  avatar?: string | null;
+  role: string;
+  isFirstLogin?: boolean;
+  lastResumeUrl?: string | null;
+  lastResumeUploadedAt?: string | null;
+}
+
+interface LoginPayload {
+  token?: string;
+  user?: LoginPayloadUser;
+  data?: {
+    token?: string;
+    user?: LoginPayloadUser;
+    applications?: Application[];
+    counselings?: Counseling[];
+  };
 }
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
@@ -80,8 +99,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isMounted, setIsMounted] = useState(false);
 
   const router = useRouter();
-  const API_V1 = getApiV1Base();
-
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -141,7 +158,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         console.error("Error fetching applications:", error);
       }
     },
-    [token, API_V1, isMounted]
+    [token, isMounted]
   );
 
   const refreshCounselings = useCallback(
@@ -171,11 +188,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         console.error("Error fetching counselings:", error);
       }
     },
-    [token, API_V1, isMounted]
+    [token, isMounted]
   );
 
   const finalizeLogin = useCallback(
-    async (payload: any): Promise<string | undefined> => {
+    async (payload: LoginPayload): Promise<string | undefined> => {
       const tokenFromApi: string | undefined =
         payload?.data?.token ?? payload?.token;
 
@@ -224,15 +241,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
 
       try {
-        const RAW_BASE = API_V1.replace(/\/api\/v1$/, "");
-        await flushTrackingToBackend(RAW_BASE, tokenFromApi);
+        await flushTrackingToBackend("/api/backend", tokenFromApi);
       } catch (e) {
         console.warn("Tracking flush failed:", e);
       }
 
       return userData.role;
     },
-    [API_V1, isMounted]
+    [isMounted]
   );
 
   const login = useCallback(
@@ -250,7 +266,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       return finalizeLogin(data);
     },
-    [API_V1, finalizeLogin]
+    [finalizeLogin]
   );
 
   const loginWithPhone = useCallback(
@@ -268,7 +284,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       return finalizeLogin(data);
     },
-    [API_V1, finalizeLogin]
+    [finalizeLogin]
   );
 
   const signupWithPhone = useCallback(
@@ -286,7 +302,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       return finalizeLogin(data);
     },
-    [API_V1, finalizeLogin]
+    [finalizeLogin]
   );
 
   const logout = useCallback(() => {

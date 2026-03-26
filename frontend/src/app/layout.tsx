@@ -54,27 +54,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
-        {/* LCP Image Preload */}
-        <link
-          rel="preload"
-          as="image"
-          fetchPriority="high"
-          href="https://res.cloudinary.com/ducgcl4dg/image/upload/f_auto,q_auto:eco,dpr_auto,w_1920/charters-business/background"
-          media="(min-width: 768px)"
-        />
-        <link
-          rel="preload"
-          as="image"
-          fetchPriority="high"
-          href="https://res.cloudinary.com/ducgcl4dg/image/upload/f_auto,q_auto:eco,dpr_auto,w_750/charters-business/Background-M"
-          media="(max-width: 767px)"
-        />
-
         {/* PWA + Theme */}
         <meta name="theme-color" content="#B30437" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.webmanifest" />
+        <link rel="manifest" href="/site.webmanifest" />
       </head>
 
       <body className="font-sans antialiased">

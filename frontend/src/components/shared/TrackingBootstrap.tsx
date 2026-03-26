@@ -12,8 +12,7 @@ export default function TrackingBootstrap() {
   usePageTracking();
 
   useEffect(() => {
-
-    const api = process.env.NEXT_PUBLIC_API_URL;
+    const api = "/api/backend";
 
     // ⭐ clear anonymous data if user closes tab without login
     const handleUnload = () => {
@@ -31,8 +30,6 @@ export default function TrackingBootstrap() {
     window.addEventListener("beforeunload", handleUnload);
 
     const interval = setInterval(async () => {
-
-      if (!api) return;
 
       const session = getOrCreateAnonSession();
 

@@ -82,12 +82,11 @@ interface EditorialCardProps {
 function EditorialCard({ card }: EditorialCardProps) {
   return (
     <div className="flex flex-col h-full w-full overflow-y-visible lg:overflow-y-auto">
-      <div className="block lg:hidden w-full h-32 flex-shrink-0 overflow-hidden">
+      <div className="relative block h-32 w-full flex-shrink-0 overflow-hidden lg:hidden">
         <Image
           src={card.mediaSrc}
           alt={`${card.title} visual`}
-          width={640}
-          height={128}
+          fill
           className="w-full h-full object-cover"
           loading="lazy"
           sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 3rem), 505px"
@@ -189,12 +188,11 @@ function HealthGridCard({ card }: HealthGridCardProps) {
   return (
     <section className="flex flex-col w-full bg-[#F4F2EE] overflow-hidden h-full">
       {/* Mobile banner image */}
-      <div className="block lg:hidden w-full h-32 flex-shrink-0 overflow-hidden">
+      <div className="relative block h-32 w-full flex-shrink-0 overflow-hidden lg:hidden">
         <Image
           src={card.mediaSrc || "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1600&h=1200&fit=crop"}
           alt={`${card.title} visual`}
-          width={640}
-          height={128}
+          fill
           className="w-full h-full object-cover"
           loading="lazy"
           sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 3rem), 505px"
@@ -305,12 +303,11 @@ function FlagshipCard({ card }: FlagshipCardProps) {
 
   return (
     <section className="flex flex-col w-full bg-[#E6F4EA] overflow-hidden h-full">
-      <div className="block lg:hidden w-full h-32 flex-shrink-0 overflow-hidden">
+      <div className="relative block h-32 w-full flex-shrink-0 overflow-hidden lg:hidden">
         <Image
           src={card.mediaSrc || "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1600&h=1200&fit=crop"}
           alt={`${card.title} visual`}
-          width={640}
-          height={128}
+          fill
           className="w-full h-full object-cover"
           loading="lazy"
           sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 3rem), 505px"
