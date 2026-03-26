@@ -275,8 +275,6 @@ export default function Home() {
         </SectionWrapper>
         <SectionWrapper>
           <FacultyModel />
-        </SectionWrapper>
-        <SectionWrapper>
           <OneSpaceForEveryTeam />
         </SectionWrapper>
         <SectionWrapper>
@@ -284,8 +282,6 @@ export default function Home() {
         </SectionWrapper>
         <SectionWrapper>
           <StudentModel />
-        </SectionWrapper>
-        <SectionWrapper>
           <StrategicExpansion />
         </SectionWrapper>
         <SectionWrapper>

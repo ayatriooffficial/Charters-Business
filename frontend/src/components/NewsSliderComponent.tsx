@@ -288,7 +288,7 @@ const NewsSliderComponent: React.FC<NewsSliderComponentProps> = ({
             </button>
           )}
         </div>
-        <div className="absolute bottom-6 md:bottom-5 sm:bottom-4 left-1/2 -translate-x-1/2 flex gap-2.5 md:gap-2 sm:gap-1.5 z-30 pointer-events-none">
+        {/* <div className="absolute bottom-6 md:bottom-5 sm:bottom-4 left-1/2 -translate-x-1/2 flex gap-2.5 md:gap-2 sm:gap-1.5 z-30 pointer-events-none">
           {items.map((item, index) => (
             <button
               key={index}
@@ -302,7 +302,7 @@ const NewsSliderComponent: React.FC<NewsSliderComponentProps> = ({
               disabled={isAnimating}
             />
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );

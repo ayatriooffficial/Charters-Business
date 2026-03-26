@@ -48,18 +48,18 @@ const PlacementReportDashboard = () => {
           </div>
 
           {/* Replaced description paragraph with icon+text items */}
-          <div className="flex flex-nowrap justify-center items-start gap-6 sm:gap-10 mt-4 sm:mt-6 overflow-x-auto">
+          <div className="flex flex-col items-start sm:flex-row sm:flex-wrap sm:justify-center sm:items-center gap-3 sm:gap-6 mt-4 sm:mt-6 w-fit mx-auto sm:w-full">
             {placementReportData.description
               .split("|")
               .map((item: string, index: number) => (
-                <div key={index} className="flex items-center gap-2 flex-shrink-0">
+                <div key={index} className="flex items-center gap-2">
                   <img
                     src="/dot-icon.svg"
                     alt=""
                     className="w-4 h-4 flex-shrink-0"
                     aria-hidden="true"
                   />
-                  <span className="text-sm sm:text-base text-gray-700 font-medium text-left leading-snug whitespace-nowrap">
+                  <span className="text-sm sm:text-base text-gray-700 font-medium leading-snug whitespace-nowrap">
                     {item.trim()}
                   </span>
                 </div>
