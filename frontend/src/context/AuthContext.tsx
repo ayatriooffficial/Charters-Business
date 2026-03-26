@@ -50,7 +50,8 @@ interface AuthContextType {
   signupWithPhone: (
     idToken: string,
     name: string,
-    email: string
+    email: string,
+    program?: string
   ) => Promise<string | undefined>;
   logout: () => void;
   setAuth: (
@@ -67,6 +68,42 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 const API_V1 = "/api/backend/api/v1";
+
+function createHttpError(message: string, status: number) {
+  const error = new Error(message) as Error & { status?: number };
+  error.status = status;
+  return error;
+}
+
+async function readJsonSafely<T>(response: Response): Promise<T | null> {
+  const text = await response.text();
+
+  if (!text) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(text) as T;
+  } catch {
+    return null;
+  }
+}
+
+function getResponseMessage(
+  data: { message?: string } | null,
+  fallbackMessage: string,
+  status: number,
+) {
+  if (data?.message) {
+    return data.message;
+  }
+
+  if (status >= 500) {
+    return "We couldn't reach the server. Please try again in a moment.";
+  }
+
+  return fallbackMessage;
+}
 
 interface LoginPayloadUser {
   id: string;
@@ -144,9 +181,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           },
         });
 
-        const data = await response.json();
+        const data = await readJsonSafely<{ data?: Application[] }>(response);
 
-        if (response.ok && data.data) {
+        if (response.ok && data?.data) {
           setApplications(data.data);
           if (isMounted)
             localStorage.setItem(
@@ -174,9 +211,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           },
         });
 
-        const data = await response.json();
+        const data = await readJsonSafely<{ data?: Counseling[] }>(response);
 
-        if (response.ok && data.data) {
+        if (response.ok && data?.data) {
           setCounselings(data.data);
           if (isMounted)
             localStorage.setItem(
@@ -259,10 +296,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         body: JSON.stringify({ email, password }),
       });
 
-      const data = await response.json();
+      const data = await readJsonSafely<LoginPayload & { message?: string }>(
+        response,
+      );
 
       if (!response.ok)
-        throw new Error(data.message || "Login failed");
+        throw createHttpError(
+          getResponseMessage(data, "Login failed", response.status),
+          response.status,
+        );
+
+      if (!data) {
+        throw createHttpError(
+          "Login failed. The server returned an empty response.",
+          response.status || 500,
+        );
+      }
 
       return finalizeLogin(data);
     },
@@ -277,10 +326,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         body: JSON.stringify({ idToken }),
       });
 
-      const data = await response.json();
+      const data = await readJsonSafely<LoginPayload & { message?: string }>(
+        response,
+      );
 
       if (!response.ok)
-        throw new Error(data.message || "Phone login failed");
+        throw createHttpError(
+          getResponseMessage(data, "Phone login failed", response.status),
+          response.status
+        );
+
+      if (!data) {
+        throw createHttpError(
+          "Phone login failed. The server returned an empty response.",
+          response.status || 500,
+        );
+      }
 
       return finalizeLogin(data);
     },
@@ -288,17 +349,34 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   );
 
   const signupWithPhone = useCallback(
-    async (idToken: string, name: string, email: string) => {
+    async (
+      idToken: string,
+      name: string,
+      email: string,
+      program?: string
+    ) => {
       const response = await fetch(`${API_V1}/auth/firebase-signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ idToken, name, email }),
+        body: JSON.stringify({ idToken, name, email, program }),
       });
 
-      const data = await response.json();
+      const data = await readJsonSafely<LoginPayload & { message?: string }>(
+        response,
+      );
 
       if (!response.ok)
-        throw new Error(data.message || "Phone signup failed");
+        throw createHttpError(
+          getResponseMessage(data, "Phone signup failed", response.status),
+          response.status
+        );
+
+      if (!data) {
+        throw createHttpError(
+          "Phone signup failed. The server returned an empty response.",
+          response.status || 500,
+        );
+      }
 
       return finalizeLogin(data);
     },

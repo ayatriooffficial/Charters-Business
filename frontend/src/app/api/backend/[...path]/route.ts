@@ -1,12 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const BACKEND_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+const RAW_BACKEND_BASE_URL =
+  process.env.API_URL ||
+  process.env.NEXT_PUBLIC_API_URL ||
+  "http://localhost:5000";
+const BACKEND_BASE_URL = RAW_BACKEND_BASE_URL
+  .replace(/\/api\/v1\/?$/, "")
+  .replace(/\/$/, "");
 
 function buildTargetUrl(path: string[]) {
-  const base = BACKEND_BASE_URL.replace(/\/$/, "");
   const joinedPath = path.join("/");
-  return `${base}/${joinedPath}`;
+  return `${BACKEND_BASE_URL}/${joinedPath}`;
+}
+
+function getProxyErrorMessage(targetUrl: URL) {
+  if (["localhost", "127.0.0.1", "::1"].includes(targetUrl.hostname)) {
+    return "Unable to reach the backend service. If you're developing locally, make sure the API server is running.";
+  }
+
+  return "Unable to reach the backend service right now. Please try again in a moment.";
 }
 
 async function proxyRequest(
@@ -34,17 +46,26 @@ async function proxyRequest(
     init.duplex = "half";
   }
 
-  const response = await fetch(targetUrl, init);
-  const responseHeaders = new Headers(response.headers);
+  try {
+    const response = await fetch(targetUrl, init);
+    const responseHeaders = new Headers(response.headers);
 
-  responseHeaders.delete("content-encoding");
-  responseHeaders.delete("content-length");
+    responseHeaders.delete("content-encoding");
+    responseHeaders.delete("content-length");
 
-  return new NextResponse(response.body, {
-    status: response.status,
-    statusText: response.statusText,
-    headers: responseHeaders,
-  });
+    return new NextResponse(response.body, {
+      status: response.status,
+      statusText: response.statusText,
+      headers: responseHeaders,
+    });
+  } catch (error) {
+    console.error(`Backend proxy request failed for ${targetUrl.toString()}:`, error);
+
+    return NextResponse.json(
+      { message: getProxyErrorMessage(targetUrl) },
+      { status: 502 },
+    );
+  }
 }
 
 export const GET = proxyRequest;
@@ -54,4 +75,3 @@ export const PATCH = proxyRequest;
 export const DELETE = proxyRequest;
 export const OPTIONS = proxyRequest;
 export const HEAD = proxyRequest;
-
