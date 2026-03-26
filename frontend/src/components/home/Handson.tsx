@@ -270,7 +270,7 @@ function HealthGridCard({ card }: HealthGridCardProps) {
         {/* Right image column */}
         <div className="hidden lg:block lg:col-span-6 relative">
           <Image
-            src="/home/ima2a.png"
+            src="/home/ima2.png"
             alt="Learner portrait"
             fill
             priority
@@ -369,7 +369,7 @@ function FlagshipCard({ card }: FlagshipCardProps) {
         {/* Right image column */}
         <div className="lg:col-span-6 hidden lg:block relative">
           <Image
-            src="/home/ima2.png"
+            src="/home/ima2a.png"
             alt="Learner portrait"
             fill
             priority
