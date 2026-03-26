@@ -18,6 +18,7 @@ interface User {
   email: string;
   avatar: string | null;
   role: string;
+  courseInterestedIn?: string | null;
   isFirstLogin?: boolean;
   lastResumeUrl?: string | null;
   lastResumeUploadedAt?: string | null;
@@ -111,6 +112,7 @@ interface LoginPayloadUser {
   email: string;
   avatar?: string | null;
   role: string;
+  courseInterestedIn?: string | null;
   isFirstLogin?: boolean;
   lastResumeUrl?: string | null;
   lastResumeUploadedAt?: string | null;
@@ -246,6 +248,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         email: apiUser.email,
         avatar: apiUser.avatar || null,
         role: apiUser.role,
+        courseInterestedIn: apiUser.courseInterestedIn || null,
         isFirstLogin: apiUser.isFirstLogin || false,
         lastResumeUrl: apiUser.lastResumeUrl || null,
         lastResumeUploadedAt: apiUser.lastResumeUploadedAt || null,

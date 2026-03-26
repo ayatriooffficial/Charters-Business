@@ -28,10 +28,6 @@
   },
   "dependencies": {
     "@exortek/express-mongo-sanitize": "^1.1.0",
-<<<<<<< HEAD
-    "@next/bundle-analyzer": "^16.1.6",
-=======
->>>>>>> e985f5b1974c94b7d2f971f63a2b6805fc1006d2
     "bcryptjs": "^2.4.3",
     "cloudinary": "^2.9.0",
     "compression": "^1.8.1",
@@ -49,10 +45,6 @@
     "mongoose": "^8.19.0",
     "morgan": "^1.10.1",
     "multer": "^2.0.2",
-<<<<<<< HEAD
-    "next-bundle-analyzer": "^0.6.8",
-=======
->>>>>>> e985f5b1974c94b7d2f971f63a2b6805fc1006d2
     "nodemailer": "^7.0.13",
     "validator": "^13.15.15",
     "xss-clean": "^0.1.4"
