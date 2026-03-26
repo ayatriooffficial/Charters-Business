@@ -307,13 +307,8 @@ export default function FirstStepSuccessComponent() {
           <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-3" role="text">
             BUILD YOUR FOUNDATION
           </p>
-          <h2 id="courses-heading" className="leading-normal text-[35px] font-semibold">
-            <span className="font-bold bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent">
-              Your first step to
-            </span>{" "}
-            <span className="font-bold bg-gradient-to-r from-gray-700 to-gray-500 bg-clip-text text-transparent">
-              success
-            </span>
+          <h2 id="courses-heading" className="leading-normal text-[35px] font-semibold text-black">
+            Your first step to <span className="italic text-[#B30437]">success</span>
           </h2>
           <p className="sr-only">Explore our upcoming courses to advance your career</p>
         </div>

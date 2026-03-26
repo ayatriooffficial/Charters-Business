@@ -599,11 +599,8 @@ function Handson() {
               EXPERIENTIAL EDUCATION
             </p>
 
-            <h2 className="text-[35px] font-bold leading-normal">
-              <span className="bg-gradient-to-r from-black to-black bg-clip-text text-transparent">
-                Train with
-              </span>{" "}
-
+            <h2 id="programs-heading" className="leading-normal text-[35px] font-bold text-black ">
+              Train with{" "}
               <span className="relative inline-block mx-2">
                 <img
                   src="/roundline.svg"
@@ -611,23 +608,19 @@ function Handson() {
                   aria-hidden="true"
                   className="absolute inset-0 w-[120%] h-[150%] -left-[10%] -top-[25%] pointer-events-none object-fill"
                 />
-                <span className="relative z-10 font-bold bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent">
-                  Global curriculum
+                <span className="relative z-10 text-[#B30437] font-medium" style={{ fontWeight: 700 }}>
+                  'Global curriculum'
                 </span>
-              </span>{" "}
-
-              <span className="bg-gradient-to-r from-gray-700 to-gray-600 bg-clip-text text-transparent">
-                along with
-              </span>{" "}
-
-              <span className="relative inline-block px-2 mx-2">
+              </span>
+              {" "}along with{" "}
+              <span className="relative inline-block whitespace-nowrap px-2 md:px-3 mx-1 md:mx-2 mt-2 md:mt-0">
                 <img
                   src="/roundline.svg"
                   alt=""
                   aria-hidden="true"
                   className="absolute inset-0 w-[120%] h-[150%] -left-[10%] -top-[25%] pointer-events-none object-fill"
                 />
-                <span className="relative z-10 font-bold bg-gradient-to-r from-gray-600 to-gray-400 bg-clip-text text-transparent">
+                <span className="relative z-10 text-[#B30437] font-medium" style={{ fontWeight: 700 }}>
                   MNC's
                 </span>
               </span>

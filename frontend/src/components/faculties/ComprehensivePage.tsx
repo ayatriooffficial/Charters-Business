@@ -272,15 +272,8 @@ export default function ComprehensivePage() {
                 WORLD-CLASS EDUCATORS
               </p>
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-tight mb-4 sm:mb-6">
-                <span className="font-bold bg-gradient-to-r from-black to-gray-800 bg-clip-text text-transparent">
-                  Learn from the
-                </span>{" "}
-                <span className="font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
-                  finest minds
-                </span>{" "}
-                <span className="font-bold bg-gradient-to-r from-gray-600 to-gray-500 bg-clip-text text-transparent">
-                  in business
-                </span>
+                Learn from the{' '}
+                <span className="italic text-[#B30437]">finest minds</span> in business
               </h1>
 
               <p className="text-base sm:text-lg mb-6 sm:mb-8 leading-relaxed max-w-lg">
@@ -311,20 +304,15 @@ export default function ComprehensivePage() {
         </div>
       </section>
 
-      {/* Faculty Section - Header */}
+      {/* Faculty Section - Header (outside bordered container, like PlacementReport, no corners) */}
       <section className="mx-[0%] border-b border-gray-200 bg-white text-black relative z-[5]">
         <div className="max-w-[85rem] mx-auto pt-8">
           <div className="text-center">
             <p className="text-xs sm:text-sm font-semibold text-[#B30437] tracking-wider mb-2 sm:mb-3" role="text">
               INSPIRING EDUCATORS
             </p>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light leading-tight">
-              <span className="font-bold bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent">
-                Faculty that
-              </span>{" "}
-              <span className="font-bold bg-gradient-to-r from-gray-700 to-gray-500 bg-clip-text text-transparent">
-                inspire and empower
-              </span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-black leading-tight">
+              Faculty that <span className="italic text-[#B30437]">inspire and empower</span>
             </h2>
           </div>
         </div>
@@ -336,13 +324,18 @@ export default function ComprehensivePage() {
         <SectionWrapper className="no-top-corners">
           <section className="relative z-[5] pb-8 sm:pb-10 pt-6 sm:pt-6 bg-white">
             <div className="max-w-7xl w-full mx-auto">
-              <div className="mb-1">
-                <div className="flex overflow-x-auto scrollbar-hide gap-6 px-4 sm:px-8 py-2">
-                  {['All', 'Academicians', 'Industry Experts'].map((filter) => (
+              <div
+                className="sticky z-10 bg-white border-gray-200"
+                style={{ top: 'var(--navbar-height, 86px)' }}
+              >
+                <div className='flex overflow-x-auto scrollbar-hide px-4 sm:px-0'>
+                  {['All', 'Academicians', 'Industry Experts'].map((filter, index) => (
                     <button
                       key={filter}
                       onClick={() => setActiveFilter(filter)}
-                      className={`pb-3 text-sm sm:text-base font-medium transition-colors duration-200 whitespace-nowrap flex-shrink-0 ${activeFilter === filter ? 'text-black' : 'text-gray-600 hover:text-gray-900'
+                      className={`whitespace-nowrap px-3 sm:px-6 py-3 text-xs sm:text-sm font-medium transition-all duration-300 flex-shrink-0 ${activeTab === index
+                        ? 'text-gray-900 border-b-2 border-gray-900'
+                        : 'text-gray-500 hover:text-gray-700'
                         }`}
                     >
                       {filter}
@@ -436,7 +429,7 @@ export default function ComprehensivePage() {
                         'Strategize your way to senior management and leadership-level roles',
                       ].map((text, idx) => (
                         <div key={idx} className="flex items-start gap-3">
-                          <div className="text-[#B30437] text-lg mt-0.5 flex-shrink-0">✱</div>
+                          <Image src="/dot-icon.svg" alt="" width={18} height={18} className="mt-0.5 flex-shrink-0" />
                           <p className="text-sm leading-relaxed">{text}</p>
                         </div>
                       ))}
@@ -479,7 +472,7 @@ export default function ComprehensivePage() {
                         'Gain the insights and leadership skills needed to stand out in your chosen domain',
                       ].map((text, idx) => (
                         <div key={idx} className="flex items-start gap-3">
-                          <div className="text-[#B30437] text-lg mt-0.5 flex-shrink-0">✱</div>
+                          <Image src="/dot-icon.svg" alt="" width={18} height={18} className="mt-0.5 flex-shrink-0" />
                           <p className="text-sm leading-relaxed">{text}</p>
                         </div>
                       ))}
@@ -522,7 +515,7 @@ export default function ComprehensivePage() {
                         'Acquire your first 1000 customers, accelerate growth, and establish your market presence',
                       ].map((text, idx) => (
                         <div key={idx} className="flex items-start gap-3">
-                          <div className="text-[#B30437] text-lg mt-0.5 flex-shrink-0">✱</div>
+                          <Image src="/dot-icon.svg" alt="" width={18} height={18} className="mt-0.5 flex-shrink-0" />
                           <p className="text-sm leading-relaxed">{text}</p>
                         </div>
                       ))}
@@ -597,7 +590,7 @@ export default function ComprehensivePage() {
                       </>,
                     ].map((text, idx) => (
                       <div key={idx} className="flex items-start gap-3">
-                        <div className="text-[#B30437] text-lg mt-0.5 flex-shrink-0">✱</div>
+                        <Image src="/dot-icon.svg" alt="" width={18} height={18} className="mt-0.5 flex-shrink-0" />
                         <p className="text-sm leading-relaxed">{text}</p>
                       </div>
                     ))}
@@ -615,16 +608,13 @@ export default function ComprehensivePage() {
           <section className="relative z-[5] py-8 sm:py-10 bg-white">
             <div className="max-w-7xl w-full mx-auto">
               <div className="mb-8 sm:mb-12 text-center">
+
                 <p className="text-xs sm:text-sm font-semibold text-[#B30437] tracking-wider mb-2 sm:mb-3" role="text">
                   INDUSTRY EXPERTISE
                 </p>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight">
-                  <span className="bg-gradient-to-r from-black to-gray-700 bg-clip-text text-transparent">
-                    Lessons from the
-                  </span>{" "}
-                  <span className="bg-gradient-to-r from-gray-700 to-gray-500 bg-clip-text text-transparent">
-                    best in the business
-                  </span>
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-black leading-tight">
+                  Lessons from the{' '}
+                  <span className="italic text-[#B30437]">best in the business</span>
                 </h2>
               </div>
 
