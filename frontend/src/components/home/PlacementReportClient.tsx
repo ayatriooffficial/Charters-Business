@@ -77,7 +77,7 @@ const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
     <>
       <div className="w-full border-t border-gray-200"></div>
 
-      <div className="md:border-x md:w-[90%] border-gray-200 max-w-[85rem] w-full mx-auto">
+      <div className="md:border-x border-gray-200 max-w-[85rem] w-full">
         <div
           ref={sectionRef}
           className="pb-4"

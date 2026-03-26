@@ -1,18 +1,15 @@
 import React from "react";
 import PlacementReportClient from "./PlacementReportClient";
 
-// Placement Report Data (Server-side static data)
 const placementReportData = {
   title: "Charter's Career Transition '24",
   description:
     "Top roles, disruptive startups | industry-leading firms | From graduation to career success",
-
   stats: {
     salaryJump: 3.05,
     highestSalary: 12.3,
     recruiters: 3120,
   },
-
   verification: {
     by: "B2K Analytics",
     verified: true,
@@ -47,7 +44,6 @@ const PlacementReportDashboard = () => {
             </h2>
           </div>
 
-          {/* Replaced description paragraph with icon+text items */}
           <div className="flex flex-col items-start sm:flex-row sm:flex-wrap sm:justify-center sm:items-center gap-3 sm:gap-6 mt-4 sm:mt-6 w-fit mx-auto sm:w-full">
             {placementReportData.description
               .split("|")
@@ -67,18 +63,25 @@ const PlacementReportDashboard = () => {
           </div>
         </div>
       </div>
-      <div className="md:border-x md:w-[90%] max-w-[85rem] mx-auto border-gray-200 h-13 hidden md:block" >
 
-      </div>
-      {/* Statistics Section - Client Component */}
-      <div className="w-full">
-        <PlacementReportClient
-          stats={placementReportData.stats}
-          verification={placementReportData.verification}
-        />
-      </div>
+      <div className="md:border-x md:w-[90%] max-w-[85rem] mx-auto border-gray-200 h-13 hidden md:block" />
 
-      {/* Download Section - Moved to Client Component */}
+      <div className="flex flex-row w-full">
+        <div className="flex-1 bg-gray-200 hidden md:block">
+          <div className="bg-white w-full h-full rounded-tr-xl border-t border-gray-200" />
+        </div>
+
+        {/* Main client component */}
+        <div className="md:w-[90%] max-w-[85rem] w-full">
+          <PlacementReportClient
+            stats={placementReportData.stats}
+            verification={placementReportData.verification}
+          />
+        </div>
+        <div className="flex-1 bg-gray-200 hidden md:block">
+          <div className="bg-white w-full h-full rounded-tl-xl border-t border-gray-200" />
+        </div>
+      </div>
     </section>
   );
 };
