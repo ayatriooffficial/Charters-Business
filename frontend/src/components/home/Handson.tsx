@@ -546,7 +546,7 @@ function Handson() {
                 <p className="text-xs sm:text-sm font-semibold text-[#B30437] tracking-wider mb-2 sm:mb-3" role="text">
                   EXPERIENTIAL EDUCATION
                 </p>
-                <h2 id="programs-heading" className="leading-normal text-[35px] font-semibold text-black">
+                <h2 id="programs-heading" className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
                   <span className="bg-[#B30437] text-[#ffffff] px-1" style={{ fontWeight: 700 }}>
                     &apos;Global Carrululam&apos;
                   </span>
@@ -578,7 +578,7 @@ function Handson() {
 
             <h2
               id="programs-heading"
-              className="leading-normal text-[35px] font-bold text-black"
+              className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]"
             >
               Train with{" "}
               <HighlightText className="mx-2 font-bold">
@@ -591,7 +591,7 @@ function Handson() {
             </h2>
 
 
-            <p className="text-base sm:text-lg text-[#5f6368] mt-[14px]">
+            <p className="text-base sm:text-lg text-[#5f6368]">
               Top roles, disruptive startups and industry-leading firms. See where our graduates landed and their career transformations.
             </p>
           </div>

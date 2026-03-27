@@ -232,7 +232,7 @@ const TetrCareerLabs: React.FC = () => {
       <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 w-full">
         {/* Header Section */}
         <div className="flex-shrink-0 text-center mb-13 sm:mb-13">
-          <h2 className="leading-normal text-[35px] font-semibold text-black">
+          <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
             Career Labs at <span className="text-[#B30437]">Charters</span>
           </h2>
           <div className="flex justify-center">

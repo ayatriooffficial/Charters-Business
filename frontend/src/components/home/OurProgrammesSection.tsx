@@ -21,12 +21,12 @@ export default function OurProgrammesSection() {
             </p>
             <h2
               id="programmes-heading"
-              className="leading-normal text-[35px] font-bold text-black"
+              className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]"
             >
               Explore Programmes
             </h2>
           </div>
-          <p className="text-base sm:text-lg text-[#5f6368] mt-[14px]">
+          <p className="text-base sm:text-lg text-[#5f6368]">
             Choose from our range of programmes designed to build future leaders
             and entrepreneurs.
           </p>

@@ -1005,7 +1005,7 @@ function HandsOnLearningComponent() {
               </p>
               <h2
                 id="hands-on-heading"
-                className="leading-normal text-[35px] font-semibold text-black"
+                className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]"
               >
                 Hands-on.
                 <HighlightText className="mx-1 sm:mx-2 font-bold">
@@ -1016,7 +1016,7 @@ function HandsOnLearningComponent() {
             </div>
 
             {/* Description */}
-            <div className="flex flex-col items-start sm:flex-row sm:flex-wrap sm:justify-center sm:items-center gap-3 sm:gap-6 mt-4 sm:mt-6 w-fit mx-auto sm:w-full">
+            <div className="flex flex-col items-start sm:flex-row sm:flex-wrap sm:justify-center sm:items-center gap-3 sm:gap-6 mb-2 sm:mb-4 w-fit mx-auto sm:w-full">
               {hanson_heading.description.split("|").map((item: string, index: number) => (
                 <div key={index} className="flex items-center gap-2">
                   <img

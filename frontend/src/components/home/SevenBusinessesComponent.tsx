@@ -87,7 +87,7 @@ function SevenBusinessesComponent() {
               LEARN BY BUILDING
             </p>
 
-            <h2 id="businesses-heading" className="leading-normal text-[35px] font-semibold text-black">
+            <h2 id="businesses-heading" className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
               7 Businesses in <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-[#B30437]">7 Countries</span>
             </h2>
 
@@ -203,7 +203,7 @@ function SevenBusinessesComponent() {
                           </span>
 
                           <svg className="w-3 h-3 sm:w-4 sm:h-4 ml-2 text-[#B30437]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                           </svg>
                         </div>
                       )}

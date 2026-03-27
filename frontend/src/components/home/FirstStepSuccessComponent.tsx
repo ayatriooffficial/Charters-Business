@@ -367,8 +367,8 @@ export default function FirstStepSuccessComponent() {
               key={company.id}
               onClick={() => setActiveTab(company.id)}
               className={`shrink-0 px-4 py-2 transition-all duration-300 border-b-2 -mb-[17px] ${activeTab === company.id
-                  ? 'border-[#B30437] opacity-100'
-                  : 'border-transparent opacity-50 hover:opacity-80'
+                ? 'border-[#B30437] opacity-100'
+                : 'border-transparent opacity-50 hover:opacity-80'
                 }`}
               aria-pressed={activeTab === company.id}
               aria-label={`View ${company.name} videos`}
@@ -529,7 +529,7 @@ export default function FirstStepSuccessComponent() {
           <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-3" role="text">
             BUILD YOUR FOUNDATION
           </p>
-          <h2 id="courses-heading" className="leading-normal text-[35px] font-semibold text-black">
+          <h2 id="courses-heading" className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
             Your first step to{" "}
             <HighlightText className="font-bold italic">
               success
@@ -546,8 +546,8 @@ export default function FirstStepSuccessComponent() {
                   key={tab.id}
                   onClick={() => setMainTab(tab.id)}
                   className={`shrink-0 px-3 sm:px-6 py-3 text-xs sm:text-base font-medium transition-all duration-300 border-b-2 -mb-[2px] whitespace-nowrap ${mainTab === tab.id
-                      ? 'border-[#B30437] text-[#B30437]'
-                      : 'border-transparent text-gray-600 hover:text-gray-900'
+                    ? 'border-[#B30437] text-[#B30437]'
+                    : 'border-transparent text-gray-600 hover:text-gray-900'
                     }`}
                   aria-pressed={mainTab === tab.id}
                   aria-label={`View ${tab.label} content`}

@@ -24,7 +24,7 @@ const PlacementReportDashboard = () => {
     >
       {/* Report Header */}
       <div
-        className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-[4rem] sm:pt-14 md:pb-0 pb-[3rem] mb-[1.5rem] sm:mb-2"
+        className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-[4rem] sm:pt-14"
         role="region"
         aria-labelledby="placement-report-heading"
       >
@@ -38,13 +38,13 @@ const PlacementReportDashboard = () => {
             </p>
             <h2
               id="placement-report-heading"
-              className="leading-tight sm:leading-normal text-2xl sm:text-3xl md:text-[35px] font-bold"
+              className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]"
             >
               {placementReportData.title}
             </h2>
           </div>
 
-          <div className="flex flex-col items-start sm:flex-row sm:flex-wrap sm:justify-center sm:items-center gap-3 sm:gap-6 mt-4 sm:mt-6 w-fit mx-auto sm:w-full">
+          <div className="flex flex-col items-start sm:flex-row sm:flex-wrap sm:justify-center sm:items-center gap-3 sm:gap-6 w-fit mx-auto sm:w-full">
             {placementReportData.description
               .split("|")
               .map((item: string, index: number) => (

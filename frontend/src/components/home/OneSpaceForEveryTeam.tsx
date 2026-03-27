@@ -507,7 +507,7 @@ const OneSpaceForEveryTeam = () => {
           >
             In class intranshiph at Top Companys{" "}
           </p>
-          <h2 className="leading-normal text-[35px] font-bold text-black">
+          <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
             Class curriculum aling{" "}
             <HighlightText className="font-bold">
               every Sector
