@@ -7,24 +7,21 @@ import { getCloudinaryUrl } from "@/lib/cloudinary";
 
 const Footer = () => {
   const footerSections = [
-    {
-      title: "About us",
-      links: ["Careers"],
-    },
+
     {
       title: "Academics",
       links: [
-        "Postgraduate Programme",
-        "Undergraduate Programme",
-        "Executive Programme",
+        "CMP® Program",
+        "Program Certified Product Engineering",
+        "Certified Digital Growth Marketing",
       ],
     },
     {
       title: "Innovation",
-      links: ["Student Entrepreneurship", "Faculty Research"],
+      links: ["On-class internship", "Student Entrepreneurship", "Student research program"],
     },
     {
-      title: "Other Links",
+      title: "About us",
       links: [
         "For Companies",
         "Jobs",
@@ -45,7 +42,7 @@ const Footer = () => {
 
   return (
     <footer
-      className="relative z-[5] bg-[#F6F4F2] pt-[50px] text-black"
+      className="relative z-[5] bg-[#222222] pt-[50px] text-black"
       role="contentinfo"
     >
       {/* Main Footer Content */}
@@ -68,12 +65,8 @@ const Footer = () => {
                   https://res.cloudinary.com/ducgcl4dg/image/upload/Chaters_Union
               */}
             </div>
-            <p className="text-sm text-gray-600 leading-relaxed max-w-xs">
-              Empowering the next generation of{" "}
-              <span className="italic text-[#B30437]">
-                business leaders
-              </span>{" "}
-              through innovative education.
+            <p className="text-sm text-white leading-relaxed max-w-xs">
+              Empowering the next generation of{" "}business leaders through innovative education.
             </p>
           </div>
 
@@ -89,7 +82,7 @@ const Footer = () => {
                 >
                   <h2
                     id={`footer-nav-${index}`}
-                    className="text-[#B30437] font-light text-base sm:text-lg mb-4 lg:mb-6"
+                    className="text-white font-semibold text-base sm:text-[16px] mb-4 lg:mb-6"
                   >
                     {section.title}
                   </h2>
@@ -98,7 +91,7 @@ const Footer = () => {
                       <li key={linkIndex} role="listitem">
                         <a
                           href="#"
-                          className="text-gray-600 hover:text-[#B30437] transition-colors text-sm block"
+                          className="text-white hover:text-[#B30437] transition-colors text-sm block"
                         >
                           {link}
                         </a>
@@ -158,23 +151,22 @@ const Footer = () => {
               <h3 id="contact-heading" className="sr-only">
                 Contact Information
               </h3>
-              <div className="flex items-start lg:items-center gap-2 text-gray-600 text-xs sm:text-sm justify-start lg:justify-end">
+              <div className="flex items-start lg:items-center gap-2 text-white text-xs sm:text-sm justify-start lg:justify-end">
                 <MapPin
                   className="w-4 h-4 mt-0.5 lg:mt-0 flex-shrink-0"
                   aria-hidden="true"
                 />
                 <span className="leading-relaxed">
-                  DLF Cyberpark, Phase II, Udyog Vihar, Sector 20, Gurugram,
-                  Haryana, 122022
+                  DLF Cyberpark, Sector V, Bidhannagar, Kolkata, West Bengal 700091
                 </span>
               </div>
-              <div className="flex items-center gap-2 text-gray-600 text-xs sm:text-sm justify-start lg:justify-end">
+              <div className="flex items-center gap-2 text-white text-xs sm:text-sm justify-start lg:justify-end">
                 <Mail className="w-4 h-4" aria-hidden="true" />
                 <a
                   href="mailto:info@mastersunion.org"
                   className="hover:text-[#B30437] transition-colors"
                 >
-                  info@chartersunion.org
+                  info@chartersunion.com
                 </a>
               </div>
             </section>
@@ -184,7 +176,7 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div>
-        <div className="max-w-7xl w-full mx-auto py-4 sm:py-6">
+        <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 mx-auto py-4 sm:py-6">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-4 lg:gap-6">
             <div
               className="text-gray-600 text-xs sm:text-sm order-2 lg:order-1"

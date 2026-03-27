@@ -1102,7 +1102,7 @@ function HandsOnLearningComponent() {
               <div ref={menuRef} className="flex flex-col">
                 <div className=" flex-1 flex flex-col ">
                   {/* Header */}
-                  <div className="mb-6 pt-4 pl-0">
+                  <div className="mb-6 pt-4 pl-[15px]">
                     {/* <h3 className="text-xl font-light text-black mb-2">
                       100+ Top MNC's in class
                     </h3> */}
@@ -1129,8 +1129,7 @@ function HandsOnLearningComponent() {
                       </div>
                     </div>
                     <p className="text-gray-400 text-xs">
-                      Built by Harvard Scholars, Led by Industry- Meet the
-                      Masters
+                      Built by Harvard Scholars, Led by Industry-
                     </p>
                   </div>
 
