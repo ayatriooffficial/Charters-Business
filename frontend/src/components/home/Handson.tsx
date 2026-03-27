@@ -585,9 +585,9 @@ function Handson() {
                 &apos;Global curriculum&apos;
               </HighlightText>
               {" "}along with{" "}
-              <HighlightText className="whitespace-nowrap mx-1 md:mx-2 font-bold">
-                MNC&apos;s
-              </HighlightText>
+
+              MNC&apos;s
+
             </h2>
 
 
