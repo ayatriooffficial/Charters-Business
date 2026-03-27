@@ -2,7 +2,7 @@
 
 import { memo, useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import HighlightObserver from "@/components/shared/HighlightObserver"; 
+import HighlightObserver from "@/components/shared/HighlightObserver";
 import HighlightText from "@/components/shared/HighlightObserver";
 
 interface Faculty {
@@ -297,7 +297,7 @@ function FacultyModel() {
 
             <h2
               id="faculty-heading"
-              className="leading-normal text-2xl sm:text-3xl md:text-[35px] font-semibold text-black"
+              className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]"
             >
               Meet your{" "}
               <HighlightText className="mx-1 sm:mx-2 font-bold">

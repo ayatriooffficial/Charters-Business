@@ -85,12 +85,12 @@ export default function HighlightText({
             style={{
                 position: "relative",
                 display: "inline-block",
-                padding: "2px 10px",
+                padding: "2px 7px",
                 zIndex: 0,
             }}
         >
             {/* top-left dot */}
-            <span ref={dotTLRef} style={{ ...dotStyle, borderBottomRightRadius: 0, top: -9, left: -9 }} />
+            <span ref={dotTLRef} style={{ ...dotStyle, borderBottomRightRadius: 0, top: -11, left: -11 }} />
 
             {/* background */}
             <span
@@ -100,7 +100,6 @@ export default function HighlightText({
                     position: "absolute",
                     inset: 0,
                     background: bgColor,
-                    borderRadius: 6,
                     transform: "scaleX(0)",
                     transformOrigin: "left center",
                     transition: "transform 0.75s cubic-bezier(0.22, 1, 0.36, 1)",
@@ -122,7 +121,7 @@ export default function HighlightText({
             </span>
 
             {/* bottom-right dot */}
-            <span ref={dotBRRef} style={{ ...dotStyle, borderTopLeftRadius: 0, bottom: -9, right: -9 }} />
+            <span ref={dotBRRef} style={{ ...dotStyle, borderTopLeftRadius: 0, bottom: -11, right: -11 }} />
         </span>
     );
 }

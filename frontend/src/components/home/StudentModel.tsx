@@ -297,7 +297,7 @@ function FacultyModel() {
 
             <h2
               id="faculty-heading"
-              className="leading-normal text-2xl sm:text-3xl md:text-[35px] font-semibold text-black"
+              className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]"
             >
               Meet your{" "}
               <HighlightText className="font-bold">

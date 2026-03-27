@@ -217,7 +217,7 @@ function WorldImmersion() {
       {/* Header Section */}
       <div className="max-w-[85rem] mx-auto">
         <div className="text-center mb-8 sm:mb-12">
-          <h2 className="leading-normal text-[35px] font-semibold text-black">
+          <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
             Intranship,{" "}
             <HighlightText className=" font-bold">
               Across the World

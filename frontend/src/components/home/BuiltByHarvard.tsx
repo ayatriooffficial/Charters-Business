@@ -40,13 +40,13 @@ function BuiltByHarvard() {
       <div className="text-center mb-8 sm:mb-10">
         <h2
           id="trusted-companies-heading"
-          className="leading-normal text-[35px] font-semibold text-black"
+          className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]"
         >
           The most{" "}
           <HighlightText className="mx-2 font-bold">
             innovative
           </HighlightText>{" "}
-          Institution
+          institution
         </h2>
 
         <p className="text-[#5f6368] text-sm sm:text-base md:text-lg max-w-4xl mx-auto leading-relaxed px-4">

@@ -252,7 +252,7 @@ function LearningOutcomesComponent() {
           <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-4 sm:mb-6">
             WHAT YOU&apos;LL MASTER
           </p>
-          <h2 className="leading-normal text-[35px] font-semibold text-black">
+          <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
             The{' '}
             <span className="text-[#B30437]">
               7
