@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { Play } from 'lucide-react';
+import HighlightText from '../shared/HighlightObserver';
 
 // Company tabs data
 const companyTabs = [
@@ -268,7 +269,7 @@ export default function FirstStepSuccessComponent() {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
-  // Main tabs data
+  // Main tabs data — ai_interview added
   const mainTabs = [
     { id: 'mentor', label: 'Mentor Networking' },
     { id: 'cocurriculars', label: 'Co-curriculars' },
@@ -293,28 +294,250 @@ export default function FirstStepSuccessComponent() {
   const scrollVideoSlider = (direction: number) => {
     const slider = videoSliderRef.current;
     if (!slider) return;
-    const cardWidth = window.innerWidth * 0.8; // 80vw card width
+    const cardWidth = window.innerWidth * 0.8;
     slider.scrollTo({
       left: slider.scrollLeft + (direction * cardWidth),
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
   };
+
+  const renderMentorTab = () => (
+    <>
+      {/* Go Behind the Scenes Section */}
+      <div className="mb-16 lg:mb-20">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center px-8">
+          {/* Left: Featured Video */}
+          <div className="space-y-6">
+            <div>
+              <h2 id="behind-scenes-heading" className="text-3xl sm:text-4xl lg:text-5xl font-light leading-tight mb-2">
+                Go Behind<br />
+                the Scenes at <span className="italic">Tetr</span>
+              </h2>
+            </div>
+            <div className="space-y-3">
+              <h3 className="text-lg sm:text-xl font-medium">The story behind Tetr</h3>
+              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                Our Leaders discuss how Tetr is redefining education through &apos;learning by doing&apos;.
+              </p>
+            </div>
+            {/* University Logos */}
+            <div className="flex items-center gap-6 pt-2">
+              {universityLogos.map((uni) => (
+                <div key={uni.name} className="flex items-center gap-2">
+                  <Image
+                    src={uni.logo}
+                    alt={uni.name}
+                    width={80}
+                    height={24}
+                    className="h-6 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right: Video thumbnail */}
+          <div className="relative group">
+            <div className="relative aspect-video rounded-lg overflow-hidden bg-gray-100">
+              <Image
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop"
+                alt="Featured video thumbnail"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <button
+                  className="w-16 h-16 sm:w-20 sm:h-20 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white hover:scale-110 transition-all duration-300"
+                  aria-label="Play video"
+                >
+                  <Play className="w-6 h-6 sm:w-8 sm:h-8 text-[#B30437] ml-1" fill="currentColor" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Company Logos Tabs */}
+      <div className="border-b border-gray-200">
+        <div className="flex overflow-x-auto scrollbar-hide gap-2 sm:gap-4 lg:gap-8 pb-4 justify-start lg:justify-center">
+          {companyTabs.map((company) => (
+            <button
+              key={company.id}
+              onClick={() => setActiveTab(company.id)}
+              className={`shrink-0 px-4 py-2 transition-all duration-300 border-b-2 -mb-[17px] ${activeTab === company.id
+                  ? 'border-[#B30437] opacity-100'
+                  : 'border-transparent opacity-50 hover:opacity-80'
+                }`}
+              aria-pressed={activeTab === company.id}
+              aria-label={`View ${company.name} videos`}
+            >
+              <Image
+                src={company.logo}
+                alt={company.name}
+                width={100}
+                height={30}
+                className="h-6 sm:h-8 w-auto object-contain"
+              />
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Video Cards Grid */}
+      <div className="relative">
+        <div
+          ref={videoSliderRef}
+          className="flex overflow-x-auto lg:grid lg:grid-cols-4 gap-4 sm:gap-6 snap-x snap-mandatory lg:snap-none -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide border-b border-gray-200 border pb-16"
+          role="list"
+          aria-label={`${companyTabs.find((c) => c.id === activeTab)?.name} videos`}
+        >
+          {videoCardsByCompany[activeTab]?.map((video, index) => (
+            <article
+              key={video.id}
+              className="flex-shrink-0 w-[80vw] sm:w-[320px] lg:w-auto snap-center bg-white overflow-hidden group cursor-pointer"
+              role="listitem"
+              style={{ animation: `fadeIn 0.4s ease-out ${index * 0.1}s both` }}
+            >
+              <div className="relative aspect-video overflow-hidden bg-gray-100">
+                <Image
+                  src={video.thumbnail}
+                  alt={video.title}
+                  fill
+                  sizes="(max-width: 640px) 80vw, (max-width: 1024px) 320px, 25vw"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20">
+                  <div className="w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg">
+                    <Play className="w-5 h-5 text-[#B30437] ml-0.5" fill="currentColor" />
+                  </div>
+                </div>
+              </div>
+              <div className="p-4">
+                <h3 className="text-sm sm:text-base font-semibold mb-2 leading-tight line-clamp-2">{video.title}</h3>
+                <p className="text-gray-700 text-xs sm:text-sm mb-3">{video.speaker}</p>
+                <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                  <span className="text-[#B30437]">★</span>
+                  <span>{video.role}, {video.company}</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-gray-500">
+                  <span className="text-[#B30437]">★</span>
+                  <span>{video.university}</span>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {/* Mobile Navigation Buttons */}
+        <div className="lg:hidden absolute top-1/3 -translate-y-1/2 right-0 pointer-events-none z-10">
+          {canScrollRight && (
+            <button
+              onClick={() => scrollVideoSlider(1)}
+              className="w-10 h-10 rounded-full bg-[#B30437] hover:bg-red-700 transition-all duration-300 shadow-md flex items-center justify-center pointer-events-auto"
+              aria-label="Next slide"
+              type="button"
+            >
+              <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" aria-hidden="true">
+                <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
+              </svg>
+            </button>
+          )}
+        </div>
+        <div className="lg:hidden absolute top-1/3 -translate-y-1/2 left-0 pointer-events-none z-10">
+          {canScrollLeft && (
+            <button
+              onClick={() => scrollVideoSlider(-1)}
+              className="w-10 h-10 rounded-full bg-[#B30437] hover:bg-red-700 transition-all duration-300 shadow-md flex items-center justify-center pointer-events-auto"
+              aria-label="Previous slide"
+              type="button"
+            >
+              <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" aria-hidden="true">
+                <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
+              </svg>
+            </button>
+          )}
+        </div>
+      </div>
+    </>
+  );
+
+  const renderOtherTab = () => (
+    <>
+      <div className="mb-16 lg:mb-20">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center px-8">
+          <div className="space-y-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light leading-tight mb-2">
+              Go Behind<br />
+              the Scenes at <span className="italic">Tetr</span>
+            </h2>
+            <div className="space-y-3">
+              <h3 className="text-lg sm:text-xl font-medium">{mainTabs.find((t) => t.id === mainTab)?.label}</h3>
+              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                Content coming soon for {mainTabs.find((t) => t.id === mainTab)?.label}.
+              </p>
+            </div>
+            <div className="flex items-center gap-6 pt-2">
+              {universityLogos.map((uni) => (
+                <div key={uni.name} className="flex items-center gap-2">
+                  <Image
+                    src={uni.logo}
+                    alt={uni.name}
+                    width={80}
+                    height={24}
+                    className="h-6 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="relative group">
+            <div className="relative aspect-video rounded-lg overflow-hidden bg-gray-100">
+              <Image
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop"
+                alt="Featured video thumbnail"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <button
+                  className="w-16 h-16 sm:w-20 sm:h-20 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white hover:scale-110 transition-all duration-300"
+                  aria-label="Play video"
+                >
+                  <Play className="w-6 h-6 sm:w-8 sm:h-8 text-[#B30437] ml-1" fill="currentColor" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="py-10 text-center">
+        <p className="text-gray-500 text-lg">No additional data available for {mainTabs.find((t) => t.id === mainTab)?.label}</p>
+      </div>
+    </>
+  );
 
   return (
     <section className="mx-[0%] relative z-[5] bg-white text-black" role="region" aria-labelledby="behind-scenes-heading">
       <div className="max-w-[85rem] w-full mx-auto">
+
         {/* Page Header */}
         <div className="text-center mb-6 sm:mb-8 lg:mb-10 pt-8">
           <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-3" role="text">
             BUILD YOUR FOUNDATION
           </p>
           <h2 id="courses-heading" className="leading-normal text-[35px] font-semibold text-black">
-            Your first step to <span className="italic text-[#B30437]">success</span>
+            Your first step to{" "}
+            <HighlightText className="font-bold italic">
+              success
+            </HighlightText>
           </h2>
-          <p className="sr-only">Explore our upcoming courses to advance your career</p>
         </div>
 
-        {/* Main Tabs Section */}
+        {/* Main Tabs */}
         <div className="mb-4">
           <div className="border-b border-gray-200">
             <div className="flex gap-4 sm:gap-8 justify-start sm:justify-center overflow-x-auto scrollbar-hide pb-[2px]">
@@ -323,8 +546,8 @@ export default function FirstStepSuccessComponent() {
                   key={tab.id}
                   onClick={() => setMainTab(tab.id)}
                   className={`shrink-0 px-3 sm:px-6 py-3 text-xs sm:text-base font-medium transition-all duration-300 border-b-2 -mb-[2px] whitespace-nowrap ${mainTab === tab.id
-                    ? 'border-[#B30437] text-[#B30437]'
-                    : 'border-transparent text-gray-600 hover:text-gray-900'
+                      ? 'border-[#B30437] text-[#B30437]'
+                      : 'border-transparent text-gray-600 hover:text-gray-900'
                     }`}
                   aria-pressed={mainTab === tab.id}
                   aria-label={`View ${tab.label} content`}
@@ -337,262 +560,14 @@ export default function FirstStepSuccessComponent() {
         </div>
 
         {/* Tab Content */}
-        {mainTab === 'mentor' ? (
-          <>
-            {/* Go Behind the Scenes Section */}
-            <div className="mb-16 lg:mb-20">
-              <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center px-8">
-                {/* Left: Featured Video */}
-                <div className="space-y-6">
-                  <div>
-                    <h2 id="behind-scenes-heading" className="text-3xl sm:text-4xl lg:text-5xl font-light leading-tight mb-2">
-                      Go Behind<br />
-                      the Scenes at <span className="italic">Tetr</span>
-                    </h2>
-                  </div>
-
-                  <div className="space-y-3">
-                    <h3 className="text-lg sm:text-xl font-medium">The story behind Tetr</h3>
-                    <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                      Our Leaders discuss how Tetr is redefining education through &apos;learning by doing&apos;.
-                    </p>
-                  </div>
-
-                  {/* University Logos */}
-                  <div className="flex items-center gap-6 pt-2">
-                    {universityLogos.map((uni) => (
-                      <div key={uni.name} className="flex items-center gap-2">
-                        <Image
-                          src={uni.logo}
-                          alt={uni.name}
-                          width={80}
-                          height={24}
-                          className="h-6 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Right: Content */}
-                <div className="relative group">
-                  <div className="relative aspect-video rounded-lg overflow-hidden bg-gray-100">
-                    <Image
-                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop"
-                      alt="Featured video thumbnail"
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    {/* Play button overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <button
-                        className="w-16 h-16 sm:w-20 sm:h-20 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white hover:scale-110 transition-all duration-300"
-                        aria-label="Play video"
-                      >
-                        <Play className="w-6 h-6 sm:w-8 sm:h-8 text-[#B30437] ml-1" fill="currentColor" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Company Logos Tabs */}
-            <div className="border-b border-gray-200">
-              <div className="flex overflow-x-auto scrollbar-hide gap-2 sm:gap-4 lg:gap-8 pb-4 justify-start lg:justify-center ">
-                {companyTabs.map((company) => (
-                  <button
-                    key={company.id}
-                    onClick={() => setActiveTab(company.id)}
-                    className={`shrink-0 px-4 py-2 transition-all duration-300 border-b-2 -mb-[17px] ${activeTab === company.id
-                      ? 'border-[#B30437] opacity-100'
-                      : 'border-transparent opacity-50 hover:opacity-80'
-                      }`}
-                    aria-pressed={activeTab === company.id}
-                    aria-label={`View ${company.name} videos`}
-                  >
-                    <Image
-                      src={company.logo}
-                      alt={company.name}
-                      width={100}
-                      height={30}
-                      className="h-6 sm:h-8 w-auto object-contain"
-                    />
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Video Cards Grid */}
-            <div className="relative">
-              <div
-                ref={videoSliderRef}
-                className="flex overflow-x-auto lg:grid lg:grid-cols-4 gap-4 sm:gap-6 snap-x snap-mandatory lg:snap-none -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide border-b border-gray-200 border pb-16"
-                role="list"
-                aria-label={`${companyTabs.find(c => c.id === activeTab)?.name} videos`}
-              >
-                {videoCardsByCompany[activeTab]?.map((video, index) => (
-                  <article
-                    key={video.id}
-                    className="flex-shrink-0 w-[80vw] sm:w-[320px] lg:w-auto snap-center bg-white overflow-hidden group cursor-pointer"
-                    role="listitem"
-                    style={{
-                      animation: `fadeIn 0.4s ease-out ${index * 0.1}s both`,
-                    }}
-                  >
-                    {/* Video Thumbnail */}
-                    <div className="relative aspect-video overflow-hidden bg-gray-100">
-                      <Image
-                        src={video.thumbnail}
-                        alt={video.title}
-                        fill
-                        sizes="(max-width: 640px) 80vw, (max-width: 1024px) 320px, 25vw"
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
-                        loading="lazy"
-                      />
-                      {/* Play button overlay */}
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20">
-                        <div className="w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg">
-                          <Play className="w-5 h-5 text-[#B30437] ml-0.5" fill="currentColor" />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Card Content */}
-                    <div className="p-4">
-                      <h3 className="text-sm sm:text-base font-semibold mb-2 leading-tight line-clamp-2">
-                        {video.title}
-                      </h3>
-                      <p className="text-gray-700 text-xs sm:text-sm mb-3">{video.speaker}</p>
-
-                      {/* Role & Company */}
-                      <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
-                        <span className="text-[#B30437]">★</span>
-                        <span>{video.role}, {video.company}</span>
-                      </div>
-
-                      {/* University */}
-                      <div className="flex items-center gap-2 text-xs text-gray-500">
-                        <span className="text-[#B30437]">★</span>
-                        <span>{video.university}</span>
-                      </div>
-                    </div>
-                  </article>
-                ))}
-              </div>
-
-              {/* Mobile Navigation Buttons */}
-              <div className="lg:hidden absolute top-1/3 -translate-y-1/2 right-0 pointer-events-none z-10">
-                {canScrollRight && (
-                  <button
-                    onClick={() => scrollVideoSlider(1)}
-                    className="w-10 h-10 rounded-full bg-[#B30437] hover:bg-red-700 transition-all duration-300 shadow-md flex items-center justify-center pointer-events-auto"
-                    aria-label="Next slide"
-                    type="button"
-                  >
-                    <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" aria-hidden="true">
-                      <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
-                    </svg>
-                  </button>
-                )}
-              </div>
-              <div className="lg:hidden absolute top-1/3 -translate-y-1/2 left-0 pointer-events-none z-10">
-                {canScrollLeft && (
-                  <button
-                    onClick={() => scrollVideoSlider(-1)}
-                    className="w-10 h-10 rounded-full bg-[#B30437] hover:bg-red-700 transition-all duration-300 shadow-md flex items-center justify-center pointer-events-auto"
-                    aria-label="Previous slide"
-                    type="button"
-                  >
-                    <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" aria-hidden="true">
-                      <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
-                    </svg>
-                  </button>
-                )}
-              </div>
-            </div>
-          </>
-        ) : (
-          <>
-            {/* Go Behind the Scenes Section for other tabs */}
-            <div className="mb-16 lg:mb-20">
-                <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center px-8">
-                {/* Left: Featured Video */}
-                <div className="space-y-6">
-                  <div>
-                    <h2 id="behind-scenes-heading" className="text-3xl sm:text-4xl lg:text-5xl font-light leading-tight mb-2">
-                      Go Behind<br />
-                      the Scenes at <span className="italic">Tetr</span>
-                    </h2>
-                  </div>
-
-                  <div className="space-y-3">
-                    <h3 className="text-lg sm:text-xl font-medium">{mainTabs.find(t => t.id === mainTab)?.label}</h3>
-                    <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                      Content coming soon for {mainTabs.find(t => t.id === mainTab)?.label}.
-                    </p>
-                  </div>
-
-                  {/* University Logos */}
-                  <div className="flex items-center gap-6 pt-2">
-                    {universityLogos.map((uni) => (
-                      <div key={uni.name} className="flex items-center gap-2">
-                        <Image
-                          src={uni.logo}
-                          alt={uni.name}
-                          width={80}
-                          height={24}
-                          className="h-6 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Right: Content */}
-                <div className="relative group">
-                  <div className="relative aspect-video rounded-lg overflow-hidden bg-gray-100">
-                    <Image
-                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop"
-                      alt="Featured video thumbnail"
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    {/* Play button overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <button
-                        className="w-16 h-16 sm:w-20 sm:h-20 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white hover:scale-110 transition-all duration-300"
-                        aria-label="Play video"
-                      >
-                        <Play className="w-6 h-6 sm:w-8 sm:h-8 text-[#B30437] ml-1" fill="currentColor" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* No data message */}
-            <div className="py-10 text-center">
-              <p className="text-gray-500 text-lg">No additional data available for {mainTabs.find(t => t.id === mainTab)?.label}</p>
-            </div>
-          </>
-        )}
+        {mainTab === 'mentor' && renderMentorTab()}
+        {(mainTab === 'cocurriculars' || mainTab === 'localempact') && renderOtherTab()}
       </div>
 
-      {/* CSS for fade animation */}
       <style jsx>{`
         @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
         }
       `}</style>
     </section>

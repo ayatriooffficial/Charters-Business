@@ -2,6 +2,7 @@
 
 import { useState, useEffect, memo } from "react";
 import Image from "next/image";
+import HighlightText from "../shared/HighlightObserver";
 
 interface Testimonial {
   id: string;
@@ -508,7 +509,9 @@ const OneSpaceForEveryTeam = () => {
           </p>
           <h2 className="leading-normal text-[35px] font-bold text-black">
             Class curriculum aling{" "}
-            <span className=" text-[#B30437]">every Sector</span>
+            <HighlightText className="font-bold">
+              every Sector
+            </HighlightText>
           </h2>
           <div className="flex justify-center">
             <p className="text-black text-sm sm:text-base md:text-lg max-w-4xl">

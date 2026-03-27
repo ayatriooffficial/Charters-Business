@@ -2,6 +2,8 @@
 import React, { useState, memo, useCallback, useRef, useEffect } from "react";
 import Image from "next/image";
 import useInViewPlay from "@/components/micro/useInViewPlay";
+import ChartersInterviewAi from "./Chartersinterview_ai";
+import HighlightText from "../shared/HighlightObserver";
 
 interface CardData {
     id: string;
@@ -9,6 +11,7 @@ interface CardData {
     description: string;
     color: string;
     bgColor: string;
+    isAI: boolean,
 }
 
 interface ServiceCard {
@@ -54,6 +57,7 @@ const cardsData: CardData[] = [
         description: "Month 1",
         color: "bg-pink-500",
         bgColor: "hover:bg-pink-50",
+        isAI: false,
     },
     {
         id: "not-summer",
@@ -61,6 +65,7 @@ const cardsData: CardData[] = [
         description: "Month 2",
         color: "bg-purple-500",
         bgColor: "hover:bg-purple-50",
+        isAI: false,
     },
     {
         id: "not-summer-month3",
@@ -68,6 +73,7 @@ const cardsData: CardData[] = [
         description: "Month 3",
         color: "bg-purple-500",
         bgColor: "hover:bg-purple-50",
+        isAI: false,
     },
     {
         id: "not-summer-month4",
@@ -75,6 +81,7 @@ const cardsData: CardData[] = [
         description: "Month 4",
         color: "bg-purple-500",
         bgColor: "hover:bg-purple-50",
+        isAI: false,
     },
     {
         id: "real-assignments",
@@ -82,6 +89,15 @@ const cardsData: CardData[] = [
         description: "Month 5",
         color: "bg-cyan-400",
         bgColor: "hover:bg-cyan-50",
+        isAI: false,
+    },
+    {
+        id: "real-assignments2",
+        title: "Test Your Skills",
+        description: "AI INTERVIEW",
+        color: "bg-cyan-400",
+        bgColor: "hover:bg-cyan-50",
+        isAI: true,
     },
 ];
 
@@ -558,7 +574,10 @@ const StrategicExpansion: React.FC = () => {
                 <>
                     <div className="flex-shrink-0 text-center mb-13 sm:mb-13">
                         <h2 className="leading-normal text-[35px] font-semibold text-black">
-                            Career Labs at <span className="text-[#B30437]">Charters</span>
+                            Career Labs at{" "}
+                            <HighlightText className="font-bold">
+                                Charters
+                            </HighlightText>
                         </h2>
                         <div className="flex flex-col items-start sm:flex-row sm:flex-wrap sm:justify-center sm:items-center gap-3 sm:gap-6 mt-4 sm:mt-6 w-fit mx-auto sm:w-full">
                             {heading_description.description.split("|").map((item: string, index: number) => (
@@ -582,7 +601,13 @@ const StrategicExpansion: React.FC = () => {
                             {cardsData.map((card) => (
                                 <li key={card.id} className="flex-1">
                                     <button
-                                        onClick={() => handleCardClick(card.id)}
+                                        onClick={() => {
+                                            if (card.isAI) {
+                                                setSelectedCard("AI_INTERVIEW");
+                                            } else {
+                                                handleCardClick(card.id);
+                                            }
+                                        }}
                                         className={`w-full px-3 text-nowrap sm:px-4 py-2 transition-all focus-visible:outline-none focus-visible:border-b-2 focus-visible:border-[#B30437] text-sm ${selectedCard === card.id
                                             ? "text-black border-b-2 border-black"
                                             : "text-gray-700 hover:bg-gray-50"
@@ -599,297 +624,298 @@ const StrategicExpansion: React.FC = () => {
                     </div>
 
                     <div className="max-w-[85rem] mx-auto">
+                        {selectedCard === "AI_INTERVIEW" ? (
+                            <ChartersInterviewAi />   // ✅ FULL REPLACEMENT
+                        ) : (
 
-                        {/* Strategic Expansion Header Section with Tabs */}
-                        <div className="bg-[#F6F4F2] p-4 sm:p-6 md:p-8 ">
+                            < div className="bg-[#F6F4F2] p-4 sm:p-6 md:p-8 ">
 
 
-                            {/* Content Section */}
-                            <div className="flex flex-col lg:flex-row gap-8 items-start mb-8">
-                                {/* Left Side - Text and Stats */}
-                                <div className="flex-1 space-y-6">
-                                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-black leading-tight">
-                                        {currentContent.title}{" "}
-                                        <em className="italic font-serif text-[#B30437]">
-                                            {currentContent.highlightText}
-                                        </em>
-                                    </h2>
+                                {/* Content Section */}
+                                <div className="flex flex-col lg:flex-row gap-8 items-start mb-8">
+                                    {/* Left Side - Text and Stats */}
+                                    <div className="flex-1 space-y-6">
+                                        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-black leading-tight">
+                                            {currentContent.title}{" "}
+                                            <em className="italic font-serif text-[#B30437]">
+                                                {currentContent.highlightText}
+                                            </em>
+                                        </h2>
 
-                                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                                        {currentContent.description}
-                                    </p>
+                                        <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                                            {currentContent.description}
+                                        </p>
 
-                                    {/* Stats */}
-                                    <div className="space-y-6">
-                                        <div className="relative pl-4">
-                                            <div
-                                                className={`absolute left-0 -top-2 w-16 h-12 ${currentContent.stats.main.bgColor} rounded-lg`}
-                                            />
-                                            <div className="relative z-10">
-                                                <div className="text-2xl lg:text-3xl font-light text-black">
-                                                    {currentContent.stats.main.value}
+                                        {/* Stats */}
+                                        <div className="space-y-6">
+                                            <div className="relative pl-4">
+                                                <div
+                                                    className={`absolute left-0 -top-2 w-16 h-12 ${currentContent.stats.main.bgColor} rounded-lg`}
+                                                />
+                                                <div className="relative z-10">
+                                                    <div className="text-2xl lg:text-3xl font-light text-black">
+                                                        {currentContent.stats.main.value}
+                                                    </div>
+                                                    <p className="text-[#B30437] text-xs font-medium">
+                                                        {currentContent.stats.main.label}
+                                                    </p>
                                                 </div>
-                                                <p className="text-[#B30437] text-xs font-medium">
-                                                    {currentContent.stats.main.label}
-                                                </p>
+                                            </div>
+
+                                            <div className="flex gap-6">
+                                                {currentContent.stats.secondary.map((stat, i) => (
+                                                    <div key={i} className="relative pl-4">
+                                                        <div
+                                                            className={`absolute left-0 top-0 w-8 h-8 ${stat.bgColor} rounded-lg`}
+                                                        />
+                                                        <div className="relative z-10">
+                                                            <div className="text-xl font-light text-black">{stat.value}</div>
+                                                            <p className="text-[#B30437] text-xs font-medium">
+                                                                {stat.label}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                ))}
                                             </div>
                                         </div>
 
-                                        <div className="flex gap-6">
-                                            {currentContent.stats.secondary.map((stat, i) => (
-                                                <div key={i} className="relative pl-4">
-                                                    <div
-                                                        className={`absolute left-0 top-0 w-8 h-8 ${stat.bgColor} rounded-lg`}
-                                                    />
-                                                    <div className="relative z-10">
-                                                        <div className="text-xl font-light text-black">{stat.value}</div>
-                                                        <p className="text-[#B30437] text-xs font-medium">
-                                                            {stat.label}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
+                                        {/* CTA Button */}
+                                        <button
+                                            className={`${currentContent.buttonColor} text-white px-6 py-3 rounded-lg text-sm font-semibold transition-all`}
+                                        >
+                                            {currentContent.buttonText}
+                                        </button>
                                     </div>
 
-                                    {/* CTA Button */}
-                                    <button
-                                        className={`${currentContent.buttonColor} text-white px-6 py-3 rounded-lg text-sm font-semibold transition-all`}
+                                    {/* Right Side - Profile Image */}
+                                    <div className="flex-1 flex justify-center">
+                                        <div className="relative w-72 h-80 lg:w-80 lg:h-96">
+                                            <div className="w-full h-full bg-gradient-to-b from-gray-200 to-gray-300 rounded-lg overflow-hidden relative">
+                                                <Image
+                                                    key={selectedCard}
+                                                    src={currentContent.imageSrc}
+                                                    alt={currentContent.imageAlt}
+                                                    fill
+                                                    loading="lazy"
+                                                    priority={false}
+                                                    className="object-cover"
+                                                    sizes="(max-width: 768px) 100vw, 320px"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                {/* Three Service Cards - Dynamic based on selected tab */}
+                                <div className="relative">
+                                    <div
+                                        ref={sliderRef}
+                                        className="md:grid md:grid-cols-3 gap-6 mb-2 flex overflow-x-auto scrollbar-hide snap-x snap-mandatory md:overflow-visible"
                                     >
-                                        {currentContent.buttonText}
+                                        {currentContent.serviceCards.map((card, index) => (
+                                            <div key={index} className="border border-[#D5D0CA] p-6 relative overflow-hidden min-w-[82vw] md:min-w-0 snap-center">
+                                                <h3 className="text-lg font-semibold text-black mb-2">{card.title}</h3>
+                                                <p className="text-sm text-gray-600 mb-6">
+                                                    {card.description}
+                                                </p>
+
+                                                {/* Middle card (index 1) gets grid layout, others get list layout */}
+                                                {index === 1 ? (
+                                                    <div className="grid grid-cols-2 -mx-6 border-t border-[#D5D0CA]">
+                                                        {[0, 1, 2].map((rowIndex) => (
+                                                            <React.Fragment key={rowIndex}>
+                                                                {/* Left item */}
+                                                                <div className="border-b border-r border-[#D5D0CA] p-3 sm:p-4 flex items-center gap-2">
+                                                                    <div className="shrink-0">
+                                                                        {getIcon(card.features[rowIndex]?.icon || "document")}
+                                                                    </div>
+                                                                    <span className="text-xs text-gray-700">{card.features[rowIndex]?.label}</span>
+                                                                </div>
+                                                                {/* Right item */}
+                                                                <div className="border-b border-[#D5D0CA] p-3 sm:p-4 flex items-center gap-2">
+                                                                    <div className="shrink-0">
+                                                                        {getIcon(card.features[rowIndex + 3]?.icon || "document")}
+                                                                    </div>
+                                                                    <span className="text-xs text-gray-700">{card.features[rowIndex + 3]?.label}</span>
+                                                                </div>
+                                                            </React.Fragment>
+                                                        ))}
+                                                    </div>
+                                                ) : (
+                                                    <div className="-mx-6 border-t border-[#D5D0CA]">
+                                                        {card.features.map((feature, featureIndex) => (
+                                                            <div
+                                                                key={featureIndex}
+                                                                className="border-b border-[#D5D0CA] p-3 sm:p-4 flex items-center gap-2"
+                                                            >
+                                                                <div className="shrink-0 px-2">
+                                                                    {getIcon(feature.icon)}
+                                                                </div>
+                                                                <span className="text-xs text-gray-700">{feature.label}</span>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                )}
+
+                                                <div className="-mx-6  py-0.5 px-4">
+                                                    <span className="text-xs text-gray-500">And more</span>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    {/* Mobile Navigation Buttons */}
+                                    <div className="md:hidden absolute top-1/2 -translate-y-1/2 right-2 pointer-events-none z-10">
+                                        {canScrollRight && (
+                                            <button
+                                                onClick={() => scrollSlider(1)}
+                                                className="w-10 h-10 rounded-full bg-[#B30437] hover:bg-red-700 transition-all duration-300 shadow-md flex items-center justify-center pointer-events-auto"
+                                                aria-label="Next slide"
+                                                type="button"
+                                            >
+                                                <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" aria-hidden="true">
+                                                    <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
+                                                </svg>
+                                            </button>
+                                        )}
+                                    </div>
+                                    <div className="md:hidden absolute top-1/2 -translate-y-1/2 left-2 pointer-events-none z-10">
+                                        {canScrollLeft && (
+                                            <button
+                                                onClick={() => scrollSlider(-1)}
+                                                className="w-10 h-10 rounded-full bg-[#B30437] hover:bg-red-700 transition-all duration-300 shadow-md flex items-center justify-center pointer-events-auto"
+                                                aria-label="Previous slide"
+                                                type="button"
+                                            >
+                                                <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" aria-hidden="true">
+                                                    <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
+                                                </svg>
+                                            </button>
+                                        )}
+                                    </div>
+                                </div>
+
+                                {/* Dotted Lines Connecting Cards to Bottom Section */}
+                                <div className="relative h-8 hidden md:flex justify-around">
+                                    {/* Left dotted lines group (3 lines) */}
+                                    <div className="absolute left-[16.67%] top-0 h-full flex gap-1">
+                                        <div className="h-full border-l-2 border-dashed border-[#B30437]/40"></div>
+                                        <div className="h-full border-l-2 border-dashed border-[#B30437]/40"></div>
+                                        <div className="h-full border-l-2 border-dashed border-[#B30437]/40"></div>
+                                    </div>
+                                    {/* Center dotted lines group (3 lines) */}
+                                    <div className="absolute left-1/2 top-0 h-full flex gap-1 transform -translate-x-1/2">
+                                        <div className="h-full border-l-2 border-dashed border-orange-400/40"></div>
+                                        <div className="h-full border-l-2 border-dashed border-orange-400/40"></div>
+                                        <div className="h-full border-l-2 border-dashed border-orange-400/40"></div>
+                                    </div>
+                                    {/* Right dotted lines group (3 lines) */}
+                                    <div className="absolute right-[16.67%] top-0 h-full flex gap-1">
+                                        <div className="h-full border-l-2 border-dashed border-[#B30437]/40"></div>
+                                        <div className="h-full border-l-2 border-dashed border-[#B30437]/40"></div>
+                                        <div className="h-full border-l-2 border-dashed border-[#B30437]/40"></div>
+                                    </div>
+                                </div>
+
+                                {/* Emerge Career Unity Section */}
+                                <div className="border border-[#D5D0CA] p-4 my-2.5 text-center ">
+                                    <h3 className="text-2xl font-semibold text-black mb-3">Emerge Career Unity</h3>
+                                    <p className="text-gray-600 max-w-2xl mx-auto mb-2">
+                                        Emerge Career has everything you need to run a successful workforce development program, and reduce the workload on your staff.
+                                    </p>
+                                </div>
+                                {/* Feature Buttons */}
+                                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 w-full">
+                                    <button className="flex items-center justify-center gap-2 px-2 md:px-4 py-3 border border-[#D5D0CA] transition-colors hover:bg-gray-50">
+                                        <ChartIcon />
+                                        <span className="text-xs md:text-sm font-medium">Analytics</span>
+                                    </button>
+                                    <button className="flex items-center justify-center gap-2 px-2 md:px-4 py-3 border border-[#D5D0CA] transition-colors hover:bg-gray-50">
+                                        <ChartIcon />
+                                        <span className="text-xs md:text-sm font-medium whitespace-nowrap">Workflow Automation</span>
+                                    </button>
+                                    <button className="flex items-center justify-center gap-2 px-2 md:px-4 py-3 border border-[#D5D0CA] transition-colors hover:bg-gray-50">
+                                        <ChartIcon />
+                                        <span className="text-xs md:text-sm font-medium">Success Plan</span>
+                                    </button>
+                                    <button className="flex items-center justify-center gap-2 px-2 md:px-4 py-3 border border-[#D5D0CA] transition-colors hover:bg-gray-50">
+                                        <ChartIcon />
+                                        <span className="text-xs md:text-sm font-medium">Case Notes</span>
                                     </button>
                                 </div>
 
-                                {/* Right Side - Profile Image */}
-                                <div className="flex-1 flex justify-center">
-                                    <div className="relative w-72 h-80 lg:w-80 lg:h-96">
-                                        <div className="w-full h-full bg-gradient-to-b from-gray-200 to-gray-300 rounded-lg overflow-hidden relative">
-                                            <Image
-                                                key={selectedCard}
-                                                src={currentContent.imageSrc}
-                                                alt={currentContent.imageAlt}
-                                                fill
-                                                loading="lazy"
-                                                priority={false}
-                                                className="object-cover"
-                                                sizes="(max-width: 768px) 100vw, 320px"
-                                            />
+                                {/* Curved Dotted Lines with Avatars Section */}
+                                <div className="relative h-16 hidden md:flex justify-center items-end mt-4">
+                                    {/* SVG for curved dotted lines */}
+                                    <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 1000 50" preserveAspectRatio="none">
+                                        {/* Left outer curve - from button 1 to left side of avatars */}
+                                        <path
+                                            d="M 125 0 L 125 5 Q 125 15, 160 15 L 390 15 Q 410 15, 410 30 L 410 35 Q 410 42, 425 42 L 435 42"
+                                            fill="none"
+                                            stroke="#B30437"
+                                            strokeWidth="2"
+                                            strokeDasharray="6 4"
+                                            opacity="0.6"
+                                        />
+                                        {/* Left inner curve - from button 2 to left side of avatars */}
+                                        <path
+                                            d="M 375 0 L 375 5 Q 375 15, 400 15 L 430 15 Q 445 15, 445 30 L 445 35 Q 445 42, 455 42 L 465 42"
+                                            fill="none"
+                                            stroke="#B30437"
+                                            strokeWidth="2"
+                                            strokeDasharray="6 4"
+                                            opacity="0.6"
+                                        />
+                                        {/* Right inner curve - from button 3 to right side of avatars */}
+                                        <path
+                                            d="M 625 0 L 625 5 Q 625 15, 600 15 L 570 15 Q 555 15, 555 30 L 555 35 Q 555 42, 545 42 L 535 42"
+                                            fill="none"
+                                            stroke="#F97316"
+                                            strokeWidth="2"
+                                            strokeDasharray="6 4"
+                                            opacity="0.6"
+                                        />
+                                        {/* Right outer curve - from button 4 to right side of avatars */}
+                                        <path
+                                            d="M 875 0 L 875 5 Q 875 15, 840 15 L 610 15 Q 590 15, 590 30 L 590 35 Q 590 42, 575 42 L 565 42"
+                                            fill="none"
+                                            stroke="#F97316"
+                                            strokeWidth="2"
+                                            strokeDasharray="6 4"
+                                            opacity="0.6"
+                                        />
+                                        {/* Arrow heads pointing INWARD (toward circles) */}
+                                        <polygon points="440,42 432,38 432,46" fill="#B30437" opacity="0.6" />
+                                        <polygon points="470,42 462,38 462,46" fill="#B30437" opacity="0.6" />
+                                        <polygon points="530,42 538,38 538,46" fill="#F97316" opacity="0.6" />
+                                        <polygon points="560,42 568,38 568,46" fill="#F97316" opacity="0.6" />
+                                    </svg>
+
+                                    {/* Avatar Group */}
+                                    <div className="relative z-10 top-5 flex items-center justify-center -space-x-3">
+                                        <div className="w-12 h-12 rounded-full border-2 border-white overflow-hidden shadow-md">
+                                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Team member" className="w-full h-full object-cover" />
+                                        </div>
+                                        <div className="w-14 h-14 rounded-full border-2 border-white overflow-hidden shadow-md z-10">
+                                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Team member" className="w-full h-full object-cover" />
+                                        </div>
+                                        <div className="w-16 h-16 rounded-full border-4 border-yellow-400 overflow-hidden shadow-lg z-20">
+                                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop" alt="Team member" className="w-full h-full object-cover" />
+                                        </div>
+                                        <div className="w-14 h-14 rounded-full border-2 border-white overflow-hidden shadow-md z-10">
+                                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop" alt="Team member" className="w-full h-full object-cover" />
+                                        </div>
+                                        <div className="w-12 h-12 rounded-full border-2 border-white overflow-hidden shadow-md">
+                                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop" alt="Team member" className="w-full h-full object-cover" />
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-
-                            {/* Three Service Cards - Dynamic based on selected tab */}
-                            <div className="relative">
-                                <div
-                                    ref={sliderRef}
-                                    className="md:grid md:grid-cols-3 gap-6 mb-2 flex overflow-x-auto scrollbar-hide snap-x snap-mandatory md:overflow-visible"
-                                >
-                                    {currentContent.serviceCards.map((card, index) => (
-                                        <div key={index} className="border border-[#D5D0CA] p-6 relative overflow-hidden min-w-[82vw] md:min-w-0 snap-center">
-                                            <h3 className="text-lg font-semibold text-black mb-2">{card.title}</h3>
-                                            <p className="text-sm text-gray-600 mb-6">
-                                                {card.description}
-                                            </p>
-
-                                            {/* Middle card (index 1) gets grid layout, others get list layout */}
-                                            {index === 1 ? (
-                                                <div className="grid grid-cols-2 -mx-6 border-t border-[#D5D0CA]">
-                                                    {[0, 1, 2].map((rowIndex) => (
-                                                        <React.Fragment key={rowIndex}>
-                                                            {/* Left item */}
-                                                            <div className="border-b border-r border-[#D5D0CA] p-3 sm:p-4 flex items-center gap-2">
-                                                                <div className="shrink-0">
-                                                                    {getIcon(card.features[rowIndex]?.icon || "document")}
-                                                                </div>
-                                                                <span className="text-xs text-gray-700">{card.features[rowIndex]?.label}</span>
-                                                            </div>
-                                                            {/* Right item */}
-                                                            <div className="border-b border-[#D5D0CA] p-3 sm:p-4 flex items-center gap-2">
-                                                                <div className="shrink-0">
-                                                                    {getIcon(card.features[rowIndex + 3]?.icon || "document")}
-                                                                </div>
-                                                                <span className="text-xs text-gray-700">{card.features[rowIndex + 3]?.label}</span>
-                                                            </div>
-                                                        </React.Fragment>
-                                                    ))}
-                                                </div>
-                                            ) : (
-                                                <div className="-mx-6 border-t border-[#D5D0CA]">
-                                                    {card.features.map((feature, featureIndex) => (
-                                                        <div
-                                                            key={featureIndex}
-                                                            className="border-b border-[#D5D0CA] p-3 sm:p-4 flex items-center gap-2"
-                                                        >
-                                                            <div className="shrink-0 px-2">
-                                                                {getIcon(feature.icon)}
-                                                            </div>
-                                                            <span className="text-xs text-gray-700">{feature.label}</span>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            )}
-
-                                            <div className="-mx-6  py-0.5 px-4">
-                                                <span className="text-xs text-gray-500">And more</span>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                {/* Mobile Navigation Buttons */}
-                                <div className="md:hidden absolute top-1/2 -translate-y-1/2 right-2 pointer-events-none z-10">
-                                    {canScrollRight && (
-                                        <button
-                                            onClick={() => scrollSlider(1)}
-                                            className="w-10 h-10 rounded-full bg-[#B30437] hover:bg-red-700 transition-all duration-300 shadow-md flex items-center justify-center pointer-events-auto"
-                                            aria-label="Next slide"
-                                            type="button"
-                                        >
-                                            <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" aria-hidden="true">
-                                                <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
-                                            </svg>
-                                        </button>
-                                    )}
-                                </div>
-                                <div className="md:hidden absolute top-1/2 -translate-y-1/2 left-2 pointer-events-none z-10">
-                                    {canScrollLeft && (
-                                        <button
-                                            onClick={() => scrollSlider(-1)}
-                                            className="w-10 h-10 rounded-full bg-[#B30437] hover:bg-red-700 transition-all duration-300 shadow-md flex items-center justify-center pointer-events-auto"
-                                            aria-label="Previous slide"
-                                            type="button"
-                                        >
-                                            <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" aria-hidden="true">
-                                                <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
-                                            </svg>
-                                        </button>
-                                    )}
-                                </div>
-                            </div>
-
-                            {/* Dotted Lines Connecting Cards to Bottom Section */}
-                            <div className="relative h-8 hidden md:flex justify-around">
-                                {/* Left dotted lines group (3 lines) */}
-                                <div className="absolute left-[16.67%] top-0 h-full flex gap-1">
-                                    <div className="h-full border-l-2 border-dashed border-[#B30437]/40"></div>
-                                    <div className="h-full border-l-2 border-dashed border-[#B30437]/40"></div>
-                                    <div className="h-full border-l-2 border-dashed border-[#B30437]/40"></div>
-                                </div>
-                                {/* Center dotted lines group (3 lines) */}
-                                <div className="absolute left-1/2 top-0 h-full flex gap-1 transform -translate-x-1/2">
-                                    <div className="h-full border-l-2 border-dashed border-orange-400/40"></div>
-                                    <div className="h-full border-l-2 border-dashed border-orange-400/40"></div>
-                                    <div className="h-full border-l-2 border-dashed border-orange-400/40"></div>
-                                </div>
-                                {/* Right dotted lines group (3 lines) */}
-                                <div className="absolute right-[16.67%] top-0 h-full flex gap-1">
-                                    <div className="h-full border-l-2 border-dashed border-[#B30437]/40"></div>
-                                    <div className="h-full border-l-2 border-dashed border-[#B30437]/40"></div>
-                                    <div className="h-full border-l-2 border-dashed border-[#B30437]/40"></div>
-                                </div>
-                            </div>
-
-                            {/* Emerge Career Unity Section */}
-                            <div className="border border-[#D5D0CA] p-4 my-2.5 text-center ">
-                                <h3 className="text-2xl font-semibold text-black mb-3">Emerge Career Unity</h3>
-                                <p className="text-gray-600 max-w-2xl mx-auto mb-2">
-                                    Emerge Career has everything you need to run a successful workforce development program, and reduce the workload on your staff.
-                                </p>
-                            </div>
-                            {/* Feature Buttons */}
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 w-full">
-                                <button className="flex items-center justify-center gap-2 px-2 md:px-4 py-3 border border-[#D5D0CA] transition-colors hover:bg-gray-50">
-                                    <ChartIcon />
-                                    <span className="text-xs md:text-sm font-medium">Analytics</span>
-                                </button>
-                                <button className="flex items-center justify-center gap-2 px-2 md:px-4 py-3 border border-[#D5D0CA] transition-colors hover:bg-gray-50">
-                                    <ChartIcon />
-                                    <span className="text-xs md:text-sm font-medium whitespace-nowrap">Workflow Automation</span>
-                                </button>
-                                <button className="flex items-center justify-center gap-2 px-2 md:px-4 py-3 border border-[#D5D0CA] transition-colors hover:bg-gray-50">
-                                    <ChartIcon />
-                                    <span className="text-xs md:text-sm font-medium">Success Plan</span>
-                                </button>
-                                <button className="flex items-center justify-center gap-2 px-2 md:px-4 py-3 border border-[#D5D0CA] transition-colors hover:bg-gray-50">
-                                    <ChartIcon />
-                                    <span className="text-xs md:text-sm font-medium">Case Notes</span>
-                                </button>
-                            </div>
-
-                            {/* Curved Dotted Lines with Avatars Section */}
-                            <div className="relative h-16 hidden md:flex justify-center items-end mt-4">
-                                {/* SVG for curved dotted lines */}
-                                <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 1000 50" preserveAspectRatio="none">
-                                    {/* Left outer curve - from button 1 to left side of avatars */}
-                                    <path
-                                        d="M 125 0 L 125 5 Q 125 15, 160 15 L 390 15 Q 410 15, 410 30 L 410 35 Q 410 42, 425 42 L 435 42"
-                                        fill="none"
-                                        stroke="#B30437"
-                                        strokeWidth="2"
-                                        strokeDasharray="6 4"
-                                        opacity="0.6"
-                                    />
-                                    {/* Left inner curve - from button 2 to left side of avatars */}
-                                    <path
-                                        d="M 375 0 L 375 5 Q 375 15, 400 15 L 430 15 Q 445 15, 445 30 L 445 35 Q 445 42, 455 42 L 465 42"
-                                        fill="none"
-                                        stroke="#B30437"
-                                        strokeWidth="2"
-                                        strokeDasharray="6 4"
-                                        opacity="0.6"
-                                    />
-                                    {/* Right inner curve - from button 3 to right side of avatars */}
-                                    <path
-                                        d="M 625 0 L 625 5 Q 625 15, 600 15 L 570 15 Q 555 15, 555 30 L 555 35 Q 555 42, 545 42 L 535 42"
-                                        fill="none"
-                                        stroke="#F97316"
-                                        strokeWidth="2"
-                                        strokeDasharray="6 4"
-                                        opacity="0.6"
-                                    />
-                                    {/* Right outer curve - from button 4 to right side of avatars */}
-                                    <path
-                                        d="M 875 0 L 875 5 Q 875 15, 840 15 L 610 15 Q 590 15, 590 30 L 590 35 Q 590 42, 575 42 L 565 42"
-                                        fill="none"
-                                        stroke="#F97316"
-                                        strokeWidth="2"
-                                        strokeDasharray="6 4"
-                                        opacity="0.6"
-                                    />
-                                    {/* Arrow heads pointing INWARD (toward circles) */}
-                                    <polygon points="440,42 432,38 432,46" fill="#B30437" opacity="0.6" />
-                                    <polygon points="470,42 462,38 462,46" fill="#B30437" opacity="0.6" />
-                                    <polygon points="530,42 538,38 538,46" fill="#F97316" opacity="0.6" />
-                                    <polygon points="560,42 568,38 568,46" fill="#F97316" opacity="0.6" />
-                                </svg>
-
-                                {/* Avatar Group */}
-                                <div className="relative z-10 top-5 flex items-center justify-center -space-x-3">
-                                    <div className="w-12 h-12 rounded-full border-2 border-white overflow-hidden shadow-md">
-                                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Team member" className="w-full h-full object-cover" />
-                                    </div>
-                                    <div className="w-14 h-14 rounded-full border-2 border-white overflow-hidden shadow-md z-10">
-                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Team member" className="w-full h-full object-cover" />
-                                    </div>
-                                    <div className="w-16 h-16 rounded-full border-4 border-yellow-400 overflow-hidden shadow-lg z-20">
-                                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop" alt="Team member" className="w-full h-full object-cover" />
-                                    </div>
-                                    <div className="w-14 h-14 rounded-full border-2 border-white overflow-hidden shadow-md z-10">
-                                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop" alt="Team member" className="w-full h-full object-cover" />
-                                    </div>
-                                    <div className="w-12 h-12 rounded-full border-2 border-white overflow-hidden shadow-md">
-                                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop" alt="Team member" className="w-full h-full object-cover" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                            </div>)}
                     </div>
                 </>
             )}
-        </section>
+        </section >
     );
 };
 

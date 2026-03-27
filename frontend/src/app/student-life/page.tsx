@@ -1,4 +1,3 @@
-import { scholarshipBanner } from "@/data/applyPageData";
 import { generateBreadcrumbSchema } from "@/lib/schema";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import LifeAtCharters from "@/components/student-life/LifeAtCharters";

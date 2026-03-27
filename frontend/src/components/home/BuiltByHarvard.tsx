@@ -3,6 +3,7 @@
 import { memo } from "react";
 import Image from "next/image";
 import { getCloudinaryUrl, CLOUDINARY_IMAGES } from "@/lib/cloudinary";
+import HighlightText from "@/components/shared/HighlightObserver";
 
 interface University {
   name: string;
@@ -42,19 +43,9 @@ function BuiltByHarvard() {
           className="leading-normal text-[35px] font-semibold text-black"
         >
           The most{" "}
-          <span className="relative inline-block mx-2">
-            <Image
-              src="/highlight line.svg"
-              alt="highlight line"
-              aria-hidden="true"
-              width={200}
-              height={40}
-              className="absolute inset-0 w-full h-full scale-x-300 scale-y-155 pointer-events-none"
-            />
-            <span className="relative z-10 text-[#B30437] px-3 font-fraunces font-bold">
-              innovative
-            </span>
-          </span>{" "}
+          <HighlightText className="mx-2 font-bold">
+            innovative
+          </HighlightText>{" "}
           Institution
         </h2>
 
@@ -71,7 +62,7 @@ function BuiltByHarvard() {
           {/* Left Section */}
           <div className="lg:pr-6 lg:pb-4">
             <h3 className="text-lg sm:text-[16px] md:text-[18px] font-semibold text-black mb-2 sm:mb-4 text-center">
-              Built by alumni from {" "}
+              Built by alumni from{" "}
             </h3>
 
             <div className="grid grid-cols-3 gap-6 sm:gap-8 items-center justify-items-center">
@@ -89,7 +80,7 @@ function BuiltByHarvard() {
                       alt={`${university.name} logo`}
                       width={120}
                       height={60}
-                      className="max-w-full max-h-full object-contain  transition-all duration-300"
+                      className="max-w-full max-h-full object-contain transition-all duration-300"
                       loading="lazy"
                     />
                   </div>

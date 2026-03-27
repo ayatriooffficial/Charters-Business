@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter} from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
 import CookieConsent from "@/components/shared/CookieConsent";
@@ -23,7 +23,6 @@ const inter = Inter({
   ],
 });
 
-
 export const metadata: Metadata = {
   title: {
     default: "Charters union: Learn with companys in-class",
@@ -44,16 +43,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      // className={`scroll-smooth ${fraunces.variable}`}
       className={`${inter.variable} scroll-smooth`}
       data-scroll-behavior="smooth"
     >
       <head>
-        {/* DNS Prefetch + Preconnect */}
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="" />
-
-        {/* PWA + Theme */}
         <meta name="theme-color" content="#B30437" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
@@ -64,6 +59,7 @@ export default function RootLayout({
         <Providers>
           <GoogleTagManager />
           <ClientOnlyComponents />
+          {/* <HighlightObserver />  */}
 
           <div className="flex flex-col min-h-screen">
             {children}

@@ -6,7 +6,15 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  
+
+  safelist: [
+    'hl-wrap',
+    'hl-bg',
+    'hl-text',
+    'hl-active',
+    'hl-wrap-hl-active', // for .hl-wrap.hl-active
+  ],
+
   theme: {
     extend: {
       fontFamily: {

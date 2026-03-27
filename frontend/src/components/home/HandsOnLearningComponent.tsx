@@ -16,6 +16,7 @@ import {
   MessageSquare,
   Rocket,
 } from "lucide-react";
+import HighlightText from "@/components/shared/HighlightObserver";
 
 const hanson_heading = {
   description: "Innovative learning programs | Practical, hands-on experience | Real-world business exposure"
@@ -1007,18 +1008,9 @@ function HandsOnLearningComponent() {
                 className="leading-normal text-[35px] font-semibold text-black"
               >
                 Hands-on.
-                <span className="relative inline-block mx-1 sm:mx-2">
-                  <img
-                    src="/roundline.svg"
-                    alt="roundline"
-                    aria-hidden="true"
-                    className="absolute inset-0 w-full h-full scale-x-[2.7] md:scale-x-[3.5] scale-y-[1.5] pointer-events-none"
-                  />
-
-                  <span className="font-bold leading-normal text-[35px] text-[#B30437]">
-                    Disruptive.
-                  </span>
-                </span>
+                <HighlightText className="mx-1 sm:mx-2 font-bold">
+                  Disruptive.
+                </HighlightText>
                 Experiential.
               </h2>
             </div>

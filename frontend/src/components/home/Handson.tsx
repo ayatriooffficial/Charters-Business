@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, memo } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Brain, Hospital, Clipboard, BarChart3 } from "lucide-react";
+import HighlightText from "../shared/HighlightObserver";
 
 const features = [
   { icon: Brain, title: "AI in Healthcare" },
@@ -575,35 +576,20 @@ function Handson() {
               EXPERIENTIAL EDUCATION
             </p>
 
-            <h2 id="programs-heading" className="leading-normal text-[35px] font-bold text-black ">
+            <h2
+              id="programs-heading"
+              className="leading-normal text-[35px] font-bold text-black"
+            >
               Train with{" "}
-              <span className="relative inline-block mx-2">
-                <Image
-                  src="/roundline.svg"
-                  alt=""
-                  fill
-                  sizes="200px"
-                  aria-hidden="true"
-                  className="pointer-events-none absolute -left-[10%] -top-[25%] h-[150%] w-[120%] object-fill"
-                />
-                <span className="relative z-10 text-[#B30437] font-medium" style={{ fontWeight: 700 }}>
-                  'Global curriculum'
-                </span>
-              </span>
+              <HighlightText className="mx-2 font-bold">
+                &apos;Global curriculum&apos;
+              </HighlightText>
               {" "}along with{" "}
-              <span className="relative inline-block whitespace-nowrap px-2 md:px-3 mx-1 md:mx-2 mt-2 md:mt-0">
-                <img
-                  src="/roundline.svg"
-                  alt=""
-                  sizes="200px"
-                  aria-hidden="true"
-                  className="pointer-events-none absolute -left-[10%] -top-[25%] h-[150%] w-[120%] object-fill"
-                />
-                <span className="relative z-10 text-[#B30437] font-medium" style={{ fontWeight: 700 }}>
-                  MNC's
-                </span>
-              </span>
+              <HighlightText className="whitespace-nowrap mx-1 md:mx-2 font-bold">
+                MNC&apos;s
+              </HighlightText>
             </h2>
+
 
             <p className="text-base sm:text-lg text-[#5f6368] mt-[14px]">
               Top roles, disruptive startups and industry-leading firms. See where our graduates landed and their career transformations.

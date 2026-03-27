@@ -2,6 +2,8 @@
 
 import { memo, useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import HighlightObserver from "@/components/shared/HighlightObserver"; 
+import HighlightText from "@/components/shared/HighlightObserver";
 
 interface Faculty {
   name: string;
@@ -298,23 +300,9 @@ function FacultyModel() {
               className="leading-normal text-2xl sm:text-3xl md:text-[35px] font-semibold text-black"
             >
               Meet your{" "}
-              <span className="relative inline-block mx-1 sm:mx-2">
-                {/* IMAGE BEHIND TEXT */}
-                <img
-                  src="/highlight line.svg"
-                  alt="highlight line"
-                  aria-hidden="true"
-                  className="absolute inset-0 w-full h-full scale-x-[2.5] sm:scale-x-[3] scale-y-[1.5] pointer-events-none"
-                />
-
-                {/* TEXT ABOVE IMAGE */}
-                <span
-                  className="relative z-10 text-[#B30437] px-3 font-bold"
-                  style={{ fontWeight: 700 }}
-                >
-                  Faculty
-                </span>
-              </span>
+              <HighlightText className="mx-1 sm:mx-2 font-bold">
+                Faculty
+              </HighlightText>
             </h2>
 
             <p className="text-black text-sm sm:text-base md:text-lg max-w-4xl mx-auto leading-relaxed">

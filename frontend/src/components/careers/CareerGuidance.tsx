@@ -144,7 +144,7 @@ export default function CareerGuidance() {
           </div>
         </div>
 
-        {/* Tabs — scrollable on mobile, wraps on larger screens */}
+        {/* Tabs*/}
         <div className="mb-6 sm:mb-8 overflow-x-auto scrollbar-hide px-4 sm:px-5">
           <div className="flex justify-center min-w-max sm:min-w-0 sm:flex-wrap">
             {ROADMAP_DATA.map((term) => (

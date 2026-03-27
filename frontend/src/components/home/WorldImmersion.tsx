@@ -2,6 +2,7 @@
 
 import { useState, memo, useRef, useEffect } from "react";
 import Image from "next/image";
+import HighlightText from "../shared/HighlightObserver";
 
 const immersionData = [
   {
@@ -218,23 +219,9 @@ function WorldImmersion() {
         <div className="text-center mb-8 sm:mb-12">
           <h2 className="leading-normal text-[35px] font-semibold text-black">
             Intranship,{" "}
-            <span className="relative inline-block mx-2">
-              {/* IMAGE BEHIND TEXT */}
-              <img
-                src="/rojor1.svg"
-                alt="rojor1"
-                aria-hidden="true"
-                className="absolute inset-0 w-full h-full scale-x-400 scale-y-150 pt-8 pointer-events-none"
-              />
-
-              {/* TEXT ABOVE IMAGE */}
-              <span
-                className="relative z-10 text-[#B30437] font-medium px-3"
-                style={{ fontWeight: 700 }}
-              >
-                Across the World
-              </span>
-            </span>
+            <HighlightText className=" font-bold">
+              Across the World
+            </HighlightText>
           </h2>
           <p className="text-sm sm:text-base text-gray-600">
             Global business and culture — 7 countries, 1 program.

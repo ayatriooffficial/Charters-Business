@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import MeetingModal from "./MeetingModal";
+import HighlightText from "../shared/HighlightObserver";
 
 interface Feature {
   id: string;
@@ -357,7 +358,9 @@ const PremiumFeaturesSection = () => {
           <header className="mb-8">
             <h2 id="enrich-learning-heading" className="text-2xl md:text-3xl lg:text-4xl font-semibold text-black mb-8">
               Enrich and{" "}
-              <span className="italic text-[#B30437]">personalize learning</span>
+              <HighlightText className="font-bold italic">
+                personalize learning
+              </HighlightText>
             </h2>
             <p className="text-xl lg:text-xl text-black mx-auto leading-relaxed">
               Drive student agency with tools that meet students where they are – and build skills for their future.

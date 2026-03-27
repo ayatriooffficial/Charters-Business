@@ -2,6 +2,7 @@
 
 import { memo, useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import HighlightText from "../shared/HighlightObserver";
 
 interface Faculty {
   name: string;
@@ -296,26 +297,12 @@ function FacultyModel() {
 
             <h2
               id="faculty-heading"
-              className="leading-normal text-[35px] font-semibold text-black"
+              className="leading-normal text-2xl sm:text-3xl md:text-[35px] font-semibold text-black"
             >
               Meet your{" "}
-              <span className="relative inline-block mx-2">
-                {/* IMAGE BEHIND TEXT */}
-                <img
-                  src="/highlight line.svg"
-                  alt="highlight line"
-                  aria-hidden="true"
-                  className="absolute inset-0 w-full h-full scale-x-300 scale-y-155 pointer-events-none"
-                />
-
-                {/* TEXT ABOVE IMAGE */}
-                <span
-                  className="relative z-10 text-[#B30437] font-medium px-3"
-                  style={{ fontWeight: 700 }}
-                >
-                  Faculty
-                </span>
-              </span>
+              <HighlightText className="font-bold">
+                Faculty
+              </HighlightText>
             </h2>
 
             <p className="text-black text-sm sm:text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
