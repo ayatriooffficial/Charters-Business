@@ -183,18 +183,6 @@ function Navbar() {
                 <ul className="flex text-[13px] text-[#0F1419] font-semibold items-center space-x-3 sm:space-x-4 lg:space-x-6">
                   <li>
                     <a
-                      href="/for-you"
-                      className={`cursor-pointer hover:text-[#B30437] transition-colors ${selectedSecondaryTab === "for-you"
-                        ? "border-b-3 border-[#B30437] text-[#B30437]"
-                        : ""
-                        }`}
-                      onClick={() => setSelectedSecondaryTab("for-you")}
-                    >
-                      For Individuals
-                    </a>
-                  </li>
-                  <li>
-                    <a
                       href="/for-companies"
                       className={`cursor-pointer hover:text-[#B30437] transition-colors ${selectedSecondaryTab === "for-companies"
                         ? "border-b-3 border-[#B30437] text-[#B30437]"
@@ -208,8 +196,12 @@ function Navbar() {
                 </ul>
               </nav>
 
+              <div className="flex text-[13px] text-[#0F1419] font-semibold items-center space-x-3 sm:space-x-4 lg:space-x-6">
+                <p>Need Help? Talk to us at 08045579576 or REQUEST CALLBACK ↗</p>
+              </div>
+
               <nav aria-label="Quick links">
-                <ul className="flex text-[13px] font-medium text-[#000] items-center space-x-3 sm:space-x-4 lg:space-x-6">
+                <ul className="flex text-[13px] font-semibold text-[#000] items-center space-x-3 sm:space-x-4 lg:space-x-6">
                   <li>
                     <a
                       href="/careers/internships"
@@ -232,18 +224,6 @@ function Navbar() {
                       onClick={() => setSelectedSecondaryTab("jobs")}
                     >
                       Find Jobs
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/events"
-                      className={`cursor-pointer hover:text-[#B30437] transition-colors ${selectedSecondaryTab === "events"
-                        ? "border-b-2 border-[#B30437] text-[#B30437] pb-1"
-                        : ""
-                        }`}
-                      onClick={() => setSelectedSecondaryTab("events")}
-                    >
-                      Events
                     </a>
                   </li>
 

@@ -1,4 +1,3 @@
-// components/shared/SectionWrapper.tsx
 import { ReactNode } from "react";
 
 interface SectionWrapperProps {
