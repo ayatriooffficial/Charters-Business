@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import HighlightText from "../shared/HighlightObserver";
 
 const STAR_ICON = "https://files.mastersunion.link/resources/svg/star.svg";
 const SMALL_STAR_ICON =
@@ -134,7 +135,9 @@ export default function CareerGuidance() {
           <div className="flex flex-col items-center justify-center text-center">
             <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold tracking-tight text-gray-900 mb-2 sm:mb-3">
               Benefit From a{" "}
-              <span style={{ color: "#B30437" }}>Career Pathway</span>
+              <HighlightText className="font-extrabold">
+                Career Pathway
+              </HighlightText>
             </h2>
             <p className="text-xs sm:text-sm md:text-base text-gray-700 max-w-3xl">
               Leverage the opportunity to engage in workshops, training, panel

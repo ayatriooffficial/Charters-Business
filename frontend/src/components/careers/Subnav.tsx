@@ -65,7 +65,7 @@ export default function Subnav({ offsetTop = 0 }: Props) {
   return (
     <section
       aria-label="Careers sub-navigation"
-      className="sticky top-[var(--navbar-height,86px)] z-30  w-full border-b-1 border-gray-200 bg-white"
+      className="sticky top-[var(--navbar-height,86px)] z-10  w-full border-b-1 border-gray-200 bg-white"
       style={{ top: 'var(--navbar-height,86px)' }}
     >
       <nav aria-label="Section navigation" className="max-w-[85rem] md:mx-[5%] border-x border-gray-200">

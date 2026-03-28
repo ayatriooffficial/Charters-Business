@@ -1,6 +1,8 @@
 // components/KaleidoscopeSection.tsx
 "use client";
 
+import HighlightText from "../shared/HighlightObserver";
+
 function PhotoTile({ image, number, numberSub, label, className = "" }: {
     image: string;
     number: string;
@@ -82,11 +84,11 @@ function GenderTile({ className = "" }: { className?: string }) {
 export default function Diversity() {
     return (
         <section className="bg-white py-16">
-            <h2 className="text-center text-3xl sm:text-4xl font-light text-gray-900 mb-10 tracking-tight">
+            <h2 className="text-center text-3xl sm:text-4xl text-gray-900 mb-10 tracking-tight font-bold">
                 A{" "}
-                <em className="italic font-bold">
+                <HighlightText className="font-bold">
                     Kaleidoscope
-                </em>{" "}
+                </HighlightText>{" "}
                 of Diversity
             </h2>
 

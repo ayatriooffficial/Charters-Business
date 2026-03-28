@@ -193,7 +193,7 @@ function HealthGridCard({ card }: HealthGridCardProps) {
       {/* Mobile banner image */}
       <div className="relative block h-32 w-full flex-shrink-0 overflow-hidden lg:hidden">
         <Image
-          src={card.mediaSrc || "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1600&h=1200&fit=crop"}
+          src="/home/ima2.png"
           alt={`${card.title} visual`}
           fill
           className="w-full h-full object-cover"
@@ -279,7 +279,7 @@ function HealthGridCard({ card }: HealthGridCardProps) {
             fill
             priority
             sizes="(max-width:768px) 100vw, (max-width:1024px) 50vw, 600px"
-            className="object-cover object-center"
+            className="object-contain object-center"
           />
         </div>
       </div>
@@ -306,10 +306,10 @@ function FlagshipCard({ card }: FlagshipCardProps) {
   };
 
   return (
-    <section className="flex flex-col w-full bg-[#E6F4EA] overflow-hidden h-full">
+    <section className="flex flex-col w-full bg-[#E6F4EA] overflow-hidden h-full max-h-[85vh]">
       <div className="relative block h-32 w-full flex-shrink-0 overflow-hidden lg:hidden">
         <Image
-          src={card.mediaSrc || "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1600&h=1200&fit=crop"}
+          src="/home/ima2a.png"
           alt={`${card.title} visual`}
           fill
           className="w-full h-full object-cover"
@@ -374,7 +374,7 @@ function FlagshipCard({ card }: FlagshipCardProps) {
         {/* Right image column */}
         <div className="lg:col-span-6 hidden lg:block relative">
           <Image
-            src="/home/ima2a.png"
+            src="/home/ima11.png"
             alt="Learner portrait"
             fill
             priority

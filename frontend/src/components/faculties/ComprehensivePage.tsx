@@ -6,6 +6,7 @@ import { ArrowRight, Play } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useSectionObserver } from '@/hooks/Usementorshipscroll';
 import SectionWrapper from '@/components/shared/SectionWrapper';
+import HighlightText from '../shared/HighlightObserver';
 
 export default function ComprehensivePage() {
   // State for LearnFromFinest section
@@ -263,7 +264,7 @@ export default function ComprehensivePage() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section - full width, outside bordered container (like home page) */}
+      {/* Hero Section */}
       <section className="relative z-[5] pt-[72px] sm:pt-[48px] md:pt-[50px] pb-8 md:pb-12 bg-white">
         <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -304,15 +305,18 @@ export default function ComprehensivePage() {
         </div>
       </section>
 
-      {/* Faculty Section - Header (outside bordered container, like PlacementReport, no corners) */}
+      {/* Faculty Section */}
       <section className="mx-[0%] border-b border-gray-200 bg-white text-black relative z-[5]">
         <div className="max-w-[85rem] mx-auto pt-8">
           <div className="text-center">
             <p className="text-xs sm:text-sm font-semibold text-[#B30437] tracking-wider mb-2 sm:mb-3" role="text">
               INSPIRING EDUCATORS
             </p>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-black leading-tight">
-              Faculty that <span className="italic text-[#B30437]">inspire and empower</span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black leading-tight">
+              Faculty that{" "}
+              <HighlightText className="font-bold">
+                inspire and empower
+              </HighlightText>
             </h2>
           </div>
         </div>
@@ -320,7 +324,7 @@ export default function ComprehensivePage() {
       </section>
       <div className="bordered-container border-x md:mx-[5%] border-gray-200 max-w-[85rem] mx-auto">
 
-        {/* Component 2 — Filters + Grid (inside bordered, sectionwrapped, no upper corners) */}
+        {/* Component 2 */}
         <SectionWrapper className="no-top-corners">
           <section className="relative z-[5] pb-8 sm:pb-10 pt-6 sm:pt-6 bg-white">
             <div className="max-w-7xl w-full mx-auto">
@@ -612,9 +616,11 @@ export default function ComprehensivePage() {
                 <p className="text-xs sm:text-sm font-semibold text-[#B30437] tracking-wider mb-2 sm:mb-3" role="text">
                   INDUSTRY EXPERTISE
                 </p>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-black leading-tight">
-                  Lessons from the{' '}
-                  <span className="italic text-[#B30437]">best in the business</span>
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black leading-tight">
+                  Lessons from the{" "}
+                  <HighlightText className="font-bold">
+                    best in the business
+                  </HighlightText>
                 </h2>
               </div>
 

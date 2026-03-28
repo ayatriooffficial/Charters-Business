@@ -135,7 +135,7 @@ export default function CareersPage() {
       />
       {/* Hero Banner */}
       <div role="banner" className="w-full">
-        <div className="mx-auto max-w-7xl  px-4 sm:px-6 lg:px-8 py-6 sm:py-10 md:py-14">
+        <div className="mx-auto max-w-7xl  px-4 sm:px-6 lg:px-8 py-4 sm:py-6 md:py-8">
           <section className="flex flex-col gap-6 sm:gap-10 md:flex-row md:items-center">
 
             {/* Left: Text content */}

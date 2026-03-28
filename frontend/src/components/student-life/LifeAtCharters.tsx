@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import HighlightText from "../shared/HighlightObserver";
 
 const tabs = [
     { id: "masterclass", label: "Masterclass" },
@@ -123,9 +124,9 @@ export default function LifeAtCharters() {
                 <p className="text-gray-900 text-2xl sm:text-3xl font-normal leading-snug">
                     Life at Charters
                     <br />
-                    <em className="italic text-3xl sm:text-4xl text-gray-700">
+                    <HighlightText className="font-bold italic text-3xl sm:text-4xl">
                         Real-World Learning in Action
-                    </em>
+                    </HighlightText>
                 </p>
             </div>
 

@@ -275,7 +275,7 @@ function WorldImmersion() {
                   ].map((item, index) => (
                     <article
                       key={`${item.type}-${activeIndex}`}
-                      className="flex flex-col shrink-0 lg:shrink bg-white rounded-t-xl border-r border-t border-gray-200 p-8 min-h-[420px] lg:min-h-[480px] w-[85vw] sm:w-[calc(50%-0.25rem)] lg:flex-1 snap-center lg:snap-align-none hover:shadow-sm transition-shadow"
+                      className="flex flex-col shrink-0 lg:shrink bg-white rounded-t-xl border-r border-t border-gray-200 p-8 min-h-[420px] lg:min-h-[480px] w-[85vw] sm:w-[calc(50%-0.25rem)] lg:flex-1 snap-center lg:snap-align-none hover:shadow-sm transition-shadow first:rounded-tl-none last:rounded-tr-none"
                     >
                       <div className="w-full mb-4">
                         <div className="relative w-40 h-28 overflow-hidden bg-gray-50">

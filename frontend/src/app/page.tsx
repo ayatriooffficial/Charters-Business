@@ -76,10 +76,6 @@ const FirstStepSuccessComponent = dynamic(
   () => import("@/components/home/FirstStepSuccessComponent"),
   { loading: () => <SectionSkeleton /> }
 );
-const LearningOutcomes = dynamic(
-  () => import("@/components/home/LearningOutcomes"),
-  { loading: () => <SectionSkeleton height="h-72" /> }
-);
 const NewsSliderComponent = dynamic(
   () => import("@/components/NewsSliderComponent"),
   { loading: () => <SectionSkeleton height="h-80" /> }

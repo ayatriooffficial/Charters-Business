@@ -2,6 +2,7 @@
 import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import HighlightText from "../shared/HighlightObserver";
 
 const STORIES_DATA = [
   {
@@ -90,7 +91,10 @@ export default function PlacementStories() {
         {/* Header */}
         <div className="mb-4 sm:mb-6 px-4 sm:px-5">
           <h2 className="text-center text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-gray-900">
-            Placements <span style={{ color: "#B30437" }}>Stories</span>
+            Placements{" "}
+            <HighlightText className="font-extrabold">
+              Stories
+            </HighlightText>
           </h2>
         </div>
 

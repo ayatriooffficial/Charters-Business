@@ -178,12 +178,13 @@ function Navbar() {
           }}
         >
           <div className="w-full max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="py-1 w-full flex justify-between items-center">
+            <div className="py-1 w-full flex items-center relative">
+              {/* Left nav */}
               <nav aria-label="Secondary navigation">
                 <ul className="flex text-[13px] text-[#0F1419] font-semibold items-center space-x-3 sm:space-x-4 lg:space-x-6">
                   <li>
-                    <a
-                      href="/for-companies"
+
+                    <a href="/for-companies"
                       className={`cursor-pointer hover:text-[#B30437] transition-colors ${selectedSecondaryTab === "for-companies"
                         ? "border-b-3 border-[#B30437] text-[#B30437]"
                         : ""
@@ -196,15 +197,17 @@ function Navbar() {
                 </ul>
               </nav>
 
-              <div className="flex text-[13px] text-[#0F1419] font-semibold items-center space-x-3 sm:space-x-4 lg:space-x-6">
+              {/* Center text */}
+              <div className="absolute left-1/2 -translate-x-1/2 flex text-[13px] text-[#0F1419] font-semibold items-center whitespace-nowrap">
                 <p>Need Help? Talk to us at 08045579576 or REQUEST CALLBACK ↗</p>
               </div>
 
-              <nav aria-label="Quick links">
+              {/* Right nav */}
+              <nav aria-label="Quick links" className="ml-auto">
                 <ul className="flex text-[13px] font-semibold text-[#000] items-center space-x-3 sm:space-x-4 lg:space-x-6">
                   <li>
-                    <a
-                      href="/careers/internships"
+
+                    <a href="/careers/internships"
                       className={`cursor-pointer hover:text-[#B30437] transition-colors ${selectedSecondaryTab === "internships"
                         ? "border-b-2 border-[#B30437] text-[#B30437] pb-1"
                         : ""
@@ -215,8 +218,8 @@ function Navbar() {
                     </a>
                   </li>
                   <li>
-                    <a
-                      href="/careers/jobs"
+
+                    <a href="/careers/jobs"
                       className={`cursor-pointer hover:text-[#B30437] transition-colors ${selectedSecondaryTab === "jobs"
                         ? "border-b-2 border-[#B30437] text-[#B30437] pb-1"
                         : ""
@@ -226,15 +229,12 @@ function Navbar() {
                       Find Jobs
                     </a>
                   </li>
-
                   {user ? (
-                    <li>
-                      <UserDropdown />
-                    </li>
+                    <li><UserDropdown /></li>
                   ) : (
                     <li>
-                      <a
-                        href="/login"
+
+                      <a href="/login"
                         className={`cursor-pointer hover:text-[#B30437] transition-colors ${selectedSecondaryTab === "login"
                           ? "border-b-2 border-[#B30437] text-[#B30437] pb-1"
                           : ""

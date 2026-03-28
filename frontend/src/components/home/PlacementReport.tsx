@@ -64,7 +64,20 @@ const PlacementReportDashboard = () => {
         </div>
       </div>
 
-      <div className="md:border-x md:w-[90%] max-w-[85rem] mx-auto border-gray-200 h-13 hidden md:block" />
+      <div className="flex flex-row">
+        <div className="flex-1 bg-gray-200 h-13 hidden md:block">
+          <div className="flex-1 bg-white rounded-br-xl h-13 hidden md:block"></div>
+
+        </div>
+
+        <div className="md:border-x md:w-[90%] bg-gray-200 max-w-[85rem] border-gray-200 h-13 hidden md:block" >
+          <div className="flex-1 bg-white rounded-bl-xl rounded-br-xl h-13 hidden md:block"></div>
+        </div>
+
+        <div className="flex-1 bg-gray-200 h-13 hidden md:block">
+          <div className="flex-1 bg-white rounded-bl-xl h-13 hidden md:block"></div>
+        </div>
+      </div>
 
       <div className="flex flex-row w-full">
         <div className="flex-1 bg-gray-200 hidden md:block">
