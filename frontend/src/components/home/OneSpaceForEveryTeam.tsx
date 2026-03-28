@@ -494,7 +494,7 @@ const OneSpaceForEveryTeam = () => {
 
   return (
     <section
-      className="mx-[0%] bg-white py-16 relative z-[5]"
+      className="mx-[0%] bg-white pt-16 relative z-[5]"
       aria-labelledby="team-collaboration-heading"
       role="main"
     >
@@ -664,7 +664,7 @@ const OneSpaceForEveryTeam = () => {
                   key={testimonial.id}
                   onClick={() => setActiveTestimonial(testimonial.id)}
                   className={`text-left space-y-3 p-2 transition-all hover:shadow-md relative flex-1 min-w-[calc(100%-1rem)] sm:min-w-[calc(50%-0.75rem)] lg:min-w-[calc(33.333%-1rem)] ${activeTestimonial === testimonial.id
-                    ? "bg-[#ffffff] border-l-2 border-gray-400"
+                    ? "bg-[#e3dfd2] border-l-2 border-black"
                     : "hover:bg-[#fafafa]"
                     }`}
                   role="button"

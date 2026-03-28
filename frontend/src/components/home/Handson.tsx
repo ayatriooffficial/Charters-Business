@@ -585,9 +585,7 @@ function Handson() {
                 &apos;Global curriculum&apos;
               </HighlightText>
               {" "}along with{" "}
-
               MNC&apos;s
-
             </h2>
 
 
