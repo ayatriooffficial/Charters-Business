@@ -165,7 +165,7 @@ const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
                 Proven track record of outcomes{" "}
                 {verification.verified && (
                   <span className="inline-flex items-center gap-1">
-                    <span className="text-[#B30437] font-semibold">Verified by</span>
+                    verified by
                     <img
                       src="verified.png"
                       alt="Verification logo"

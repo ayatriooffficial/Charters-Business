@@ -199,7 +199,14 @@ function Navbar() {
 
               {/* Center text */}
               <div className="absolute left-1/2 -translate-x-1/2 flex text-[13px] text-[#0F1419] font-semibold items-center whitespace-nowrap">
-                <p>Need Help? Talk to us at 08045579576 or REQUEST CALLBACK ↗</p>
+                <p>Need Help? Talk to us at 08045579576 or REQUEST CALLBACK</p>
+                <Image
+                  src="/Charters icon/top_arrow-black.svg"
+                  alt="Format icon"
+                  width={15}
+                  height={15}
+                  className=" ml-[3px] w-[10px] h-[10px] object-contain"
+                />
               </div>
 
               {/* Right nav */}

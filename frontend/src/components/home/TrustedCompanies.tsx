@@ -22,46 +22,46 @@ const POPULAR_COMPANIES: Company[] = [
   {
     name: 'Square',
     logo: '/logos/Square.png',
-    // caseStudy: {
-    //   quote:
-    //     'Square has enabled our merchants to easily adopt omnichannel strategies that drive higher conversion and satisfaction rates across all our diverse consumer touchpoints.',
-    //   author: 'Jane Doe',
-    //   role: 'Head of Payments',
-    //   avatar: 'https://i.pravatar.cc/150?u=square',
-    // },
+    caseStudy: {
+      quote:
+        'Square has enabled our merchants to easily adopt omnichannel strategies that drive higher conversion and satisfaction rates across all our diverse consumer touchpoints.',
+      author: 'Jane Doe',
+      role: 'Head of Payments',
+      avatar: 'https://i.pravatar.cc/150?u=square',
+    },
   },
   {
     name: 'Amplitude',
     logo: '/logos/Amplitude.svg',
-    caseStudy: {
-      quote:
-        "Amplitude has been central to building a more holistic view of the customer and gaining better control of our data to understand customers' mobile journeys, flows, and funnels.",
-      author: 'Sherry Thomas-Zon',
-      role: 'Director of Mobile Marketing',
-      avatar: 'https://i.pravatar.cc/150?u=amplitude',
-    },
+    // caseStudy: {
+    //   quote:
+    //     "Amplitude has been central to building a more holistic view of the customer and gaining better control of our data to understand customers' mobile journeys, flows, and funnels.",
+    //   author: 'Sherry Thomas-Zon',
+    //   role: 'Director of Mobile Marketing',
+    //   avatar: 'https://i.pravatar.cc/150?u=amplitude',
+    // },
   },
   {
     name: 'Walmart',
     logo: '/logos/Walmart.svg',
-    caseStudy: {
-      quote:
-        "Walmart's supply chain relies heavily on data-driven models for efficiency. Our team relies on this data for making our delivery fleet performant.",
-      author: 'John Smith',
-      role: 'VP of Engineering',
-      avatar: 'https://i.pravatar.cc/150?u=walmart',
-    },
+    // caseStudy: {
+    //   quote:
+    //     "Walmart's supply chain relies heavily on data-driven models for efficiency. Our team relies on this data for making our delivery fleet performant.",
+    //   author: 'John Smith',
+    //   role: 'VP of Engineering',
+    //   avatar: 'https://i.pravatar.cc/150?u=walmart',
+    // },
   },
   {
     name: 'DoorDash',
     logo: '/logos/DoorDash.svg',
-    // caseStudy: {
-    //   quote:
-    //     "Rapid delivery isn't just a promise, it's a lifestyle we maintain through data, real-time analytics, and efficient ML models.",
-    //   author: 'Sarah Conner',
-    //   role: 'Logistics Lead',
-    //   avatar: 'https://i.pravatar.cc/150?u=doordash',
-    // },
+    caseStudy: {
+      quote:
+        "Rapid delivery isn't just a promise, it's a lifestyle we maintain through data, real-time analytics, and efficient ML models.",
+      author: 'Sarah Conner',
+      role: 'Logistics Lead',
+      avatar: 'https://i.pravatar.cc/150?u=doordash',
+    },
   },
   {
     name: 'Atlassian',
@@ -77,13 +77,13 @@ const POPULAR_COMPANIES: Company[] = [
   {
     name: 'Zoom',
     logo: '/logos/Zoom.svg',
-    caseStudy: {
-      quote:
-        'Creating seamless video connections at scale is harder than it looks, and robust infrastructure provides our main competitive advantage.',
-      author: 'Alex Morgan',
-      role: 'Infrastructure Lead',
-      avatar: 'https://i.pravatar.cc/150?u=zoom',
-    },
+    // caseStudy: {
+    //   quote:
+    //     'Creating seamless video connections at scale is harder than it looks, and robust infrastructure provides our main competitive advantage.',
+    //   author: 'Alex Morgan',
+    //   role: 'Infrastructure Lead',
+    //   avatar: 'https://i.pravatar.cc/150?u=zoom',
+    // },
   },
   {
     name: 'Adidas',
@@ -99,13 +99,13 @@ const POPULAR_COMPANIES: Company[] = [
   {
     name: 'Capital One',
     logo: '/logos/Capital_One.svg',
-    caseStudy: {
-      quote:
-        'Financial technology moves fast, and our tooling must keep up to ensure reliability, security, and top-notch user experiences for our customers.',
-      author: 'David Chen',
-      role: 'VP Engineering',
-      avatar: 'https://i.pravatar.cc/150?u=capitalone',
-    },
+    // caseStudy: {
+    //   quote:
+    //     'Financial technology moves fast, and our tooling must keep up to ensure reliability, security, and top-notch user experiences for our customers.',
+    //   author: 'David Chen',
+    //   role: 'VP Engineering',
+    //   avatar: 'https://i.pravatar.cc/150?u=capitalone',
+    // },
   },
   {
     name: 'NBCUniversal',
@@ -143,13 +143,13 @@ const POPULAR_COMPANIES: Company[] = [
   {
     name: 'Microsoft',
     logo: '/logos/Microsoft.svg',
-    // caseStudy: {
-    //   quote:
-    //     'Cloud infrastructure is at the core of our business, and ensuring 99.999% uptime requires incredibly talented engineers and rigorous processes.',
-    //   author: 'Satya Nadella',
-    //   role: 'VP of Cloud',
-    //   avatar: 'https://i.pravatar.cc/150?u=microsoft',
-    // },
+    caseStudy: {
+      quote:
+        'Cloud infrastructure is at the core of our business, and ensuring 99.999% uptime requires incredibly talented engineers and rigorous processes.',
+      author: 'Satya Nadella',
+      role: 'VP of Cloud',
+      avatar: 'https://i.pravatar.cc/150?u=microsoft',
+    },
   },
   {
     name: 'Meta',
@@ -198,18 +198,18 @@ function TrustedCompanies() {
   return (
     <section
       ref={sectionRef}
-      className="relative z-10 mx-[0%] overflow-visible bg-white pb-8"
+      className="relative z-10 mx-[0%] mt-[70px] overflow-visible bg-white pb-8"
     >
       {isVisible && (
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <header className="mb-10 text-center sm:mb-12 lg:mb-16">
+          <div className="text-center mb-[30px]">
             <p className="mx-auto text-base text-black sm:text-lg lg:text-xl">
-              Our graduates work at the world&apos;s most innovative companies
+              Join 1250+ Companies Hiring Young Charter's Worldwide
             </p>
-          </header>
+          </div>
 
           <div className="mb-12 w-full sm:mb-16">
-            <div className="mx-auto hidden max-w-6xl flex-wrap items-center justify-center gap-x-12 gap-y-10 px-10 md:flex lg:gap-x-16 lg:gap-y-10">
+            <div className="mx-auto hidden max-w-6xl flex-wrap items-center justify-center gap-x-14 gap-y-18 px-6 md:flex lg:gap-x-20 lg:gap-y-18">
               {POPULAR_COMPANIES.map((company) => (
                 <div
                   key={company.name}
@@ -229,7 +229,7 @@ function TrustedCompanies() {
                   {/* Case Study button + tooltip — only if caseStudy exists */}
                   {company.caseStudy && (
                     <>
-                      <div className="absolute left-1/2 top-[calc(100%+8px)] -translate-x-1/2 whitespace-nowrap rounded-full border border-transparent bg-[#f3f4f6] px-4 py-1.5 text-[11px] font-medium text-[#4b5563] transition-colors group-hover:border-gray-200 group-hover:bg-[#e5e7eb]">
+                      <div className="absolute left-1/2 top-[calc(100%+7px)] -translate-x-1/2 whitespace-nowrap rounded-full border border-transparent bg-[#efefef] px-2 py-[2px] text-[10px] font-bold text-[#4b5563] transition-colors group-hover:border-gray-200 group-hover:bg-[#e5e7eb]">
                         Case Study
                       </div>
 
@@ -280,7 +280,7 @@ function TrustedCompanies() {
           <div className="flex justify-center">
             <button
               type="button"
-              className="rounded-lg bg-[#B30437] px-6 py-3 font-semibold text-white shadow-md transition-colors duration-200 hover:bg-[#8B0329] hover:shadow-lg"
+              className="px-4 py-2 rounded-full text-black py-2 px-4 md:px-4 flex items-center justify-center gap-2 transition-all duration-300 font-semibold text-[16px] md:text-[16px] whitespace-nowrap"
               onClick={() => {
                 window.open(
                   'https://spangled-cardinal-ac7.notion.site/2fe34c26081b800fb860c41b85555e68?v=393d012ded8a4a589d3a2d09872a78cc',
@@ -289,7 +289,15 @@ function TrustedCompanies() {
                 );
               }}
             >
-              See All Companies
+              View all Companies
+
+              <Image
+                src="/Charters icon/top_arrow-black.svg"
+                alt="Format icon"
+                width={15}
+                height={15}
+                className=" w-4 h-4 object-contain"
+              />
             </button>
           </div>
         </div>

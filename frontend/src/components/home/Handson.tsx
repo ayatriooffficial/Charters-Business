@@ -274,7 +274,7 @@ function HealthGridCard({ card }: HealthGridCardProps) {
         {/* Right image column */}
         <div className="hidden lg:block lg:col-span-6 relative">
           <Image
-            src="/home/ima2.png"
+            src="/home/ima11.png"
             alt="Learner portrait"
             fill
             priority
@@ -309,7 +309,7 @@ function FlagshipCard({ card }: FlagshipCardProps) {
     <section className="flex flex-col w-full bg-[#E6F4EA] overflow-hidden h-full max-h-[85vh]">
       <div className="relative block h-32 w-full flex-shrink-0 overflow-hidden lg:hidden">
         <Image
-          src="/home/ima2a.png"
+          src="/home/ima11.png"
           alt={`${card.title} visual`}
           fill
           className="w-full h-full object-cover"

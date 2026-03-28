@@ -389,7 +389,7 @@ export default function FirstStepSuccessComponent() {
       <div className="relative">
         <div
           ref={videoSliderRef}
-          className="flex overflow-x-auto lg:grid lg:grid-cols-4 gap-4 sm:gap-6 snap-x snap-mandatory lg:snap-none -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide border-b border-gray-200 border pb-16"
+          className="flex overflow-x-auto lg:grid lg:grid-cols-4 gap-4 sm:gap-6 snap-x snap-mandatory lg:snap-none -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide pb-16"
           role="list"
           aria-label={`${companyTabs.find((c) => c.id === activeTab)?.name} videos`}
         >

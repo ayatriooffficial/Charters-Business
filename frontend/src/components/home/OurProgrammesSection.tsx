@@ -313,20 +313,13 @@ export default function OurProgrammesSection() {
                         <span className="truncate">
                           Explore {programme.card.title}
                         </span>
-                        <svg
-                          className="w-4 h-4 md:w-4 md:h-4 flex-shrink-0"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          aria-hidden="true"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M13 7l5 5m0 0l-5 5m5-5H6"
-                          />
-                        </svg>
+                        <Image
+                          src="/Charters icon/top_arrow-black.svg"
+                          alt="Format icon"
+                          width={15}
+                          height={15}
+                          className=" w-[12px] h-[12px] object-contain"
+                        />
                       </button>
                     </Link>
 
@@ -340,20 +333,13 @@ export default function OurProgrammesSection() {
                         type="button"
                       >
                         <span>Brochure</span>
-                        <svg
-                          className="w-4 h-4 md:w-4 md:h-4 flex-shrink-0"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          aria-hidden="true"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M13 7l5 5m0 0l-5 5m5-5H6"
-                          />
-                        </svg>
+                        <Image
+                          src="/Charters icon/top_arrow-black.svg"
+                          alt="Format icon"
+                          width={15}
+                          height={15}
+                          className=" w-[12px] h-[12px] object-contain"
+                        />
                       </button>
                     </Link>
                   </div>
