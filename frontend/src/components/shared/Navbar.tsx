@@ -7,6 +7,8 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import UserDropdown from "@/components/dashboard/UserDropdown";
 import AcademicsDropdown from "./AcademicsDropdown";
+import { createPortal } from "react-dom";
+import ChartersInterviewAi from "../home/Chartersinterview_ai";
 
 
 function Navbar() {
@@ -16,6 +18,7 @@ function Navbar() {
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
   const [selectedSecondaryTab, setSelectedSecondaryTab] = useState("for-you");
   const [dropdownTop, setDropdownTop] = useState(0);
+  const [showInterviewAI, setShowInterviewAI] = useState(false);
 
   const { user } = useAuth();
 
@@ -198,14 +201,17 @@ function Navbar() {
               </nav>
 
               {/* Center text */}
-              <div className="absolute left-1/2 -translate-x-1/2 flex text-[13px] text-[#0F1419] font-semibold items-center whitespace-nowrap">
+              <div
+                onClick={() => setShowInterviewAI(true)}
+                className="absolute left-1/2 -translate-x-1/2 flex text-[13px] text-[#0F1419] font-semibold items-center whitespace-nowrap cursor-pointer"
+              >
                 <p>Need Help? Talk to us at 08045579576 or REQUEST CALLBACK</p>
                 <Image
                   src="/Charters icon/top_arrow-black.svg"
                   alt="Format icon"
                   width={15}
                   height={15}
-                  className=" ml-[3px] w-[10px] h-[10px] object-contain"
+                  className="ml-[3px] w-[10px] h-[10px] object-contain"
                 />
               </div>
 
@@ -601,6 +607,22 @@ function Navbar() {
           </div>
         </div>
       </div>
+      {showInterviewAI && createPortal(
+                                      <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-black/20">
+                                          <div className="w-[80%] h-[90%] relative">
+                                              <button
+                                                  onClick={() => setShowInterviewAI(false)}
+                                                  className="absolute -top-3 -right-3 z-40 bg-white rounded-full w-7 h-7 flex items-center justify-center shadow-md text-gray-600 hover:text-red-500 transition-colors"
+                                              >
+                                                  ✕
+                                              </button>
+                                              <div className="w-full h-full overflow-hidden rounded-xl shadow-2xl">
+                                                  <ChartersInterviewAi />
+                                              </div>
+                                          </div>
+                                      </div>,
+                                      document.body
+                                  )}
     </div>
   );
 }

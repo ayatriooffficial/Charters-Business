@@ -1,4 +1,5 @@
 "use client";
+import {createPortal} from 'react-dom'
 import React, { useState, memo, useCallback, useRef, useEffect } from "react";
 import Image from "next/image";
 import useInViewPlay from "@/components/micro/useInViewPlay";
@@ -895,9 +896,10 @@ const StrategicExpansion: React.FC = () => {
                                     </div>
                                 </div>
                             </div>
-                            {showInterviewAI && (
-                                <div className="absolute inset-0 flex items-center justify-center z-30 bg-black/20">
-                                    <div className="w-[90%] h-[55%] relative">
+
+                            {showInterviewAI && createPortal(
+                                <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-black/20">
+                                    <div className="w-[80%] h-[90%] relative">
                                         <button
                                             onClick={() => setShowInterviewAI(false)}
                                             className="absolute -top-3 -right-3 z-40 bg-white rounded-full w-7 h-7 flex items-center justify-center shadow-md text-gray-600 hover:text-red-500 transition-colors"
@@ -908,7 +910,8 @@ const StrategicExpansion: React.FC = () => {
                                             <ChartersInterviewAi />
                                         </div>
                                     </div>
-                                </div>
+                                </div>,
+                                document.body
                             )}
                         </div>
                     </div>

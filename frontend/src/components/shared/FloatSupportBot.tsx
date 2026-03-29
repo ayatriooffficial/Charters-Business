@@ -102,11 +102,11 @@ export default function FloatSupportBot() {
         <div className="fixed bottom-2 right-3 z-30 flex items-center gap-1">
 
           {showQueryPill && (
-            <div className="relative w-[200px] h-[60px] flex items-left rounded-t-[12px] rounded-bl-[15px] bg-white border border-[#cccccc] shadow-md px-4 py-2">
+            <div className="group relative w-[200px] h-[60px] flex items-left rounded-t-[12px] rounded-bl-[15px] bg-white border border-[#cccccc] shadow-md px-4 py-2">
               <button
                 type="button"
                 onClick={() => setShowQueryPill(false)}
-                className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-gray-100 border border-gray-300 flex items-center justify-center shadow-sm hover:bg-gray-200 transition"
+                className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-gray-100 border border-gray-300 flex items-center justify-center shadow-sm hover:bg-gray-200 transition opacity-0 group-hover:opacity-100"
                 aria-label="Dismiss query pill"
               >
                 <X size={10} className="text-gray-600" />

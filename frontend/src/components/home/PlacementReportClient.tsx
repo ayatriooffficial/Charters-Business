@@ -4,6 +4,8 @@ import React, { useRef, useState, useEffect, memo } from "react";
 import dynamic from "next/dynamic";
 import { Download } from "lucide-react";
 import useInViewPlay from "@/components/micro/useInViewPlay";
+import TrustedCompanies from "./TrustedCompanies";
+import Placement_TrustedCompanies from "./Placement_TrustedCompanies";
 
 const SalaryGrowthChart = dynamic(
   () => import("../animations/SalaryGrowthChart"),
@@ -154,12 +156,13 @@ const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
 
         </div>
 
+        <Placement_TrustedCompanies/>
         <div
-          className="px-4 sm:px-6 lg:px-8 text-center border-b border-gray-200 pb-6"
+          className="px-4 sm:px-6 lg:px-8 text-center border-b border-gray-200"
           role="region"
           aria-labelledby="download-section-heading"
         >
-          <div className="mx-auto flex flex-col md:flex-row items-center justify-between pb-4">
+          <div className="mx-auto flex flex-col md:flex-row items-center justify-between py-8">
             <div className="w-full md:w-3/4 text-base md:text-lg text-center md:text-left flex flex-col font-light text-gray-800">
               <h3 id="download-section-heading" className="leading-snug">
                 Proven track record of outcomes{" "}

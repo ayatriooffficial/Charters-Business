@@ -75,61 +75,6 @@ const POPULAR_COMPANIES: Company[] = [
     },
   },
   {
-    name: 'Zoom',
-    logo: '/logos/Zoom.svg',
-    // caseStudy: {
-    //   quote:
-    //     'Creating seamless video connections at scale is harder than it looks, and robust infrastructure provides our main competitive advantage.',
-    //   author: 'Alex Morgan',
-    //   role: 'Infrastructure Lead',
-    //   avatar: 'https://i.pravatar.cc/150?u=zoom',
-    // },
-  },
-  {
-    name: 'Adidas',
-    logo: '/logos/Adidas.svg',
-    // caseStudy: {
-    //   quote:
-    //     'Innovation in athletic wear requires understanding our athletes better than anyone else, relying on continuous data flows.',
-    //   author: 'Emma Wilson',
-    //   role: 'Head of Product',
-    //   avatar: 'https://i.pravatar.cc/150?u=adidas',
-    // },
-  },
-  {
-    name: 'Capital One',
-    logo: '/logos/Capital_One.svg',
-    // caseStudy: {
-    //   quote:
-    //     'Financial technology moves fast, and our tooling must keep up to ensure reliability, security, and top-notch user experiences for our customers.',
-    //   author: 'David Chen',
-    //   role: 'VP Engineering',
-    //   avatar: 'https://i.pravatar.cc/150?u=capitalone',
-    // },
-  },
-  {
-    name: 'NBCUniversal',
-    logo: '/logos/NBCUniversal.svg',
-    // caseStudy: {
-    //   quote:
-    //     'Media delivery at scale requires extremely robust backend architectures, especially when broadcasting major live events worldwide.',
-    //   author: 'Tom Baker',
-    //   role: 'Director of Media Tech',
-    //   avatar: 'https://i.pravatar.cc/150?u=nbc',
-    // },
-  },
-  {
-    name: 'Qualtrics',
-    logo: '/logos/Qualtrics.svg',
-    caseStudy: {
-      quote:
-        'Experience management relies heavily on precise survey data and fast processing. The platform provides insights at unprecedented speeds.',
-      author: 'Olivia Clark',
-      role: 'Data Scientist',
-      avatar: 'https://i.pravatar.cc/150?u=qualtrics',
-    },
-  },
-  {
     name: 'Google',
     logo: '/logos/google.svg',
     // caseStudy: {
@@ -198,7 +143,7 @@ function TrustedCompanies() {
   return (
     <section
       ref={sectionRef}
-      className="relative z-10 mx-[0%] mt-[70px] overflow-visible bg-white pb-8"
+      className="relative z-10 mx-[0%] mt-[70px] overflow-visible bg-white pb-8 border-gray-200 border-b"
     >
       {isVisible && (
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -208,8 +153,8 @@ function TrustedCompanies() {
             </p>
           </div>
 
-          <div className="mb-12 w-full sm:mb-16">
-            <div className="mx-auto hidden max-w-6xl flex-wrap items-center justify-center gap-x-14 gap-y-18 px-6 md:flex lg:gap-x-20 lg:gap-y-18">
+          <div className="mb-6 w-full sm:mb-8">
+            <div className="mx-auto hidden max-w-6xl flex-wrap items-center justify-center gap-x-14 gap-y-18 px-6 md:flex lg:gap-x-20 lg:gap-y-15">
               {POPULAR_COMPANIES.map((company) => (
                 <div
                   key={company.name}
@@ -264,41 +209,6 @@ function TrustedCompanies() {
               ))}
             </div>
 
-            <div className="flex justify-center px-4 md:hidden">
-              <Image
-                src={mobileImageUrl}
-                alt="Hiring companies logos grid"
-                width={448}
-                height={300}
-                className="h-auto w-full max-w-md"
-                loading="lazy"
-                sizes="(max-width: 768px) 448px, 0vw"
-              />
-            </div>
-          </div>
-
-          <div className="flex justify-center">
-            <button
-              type="button"
-              className="px-4 py-2 rounded-full text-black py-2 px-4 md:px-4 flex items-center justify-center gap-2 transition-all duration-300 font-semibold text-[16px] md:text-[16px] whitespace-nowrap"
-              onClick={() => {
-                window.open(
-                  'https://spangled-cardinal-ac7.notion.site/2fe34c26081b800fb860c41b85555e68?v=393d012ded8a4a589d3a2d09872a78cc',
-                  '_blank',
-                  'noopener,noreferrer'
-                );
-              }}
-            >
-              View all Companies
-
-              <Image
-                src="/Charters icon/top_arrow-black.svg"
-                alt="Format icon"
-                width={15}
-                height={15}
-                className=" w-4 h-4 object-contain"
-              />
-            </button>
           </div>
         </div>
       )}
