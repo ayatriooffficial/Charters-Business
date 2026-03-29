@@ -1,5 +1,5 @@
 "use client";
-import {createPortal} from 'react-dom'
+import { createPortal } from 'react-dom'
 import React, { useState, memo, useCallback, useRef, useEffect } from "react";
 import Image from "next/image";
 import useInViewPlay from "@/components/micro/useInViewPlay";
@@ -693,7 +693,7 @@ const StrategicExpansion: React.FC = () => {
                             <div className="relative">
                                 <div
                                     ref={sliderRef}
-                                    className="md:grid md:grid-cols-3 gap-6 mb-2 flex overflow-x-auto scrollbar-hide snap-x snap-mandatory md:overflow-visible"
+                                    className="md:grid md:grid-cols-3 mb-2 flex overflow-x-auto scrollbar-hide snap-x snap-mandatory md:overflow-visible"
                                 >
                                     {currentContent.serviceCards.map((card, index) => (
                                         <div key={index} className="border border-[#D5D0CA] p-6 relative overflow-hidden min-w-[82vw] md:min-w-0 snap-center">
@@ -802,7 +802,7 @@ const StrategicExpansion: React.FC = () => {
 
                             {/* Emerge Career Unity Section */}
                             <div className="border border-[#D5D0CA] p-4 my-2.5 text-center ">
-                                <h3 className="text-2xl font-semibold text-black mb-3">Emerge Career Unity</h3>
+                                <h3 className="text-2xl font-semibold text-black mb-3">AI Brand Profile Engine</h3>
                                 <p className="text-gray-600 max-w-2xl mx-auto mb-2">
                                     Emerge Career has everything you need to run a successful workforce development program, and reduce the workload on your staff.
                                 </p>

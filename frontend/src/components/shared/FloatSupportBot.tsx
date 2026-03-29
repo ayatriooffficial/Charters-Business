@@ -144,8 +144,8 @@ export default function FloatSupportBot() {
       )}
 
       {open && (
-        <div className="fixed bottom-3 right-3 z-50 flex h-[530px] w-[360px] max-w-[95vw] flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white/90 shadow-[0_20px_60px_rgba(0,0,0,0.15)]">
-          <div className="flex items-center justify-between border-b border-gray-200 bg-white/80 px-3 py-2">
+        <div className="fixed bottom-3 right-3 z-[100] flex h-[530px] w-[360px] max-w-[95vw] flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white/90 shadow-[0_20px_60px_rgba(0,0,0,0.15)]">
+          <div className="flex items-center justify-between border-b border-gray-200 bg-white px-3 py-2">
             <div className="flex items-center gap-3">
               <div className="rounded-full bg-[#B30437] p-1">
                 <Image
@@ -168,7 +168,7 @@ export default function FloatSupportBot() {
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="text-black transition hover:text-gray-700"
+              className="text-black cursor-pointer transition hover:text-gray-700"
               aria-label="Close support chat"
             >
               <X className="h-6 w-6" size={18} />
