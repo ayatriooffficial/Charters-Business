@@ -65,27 +65,14 @@ function BuiltByHarvard() {
               Built by alumni from{" "}
             </h3>
 
-            <div className="grid grid-cols-3 gap-6 sm:gap-8 items-center justify-items-center">
-              {universities.map((university, index) => (
-                <div
-                  key={`built-${index}`}
-                  className="flex items-center justify-center w-full h-12 sm:h-14 relative group"
-                >
-                  <div className="relative w-full h-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-                    <Image
-                      src={getCloudinaryUrl(
-                        CLOUDINARY_IMAGES.universities[university.logoKey],
-                        { quality: "auto", format: "auto" }
-                      )}
-                      alt={`${university.name} logo`}
-                      width={120}
-                      height={60}
-                      className="max-w-full max-h-full object-contain transition-all duration-300"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-              ))}
+
+            <div className="w-full h-32 sm:h-38 relative group">
+              <Image
+                src="/home/1.jpg"
+                alt="companies"
+                fill
+                className="object-contain"
+              />
             </div>
           </div>
 
@@ -95,27 +82,13 @@ function BuiltByHarvard() {
               Curriculum design base on
             </h3>
 
-            <div className="grid grid-cols-3 gap-6 sm:gap-8 items-center justify-items-center">
-              {universities.map((university, index) => (
-                <div
-                  key={`curriculum-${index}`}
-                  className="flex items-center justify-center w-full h-12 sm:h-14 relative group"
-                >
-                  <div className="relative w-full h-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-                    <Image
-                      src={getCloudinaryUrl(
-                        CLOUDINARY_IMAGES.universities[university.logoKey],
-                        { quality: "auto", format: "auto" }
-                      )}
-                      alt={`${university.name} logo`}
-                      width={120}
-                      height={60}
-                      className="max-w-full max-h-full object-contain transition-all duration-300"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-              ))}
+            <div className="w-full h-32 sm:h-38 relative group">
+              <Image
+                src="/home/11.jpg"
+                alt="companies"
+                fill
+                className="object-contain"
+              />
             </div>
           </div>
         </div>

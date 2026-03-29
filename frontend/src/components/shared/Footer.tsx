@@ -1,8 +1,5 @@
 "use client";
-
-import React from "react";
 import Image from "next/image";
-import { Mail, MapPin } from "lucide-react";
 import { getCloudinaryUrl } from "@/lib/cloudinary";
 
 const Footer = () => {
@@ -34,10 +31,10 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { name: "Twitter", icon: "X", href: "#" },
-    { name: "Instagram", icon: "📷", href: "#" },
-    { name: "LinkedIn", icon: "in", href: "#" },
-    { name: "YouTube", icon: "▶️", href: "#" },
+    { name: "Twitter", icon: "/Charters-icon/social-icon/twitter.svg", href: "twitter" },
+    { name: "Instagram", icon: "/Charters-icon/social-icon/instagram.svg", href: "instagram" },
+    { name: "LinkedIn", icon: "/Charters-icon/social-icon/linkedln.svg", href: "linkedin" },
+    { name: "YouTube", icon: "/Charters-icon/social-icon/youtube.svg", href: "youtube" },
   ];
 
   return (
@@ -152,16 +149,27 @@ const Footer = () => {
                 Contact Information
               </h3>
               <div className="flex items-start lg:items-center gap-2 text-white text-xs sm:text-sm justify-start lg:justify-end">
-                <MapPin
-                  className="w-4 h-4 mt-0.5 lg:mt-0 flex-shrink-0"
-                  aria-hidden="true"
-                />
+                <div className="relative w-4 h-4 flex-shrink-0 mt-0.5 lg:mt-0">
+                  <Image
+                    src="/Charters-icon/location-pin-svgrepo-com.svg"
+                    alt="location"
+                    fill
+                    className="object-contain invert text-2xl"
+                  />
+                </div>
                 <span className="leading-relaxed">
                   DLF Cyberpark, Sector V, Bidhannagar, Kolkata, West Bengal 700091
                 </span>
               </div>
               <div className="flex items-center gap-2 text-white text-xs sm:text-sm justify-start lg:justify-end">
-                <Mail className="w-4 h-4" aria-hidden="true" />
+                <div className="relative w-4 h-4 flex-shrink-0">
+                  <Image
+                    src="/Charters-icon/email-1-svgrepo-com.svg"
+                    alt="email"
+                    fill
+                    className="object-contain invert"
+                  />
+                </div>
                 <a
                   href="mailto:info@mastersunion.org"
                   className="hover:text-[#B30437] transition-colors"
@@ -226,12 +234,14 @@ const Footer = () => {
                     rel="noopener noreferrer"
                     target="_blank"
                   >
-                    <span
-                      className="text-gray-600 hover:text-white text-xs transition-colors"
-                      aria-hidden="true"
-                    >
-                      {social.icon}
-                    </span>
+                    <div className="relative w-4 h-4">
+                      <Image
+                        src={social.icon}
+                        alt={social.name}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
                   </a>
                 ))}
               </nav>

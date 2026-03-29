@@ -202,7 +202,10 @@ function Navbar() {
 
               {/* Center text */}
               <div
-                onClick={() => setShowInterviewAI(true)}
+                onClick={() => {
+                  setShowInterviewAI(true);
+                  document.body.style.overflow = 'hidden';
+                }}
                 className="absolute left-1/2 -translate-x-1/2 flex text-[13px] text-[#0F1419] font-semibold items-center whitespace-nowrap cursor-pointer"
               >
                 <p>Need Help? Talk to us at 08045579576 or REQUEST CALLBACK</p>
@@ -611,7 +614,10 @@ function Navbar() {
                                       <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-black/20">
                                           <div className="w-[80%] h-[90%] relative">
                                               <button
-                                                  onClick={() => setShowInterviewAI(false)}
+                                                onClick={() => {
+                                                  setShowInterviewAI(false);
+                                                  document.body.style.overflow = '';
+                                                }}
                                                   className="absolute -top-3 -right-3 z-40 bg-white rounded-full w-7 h-7 flex items-center justify-center shadow-md text-gray-600 hover:text-red-500 transition-colors"
                                               >
                                                   ✕

@@ -190,23 +190,23 @@ const NewsSliderComponent: React.FC<NewsSliderComponentProps> = ({
       </div>
 
       {/* Wrapper for slider and buttons */}
-      <div className="relative w-full h-100 md:h-90 sm:h-90 m-0 p-2 md:p-1.5 sm:p-1 mb-13">
+      <div className="relative w-full h-100 md:h-90 sm:h-90 m-0">
         {/* Scrolling Container */}
         <div className="w-full h-full overflow-x-auto scrollbar-hide overflow-y-hidden rounded-lg scroll-smooth">
           {/* Slides Container */}
           <div
-            className="flex w-full h-full gap-4 md:gap-3 sm:gap-2 snap-x snap-mandatory"
+            className="flex w-full h-full snap-x snap-mandatory"
             style={{
               transitionTimingFunction: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
             }}
             ref={slidesContainerRef}
             id="news-slides"
           >
-            {/* All news items - No clones */}
+            {/* All news items*/}
             {items.map((item) => (
               <div
                 key={item.id}
-                className="w-full md:w-[30%] h-full flex-shrink-0 overflow-hidden relative snap-start"
+                className="w-full md:w-[30%] h-full flex-shrink-0 overflow-hidden relative snap-start border-r border-t border-gray-200 pb-13"
               >
                 <picture>
                   <source media="(max-width: 768px)" srcSet={item.mobileImage} />
@@ -216,7 +216,7 @@ const NewsSliderComponent: React.FC<NewsSliderComponentProps> = ({
                     className="w-full h-full object-contain block"
                   />
                 </picture>
-                <div className="absolute bottom-0 left-0 right-0 px-6 py-8 sm:px-4 sm:py-5 bg-gradient-to-t from-black via-black/80 to-transparent text-white z-10 transform translate-y-full hover:translate-y-0 transition-transform duration-400 delay-200">
+                <div className="absolute bottom-0 left-0 right-0 py-8 sm:py-5 bg-gradient-to-t from-black via-black/80 to-transparent text-white z-10 transform translate-y-full hover:translate-y-0 transition-transform duration-400 delay-200">
                   <h3 className="m-0 mb-2 text-xl sm:text-lg font-semibold leading-snug text-[#B30437]">
                     {item.title}
                   </h3>
@@ -226,7 +226,7 @@ const NewsSliderComponent: React.FC<NewsSliderComponentProps> = ({
                   {item.link && item.link !== "#" && (
                     <a
                       href={item.link}
-                      className="inline-block text-[#B30437] text-sm sm:text-xs font-medium px-3 py-2 border border-[#B30437]/50 rounded transition-all hover:bg-[#B30437]/10 hover:border-[#B30437]"
+                      className="inline-block text-[#B30437] text-sm sm:text-xs font-medium py-2 border border-[#B30437]/50 rounded transition-all hover:bg-[#B30437]/10 hover:border-[#B30437]"
                     >
                       Read More →
                     </a>

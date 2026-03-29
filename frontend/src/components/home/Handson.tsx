@@ -189,7 +189,7 @@ interface HealthGridCardProps {
 
 function HealthGridCard({ card }: HealthGridCardProps) {
   return (
-    <section className="flex flex-col w-full bg-[#F4F2EE] overflow-hidden h-full">
+    <section className="flex flex-col w-full bg-[#F4F2EE] overflow-hidden h-full max-h-[85vh]">
       {/* Mobile banner image */}
       <div className="relative block h-32 w-full flex-shrink-0 overflow-hidden lg:hidden">
         <Image
@@ -279,7 +279,7 @@ function HealthGridCard({ card }: HealthGridCardProps) {
             fill
             priority
             sizes="(max-width:768px) 100vw, (max-width:1024px) 50vw, 600px"
-            className="object-contain object-center"
+            className="object-cover object-center"
           />
         </div>
       </div>

@@ -389,14 +389,14 @@ export default function FirstStepSuccessComponent() {
       <div className="relative">
         <div
           ref={videoSliderRef}
-          className="flex overflow-x-auto lg:grid lg:grid-cols-4 gap-4 sm:gap-6 snap-x snap-mandatory lg:snap-none -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide pb-16"
+          className="flex overflow-x-auto lg:grid lg:grid-cols-4 snap-x snap-mandatory lg:snap-none -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide "
           role="list"
           aria-label={`${companyTabs.find((c) => c.id === activeTab)?.name} videos`}
         >
           {videoCardsByCompany[activeTab]?.map((video, index) => (
             <article
               key={video.id}
-              className="flex-shrink-0 w-[80vw] sm:w-[320px] lg:w-auto snap-center bg-white overflow-hidden group cursor-pointer"
+              className="shrink-0 w-[80vw] sm:w-[320px] lg:w-auto snap-center bg-white overflow-hidden group cursor-pointer border-r border-t border-gray-200 last:border-r-0 pb-8"
               role="listitem"
               style={{ animation: `fadeIn 0.4s ease-out ${index * 0.1}s both` }}
             >

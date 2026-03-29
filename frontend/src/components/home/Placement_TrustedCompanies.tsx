@@ -6,7 +6,9 @@ import { getCloudinaryUrl } from '@/lib/cloudinary';
 import useInViewPlay from '../micro/useInViewPlay';
 
 interface CompanyCaseStudy {
-  quote: string;
+  title: string;
+  description: string;
+  stats: { value: string; label: string }[];
   author: string;
   role: string;
   avatar: string;
@@ -23,10 +25,14 @@ const POPULAR_COMPANIES: Company[] = [
     name: 'Square',
     logo: '/logos/Square.png',
     caseStudy: {
-      quote:
-        'Square has enabled our merchants to easily adopt omnichannel strategies that drive higher conversion and satisfaction rates across all our diverse consumer touchpoints.',
-      author: 'Jane Doe',
-      role: 'Head of Payments',
+      title: 'How Square scaled merchant operations globally',
+      description: 'Square adopted Amplitude Analytics and Amplitude Audiences, which led to optimizing data streams and instituting a robust.',
+      stats: [
+        { value: '5x', label: 'Faster response' },
+        { value: '3x', label: 'Revenue growth' },
+      ],
+      author: 'Rajat Ray',
+      role: 'Head of Operation',
       avatar: 'https://i.pravatar.cc/150?u=square',
     },
   },
@@ -56,19 +62,28 @@ const POPULAR_COMPANIES: Company[] = [
     name: 'DoorDash',
     logo: '/logos/DoorDash.svg',
     caseStudy: {
-      quote:
-        "Rapid delivery isn't just a promise, it's a lifestyle we maintain through data, real-time analytics, and efficient ML models.",
+      title: 'DoorDash cuts delivery time with real-time ML',
+      description: 'Rapid delivery isn\'t just a promise — it\'s a lifestyle maintained through data, real-time analytics, and efficient ML models.',
+      stats: [
+        { value: '2x', label: 'Faster delivery' },
+        { value: '40%', label: 'Cost reduction' },
+      ],
       author: 'Sarah Conner',
       role: 'Logistics Lead',
       avatar: 'https://i.pravatar.cc/150?u=doordash',
     },
   },
+
   {
     name: 'Atlassian',
     logo: '/logos/Atlassian.png',
     caseStudy: {
-      quote:
-        'Our collaboration processes have improved vastly since the integration, giving teams a clearer view into their ongoing progress and metrics.',
+      title: 'Atlassian improves team visibility with data',
+      description: 'Collaboration processes improved vastly since integration, giving teams a clearer view into ongoing progress and metrics.',
+      stats: [
+        { value: '60%', label: 'Less blockers' },
+        { value: '4x', label: 'Sprint velocity' },
+      ],
       author: 'Alice Johnson',
       role: 'Product Manager',
       avatar: 'https://i.pravatar.cc/150?u=atlassian',
@@ -89,8 +104,12 @@ const POPULAR_COMPANIES: Company[] = [
     name: 'Microsoft',
     logo: '/logos/Microsoft.svg',
     caseStudy: {
-      quote:
-        'Cloud infrastructure is at the core of our business, and ensuring 99.999% uptime requires incredibly talented engineers and rigorous processes.',
+      title: 'Microsoft maintains 99.999% cloud uptime',
+      description: 'Cloud infrastructure is at the core of the business, ensuring uptime requires incredibly talented engineers and rigorous processes.',
+      stats: [
+        { value: '99.9%', label: 'Uptime SLA' },
+        { value: '10x', label: 'Scale achieved' },
+      ],
       author: 'Satya Nadella',
       role: 'VP of Cloud',
       avatar: 'https://i.pravatar.cc/150?u=microsoft',
@@ -100,8 +119,12 @@ const POPULAR_COMPANIES: Company[] = [
     name: 'Meta',
     logo: '/logos/Meta.svg',
     caseStudy: {
-      quote:
-        'Connecting billions of people requires innovative data structures and networking protocols that push the boundaries of modern computing.',
+      title: 'Meta connects billions with modern protocols',
+      description: 'Connecting billions of people requires innovative data structures and networking protocols that push the boundaries of computing.',
+      stats: [
+        { value: '3B+', label: 'Users connected' },
+        { value: '5x', label: 'Infra efficiency' },
+      ],
       author: 'Mark Evans',
       role: 'Technical Lead',
       avatar: 'https://i.pravatar.cc/150?u=meta',
@@ -148,8 +171,20 @@ function TrustedCompanies() {
       {isVisible && (
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-[30px]">
-            <p className="mx-auto text-base text-black sm:text-lg lg:text-xl">
-              Join 1250+ Companies Hiring Young Charter's Worldwide
+            <p className="mx-auto text-base text-black sm:text-lg lg:text-xl group cursor-pointer inline-flex items-center gap-1 hover:text-[#B30437] transition-colors duration-300">
+              <span className="inline-block relative overflow-hidden align-bottom min-w-[54px] h-[1.5em]">
+                <span className="inline-block transition-all duration-300 group-hover:-translate-y-full group-hover:opacity-0">
+                  Join
+                </span>
+                <span className="absolute left-0 top-full inline-block transition-all duration-300 group-hover:-translate-y-full font-semibold">
+                  Show
+                </span>
+              </span>
+              <span className="relative">
+                1250+
+                <span className="absolute -bottom-0.5 left-0 w-0 h-[1.5px] bg-[#B30437] transition-all duration-500 group-hover:w-full" />
+              </span>
+              {" "}Companies Hiring Young Charter's Worldwide
             </p>
           </div>
 
@@ -179,10 +214,29 @@ function TrustedCompanies() {
                       </div>
 
                       <div className="pointer-events-none absolute bottom-[calc(100%+12px)] left-1/2 z-50 invisible w-[340px] -translate-x-1/2 rounded-2xl border border-gray-100 bg-white p-6 text-left opacity-0 shadow-[0_12px_40px_rgba(0,0,0,0.12)] transition-all duration-300 group-hover:pointer-events-auto group-hover:visible group-hover:opacity-100">
-                        <p className="mb-6 text-[15px] font-medium leading-relaxed text-[#374151]">
-                          &quot;{company.caseStudy.quote}&quot;
+
+                        {/* Title */}
+                        <h3 className="mb-2 text-[17px] font-bold leading-snug text-gray-900">
+                          {company.caseStudy.title}
+                        </h3>
+
+                        {/* Description */}
+                        <p className="mb-5 text-[13px] leading-relaxed text-gray-500">
+                          {company.caseStudy.description}
                         </p>
-                        <div className="relative z-10 flex items-center gap-3">
+
+                        {/* Stats */}
+                        <div className="mb-5 flex gap-8">
+                          {company.caseStudy.stats.map((stat) => (
+                            <div key={stat.label}>
+                              <div className="text-[22px] font-bold text-gray-900">{stat.value}</div>
+                              <div className="text-[12px] text-gray-500">{stat.label}</div>
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Author */}
+                        <div className="flex items-center gap-3">
                           <Image
                             src={company.caseStudy.avatar}
                             alt={company.caseStudy.author}
@@ -200,6 +254,8 @@ function TrustedCompanies() {
                             </div>
                           </div>
                         </div>
+
+                        {/* Caret */}
                         <div className="absolute left-1/2 top-full z-0 h-4 w-4 -translate-x-1/2 -mt-[9px] rotate-45 border-b border-r border-gray-100 bg-white shadow-[4px_4px_10px_rgba(0,0,0,0.03)]" />
                         <div className="absolute left-1/2 top-full z-0 h-8 w-full -translate-x-1/2 bg-transparent" />
                       </div>

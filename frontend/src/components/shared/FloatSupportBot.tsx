@@ -114,7 +114,10 @@ export default function FloatSupportBot() {
 
               <button
                 type="button"
-                onClick={() => setOpen(true)}
+                onClick={() => {
+                  setShowQueryPill(false);
+                  setOpen(true);
+                }}
                 className="text-sm text-gray-800 hover:text-[#B30437] transition"
               >
                 Got any questions? I'm happy to help.
@@ -123,7 +126,10 @@ export default function FloatSupportBot() {
           )}
 
           <button
-            onClick={() => setOpen(true)}
+            onClick={() => {
+              setShowQueryPill(false);
+              setOpen(true);
+            }}
             className="group"
             aria-label="Open support chat"
           >

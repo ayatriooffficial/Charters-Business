@@ -693,10 +693,10 @@ const StrategicExpansion: React.FC = () => {
                             <div className="relative">
                                 <div
                                     ref={sliderRef}
-                                    className="md:grid md:grid-cols-3 mb-2 flex overflow-x-auto scrollbar-hide snap-x snap-mandatory md:overflow-visible"
+                                    className="md:grid md:grid-cols-3 mb-2 flex overflow-x-auto scrollbar-hide snap-x snap-mandatory md:overflow-visible border border-gray-300"
                                 >
                                     {currentContent.serviceCards.map((card, index) => (
-                                        <div key={index} className="border border-[#D5D0CA] p-6 relative overflow-hidden min-w-[82vw] md:min-w-0 snap-center">
+                                        <div key={index} className="border-r border-gray-300 p-6 relative overflow-hidden min-w-[82vw] md:min-w-0 snap-center last:border-r-0">
                                             <h3 className="text-lg font-semibold text-black mb-2">{card.title}</h3>
                                             <p className="text-sm text-gray-600 mb-6">
                                                 {card.description}
