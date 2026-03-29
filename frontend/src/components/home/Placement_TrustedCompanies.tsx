@@ -147,7 +147,7 @@ function TrustedCompanies() {
     >
       {isVisible && (
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-[30px]">
+          <div className="text-center pt-[20px] pb-[30px]">
             <p className="mx-auto text-base text-black sm:text-lg lg:text-xl">
               Join 1250+ Companies Hiring Young Charter's Worldwide
             </p>
