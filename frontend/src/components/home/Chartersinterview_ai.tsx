@@ -32,10 +32,10 @@ export default function ChartersInterviewAi() {
                 WebkitBackdropFilter: "blur(10px)",
             }}
         >
-            <div className="w-full h-full flex flex-col lg:flex-row overflow-hidden">
+            <div className="w-full h-full flex flex-col sm:flex-row overflow-hidden">
 
                 {/* LEFT - Image */}
-                <div className="hidden lg:block lg:w-1/2 h-full relative">
+                <div className="w-full h-[40%] sm:w-1/2 sm:h-full relative">
                     <Image
                         src="/home/ai_interview_leftPic.jpeg"
                         alt="AI Interview"
@@ -47,9 +47,7 @@ export default function ChartersInterviewAi() {
                 </div>
 
                 {/* RIGHT - Form */}
-                <div
-                    className="w-full lg:w-1/2 h-full flex flex-col justify-center px-6 sm:px-8 lg:px-10 py-4 overflow-y-auto"
-                >
+                <div className="w-full h-[60%] sm:w-1/2 sm:h-full flex flex-col justify-center px-6 sm:px-8 lg:px-10 py-4 overflow-y-auto">
                     {submitted ? (
                         <div className="text-center py-8">
                             <div className="w-14 h-14 rounded-full bg-[#B30437] flex items-center justify-center mx-auto mb-4">
@@ -94,7 +92,7 @@ export default function ChartersInterviewAi() {
 
                                 {/* Name */}
                                 <input
-                                        className="bg-white w-full border border-gray-300 px-4 py-2.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-black transition-colors"
+                                    className="bg-white w-full border border-gray-300 px-4 py-2.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-black transition-colors"
                                     placeholder="Enter Name"
                                     value={form.name}
                                     onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -102,7 +100,7 @@ export default function ChartersInterviewAi() {
 
                                 {/* Email */}
                                 <input
-                                        className="bg-white w-full border border-gray-300 px-4 py-2.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-black transition-colors"
+                                    className="bg-white w-full border border-gray-300 px-4 py-2.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-black transition-colors"
                                     placeholder="Enter Email"
                                     type="email"
                                     value={form.email}
@@ -111,14 +109,14 @@ export default function ChartersInterviewAi() {
 
                                 {/* Phone */}
                                 <div className="flex gap-0">
-                                        <div className="bg-white border border-gray-300 px-4 py-2.5 flex items-center gap-1 text-sm text-gray-600 shrink-0 border-r-0">
+                                    <div className="bg-white border border-gray-300 px-4 py-2.5 flex items-center gap-1 text-sm text-gray-600 shrink-0 border-r-0">
                                         <span>+91</span>
                                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                             <polyline points="6 9 12 15 18 9" />
                                         </svg>
                                     </div>
                                     <input
-                                            className="bg-white flex-1 border border-gray-300 px-4 py-2.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-black transition-colors"
+                                        className="bg-white flex-1 border border-gray-300 px-4 py-2.5 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-black transition-colors"
                                         placeholder="Enter Phone"
                                         type="tel"
                                         value={form.phone}
@@ -139,5 +137,5 @@ export default function ChartersInterviewAi() {
                 </div>
             </div>
         </div>
-    );
+    )
 }

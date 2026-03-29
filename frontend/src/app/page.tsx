@@ -280,9 +280,9 @@ export default function Home() {
           <StudentModel />
           <StrategicExpansion />
         </SectionWrapper>
-        <SectionWrapper>
+        {/* <SectionWrapper>
           <TrustedCompanies />
-        </SectionWrapper>
+        </SectionWrapper> */}
         <SectionWrapper>
           <FirstStepSuccessComponent />
         </SectionWrapper>
