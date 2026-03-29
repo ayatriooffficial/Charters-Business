@@ -15,7 +15,7 @@ interface CompanyCaseStudy {
 interface Company {
   name: string;
   logo: string;
-  caseStudy?: CompanyCaseStudy; 
+  caseStudy?: CompanyCaseStudy;
 }
 
 const POPULAR_COMPANIES: Company[] = [
@@ -143,7 +143,7 @@ function TrustedCompanies() {
   return (
     <section
       ref={sectionRef}
-      className="relative z-10 mx-[0%] mt-[70px] overflow-visible bg-white pb-8 border-gray-200 border-b"
+      className="relative z-10 mx-[0%] overflow-visible bg-white pb-8 border-gray-200 border-b"
     >
       {isVisible && (
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
