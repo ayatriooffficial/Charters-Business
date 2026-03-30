@@ -3,13 +3,23 @@ import ApiError from '../utils/ApiError.js';
 import asyncHandler from '../utils/asyncHandler.js';
 import User from '../models/User.model.js';
 
+const AUTH_COOKIE_NAME = 'authToken';
+
+function getRequestToken(req) {
+  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+    return req.headers.authorization.split(' ')[1];
+  }
+
+  if (req.cookies?.[AUTH_COOKIE_NAME]) {
+    return req.cookies[AUTH_COOKIE_NAME];
+  }
+
+  return null;
+}
+
 // Standard protect middleware
 export const protect = asyncHandler(async (req, res, next) => {
-  let token;
-
-  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-    token = req.headers.authorization.split(' ')[1];
-  }
+  const token = getRequestToken(req);
 
   if (!token) {
     throw new ApiError(401, 'Not authorized to access this route');
@@ -31,11 +41,7 @@ export const protect = asyncHandler(async (req, res, next) => {
 
 // Optional auth middleware (doesn't throw error if no token)
 export const optionalAuth = asyncHandler(async (req, res, next) => {
-  let token;
-
-  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-    token = req.headers.authorization.split(' ')[1];
-  }
+  const token = getRequestToken(req);
 
   // If no token, continue without setting req.user
   if (!token) {

@@ -102,6 +102,8 @@ const userSchema = new mongoose.Schema(
     viewerMetrics: {
       visitCount: { type: Number, default: 0 }, // total page views
       pagesNavigated: { type: Number, default: 0 }, // unique pages count
+      uniquePagePaths: { type: [String], default: [] },
+      uniquePageTitles: { type: [String], default: [] },
       chatInteractions: { type: Number, default: 0 },
       loggedIn: { type: Boolean, default: false },
       deviceId: { type: String, default: null },

@@ -3,10 +3,11 @@ import User from '../models/User.model.js';
 import asyncHandler from '../utils/asyncHandler.js';
 import ApiResponse from '../utils/ApiResponse.js';
 import ApiError from '../utils/ApiError.js';
+import { syncLeadFieldsOnUser } from '../services/userLeadSync.service.js';
 
 // Submit application
 export const submitApplication = asyncHandler(async (req, res) => {
-  const { name, email, location, program, countryCode, mobileNo, agreeToTerms } = req.body;
+  const { name, email, location, program, countryCode, mobileNo, agreeToTerms, trackingData } = req.body;
 
   const userId = req.user ? req.user.id : null;
 
@@ -102,6 +103,14 @@ export const submitApplication = asyncHandler(async (req, res) => {
       agreeToTerms: true,
     };
   }
+
+  await syncLeadFieldsOnUser(user, {
+    program,
+    countryCode: countryCode || req.body.countryCode || '+91',
+    mobileNo,
+    trackingData,
+    loggedIn: Boolean(req.user),
+  });
 
   // ✅ CREATE APPLICATION WITH ERROR HANDLING
   try {
