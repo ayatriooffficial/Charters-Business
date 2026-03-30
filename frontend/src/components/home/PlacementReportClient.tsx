@@ -163,22 +163,22 @@ const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
           aria-labelledby="download-section-heading"
         >
           <div className="mx-auto flex flex-col md:flex-row items-center justify-between py-4">
-            <div className="w-full md:w-3/4 text-base md:text-lg text-center md:text-left flex flex-col font-light text-gray-800">
+            <div className="w-full md:w-3/4 text-center md:text-left flex flex-col text-gray-800">
               <h3 id="download-section-heading" className="leading-snug">
                 Proven track record of outcomes{" "}
                 {verification.verified && (
                   <span className="inline-flex items-center gap-1">
                     verified by
                     <img
-                      src="verified.png"
+                      src="/home/charters-adit-partners.avif"
                       alt="Verification logo"
-                      className="h-5 md:h-6 inline-block object-contain"
+                      className="md:h-7 md:h-7 inline-block object-contain"
                     />
                   </span>
                 )}{" "}
                 through our programs
               </h3>
-              <p className="text-[10px] md:text-[11px] text-gray-600 mt-2 px-2 md:px-0">
+              <p className="text-[10px] md:text-[11px] text-gray-600 mt-1 px-2 md:px-0">
                 Source: *(a)¹Charter Career Center and Past outcomes are not
                 indicative of future placements for subsequent cohorts.
               </p>
