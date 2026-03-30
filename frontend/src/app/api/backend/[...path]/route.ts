@@ -8,19 +8,15 @@ const BACKEND_BASE_URL = RAW_BACKEND_BASE_URL
   .replace(/\/api\/v1\/?$/, "")
   .replace(/\/$/, "");
 
-<<<<<<< HEAD
 type HeadersWithSetCookie = Headers & {
   getSetCookie?: () => string[];
 };
 
-=======
->>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
 function buildTargetUrl(path: string[]) {
   const joinedPath = path.join("/");
   return `${BACKEND_BASE_URL}/${joinedPath}`;
 }
 
-<<<<<<< HEAD
 function buildProxyResponseHeaders(response: Response) {
   const responseHeaders = new Headers();
 
@@ -56,8 +52,6 @@ function buildProxyResponseHeaders(response: Response) {
   return responseHeaders;
 }
 
-=======
->>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
 function getProxyErrorMessage(targetUrl: URL) {
   if (["localhost", "127.0.0.1", "::1"].includes(targetUrl.hostname)) {
     return "Unable to reach the backend service. If you're developing locally, make sure the API server is running.";
@@ -80,11 +74,7 @@ async function proxyRequest(
   const headers = new Headers(request.headers);
   headers.delete("host");
 
-<<<<<<< HEAD
   const init: RequestInit & { duplex?: "half" } = {
-=======
-  const init: RequestInit = {
->>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
     method: request.method,
     headers,
     redirect: "manual",
@@ -97,14 +87,10 @@ async function proxyRequest(
 
   try {
     const response = await fetch(targetUrl, init);
-<<<<<<< HEAD
-    const responseHeaders = buildProxyResponseHeaders(response);
-=======
     const responseHeaders = new Headers(response.headers);
 
     responseHeaders.delete("content-encoding");
     responseHeaders.delete("content-length");
->>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
 
     return new NextResponse(response.body, {
       status: response.status,

@@ -6,10 +6,7 @@ import Link from 'next/link';
 import { submitApplication, submitCounseling } from '@/lib/server/api';
 import { getAllProgrammes } from "@/lib/server/programmes";
 import { useAuth } from '@/context/AuthContext';
-<<<<<<< HEAD
 import { getTrackingSnapshot } from '@/lib/Tracking';
-=======
->>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
 import PhoneOtpLogin from '../auth/PhoneOtpLogin';
 
 type FormType = 'application' | 'counseling';
@@ -111,10 +108,7 @@ export default function ApplicationForm() {
 
         try {
           const programTitle = getProgramTitleFromSlug(programmeParam);
-<<<<<<< HEAD
           const trackingData = getTrackingSnapshot();
-=======
->>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
 
           if (!programTitle) {
             console.error('Invalid programme');
@@ -131,10 +125,7 @@ export default function ApplicationForm() {
               countryCode: '+91',
               mobileNo: '',
               agreeToTerms: true,
-<<<<<<< HEAD
               trackingData,
-=======
->>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
             },
             token
           );
@@ -274,10 +265,7 @@ export default function ApplicationForm() {
 
     try {
       let response;
-<<<<<<< HEAD
       const trackingData = getTrackingSnapshot();
-=======
->>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
 
       if (formType === 'counseling') {
         response = await submitCounseling(
@@ -288,15 +276,11 @@ export default function ApplicationForm() {
             counselingDate: formData.counselingDate,
             counselingTime: formData.counselingTime,
             agreeToTerms: formData.agreeToTerms,
-<<<<<<< HEAD
             trackingData,
-=======
->>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
           },
           token
         );
       } else {
-<<<<<<< HEAD
         response = await submitApplication(
           {
             ...formData,
@@ -304,9 +288,6 @@ export default function ApplicationForm() {
           },
           token
         );
-=======
-        response = await submitApplication(formData, token);
->>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
       }
 
       if (response.success && response.data) {

@@ -10,11 +10,7 @@ import React, {
 } from "react";
 import { useRouter } from "next/navigation";
 import { flushTrackingToBackend } from "@/lib/Tracking";
-<<<<<<< HEAD
 import { getAuthToken, removeAuthToken } from "@/lib/utils/cookies";
-=======
-import { getAuthToken } from "@/lib/utils/cookies";
->>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
 
 interface User {
   id: string;
@@ -299,10 +295,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     async (email: string, password: string) => {
       const response = await fetch(`${API_V1}/auth/login`, {
         method: "POST",
-<<<<<<< HEAD
         credentials: "include",
-=======
->>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
@@ -333,10 +326,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     async (idToken: string) => {
       const response = await fetch(`${API_V1}/auth/firebase-login`, {
         method: "POST",
-<<<<<<< HEAD
         credentials: "include",
-=======
->>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ idToken }),
       });
@@ -372,10 +362,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     ) => {
       const response = await fetch(`${API_V1}/auth/firebase-signup`, {
         method: "POST",
-<<<<<<< HEAD
         credentials: "include",
-=======
->>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ idToken, name, email, program }),
       });
@@ -403,7 +390,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   );
 
   const logout = useCallback(() => {
-<<<<<<< HEAD
     const headers: HeadersInit | undefined = token
       ? {
           Authorization: `Bearer ${token}`,
@@ -419,16 +405,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       console.warn("Logout request failed:", error);
     });
 
-=======
->>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
     setUser(null);
     setToken(null);
     setApplications([]);
     setCounselings([]);
-<<<<<<< HEAD
     removeAuthToken();
-=======
->>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
 
     if (isMounted) {
       localStorage.clear();
@@ -436,11 +417,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
 
     router.push("/");
-<<<<<<< HEAD
   }, [router, isMounted, token]);
-=======
-  }, [router, isMounted]);
->>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
 
   const setAuth = useCallback(
     (

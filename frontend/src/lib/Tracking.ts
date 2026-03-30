@@ -6,33 +6,23 @@ const SESSION_KEY = "anon_session_v1";
 
 export type ConsentChoice = "accepted" | "necessary" | "rejected";
 
-<<<<<<< HEAD
 export type TrackedPage = {
   path: string;
   title: string;
 };
 
-=======
->>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
 export type AnonSession = {
   sessionId: string;
   deviceId: string;
   pageViewsTotal: number;
-<<<<<<< HEAD
   uniquePages: TrackedPage[];
-=======
-  uniquePages: string[];
->>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
   chatInteractions: number;
   startedAt: number;
   lastSeenAt: number;
 };
 
-<<<<<<< HEAD
 export type TrackingSnapshot = AnonSession;
 
-=======
->>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
 export function getConsentChoice(): ConsentChoice | null {
   const storedConsent = localStorage.getItem(CONSENT_KEY);
 
@@ -73,7 +63,6 @@ export function clearTrackingData() {
   localStorage.removeItem(DEVICE_KEY);
 }
 
-<<<<<<< HEAD
 function toTitleCase(value: string): string {
   return value.replace(/\b\w/g, (char) => char.toUpperCase());
 }
@@ -176,8 +165,6 @@ function normalizeTrackedPages(value: unknown): TrackedPage[] {
   return pages;
 }
 
-=======
->>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
 function getStoredAnonSession(): AnonSession | null {
   const raw = localStorage.getItem(SESSION_KEY);
 
@@ -186,7 +173,6 @@ function getStoredAnonSession(): AnonSession | null {
   }
 
   try {
-<<<<<<< HEAD
     const parsed = JSON.parse(raw) as Partial<AnonSession>;
 
     if (!parsed.sessionId || !parsed.deviceId) {
@@ -211,16 +197,12 @@ function getStoredAnonSession(): AnonSession | null {
       lastSeenAt:
         typeof parsed.lastSeenAt === "number" ? parsed.lastSeenAt : Date.now(),
     };
-=======
-    return JSON.parse(raw) as AnonSession;
->>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
   } catch {
     clearAnonSession();
     return null;
   }
 }
 
-<<<<<<< HEAD
 export function getTrackingSnapshot(): TrackingSnapshot | null {
   const session = getStoredAnonSession();
 
@@ -234,8 +216,6 @@ export function getTrackingSnapshot(): TrackingSnapshot | null {
   };
 }
 
-=======
->>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
 export function getOrCreateAnonSession(): AnonSession | null {
   if (!hasTrackingConsent()) return null;
 
@@ -264,7 +244,6 @@ function save(session: AnonSession) {
   localStorage.setItem(SESSION_KEY, JSON.stringify(session));
 }
 
-<<<<<<< HEAD
 export function trackPage(pathname: string, title?: string) {
   const session = getOrCreateAnonSession();
   if (!session) return;
@@ -282,14 +261,6 @@ export function trackPage(pathname: string, title?: string) {
       title: normalizedTitle,
     });
   }
-=======
-export function trackPage(pathname: string) {
-  const session = getOrCreateAnonSession();
-  if (!session) return;
-
-  session.pageViewsTotal += 1;
-  if (!session.uniquePages.includes(pathname)) session.uniquePages.push(pathname);
->>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
   save(session);
 }
 
