@@ -49,6 +49,7 @@ export const setAuthToken = (token: string): void => {
 export const removeAuthToken = (): void => {
   if (typeof document === "undefined") return;
 
+<<<<<<< HEAD
   const parts = [
     `${COOKIE_NAME}=`,
     "path=/",
@@ -59,3 +60,7 @@ export const removeAuthToken = (): void => {
 
   document.cookie = parts.join("; ");
 };
+=======
+  document.cookie = `${COOKIE_NAME}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC; SameSite=Lax`;
+};
+>>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b

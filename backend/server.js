@@ -25,6 +25,7 @@ const startServer = async () => {
       );
     });
 
+<<<<<<< HEAD
     if (SHOULD_START_SHEET_EXPORTER) {
       void startUserSheetExporter().catch((error) => {
         console.error("Google Sheets exporter failed to start:", error.message);
@@ -51,6 +52,17 @@ const startServer = async () => {
 
     // Graceful shutdown
     process.on("SIGINT", shutdown);
+=======
+    // Graceful shutdown
+    process.on("SIGINT", () => {
+      console.log("Shutting down server...");
+      server.close(() => {
+        console.log("Server closed");
+        process.exit(0);
+      });
+    });
+
+>>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
   } catch (error) {
     console.error("Failed to start server:", error);
     process.exit(1);
@@ -85,4 +97,8 @@ process.on("unhandledRejection", (err) => {
 process.on("uncaughtException", (err) => {
   console.error("Uncaught Exception:", err);
   process.exit(1);
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b

@@ -76,7 +76,10 @@ web_modules/
 backend/.env
 frontend/.env.local
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
 # Service account Credentials
 backend/serviceAccount.json
 

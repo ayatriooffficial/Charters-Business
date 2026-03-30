@@ -14,7 +14,10 @@ export interface CounselingFormData {
   counselingDate: string;
   counselingTime: string;
   agreeToTerms: boolean;
+<<<<<<< HEAD
   trackingData?: TrackingPayload | null;
+=======
+>>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
 }
 
 export interface ApplicationFormData {
@@ -25,6 +28,7 @@ export interface ApplicationFormData {
   countryCode: string;
   mobileNo: string;
   agreeToTerms: boolean;
+<<<<<<< HEAD
   trackingData?: TrackingPayload | null;
 }
 
@@ -39,6 +43,8 @@ export interface TrackingPayload {
   chatInteractions: number;
   startedAt: number;
   lastSeenAt: number;
+=======
+>>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
 }
 
 export interface LoginData {

@@ -41,7 +41,15 @@ export const protect = asyncHandler(async (req, res, next) => {
 
 // Optional auth middleware (doesn't throw error if no token)
 export const optionalAuth = asyncHandler(async (req, res, next) => {
+<<<<<<< HEAD
   const token = getRequestToken(req);
+=======
+  let token;
+
+  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+    token = req.headers.authorization.split(' ')[1];
+  }
+>>>>>>> c9ed52183c4a9805b0e230c00e89e389d7394f5b
 
   // If no token, continue without setting req.user
   if (!token) {

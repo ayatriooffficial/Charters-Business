@@ -52,7 +52,34 @@ export const mergeTracking = asyncHandler(async (req, res) => {
     throw new ApiError(401, "Not authorized");
   }
 
-  const user = await User.findById(req.user._id);
+  const { sessionId, deviceId, pageViewsTotal, uniquePages, chatInteractions } = req.body || {};
+
+  const visitCount = Number(pageViewsTotal || 0);
+  const pagesNavigated = Array.isArray(uniquePages) ? uniquePages.length : 0;
+  const chatCount = Number(chatInteractions || 0);
+
+  const viewerMetrics = {
+    visitCount,
+    pagesNavigated,
+    chatInteractions: chatCount,
+    loggedIn: true,
+    deviceId: deviceId || null,
+    sessionId: sessionId || null,
+    lastMergedAt: new Date(),
+  };
+
+  const viewerScore = computeViewerScore({
+    visitCount,
+    loggedIn: true,
+    pagesNavigated,
+    chatInteractions: chatCount,
+  });
+
+  const user = await User.findByIdAndUpdate(
+    req.user._id,
+    { viewerScore, viewerMetrics },
+    { new: true, runValidators: true }
+  ).select("-password");
 
   if (!user) {
     throw new ApiError(404, "User not found");

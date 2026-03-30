@@ -137,7 +137,6 @@ function toDisplayText(value, fallback = "N/A") {
 
 function toDisplayDate(value) {
   const iso = toISO(value);
-
   if (!iso) {
     return "N/A";
   }
@@ -168,6 +167,19 @@ function getProfileStatus(user) {
   }
 
   return "Missing";
+}
+
+function getTrackingStatus(user) {
+  const visits = user.viewerMetrics?.visitCount ?? 0;
+  const pages = user.viewerMetrics?.pagesNavigated ?? 0;
+  const chats = user.viewerMetrics?.chatInteractions ?? 0;
+  const score = typeof user.viewerScore === "number" ? user.viewerScore : 0;
+
+  if (visits > 0 || pages > 0 || chats > 0 || score > 0) {
+    return "Tracked";
+  }
+
+  return "No analytics yet";
 }
 
 function getEngagementBand(score) {
@@ -404,6 +416,8 @@ async function exportUsers() {
         "viewerMetrics.uniquePagePaths": 1,
         "viewerMetrics.uniquePageTitles": 1,
         "viewerMetrics.chatInteractions": 1,
+        "viewerMetrics.chatInteractions": 1,
+        updatedAt: 1,
         createdAt: 1,
       }
     )

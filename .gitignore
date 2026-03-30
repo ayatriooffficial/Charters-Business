@@ -61,6 +61,5 @@ pnpm-lock.yaml
 backend/.env
 frontend/.env.local
 
-
 # Service account Credentials
 backend/serviceAccount.json
