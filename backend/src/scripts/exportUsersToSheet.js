@@ -10,14 +10,19 @@ import {
 } from "../config/loadEnv.js";
 
 const SHEET_ID = process.env.GOOGLE_SHEET_ID;
-const RAW_KEY_PATH = process.env.GOOGLE_SERVICE_ACCOUNT_JSON;
-const KEY_PATH = resolveFromBackendRoot(RAW_KEY_PATH);
+const SERVICE_ACCOUNT_SOURCE = process.env.GOOGLE_SERVICE_ACCOUNT_JSON;
 const MONGO_URI = process.env.MONGODB_URI;
 const SHEET_TITLE = process.env.GOOGLE_SHEET_TITLE || "cookie_import";
 const SHEET_RANGE = `${SHEET_TITLE}!A:ZZ`;
-const EXPORT_INTERVAL_MINUTES = Number(
-  process.env.SHEET_EXPORT_INTERVAL_MINUTES || 10
+const parsedExportIntervalMinutes = Number.parseInt(
+  process.env.SHEET_EXPORT_INTERVAL_MINUTES || "10",
+  10
 );
+const EXPORT_INTERVAL_MINUTES =
+  Number.isFinite(parsedExportIntervalMinutes) &&
+  parsedExportIntervalMinutes > 0
+    ? parsedExportIntervalMinutes
+    : 10;
 const EXPORT_INTERVAL_MS = EXPORT_INTERVAL_MINUTES * 60 * 1000;
 
 let sheets = null;
@@ -26,6 +31,55 @@ let intervalHandle = null;
 let mongoConnectionOwned = false;
 let exporterStarted = false;
 
+function tryParseServiceAccount(source) {
+  if (!source) {
+    return null;
+  }
+
+  const trimmed = source.trim();
+
+  if (!trimmed.startsWith("{")) {
+    return null;
+  }
+
+  try {
+    const parsed = JSON.parse(trimmed);
+
+    return {
+      ...parsed,
+      private_key: parsed.private_key?.replace(/\\n/g, "\n"),
+    };
+  } catch {
+    throw new Error(
+      "GOOGLE_SERVICE_ACCOUNT_JSON must be a valid JSON string or a path to a JSON file.",
+    );
+  }
+}
+
+function getServiceAccountFilePath() {
+  if (!SERVICE_ACCOUNT_SOURCE) {
+    return null;
+  }
+
+  return resolveFromBackendRoot(SERVICE_ACCOUNT_SOURCE);
+}
+
+function getGoogleAuthOptions() {
+  const credentials = tryParseServiceAccount(SERVICE_ACCOUNT_SOURCE);
+
+  if (credentials) {
+    return {
+      credentials,
+      scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+    };
+  }
+
+  return {
+    keyFile: getServiceAccountFilePath(),
+    scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+  };
+}
+
 function getMissingConfig() {
   const missing = [];
 
@@ -33,7 +87,7 @@ function getMissingConfig() {
     missing.push("GOOGLE_SHEET_ID");
   }
 
-  if (!RAW_KEY_PATH) {
+  if (!SERVICE_ACCOUNT_SOURCE) {
     missing.push("GOOGLE_SERVICE_ACCOUNT_JSON");
   }
 
@@ -51,10 +105,16 @@ function validateConfig() {
     throw new Error(`Missing ${missing.join(", ")}`);
   }
 
-  if (!fs.existsSync(KEY_PATH)) {
+  if (tryParseServiceAccount(SERVICE_ACCOUNT_SOURCE)) {
+    return;
+  }
+
+  const keyPath = getServiceAccountFilePath();
+
+  if (!keyPath || !fs.existsSync(keyPath)) {
     throw new Error(
-      `Google service account file not found at ${KEY_PATH}. ` +
-        `Set GOOGLE_SERVICE_ACCOUNT_JSON relative to ${backendRoot}.`
+      `Google service account file not found at ${keyPath}. ` +
+        `Set GOOGLE_SERVICE_ACCOUNT_JSON to raw JSON or to a file path relative to ${backendRoot}.`
     );
   }
 }
@@ -202,10 +262,7 @@ async function initSheetsClient() {
 
   console.log("Initializing Google Sheets client...");
 
-  const auth = new google.auth.GoogleAuth({
-    keyFile: KEY_PATH,
-    scopes: ["https://www.googleapis.com/auth/spreadsheets"],
-  });
+  const auth = new google.auth.GoogleAuth(getGoogleAuthOptions());
 
   const authClient = await auth.getClient();
 
