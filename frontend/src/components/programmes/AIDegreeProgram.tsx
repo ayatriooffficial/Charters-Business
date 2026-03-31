@@ -21,7 +21,7 @@ const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data }) => {
 
   return (
     <section
-      className="bg-white py-4 sm:py-6 md:py-8"
+      className="bg-white pt-4 sm:pt-6 md:pt-8"
       aria-labelledby="degree-program-heading"
     >
       <div className="max-w-[85rem] mx-auto">
@@ -61,11 +61,11 @@ const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data }) => {
           </aside>
 
           {/* Accordions Content - Shows second on mobile, first on desktop */}
-          <div className="order-2 lg:order-1 space-y-4">
+          <div className="order-2 lg:order-1">
             {data.accordions.map((accordion) => (
               <div
                 key={accordion.id}
-                className="border-t border-b border-r border-gray-200 bg-white overflow-hidden rounded-lg lg:rounded-none"
+                className="border-b border-r border-gray-200 bg-white overflow-hidden rounded-lg lg:rounded-none first:border-t "
               >
                 <button
                   onClick={() => toggleAccordion(accordion.id)}

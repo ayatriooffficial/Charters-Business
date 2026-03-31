@@ -77,7 +77,7 @@ const LearnApplyReflectRepeat: React.FC<LearnApplyReflectRepeatProps> = ({
 
       <section
         id="main-content"
-        className="bg-white text-black py-4 sm:py-6 md:py-8"
+        className="bg-white text-black pt-4 sm:pt-6 md:pt-8"
         role="main"
         aria-labelledby="main-heading"
       >

@@ -66,42 +66,43 @@ const ScholarshipsSection: React.FC<ScholarshipsSectionProps> = ({
 
   return (
     <section
-      className="bg-white py-4 sm:py-6 md:py-8"
+      className="bg-white pt-4 sm:pt-6 md:pt-8"
       aria-labelledby="scholarships-heading"
     >
       <div className="max-w-[85rem] mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-start">
+        <header className="px-4 sm:px-6 text-center mb-13 sm:mb-14">
+          <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-4 sm:mb-6">
+            Financial Aid
+          </p>
+          <h2
+            id="scholarships-heading"
+            className="font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-black leading-tight mb-3 sm:mb-4"
+          >
+            Empowering Dreams Through{" "}
+            <HighlightText className="font-bold">
+              Scholarships
+            </HighlightText>
+          </h2>
+          <p className="text-lg text-black leading-relaxed">
+            We never let financial hardships stand in the way of quality
+            education. Scholarships cover up to 100% of the tuition.
+          </p>
+        </header>
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-start">
           {/* Left Content */}
-          <div className="space-y-4 sm:space-y-6">
-            <header className="px-4 sm:px-6">
-              <h2
-                id="scholarships-heading"
-                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-black leading-tight mb-3 sm:mb-4"
-              >
-                Empowering Dreams Through{" "}
-                <HighlightText className="font-bold">
-                  Scholarships
-                </HighlightText>
-              </h2>
-              <p className="text-lg text-black leading-relaxed max-w-lg">
-                We never let financial hardships stand in the way of quality
-                education. Scholarships cover up to 100% of the tuition.
-              </p>
-            </header>
-
-            <div className="space-y-4">
+            <div className="">
               {scholarships.map((scholarship) => (
                 <div
                   key={scholarship.id}
-                  className="border-b border-t border-r border-gray-200 pb-4"
+                  className="border-b border-r border-gray-200 first:border-t last:border-b-0"
                 >
                   <button
                     onClick={() => toggleExpanded(scholarship.id)}
-                    className="w-full flex items-center justify-between text-left group cursor-pointer hover:bg-gray-50 transition-colors duration-200 py-2 px-2 rounded-sm focus:outline-none focus:ring-2 focus:ring-[#B30437]"
+                    className="w-full flex items-center justify-between text-left group cursor-pointer hover:bg-gray-50 transition-colors duration-200 py-4 px-2 rounded-sm"
                     type="button"
                     aria-expanded={expandedItem === scholarship.id}
                   >
-                    <h3 className="text-lg font-semibold text-black group-hover:text-[#B30437] transition-colors">
+                    <h3 className="text-lg font-medium text-black">
                       {scholarship.title}
                     </h3>
                     <div className="ml-4 flex-shrink-0">
@@ -136,7 +137,6 @@ const ScholarshipsSection: React.FC<ScholarshipsSectionProps> = ({
                 </div>
               ))}
             </div>
-          </div>
 
           {/* Right Image */}
           <aside className="relative">

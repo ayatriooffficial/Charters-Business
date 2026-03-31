@@ -152,36 +152,33 @@ export default async function ProgrammePage({
         {/* Other Sections */}
         <ProgramInfo data={programme.programInfo} />
       <div className="md:border-x border-gray-200 max-w-[85rem] w-full md:w-[90%] mx-auto overflow-x-clip">
-        <SectionWrapper corners={{
-          tl: { hidden: true },
-          tr: { hidden: true }
-        }}>
+        <SectionWrapper hideCorners={"all"}>
             <TrackRecord data={programme.trackRecord} />
           </SectionWrapper>
-          <SectionWrapper>
+          <SectionWrapper hideCorners={"all"}>
             <CurriculumSection />
           </SectionWrapper>
-          <SectionWrapper>
+          <SectionWrapper hideCorners={"all"}>
             <AIDegreeProgram data={programme.degreeProgram} />
           </SectionWrapper>
-          <SectionWrapper>
+          <SectionWrapper hideCorners={"all"}>
             <WeekAtTetr />
           </SectionWrapper>
-          <SectionWrapper>
+          <SectionWrapper hideCorners={"all"} borderBottom={false}>
             <LearnApplyReflectRepeat data={programme.learnApply} />
           </SectionWrapper>
-          <SectionWrapper>
+          <SectionWrapper hideCorners={"all"}>
             <LearningOutcomes />
           </SectionWrapper>
-          <SectionWrapper>
+          <SectionWrapper hideCorners={"all"}>
             <PricingTabs />
           </SectionWrapper>
-          <SectionWrapper>
+          <SectionWrapper hideCorners={"all"}>
             <ScholarshipsSection scholarships={programme.scholarships} />
           </SectionWrapper>
 
 
-          <SectionWrapper>
+        <SectionWrapper hideCorners={"all"}>
             <FAQ data={programme.faq} />
           </SectionWrapper>
         </div>
