@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import Image from "next/image";
 import { DegreeProgramData } from "@/lib/server/programmes";
+import HighlightText from "../shared/HighlightObserver";
 
 interface AIDegreeComponentProps {
   data: DegreeProgramData;
@@ -38,9 +39,9 @@ const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data }) => {
             className="text-1xl sm:text-2xl lg:text-3xl text-black mb-4 lg:mb-6 leading-tight text-center"
           >
             {data.title.prefix}{" "}
-            <span className="text-[#B30437]">
+            <HighlightText className="font-bold">
               {data.title.highlight}
-            </span>{" "}
+            </HighlightText>{" "}
             {data.title.suffix}
           </h2>
         </header>

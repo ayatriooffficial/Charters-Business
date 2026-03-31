@@ -259,40 +259,56 @@ export default function Home() {
 
       <PlacementReport />
       <div className="md:border-x border-gray-200 max-w-[85rem] w-full md:w-[90%] mx-auto overflow-x-clip md:overflow-x-visible">
-        <SectionWrapper>
+        <SectionWrapper hideCorners={["bl", "br"]} borderBottom={false}>
           <HandsOn />
         </SectionWrapper>
-        <SectionWrapper>
+        <SectionWrapper corners={{
+          br: { variant: "icon" }
+        }} hideCorners={["tl", "tr", "bl"]}>
           <OurProgrammesSection />
         </SectionWrapper>
-        <SectionWrapper>
+        <SectionWrapper corners={{
+          br: { variant: "icon" }
+        }} hideCorners={["tr", "bl"]}>
           <BuiltByHarvard />
           <HandsOnLearningComponent />
-        </SectionWrapper>
-        <SectionWrapper>
+        </SectionWrapper >
+        <SectionWrapper corners={{
+          br: { variant: "icon" }
+        }} hideCorners={["tr", "bl"]}>
           <FacultyModel />
           <OneSpaceForEveryTeam />
-        </SectionWrapper>
-        <SectionWrapper>
+        </SectionWrapper >
+        <SectionWrapper corners={{
+          br: { variant: "icon" }
+        }} hideCorners={["tr", "bl"]}>
           <WorldImmersion />
         </SectionWrapper>
-        <SectionWrapper>
+        <SectionWrapper corners={{
+          br: { variant: "icon" }
+        }} hideCorners={["tr", "bl"]}>
           <StudentModel />
           <StrategicExpansion />
         </SectionWrapper>
         {/* <SectionWrapper>
           <TrustedCompanies />
         </SectionWrapper> */}
-        <SectionWrapper>
+        <SectionWrapper corners={{
+          br: { variant: "icon" }
+        }} hideCorners={["tr", "bl"]}>
           <FirstStepSuccessComponent />
         </SectionWrapper>
         {/* <SectionWrapper>
           <LearningOutcomes />
         </SectionWrapper> */}
-        <SectionWrapper>
+        <SectionWrapper corners={{
+          br: { variant: "icon" }
+        }} hideCorners={["tr", "bl"]}>
           <NewsSliderComponent />
         </SectionWrapper>
-        <SectionWrapper>
+        <SectionWrapper corners={{
+          br: { variant: "icon" }
+        }} hideCorners={["tr", "bl"]}>
           <PremiumFeaturesSection />
         </SectionWrapper>
       </div>

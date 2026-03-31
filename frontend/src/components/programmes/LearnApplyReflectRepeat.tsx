@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { LearnApplyData } from "@/data/programmes";
+import HighlightText from "../shared/HighlightObserver";
 
 interface LearnApplyReflectRepeatProps {
   data: LearnApplyData;
@@ -88,7 +89,9 @@ const LearnApplyReflectRepeat: React.FC<LearnApplyReflectRepeatProps> = ({
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-3 sm:mb-4 md:mb-6 leading-tight text-center px-2"
             >
               Learn. Apply. Reflect.{" "}
-              <span className="text-[#B30437]">Repeat.</span>
+              <HighlightText className="font-bold">
+                Repeat.
+              </HighlightText>
             </h2>
             <p className="text-black text-base sm:text-lg md:text-xl leading-relaxed text-center px-4">
               Hands-on courses and workshops designed to build real businesses—

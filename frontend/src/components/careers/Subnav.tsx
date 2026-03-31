@@ -14,7 +14,7 @@ export const CAREERS_NAV_ITEMS: NavItem[] = [
 ];
 
 type Props = {
-  offsetTop?: number; 
+  offsetTop?: number;
 };
 
 
@@ -68,45 +68,57 @@ export default function Subnav({ offsetTop = 0 }: Props) {
       className="sticky top-[var(--navbar-height,86px)] z-10  w-full border-b-1 border-gray-200 bg-white"
       style={{ top: 'var(--navbar-height,86px)' }}
     >
-      <nav aria-label="Section navigation" className="max-w-[85rem] md:mx-[5%] border-x border-gray-200">
-        <div className="mx-auto max-w-7xl px-4 sm:px-5">
-          <ul className="flex items-center gap-4 sm:gap-6 md:gap-8 overflow-x-auto py-1 sm:py-2 scrollbar-hide">
-            {CAREERS_NAV_ITEMS.map((item) => {
-              const isActive = active === item.id;
-              return (
-                <li key={item.id} className="shrink-0">
-                  <Link
-                    href={`#${item.id}`}
-                    onClick={handleClick(item.id)}
-                    aria-current={isActive ? "page" : undefined}
-                    className={[
-                      "group inline-flex items-center gap-2 whitespace-nowrap border-b-2 px-1 pb-2 text-xs font-semibold uppercase tracking-wide transition-colors",
-                      isActive
-                        ? "border-gray-900 text-gray-900"
-                        : "border-transparent text-gray-500 hover:text-gray-900",
-                    ].join(" ")}
-                  >
-                    {item.withIcon ? (
-                      <svg
-                        viewBox="0 0 20 20"
-                        className="h-4 w-4 text-gray-700"
-                        aria-hidden="true"
-                      >
-                        <path
-                          fill="currentColor"
-                          d="M3 15h3V5H3v10zm5 0h3V9H8v6zm5 0h3V3h-3v12z"
-                        />
-                      </svg>
-                    ) : null}
-                    <span>{item.label}</span>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+      <div className="flex flex-row">
+        <div className="flex-1 bg-gray-200 h-13 hidden md:block">
+          <div className="flex-1 bg-white rounded-br-xl h-13 hidden md:block"></div>
+
         </div>
-      </nav>
-      {/* <div className="border-x md:mx-[5%] border-gray-200 h-13 hidden md:block" /> */}
+        <div className="hidden md:block md:w-[90%] max-w-[85rem] bg-gray-200">
+          <nav aria-label="Section navigation"
+            className=" w-full bg-white border-x border-gray-200 rounded-bl-xl rounded-br-xl relative h-13">
+            <div className="mx-auto max-w-7xl px-4 sm:px-5">
+              <ul className="flex items-center gap-4 sm:gap-6 md:gap-8 overflow-x-auto py-1 sm:py-2 scrollbar-hide">
+                {CAREERS_NAV_ITEMS.map((item) => {
+                  const isActive = active === item.id;
+                  return (
+                    <li key={item.id} className="shrink-0">
+                      <Link
+                        href={`#${item.id}`}
+                        onClick={handleClick(item.id)}
+                        aria-current={isActive ? "page" : undefined}
+                        className={[
+                          "group inline-flex items-center gap-2 whitespace-nowrap border-b-2 px-1 pb-2 text-xs font-semibold uppercase tracking-wide transition-colors",
+                          isActive
+                            ? "border-gray-900 text-gray-900"
+                            : "border-transparent text-gray-500 hover:text-gray-900",
+                        ].join(" ")}
+                      >
+                        {item.withIcon ? (
+                          <svg
+                            viewBox="0 0 20 20"
+                            className="h-4 w-4 text-gray-700"
+                            aria-hidden="true"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M3 15h3V5H3v10zm5 0h3V9H8v6zm5 0h3V3h-3v12z"
+                            />
+                          </svg>
+                        ) : null}
+                        <span>{item.label}</span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <div className="flex-1 bg-gray-200 h-13 hidden md:block">
+          <div className="flex-1 bg-white rounded-bl-xl h-13 hidden md:block"></div>
+        </div>
+      </div>
     </section>
   );
 }
+ 

@@ -166,25 +166,13 @@ function TrustedCompanies() {
   return (
     <section
       ref={sectionRef}
-      className="relative z-10 mx-[0%] overflow-visible bg-white pb-8 border-gray-200 border-b"
+      className="relative z-10 mx-[0%] overflow-visible bg-white pb-2 border-gray-200 border-b"
     >
       {isVisible && (
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-[30px]">
-            <p className="mx-auto text-base text-black sm:text-lg lg:text-xl group cursor-pointer inline-flex items-center gap-1 hover:text-[#B30437] transition-colors duration-300">
-              <span className="inline-block relative overflow-hidden align-bottom min-w-[54px] h-[1.5em]">
-                <span className="inline-block transition-all duration-300 group-hover:-translate-y-full group-hover:opacity-0">
-                  Join
-                </span>
-                <span className="absolute left-0 top-full inline-block transition-all duration-300 group-hover:-translate-y-full font-semibold">
-                  Show
-                </span>
-              </span>
-              <span className="relative">
-                1250+
-                <span className="absolute -bottom-0.5 left-0 w-0 h-[1.5px] bg-[#B30437] transition-all duration-500 group-hover:w-full" />
-              </span>
-              {" "}Companies Hiring Young Charter's Worldwide
+            <p className="mx-auto text-base text-black sm:text-lg lg:text-xl">
+              Join 1250+ Companies Hiring Young Charter's Worldwide
             </p>
           </div>
 
@@ -193,7 +181,7 @@ function TrustedCompanies() {
               {POPULAR_COMPANIES.map((company) => (
                 <div
                   key={company.name}
-                  className="group relative z-10 h-10 w-[140px] cursor-pointer hover:z-50"
+                  className="group relative z-10 h-10 w-[140px] cursor-pointer hover:z-50" // ✅ group stays here
                 >
                   {/* Logo */}
                   <div className="relative h-10 w-full">
@@ -206,7 +194,6 @@ function TrustedCompanies() {
                     />
                   </div>
 
-                  {/* Case Study button + tooltip — only if caseStudy exists */}
                   {company.caseStudy && (
                     <>
                       <div className="absolute left-1/2 top-[calc(100%+7px)] -translate-x-1/2 whitespace-nowrap rounded-full border border-transparent bg-[#efefef] px-2 py-[2px] text-[10px] font-bold text-[#4b5563] transition-colors group-hover:border-gray-200 group-hover:bg-[#e5e7eb]">
@@ -214,18 +201,12 @@ function TrustedCompanies() {
                       </div>
 
                       <div className="pointer-events-none absolute bottom-[calc(100%+12px)] left-1/2 z-50 invisible w-[340px] -translate-x-1/2 rounded-2xl border border-gray-100 bg-white p-6 text-left opacity-0 shadow-[0_12px_40px_rgba(0,0,0,0.12)] transition-all duration-300 group-hover:pointer-events-auto group-hover:visible group-hover:opacity-100">
-
-                        {/* Title */}
                         <h3 className="mb-2 text-[17px] font-bold leading-snug text-gray-900">
                           {company.caseStudy.title}
                         </h3>
-
-                        {/* Description */}
                         <p className="mb-5 text-[13px] leading-relaxed text-gray-500">
                           {company.caseStudy.description}
                         </p>
-
-                        {/* Stats */}
                         <div className="mb-5 flex gap-8">
                           {company.caseStudy.stats.map((stat) => (
                             <div key={stat.label}>
@@ -234,8 +215,6 @@ function TrustedCompanies() {
                             </div>
                           ))}
                         </div>
-
-                        {/* Author */}
                         <div className="flex items-center gap-3">
                           <Image
                             src={company.caseStudy.avatar}
@@ -254,8 +233,6 @@ function TrustedCompanies() {
                             </div>
                           </div>
                         </div>
-
-                        {/* Caret */}
                         <div className="absolute left-1/2 top-full z-0 h-4 w-4 -translate-x-1/2 -mt-[9px] rotate-45 border-b border-r border-gray-100 bg-white shadow-[4px_4px_10px_rgba(0,0,0,0.03)]" />
                         <div className="absolute left-1/2 top-full z-0 h-8 w-full -translate-x-1/2 bg-transparent" />
                       </div>
@@ -264,10 +241,19 @@ function TrustedCompanies() {
                 </div>
               ))}
             </div>
-
           </div>
         </div>
       )}
+
+      {/* ✅ Show more — now uses its own hover state, fully independent */}
+      <div className="flex justify-center pt-2">
+        <button className="group text-sm text-gray-400 hover:text-black transition">
+          Show all companies
+          <span className="ml-1 inline-block transition-all duration-300 group-hover:-rotate-45">
+            →
+          </span>
+        </button>
+      </div>
     </section>
   );
 }

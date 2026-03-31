@@ -246,7 +246,10 @@ export default function CareersPage() {
 
       {/* Sections container — responsive fix */}
       <div className="md:border-x border-gray-200 max-w-[85rem] w-full md:w-[90%] mx-auto overflow-x-clip md:overflow-x-visible">
-        <SectionWrapper className="no-top-corners">
+        <SectionWrapper corners={{
+          tl: { hidden: true },
+          tr: { hidden: true }
+        }}>
           <StatsSection />
         </SectionWrapper>
         <SectionWrapper>

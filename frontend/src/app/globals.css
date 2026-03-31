@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
 /* GLOBAL FONT OVERRIDE - Ensures Inter is the only font used */
-html, body, * {
+html,
+body,
+* {
   font-family: var(--font-inter), sans-serif !important;
 }
 
@@ -9,12 +11,13 @@ html, body, * {
   --background: #ffffff;
   --foreground: #000000;
   --primary: #b30437;
-  --navbar-height: 86px; 
+  --navbar-height: 86px;
 }
 
 @media (max-width: 639px) {
   :root {
-    --navbar-height: 56px; /* mobile navbar height */
+    --navbar-height: 56px;
+    /* mobile navbar height */
   }
 }
 
@@ -47,6 +50,7 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }
@@ -82,7 +86,7 @@ body {
 
 .navbar-secondary-transition {
   transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 200ms ease;
+    opacity 200ms ease;
 }
 
 .navbar-primary-slide {
@@ -148,6 +152,7 @@ body {
     transform: translateX(100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -158,10 +163,24 @@ body {
   animation: slideInRight 0.3s ease-out;
 }
 
-/* Section corner decorations */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ── Base ──
 .section-corners {
   position: relative;
 }
+
 .section-corners::before {
   content: "";
   position: absolute;
@@ -173,6 +192,7 @@ body {
   border-left: 2px solid #ccc;
   z-index: 10;
 }
+
 .section-corners::after {
   content: "";
   position: absolute;
@@ -184,6 +204,7 @@ body {
   border-right: 2px solid #ccc;
   z-index: 10;
 }
+
 .section-corners span.corner::before {
   content: "";
   position: absolute;
@@ -195,6 +216,7 @@ body {
   border-right: 2px solid #ccc;
   z-index: 10;
 }
+
 .section-corners span.corner::after {
   content: "";
   position: absolute;
@@ -207,17 +229,42 @@ body {
   z-index: 10;
 }
 
-/* Hide top corners only */
-.no-top-corners.section-corners::before,
-.no-top-corners.section-corners span.corner::before {
+/*/* ── Individual corners ── */*/
+.no-corner-tl.section-corners::before {
   display: none;
 }
+
+.no-corner-tr.section-corners span.corner::before {
+  display: none;
+}
+
+.no-corner-bl.section-corners span.corner::after {
+  display: none;
+}
+
+.no-corner-br.section-corners::after {
+  display: none;
+} */
+
+/* ── All corners ── */
+/* .no-corners.section-corners::before,
+.no-corners.section-corners::after,
+.no-corners.section-corners span.corner::before,
+.no-corners.section-corners span.corner::after {
+  display: none;
+} */
+
+/* ── Border ── */
+/* .no-border-bottom {
+  border-bottom: none !important;
+} */
 
 /* Full bleed background */
 .full-bleed {
   position: relative;
   z-index: 1;
 }
+
 .full-bleed::before {
   content: "";
   position: absolute;
@@ -228,4 +275,25 @@ body {
   background: inherit;
   z-index: -1;
   pointer-events: none;
+  
+  
+  @keyframes fadeSlideOut {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  
+    to {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+  }
+  
+  .msg-visible {
+    animation: fadeSlideIn 0.4s ease forwards;
+  }
+  
+  .msg-hidden {
+    animation: fadeSlideOut 0.4s ease forwards;
+  } 
 }

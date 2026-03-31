@@ -2,6 +2,7 @@
 
 import { useState, memo } from 'react';
 import Image from 'next/image';
+import HighlightText from '../shared/HighlightObserver';
 
 interface ImageData {
   src: string;
@@ -253,10 +254,11 @@ function LearningOutcomesComponent() {
             WHAT YOU&apos;LL MASTER
           </p>
           <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
-            The{' '}
-            <span className="text-[#B30437]">
+            The{" "}
+            <HighlightText className="font-bold">
               7
-            </span> learning outcomes
+            </HighlightText>{" "}
+            learning outcomes
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-black max-w-3xl mx-auto leading-relaxed">
             We interviewed 100+ founders, CEO, CXOs,COO with one question: What makes someone genuinely useful in a Top Company globally within 5–7 months?

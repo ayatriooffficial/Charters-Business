@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Plus, Minus } from "lucide-react";
 import { ScholarshipData } from "@/data/programmes";
+import HighlightText from "../shared/HighlightObserver";
 
 interface ScholarshipsSectionProps {
   scholarships: ScholarshipData[];
@@ -78,9 +79,9 @@ const ScholarshipsSection: React.FC<ScholarshipsSectionProps> = ({
                 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-black leading-tight mb-3 sm:mb-4"
               >
                 Empowering Dreams Through{" "}
-                <span className="bg-[#B30437] text-white px-2 py-1 rounded">
+                <HighlightText className="font-bold">
                   Scholarships
-                </span>
+                </HighlightText>
               </h2>
               <p className="text-lg text-black leading-relaxed max-w-lg">
                 We never let financial hardships stand in the way of quality

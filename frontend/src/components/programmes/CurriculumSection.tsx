@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Plus, Sun } from "lucide-react";
 import Image from "next/image";
+import HighlightText from "../shared/HighlightObserver";
 
 const CurriculumSection = () => {
   const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>(
@@ -195,12 +196,12 @@ const CurriculumSection = () => {
           </p>
           <h1
             id="curriculum-heading"
-            className="text-2xl sm:text-3xl lg:text-4xl font-light text-black mb-3 lg:mb-4 leading-tight text-center"
+            className="text-2xl font-bold sm:text-3xl lg:text-4xl text-black mb-3 lg:mb-4 leading-tight text-center"
           >
             Dive into the{" "}
-            <span className="italic text-[#B30437]">
+            <HighlightText className="font-bold">
               hands-on curriculum
-            </span>
+            </HighlightText>
           </h1>
         </header>
 

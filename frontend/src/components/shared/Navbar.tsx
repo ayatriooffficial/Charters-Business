@@ -20,25 +20,35 @@ function Navbar() {
   const [dropdownTop, setDropdownTop] = useState(0);
   const [showInterviewAI, setShowInterviewAI] = useState(false);
 
-  const { user } = useAuth();
+  const messages = [
+    "Need Help?",
+    "Talk to us at 08045579576",
+    "Request Callback",
+  ];
 
+  const [currentMsgIndex, setCurrentMsgIndex] = useState(0);
+  const [msgVisible, setMsgVisible] = useState(true);
+
+  
+  const { user } = useAuth();
+  
   const headerRef = useRef<HTMLDivElement>(null);
   const secondaryRef = useRef<HTMLDivElement>(null);
   const primaryRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const academicsButtonRef = useRef<HTMLButtonElement>(null);
   const router = useRouter();
-
+  
   const dashboardUrl =
-    user?.role === "admin" || user?.role === "recruiter"
-      ? "/admin/dashboard"
-      : "/dashboard";
-
+  user?.role === "admin" || user?.role === "recruiter"
+  ? "/admin/dashboard"
+  : "/dashboard";
+  
   const dashboardText =
-    user?.role === "admin" || user?.role === "recruiter"
-      ? "Admin Dashboard"
-      : "Dashboard";
-
+  user?.role === "admin" || user?.role === "recruiter"
+  ? "Admin Dashboard"
+  : "Dashboard";
+  
   const handleCourseClick = useCallback(
     (sectionId: string) => {
       setIsAcademicsOpen(false);
@@ -65,6 +75,18 @@ function Navbar() {
 
     setDropdownTop(totalTop);
   }, [isSecondaryVisible]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setMsgVisible(false);
+      setTimeout(() => {
+        setCurrentMsgIndex((prev) => (prev + 1) % messages.length);
+        setMsgVisible(true);
+      }, 400);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -208,13 +230,15 @@ function Navbar() {
                 }}
                 className="absolute left-1/2 -translate-x-1/2 flex text-[13px] text-[#0F1419] font-semibold items-center whitespace-nowrap cursor-pointer"
               >
-                <p>Need Help? Talk to us at 08045579576 or REQUEST CALLBACK</p>
+                <p className={msgVisible ? "msg-visible" : "msg-hidden"} style={{ margin: 0 }}>
+                  {messages[currentMsgIndex]}
+                </p>
                 <Image
                   src="/Charters icon/top_arrow-black.svg"
                   alt="Format icon"
                   width={15}
                   height={15}
-                  className="ml-[3px] w-[10px] h-[10px] object-contain"
+                  className="ml-[6px] w-[10px] h-[10px] object-contain"
                 />
               </div>
 

@@ -2,6 +2,7 @@
 
 import React from "react";
 import { TrackRecordData } from "@/data/programmes";
+import HighlightText from "../shared/HighlightObserver";
 
 interface TrackRecordProps {
   data: TrackRecordData;
@@ -20,10 +21,9 @@ const TrackRecord: React.FC<TrackRecordProps> = ({ data }) => {
               className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light text-black mb-4 sm:mb-6"
             >
               A Proven{" "}
-              <span className="text-green-600 font-medium relative inline-block">
+              <HighlightText className="font-medium">
                 track record
-                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-green-600" />
-              </span>
+              </HighlightText>
             </h2>
           </div>
 
