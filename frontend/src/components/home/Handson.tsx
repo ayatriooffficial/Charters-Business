@@ -11,6 +11,12 @@ const features = [
   { icon: BarChart3, title: "Healthcare Analytics" },
 ];
 
+const CARD_MOBILE_BANNER_SIZES =
+  "(max-width: 639px) calc(100vw - 0.5rem), (max-width: 1023px) calc(100vw - 1rem), 680px";
+const CARD_DESKTOP_IMAGE_SIZES =
+  "(min-width: 1360px) 680px, (min-width: 1024px) 50vw, 100vw";
+const PARTNER_LOGO_SIZES = "(max-width: 768px) 100vw, 463px";
+
 const cardsData = [
   {
     id: "creator",
@@ -91,7 +97,7 @@ function EditorialCard({ card }: EditorialCardProps) {
           className="w-full h-full object-cover"
           loading="lazy"
           quality={45}
-          sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 3rem), 505px"
+          sizes={CARD_MOBILE_BANNER_SIZES}
         />
       </div>
 
@@ -141,7 +147,7 @@ function EditorialCard({ card }: EditorialCardProps) {
                 src="/charter-partner/chater-accounating-partner.avif"
                 alt="Meet our creator alums"
                 fill
-                sizes="(max-width:768px) 100vw, 463px"
+                sizes={PARTNER_LOGO_SIZES}
                 className="object-contain object-left"
               />
             </div>
@@ -156,7 +162,7 @@ function EditorialCard({ card }: EditorialCardProps) {
                 src="/charter-partner/charter_busness_school_works_country.avif"
                 alt="Meet our creator alums"
                 fill
-                sizes="(max-width:768px) 100vw, 463px"
+                sizes={PARTNER_LOGO_SIZES}
                 className="object-contain object-left"
               />
             </div>
@@ -193,13 +199,13 @@ function HealthGridCard({ card }: HealthGridCardProps) {
       {/* Mobile banner image */}
       <div className="relative block h-32 w-full flex-shrink-0 overflow-hidden lg:hidden">
         <Image
-          src="/home/ima2.png"
+          src="/home/ima2.avif"
           alt={`${card.title} visual`}
           fill
           className="w-full h-full object-cover"
           loading="lazy"
-          quality={45}
-          sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 3rem), 505px"
+          quality={40}
+          sizes={CARD_MOBILE_BANNER_SIZES}
         />
       </div>
 
@@ -251,6 +257,7 @@ function HealthGridCard({ card }: HealthGridCardProps) {
                 src="/charter-partner/charter_busness_school_works_country.avif"
                 alt="Meet our creator alums"
                 fill
+                sizes={PARTNER_LOGO_SIZES}
                 className="object-contain object-left"
               />
             </div>
@@ -265,6 +272,7 @@ function HealthGridCard({ card }: HealthGridCardProps) {
                 src="/charter-partner/charter_busness_school_works_country.avif"
                 alt="Meet our creator alums"
                 fill
+                sizes={PARTNER_LOGO_SIZES}
                 className="object-contain object-left"
               />
             </div>
@@ -274,11 +282,11 @@ function HealthGridCard({ card }: HealthGridCardProps) {
         {/* Right image column */}
         <div className="hidden lg:block lg:col-span-6 relative">
           <Image
-            src="/home/ima11.png"
+            src="/home/ima11.avif"
             alt="Learner portrait"
             fill
-            priority
-            sizes="(max-width:768px) 100vw, (max-width:1024px) 50vw, 600px"
+            quality={40}
+            sizes={CARD_DESKTOP_IMAGE_SIZES}
             className="object-cover object-center"
           />
         </div>
@@ -309,13 +317,13 @@ function FlagshipCard({ card }: FlagshipCardProps) {
     <section className="flex flex-col w-full bg-[#E6F4EA] overflow-hidden h-full max-h-[85vh]">
       <div className="relative block h-32 w-full flex-shrink-0 overflow-hidden lg:hidden">
         <Image
-          src="/home/ima11.png"
+          src="/home/ima11.avif"
           alt={`${card.title} visual`}
           fill
           className="w-full h-full object-cover"
           loading="lazy"
-          quality={45}
-          sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(100vw - 3rem), 505px"
+          quality={40}
+          sizes={CARD_MOBILE_BANNER_SIZES}
         />
       </div>
 
@@ -374,11 +382,11 @@ function FlagshipCard({ card }: FlagshipCardProps) {
         {/* Right image column */}
         <div className="lg:col-span-6 hidden lg:block relative">
           <Image
-            src="/home/ima11.png"
+            src="/home/ima11.avif"
             alt="Learner portrait"
             fill
-            priority
-            sizes="(min-width:1024px) 60vw, 100vw"
+            quality={40}
+            sizes={CARD_DESKTOP_IMAGE_SIZES}
             className="object-cover object-center"
           />
         </div>

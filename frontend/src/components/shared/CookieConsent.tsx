@@ -23,10 +23,10 @@ export default function CookieConsent() {
     window.dispatchEvent(new Event("consent:necessary"));
   }, []);
 
-  const rejectAll = useCallback(() => {
-    setConsentChoice("rejected");
+  const closeBanner = useCallback(() => {
+    setConsentChoice("necessary");
     setShow(false);
-    window.dispatchEvent(new Event("consent:rejected"));
+    window.dispatchEvent(new Event("consent:necessary"));
   }, []);
 
   if (!show) return null;
@@ -38,7 +38,16 @@ export default function CookieConsent() {
       aria-labelledby="cookie-title"
       className="fixed z-[9999] left-8 bottom-8 w-[360px] sm:w-[400px] bg-white border border-black/10 shadow-[0_20px_60px_rgba(0,0,0,0.12)] rounded-sm p-6"
     >
-      <h3 id="cookie-title" className="text-[15px] font-semibold text-gray-900 tracking-tight">
+      <button
+        type="button"
+        onClick={closeBanner}
+        aria-label="Close cookie banner"
+        className="absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-full text-lg leading-none text-gray-500 transition hover:bg-gray-100 hover:text-gray-800"
+      >
+        x
+      </button>
+
+      <h3 id="cookie-title" className="pr-10 text-[15px] font-semibold text-gray-900 tracking-tight">
         We respect your Privacy
       </h3>
 
@@ -61,23 +70,13 @@ export default function CookieConsent() {
           Accept all cookies
         </button>
 
-        <div className="flex gap-2">
-          <button
-            type="button"
-            onClick={onlyNecessary}
-            className="flex-1 border border-gray-300 px-4 py-2.5 text-[13px] font-medium rounded-sm hover:bg-gray-50 transition"
-          >
-            Only necessary
-          </button>
-
-          <button
-            type="button"
-            onClick={rejectAll}
-            className="flex-1 border border-red-200 px-4 py-2.5 text-[13px] font-medium rounded-sm text-red-600 hover:bg-red-50 transition"
-          >
-            Reject cookies
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={onlyNecessary}
+          className="w-full border border-gray-300 px-4 py-2.5 text-[13px] font-medium rounded-sm hover:bg-gray-50 transition"
+        >
+          Only necessary
+        </button>
       </div>
     </div>
   );

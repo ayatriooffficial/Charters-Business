@@ -3,10 +3,11 @@ import User from '../models/User.model.js';
 import asyncHandler from '../utils/asyncHandler.js';
 import ApiResponse from '../utils/ApiResponse.js';
 import ApiError from '../utils/ApiError.js';
+import { syncLeadFieldsOnUser } from '../services/userLeadSync.service.js';
 
 // Submit counseling request
 export const submitCounseling = asyncHandler(async (req, res) => {
-  const { name, email, program, counselingDate, counselingTime, agreeToTerms } = req.body;
+  const { name, email, program, counselingDate, counselingTime, agreeToTerms, trackingData } = req.body;
 
   // Check if user is logged in
   const userId = req.user ? req.user.id : null;
@@ -82,6 +83,12 @@ export const submitCounseling = asyncHandler(async (req, res) => {
       agreeToTerms: true,
     };
   }
+
+  await syncLeadFieldsOnUser(user, {
+    program,
+    trackingData,
+    loggedIn: Boolean(req.user),
+  });
 
   // Create counseling entry
   const counseling = await Counseling.create(counselingData);

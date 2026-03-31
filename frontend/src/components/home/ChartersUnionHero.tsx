@@ -8,20 +8,23 @@ const heroData = {
     "Learn Professional Accounting in Kolkata with 3-month foundation + 4-month paid internship. Work with top companies from USA, Canada, Qatar, Singapore, Australia & UK. Join now!",
   backgroundImage: getCloudinaryUrl("charters-business/background", {
     width: 1536,
-    quality: "auto",
+    quality: "auto:eco",
     format: "auto",
   }),
-  backgroundImageSrcSet: getCloudinarySrcSet("charters-business/background", [
-    828, 1080, 1366, 1536, 1920,
-  ]),
+  backgroundImageSrcSet: getCloudinarySrcSet(
+    "charters-business/background",
+    [828, 1080, 1366, 1536, 1920],
+    { quality: "auto:eco" },
+  ),
   mobileBackgroundImage: getCloudinaryUrl("charters-business/Background-M", {
     width: 640,
-    quality: "auto",
+    quality: "auto:eco",
     format: "auto",
   }),
   mobileBackgroundImageSrcSet: getCloudinarySrcSet(
     "charters-business/Background-M",
-    [320, 390, 412, 515, 640, 750],
+    [320, 390, 412, 515, 640],
+    { quality: "auto:eco" },
   ),
   cta: {
     buttonText: "Join Webinar",

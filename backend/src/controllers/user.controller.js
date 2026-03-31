@@ -2,8 +2,8 @@ import User from "../models/User.model.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import ApiResponse from "../utils/ApiResponse.js";
 import ApiError from "../utils/ApiError.js";
-import { computeViewerScore } from "../services/viewerScore.service.js";
 import ActiveSession from "../models/ActiveSession.model.js";
+import { syncLeadFieldsOnUser } from "../services/userLeadSync.service.js";
 
 export const getAllUsers = asyncHandler(async (req, res) => {
   const users = await User.find().select("-password");
@@ -84,6 +84,11 @@ export const mergeTracking = asyncHandler(async (req, res) => {
   if (!user) {
     throw new ApiError(404, "User not found");
   }
+
+  await syncLeadFieldsOnUser(user, {
+    trackingData: req.body,
+    loggedIn: true,
+  });
 
   res
     .status(200)

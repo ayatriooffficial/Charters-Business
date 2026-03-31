@@ -18,7 +18,7 @@ export function getCloudinaryUrl(
   options: {
     width?: number;
     height?: number;
-    quality?: number | "auto";
+    quality?: number | "auto" | "auto:best" | "auto:good" | "auto:eco" | "auto:low";
     format?: "auto" | "webp" | "avif" | "jpg" | "png";
     crop?: "fill" | "fit" | "scale" | "crop" | "thumb";
     gravity?: "auto" | "face" | "center" | "north" | "south" | "east" | "west";
@@ -82,13 +82,17 @@ export function getCloudinaryUrl(
 export function getCloudinarySrcSet(
   publicId: string,
   widths: number[] = [640, 750, 828, 1080, 1200, 1920],
+  options: {
+    quality?: number | "auto" | "auto:best" | "auto:good" | "auto:eco" | "auto:low";
+    format?: "auto" | "webp" | "avif" | "jpg" | "png";
+  } = {},
 ): string {
   return widths
     .map((width) => {
       const url = getCloudinaryUrl(publicId, {
         width,
-        quality: "auto",
-        format: "auto",
+        quality: options.quality ?? "auto",
+        format: options.format ?? "auto",
       });
       return `${url} ${width}w`;
     })

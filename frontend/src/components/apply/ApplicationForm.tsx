@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { submitApplication, submitCounseling } from '@/lib/server/api';
 import { getAllProgrammes } from "@/lib/server/programmes";
 import { useAuth } from '@/context/AuthContext';
+import { getTrackingSnapshot } from '@/lib/Tracking';
 import PhoneOtpLogin from '../auth/PhoneOtpLogin';
 
 type FormType = 'application' | 'counseling';
@@ -107,6 +108,7 @@ export default function ApplicationForm() {
 
         try {
           const programTitle = getProgramTitleFromSlug(programmeParam);
+          const trackingData = getTrackingSnapshot();
 
           if (!programTitle) {
             console.error('Invalid programme');
@@ -123,6 +125,7 @@ export default function ApplicationForm() {
               countryCode: '+91',
               mobileNo: '',
               agreeToTerms: true,
+              trackingData,
             },
             token
           );
@@ -262,6 +265,7 @@ export default function ApplicationForm() {
 
     try {
       let response;
+      const trackingData = getTrackingSnapshot();
 
       if (formType === 'counseling') {
         response = await submitCounseling(
@@ -272,11 +276,18 @@ export default function ApplicationForm() {
             counselingDate: formData.counselingDate,
             counselingTime: formData.counselingTime,
             agreeToTerms: formData.agreeToTerms,
+            trackingData,
           },
           token
         );
       } else {
-        response = await submitApplication(formData, token);
+        response = await submitApplication(
+          {
+            ...formData,
+            trackingData,
+          },
+          token
+        );
       }
 
       if (response.success && response.data) {

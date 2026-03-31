@@ -14,6 +14,7 @@ export interface CounselingFormData {
   counselingDate: string;
   counselingTime: string;
   agreeToTerms: boolean;
+  trackingData?: TrackingPayload | null;
 }
 
 export interface ApplicationFormData {
@@ -24,6 +25,20 @@ export interface ApplicationFormData {
   countryCode: string;
   mobileNo: string;
   agreeToTerms: boolean;
+  trackingData?: TrackingPayload | null;
+}
+
+export interface TrackingPayload {
+  sessionId: string;
+  deviceId: string;
+  pageViewsTotal: number;
+  uniquePages: Array<{
+    path: string;
+    title: string;
+  }>;
+  chatInteractions: number;
+  startedAt: number;
+  lastSeenAt: number;
 }
 
 export interface LoginData {

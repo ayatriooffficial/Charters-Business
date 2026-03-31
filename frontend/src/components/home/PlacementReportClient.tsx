@@ -2,9 +2,9 @@
 
 import React, { useRef, useState, useEffect, memo } from "react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { Download } from "lucide-react";
 import useInViewPlay from "@/components/micro/useInViewPlay";
-import TrustedCompanies from "./TrustedCompanies";
 import Placement_TrustedCompanies from "./Placement_TrustedCompanies";
 
 const SalaryGrowthChart = dynamic(
@@ -163,22 +163,26 @@ const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
           aria-labelledby="download-section-heading"
         >
           <div className="mx-auto flex flex-col md:flex-row items-center justify-between py-4">
-            <div className="w-full md:w-3/4 text-base md:text-lg text-center md:text-left flex flex-col font-light text-gray-800">
+            <div className="w-full md:w-3/4 text-center md:text-left flex flex-col text-gray-800">
               <h3 id="download-section-heading" className="leading-snug">
                 Proven track record of outcomes{" "}
                 {verification.verified && (
                   <span className="inline-flex items-center gap-1">
                     verified by
-                    <img
-                      src="verified.png"
+                    <Image
+                      src="/verified.avif"
                       alt="Verification logo"
-                      className="h-5 md:h-6 inline-block object-contain"
+                      width={104}
+                      height={24}
+                      sizes="(min-width: 768px) 104px, 87px"
+                      quality={60}
+                      className="w-auto h-5 md:h-6 inline-block object-contain"
                     />
                   </span>
                 )}{" "}
                 through our programs
               </h3>
-              <p className="text-[10px] md:text-[11px] text-gray-600 mt-2 px-2 md:px-0">
+              <p className="text-[10px] md:text-[11px] text-gray-600 mt-1 px-2 md:px-0">
                 Source: *(a)¹Charter Career Center and Past outcomes are not
                 indicative of future placements for subsequent cohorts.
               </p>

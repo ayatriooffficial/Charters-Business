@@ -8,9 +8,48 @@ const BACKEND_BASE_URL = RAW_BACKEND_BASE_URL
   .replace(/\/api\/v1\/?$/, "")
   .replace(/\/$/, "");
 
+type HeadersWithSetCookie = Headers & {
+  getSetCookie?: () => string[];
+};
+
 function buildTargetUrl(path: string[]) {
   const joinedPath = path.join("/");
   return `${BACKEND_BASE_URL}/${joinedPath}`;
+}
+
+function buildProxyResponseHeaders(response: Response) {
+  const responseHeaders = new Headers();
+
+  response.headers.forEach((value, key) => {
+    const normalizedKey = key.toLowerCase();
+
+    if (
+      normalizedKey === "content-encoding" ||
+      normalizedKey === "content-length" ||
+      normalizedKey === "set-cookie"
+    ) {
+      return;
+    }
+
+    responseHeaders.append(key, value);
+  });
+
+  const setCookieHeaders =
+    (response.headers as HeadersWithSetCookie).getSetCookie?.() ?? [];
+
+  if (setCookieHeaders.length > 0) {
+    setCookieHeaders.forEach((cookie) => {
+      responseHeaders.append("set-cookie", cookie);
+    });
+  } else {
+    const singleSetCookie = response.headers.get("set-cookie");
+
+    if (singleSetCookie) {
+      responseHeaders.append("set-cookie", singleSetCookie);
+    }
+  }
+
+  return responseHeaders;
 }
 
 function getProxyErrorMessage(targetUrl: URL) {
@@ -35,7 +74,7 @@ async function proxyRequest(
   const headers = new Headers(request.headers);
   headers.delete("host");
 
-  const init: RequestInit = {
+  const init: RequestInit & { duplex?: "half" } = {
     method: request.method,
     headers,
     redirect: "manual",

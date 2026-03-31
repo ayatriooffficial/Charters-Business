@@ -10,7 +10,7 @@ import React, {
 } from "react";
 import { useRouter } from "next/navigation";
 import { flushTrackingToBackend } from "@/lib/Tracking";
-import { getAuthToken } from "@/lib/utils/cookies";
+import { getAuthToken, removeAuthToken } from "@/lib/utils/cookies";
 
 interface User {
   id: string;
@@ -295,6 +295,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     async (email: string, password: string) => {
       const response = await fetch(`${API_V1}/auth/login`, {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
@@ -325,6 +326,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     async (idToken: string) => {
       const response = await fetch(`${API_V1}/auth/firebase-login`, {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ idToken }),
       });
@@ -360,6 +362,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     ) => {
       const response = await fetch(`${API_V1}/auth/firebase-signup`, {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ idToken, name, email, program }),
       });
@@ -387,10 +390,26 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   );
 
   const logout = useCallback(() => {
+    const headers: HeadersInit | undefined = token
+      ? {
+          Authorization: `Bearer ${token}`,
+        }
+      : undefined;
+
+    void fetch(`${API_V1}/auth/logout`, {
+      method: "POST",
+      credentials: "include",
+      headers,
+      keepalive: true,
+    }).catch((error) => {
+      console.warn("Logout request failed:", error);
+    });
+
     setUser(null);
     setToken(null);
     setApplications([]);
     setCounselings([]);
+    removeAuthToken();
 
     if (isMounted) {
       localStorage.clear();
@@ -398,7 +417,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
 
     router.push("/");
-  }, [router, isMounted]);
+  }, [router, isMounted, token]);
 
   const setAuth = useCallback(
     (

@@ -6,15 +6,22 @@ const SESSION_KEY = "anon_session_v1";
 
 export type ConsentChoice = "accepted" | "necessary" | "rejected";
 
+export type TrackedPage = {
+  path: string;
+  title: string;
+};
+
 export type AnonSession = {
   sessionId: string;
   deviceId: string;
   pageViewsTotal: number;
-  uniquePages: string[];
+  uniquePages: TrackedPage[];
   chatInteractions: number;
   startedAt: number;
   lastSeenAt: number;
 };
+
+export type TrackingSnapshot = AnonSession;
 
 export function getConsentChoice(): ConsentChoice | null {
   const storedConsent = localStorage.getItem(CONSENT_KEY);
@@ -56,6 +63,108 @@ export function clearTrackingData() {
   localStorage.removeItem(DEVICE_KEY);
 }
 
+function toTitleCase(value: string): string {
+  return value.replace(/\b\w/g, (char) => char.toUpperCase());
+}
+
+function normalizePathname(value: string): string {
+  const trimmed = value.trim();
+
+  if (!trimmed) {
+    return "";
+  }
+
+  const withoutHash = trimmed.split("#")[0];
+  const withoutQuery = withoutHash.split("?")[0];
+
+  if (!withoutQuery) {
+    return "";
+  }
+
+  if (withoutQuery === "/") {
+    return "/";
+  }
+
+  return withoutQuery.startsWith("/")
+    ? withoutQuery.replace(/\/+$/, "") || "/"
+    : `/${withoutQuery.replace(/^\/+/, "").replace(/\/+$/, "")}`;
+}
+
+function derivePageTitleFromPath(pathname: string): string {
+  const normalizedPath = normalizePathname(pathname);
+
+  if (!normalizedPath || normalizedPath === "/") {
+    return "Home";
+  }
+
+  return normalizedPath
+    .split("/")
+    .filter(Boolean)
+    .map((segment) =>
+      toTitleCase(segment.replace(/[-_]+/g, " ").replace(/\s+/g, " ").trim()),
+    )
+    .filter(Boolean)
+    .join(" / ");
+}
+
+function normalizePageTitle(title: string | undefined, pathname: string): string {
+  const trimmed = (title || "")
+    .replace(/\s*\|\s*Charters Business\s*$/i, "")
+    .replace(/\s*\|\s*Charters Union\s*$/i, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  return trimmed || derivePageTitleFromPath(pathname);
+}
+
+function normalizeTrackedPages(value: unknown): TrackedPage[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  const seenKeys = new Set<string>();
+  const pages: TrackedPage[] = [];
+
+  value.forEach((page) => {
+    let path = "";
+    let title = "";
+
+    if (typeof page === "string") {
+      path = normalizePathname(page);
+      title = normalizePageTitle("", path);
+    } else if (page && typeof page === "object") {
+      const candidate = page as {
+        path?: string;
+        pathname?: string;
+        url?: string;
+        href?: string;
+        title?: string;
+        name?: string;
+      };
+
+      path = normalizePathname(
+        candidate.path ||
+          candidate.pathname ||
+          candidate.url ||
+          candidate.href ||
+          "",
+      );
+      title = normalizePageTitle(candidate.title || candidate.name, path);
+    }
+
+    const key = path || title;
+
+    if (!key || seenKeys.has(key)) {
+      return;
+    }
+
+    seenKeys.add(key);
+    pages.push({ path, title });
+  });
+
+  return pages;
+}
+
 function getStoredAnonSession(): AnonSession | null {
   const raw = localStorage.getItem(SESSION_KEY);
 
@@ -64,11 +173,47 @@ function getStoredAnonSession(): AnonSession | null {
   }
 
   try {
-    return JSON.parse(raw) as AnonSession;
+    const parsed = JSON.parse(raw) as Partial<AnonSession>;
+
+    if (!parsed.sessionId || !parsed.deviceId) {
+      clearAnonSession();
+      return null;
+    }
+
+    return {
+      sessionId: parsed.sessionId,
+      deviceId: parsed.deviceId,
+      pageViewsTotal:
+        typeof parsed.pageViewsTotal === "number" && parsed.pageViewsTotal > 0
+          ? parsed.pageViewsTotal
+          : 0,
+      uniquePages: normalizeTrackedPages(parsed.uniquePages),
+      chatInteractions:
+        typeof parsed.chatInteractions === "number" && parsed.chatInteractions > 0
+          ? parsed.chatInteractions
+          : 0,
+      startedAt:
+        typeof parsed.startedAt === "number" ? parsed.startedAt : Date.now(),
+      lastSeenAt:
+        typeof parsed.lastSeenAt === "number" ? parsed.lastSeenAt : Date.now(),
+    };
   } catch {
     clearAnonSession();
     return null;
   }
+}
+
+export function getTrackingSnapshot(): TrackingSnapshot | null {
+  const session = getStoredAnonSession();
+
+  if (!session) {
+    return null;
+  }
+
+  return {
+    ...session,
+    uniquePages: session.uniquePages.map((page) => ({ ...page })),
+  };
 }
 
 export function getOrCreateAnonSession(): AnonSession | null {
@@ -99,12 +244,23 @@ function save(session: AnonSession) {
   localStorage.setItem(SESSION_KEY, JSON.stringify(session));
 }
 
-export function trackPage(pathname: string) {
+export function trackPage(pathname: string, title?: string) {
   const session = getOrCreateAnonSession();
   if (!session) return;
 
+  const normalizedPath = normalizePathname(pathname);
+  const normalizedTitle = normalizePageTitle(
+    title || (typeof document !== "undefined" ? document.title : ""),
+    normalizedPath,
+  );
+
   session.pageViewsTotal += 1;
-  if (!session.uniquePages.includes(pathname)) session.uniquePages.push(pathname);
+  if (!session.uniquePages.some((page) => page.path === normalizedPath)) {
+    session.uniquePages.push({
+      path: normalizedPath,
+      title: normalizedTitle,
+    });
+  }
   save(session);
 }
 

@@ -68,8 +68,8 @@ function BuiltByHarvard() {
 
             <div className="w-full h-32 sm:h-38 relative group">
               <Image
-                src="/home/1.jpg"
-                alt="companies"
+                src="/home/charters alumni from.avif"
+                alt="Built by alumni"
                 fill
                 className="object-contain"
               />
@@ -84,7 +84,7 @@ function BuiltByHarvard() {
 
             <div className="w-full h-32 sm:h-38 relative group">
               <Image
-                src="/home/11.jpg"
+                src="/home/curriculum design base on.avif"
                 alt="companies"
                 fill
                 className="object-contain"

@@ -6,6 +6,30 @@ import ApiResponse from "../utils/ApiResponse.js";
 import ApiError from "../utils/ApiError.js";
 import admin from "../config/firebase.config.js";
 
+const AUTH_COOKIE_NAME = "authToken";
+const AUTH_COOKIE_MAX_AGE = 30 * 24 * 60 * 60 * 1000;
+
+function getAuthCookieOptions() {
+  return {
+    path: "/",
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+    maxAge: AUTH_COOKIE_MAX_AGE,
+  };
+}
+
+function setAuthCookie(res, token) {
+  res.cookie(AUTH_COOKIE_NAME, token, getAuthCookieOptions());
+}
+
+function clearAuthCookie(res) {
+  res.clearCookie(AUTH_COOKIE_NAME, {
+    path: "/",
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+  });
+}
+
 // Login
 export const login = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -44,6 +68,7 @@ export const login = asyncHandler(async (req, res) => {
 
   // Generate JWT token
   const token = user.generateToken();
+  setAuthCookie(res, token);
 
   // Get all applications for this user
   const applications = await Application.find({ userId: user._id })
@@ -224,6 +249,7 @@ export const changePassword = asyncHandler(async (req, res) => {
 
 // Logout
 export const logout = asyncHandler(async (req, res) => {
+  clearAuthCookie(res);
   res.status(200).json(new ApiResponse(200, null, "Logged out successfully"));
 });
 
@@ -271,6 +297,7 @@ export const firebaseLogin = asyncHandler(async (req, res) => {
 
     // Generate JWT token
     const token = user.generateToken();
+    setAuthCookie(res, token);
 
     // Get all applications for this user
     const applications = await Application.find({ userId: user._id })
@@ -351,11 +378,13 @@ export const firebaseSignup = asyncHandler(async (req, res) => {
       password: User.generateRandomPassword(), // Dummy password
       phoneNumber: phone_number,
       courseInterestedIn: program,
+      lastLogin: new Date(),
       isFirstLogin: false,
     });
 
     // Generate JWT token
     const token = user.generateToken();
+    setAuthCookie(res, token);
 
     res.status(201).json(
       new ApiResponse(

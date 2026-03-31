@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
       320, 330, 360, 390, 412, 414, 450, 505, 515, 525, 640, 750, 828, 1080,
       1200, 1366, 1536, 1920,
     ],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256],
+    imageSizes: [16, 32, 48, 64, 96, 104, 109, 128, 256],
     remotePatterns: [
       {
         protocol: "https",

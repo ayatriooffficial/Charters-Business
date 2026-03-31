@@ -1,10 +1,17 @@
-import dotenv from "dotenv";
+import "./src/config/loadEnv.js";
 import app from "./src/app.js";
 import connectDB from "./src/config/database.js";
-
-dotenv.config();
+import {
+  startUserSheetExporter,
+  stopUserSheetExporter,
+} from "./src/scripts/exportUsersToSheet.js";
 
 const PORT = process.env.PORT || 10000;
+const SHOULD_START_SHEET_EXPORTER =
+  process.env.ENABLE_SHEET_EXPORT !== "false" &&
+  Boolean(
+    process.env.GOOGLE_SHEET_ID && process.env.GOOGLE_SERVICE_ACCOUNT_JSON
+  );
 
 // Connect to MongoDB then start server
 const startServer = async () => {
@@ -18,6 +25,32 @@ const startServer = async () => {
       );
     });
 
+    if (SHOULD_START_SHEET_EXPORTER) {
+      void startUserSheetExporter().catch((error) => {
+        console.error("Google Sheets exporter failed to start:", error.message);
+      });
+    }
+
+    const shutdown = () => {
+      console.log("Shutting down server...");
+
+      void stopUserSheetExporter()
+        .catch((error) => {
+          console.error(
+            "Google Sheets exporter shutdown error:",
+            error.message
+          );
+        })
+        .finally(() => {
+          server.close(() => {
+            console.log("Server closed");
+            process.exit(0);
+          });
+        });
+    };
+
+    // Graceful shutdown
+    process.on("SIGINT", shutdown);
     // Graceful shutdown
     process.on("SIGINT", () => {
       console.log("Shutting down server...");
