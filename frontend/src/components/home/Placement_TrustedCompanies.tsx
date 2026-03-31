@@ -50,17 +50,6 @@ const POPULAR_COMPANIES: Company[] = [
   {
     name: 'Walmart',
     logo: '/logos/Walmart.svg',
-    // caseStudy: {
-    //   quote:
-    //     "Walmart's supply chain relies heavily on data-driven models for efficiency. Our team relies on this data for making our delivery fleet performant.",
-    //   author: 'John Smith',
-    //   role: 'VP of Engineering',
-    //   avatar: 'https://i.pravatar.cc/150?u=walmart',
-    // },
-  },
-  {
-    name: 'DoorDash',
-    logo: '/logos/DoorDash.svg',
     caseStudy: {
       title: 'DoorDash cuts delivery time with real-time ML',
       description: 'Rapid delivery isn\'t just a promise — it\'s a lifestyle maintained through data, real-time analytics, and efficient ML models.',
@@ -72,6 +61,21 @@ const POPULAR_COMPANIES: Company[] = [
       role: 'Logistics Lead',
       avatar: 'https://i.pravatar.cc/150?u=doordash',
     },
+  },
+  {
+    name: 'DoorDash',
+    logo: '/logos/DoorDash.svg',
+    // caseStudy: {
+    //   title: 'DoorDash cuts delivery time with real-time ML',
+    //   description: 'Rapid delivery isn\'t just a promise — it\'s a lifestyle maintained through data, real-time analytics, and efficient ML models.',
+    //   stats: [
+    //     { value: '2x', label: 'Faster delivery' },
+    //     { value: '40%', label: 'Cost reduction' },
+    //   ],
+    //   author: 'Sarah Conner',
+    //   role: 'Logistics Lead',
+    //   avatar: 'https://i.pravatar.cc/150?u=doordash',
+    // },
   },
 
   {
@@ -118,17 +122,17 @@ const POPULAR_COMPANIES: Company[] = [
   {
     name: 'Meta',
     logo: '/logos/Meta.svg',
-    caseStudy: {
-      title: 'Meta connects billions with modern protocols',
-      description: 'Connecting billions of people requires innovative data structures and networking protocols that push the boundaries of computing.',
-      stats: [
-        { value: '3B+', label: 'Users connected' },
-        { value: '5x', label: 'Infra efficiency' },
-      ],
-      author: 'Mark Evans',
-      role: 'Technical Lead',
-      avatar: 'https://i.pravatar.cc/150?u=meta',
-    },
+    // caseStudy: {
+    //   title: 'Meta connects billions with modern protocols',
+    //   description: 'Connecting billions of people requires innovative data structures and networking protocols that push the boundaries of computing.',
+    //   stats: [
+    //     { value: '3B+', label: 'Users connected' },
+    //     { value: '5x', label: 'Infra efficiency' },
+    //   ],
+    //   author: 'Mark Evans',
+    //   role: 'Technical Lead',
+    //   avatar: 'https://i.pravatar.cc/150?u=meta',
+    // },
   },
   {
     name: 'Netflix',
@@ -144,13 +148,17 @@ const POPULAR_COMPANIES: Company[] = [
   {
     name: 'Amazon',
     logo: '/logos/amazon.svg',
-    // caseStudy: {
-    //   quote:
-    //     'From e-commerce to cloud computing, operational efficiency is our main priority, driven by data science and machine learning models.',
-    //   author: 'Jeff Wilke',
-    //   role: 'Head of Operations',
-    //   avatar: 'https://i.pravatar.cc/150?u=amazon',
-    // },
+    caseStudy: {
+      title: 'Meta connects billions with modern protocols',
+      description: 'Connecting billions of people requires innovative data structures and networking protocols that push the boundaries of computing.',
+      stats: [
+        { value: '3B+', label: 'Users connected' },
+        { value: '5x', label: 'Infra efficiency' },
+      ],
+      author: 'Mark Evans',
+      role: 'Technical Lead',
+      avatar: 'https://i.pravatar.cc/150?u=meta',
+    },
   },
 ];
 
@@ -169,7 +177,7 @@ function TrustedCompanies() {
       className="relative z-10 mx-[0%] overflow-visible bg-white pb-2 border-gray-200 border-b"
     >
       {isVisible && (
-        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto w-full max-w-7xl py-[15px] px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-[30px]">
             <p className="mx-auto text-base text-black sm:text-lg lg:text-xl">
               Join 1250+ Companies Hiring Young Charter's Worldwide
@@ -246,11 +254,17 @@ function TrustedCompanies() {
       )}
 
       {/* ✅ Show more — now uses its own hover state, fully independent */}
-      <div className="flex justify-center pt-2">
-        <button className="group text-sm text-gray-400 hover:text-black transition">
-          Show all companies
-          <span className="ml-1 inline-block transition-all duration-300 group-hover:-rotate-45">
-            →
+      <div className="flex justify-center py-2">
+        <button className="group cursor-pointer text-sm text-black opacity-50 hover:opacity-100 transition">
+          View all 1253 companies
+          <span className="inline-block">
+            <Image
+              src="/Charters icon/top_arrow-black.svg"
+              alt="Format icon"
+              width={15}
+              height={15}
+              className="ml-[6px] w-[10px] h-[10px] object-contain"
+            />
           </span>
         </button>
       </div>

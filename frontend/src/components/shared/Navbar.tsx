@@ -21,34 +21,34 @@ function Navbar() {
   const [showInterviewAI, setShowInterviewAI] = useState(false);
 
   const messages = [
-    "Need Help?",
-    "Talk to us at 08045579576",
-    "Request Callback",
+    "Talk to us at 08045579576 or Request Callback",
+    "Round 2 Phase 1 Deadline: 1st May 2026",
+    "Request for 1:1 Placement Guidance",
   ];
 
   const [currentMsgIndex, setCurrentMsgIndex] = useState(0);
   const [msgVisible, setMsgVisible] = useState(true);
 
-  
+
   const { user } = useAuth();
-  
+
   const headerRef = useRef<HTMLDivElement>(null);
   const secondaryRef = useRef<HTMLDivElement>(null);
   const primaryRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const academicsButtonRef = useRef<HTMLButtonElement>(null);
   const router = useRouter();
-  
+
   const dashboardUrl =
-  user?.role === "admin" || user?.role === "recruiter"
-  ? "/admin/dashboard"
-  : "/dashboard";
-  
+    user?.role === "admin" || user?.role === "recruiter"
+      ? "/admin/dashboard"
+      : "/dashboard";
+
   const dashboardText =
-  user?.role === "admin" || user?.role === "recruiter"
-  ? "Admin Dashboard"
-  : "Dashboard";
-  
+    user?.role === "admin" || user?.role === "recruiter"
+      ? "Admin Dashboard"
+      : "Dashboard";
+
   const handleCourseClick = useCallback(
     (sectionId: string) => {
       setIsAcademicsOpen(false);
@@ -330,7 +330,7 @@ function Navbar() {
                 <li className="relative">
                   <button
                     ref={academicsButtonRef}
-                    className="flex items-center justify-start gap-2 hover:text-[#B30437] transition-colors duration-300 cursor-pointer bg-transparent border-none"
+                    className="flex items-center justify-start gap-2 hover:underline decoration-black hover:text-[#B30437] transition-colors duration-300 cursor-pointer bg-transparent border-none"
                     aria-expanded={isAcademicsOpen}
                     aria-haspopup="true"
                     onClick={() => setIsAcademicsOpen(!isAcademicsOpen)}
@@ -347,7 +347,7 @@ function Navbar() {
                 <li>
                   <a
                     href="/faculties"
-                    className="gap-2 hover:text-[#B30437] transition-colors duration-300 cursor-pointer"
+                    className="gap-2 hover:underline decoration-black hover:text-[#B30437] transition-colors duration-300 cursor-pointer"
                   >
                     <span>FACULTY + RESEARCH</span>
                   </a>
@@ -355,7 +355,7 @@ function Navbar() {
                 <li>
                   <a
                     href="/student-life"
-                    className="gap-2 hover:text-[#B30437] transition-colors duration-300 cursor-pointer"
+                    className="gap-2 hover:underline decoration-black hover:text-[#B30437] transition-colors duration-300 cursor-pointer"
                   >
                     <span>STUDENT LIFE</span>
                   </a>
@@ -363,7 +363,7 @@ function Navbar() {
                 <li>
                   <a
                     href="/careers"
-                    className="gap-2 hover:text-[#B30437] transition-colors duration-300 cursor-pointer"
+                    className="gap-2 hover:underline decoration-black hover:text-[#B30437] transition-colors duration-300 cursor-pointer"
                   >
                     <span>PLACEMENTS++</span>
                   </a>
@@ -371,7 +371,7 @@ function Navbar() {
                 <li>
                   <a
                     href="/community"
-                    className="gap-2 hover:text-[#B30437] transition-colors duration-300 cursor-pointer"
+                    className="gap-2 hover:underline decoration-black hover:text-[#B30437] transition-colors duration-300 cursor-pointer"
                   >
                     <span>COMMUNITY</span>
                   </a>
@@ -635,24 +635,24 @@ function Navbar() {
         </div>
       </div>
       {showInterviewAI && createPortal(
-                                      <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-black/20">
-                                          <div className="w-[80%] h-[90%] relative">
-                                              <button
-                                                onClick={() => {
-                                                  setShowInterviewAI(false);
-                                                  document.body.style.overflow = '';
-                                                }}
-                                                  className="absolute -top-3 -right-3 z-40 bg-white rounded-full w-7 h-7 flex items-center justify-center shadow-md text-gray-600 hover:text-red-500 transition-colors"
-                                              >
-                                                  ✕
-                                              </button>
-                                              <div className="w-full h-full overflow-hidden rounded-xl shadow-2xl">
-                                                  <ChartersInterviewAi />
-                                              </div>
-                                          </div>
-                                      </div>,
-                                      document.body
-                                  )}
+        <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-black/20">
+          <div className="w-[80%] h-[90%] relative">
+            <button
+              onClick={() => {
+                setShowInterviewAI(false);
+                document.body.style.overflow = '';
+              }}
+              className="absolute -top-3 -right-3 z-40 bg-white rounded-full w-7 h-7 flex items-center justify-center shadow-md text-gray-600 hover:text-red-500 transition-colors"
+            >
+              ✕
+            </button>
+            <div className="w-full h-full overflow-hidden rounded-xl shadow-2xl">
+              <ChartersInterviewAi />
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
     </div>
   );
 }

@@ -170,13 +170,12 @@ const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
                   <span className="inline-flex items-center gap-1">
                     verified by
                     <Image
-                      src="/verified.avif"
+                      src="/home/charters-adit-partners.avif"
                       alt="Verification logo"
                       width={104}
                       height={24}
                       sizes="(min-width: 768px) 104px, 87px"
-                      quality={60}
-                      className="w-auto h-5 md:h-6 inline-block object-contain"
+                      className="w-auto h-7 md:h-7 inline-block object-contain"
                     />
                   </span>
                 )}{" "}
