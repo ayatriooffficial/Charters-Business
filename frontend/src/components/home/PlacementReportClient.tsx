@@ -2,9 +2,9 @@
 
 import React, { useRef, useState, useEffect, memo } from "react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { Download } from "lucide-react";
 import useInViewPlay from "@/components/micro/useInViewPlay";
-import TrustedCompanies from "./TrustedCompanies";
 import Placement_TrustedCompanies from "./Placement_TrustedCompanies";
 
 const SalaryGrowthChart = dynamic(
@@ -169,10 +169,14 @@ const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
                 {verification.verified && (
                   <span className="inline-flex items-center gap-1">
                     verified by
-                    <img
-                      src="verified.png"
+                    <Image
+                      src="/verified.avif"
                       alt="Verification logo"
-                      className="h-5 md:h-6 inline-block object-contain"
+                      width={104}
+                      height={24}
+                      sizes="(min-width: 768px) 104px, 87px"
+                      quality={60}
+                      className="w-auto h-5 md:h-6 inline-block object-contain"
                     />
                   </span>
                 )}{" "}
