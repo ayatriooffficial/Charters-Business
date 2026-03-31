@@ -1,66 +1,141 @@
 import { Programme } from "@/lib/server/programmes";
 
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL || "https://chartersbusiness.com"
+).replace(/\/+$/, "");
+
+export const SITE_NAME = "Charters Business";
+export const SITE_BRAND_NAME = "Charters Union";
+export const DEFAULT_LANGUAGE = "en-IN";
+export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
+export const WEBSITE_ID = `${SITE_URL}/#website`;
+export const HOME_PAGE_ID = `${SITE_URL}/#homepage`;
+
+const DEFAULT_LOGO_URL = `${SITE_URL}/Chaters_Union.avif`;
+const DEFAULT_EMAIL = "admissions@chartersbusiness.com";
+const DEFAULT_PHONE = "08045579576";
+
+export const buildSiteUrl = (path = "") => {
+  if (!path || path === "/") {
+    return SITE_URL;
+  }
+
+  return `${SITE_URL}/${path.replace(/^\/+/, "")}`;
+};
+
+const normalizeText = (value?: string) =>
+  value?.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+
+const toIsoDuration = (value?: string) => {
+  if (!value) return undefined;
+
+  const normalized = value.trim();
+
+  if (/^P(?:\d+Y)?(?:\d+M)?(?:\d+W)?(?:\d+D)?$/i.test(normalized)) {
+    return normalized.toUpperCase();
+  }
+
+  const match = normalized.match(/^(\d+)\s+(year|years|month|months|week|weeks)$/i);
+  if (!match) {
+    return undefined;
+  }
+
+  const amount = Number(match[1]);
+  const unit = match[2].toLowerCase();
+
+  if (unit.startsWith("year")) {
+    return `P${amount}Y`;
+  }
+
+  if (unit.startsWith("month")) {
+    return `P${amount}M`;
+  }
+
+  if (unit.startsWith("week")) {
+    return `P${amount}W`;
+  }
+
+  return undefined;
+};
+
+const getValidAggregateRating = (rating?: { score?: number; reviews?: number }) => {
+  const ratingValue = Number(rating?.score);
+  const reviewCount = Number(rating?.reviews);
+
+  if (
+    !Number.isFinite(ratingValue) ||
+    ratingValue <= 0 ||
+    ratingValue > 5 ||
+    !Number.isInteger(reviewCount) ||
+    reviewCount < 1
+  ) {
+    return undefined;
+  }
+
+  return {
+    "@type": "AggregateRating",
+    ratingValue: ratingValue.toFixed(1),
+    reviewCount: reviewCount.toString(),
+    bestRating: "5",
+    worstRating: "1",
+  };
+};
+
 // Base Organization Schema
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
-  "@id": "https://chartersbusiness.com/#organization",
-  name: "Charters Business",
-  alternateName: ["Tetr Program", "Charters Union"],
-  url: "https://chartersbusiness.com",
+  "@id": ORGANIZATION_ID,
+  name: SITE_NAME,
+  alternateName: [SITE_BRAND_NAME],
+  url: SITE_URL,
   logo: {
     "@type": "ImageObject",
-    url: "https://chartersbusiness.com/logo.png",
-    width: 250,
-    height: 60,
+    url: DEFAULT_LOGO_URL,
   },
+  image: DEFAULT_LOGO_URL,
   description:
-    "Join Tetr where the world is your classroom. Apply for undergraduate and postgraduate business programs with scholarships up to 100%. Learn from CEOs, build real businesses, and study at top global institutions.",
+    "Charters Business offers professional accounting and career-focused business education with paid internships, global case-based learning, and industry-led training.",
   foundingDate: "2020",
+  email: DEFAULT_EMAIL,
+  telephone: DEFAULT_PHONE,
+  areaServed: {
+    "@type": "Country",
+    name: "India",
+  },
+  knowsAbout: [
+    "Professional accounting training",
+    "Paid internships",
+    "Career-focused business education",
+    "Industry-led curriculum",
+  ],
   address: {
     "@type": "PostalAddress",
     addressCountry: "IN",
-    addressLocality: "India",
   },
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: "+1-XXX-XXX-XXXX",
-    contactType: "Admissions",
-    email: "info@chartersbusiness.com",
-    availableLanguage: ["English", "Hindi"],
-  },
-  sameAs: [
-    "https://twitter.com/chartersbusiness",
-    "https://linkedin.com/company/chartersbusiness",
-    "https://instagram.com/chartersbusiness",
-    "https://facebook.com/chartersbusiness",
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      contactType: "Admissions",
+      telephone: DEFAULT_PHONE,
+      email: DEFAULT_EMAIL,
+      areaServed: "IN",
+      availableLanguage: ["en", "hi", "bn"],
+    },
   ],
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.8",
-    reviewCount: "495",
-    bestRating: "5",
-    worstRating: "1",
-  },
 };
 
 // Website Schema with Search Action
 export const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": "https://chartersbusiness.com/#website",
-  name: "Charters Business",
-  url: "https://chartersbusiness.com",
+  "@id": WEBSITE_ID,
+  name: SITE_NAME,
+  alternateName: SITE_BRAND_NAME,
+  url: SITE_URL,
+  inLanguage: DEFAULT_LANGUAGE,
   publisher: {
-    "@id": "https://chartersbusiness.com/#organization",
-  },
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: "https://chartersbusiness.com/search?q={search_term_string}",
-    },
-    "query-input": "required name=search_term_string",
+    "@id": ORGANIZATION_ID,
   },
 };
 
@@ -68,18 +143,19 @@ export const websiteSchema = {
 export const homePageSchema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "@id": "https://chartersbusiness.com/#homepage",
-  name: "Professional Accountant Training in Kolkata with 100% Paid Internship | Charter's Union",
-  url: "https://chartersbusiness.com/",
+  "@id": HOME_PAGE_ID,
+  name: "Professional Accountant Training in Kolkata with 100% Paid Internship | Charters Business",
+  url: buildSiteUrl("/"),
   description:
     "Learn professional accounting in Kolkata with a 3-month foundation and 4-month paid internship. Train for global roles with top companies.",
-  inLanguage: "en-IN",
+  inLanguage: DEFAULT_LANGUAGE,
   isPartOf: {
-    "@id": "https://chartersbusiness.com/#website",
+    "@id": WEBSITE_ID,
   },
   about: {
-    "@id": "https://chartersbusiness.com/#organization",
+    "@id": ORGANIZATION_ID,
   },
+  primaryImageOfPage: DEFAULT_LOGO_URL,
 };
 
 // Home Programmes ItemList Schema
@@ -98,14 +174,16 @@ export const generateHomeProgrammesItemListSchema = (
       item: {
         "@type": "Course",
         name: programme.card.title,
-        description: programme.card.description,
-        url: `https://chartersbusiness.com/${programme.slug}`,
+        description: normalizeText(programme.card.description),
+        url: buildSiteUrl(`/${programme.slug}`),
         provider: {
-          "@id": "https://chartersbusiness.com/#organization",
+          "@id": ORGANIZATION_ID,
         },
         educationalLevel: programme.card.level,
         courseMode: programme.card.format.type,
-        timeRequired: programme.card.duration.type,
+        ...(toIsoDuration(programme.card.duration.type)
+          ? { timeRequired: toIsoDuration(programme.card.duration.type) }
+          : {}),
       },
     })),
   };
@@ -119,11 +197,16 @@ export const generateSiteNavigationSchema = (
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: "Site Navigation",
-    itemListElement: navigationItems.map((item) => ({
-      "@type": "SiteNavigationElement",
-      name: item.name,
-      url: item.url,
-      ...(item.description && { description: item.description }),
+    numberOfItems: navigationItems.length,
+    itemListElement: navigationItems.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "SiteNavigationElement",
+        name: item.name,
+        url: item.url,
+        ...(item.description && { description: item.description }),
+      },
     })),
   };
 };
@@ -132,59 +215,55 @@ export const generateSiteNavigationSchema = (
 export const generateBreadcrumbSchema = (
   items: { name: string; url: string }[],
 ) => {
+  const validItems = items.filter(
+    (item) => item?.name?.trim().length > 0 && item?.url?.trim().length > 0,
+  );
+
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: items
+    itemListElement: validItems
       .map((item, index) => ({
         "@type": "ListItem",
         position: index + 1,
-        name: item?.name?.trim() || `Step ${index + 1}`,
-        item: item?.url?.trim() || "https://chartersbusiness.com",
+        name: item.name.trim(),
+        item: item.url.trim(),
       }))
-      .filter((item) => item.name.length > 0),
   };
 };
 
 // Course/Programme Schema Generator
 export const generateCourseSchema = (programme: Programme) => {
+  const courseUrl = buildSiteUrl(`/${programme.slug}`);
+  const courseId = `${courseUrl}#course`;
+  const duration = toIsoDuration(programme.card.duration.type);
+  const aggregateRating = getValidAggregateRating(programme.card.rating);
+
   return {
     "@context": "https://schema.org",
     "@type": "Course",
-    "@id": `https://chartersbusiness.com/${programme.slug}#course`,
+    "@id": courseId,
     name: programme.card.title,
-    description: programme.card.description,
-    url: `https://chartersbusiness.com/${programme.slug}`,
+    description: normalizeText(programme.card.description),
+    url: courseUrl,
     provider: {
-      "@id": "https://chartersbusiness.com/#organization",
+      "@id": ORGANIZATION_ID,
     },
     educationalLevel: programme.card.level,
     educationalCredentialAwarded: programme.card.certificateType,
-    timeRequired: programme.card.duration.type,
+    ...(duration ? { timeRequired: duration } : {}),
     courseMode: programme.card.format.type,
     hasCourseInstance: {
       "@type": "CourseInstance",
       courseMode: programme.card.format.type,
-      duration: programme.card.duration.type,
+      ...(duration ? { duration } : {}),
       instructor: {
         "@type": "Person",
         name: "Industry Experts",
         description: "Top 1% industry faculty",
       },
     },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: programme.card.rating.score.toString(),
-      reviewCount: programme.card.rating.reviews.toString(),
-      bestRating: "5",
-      worstRating: "1",
-    },
-    offers: {
-      "@type": "Offer",
-      category: "Educational",
-      availability: "https://schema.org/InStock",
-      validFrom: new Date().toISOString(),
-    },
+    ...(aggregateRating ? { aggregateRating } : {}),
     occupationalCredentialAwarded: {
       "@type": "EducationalOccupationalCredential",
       credentialCategory: programme.card.certificateType,
@@ -194,21 +273,24 @@ export const generateCourseSchema = (programme: Programme) => {
 
 // Programme WebPage Schema Generator
 export const generateProgrammeWebPageSchema = (programme: Programme) => {
+  const pageUrl = buildSiteUrl(`/${programme.slug}`);
+
   return {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": `https://chartersbusiness.com/${programme.slug}#webpage`,
-    url: `https://chartersbusiness.com/${programme.slug}`,
-    name: `${programme.card.title} - Charter's Union`,
-    description: programme.card.description,
+    "@id": `${pageUrl}#webpage`,
+    url: pageUrl,
+    name: `${programme.card.title} | ${SITE_NAME}`,
+    description: normalizeText(programme.card.description),
+    inLanguage: DEFAULT_LANGUAGE,
     isPartOf: {
-      "@id": "https://chartersbusiness.com/#website",
+      "@id": WEBSITE_ID,
     },
     about: {
-      "@id": "https://chartersbusiness.com/#organization",
+      "@id": ORGANIZATION_ID,
     },
     mainEntity: {
-      "@id": `https://chartersbusiness.com/${programme.slug}#course`,
+      "@id": `${pageUrl}#course`,
     },
   };
 };
@@ -220,14 +302,16 @@ export const generateFAQSchema = (
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
+    mainEntity: faqs
+      .filter((faq) => faq.question?.trim() && faq.answer?.trim())
+      .map((faq) => ({
       "@type": "Question",
-      name: faq.question,
+      name: normalizeText(faq.question),
       acceptedAnswer: {
         "@type": "Answer",
-        text: faq.answer,
+        text: normalizeText(faq.answer),
       },
-    })),
+      })),
   };
 };
 
@@ -249,13 +333,14 @@ export const generateJobPostingSchema = (job: {
     "@context": "https://schema.org",
     "@type": "JobPosting",
     title: job.title,
-    description: job.description,
+    description: normalizeText(job.description),
     datePosted: job.datePosted,
     hiringOrganization: {
+      "@id": ORGANIZATION_ID,
       "@type": "Organization",
-      name: "Charters Business",
-      sameAs: "https://chartersbusiness.com",
-      logo: "https://chartersbusiness.com/logo.png",
+      name: SITE_NAME,
+      sameAs: SITE_URL,
+      logo: DEFAULT_LOGO_URL,
     },
     jobLocation: {
       "@type": "Place",
@@ -301,22 +386,30 @@ export const generateArticleSchema = (article: {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
+    "@id": `${article.url}#article`,
     headline: article.title,
-    description: article.description,
+    description: normalizeText(article.description),
     image: article.image,
     datePublished: article.datePublished,
     dateModified: article.dateModified || article.datePublished,
-    author: {
-      "@type": "Organization",
-      name: article.author || "Charters Business",
-      url: "https://chartersbusiness.com",
-    },
+    author: article.author
+      ? {
+          "@type": "Person",
+          name: article.author,
+        }
+      : {
+          "@id": ORGANIZATION_ID,
+          "@type": "Organization",
+          name: SITE_NAME,
+          url: SITE_URL,
+        },
     publisher: {
+      "@id": ORGANIZATION_ID,
       "@type": "Organization",
-      name: "Charters Business",
+      name: SITE_NAME,
       logo: {
         "@type": "ImageObject",
-        url: "https://chartersbusiness.com/logo.png",
+        url: DEFAULT_LOGO_URL,
       },
     },
     mainEntityOfPage: {
@@ -339,8 +432,9 @@ export const generateEventSchema = (event: {
   const schema: any = {
     "@context": "https://schema.org",
     "@type": "Event",
+    "@id": `${event.url}#event`,
     name: event.name,
-    description: event.description,
+    description: normalizeText(event.description),
     startDate: event.startDate,
     location: {
       "@type": "Place",
@@ -351,9 +445,10 @@ export const generateEventSchema = (event: {
       },
     },
     organizer: {
+      "@id": ORGANIZATION_ID,
       "@type": "Organization",
-      name: "Charters Business",
-      url: "https://chartersbusiness.com",
+      name: SITE_NAME,
+      url: SITE_URL,
     },
     url: event.url,
   };
@@ -381,17 +476,18 @@ export const generatePersonSchema = (person: {
   const schema: any = {
     "@context": "https://schema.org",
     "@type": "Person",
+    ...(person.url ? { "@id": `${person.url}#person` } : {}),
     name: person.name,
     jobTitle: person.jobTitle,
     worksFor: {
       "@type": "Organization",
-      name: "Charters Business",
-      url: "https://chartersbusiness.com",
+      name: SITE_NAME,
+      url: SITE_URL,
     },
   };
 
   if (person.description) {
-    schema.description = person.description;
+    schema.description = normalizeText(person.description);
   }
 
   if (person.image) {
@@ -423,7 +519,7 @@ export const generateVideoSchema = (video: {
     "@context": "https://schema.org",
     "@type": "VideoObject",
     name: video.name,
-    description: video.description,
+    description: normalizeText(video.description),
     thumbnailUrl: video.thumbnailUrl,
     uploadDate: video.uploadDate,
   };
@@ -463,7 +559,13 @@ export const generateLocalBusinessSchema = (location: {
   const schema: any = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": `${SITE_URL}/#localbusiness`,
     name: location.name,
+    url: SITE_URL,
+    image: DEFAULT_LOGO_URL,
+    parentOrganization: {
+      "@id": ORGANIZATION_ID,
+    },
     address: {
       "@type": "PostalAddress",
       streetAddress: location.address.street,
@@ -487,10 +589,7 @@ export const generateLocalBusinessSchema = (location: {
   }
 
   if (location.openingHours) {
-    schema.openingHoursSpecification = location.openingHours.map((hours) => ({
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: hours,
-    }));
+    schema.openingHours = location.openingHours;
   }
 
   return schema;
@@ -498,5 +597,8 @@ export const generateLocalBusinessSchema = (location: {
 
 // Helper function to combine multiple schemas
 export const combineSchemas = (...schemas: any[]) => {
-  return schemas;
+  return {
+    "@context": "https://schema.org",
+    "@graph": schemas.flat().filter(Boolean),
+  };
 };

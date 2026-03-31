@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@config "../../tailwind.config.ts";
 
 /* GLOBAL FONT OVERRIDE - Ensures Inter is the only font used */
 html, body, * {
