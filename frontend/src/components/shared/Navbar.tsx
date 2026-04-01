@@ -202,7 +202,7 @@ function Navbar() {
             transitionDelay: isSecondaryVisible ? "0ms" : "0ms",
           }}
         >
-          <div className="w-full max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
             <div className="py-1 w-full flex items-center relative">
               {/* Left nav */}
               <nav aria-label="Secondary navigation">
@@ -307,7 +307,7 @@ function Navbar() {
           }}
           aria-label="Main navigation"
         >
-          <div className="max-w-[88rem] mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
             <div className="flex items-center justify-between py-2 sm:py-2 w-full">
               <div
                 className="w-28 sm:w-36 md:w-40 h-6 sm:h-7 md:h-8 relative cursor-pointer hover:opacity-80 transition-opacity duration-200 shrink-0"
