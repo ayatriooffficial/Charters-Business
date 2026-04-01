@@ -20,6 +20,8 @@ import {
   generateBreadcrumbSchema,
   generateFAQSchema,
 } from "@/lib/schema";
+import FacultyModel from "@/components/home/FacultyModel";
+import StudentModel from "@/components/home/StudentModel";
 
 export async function generateStaticParams() {
   const slugs = getAllProgrammeSlugs();
@@ -146,42 +148,48 @@ export default async function ProgrammePage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-        {/* Hero Section */}
-        <ProgramHero data={programme.hero} programmeSlug={slug} />
+      {/* Hero Section */}
+      <ProgramHero data={programme.hero} programmeSlug={slug} />
 
-        {/* Other Sections */}
-        <ProgramInfo data={programme.programInfo} />
+      {/* Other Sections */}
+      <ProgramInfo data={programme.programInfo} />
       <div className="md:border-x border-gray-200 max-w-[85rem] w-full md:w-[90%] mx-auto overflow-x-clip">
         <SectionWrapper hideCorners={"all"}>
-            <TrackRecord data={programme.trackRecord} />
-          </SectionWrapper>
-          <SectionWrapper hideCorners={"all"}>
-            <CurriculumSection />
-          </SectionWrapper>
-          <SectionWrapper hideCorners={"all"}>
-            <AIDegreeProgram data={programme.degreeProgram} />
-          </SectionWrapper>
-          <SectionWrapper hideCorners={"all"}>
-            <WeekAtTetr />
-          </SectionWrapper>
-          <SectionWrapper hideCorners={"all"} borderBottom={false}>
-            <LearnApplyReflectRepeat data={programme.learnApply} />
-          </SectionWrapper>
-          <SectionWrapper hideCorners={"all"}>
-            <LearningOutcomes />
-          </SectionWrapper>
-          <SectionWrapper hideCorners={"all"}>
-            <PricingTabs />
-          </SectionWrapper>
-          <SectionWrapper hideCorners={"all"}>
-            <ScholarshipsSection scholarships={programme.scholarships} />
-          </SectionWrapper>
+          <TrackRecord data={programme.trackRecord} />
+        </SectionWrapper>
+        <SectionWrapper hideCorners={"all"}>
+          <CurriculumSection />
+        </SectionWrapper>
+        <SectionWrapper hideCorners={"all"}>
+          <AIDegreeProgram data={programme.degreeProgram} />
+        </SectionWrapper>
+        <SectionWrapper hideCorners={"all"}>
+          <WeekAtTetr />
+        </SectionWrapper>
+        <SectionWrapper hideCorners={"all"} borderBottom={false}>
+          <FacultyModel />
+        </SectionWrapper>
+        <SectionWrapper hideCorners={"all"} borderBottom={false}>
+          <LearnApplyReflectRepeat data={programme.learnApply} />
+        </SectionWrapper>
+        <SectionWrapper hideCorners={"all"} borderBottom={false} >
+          <StudentModel />
+        </SectionWrapper>
+        <SectionWrapper hideCorners={"all"}>
+          <LearningOutcomes />
+        </SectionWrapper>
+        <SectionWrapper hideCorners={"all"}>
+          <PricingTabs />
+        </SectionWrapper>
+        <SectionWrapper hideCorners={"all"}>
+          <ScholarshipsSection scholarships={programme.scholarships} />
+        </SectionWrapper>
 
 
         <SectionWrapper hideCorners={"all"}>
-            <FAQ data={programme.faq} />
-          </SectionWrapper>
-        </div>
+          <FAQ data={programme.faq} />
+        </SectionWrapper>
+      </div>
     </>
   );
 }

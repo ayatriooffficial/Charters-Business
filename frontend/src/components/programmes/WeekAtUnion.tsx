@@ -17,7 +17,7 @@ const WeekAtTetr = () => {
       </a>
 
       <main
-        className="py-4 sm:py-6 md:py-8 bg-white"
+        className="pt-4 sm:pt-6 md:pt-8 bg-white"
         role="main"
         aria-labelledby="week-heading"
       >

@@ -223,7 +223,7 @@ const LearnApplyReflectRepeat: React.FC<LearnApplyReflectRepeatProps> = ({
                 {currentCourseSet.map((courseSet, index) => (
                   <article
                     key={`${activeCategory}-${index}`}
-                    className="bg-white text-black p-4 sm:p-5 space-y-2 sm:space-y-3 flex-shrink-0 w-[280px] sm:w-80 md:w-96 h-[280px] sm:h-[300px] md:h-[320px] flex flex-col overflow-hidden border-r border-b border-t  border-gray-200 shadow-sm"
+                    className="bg-white text-black p-4 sm:p-5 space-y-2 sm:space-y-3 flex-shrink-0 w-[280px] sm:w-80 md:w-96 h-[280px] sm:h-[300px] md:h-[320px] flex flex-col overflow-hidden border-r border-b border-t  border-gray-200"
                     role="listitem"
                     aria-labelledby={`course-set-${activeCategory}-${index}-heading`}
                   >

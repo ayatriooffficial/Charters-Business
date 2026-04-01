@@ -376,22 +376,6 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div className="text-sm text-gray-700 space-y-1">
-                                        <p>
-                                            Pay the success fee only if you land a job within 6 months of{" "}
-                                            <strong>placement eligibility date</strong>
-                                        </p>
-                                        <p className="text-gray-500">
-                                            Success fee is Rs. 19,999 if CTC is less than 20 LPA.
-                                        </p>
-                                        <p className="text-gray-500">
-                                            Success fee is Rs. 39,999 if CTC is greater than 20 LPA.
-                                        </p>
-                                        <p className="text-gray-500">
-                                            12 month no-cost EMI and 18, 24 & 36 month low-cost EMI available.
-                                        </p>
-                                    </div>
                                 </div>
 
                                 {/* Right - Scholarship Banner */}

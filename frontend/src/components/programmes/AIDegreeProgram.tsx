@@ -46,7 +46,7 @@ const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data }) => {
           </h2>
         </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-start w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-start w-full border-t border-gray-200">
           {/* Campus Image - Shows first on mobile, second on desktop */}
           <aside className="order-1 lg:order-2">
             <div className="relative overflow-hidden rounded-lg lg:rounded-none">
@@ -65,7 +65,7 @@ const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data }) => {
             {data.accordions.map((accordion) => (
               <div
                 key={accordion.id}
-                className="border-b border-r border-gray-200 bg-white overflow-hidden rounded-lg lg:rounded-none first:border-t "
+                className="border-b border-r border-gray-200 bg-white overflow-hidden rounded-lg lg:rounded-none"
               >
                 <button
                   onClick={() => toggleAccordion(accordion.id)}
