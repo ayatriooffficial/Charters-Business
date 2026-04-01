@@ -1110,7 +1110,7 @@ function HandsOnLearningComponent() {
                       <img
                         src="/home/charters-faculty-member.avif"
                         alt="Charters Faculty Member"
-                        className="h-25 w-full object-contain rounded"
+                        className="h-25 w-full p-[7px] object-contain rounded"
                       />
                     </div>
                     <p className="text-gray-400 text-xs pl-4">
