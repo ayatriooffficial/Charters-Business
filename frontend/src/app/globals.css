@@ -297,3 +297,26 @@ body {
     animation: fadeSlideOut 0.4s ease forwards;
   } 
 }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatTop {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-8px) translateX(2px); }
+}
+
+@keyframes floatBottom {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(8px) translateX(-2px); }
+}
+
+.animate-reveal {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+.hover-float-top { animation: floatTop 4s ease-in-out infinite; }
+.hover-float-bottom { animation: floatBottom 5s ease-in-out infinite; }
