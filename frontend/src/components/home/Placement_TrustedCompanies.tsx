@@ -174,7 +174,7 @@ function TrustedCompanies() {
   return (
     <section
       ref={sectionRef}
-      className="relative z-10 mx-[0%] overflow-visible bg-white pb-2 border-gray-200 border-b"
+      className="group/main relative z-10 mx-[0%] overflow-visible bg-white pb-2 border-gray-200 border-b"
     >
       {isVisible && (
         <div className="mx-auto w-full max-w-7xl py-[15px] px-4 sm:px-6 lg:px-8">
@@ -189,17 +189,10 @@ function TrustedCompanies() {
               {POPULAR_COMPANIES.map((company) => (
                 <div
                   key={company.name}
-                  className="group relative z-10 h-10 w-[140px] cursor-pointer hover:z-50" // ✅ group stays here
+                  className="group relative z-10 h-10 w-[140px] cursor-pointer hover:z-50"
                 >
-                  {/* Logo */}
                   <div className="relative h-10 w-full">
-                    <Image
-                      src={company.logo}
-                      alt={company.name}
-                      fill
-                      sizes="140px"
-                      className="object-contain"
-                    />
+                    <Image src={company.logo} alt={company.name} fill className="object-contain" />
                   </div>
 
                   {company.caseStudy && (
@@ -253,9 +246,10 @@ function TrustedCompanies() {
         </div>
       )}
 
-      {/* ✅ Show more — now uses its own hover state, fully independent */}
       <div className="flex justify-center py-2">
-        <button className="group cursor-pointer text-sm text-black opacity-50 hover:opacity-100 transition">
+        <button
+          className="text-sm text-black opacity-50 transition-opacity duration-300 group-hover/main:opacity-100"
+        >
           View all 1253 companies
           <span className="inline-block">
             <Image

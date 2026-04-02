@@ -610,7 +610,7 @@ const StrategicExpansion: React.FC = () => {
 
                     <div className="max-w-[85rem] mx-auto">
 
-                        <div className="bg-[#F6F4F2] pt-4 pb-6 pl-4 pr-4 sm:pt-8 sm:pl-8 sm:pr-8 sm:pb-12 relative">
+                        <div className="bg-[#F6F4F2] p-4 sm:p-6 relative">
 
 
                             {/* Content Section */}
@@ -823,7 +823,7 @@ const StrategicExpansion: React.FC = () => {
                             </div>
 
                             {/* Curved Dotted Lines with Avatars Section */}
-                            <div className="relative h-16 hidden md:flex justify-center items-end mt-4">
+                            <div className="relative min-h-[60px] hidden md:flex justify-center items-end mt-4">
                                 {/* SVG for curved dotted lines */}
                                 <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 1000 50" preserveAspectRatio="none">
                                     {/* Left outer curve - from button 1 to left side of avatars */}
@@ -863,14 +863,14 @@ const StrategicExpansion: React.FC = () => {
                                         opacity="0.6"
                                     />
                                     {/* Arrow heads pointing INWARD (toward circles) */}
-                                    <polygon points="440,42 432,38 432,46" fill="#B30437" opacity="0.6" />
-                                    <polygon points="470,42 462,38 462,46" fill="#B30437" opacity="0.6" />
-                                    <polygon points="530,42 538,38 538,46" fill="#F97316" opacity="0.6" />
-                                    <polygon points="560,42 568,38 568,46" fill="#F97316" opacity="0.6" />
+                                    <polygon points="440,42 432,38 432,46" fill="#F6F4F2" opacity="0.6" />
+                                    <polygon points="470,42 462,38 462,46" fill="#F6F4F2" opacity="0.6" />
+                                    <polygon points="530,42 538,38 538,46" fill="#F6F4F2" opacity="0.6" />
+                                    <polygon points="560,42 568,38 568,46" fill="#F6F4F2" opacity="0.6" />
                                 </svg>
 
                                 {/* Avatar Group */}
-                                <div className="relative top-5 flex items-center justify-center -space-x-3 z-10">
+                                <div className="relative z-10 mt-8 flex items-center justify-center -space-x-3 ">
                                     <div className="w-12 h-12 rounded-full border-2 border-white overflow-hidden shadow-md">
                                         <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Team member" className="w-full h-full object-cover" />
                                     </div>
@@ -878,7 +878,7 @@ const StrategicExpansion: React.FC = () => {
                                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Team member" className="w-full h-full object-cover" />
                                     </div>
                                     <div
-                                        className="w-16 h-16 rounded-full border-4 border-yellow-400 overflow-hidden shadow-lg  cursor-pointer z-20"
+                                        className="w-16 h-16 rounded-full border-4 border-yellow-400 overflow-hidden shadow-lg z-20 cursor-pointer"
                                         onClick={() => setShowInterviewAI(true)}
                                     >
                                         <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop" alt="Team member" className="w-full h-full object-cover" />
