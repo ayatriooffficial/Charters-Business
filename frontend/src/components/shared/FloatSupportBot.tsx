@@ -313,7 +313,7 @@ export default function FloatSupportBot() {
           <div className="bg-[#ffffff] p-4">
             <div className="flex w-full rounded-full border border-gray-300 px-4 py-[6px] text-sm outline-none">
               <img
-                src="Charters icon/AI-icon.svg"
+                src="Charters-icon/AI-icon.svg"
                 className="h-[25px] w-[25px] pt-[3px]"
                 alt="AI icon"
               />

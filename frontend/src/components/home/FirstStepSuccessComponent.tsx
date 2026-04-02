@@ -419,11 +419,21 @@ export default function FirstStepSuccessComponent() {
                 <h3 className="text-sm sm:text-base font-semibold mb-2 leading-tight line-clamp-2">{video.title}</h3>
                 <p className="text-gray-700 text-xs sm:text-sm mb-3">{video.speaker}</p>
                 <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
-                  <span className="text-[#B30437]">★</span>
+                  <img
+                    src="/dot-icon.svg"
+                    alt=""
+                    className="w-4 h-4 mt-0.5 flex-shrink-0"
+                    aria-hidden="true"
+                  />
                   <span>{video.role}, {video.company}</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-gray-500">
-                  <span className="text-[#B30437]">★</span>
+                  <img
+                    src="/dot-icon.svg"
+                    alt=""
+                    className="w-4 h-4 mt-0.5 flex-shrink-0"
+                    aria-hidden="true"
+                  />
                   <span>{video.university}</span>
                 </div>
               </div>
