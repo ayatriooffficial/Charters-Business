@@ -563,10 +563,10 @@ const StrategicExpansion: React.FC = () => {
                 <>
                     <div className="flex-shrink-0 text-center mb-13 sm:mb-13">
                         <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
-                            Career Labs at{" "}
+
                             <HighlightText className="font-bold">
-                                Charters
-                            </HighlightText>
+                                AI-powered
+                            </HighlightText>{" "} Career Labs
                         </h2>
                         <div className="flex flex-col items-start sm:flex-row sm:flex-wrap sm:justify-center sm:items-center gap-3 sm:gap-6 mb-2 sm:mb-4 w-fit mx-auto sm:w-full">
                             {heading_description.description.split("|").map((item: string, index: number) => (
@@ -661,12 +661,7 @@ const StrategicExpansion: React.FC = () => {
                                         </div>
                                     </div>
 
-                                    {/* CTA Button */}
-                                    <button
-                                        className={`${currentContent.buttonColor} text-white px-6 py-3 rounded-lg text-sm font-semibold transition-all`}
-                                    >
-                                        {currentContent.buttonText}
-                                    </button>
+
                                 </div>
 
                                 {/* Right Side - Profile Image */}
