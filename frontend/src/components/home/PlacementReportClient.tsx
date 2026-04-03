@@ -55,22 +55,6 @@ const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
     setIsVisible(true);
   }, [inView]);
 
-  useEffect(() => {
-    if (shouldMount) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !shouldMount) {
-          setShouldMount(true);
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, [shouldMount]);
-
   const handleDownload = () => {
     console.log("Download Placement Report triggered");
   };

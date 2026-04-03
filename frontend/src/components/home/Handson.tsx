@@ -339,7 +339,7 @@ function FlagshipCard({ card }: FlagshipCardProps) {
                 "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=80&h=80&fit=crop",
               ].map((src, idx) => (
                 <div key={idx} className="w-7 h-7 sm:w-9 sm:h-9 rounded-full overflow-hidden border-2 border-white">
-                  <Image src={src} alt="Creator" width={36} height={36} className="w-full h-full object-cover" />
+                  <Image src={src} alt="Creator" width={36} height={36} sizes="36px" className="w-full h-full object-cover" />
                 </div>
               ))}
             </div>
@@ -399,7 +399,6 @@ interface CardComponentProps {
   card: (typeof cardsData)[0];
   index: number;
   activeIndex: number;
-  scrollDirection: "up" | "down";
   totalCards: number;
 }
 
@@ -485,12 +484,10 @@ function Handson() {
   const pathname = usePathname();
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [scrollDirection, setScrollDirection] = useState<"up" | "down">("down");
   const [mounted, setMounted] = useState(false);
 
   const lastProgress = useRef(0);
   const rafId = useRef<number | null>(null);
-  const lastScrollDirection = useRef<"up" | "down">("down");
 
   const totalCards = cardsData.length;
 
@@ -520,11 +517,6 @@ function Handson() {
         if (diff > 0.001) {
           setActiveIndex(smooth);
 
-          const dir = progress > lastProgress.current ? "down" : "up";
-          if (dir !== lastScrollDirection.current) {
-            lastScrollDirection.current = dir;
-            setScrollDirection(dir);
-          }
           lastProgress.current = progress;
         }
       });
@@ -569,7 +561,7 @@ function Handson() {
   }
 
   return (
-    <section className="mx-[0%] text-black bg-white" key={pathname}>
+    <section className="mx-[0%] text-black bg-white">
       <div className="max-w-[85rem] mx-auto pt-12 sm:pt-16 md:pt-18" aria-labelledby="programs-heading">
         <div
           ref={scrollerRef}
@@ -609,7 +601,6 @@ function Handson() {
                 card={card}
                 index={index}
                 activeIndex={activeIndex}
-                scrollDirection={scrollDirection}
                 totalCards={totalCards}
               />
             ))}
