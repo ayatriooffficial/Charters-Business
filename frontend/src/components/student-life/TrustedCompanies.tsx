@@ -54,7 +54,7 @@ export default function TrustedCompanies() {
     ];
 
     return (
-        <section className="w-full bg-white py-5 sm:py-7 lg:py-10">
+        <section className="w-full bg-white pt-5 sm:pt-7 lg:pt-10">
             <div className="max-w-[85rem] mx-auto">
 
                 {/* Header */}

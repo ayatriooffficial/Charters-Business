@@ -2,6 +2,7 @@
 
 import { useState, memo } from 'react';
 import Image from 'next/image';
+import HighlightText from '../shared/HighlightObserver';
 
 interface ImageData {
   src: string;
@@ -246,17 +247,18 @@ function LearningOutcomesComponent() {
 
   return (
     <section className="bg-white text-black pt-16 isolate">
-      <div className=" max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className=" max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-13 sm:mb-14">
           <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-4 sm:mb-6">
             WHAT YOU&apos;LL MASTER
           </p>
           <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
-            The{' '}
-            <span className="text-[#B30437]">
+            The{" "}
+            <HighlightText className="font-bold">
               7
-            </span> learning outcomes
+            </HighlightText>{" "}
+            learning outcomes
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-black max-w-3xl mx-auto leading-relaxed">
             We interviewed 100+ founders, CEO, CXOs,COO with one question: What makes someone genuinely useful in a Top Company globally within 5–7 months?
@@ -266,22 +268,22 @@ function LearningOutcomesComponent() {
         </div>
 
         {/* Main Content  */}
-        <div className="flex flex-col lg:flex-row gap-2 lg:gap-2 mb-13">
+        <div className="flex flex-col lg:flex-row">
           {/* Left Menu Section */}
-          <div className="lg:w-1/4 flex-shrink-0">
+          <div className="lg:w-1/4 flex-shrink-0 border-r border-t pt-4 border-gray-200 ">
             {/* Desktop Menu */}
             <div className="hidden lg:block">
-              <div className="mb-6">
+              <div className="mb-6 text-left pl-4">
                 <h3 className="text-lg font-light text-black mb-2">LEARNING OUTCOMES</h3>
                 <p className="text-gray-400 text-xs">Navigate through our mastery areas</p>
               </div>
 
-              <nav className="space-y-2" aria-label="Learning outcomes navigation">
+              <nav className="" aria-label="Learning outcomes navigation">
                 {contentData.map((item, index) => (
                   <button
                     key={item.title}
                     onClick={() => handleMenuClick(index)}
-                    className={`w-full text-left py-3 transition-all duration-300 ${index === activeIndex
+                    className={`w-full py-3 transition-all duration-300 border-gray-200 border-b first:border-t text-left pl-4 ${index === activeIndex
                       ? 'bg-white text-black font-semibold'
                       : 'text-gray-600 hover:text-black hover:bg-gray-50'
                       }`}
@@ -315,13 +317,13 @@ function LearningOutcomesComponent() {
           </div>
 
           {/* Right Content Section */}
-          <div className="flex-1">
+          <div className="flex-1 border-t border-gray-200">
             <div
               className={`transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
             >
-              <div className="bg-white p-2 sm:p-6">
+              <div className="bg-white">
                 {/* Description */}
-                <div className="mb-6 sm:mb-8">
+                <div className="mb-6 sm:mb-8 px-2 sm:px-6 pt-2 sm:pt-6">
                   <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed mb-4 sm:mb-6">
                     {outcomeData.description.split(outcomeData.highlight)[0]}
                     <span className="text-[#B30437] font-medium">{outcomeData.highlight}</span>
@@ -344,9 +346,9 @@ function LearningOutcomesComponent() {
                 </div>
 
                 {/* Images */}
-                <div className="flex flex-row gap-3 sm:gap-4">
+                <div className="flex flex-row">
                   {outcomeData.images.slice(0, 3).map((image, idx) => (
-                    <div key={idx} className="flex-1 space-y-2 sm:space-y-3">
+                    <div key={idx} className="flex-1 space-y-2 sm:space-y-3 border-r border-gray-200 border-t last:border-r-0">
                       <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
                         <Image
                           src={image.src}
@@ -357,7 +359,7 @@ function LearningOutcomesComponent() {
                           loading="lazy"
                         />
                       </div>
-                      <p className="text-[9px] sm:text-xs text-gray-800 font-medium leading-tight">{image.caption}</p>
+                      <p className="text-[9px] sm:text-xs text-gray-800 font-medium leading-tight pb-1 sm:pb-3 px-1 sm:px-1">{image.caption}</p>
                     </div>
                   ))}
                 </div>

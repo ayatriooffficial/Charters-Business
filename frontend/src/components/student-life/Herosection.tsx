@@ -46,7 +46,7 @@ export default function Hersection() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
             />
             <div role="banner" className="w-full">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 sm:py-6 md:py-8">
+                <div className="mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 md:py-8">
                     <section className="flex flex-col gap-6 sm:gap-10 md:flex-row md:items-center">
 
                         {/* Left*/}
@@ -152,10 +152,10 @@ export default function Hersection() {
                 </div>
             </div>
 
-            <div className="w-full md:border-x border-gray-200 md:mx-auto md:w-[90%] max-w-[95rem]">
+            <div className="w-full border-gray-200 md:mx-auto flex flex-col items-center justify-center border-b">
 
                 <div
-                    className="py-4 mt-4 sm:py-6 border-b border-gray-200"
+                    className="md:border-x py-4 mt-4 sm:py-6 border-gray-200 md:w-[90%] max-w-[85rem]"
                     aria-label="Scholarship information"
                 >
                     <div className="px-4 sm:px-6 lg:px-8">

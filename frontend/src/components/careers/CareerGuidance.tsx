@@ -114,7 +114,7 @@ export default function CareerGuidance() {
     <section
       id="guidance"
       aria-label="Guidance"
-      className="w-full bg-white pb-8 sm:pb-12 md:pb-16 pt-4 sm:pt-6 md:pt-8"
+      className="w-full bg-white pb-8 sm:pb-12 md:pb-16 pt-2 sm:pt-3 md:pt-4"
     >
       <div className="mx-auto max-w-7xl">
 

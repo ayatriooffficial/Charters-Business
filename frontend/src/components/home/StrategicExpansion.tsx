@@ -563,10 +563,10 @@ const StrategicExpansion: React.FC = () => {
                 <>
                     <div className="flex-shrink-0 text-center mb-13 sm:mb-13">
                         <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
-                            Career Labs at{" "}
+
                             <HighlightText className="font-bold">
-                                Charters
-                            </HighlightText>
+                                AI-powered
+                            </HighlightText>{" "} Career Labs
                         </h2>
                         <div className="flex flex-col items-start sm:flex-row sm:flex-wrap sm:justify-center sm:items-center gap-3 sm:gap-6 mb-2 sm:mb-4 w-fit mx-auto sm:w-full">
                             {heading_description.description.split("|").map((item: string, index: number) => (
@@ -610,7 +610,7 @@ const StrategicExpansion: React.FC = () => {
 
                     <div className="max-w-[85rem] mx-auto">
 
-                        <div className="bg-[#F6F4F2] p-4 sm:p-6 md:p-8 relative">
+                        <div className="bg-[#F6F4F2] p-4 sm:p-6 relative">
 
 
                             {/* Content Section */}
@@ -661,12 +661,7 @@ const StrategicExpansion: React.FC = () => {
                                         </div>
                                     </div>
 
-                                    {/* CTA Button */}
-                                    <button
-                                        className={`${currentContent.buttonColor} text-white px-6 py-3 rounded-lg text-sm font-semibold transition-all`}
-                                    >
-                                        {currentContent.buttonText}
-                                    </button>
+
                                 </div>
 
                                 {/* Right Side - Profile Image */}
@@ -828,7 +823,7 @@ const StrategicExpansion: React.FC = () => {
                             </div>
 
                             {/* Curved Dotted Lines with Avatars Section */}
-                            <div className="relative h-16 hidden md:flex justify-center items-end mt-4">
+                            <div className="relative min-h-[60px] hidden md:flex justify-center items-end mt-4">
                                 {/* SVG for curved dotted lines */}
                                 <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 1000 50" preserveAspectRatio="none">
                                     {/* Left outer curve - from button 1 to left side of avatars */}
@@ -868,14 +863,14 @@ const StrategicExpansion: React.FC = () => {
                                         opacity="0.6"
                                     />
                                     {/* Arrow heads pointing INWARD (toward circles) */}
-                                    <polygon points="440,42 432,38 432,46" fill="#B30437" opacity="0.6" />
-                                    <polygon points="470,42 462,38 462,46" fill="#B30437" opacity="0.6" />
-                                    <polygon points="530,42 538,38 538,46" fill="#F97316" opacity="0.6" />
-                                    <polygon points="560,42 568,38 568,46" fill="#F97316" opacity="0.6" />
+                                    <polygon points="440,42 432,38 432,46" fill="#F6F4F2" opacity="0.6" />
+                                    <polygon points="470,42 462,38 462,46" fill="#F6F4F2" opacity="0.6" />
+                                    <polygon points="530,42 538,38 538,46" fill="#F6F4F2" opacity="0.6" />
+                                    <polygon points="560,42 568,38 568,46" fill="#F6F4F2" opacity="0.6" />
                                 </svg>
 
                                 {/* Avatar Group */}
-                                <div className="relative z-10 top-5 flex items-center justify-center -space-x-3">
+                                <div className="relative z-10 mt-8 flex items-center justify-center -space-x-3 ">
                                     <div className="w-12 h-12 rounded-full border-2 border-white overflow-hidden shadow-md">
                                         <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Team member" className="w-full h-full object-cover" />
                                     </div>

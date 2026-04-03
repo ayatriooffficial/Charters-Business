@@ -65,10 +65,10 @@ export default function Subnav({ offsetTop = 0 }: Props) {
   return (
     <section
       aria-label="Careers sub-navigation"
-      className="sticky top-[var(--navbar-height,86px)] z-10  w-full border-b-1 border-gray-200 bg-white"
+      className="sticky top-[var(--navbar-height,86px)] z-10 flex flex-col justify-center items-center w-full border-b border-gray-200 bg-white"
       style={{ top: 'var(--navbar-height,86px)' }}
     >
-      <nav aria-label="Section navigation" className="max-w-[85rem] md:mx-[5%] border-x border-gray-200">
+      <nav aria-label="Section navigation" className="md:w-[90%] max-w-[85rem] border-x border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-5">
           <ul className="flex items-center gap-4 sm:gap-6 md:gap-8 overflow-x-auto py-1 sm:py-2 scrollbar-hide">
             {CAREERS_NAV_ITEMS.map((item) => {
@@ -106,7 +106,6 @@ export default function Subnav({ offsetTop = 0 }: Props) {
           </ul>
         </div>
       </nav>
-      {/* <div className="border-x md:mx-[5%] border-gray-200 h-13 hidden md:block" /> */}
     </section>
   );
 }

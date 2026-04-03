@@ -102,7 +102,7 @@ export default function FloatSupportBot() {
         <div className="fixed bottom-2 right-3 z-30 flex items-center gap-1">
 
           {showQueryPill && (
-            <div className="group relative w-[200px] h-[60px] flex items-left rounded-t-[12px] rounded-bl-[15px] bg-white border border-[#cccccc] shadow-md px-4 py-2">
+            <div className="group relative w-[200px] h-[56px] flex items-left rounded-t-[12px] rounded-bl-[15px] bg-white border border-[#cccccc] shadow-md px-4 py-2">
               <button
                 type="button"
                 onClick={() => setShowQueryPill(false)}
@@ -313,7 +313,7 @@ export default function FloatSupportBot() {
           <div className="bg-[#ffffff] p-4">
             <div className="flex w-full rounded-full border border-gray-300 px-4 py-[6px] text-sm outline-none">
               <img
-                src="Charters icon/AI-icon.svg"
+                src="Charters-icon/AI-icon.svg"
                 className="h-[25px] w-[25px] pt-[3px]"
                 alt="AI icon"
               />

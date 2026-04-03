@@ -50,17 +50,6 @@ const POPULAR_COMPANIES: Company[] = [
   {
     name: 'Walmart',
     logo: '/logos/Walmart.svg',
-    // caseStudy: {
-    //   quote:
-    //     "Walmart's supply chain relies heavily on data-driven models for efficiency. Our team relies on this data for making our delivery fleet performant.",
-    //   author: 'John Smith',
-    //   role: 'VP of Engineering',
-    //   avatar: 'https://i.pravatar.cc/150?u=walmart',
-    // },
-  },
-  {
-    name: 'DoorDash',
-    logo: '/logos/DoorDash.svg',
     caseStudy: {
       title: 'DoorDash cuts delivery time with real-time ML',
       description: 'Rapid delivery isn\'t just a promise — it\'s a lifestyle maintained through data, real-time analytics, and efficient ML models.',
@@ -72,6 +61,21 @@ const POPULAR_COMPANIES: Company[] = [
       role: 'Logistics Lead',
       avatar: 'https://i.pravatar.cc/150?u=doordash',
     },
+  },
+  {
+    name: 'DoorDash',
+    logo: '/logos/DoorDash.svg',
+    // caseStudy: {
+    //   title: 'DoorDash cuts delivery time with real-time ML',
+    //   description: 'Rapid delivery isn\'t just a promise — it\'s a lifestyle maintained through data, real-time analytics, and efficient ML models.',
+    //   stats: [
+    //     { value: '2x', label: 'Faster delivery' },
+    //     { value: '40%', label: 'Cost reduction' },
+    //   ],
+    //   author: 'Sarah Conner',
+    //   role: 'Logistics Lead',
+    //   avatar: 'https://i.pravatar.cc/150?u=doordash',
+    // },
   },
 
   {
@@ -118,17 +122,17 @@ const POPULAR_COMPANIES: Company[] = [
   {
     name: 'Meta',
     logo: '/logos/Meta.svg',
-    caseStudy: {
-      title: 'Meta connects billions with modern protocols',
-      description: 'Connecting billions of people requires innovative data structures and networking protocols that push the boundaries of computing.',
-      stats: [
-        { value: '3B+', label: 'Users connected' },
-        { value: '5x', label: 'Infra efficiency' },
-      ],
-      author: 'Mark Evans',
-      role: 'Technical Lead',
-      avatar: 'https://i.pravatar.cc/150?u=meta',
-    },
+    // caseStudy: {
+    //   title: 'Meta connects billions with modern protocols',
+    //   description: 'Connecting billions of people requires innovative data structures and networking protocols that push the boundaries of computing.',
+    //   stats: [
+    //     { value: '3B+', label: 'Users connected' },
+    //     { value: '5x', label: 'Infra efficiency' },
+    //   ],
+    //   author: 'Mark Evans',
+    //   role: 'Technical Lead',
+    //   avatar: 'https://i.pravatar.cc/150?u=meta',
+    // },
   },
   {
     name: 'Netflix',
@@ -144,13 +148,17 @@ const POPULAR_COMPANIES: Company[] = [
   {
     name: 'Amazon',
     logo: '/logos/amazon.svg',
-    // caseStudy: {
-    //   quote:
-    //     'From e-commerce to cloud computing, operational efficiency is our main priority, driven by data science and machine learning models.',
-    //   author: 'Jeff Wilke',
-    //   role: 'Head of Operations',
-    //   avatar: 'https://i.pravatar.cc/150?u=amazon',
-    // },
+    caseStudy: {
+      title: 'Meta connects billions with modern protocols',
+      description: 'Connecting billions of people requires innovative data structures and networking protocols that push the boundaries of computing.',
+      stats: [
+        { value: '3B+', label: 'Users connected' },
+        { value: '5x', label: 'Infra efficiency' },
+      ],
+      author: 'Mark Evans',
+      role: 'Technical Lead',
+      avatar: 'https://i.pravatar.cc/150?u=meta',
+    },
   },
 ];
 
@@ -166,25 +174,13 @@ function TrustedCompanies() {
   return (
     <section
       ref={sectionRef}
-      className="relative z-10 mx-[0%] overflow-visible bg-white pb-8 border-gray-200 border-b"
+      className="group/main relative z-10 mx-[0%] overflow-visible bg-white pb-2 border-gray-200 border-b"
     >
       {isVisible && (
-        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto w-full max-w-7xl py-[15px] px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-[30px]">
-            <p className="mx-auto text-base text-black sm:text-lg lg:text-xl group cursor-pointer inline-flex items-center gap-1 hover:text-[#B30437] transition-colors duration-300">
-              <span className="inline-block relative overflow-hidden align-bottom min-w-[54px] h-[1.5em]">
-                <span className="inline-block transition-all duration-300 group-hover:-translate-y-full group-hover:opacity-0">
-                  Join
-                </span>
-                <span className="absolute left-0 top-full inline-block transition-all duration-300 group-hover:-translate-y-full font-semibold">
-                  Show
-                </span>
-              </span>
-              <span className="relative">
-                1250+
-                <span className="absolute -bottom-0.5 left-0 w-0 h-[1.5px] bg-[#B30437] transition-all duration-500 group-hover:w-full" />
-              </span>
-              {" "}Companies Hiring Young Charter's Worldwide
+            <p className="mx-auto text-base text-black sm:text-lg lg:text-xl">
+              Join 1250+ Companies Hiring Young Charter's Worldwide
             </p>
           </div>
 
@@ -195,18 +191,10 @@ function TrustedCompanies() {
                   key={company.name}
                   className="group relative z-10 h-10 w-[140px] cursor-pointer hover:z-50"
                 >
-                  {/* Logo */}
                   <div className="relative h-10 w-full">
-                    <Image
-                      src={company.logo}
-                      alt={company.name}
-                      fill
-                      sizes="140px"
-                      className="object-contain"
-                    />
+                    <Image src={company.logo} alt={company.name} fill className="object-contain" />
                   </div>
 
-                  {/* Case Study button + tooltip — only if caseStudy exists */}
                   {company.caseStudy && (
                     <>
                       <div className="absolute left-1/2 top-[calc(100%+7px)] -translate-x-1/2 whitespace-nowrap rounded-full border border-transparent bg-[#efefef] px-2 py-[2px] text-[10px] font-bold text-[#4b5563] transition-colors group-hover:border-gray-200 group-hover:bg-[#e5e7eb]">
@@ -214,18 +202,12 @@ function TrustedCompanies() {
                       </div>
 
                       <div className="pointer-events-none absolute bottom-[calc(100%+12px)] left-1/2 z-50 invisible w-[340px] -translate-x-1/2 rounded-2xl border border-gray-100 bg-white p-6 text-left opacity-0 shadow-[0_12px_40px_rgba(0,0,0,0.12)] transition-all duration-300 group-hover:pointer-events-auto group-hover:visible group-hover:opacity-100">
-
-                        {/* Title */}
                         <h3 className="mb-2 text-[17px] font-bold leading-snug text-gray-900">
                           {company.caseStudy.title}
                         </h3>
-
-                        {/* Description */}
                         <p className="mb-5 text-[13px] leading-relaxed text-gray-500">
                           {company.caseStudy.description}
                         </p>
-
-                        {/* Stats */}
                         <div className="mb-5 flex gap-8">
                           {company.caseStudy.stats.map((stat) => (
                             <div key={stat.label}>
@@ -234,8 +216,6 @@ function TrustedCompanies() {
                             </div>
                           ))}
                         </div>
-
-                        {/* Author */}
                         <div className="flex items-center gap-3">
                           <Image
                             src={company.caseStudy.avatar}
@@ -254,8 +234,6 @@ function TrustedCompanies() {
                             </div>
                           </div>
                         </div>
-
-                        {/* Caret */}
                         <div className="absolute left-1/2 top-full z-0 h-4 w-4 -translate-x-1/2 -mt-[9px] rotate-45 border-b border-r border-gray-100 bg-white shadow-[4px_4px_10px_rgba(0,0,0,0.03)]" />
                         <div className="absolute left-1/2 top-full z-0 h-8 w-full -translate-x-1/2 bg-transparent" />
                       </div>
@@ -264,10 +242,26 @@ function TrustedCompanies() {
                 </div>
               ))}
             </div>
-
           </div>
         </div>
       )}
+
+      <div className="flex justify-center py-2">
+        <button
+          className="text-sm text-black opacity-50 transition-opacity duration-300 group-hover/main:opacity-100"
+        >
+          View all 1253 companies
+          <span className="inline-block">
+            <Image
+              src="/Charters icon/top_arrow-black.svg"
+              alt="Format icon"
+              width={15}
+              height={15}
+              className="ml-[6px] w-[10px] h-[10px] object-contain"
+            />
+          </span>
+        </button>
+      </div>
     </section>
   );
 }

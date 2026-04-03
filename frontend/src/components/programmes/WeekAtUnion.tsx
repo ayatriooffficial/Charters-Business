@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { getCloudinaryUrl } from "@/lib/cloudinary";
+import HighlightText from "../shared/HighlightObserver";
 
 const WeekAtTetr = () => {
   return (
@@ -16,7 +17,7 @@ const WeekAtTetr = () => {
       </a>
 
       <main
-        className="py-4 sm:py-6 md:py-8 bg-white"
+        className="pt-4 sm:pt-6 md:pt-8 bg-white"
         role="main"
         aria-labelledby="week-heading"
       >
@@ -28,9 +29,9 @@ const WeekAtTetr = () => {
               className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-black mb-3 sm:mb-4 text-center"
             >
               What&apos;s a{" "}
-              <span className="bg-[#B30437] text-white px-2 py-1 rounded">
+              <HighlightText className="font-bold">
                 Week at Charters Business
-              </span>{" "}
+              </HighlightText>{" "}
               Like?
             </h2>
             <p className="text-gray-700 text-sm md:text-base lg:text-lg  ">

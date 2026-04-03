@@ -20,6 +20,16 @@ function Navbar() {
   const [dropdownTop, setDropdownTop] = useState(0);
   const [showInterviewAI, setShowInterviewAI] = useState(false);
 
+  const messages = [
+    "Talk to us at 08045579576 or Request Callback",
+    "Round 2 Phase 1 Deadline: 1st May 2026",
+    "Request for 1:1 Placement Guidance",
+  ];
+
+  const [currentMsgIndex, setCurrentMsgIndex] = useState(0);
+  const [msgVisible, setMsgVisible] = useState(true);
+
+
   const { user } = useAuth();
 
   const headerRef = useRef<HTMLDivElement>(null);
@@ -65,6 +75,18 @@ function Navbar() {
 
     setDropdownTop(totalTop);
   }, [isSecondaryVisible]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setMsgVisible(false);
+      setTimeout(() => {
+        setCurrentMsgIndex((prev) => (prev + 1) % messages.length);
+        setMsgVisible(true);
+      }, 400);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -180,7 +202,7 @@ function Navbar() {
             transitionDelay: isSecondaryVisible ? "0ms" : "0ms",
           }}
         >
-          <div className="w-full max-w-[88rem] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
             <div className="py-1 w-full flex items-center relative">
               {/* Left nav */}
               <nav aria-label="Secondary navigation">
@@ -208,13 +230,15 @@ function Navbar() {
                 }}
                 className="absolute left-1/2 -translate-x-1/2 flex text-[13px] text-[#0F1419] font-semibold items-center whitespace-nowrap cursor-pointer"
               >
-                <p>Need Help? Talk to us at 08045579576 or REQUEST CALLBACK</p>
+                <p className={msgVisible ? "msg-visible" : "msg-hidden"} style={{ margin: 0 }}>
+                  {messages[currentMsgIndex]}
+                </p>
                 <Image
                   src="/Charters icon/top_arrow-black.svg"
                   alt="Format icon"
                   width={15}
                   height={15}
-                  className="ml-[3px] w-[10px] h-[10px] object-contain"
+                  className="ml-[6px] w-[10px] h-[10px] object-contain"
                 />
               </div>
 
@@ -283,7 +307,7 @@ function Navbar() {
           }}
           aria-label="Main navigation"
         >
-          <div className="max-w-[88rem] mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
             <div className="flex items-center justify-between py-2 sm:py-2 w-full">
               <div
                 className="w-28 sm:w-36 md:w-40 h-6 sm:h-7 md:h-8 relative cursor-pointer hover:opacity-80 transition-opacity duration-200 shrink-0"
@@ -306,7 +330,7 @@ function Navbar() {
                 <li className="relative">
                   <button
                     ref={academicsButtonRef}
-                    className="flex items-center justify-start gap-2 hover:text-[#B30437] transition-colors duration-300 cursor-pointer bg-transparent border-none"
+                    className="flex items-center justify-start gap-2 hover:underline decoration-black hover:text-[#B30437] transition-colors duration-300 cursor-pointer bg-transparent border-none"
                     aria-expanded={isAcademicsOpen}
                     aria-haspopup="true"
                     onClick={() => setIsAcademicsOpen(!isAcademicsOpen)}
@@ -323,7 +347,7 @@ function Navbar() {
                 <li>
                   <a
                     href="/faculties"
-                    className="gap-2 hover:text-[#B30437] transition-colors duration-300 cursor-pointer"
+                    className="gap-2 hover:underline decoration-black hover:text-[#B30437] transition-colors duration-300 cursor-pointer"
                   >
                     <span>FACULTY + RESEARCH</span>
                   </a>
@@ -331,7 +355,7 @@ function Navbar() {
                 <li>
                   <a
                     href="/student-life"
-                    className="gap-2 hover:text-[#B30437] transition-colors duration-300 cursor-pointer"
+                    className="gap-2 hover:underline decoration-black hover:text-[#B30437] transition-colors duration-300 cursor-pointer"
                   >
                     <span>STUDENT LIFE</span>
                   </a>
@@ -339,7 +363,7 @@ function Navbar() {
                 <li>
                   <a
                     href="/careers"
-                    className="gap-2 hover:text-[#B30437] transition-colors duration-300 cursor-pointer"
+                    className="gap-2 hover:underline decoration-black hover:text-[#B30437] transition-colors duration-300 cursor-pointer"
                   >
                     <span>PLACEMENTS++</span>
                   </a>
@@ -347,7 +371,7 @@ function Navbar() {
                 <li>
                   <a
                     href="/community"
-                    className="gap-2 hover:text-[#B30437] transition-colors duration-300 cursor-pointer"
+                    className="gap-2 hover:underline decoration-black hover:text-[#B30437] transition-colors duration-300 cursor-pointer"
                   >
                     <span>COMMUNITY</span>
                   </a>
@@ -611,24 +635,24 @@ function Navbar() {
         </div>
       </div>
       {showInterviewAI && createPortal(
-                                      <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-black/20">
-                                          <div className="w-[80%] h-[90%] relative">
-                                              <button
-                                                onClick={() => {
-                                                  setShowInterviewAI(false);
-                                                  document.body.style.overflow = '';
-                                                }}
-                                                  className="absolute -top-3 -right-3 z-40 bg-white rounded-full w-7 h-7 flex items-center justify-center shadow-md text-gray-600 hover:text-red-500 transition-colors"
-                                              >
-                                                  ✕
-                                              </button>
-                                              <div className="w-full h-full overflow-hidden rounded-xl shadow-2xl">
-                                                  <ChartersInterviewAi />
-                                              </div>
-                                          </div>
-                                      </div>,
-                                      document.body
-                                  )}
+        <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-black/20">
+          <div className="w-[80%] h-[90%] relative">
+            <button
+              onClick={() => {
+                setShowInterviewAI(false);
+                document.body.style.overflow = '';
+              }}
+              className="absolute -top-3 -right-3 z-40 bg-white rounded-full w-7 h-7 flex items-center justify-center shadow-md text-gray-600 hover:text-red-500 transition-colors"
+            >
+              ✕
+            </button>
+            <div className="w-full h-full overflow-hidden rounded-xl shadow-2xl">
+              <ChartersInterviewAi />
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
     </div>
   );
 }

@@ -44,13 +44,13 @@ export default function ApplyPage() {
         <>
             <HeroSection />
             <div className="md:border-x border-gray-200 max-w-[85rem] w-full md:w-[90%] mx-auto overflow-x-clip md:overflow-x-visible">
-                <SectionWrapper className="no-top-corners">
+                <SectionWrapper hideCorners={"all"}>
                     <Diversity />
                 </SectionWrapper>
-                <SectionWrapper >
+                <SectionWrapper hideCorners={"all"}>
                     <LifeAtCharters />
                 </SectionWrapper>
-                <SectionWrapper >
+                <SectionWrapper hideCorners={"all"}>
                     <TrustedCompanies />
                 </SectionWrapper>
             </div>

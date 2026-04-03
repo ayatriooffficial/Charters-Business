@@ -70,7 +70,9 @@ const PlacementReportDashboard = () => {
 
         </div>
 
-        <div className="md:border-x md:w-[90%] bg-gray-200 max-w-[85rem] border-gray-200 h-13 hidden md:block" >
+        <div className="hidden md:block md:w-[90%] max-w-[85rem] h-13 bg-gray-200 relative">
+          <div className="absolute left-0 top-0 h-full w-[1px] bg-gradient-to-b from-gray-50 to-gray-200"></div>
+          <div className="absolute right-0 top-0 h-full w-[1px] bg-gradient-to-b from-gray-50 to-gray-200"></div>
           <div className="flex-1 bg-white rounded-bl-xl rounded-br-xl h-13 hidden md:block"></div>
         </div>
 
@@ -81,7 +83,9 @@ const PlacementReportDashboard = () => {
 
       <div className="flex flex-row w-full">
         <div className="flex-1 bg-gray-200 hidden md:block">
-          <div className="bg-white w-full h-full rounded-tr-xl border-t border-gray-200" />
+          <div className="relative bg-white w-full h-full rounded-tr-xl">
+            <div className="absolute top-0 left-0 w-full h-[0.5px] bg-gradient-to-r from-gray-50 to-gray-200 rounded-tr-xl"></div>
+          </div>
         </div>
 
         {/* Main client component */}
@@ -92,7 +96,9 @@ const PlacementReportDashboard = () => {
           />
         </div>
         <div className="flex-1 bg-gray-200 hidden md:block">
-          <div className="bg-white w-full h-full rounded-tl-xl border-t border-gray-200" />
+          <div className="relative bg-white w-full h-full rounded-tl-xl">
+            <div className="absolute top-0 left-0 w-full h-[0.5px] bg-gradient-to-l from-gray-50 to-gray-200 rounded-tr-xl"></div>
+          </div>
         </div>
       </div>
     </section>

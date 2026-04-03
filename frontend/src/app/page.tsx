@@ -131,31 +131,31 @@ export default function Home() {
       <Script
         id="organization-schema"
         type="application/ld+json"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
       <Script
         id="website-schema"
         type="application/ld+json"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
       <Script
         id="homepage-schema"
         type="application/ld+json"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homePageSchema) }}
       />
       <Script
         id="site-navigation-schema"
         type="application/ld+json"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(siteNavigationSchema) }}
       />
       <Script
         id="local-business-schema"
         type="application/ld+json"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
 
@@ -259,40 +259,44 @@ export default function Home() {
 
       <PlacementReport />
       <div className="md:border-x border-gray-200 max-w-[85rem] w-full md:w-[90%] mx-auto overflow-x-clip md:overflow-x-visible">
-        <SectionWrapper>
+        <SectionWrapper hideCorners={"all"} borderBottom={false}>
           <HandsOn />
         </SectionWrapper>
-        <SectionWrapper>
+        <SectionWrapper hideCorners={"all"}>
           <OurProgrammesSection />
         </SectionWrapper>
-        <SectionWrapper>
+        <SectionWrapper corners={{
+          br: { variant: "icon" }
+        }} hideCorners={["tr", "bl"]} borderBottom ={false}>
           <BuiltByHarvard />
-          <HandsOnLearningComponent />
         </SectionWrapper>
-        <SectionWrapper>
+          <SectionWrapper hideCorners={"all"}>
+          <HandsOnLearningComponent />
+        </SectionWrapper >
+        <SectionWrapper hideCorners={"all"}>
           <FacultyModel />
           <OneSpaceForEveryTeam />
-        </SectionWrapper>
-        <SectionWrapper>
+        </SectionWrapper >
+        <SectionWrapper hideCorners={"all"}>
           <WorldImmersion />
         </SectionWrapper>
-        <SectionWrapper>
+        <SectionWrapper hideCorners={"all"}>
           <StudentModel />
           <StrategicExpansion />
         </SectionWrapper>
         {/* <SectionWrapper>
           <TrustedCompanies />
         </SectionWrapper> */}
-        <SectionWrapper>
+        <SectionWrapper hideCorners={"all"}>
           <FirstStepSuccessComponent />
         </SectionWrapper>
         {/* <SectionWrapper>
           <LearningOutcomes />
         </SectionWrapper> */}
-        <SectionWrapper>
+        <SectionWrapper hideCorners={"all"}>
           <NewsSliderComponent />
         </SectionWrapper>
-        <SectionWrapper>
+        <SectionWrapper hideCorners={"all"}>
           <PremiumFeaturesSection />
         </SectionWrapper>
       </div>
