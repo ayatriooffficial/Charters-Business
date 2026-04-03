@@ -132,7 +132,6 @@ interface PricingTabsProps {
 const PricingTabs: React.FC<PricingTabsProps> = ({
     nextBatchDate = "Feb 5th",
 }) => {
-    const [activeTab, setActiveTab] = useState<"postpaid" | "prepaid">("postpaid");
 
     const jobTracks: JobTrack[] = [
         { name: "Java Full Stack", icon: <MonitorIcon className="w-5 h-5" /> },
@@ -185,35 +184,11 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
     ];
 
     return (
-        <section className="bg-white py-4 sm:py-6 md:py-8 px-4 sm:px-6 lg:px-8">
+        <section className="bg-white py-4 sm:py-6 md:py-8 ">
             <div className="max-w-[85rem] mx-auto">
-                {/* Tab Toggle */}
-                <div className="flex gap-0 mb-4 sm:mb-6 bg-gray-100 rounded-lg p-1 w-full sm:w-fit mx-auto sm:mx-0">
-                    <button
-                        onClick={() => setActiveTab("postpaid")}
-                        className={`flex-1 sm:flex-none px-4 sm:px-6 py-2.5 rounded-md text-sm font-medium transition-all duration-200 ${activeTab === "postpaid"
-                            ? "bg-white text-gray-900 shadow-sm"
-                            : "text-gray-600 hover:text-gray-900"
-                            }`}
-                    >
-                        Post-paid
-                    </button>
-                    <button
-                        onClick={() => setActiveTab("prepaid")}
-                        className={`flex-1 sm:flex-none px-4 sm:px-6 py-2.5 rounded-md text-sm font-medium transition-all duration-200 ${activeTab === "prepaid"
-                            ? "bg-white text-gray-900 shadow-sm"
-                            : "text-gray-600 hover:text-gray-900"
-                            }`}
-                    >
-                        Pre-paid
-                    </button>
-                </div>
-
-                {/* Content based on active tab */}
-                {activeTab === "postpaid" ? (
-                    <>
+                <>
                         {/* What's Included Section - Postpaid */}
-                        <div className="mb-8 sm:mb-12">
+                    <div className="mb-8 sm:mb-12 px-4 sm:px-6 lg:px-8">
                             <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-6 sm:mb-8">
                                 What&apos;s included ?
                             </h2>
@@ -359,7 +334,7 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
                         </div>
 
                         {/* Pricing Section - Postpaid */}
-                        <div className="border-t border-gray-200 pt-6 sm:pt-8">
+                    <div className="px-4 sm:px-6 lg:px-8 border-t border-gray-200 pt-6 sm:pt-8">
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start">
                                 {/* Left - EMI Info */}
                                 <div className="space-y-4 sm:space-y-6">
@@ -401,22 +376,6 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div className="text-sm text-gray-700 space-y-1">
-                                        <p>
-                                            Pay the success fee only if you land a job within 6 months of{" "}
-                                            <strong>placement eligibility date</strong>
-                                        </p>
-                                        <p className="text-gray-500">
-                                            Success fee is Rs. 19,999 if CTC is less than 20 LPA.
-                                        </p>
-                                        <p className="text-gray-500">
-                                            Success fee is Rs. 39,999 if CTC is greater than 20 LPA.
-                                        </p>
-                                        <p className="text-gray-500">
-                                            12 month no-cost EMI and 18, 24 & 36 month low-cost EMI available.
-                                        </p>
-                                    </div>
                                 </div>
 
                                 {/* Right - Scholarship Banner */}
@@ -444,50 +403,10 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
                             </div>
                         </div>
                     </>
-                ) : (
-                    /* Pre-paid Tab Content */
-                    <div className="border border-gray-200 rounded-xl p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8">
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 items-start">
-                            {/* Left - What's included label */}
-                            <div>
-                                <h2 className="text-lg sm:text-xl font-semibold text-gray-900">
-                                    What&apos;s included ?
-                                </h2>
-                            </div>
 
-                            {/* Center - Everything in Postpaid + Refund Policy */}
-                            <div className="space-y-3 sm:space-y-4">
-                                <h3 className="text-lg sm:text-xl font-bold text-[#1e3a8a]">
-                                    Everything in Postpaid
-                                </h3>
-                                <div className="text-2xl sm:text-3xl font-bold text-[#1e3a8a]">+</div>
-                                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
-                                    After you complete the course, if you don&apos;t get a job, the
-                                    amount paid will be refunded with a deduction
-                                </p>
-                                <a
-                                    href="#"
-                                    className="text-[#B30437] hover:text-[#9a0330] text-xs sm:text-sm font-medium inline-block"
-                                >
-                                    (Terms and Conditions Apply)
-                                </a>
-                            </div>
-
-                            {/* Right - Pricing */}
-                            <div className="text-left md:text-right mt-4 md:mt-0">
-                                <div className="text-gray-400 line-through text-lg sm:text-xl mb-1">
-                                    ₹1,50,000/-
-                                </div>
-                                <div className="text-3xl sm:text-4xl font-bold text-[#1e3a8a]">
-                                    ₹90,000/-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                )}
 
                 {/* Next Batch + CTA */}
-                <div className="border-t border-gray-200 mt-6 sm:mt-8 pt-4 sm:pt-6">
+                <div className="px-4 sm:px-6 lg:px-8 border-t border-gray-200 mt-6 sm:mt-8 pt-4 sm:pt-6">
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                         <div className="flex items-center gap-2">
                             <CircleIcon className="w-3 h-3 text-[#B30437]" fill />

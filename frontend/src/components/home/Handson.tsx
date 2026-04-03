@@ -195,7 +195,7 @@ interface HealthGridCardProps {
 
 function HealthGridCard({ card }: HealthGridCardProps) {
   return (
-    <section className="flex flex-col w-full bg-[#F4F2EE] overflow-hidden h-full max-h-[85vh]">
+    <section className="flex flex-col w-full bg-[#F4F2EE] overflow-hidden h-full max-h-[90vh]">
       {/* Mobile banner image */}
       <div className="relative block h-32 w-full flex-shrink-0 overflow-hidden lg:hidden">
         <Image
@@ -314,7 +314,7 @@ function FlagshipCard({ card }: FlagshipCardProps) {
   };
 
   return (
-    <section className="flex flex-col w-full bg-[#E6F4EA] overflow-hidden h-full max-h-[85vh]">
+    <section className="flex flex-col w-full bg-[#E6F4EA] overflow-hidden h-full max-h-[90vh]">
       <div className="relative block h-32 w-full flex-shrink-0 overflow-hidden lg:hidden">
         <Image
           src="/home/ima11.avif"

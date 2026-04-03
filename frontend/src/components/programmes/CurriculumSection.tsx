@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Plus, Sun } from "lucide-react";
 import Image from "next/image";
+import HighlightText from "../shared/HighlightObserver";
 
 const CurriculumSection = () => {
   const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>(
@@ -181,7 +182,7 @@ const CurriculumSection = () => {
 
   return (
     <section
-      className="relative z-[5] bg-white pb-8 sm:pb-12 md:pb-16 lg:pb-20 sm:pt-6 md:pt-8 lg:pt-10"
+      className="relative z-[5] bg-white sm:pt-6 md:pt-8 lg:pt-10"
       role="region"
       aria-labelledby="curriculum-heading"
     >
@@ -195,16 +196,16 @@ const CurriculumSection = () => {
           </p>
           <h1
             id="curriculum-heading"
-            className="text-2xl sm:text-3xl lg:text-4xl font-light text-black mb-3 lg:mb-4 leading-tight text-center"
+            className="text-2xl font-bold sm:text-3xl lg:text-4xl text-black mb-3 lg:mb-4 leading-tight text-center"
           >
             Dive into the{" "}
-            <span className="italic text-[#B30437]">
+            <HighlightText className="font-bold">
               hands-on curriculum
-            </span>
+            </HighlightText>
           </h1>
         </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-start border-t border-gray-200">
           {/* Left side - Image */}
           <aside
             className="relative order-2 lg:order-1 w-full"
@@ -227,20 +228,22 @@ const CurriculumSection = () => {
 
           {/* Right side - Content */}
           <section
-            className="space-y-6 lg:space-y-8 order-1 lg:order-2"
+            className="order-1 lg:order-2"
             role="region"
             aria-labelledby="curriculum-heading"
           >
             {/* Curriculum Items */}
             <div
-              className="space-y-2 lg:space-y-1"
+              className=""
               role="list"
               aria-label="Curriculum terms and locations"
             >
-              {curriculumItems.map((item) => (
+              {curriculumItems.map((item , index) => (
                 <div key={item.id} role="listitem">
                   {/* Main curriculum item */}
-                  <article className="border-t border-b border-l border-gray-200 hover:shadow-md transition-shadow duration-200">
+                  <article
+                    className="border-b border-l border-gray-200 text-gray-600 hover:text-black hover:bg-gray-50"
+                  >
                     <div className="p-2 sm:p-4">
                       <header
                         className="flex items-center justify-between cursor-pointer"

@@ -1102,33 +1102,18 @@ function HandsOnLearningComponent() {
               <div ref={menuRef} className="flex flex-col">
                 <div className=" flex-1 flex flex-col ">
                   {/* Header */}
-                  <div className="mb-6 pt-4 pl-[15px]">
+                  <div className="mb-6 pt-4">
                     {/* <h3 className="text-xl font-light text-black mb-2">
                       100+ Top MNC's in class
                     </h3> */}
-                    <div className="flex items-center mb-3">
-                      <div className="flex -space-x-2">
-                        {[
-                          "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=80&h=80&fit=crop",
-                          "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop",
-                          "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=80&h=80&fit=crop",
-                          "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=80&h=80&fit=crop",
-                          "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=80&h=80&fit=crop",
-                        ].map((src, idx) => (
-                          <div
-                            key={idx}
-                            className="w-[45px] h-[45px] rounded-full overflow-hidden border-2 border-white"
-                          >
-                            <img
-                              src={src}
-                              alt="Creator"
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                        ))}
-                      </div>
+                    <div className="mb-3">
+                      <img
+                        src="/home/charters-faculty-member.avif"
+                        alt="Charters Faculty Member"
+                        className="h-25 w-full p-[7px] object-contain rounded"
+                      />
                     </div>
-                    <p className="text-gray-400 text-xs">
+                    <p className="text-gray-400 text-xs pl-4">
                       Built by Harvard Scholars, Led by Industry-
                     </p>
                   </div>

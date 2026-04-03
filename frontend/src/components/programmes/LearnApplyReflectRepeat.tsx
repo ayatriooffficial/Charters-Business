@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { LearnApplyData } from "@/data/programmes";
+import HighlightText from "../shared/HighlightObserver";
 
 interface LearnApplyReflectRepeatProps {
   data: LearnApplyData;
@@ -76,7 +77,7 @@ const LearnApplyReflectRepeat: React.FC<LearnApplyReflectRepeatProps> = ({
 
       <section
         id="main-content"
-        className="bg-white text-black py-4 sm:py-6 md:py-8"
+        className="bg-white text-black pt-4 sm:pt-6 md:pt-8"
         role="main"
         aria-labelledby="main-heading"
       >
@@ -88,7 +89,9 @@ const LearnApplyReflectRepeat: React.FC<LearnApplyReflectRepeatProps> = ({
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-3 sm:mb-4 md:mb-6 leading-tight text-center px-2"
             >
               Learn. Apply. Reflect.{" "}
-              <span className="text-[#B30437]">Repeat.</span>
+              <HighlightText className="font-bold">
+                Repeat.
+              </HighlightText>
             </h2>
             <p className="text-black text-base sm:text-lg md:text-xl leading-relaxed text-center px-4">
               Hands-on courses and workshops designed to build real businesses—
@@ -220,7 +223,7 @@ const LearnApplyReflectRepeat: React.FC<LearnApplyReflectRepeatProps> = ({
                 {currentCourseSet.map((courseSet, index) => (
                   <article
                     key={`${activeCategory}-${index}`}
-                    className="bg-white text-black p-4 sm:p-5 space-y-2 sm:space-y-3 flex-shrink-0 w-[280px] sm:w-80 md:w-96 h-[280px] sm:h-[300px] md:h-[320px] flex flex-col overflow-hidden border-r border-b border-t  border-gray-200 shadow-sm"
+                    className="bg-white text-black p-4 sm:p-5 space-y-2 sm:space-y-3 flex-shrink-0 w-[280px] sm:w-80 md:w-96 h-[280px] sm:h-[300px] md:h-[320px] flex flex-col overflow-hidden border-r border-b border-t  border-gray-200"
                     role="listitem"
                     aria-labelledby={`course-set-${activeCategory}-${index}-heading`}
                   >

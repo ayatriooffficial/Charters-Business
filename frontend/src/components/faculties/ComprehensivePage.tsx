@@ -266,7 +266,7 @@ export default function ComprehensivePage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative z-[5] pt-[72px] sm:pt-[48px] md:pt-[50px] pb-8 md:pb-12 bg-white">
-        <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="text-black">
               <p className="text-xs sm:text-sm font-semibold text-[#B30437] tracking-wider mb-2 sm:mb-3" role="text">
@@ -322,12 +322,12 @@ export default function ComprehensivePage() {
         </div>
         <div className="border-x md:mx-[5%] border-gray-200 h-13 hidden md:block" />
       </section>
-      <div className="bordered-container border-x md:mx-[5%] border-gray-200 max-w-[85rem] mx-auto">
+      <div className="bordered-container border-x md:mx-[5%] border-gray-200 w-full md:w-[90%] mx-auto">
 
         {/* Component 2 */}
-        <SectionWrapper className="no-top-corners">
+        <SectionWrapper hideCorners={"all"}>
           <section className="relative z-[5] pb-8 sm:pb-10 pt-6 sm:pt-6 bg-white">
-            <div className="max-w-7xl w-full mx-auto">
+            <div className="w-full mx-auto">
               <div
                 className="sticky z-10 bg-white border-gray-200"
                 style={{ top: 'var(--navbar-height, 86px)' }}
@@ -368,9 +368,9 @@ export default function ComprehensivePage() {
 
         {/* ===== MENTORSHIP TYPES SECTION ===== */}
 
-        <SectionWrapper>
+        <SectionWrapper hideCorners={"all"}>
           <section className="relative z-[5] py-8 sm:py-10 pt-3 sm:pt-3 bg-white">
-            <div className="max-w-7xl w-full mx-auto">
+            <div className="w-full mx-auto">
 
               {/* Tabs — sticky + updated click handler */}
               <div
@@ -533,9 +533,9 @@ export default function ComprehensivePage() {
         </SectionWrapper>
 
         {/* ===== REAL-TIME MENTORSHIP SECTION ===== */}
-        <SectionWrapper>
+        <SectionWrapper hideCorners={"all"}>
           <section className="relative z-[5] py-8 sm:py-10 bg-white">
-            <div className="max-w-7xl w-full mx-auto">
+            <div className="w-full mx-auto">
 
               {/* Card - Real-Time Mentorship */}
               <div className="flex flex-col md:flex-row bg-white overflow-hidden border border-gray-100 shadow-sm">
@@ -608,9 +608,9 @@ export default function ComprehensivePage() {
         </SectionWrapper>
 
         {/* Business Leaders Section */}
-        <SectionWrapper>
+        <SectionWrapper hideCorners={"all"}>
           <section className="relative z-[5] py-8 sm:py-10 bg-white">
-            <div className="max-w-7xl w-full mx-auto">
+            <div className="w-full mx-auto">
               <div className="mb-8 sm:mb-12 text-center">
 
                 <p className="text-xs sm:text-sm font-semibold text-[#B30437] tracking-wider mb-2 sm:mb-3" role="text">

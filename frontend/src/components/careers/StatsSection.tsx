@@ -184,9 +184,9 @@ export default function StatsSection() {
       <section
         id="statistics"
         aria-label="Placement statistics"
-        className="w-full border-t border-gray-200 border-b"
+        className="w-full border-gray-200 border-b"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 divide-x-1 divide-gray-200">
+        <div className="grid grid-cols-1 lg:grid-cols-2 divide-x divide-gray-200">
 
           {/* LEFT — Heading + Left Graph */}
           <div className="flex flex-col">

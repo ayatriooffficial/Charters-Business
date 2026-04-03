@@ -40,7 +40,7 @@ const FAQ: React.FC<FAQProps> = ({ data }) => {
   const currentCategoryFAQs = data.categories.find((cat) => cat.id === activeCategory)?.faqs || [];
 
   return (
-    <section className="bg-white py-4 sm:py-6 md:py-8" aria-labelledby="faq-heading">
+    <section className="bg-white pt-4 sm:pt-6 md:pt-8" aria-labelledby="faq-heading">
       <div className="mx-auto">
         {/* Header */}
         <header className="text-center mb-6 sm:mb-8">

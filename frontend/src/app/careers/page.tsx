@@ -135,7 +135,7 @@ export default function CareersPage() {
       />
       {/* Hero Banner */}
       <div role="banner" className="w-full">
-        <div className="mx-auto max-w-7xl  px-4 sm:px-6 lg:px-8 py-4 sm:py-6 md:py-8">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 md:py-8">
           <section className="flex flex-col gap-6 sm:gap-10 md:flex-row md:items-center">
 
             {/* Left: Text content */}
@@ -246,19 +246,19 @@ export default function CareersPage() {
 
       {/* Sections container — responsive fix */}
       <div className="md:border-x border-gray-200 max-w-[85rem] w-full md:w-[90%] mx-auto overflow-x-clip md:overflow-x-visible">
-        <SectionWrapper className="no-top-corners">
+        <SectionWrapper hideCorners={"all"}>
           <StatsSection />
         </SectionWrapper>
-        <SectionWrapper>
+        <SectionWrapper hideCorners={"all"}>
           <PlacementStories />
         </SectionWrapper>
-        <SectionWrapper>
+        <SectionWrapper hideCorners={"all"}>
           <CareerTransitions />
         </SectionWrapper>
-        <SectionWrapper>
+        <SectionWrapper hideCorners={"all"} borderBottom={false}>
           <CareerAdvisoryTeam />
         </SectionWrapper>
-        <SectionWrapper>
+        <SectionWrapper hideCorners={"all"}>
           <CareerGuidance />
         </SectionWrapper>
       </div>

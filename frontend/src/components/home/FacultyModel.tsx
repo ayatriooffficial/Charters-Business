@@ -284,7 +284,7 @@ function FacultyModel() {
         }
       `}</style>
       <section
-        className="mx-[0%] relative z-[5] bg-white text-black pb-16 overflow-x-hidden pt-12"
+        className="mx-[0%] relative z-[5] bg-white text-black overflow-x-hidden pt-12"
         role="region"
         aria-labelledby="faculty-heading"
       >

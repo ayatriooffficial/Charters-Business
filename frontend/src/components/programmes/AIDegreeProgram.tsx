@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import Image from "next/image";
 import { DegreeProgramData } from "@/lib/server/programmes";
+import HighlightText from "../shared/HighlightObserver";
 
 interface AIDegreeComponentProps {
   data: DegreeProgramData;
@@ -20,7 +21,7 @@ const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data }) => {
 
   return (
     <section
-      className="bg-white py-4 sm:py-6 md:py-8"
+      className="bg-white pt-4 sm:pt-6 md:pt-8"
       aria-labelledby="degree-program-heading"
     >
       <div className="max-w-[85rem] mx-auto">
@@ -38,14 +39,14 @@ const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data }) => {
             className="text-1xl sm:text-2xl lg:text-3xl text-black mb-4 lg:mb-6 leading-tight text-center"
           >
             {data.title.prefix}{" "}
-            <span className="text-[#B30437]">
+            <HighlightText className="font-bold">
               {data.title.highlight}
-            </span>{" "}
+            </HighlightText>{" "}
             {data.title.suffix}
           </h2>
         </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-start w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-start w-full border-t border-gray-200">
           {/* Campus Image - Shows first on mobile, second on desktop */}
           <aside className="order-1 lg:order-2">
             <div className="relative overflow-hidden rounded-lg lg:rounded-none">
@@ -60,11 +61,11 @@ const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data }) => {
           </aside>
 
           {/* Accordions Content - Shows second on mobile, first on desktop */}
-          <div className="order-2 lg:order-1 space-y-4">
+          <div className="order-2 lg:order-1">
             {data.accordions.map((accordion) => (
               <div
                 key={accordion.id}
-                className="border-t border-b border-r border-gray-200 bg-white overflow-hidden rounded-lg lg:rounded-none"
+                className="border-b border-r border-gray-200 bg-white overflow-hidden rounded-lg lg:rounded-none"
               >
                 <button
                   onClick={() => toggleAccordion(accordion.id)}
