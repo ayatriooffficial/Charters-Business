@@ -10,6 +10,9 @@ import {
 import { Metadata } from "next";
 import ChartersUnionHero from "@/components/home/ChartersUnionHero";
 import SectionWrapper from "@/components/shared/SectionWrapper";
+import PlacementReport from "@/components/home/PlacementReport";
+import OurProgrammesSection from "@/components/home/OurProgrammesSection";
+import BuiltByHarvard from "@/components/home/BuiltByHarvard";
 
 export const metadata: Metadata = {
   title: {
@@ -28,21 +31,10 @@ const SectionSkeleton = ({ height = "h-96" }: { height?: string }) => (
   <div className={`${height} w-full animate-pulse bg-gray-50 rounded`} />
 );
 
-const PlacementReport = dynamic(
-  () => import("@/components/home/PlacementReport"),
-  { loading: () => <SectionSkeleton height="h-[5rem] md:h-96" /> }
-);
+// Below-the-fold interactive components — keep lazy loaded
 const HandsOn = dynamic(
   () => import("@/components/home/Handson"),
   { loading: () => <SectionSkeleton height="h-64" /> }
-);
-const OurProgrammesSection = dynamic(
-  () => import("@/components/home/OurProgrammesSection"),
-  { loading: () => <SectionSkeleton height="h-80" /> }
-);
-const BuiltByHarvard = dynamic(
-  () => import("@/components/home/BuiltByHarvard"),
-  { loading: () => <SectionSkeleton height="h-72" /> }
 );
 const HandsOnLearningComponent = dynamic(
   () => import("@/components/home/HandsOnLearningComponent"),
@@ -67,10 +59,6 @@ const StudentModel = dynamic(
 const StrategicExpansion = dynamic(
   () => import("@/components/home/StrategicExpansion"),
   { loading: () => <SectionSkeleton /> }
-);
-const TrustedCompanies = dynamic(
-  () => import("@/components/home/TrustedCompanies"),
-  { loading: () => <SectionSkeleton height="h-64" /> }
 );
 const FirstStepSuccessComponent = dynamic(
   () => import("@/components/home/FirstStepSuccessComponent"),
@@ -125,139 +113,30 @@ export default function Home() {
     },
   });
 
+  // Combine all JSON-LD schemas into one script tag
+  const allSchemas = [
+    organizationSchema,
+    websiteSchema,
+    homePageSchema,
+    siteNavigationSchema,
+    localBusinessSchema,
+  ];
+
   return (
     <>
-      {/* SEO - JSON-LD Structured Data */}
+      {/* SEO - JSON-LD Structured Data (combined into single script) */}
       <Script
-        id="organization-schema"
+        id="all-schemas"
         type="application/ld+json"
         strategy="lazyOnload"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(allSchemas) }}
       />
-      <Script
-        id="website-schema"
-        type="application/ld+json"
-        strategy="lazyOnload"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-      />
-      <Script
-        id="homepage-schema"
-        type="application/ld+json"
-        strategy="lazyOnload"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(homePageSchema) }}
-      />
-      <Script
-        id="site-navigation-schema"
-        type="application/ld+json"
-        strategy="lazyOnload"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(siteNavigationSchema) }}
-      />
-      <Script
-        id="local-business-schema"
-        type="application/ld+json"
-        strategy="lazyOnload"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-      />
-
-      <style>{`
-  .section-corners {
-    position: relative;
-  }
-  .section-corners::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 25px;
-    height: 25px;
-    border-top: 2px solid #ccc;
-    border-left: 2px solid #ccc;
-    z-index: 10;
-  }
-  .section-corners::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 25px;
-    height: 25px;
-    border-bottom: 2px solid #ccc;
-    border-right: 2px solid #ccc;
-    z-index: 10;
-  }
-  .section-corners span.corner::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 25px;
-    height: 25px;
-    border-top: 2px solid #ccc;
-    border-right: 2px solid #ccc;
-    z-index: 10;
-  }
-  .section-corners span.corner::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 25px;
-    height: 25px;
-    border-bottom: 2px solid #ccc;
-    border-left: 2px solid #ccc;
-    z-index: 10;
-  }
-
-  @media (min-width: 768px) {
-    .section-corners::before {
-      top: -2px;
-      left: -2px;
-    }
-    .section-corners::after {
-      bottom: -2px;
-      right: -2px;
-    }
-    .section-corners span.corner::before {
-      top: -2px;
-      right: -2px;
-    }
-    .section-corners span.corner::after {
-      bottom: -2px;
-      left: -2px;
-    }
-  }
-
-  /* Full bleed background */
-  .full-bleed {
-    position: relative;
-    width: 100%;
-  }
-  
-  .full-bleed::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    background: inherit;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  @media (min-width: 768px) {
-    .full-bleed::before {
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100vw;
-    }
-  }
-`}</style>
 
       <ChartersUnionHero />
 
+      {/* Statically imported — renders in initial HTML stream */}
       <PlacementReport />
+
       <div className="md:border-x border-gray-200 max-w-[85rem] w-full md:w-[90%] mx-auto overflow-x-clip md:overflow-x-visible">
         <SectionWrapper hideCorners={"all"} borderBottom={false}>
           <HandsOn />
@@ -267,16 +146,16 @@ export default function Home() {
         </SectionWrapper>
         <SectionWrapper corners={{
           br: { variant: "icon" }
-        }} hideCorners={["tr", "bl"]} borderBottom ={false}>
+        }} hideCorners={["tr", "bl"]} borderBottom={false}>
           <BuiltByHarvard />
         </SectionWrapper>
-          <SectionWrapper hideCorners={"all"}>
+        <SectionWrapper hideCorners={"all"}>
           <HandsOnLearningComponent />
-        </SectionWrapper >
+        </SectionWrapper>
         <SectionWrapper hideCorners={"all"}>
           <FacultyModel />
           <OneSpaceForEveryTeam />
-        </SectionWrapper >
+        </SectionWrapper>
         <SectionWrapper hideCorners={"all"}>
           <WorldImmersion />
         </SectionWrapper>
@@ -284,15 +163,9 @@ export default function Home() {
           <StudentModel />
           <StrategicExpansion />
         </SectionWrapper>
-        {/* <SectionWrapper>
-          <TrustedCompanies />
-        </SectionWrapper> */}
         <SectionWrapper hideCorners={"all"}>
           <FirstStepSuccessComponent />
         </SectionWrapper>
-        {/* <SectionWrapper>
-          <LearningOutcomes />
-        </SectionWrapper> */}
         <SectionWrapper hideCorners={"all"}>
           <NewsSliderComponent />
         </SectionWrapper>

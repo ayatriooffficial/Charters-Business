@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef, memo } from "react";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 import { Brain, Hospital, Clipboard, BarChart3 } from "lucide-react";
 import HighlightText from "../shared/HighlightObserver";
 
@@ -481,57 +480,79 @@ const CardComponent = memo(
 CardComponent.displayName = "CardComponent";
 
 function Handson() {
-  const pathname = usePathname();
   const scrollerRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [mounted, setMounted] = useState(false);
 
+  const [metrics, setMetrics] = useState({ offsetTop: 0, height: 0, headerHeight: 0 });
+
   const lastProgress = useRef(0);
   const rafId = useRef<number | null>(null);
-
   const totalCards = cardsData.length;
 
   useEffect(() => setMounted(true), []);
 
+  // BLOCK 1: MEASURE ONCE (and on resize)
   useEffect(() => {
-    if (!mounted) return;
+    if (!mounted || !scrollerRef.current) return;
+    
+    const updateMetrics = () => {
+      if (!scrollerRef.current) return;
+      const rect = scrollerRef.current.getBoundingClientRect();
+      const absoluteTop = rect.top + window.scrollY;
+      setMetrics({
+        offsetTop: absoluteTop,
+        height: scrollerRef.current.offsetHeight,
+        headerHeight: headerRef.current?.offsetHeight ?? 0,
+      });
+    };
+
+    updateMetrics();
+    window.addEventListener("resize", updateMetrics);
+    return () => window.removeEventListener("resize", updateMetrics);
+  }, [mounted]);
+
+  useEffect(() => {
+    if (!mounted || metrics.height === 0) return;
 
     const handleScroll = () => {
-      if (rafId.current !== null) {
-        cancelAnimationFrame(rafId.current);
-      }
+      if (rafId.current !== null) cancelAnimationFrame(rafId.current);
 
       rafId.current = requestAnimationFrame(() => {
-        if (!scrollerRef.current) return;
-
-        const rect = scrollerRef.current.getBoundingClientRect();
         const winH = window.innerHeight;
-        const elH = scrollerRef.current.offsetHeight;
 
-        const scrollTop = -rect.top;
-        const maxScroll = Math.max(1, elH - winH);
+        // 1. Calculate how far we have scrolled into THIS section
+        // We use Math.max(0, ...) to ensure we don't start at a negative number
+        const rectTop = metrics.offsetTop - window.scrollY;
+        const headerHeight = scrollerRef.current
+          ? scrollerRef.current.querySelector('.sticky')?.previousElementSibling?.clientHeight ?? 0
+          : 0;
+        const scrollTop = Math.max(0, -rectTop - metrics.headerHeight);
+        const maxScroll = Math.max(1, metrics.height - winH - metrics.headerHeight);
+
+
+        // 3. Calculate progress (0 to 1)
         const progress = Math.max(0, Math.min(1, scrollTop / maxScroll));
+
+        // 4. Map to active index (0 to totalCards - 1)
         const smooth = progress * (totalCards - 1);
 
-        const diff = Math.abs(smooth - lastProgress.current);
-        if (diff > 0.001) {
+        if (Math.abs(smooth - lastProgress.current) > 0.001) {
           setActiveIndex(smooth);
-
-          lastProgress.current = progress;
+          lastProgress.current = smooth;
         }
       });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
+    handleScroll(); // Initialize position
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      if (rafId.current !== null) {
-        cancelAnimationFrame(rafId.current);
-      }
+      if (rafId.current !== null) cancelAnimationFrame(rafId.current);
     };
-  }, [mounted, totalCards]);
+  }, [mounted, metrics, totalCards]);
 
   if (!mounted) {
     return (
@@ -571,7 +592,7 @@ function Handson() {
           aria-label="Scroll through learning programs"
         >
           {/* Sticky Header */}
-          <div className="text-center lg:text-center mx-auto relative bg-white ">
+          <div ref={headerRef} className="text-center lg:text-center mx-auto relative bg-white ">
             <p className="text-xs sm:text-sm font-semibold text-[#B30437] tracking-wider mb-2 sm:mb-3" role="text">
               EXPERIENTIAL EDUCATION
             </p>
@@ -595,15 +616,19 @@ function Handson() {
           </div>
 
           <div className="sticky top-0 h-dvh sm:h-screen overflow-hidden">
-            {cardsData.map((card, index) => (
-              <CardComponent
-                key={card.id}
-                card={card}
-                index={index}
-                activeIndex={activeIndex}
-                totalCards={totalCards}
-              />
-            ))}
+            {cardsData.map((card, index) => {
+              const current = Math.floor(activeIndex);
+              if (index < current - 1 || index > current + 1) return null;
+              return (
+                <CardComponent
+                  key={card.id}
+                  card={card}
+                  index={index}
+                  activeIndex={activeIndex}
+                  totalCards={totalCards}
+                />
+              );
+            })}
           </div>
         </div>
       </div>
