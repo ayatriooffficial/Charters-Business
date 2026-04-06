@@ -258,21 +258,7 @@ const ContentCard = memo<{
             />
           </div>
 
-          {/* Left Section - Vertical Image (hidden on mobile) */}
-          <div className="hidden sm:block sm:w-[23%] flex-shrink-0 overflow-hidden h-full">
-            <Image
-              src={
-                contentData[category]?.image ||
-                "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop"
-              }
-              alt={`Visual representation of ${contentData[category]?.title || category
-                } program`}
-              width={300}
-              height={400}
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
-          </div>
+
 
           {/* Right Section - Content */}
           <div className="w-full sm:w-4/5 flex flex-col overflow-hidden">
@@ -671,6 +657,21 @@ const ContentCard = memo<{
                   )}
               </div>
             </div>
+          </div>
+          {/* Left Section - Vertical Image (hidden on mobile) */}
+          <div className="hidden sm:block sm:w-[23%] flex-shrink-0 overflow-hidden h-full">
+            <Image
+              src={
+                contentData[category]?.image ||
+                "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop"
+              }
+              alt={`Visual representation of ${contentData[category]?.title || category
+                } program`}
+              width={300}
+              height={400}
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
           </div>
         </div>
       </div>
