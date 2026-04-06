@@ -55,11 +55,10 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
       </head>
 
-      <body className="font-sans antialiased">
+      <body className={`${inter.className} font-sans antialiased`}>
         <Providers>
           <GoogleTagManager />
           <ClientOnlyComponents />
-          {/* <HighlightObserver />  */}
 
           <div className="flex flex-col min-h-screen">
             {children}
