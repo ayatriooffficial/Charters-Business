@@ -70,11 +70,8 @@ function TinyLineChart({
     const resizeObserver = new ResizeObserver(updateDimensions);
     resizeObserver.observe(container);
 
-    window.addEventListener("resize", updateDimensions);
-
     return () => {
       resizeObserver.disconnect();
-      window.removeEventListener("resize", updateDimensions);
     };
   }, []);
 

@@ -202,7 +202,7 @@ function WorldImmersion() {
       setOffsetPercent(newOffset);
     };
 
-    scrollContainer.addEventListener('scroll', handleScroll);
+    scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
     return () => scrollContainer.removeEventListener('scroll', handleScroll);
   }, []);
 

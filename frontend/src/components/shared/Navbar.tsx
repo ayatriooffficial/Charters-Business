@@ -122,12 +122,17 @@ function Navbar() {
   }, [calculateDropdownPosition, isSecondaryVisible, isNavbarVisible]);
 
   useEffect(() => {
-    const handleResize = () => {
+    // Use ResizeObserver to watch primary and secondary navbar elements
+    const resizeObserver = new ResizeObserver(() => {
       calculateDropdownPosition();
-    };
+    });
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    if (primaryRef.current) resizeObserver.observe(primaryRef.current);
+    if (secondaryRef.current) resizeObserver.observe(secondaryRef.current);
+
+    return () => {
+      resizeObserver.disconnect();
+    };
   }, [calculateDropdownPosition]);
 
   useEffect(() => {
@@ -140,8 +145,16 @@ function Navbar() {
 
     updateNavbarHeight();
 
-    window.addEventListener('resize', updateNavbarHeight);
-    return () => window.removeEventListener('resize', updateNavbarHeight);
+    const resizeObserver = new ResizeObserver(() => {
+      updateNavbarHeight();
+    });
+
+    if (primaryRef.current) resizeObserver.observe(primaryRef.current);
+    if (secondaryRef.current) resizeObserver.observe(secondaryRef.current);
+
+    return () => {
+      resizeObserver.disconnect();
+    };
   }, []);
 
   useEffect(() => {

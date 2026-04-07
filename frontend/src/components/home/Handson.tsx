@@ -493,10 +493,10 @@ function Handson() {
 
   useEffect(() => setMounted(true), []);
 
-  // BLOCK 1: MEASURE ONCE (and on resize)
+  // BLOCK 1: MEASURE ONCE (and on resize via ResizeObserver)
   useEffect(() => {
-    if (!mounted || !scrollerRef.current) return;
-    
+    if (!mounted) return;
+
     const updateMetrics = () => {
       if (!scrollerRef.current) return;
       const rect = scrollerRef.current.getBoundingClientRect();
@@ -509,8 +509,17 @@ function Handson() {
     };
 
     updateMetrics();
-    window.addEventListener("resize", updateMetrics);
-    return () => window.removeEventListener("resize", updateMetrics);
+
+    const resizeObserver = new ResizeObserver(() => {
+      updateMetrics();
+    });
+
+    if (scrollerRef.current) resizeObserver.observe(scrollerRef.current);
+    if (headerRef.current) resizeObserver.observe(headerRef.current);
+
+    return () => {
+      resizeObserver.disconnect();
+    };
   }, [mounted]);
 
   useEffect(() => {

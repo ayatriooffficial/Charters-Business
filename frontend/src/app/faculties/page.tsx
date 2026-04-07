@@ -143,7 +143,7 @@ export default function FacultiesPage() {
       <Script
         id="faculties-schema-graph"
         type="application/ld+json"
-        strategy="afterInteractive"
+        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(facultiesSchemaGraph) }}
       />
 

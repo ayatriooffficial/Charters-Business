@@ -266,7 +266,7 @@ function FacultyModel() {
       setOffsetPercent(newOffset);
     };
 
-    scrollContainer.addEventListener('scroll', handleScroll);
+    scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
 
     return () => scrollContainer.removeEventListener('scroll', handleScroll);

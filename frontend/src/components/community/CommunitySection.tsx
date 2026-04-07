@@ -100,7 +100,7 @@ export default function CommunitySection() {
     };
 
     if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', handleScroll);
+      window.addEventListener('scroll', handleScroll, { passive: true });
       handleScroll();
     }
 

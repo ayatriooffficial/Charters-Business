@@ -287,7 +287,7 @@ export default function FirstStepSuccessComponent() {
     };
 
     handleScroll();
-    slider.addEventListener('scroll', handleScroll);
+    slider.addEventListener('scroll', handleScroll, { passive: true });
     return () => slider.removeEventListener('scroll', handleScroll);
   }, [activeTab]);
 

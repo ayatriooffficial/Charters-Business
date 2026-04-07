@@ -543,7 +543,7 @@ const StrategicExpansion: React.FC = () => {
         };
 
         handleScroll(); // Initial check
-        slider.addEventListener('scroll', handleScroll);
+        slider.addEventListener('scroll', handleScroll, { passive: true });
         return () => slider.removeEventListener('scroll', handleScroll);
     }, [selectedCard]);
 

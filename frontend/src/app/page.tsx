@@ -128,7 +128,7 @@ export default function Home() {
       <Script
         id="all-schemas"
         type="application/ld+json"
-        strategy="lazyOnload"
+        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(allSchemas) }}
       />
 
