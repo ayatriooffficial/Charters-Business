@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Sign Up | Charters Business",
   description:
     "Create your Charters Business account to apply, track your progress, and choose the course you're interested in.",
+  alternates: {
+    canonical: "/signup",
+  },
   keywords: [
     "signup",
     "register",
@@ -15,7 +18,7 @@ export const metadata: Metadata = {
   ],
   robots: {
     index: false,
-    follow: true,
+    follow: false,
   },
 };
 

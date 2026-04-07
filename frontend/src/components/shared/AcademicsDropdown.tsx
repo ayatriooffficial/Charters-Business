@@ -2,7 +2,7 @@
 
 import { useState, forwardRef } from 'react';
 import Image from 'next/image';
-import { getAllDropdownData, getAllProgrammes, type ProgramKey } from '@/lib/server/programmes';
+import { getAllDropdownData, getAllProgrammes, type ProgramKey } from '@/data/programmes';
 
 interface AcademicsDropdownProps {
   isOpen: boolean;
@@ -62,9 +62,9 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
 
   // Program menu items - only show programs that have data
   const allProgramMenuItems: { key: ProgramKey; label: string }[] = [
-    { key: 'mba', label: 'MASTER OF BUSINESS ADMINISTRATION' },
+    { key: 'mba', label: 'DIGITAL GROWTH ENGINEER' },
     { key: 'pgdm', label: 'POST GRADUATE DIPLOMA IN MANAGEMENT' },
-    { key: 'executive', label: 'EXECUTIVE MBA' },
+    { key: 'executive', label: 'PRODUCT GROWTH ENGINEERING' },
     { key: 'diploma', label: 'DIPLOMA IN BUSINESS ADMINISTRATION' }
   ];
 

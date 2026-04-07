@@ -16,14 +16,34 @@ import BuiltByHarvard from "@/components/home/BuiltByHarvard";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Professional training kolkata with paid internship | Charter's Union",
+    absolute: "Job-ready Accounting Course | 90% Placement Rate | 7 Months | Charter's Union",
   },
   description:
-    "Learn Professional Accounting in Kolkata with 3-month foundation + 4-month paid internship. Work with top companies from USA, Canada, Qatar, Singapore, Australia & UK. Join now!",
+    "Get placed in 7 months with practical accounting skills, internship experience, and placement support. 90% placement rate. ₹3.5 LPA average salary. Free counseling call.",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Professional training kolkata with paid internship | Charter'sUnion",
+    title: "B.Com Accounting Course | 90% Placement Rate | 7 Months",
     description:
-      "Learn Professional Accounting in Kolkata with 3-month foundation + 4-month paid internship. Work with top companies from USA, Canada, Qatar, Singapore, Australia & UK. Join now!",
+      "Transform your B.Com degree into a corporate accounting career. 90% placement, ₹3.5 LPA avg salary, internship & placement support.",
+    url: "https://chartersbusiness.com",
+    type: "website",
+    images: [
+      {
+        url: "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp",
+        width: 1200,
+        height: 630,
+        alt: "Charter's Union Accounting Course",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "B.Com Accounting Course | 90% Placement | Charter's Union",
+    description:
+      "7-month accounting course for B.Com graduates. 90% placement, ₹3.5 LPA avg salary, internship & placement support.",
+    images: ["https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp"],
   },
 };
 
@@ -169,7 +189,7 @@ export default function Home() {
         <SectionWrapper hideCorners={"all"}>
           <NewsSliderComponent />
         </SectionWrapper>
-        <SectionWrapper hideCorners={"all"}>
+        <SectionWrapper hideCorners={"all"} borderBottom={false}>
           <PremiumFeaturesSection />
         </SectionWrapper>
       </div>

@@ -25,14 +25,28 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Charters union: Learn with companys in-class",
-    template: "%s | Charters Business",
+    default: "Job-ready Accounting Course | 90% Placement Rate | 7 Months | Charter's Union",
+    template: "%s | Charter's Union",
   },
   description:
-    "Join Tetr where the world is your classroom. Apply for undergraduate and postgraduate business programs with scholarships up to 100%. Learn from CEOs, build real businesses, and study at top global institutions.",
+    "Get placed in 7 months with practical accounting skills, internship experience, and placement support. 90% placement rate. ₹3.5 LPA average salary. Free counseling call.",
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "https://chartersbusiness.com"
   ),
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
