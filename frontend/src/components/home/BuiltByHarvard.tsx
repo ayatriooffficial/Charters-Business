@@ -65,7 +65,7 @@ function BuiltByHarvard() {
             </h3>
 
 
-            <div className="w-full h-32 sm:h-38 border-r border-[#D5D0CA]  relative group">
+            <div className="w-full h-32 sm:h-38 border-r border-[#D5D0CA] relative group">
               <Image
                 src="/home/charters alumni from.avif"
                 alt="Built by alumni"

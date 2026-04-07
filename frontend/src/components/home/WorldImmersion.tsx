@@ -275,10 +275,10 @@ function WorldImmersion() {
                   ].map((item, index) => (
                     <article
                       key={`${item.type}-${activeIndex}`}
-                      className="flex flex-col shrink-0 lg:shrink bg-white rounded-t-xl border-r border-t border-gray-200 p-8 min-h-[420px] lg:min-h-[480px] w-[85vw] sm:w-[calc(50%-0.25rem)] lg:flex-1 snap-center lg:snap-align-none hover:shadow-sm transition-shadow first:rounded-tl-none last:rounded-tr-none"
+                      className="flex flex-col shrink-0 lg:shrink bg-white rounded-t-xl border-r border-t border-gray-200 min-h-[420px] lg:min-h-[480px] w-[85vw] sm:w-[calc(50%-0.25rem)] lg:flex-1 snap-center lg:snap-align-none hover:shadow-sm transition-shadow first:rounded-tl-none last:rounded-tr-none"
                     >
                       <div className="w-full mb-4">
-                        <div className="relative w-40 h-28 overflow-hidden bg-gray-50">
+                        <div className="relative w-full h-34 overflow-hidden bg-gray-50">
                           <Image
                             src={getSafeImageSrc(item.data.imageSrc)}
                             alt={`${item.data.title} — ${item.data.subtitle}`}
@@ -290,10 +290,11 @@ function WorldImmersion() {
                           />
                         </div>
                       </div>
-                      <div className="flex-1 flex flex-col justify-start">
-                        <h3 className="text-xl font-medium text-black mb-8 leading-tight">
+                      <div className="flex-1 p-4 flex flex-col justify-start">
+                        <h3 className="text-xl font-medium text-black mb-2 leading-tight">
                           {item.data.title}
                         </h3>
+                        <p className="text-[14px] text-gray-600 mb-2  leading-relaxed">Experience one-on-one mentorship, coaching and guidance from CXOs across industries.</p>
                         <div className="flex flex-col gap-2 mt-2">
                           {item.data.description.split("|").map((point: string, i: number) => (
                             <div key={i} className="flex items-start gap-2">
