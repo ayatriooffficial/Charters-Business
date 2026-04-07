@@ -59,13 +59,13 @@ function BuiltByHarvard() {
       <div className="bg-white p-2 sm:p-4 md:p-6 max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:divide-x lg:divide-gray-300">
           {/* Left Section */}
-          <div className="lg:pr-6 lg:pb-2">
+          <div className="lg:pb-2">
             <h3 className="text-lg sm:text-[16px] md:text-[18px] font-semibold text-black mb-2 sm:mb-4 text-center">
               Built by alumni from{" "}
             </h3>
 
 
-            <div className="w-full h-32 sm:h-38 relative group">
+            <div className="w-full h-32 sm:h-38 border-r border-[#D5D0CA]  relative group">
               <Image
                 src="/home/charters alumni from.avif"
                 alt="Built by alumni"

@@ -73,8 +73,8 @@ const MenuItem = memo<{
         <Image
           src={
             isActive
-              ? "/Charters icon/new store white.svg"
-              : "/Charters icon/new_campas.svg"
+              ? "/Charters-icon/new store white.svg"
+              : "/Charters-icon/new_campas.svg"
           }
           alt="Format icon"
           width={20}
@@ -1064,8 +1064,8 @@ function HandsOnLearningComponent() {
                       <Image
                         src={
                           index === currentItemIndex
-                            ? "/Charters icon/new store white.svg"
-                            : "/Charters icon/new_campas.svg"
+                            ? "/Charters-icon/new store white.svg"
+                            : "/Charters-icon/new_campas.svg"
                         }
                         alt="Format icon"
                         width={16}

@@ -350,7 +350,7 @@ const PremiumFeaturesSection = () => {
       aria-labelledby="enrich-learning-heading"
       role="region"
     >
-      <div className="max-w-7xl w-full px-2 md:mx-auto">
+      <div className="max-w-7xl w-full md:mx-auto">
         <div className="text-center mb-16">
           <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-3" role="text">
             PERSONALIZED LEARNING
@@ -371,13 +371,13 @@ const PremiumFeaturesSection = () => {
         {/* Desktop */}
         <div className="hidden lg:grid lg:grid-cols-2 gap-20 items-start">
           <div className="space-y-12">
-            <header>
-              <h2 id="premium-features-heading" className="text-xl lg:text-3xl font-light text-black mb-6">
-                Premium features{" "}
-                <span className="italic text-[#B30437]">that inspire new ways of teaching and learning</span>
-              </h2>
-            </header>
-            <div className="space-y-10" role="list" aria-label="Premium learning features">
+
+            <h2 id="premium-features-heading" className="text-[24px] font-semibold  pl-[30px] font-light text-black mb-6">
+              Premium features{" "}
+              that inspire new ways of teaching and learning
+            </h2>
+
+            <div className="space-y-3" role="list" aria-label="Premium learning features">
               {features.map((feature) => (
                 <FeatureItem key={feature.id} feature={feature} />
               ))}
@@ -389,9 +389,9 @@ const PremiumFeaturesSection = () => {
         {/* Mobile */}
         <div className="lg:hidden">
           <header className="mb-8">
-            <h2 id="premium-features-heading-mobile" className="text-xl font-light text-black mb-6">
+            <h2 id="premium-features-heading-mobile" className="text-xl pl-[15px] font-light text-black mb-6">
               Premium features{" "}
-              <span className="italic text-[#B30437]">that inspire new ways of teaching and learning</span>
+              that inspire new ways of teaching and learning
             </h2>
           </header>
           <div className="space-y-6" role="list" aria-label="Premium learning features">

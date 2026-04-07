@@ -15,7 +15,7 @@ interface CompanyCaseStudy {
 interface Company {
   name: string;
   logo: string;
-  caseStudy?: CompanyCaseStudy; 
+  caseStudy?: CompanyCaseStudy;
 }
 
 const POPULAR_COMPANIES: Company[] = [
@@ -292,7 +292,7 @@ function TrustedCompanies() {
               View all Companies
 
               <Image
-                src="/Charters icon/top_arrow-black.svg"
+                src="/Charters-icon/top_arrow-black.svg"
                 alt="Format icon"
                 width={15}
                 height={15}
