@@ -260,7 +260,7 @@ function TrustedCompanies() {
           View all 1253 companies
           <span className="inline-block">
             <Image
-              src="/Charters icon/top_arrow-black.svg"
+              src="/Charters-icon/top_arrow-black.svg"
               alt="Format icon"
               width={15}
               height={15}

@@ -247,7 +247,7 @@ function Navbar() {
                   {messages[currentMsgIndex]}
                 </p>
                 <Image
-                  src="/Charters icon/top_arrow-black.svg"
+                  src="/Charters-icon/top_arrow-black.svg"
                   alt="Format icon"
                   width={15}
                   height={15}
