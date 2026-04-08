@@ -1,6 +1,5 @@
 'use client';
 
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, memo, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import useInViewPlay from '@/components/micro/useInViewPlay';
@@ -116,7 +115,7 @@ function SevenBusinessesComponent() {
               aria-label="View previous business opportunities"
               type="button"
             >
-              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-white" aria-hidden="true" />
+              <Image src="/Charters-icon/Cancel.svg" alt="icon" width={12} height={12} className="w-5 h-5 sm:w-6 sm:h-6 text-white" aria-hidden="true" />
             </button>
 
             <button
@@ -126,7 +125,7 @@ function SevenBusinessesComponent() {
               aria-label="View next business opportunities"
               type="button"
             >
-              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-white" aria-hidden="true" />
+              <Image src="/Charters-icon/Cancel.svg" alt="icon" width={12} height={12} className="w-5 h-5 sm:w-6 sm:h-6 text-white" aria-hidden="true" />
             </button>
 
           </nav>

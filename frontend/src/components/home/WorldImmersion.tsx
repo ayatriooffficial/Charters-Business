@@ -218,7 +218,7 @@ function WorldImmersion() {
       <div className="max-w-[85rem] mx-auto">
         <div className="text-center mb-8 sm:mb-12">
           <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
-            Intranship,{" "}
+            Internship,{" "}
             <HighlightText className=" font-bold">
               Across the World
             </HighlightText>
@@ -254,7 +254,7 @@ function WorldImmersion() {
         </div>
 
         {/* Content Section  */}
-        <div className="w-full relative group mt-2">
+        <div className="w-full relative group">
           <div
             className={`transition-opacity duration-300 ${isTransitioning ? "opacity-0" : "opacity-100"
               }`}
@@ -275,10 +275,10 @@ function WorldImmersion() {
                   ].map((item, index) => (
                     <article
                       key={`${item.type}-${activeIndex}`}
-                      className="flex flex-col shrink-0 lg:shrink bg-white rounded-t-xl border-r border-t border-gray-200 min-h-[420px] lg:min-h-[480px] w-[85vw] sm:w-[calc(50%-0.25rem)] lg:flex-1 snap-center lg:snap-align-none hover:shadow-sm transition-shadow first:rounded-tl-none last:rounded-tr-none"
+                      className="flex flex-col shrink-0 lg:shrink bg-white border-r border-t border-gray-200 min-h-[420px] lg:min-h-[480px] w-[85vw] sm:w-[calc(50%-0.25rem)] lg:flex-1 snap-center lg:snap-align-none hover:shadow-sm transition-shadow"
                     >
-                      <div className="w-full mb-4">
-                        <div className="relative w-full h-34 overflow-hidden bg-gray-50">
+                      <div className="w-full mb-4 overflow-hidden">
+                        <div className="relative w-full h-34 bg-gray-50">
                           <Image
                             src={getSafeImageSrc(item.data.imageSrc)}
                             alt={`${item.data.title} — ${item.data.subtitle}`}

@@ -2,20 +2,6 @@
 
 import React, { useState, useEffect, useRef, memo, useCallback } from "react";
 import Image from "next/image";
-import {
-  Link2,
-  Bot,
-  Pencil,
-  Zap,
-  Globe,
-  BarChart3,
-  Cloud,
-  Settings,
-  Mic,
-  Book,
-  MessageSquare,
-  Rocket,
-} from "lucide-react";
 import HighlightText from "@/components/shared/HighlightObserver";
 
 const hanson_heading = {
@@ -52,8 +38,8 @@ interface ProgramData {
   subjectsLink?: string;
   mentors?: Array<{ name: string; title: string; avatar: string }>;
   specializations?: string[];
-  tools?: Array<{ name: string; icon: React.ComponentType<any> }>;
-  techniques?: Array<{ name: string; icon: React.ComponentType<any> }>;
+  tools?: Array<{ name: string; icon: string }>;
+  techniques?: Array<{ name: string; icon: string }>;
 }
 const MenuItem = memo<{
   category: CategoryKey;
@@ -556,13 +542,12 @@ const ContentCard = memo<{
                       {/* ===== TOOLS (DYNAMIC, CORRECT) ===== */}
                       <div className="flex flex-wrap gap-1.5 mt-3">
                         {getToolsForSpecialization(activeSpec).map((tool) => {
-                          const IconComponent = tool.icon;
                           return (
                             <div
                               key={tool.name}
                               className="bg-[#01212c] text-white px-2 py-1 rounded-full text-[13px] flex items-center gap-1 transition-all duration-300 hover:-translate-y-1 hover:shadow-sm"
                             >
-                              <IconComponent className="w-4 h-4" />
+                              <Image src={tool.icon} alt={tool.name} width={12} height={12} className="w-4 h-4" />
                               <span>{tool.name}</span>
                             </div>
                           );
@@ -578,14 +563,13 @@ const ContentCard = memo<{
                         <div className="grid grid-cols-4 gap-1.5">
                           {getTechniquesForSpecialization(activeSpec).map(
                             (tech) => {
-                              const IconComponent = tech.icon;
                               return (
                                 <div
                                   key={tech.name}
                                   className="border border-gray-200 rounded-md p-1.5 text-center"
                                 >
                                   <div className="mb-0.5 flex justify-center">
-                                    <IconComponent className="w-5 h-5 text-gray-700" />
+                                    <Image src={tech.icon} alt={tech.name} width={12} height={12} className="w-5 h-5 text-gray-700" />
                                   </div>
                                   <p className="text-[10px] text-gray-700 leading-tight">
                                     {tech.name}
@@ -837,23 +821,23 @@ function HandsOnLearningComponent() {
       ],
 
       tools: [
-        { name: "Make", icon: Link2 },
-        { name: "OpenAI", icon: Bot },
-        { name: "Canva", icon: Pencil },
-        { name: "Zapier", icon: Zap },
-        { name: "Typedream", icon: Globe },
-        { name: "Airtable", icon: BarChart3 },
-        { name: "Cloud", icon: Cloud },
-        { name: "Bolt", icon: Settings },
-        { name: "Descript", icon: Mic },
-        { name: "Notion", icon: Book },
+        { name: "Make", icon: "/Charters-icon/Cancel.svg" },
+        { name: "OpenAI", icon: "/Charters-icon/Cancel.svg" },
+        { name: "Canva", icon: "/Charters-icon/Cancel.svg" },
+        { name: "Zapier", icon: "/Charters-icon/Cancel.svg" },
+        { name: "Typedream", icon: "/Charters-icon/Cancel.svg" },
+        { name: "Airtable", icon: "/Charters-icon/Cancel.svg" },
+        { name: "Cloud", icon: "/Charters-icon/Cancel.svg" },
+        { name: "Bolt", icon: "/Charters-icon/Cancel.svg" },
+        { name: "Descript", icon: "/Charters-icon/Cancel.svg" },
+        { name: "Notion", icon: "/Charters-icon/Cancel.svg" },
       ],
 
       techniques: [
-        { name: "Prompt Engineering", icon: MessageSquare },
-        { name: "Reading API Docs", icon: Book },
-        { name: "Voice Transcription", icon: Mic },
-        { name: "No-code Deployment", icon: Rocket },
+        { name: "Prompt Engineering", icon: "/Charters-icon/Cancel.svg" },
+        { name: "Reading API Docs", icon: "/Charters-icon/Cancel.svg" },
+        { name: "Voice Transcription", icon: "/Charters-icon/Cancel.svg" },
+        { name: "No-code Deployment", icon: "/Charters-icon/Cancel.svg" },
       ],
 
       projects: [

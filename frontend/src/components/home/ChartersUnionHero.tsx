@@ -1,4 +1,9 @@
+"use client"
+
 import { getCloudinarySrcSet, getCloudinaryUrl } from "@/lib/cloudinary";
+import { useState } from "react";
+import ChartersInterviewAi from "./Chartersinterview_ai";
+import { createPortal } from "react-dom";
 
 const heroData = {
   availableBadge: "Available Now",
@@ -33,6 +38,7 @@ const heroData = {
 };
 
 function ChartersUnionHero() {
+  const [showInterviewAI, setShowInterviewAI] = useState(false);
   return (
     <section
       className="relative w-full h-[86vh] md:h-[100vh] overflow-hidden"
@@ -93,6 +99,10 @@ function ChartersUnionHero() {
             type="button"
             aria-label={heroData.cta.buttonAriaLabel}
             className="w-full mt-2 bg-[#B30437] hover:bg-[#8B0329] text-white py-3 px-8 rounded-lg text-sm font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            onClick={() => {
+              setShowInterviewAI(true);
+              document.body.style.overflow = 'hidden';
+            }}
           >
             {heroData.cta.buttonText}
           </button>
@@ -105,10 +115,33 @@ function ChartersUnionHero() {
           className="bg-black hover:bg-gray-900 text-white py-2 px-6 rounded-lg text-base font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
           type="button"
           aria-label={heroData.cta.buttonAriaLabel}
+          onClick={() => {
+            setShowInterviewAI(true);
+            document.body.style.overflow = 'hidden';
+          }}
         >
           {heroData.cta.buttonText}
         </button>
       </div>
+      {showInterviewAI && createPortal(
+              <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-black/20">
+                <div className="w-[80%] h-[90%] relative">
+                  <button
+                    onClick={() => {
+                      setShowInterviewAI(false);
+                      document.body.style.overflow = '';
+                    }}
+                    className="absolute -top-3 -right-3 z-40 bg-white rounded-full w-7 h-7 flex items-center justify-center shadow-md text-gray-600 hover:text-red-500 transition-colors"
+                  >
+                    ✕
+                  </button>
+                  <div className="w-full h-full overflow-hidden rounded-xl shadow-2xl">
+                    <ChartersInterviewAi />
+                  </div>
+                </div>
+              </div>,
+              document.body
+            )}
     </section>
   );
 }
