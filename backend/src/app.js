@@ -63,9 +63,9 @@ if (appConfig.env === "development") {
   windowMs: 15 * 60 * 1000,
   max: 100,
   message: "Too many requests from this IP, please try again later.",
-});*/
+});
 
-app.use("/api", limiter);
+app.use("/api", limiter); */
 
 /* ROOT ROUTE */
 
