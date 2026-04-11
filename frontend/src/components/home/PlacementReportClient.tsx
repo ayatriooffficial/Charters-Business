@@ -56,7 +56,12 @@ const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
   }, [inView]);
 
   const handleDownload = () => {
-    console.log("Download Placement Report triggered");
+    const link = document.createElement("a");
+    link.href = "/home/Capdsdsfture.JPG"; 
+    link.download = "placement-report.JPG";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (

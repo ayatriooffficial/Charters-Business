@@ -239,7 +239,7 @@ export const programmes: Programme[] = [
 
     // Dropdown Data
     dropdown: {
-      title: "Digital Growth Engineer",
+      title: "Digital Growth Engineer", 
       description:
         "Comprehensive MBA program designed for future business leaders Comprehensive MBA program designed for. Combines theoretical knowledge with practical application through real-world case studies and industry partnerships.",
       duration: "2 Years Full-time",

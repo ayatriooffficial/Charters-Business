@@ -249,11 +249,18 @@ function TrustedCompanies() {
       <div className="flex justify-center py-2">
         <button
           className="text-sm text-black opacity-50 transition-opacity duration-300 group-hover/main:opacity-100"
+          onClick={() => {
+            window.open(
+              'https://spangled-cardinal-ac7.notion.site/2fe34c26081b800fb860c41b85555e68?v=393d012ded8a4a589d3a2d09872a78cc',
+              '_blank',
+              'noopener,noreferrer'
+            );
+          }}
         >
           View all 1253 companies
           <span className="inline-block">
             <Image
-              src="/Charters icon/top_arrow-black.svg"
+              src="/Charters-icon/top_arrow-black.svg"
               alt="Format icon"
               width={15}
               height={15}

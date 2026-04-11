@@ -33,7 +33,7 @@ const LearnApplyReflectRepeat: React.FC<LearnApplyReflectRepeatProps> = ({
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (container) {
-      container.addEventListener("scroll", checkScrollButtons);
+      container.addEventListener("scroll", checkScrollButtons, { passive: true });
       return () => container.removeEventListener("scroll", checkScrollButtons);
     }
   }, []);

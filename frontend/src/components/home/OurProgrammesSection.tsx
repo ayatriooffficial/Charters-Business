@@ -83,7 +83,7 @@ export default function OurProgrammesSection() {
                       <div className="flex flex-col gap-2">
                         <div className="flex md:flex-row items-center flex-shrink-0 relative">
                           <Image
-                            src="/Charters icon/new_campas.svg"
+                            src="/Charters-icon/new_campas.svg"
                             alt="Format icon"
                             width={15}
                             height={15}
@@ -104,7 +104,7 @@ export default function OurProgrammesSection() {
                       <div className="flex flex-col gap-2">
                         <div className="flex md:flex-row items-center flex-shrink-0 relative">
                           <Image
-                            src="/Charters icon/profile.svg"
+                            src="/Charters-icon/profile.svg"
                             alt="Eligibility icon"
                             width={15}
                             height={15}
@@ -125,7 +125,7 @@ export default function OurProgrammesSection() {
                       <div className="flex flex-col gap-2">
                         <div className="flex md:flex-row items-center flex-shrink-0 relative">
                           <Image
-                            src="/Charters icon/schudle.svg"
+                            src="/Charters-icon/schudle.svg"
                             alt="Duration icon"
                             width={15}
                             height={15}
@@ -146,7 +146,7 @@ export default function OurProgrammesSection() {
                       <div className="flex flex-col gap-2">
                         <div className="flex md:flex-row items-center flex-shrink-0 relative">
                           <Image
-                            src="/Charters icon/offer.svg"
+                            src="/Charters-icon/offer.svg"
                             alt="Job openings icon"
                             width={15}
                             height={15}
@@ -166,7 +166,7 @@ export default function OurProgrammesSection() {
                       <div className="flex flex-col gap-2">
                         <div className="flex md:flex-row items-center flex-shrink-0 relative">
                           <Image
-                            src="/Charters icon/offer.svg"
+                            src="/Charters-icon/offer.svg"
                             alt="Job openings icon"
                             width={15}
                             height={15}
@@ -210,7 +210,7 @@ export default function OurProgrammesSection() {
                         <div className="flex items-center gap-2 mb-1">
                           <div className="w-5 h-5 flex  flex-shrink-0 relative">
                             <Image
-                              src="/Charters icon/new_campas.svg"
+                              src="/Charters-icon/new_campas.svg"
                               alt="Curriculum icon"
                               width={15}
                               height={15}
@@ -243,7 +243,7 @@ export default function OurProgrammesSection() {
                         <div className="flex items-center gap-2 mb-1">
                           <div className="w-5 h-5 flex flex-shrink-0 relative">
                             <Image
-                              src="/Charters icon/new_campas.svg"
+                              src="/Charters-icon/new_campas.svg"
                               alt="Partners icon"
                               width={15}
                               height={15}
@@ -273,7 +273,7 @@ export default function OurProgrammesSection() {
                         <div className="flex items-center gap-2 mb-1">
                           <div className="w-5 h-5 flex flex-shrink-0 relative">
                             <Image
-                              src="/Charters icon/new_campas.svg"
+                              src="/Charters-icon/new_campas.svg"
                               alt="Curriculum icon"
                               width={15}
                               height={15}
@@ -314,7 +314,7 @@ export default function OurProgrammesSection() {
                           Explore {programme.card.title}
                         </span>
                         <Image
-                          src="/Charters icon/top_arrow-black.svg"
+                          src="/Charters-icon/top_arrow-black.svg"
                           alt="Format icon"
                           width={15}
                           height={15}
@@ -334,7 +334,7 @@ export default function OurProgrammesSection() {
                       >
                         <span>Brochure</span>
                         <Image
-                          src="/Charters icon/top_arrow-black.svg"
+                          src="/Charters-icon/top_arrow-black.svg"
                           alt="Format icon"
                           width={15}
                           height={15}

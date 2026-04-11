@@ -158,7 +158,7 @@ export default function ChartersInterviewAi() {
 
                 {/* LEFT image */}
                 <div className="w-full h-[40%] sm:w-1/2 sm:h-full relative">
-                    <Image src="/home/ai_interview_leftPic.jpeg" alt="AI Interview" fill priority className="object-cover" sizes="50vw" />
+                    <Image src="/home/ai_interview_leftPic.jpeg" alt="AI Interview" fill className="object-cover" sizes="50vw" />
                 </div>
 
                 {/* RIGHT panel */}

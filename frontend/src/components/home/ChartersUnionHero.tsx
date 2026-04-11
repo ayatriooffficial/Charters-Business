@@ -7,13 +7,13 @@ const heroData = {
   description:
     "Learn Professional Accounting in Kolkata with 3-month foundation + 4-month paid internship. Work with top companies from USA, Canada, Qatar, Singapore, Australia & UK. Join now!",
   backgroundImage: getCloudinaryUrl("charters-business/background", {
-    width: 1536,
+    width: 1080,
     quality: "auto:eco",
     format: "auto",
   }),
   backgroundImageSrcSet: getCloudinarySrcSet(
     "charters-business/background",
-    [828, 1080, 1366, 1536, 1920],
+    [828, 1080, 1280, 1366, 1536],
     { quality: "auto:eco" },
   ),
   mobileBackgroundImage: getCloudinaryUrl("charters-business/Background-M", {
@@ -48,17 +48,15 @@ function ChartersUnionHero() {
           <source
             media="(min-width: 768px)"
             srcSet={heroData.backgroundImageSrcSet}
-            sizes="100vw"
+            sizes="(min-width: 1536px) 1536px, 100vw"
           />
-          {/* Use art-directed sources so the browser fetches only one hero image per viewport. */}
           <img
             src={heroData.mobileBackgroundImage}
             srcSet={heroData.mobileBackgroundImageSrcSet}
             sizes="100vw"
             alt="Professional Accountant Training in Kolkata Background"
             fetchPriority="high"
-            loading="eager"
-            decoding="async"
+            decoding="async"        
             className="h-full w-full object-contain object-center"
           />
         </picture>

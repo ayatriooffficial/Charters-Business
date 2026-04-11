@@ -38,6 +38,9 @@ export const metadata: Metadata = {
     title: "Our Faculty | Charters Business",
     description:
       "Meet our world-class faculty of industry leaders and experts.",
+    images: [
+      "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp",
+    ],
   },
   alternates: {
     canonical: "https://chartersbusiness.com/faculties",
@@ -143,7 +146,7 @@ export default function FacultiesPage() {
       <Script
         id="faculties-schema-graph"
         type="application/ld+json"
-        strategy="afterInteractive"
+        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(facultiesSchemaGraph) }}
       />
 

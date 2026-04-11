@@ -9,25 +9,25 @@ import { generateBreadcrumbSchema } from "@/lib/schema";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 
 export const metadata: Metadata = {
-  title: "Apply Now - Charter Application | Charters Business",
+  title: "Apply Now - Charter Application | Charter's Union",
   description:
-    "Begin your Tetr Application. Join thousands of students worldwide and get up to 100% tuition fee scholarships. Apply for undergraduate and postgraduate programs.",
+    "Begin your Charter's Union application. Join thousands of B.Com graduates and get placed in top accounting firms within 7 months. Apply for our job-ready accounting programme.",
   keywords: [
     "charter application",
     "apply now",
-    "business school admission",
-    "scholarships",
-    "undergraduate program",
-    "postgraduate program",
-    "charters business",
-    "MBA application",
-    "business education",
-    "study abroad",
+    "accounting course admission",
+    "B.Com accounting programme",
+    "job-ready accounting course",
+    "charters union",
+    "accounting internship",
+    "placement programme",
+    "professional accounting training",
+    "accounting jobs kolkata",
   ],
   openGraph: {
-    title: "Apply Now - Tetr Application | Charters Business",
+    title: "Apply Now - Charter's Union Application",
     description:
-      "Begin your journey with Tetr. Apply now for undergraduate and postgraduate programs with scholarship opportunities up to 100%.",
+      "Begin your journey with Charter's Union. Apply now for our 7-month job-ready accounting programme with 90% placement rate and ₹3.5 LPA average salary.",
     type: "website",
     url: "https://chartersbusiness.com/apply",
     images: [
@@ -35,15 +35,15 @@ export const metadata: Metadata = {
         url: "/images/og-apply.jpg",
         width: 1200,
         height: 630,
-        alt: "Charters Business Application - Join Tetr",
+        alt: "Charter's Union Application - Start Your Accounting Career",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Apply Now - Tetr Application",
+    title: "Apply Now - Charter's Union Application",
     description:
-      "Begin your Tetr Application and unlock scholarship opportunities up to 100%.",
+      "Begin your Charter's Union application and get placed in top accounting firms within 7 months. 90% placement rate. ₹3.5 LPA avg salary.",
     images: ["/images/og-apply.jpg"],
   },
   alternates: {

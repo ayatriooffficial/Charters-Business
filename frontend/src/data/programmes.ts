@@ -240,7 +240,7 @@ export const programmes: Programme[] = [
 
     // Dropdown Data
     dropdown: {
-      title: "Digital Growth Engineer",
+      title: "DIGITAL GROWTH ENGINEER",
       description:
         "Comprehensive MBA program designed for future business leaders Comprehensive MBA program designed for. Combines theoretical knowledge with practical application through real-world case studies and industry partnerships.",
       duration: "2 Years Full-time",
@@ -258,7 +258,7 @@ export const programmes: Programme[] = [
       image: "https://images.mastersunion.link/uploads/24062025/v1/image6.webp",
       hasVideo: false,
       rating: { score: 4.8, reviews: 495 / 500 },
-      title: "Certified Management Professional(CMP)",
+      title: "DIGITAL GROWTH ENGINEER",
 
       level: "Postgraduate",
       certificateType: "Corporate Certificate",
@@ -1306,7 +1306,7 @@ export const programmes: Programme[] = [
       image: "/images/programmes/DSC09198.webp",
       hasVideo: false,
       rating: { score: 4.7, reviews: 1876 },
-      title: "Digital Growth Engineer",
+      title: "POST GRADUATE DIPLOMA IN MANAGEMENT",
       level: "Postgraduate",
       certificateType: "PG Diploma",
       description:
@@ -1703,7 +1703,7 @@ export const programmes: Programme[] = [
 
     // Dropdown Data
     dropdown: {
-      title: "Product Growth Engineering",
+      title: "PRODUCT GROWTH ENGINEERING",
       description:
         "Designed for working professionals with significant management experience. Flexible schedule with weekend classes and online modules for career advancement while continuing your job. Focus on executive leadership, strategic thinking, and C-suite preparation.",
       duration: "18 Months Part-time",
@@ -1722,7 +1722,7 @@ export const programmes: Programme[] = [
       image: "/images/programmes/P10714292.webp",
       hasVideo: false,
       rating: { score: 4.9, reviews: 956 },
-      title: "Product Growth Engineering",
+      title: "PRODUCT GROWTH ENGINEERING",
 
       level: "Executive",
       certificateType: "Executive MBA",

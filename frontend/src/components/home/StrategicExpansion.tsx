@@ -543,7 +543,7 @@ const StrategicExpansion: React.FC = () => {
         };
 
         handleScroll(); // Initial check
-        slider.addEventListener('scroll', handleScroll);
+        slider.addEventListener('scroll', handleScroll, { passive: true });
         return () => slider.removeEventListener('scroll', handleScroll);
     }, [selectedCard]);
 
@@ -610,7 +610,7 @@ const StrategicExpansion: React.FC = () => {
 
                     <div className="max-w-[85rem] mx-auto">
 
-                        <div className="bg-[#F6F4F2] p-4 sm:p-6 relative">
+                        <div className="bg-[#F6F4F2] px-4 sm:px-6 pt-4 sm:pt-6 pb-10 sm:pb-14 relative">
 
 
                             {/* Content Section */}

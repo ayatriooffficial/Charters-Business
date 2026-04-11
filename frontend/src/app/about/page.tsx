@@ -37,6 +37,9 @@ export const metadata: Metadata = {
     title: "About Us | Charters Business",
     description:
       "Learn about Charters Business and our mission to transform business education.",
+    images: [
+      "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp",
+    ],
   },
   alternates: {
     canonical: "https://chartersbusiness.com/about",

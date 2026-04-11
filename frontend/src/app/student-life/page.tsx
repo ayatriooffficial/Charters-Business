@@ -4,6 +4,40 @@ import LifeAtCharters from "@/components/student-life/LifeAtCharters";
 import Diversity from "@/components/student-life/Diversity";
 import TrustedCompanies from "@/components/student-life/TrustedCompanies";
 import HeroSection from "@/components/student-life/Herosection";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Student Life | Charters Business",
+  description:
+    "Discover student life at Charters Business. Join a vibrant community, participate in events, and build your professional network.",
+  alternates: {
+    canonical: "/student-life",
+  },
+  openGraph: {
+    title: "Student Life | Charters Business",
+    description:
+      "Discover student life at Charters Business. Join a vibrant community, participate in events, and build your professional network.",
+    url: "https://chartersbusiness.com/student-life",
+    type: "website",
+    images: [
+      {
+        url: "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp",
+        width: 1200,
+        height: 630,
+        alt: "Student Life at Charters Business",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Student Life | Charters Business",
+    description:
+      "Discover student life at Charters Business. Join a vibrant community, participate in events, and build your professional network.",
+    images: [
+      "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp",
+    ],
+  },
+};
 
 type Stat = { value: string; label: string; detail: string; gradient?: string };
 const HERO_HEADING = "Accelerate Your Career Growth";

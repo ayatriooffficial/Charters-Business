@@ -164,7 +164,7 @@ const NewsSliderComponent: React.FC<NewsSliderComponentProps> = ({
       setOffsetPercent(newOffset);
     };
 
-    scrollContainer.addEventListener('scroll', handleScroll);
+    scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Initial call
 
     return () => scrollContainer.removeEventListener('scroll', handleScroll);

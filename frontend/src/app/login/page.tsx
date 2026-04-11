@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Login | Charters Business",
   description:
     "Login to your Charters Business account. Access your dashboard, track application status, view counseling schedules, and manage your profile.",
+  alternates: {
+    canonical: "/login",
+  },
   keywords: [
     "login",
     "sign in",
@@ -14,8 +17,8 @@ export const metadata: Metadata = {
     "charters business login",
   ],
   robots: {
-    index: false, // Don't index login pages
-    follow: true,
+    index: false,
+    follow: false,
   },
 };
 
