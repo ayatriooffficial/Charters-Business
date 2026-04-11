@@ -68,9 +68,16 @@ const userSchema = new mongoose.Schema(
       default: null,
     },
 
+    // Legacy compatibility flag. New logic should rely on `status`.
     isActive: {
       type: Boolean,
       default: true,
+      index: true,
+    },
+    status: {
+      type: String,
+      enum: ["active", "disabled", "blocked"],
+      default: "active",
       index: true,
     },
 
@@ -92,7 +99,7 @@ const userSchema = new mongoose.Schema(
       default: null,
     },
 
-    // ✅ Viewer scoring + tracking (NEW)
+    // Viewer scoring + tracking
     viewerScore: {
       type: Number,
       default: 0,
@@ -100,8 +107,8 @@ const userSchema = new mongoose.Schema(
     },
 
     viewerMetrics: {
-      visitCount: { type: Number, default: 0 }, // total page views
-      pagesNavigated: { type: Number, default: 0 }, // unique pages count
+      visitCount: { type: Number, default: 0 },
+      pagesNavigated: { type: Number, default: 0 },
       uniquePagePaths: { type: [String], default: [] },
       uniquePageTitles: { type: [String], default: [] },
       chatInteractions: { type: Number, default: 0 },
@@ -115,10 +122,24 @@ const userSchema = new mongoose.Schema(
 );
 
 // Compound indexes for common queries
-userSchema.index({ email: 1, isActive: 1 });
-userSchema.index({ phoneNumber: 1, isActive: 1 });
-userSchema.index({ role: 1, isActive: 1 });
+userSchema.index({ email: 1, status: 1 });
+userSchema.index({ phoneNumber: 1, status: 1 });
+userSchema.index({ role: 1, status: 1 });
 userSchema.index({ viewerScore: -1, "viewerMetrics.lastMergedAt": -1 });
+
+// Keep legacy isActive and new status in sync during migration.
+userSchema.pre("validate", function (next) {
+  if (this.isModified("status")) {
+    this.isActive = this.status === "active";
+    return next();
+  }
+
+  if (this.isModified("isActive")) {
+    this.status = this.isActive ? "active" : "disabled";
+  }
+
+  next();
+});
 
 // Hash password before saving
 userSchema.pre("save", async function (next) {
@@ -139,6 +160,14 @@ userSchema.methods.generateToken = function () {
     process.env.JWT_SECRET,
     { expiresIn: process.env.JWT_EXPIRE || "30d" }
   );
+};
+
+userSchema.methods.isAccountActive = function () {
+  if (this.status) {
+    return this.status === "active";
+  }
+
+  return Boolean(this.isActive);
 };
 
 // Generate random password
