@@ -61,16 +61,6 @@ if (appConfig.env === "development") {
   app.use(morgan("dev"));
 }
 
-/* RATE LIMIT */
-
-const publicApiLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
-  message: "Too many requests from this IP, please try again later.",
-});
-
-app.use("/api/v1", publicApiLimiter);
-
 /* ROOT ROUTE */
 
 app.get("/", (req, res) => {
