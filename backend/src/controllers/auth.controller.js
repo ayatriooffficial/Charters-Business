@@ -8,6 +8,18 @@ import admin from "../config/firebase.config.js";
 
 const AUTH_COOKIE_NAME = "authToken";
 const AUTH_COOKIE_MAX_AGE = 30 * 24 * 60 * 60 * 1000;
+function isUserActive(user) {
+  if (!user) return false;
+  if (typeof user.isAccountActive === "function") {
+    return user.isAccountActive();
+  }
+
+  if (user.status) {
+    return user.status === "active";
+  }
+
+  return Boolean(user.isActive);
+}
 
 function getAuthCookieOptions() {
   return {
@@ -55,7 +67,7 @@ export const login = asyncHandler(async (req, res) => {
   }
 
   // Check if account is active
-  if (!user.isActive) {
+  if (!isUserActive(user)) {
     throw new ApiError(
       401,
       "Your account has been deactivated. Please contact support.",
@@ -284,7 +296,7 @@ export const firebaseLogin = asyncHandler(async (req, res) => {
         );
     }
 
-    if (!user.isActive) {
+    if (!isUserActive(user)) {
       throw new ApiError(
         401,
         "Your account has been deactivated. Please contact support.",
@@ -413,3 +425,4 @@ export const firebaseSignup = asyncHandler(async (req, res) => {
     throw new ApiError(401, "Invalid or expired Firebase token");
   }
 });
+

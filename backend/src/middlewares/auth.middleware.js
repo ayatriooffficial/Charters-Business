@@ -17,6 +17,19 @@ function getRequestToken(req) {
   return null;
 }
 
+function isUserActive(user) {
+  if (!user) return false;
+  if (typeof user.isAccountActive === 'function') {
+    return user.isAccountActive();
+  }
+
+  if (user.status) {
+    return user.status === 'active';
+  }
+
+  return Boolean(user.isActive);
+}
+
 // Standard protect middleware
 export const protect = asyncHandler(async (req, res, next) => {
   const token = getRequestToken(req);
@@ -28,13 +41,21 @@ export const protect = asyncHandler(async (req, res, next) => {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = await User.findById(decoded.id).select('-password');
-    
+
     if (!req.user) {
       throw new ApiError(401, 'User not found');
     }
-    
+
+    if (!isUserActive(req.user)) {
+      throw new ApiError(403, 'Your account is disabled or blocked. Please contact support.');
+    }
+
     next();
   } catch (error) {
+    if (error instanceof ApiError) {
+      throw error;
+    }
+
     throw new ApiError(401, 'Not authorized to access this route');
   }
 });
@@ -51,12 +72,14 @@ export const optionalAuth = asyncHandler(async (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = await User.findById(decoded.id).select('-password');
-    
-    if (!req.user) {
+    const user = await User.findById(decoded.id).select('-password');
+
+    if (!user || !isUserActive(user)) {
       req.user = null;
+      return next();
     }
-    
+
+    req.user = user;
     next();
   } catch (error) {
     // Token invalid, continue without user
