@@ -3,7 +3,6 @@
 import React, { useRef, useState, useEffect, memo } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { Download } from "lucide-react";
 import useInViewPlay from "@/components/micro/useInViewPlay";
 import Placement_TrustedCompanies from "./Placement_TrustedCompanies";
 
@@ -182,7 +181,7 @@ const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
                 aria-label="Download the complete placement report PDF"
               >
                 Placement Report
-                <Download className="w-5 h-5" />
+                <Image src="/Charters-icon/Cancel.svg" alt="icon" width={12} height={12} className="w-5 h-5" />
               </button>
             </div>
           </div>

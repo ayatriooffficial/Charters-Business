@@ -2,12 +2,11 @@
 
 import { useState, useEffect, useRef, memo } from "react";
 import Image from "next/image";
-import { Brain, Hospital, Clipboard, BarChart3 } from "lucide-react";
 import HighlightText from "../shared/HighlightObserver";
 
 const features = [
-  { icon: Brain, title: "AI in Healthcare" },
-  { icon: BarChart3, title: "Healthcare Analytics" },
+  { icon: "/Charters-icon/Cancel.svg", title: "AI in Healthcare" },
+  { icon: "/Charters-icon/Cancel.svg", title: "Healthcare Analytics" },
 ];
 
 const CARD_MOBILE_BANNER_SIZES =
@@ -37,10 +36,10 @@ const cardsData = [
     description: "",
     logos: [],
     gridItems: [
-      { title: "AI in Healthcare", icon: Brain },
-      { title: "Hospital Management", icon: Hospital },
-      { title: "Healthcare Information Systems", icon: Clipboard },
-      { title: "Healthcare Analytics", icon: BarChart3 },
+      { title: "AI in Healthcare", icon: "/Charters-icon/Cancel.svg" },
+      { title: "Hospital Management", icon: "/Charters-icon/Cancel.svg" },
+      { title: "Healthcare Information Systems", icon: "/Charters-icon/Cancel.svg" },
+      { title: "Healthcare Analytics", icon: "/Charters-icon/Cancel.svg" },
     ],
     mediaSrc:
       "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1600&h=1200&fit=crop",
@@ -235,7 +234,7 @@ function HealthGridCard({ card }: HealthGridCardProps) {
                   className={`flex items-center gap-x-3 gap-y-2 px-3 sm:px-4 py-3 sm:py-4 min-h-[60px] sm:min-h-[72px] border-gray-300 ${idx % 2 === 0 ? "border-r" : ""} ${idx < 2 ? "border-b" : ""}`}
                 >
                   <div className="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center bg-green-100 flex-shrink-0">
-                    <item.icon className="w-4 h-4 sm:w-5 sm:h-5 text-green-700" />
+                    <Image src={item.icon} alt={item.title} width={12} height={12} className="w-4 h-4 sm:w-5 sm:h-5 text-green-700" />
                   </div>
                   <div className="max-w-full sm:max-w-[100px]">
                     <span className="block text-[11px] sm:text-[12px] leading-[1.25] font-medium text-gray-800">

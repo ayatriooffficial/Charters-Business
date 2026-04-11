@@ -24,7 +24,10 @@ interface ServiceCard {
         label: string;
     }>;
 }
-
+interface FooterFeature {
+    icon: string;
+    label: string;
+}
 interface ContentData {
     title: string;
     highlightText: string;
@@ -46,6 +49,16 @@ interface ContentData {
     imageSrc: string;
     imageAlt: string;
     serviceCards: ServiceCard[];
+    footer: {
+        title: string;
+        description: string;
+        features: FooterFeature[];
+    };
+    avatar: {
+        src: string;
+        alt: string;
+        borderColor: string;
+    };
 }
 const heading_description = {
     description: "Learn from industry leaders | Academic experts | Experience real-world insights"
@@ -155,6 +168,21 @@ const contentData: Record<string, ContentData> = {
                 ],
             },
         ],
+        footer: {
+            title: "AI Brand Profile Engine",
+            description: "Charter Career provides the high-level exposure and brand-building tools needed to position students for elite leadership roles.",
+            features: [
+                { icon: "chart", label: "Brand Analytics" },
+                { icon: "lightning", label: "Executive Sync" },
+                { icon: "check", label: "Success Plan" },
+                { icon: "document", label: "Case Notes" }
+            ]
+        },
+        avatar: {
+            src: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&h=100&fit=crop",
+            alt: "Placement Officer",
+            borderColor: "border-cyan-400"
+        },
     },
     "real-assignments": {
         title: "Placement",
@@ -222,6 +250,21 @@ const contentData: Record<string, ContentData> = {
                 ],
             },
         ],
+        footer: {
+            title: "Career Counseling Hub",
+            description: "Everything you need to manage 1:1 mentorship cycles and track student progress with automated scheduling and feedback loops.",
+            features: [
+                { icon: "users", label: "Session Insights" },
+                { icon: "lightning", label: "Auto-Scheduling" },
+                { icon: "check", label: "Milestone Tracking" },
+                { icon: "document", label: "Consultation Notes" }
+            ]
+        },
+        avatar: {
+            src: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
+            alt: "Executive Mentor",
+            borderColor: "border-yellow-400"
+        },
     },
     "not-summer": {
         title: "Flexible",
@@ -290,6 +333,21 @@ const contentData: Record<string, ContentData> = {
                 ],
             },
         ],
+        footer: {
+            title: "Skill Development Suite",
+            description: "Monitor skill acquisition in real-time. Our engine identifies gaps and suggests targeted training to keep students on their career path.",
+            features: [
+                { icon: "chart", label: "Skill Mapping" },
+                { icon: "wrench", label: "Task Automation" },
+                { icon: "lightning", label: "Growth Velocity" },
+                { icon: "database", label: "Resource Logs" }
+            ]
+        },
+        avatar: {
+            src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+            alt: "Career Coach",
+            borderColor: "border-purple-500"
+        },
     },
     "not-summer-month3": {
         title: "Career",
@@ -357,6 +415,21 @@ const contentData: Record<string, ContentData> = {
                 ],
             },
         ],
+        footer: {
+            title: "VRise Application Command",
+            description: "Centralize the chaos of job hunting. Track every submission, follow-up, and interview within a single unified dashboard.",
+            features: [
+                { icon: "chart", label: "Funnel Analytics" },
+                { icon: "lightning", label: "Workflow Automation" },
+                { icon: "check", label: "Offer Tracking" },
+                { icon: "document", label: "Interview Briefs" }
+            ]
+        },
+        avatar: {
+            src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
+            alt: "Technical Lead",
+            borderColor: "border-orange-500"
+        },
     },
     "not-summer-month4": {
         title: "Job",
@@ -424,10 +497,66 @@ const contentData: Record<string, ContentData> = {
                 ],
             },
         ],
+        footer: {
+            title: "Placement Intelligence Engine",
+            description: "Data-driven insights into placement readiness, ensuring students are 100% prepared before they face their first technical round.",
+            features: [
+                { icon: "chart", label: "Test Analytics" },
+                { icon: "lightning", label: "Result Automation" },
+                { icon: "check", label: "Readiness Score" },
+                { icon: "document", label: "Review Notes" }
+            ]
+        },
+        avatar: {
+            src: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=100&h=100&fit=crop",
+            alt: "HR Specialist",
+            borderColor: "border-blue-500"
+        },
     },
 };
 
-// Helper function to get icon by name
+
+// Icons for the feature items
+const DocumentIcon = () => (
+    <Image src="/Charters-icon/Cancel.svg" alt="document" width={16} height={16} className="w-4 h-4" />
+);
+
+const SearchIcon = () => (
+    <Image src="/Charters-icon/Cancel.svg" alt="search" width={16} height={16} className="w-4 h-4" />
+);
+
+const UserGroupIcon = () => (
+    <Image src="/Charters-icon/Cancel.svg" alt="users" width={16} height={16} className="w-4 h-4" />
+);
+
+const BriefcaseIcon = () => (
+    <Image src="/Charters-icon/Cancel.svg" alt="briefcase" width={16} height={16} className="w-4 h-4" />
+);
+
+const LightningIcon = () => (
+    <Image src="/Charters-icon/Cancel.svg" alt="lightning" width={16} height={16} className="w-4 h-4" />
+);
+
+const WrenchIcon = () => (
+    <Image src="/Charters-icon/Cancel.svg" alt="wrench" width={16} height={16} className="w-4 h-4" />
+);
+
+const DatabaseIcon = () => (
+    <Image src="/Charters-icon/Cancel.svg" alt="database" width={16} height={16} className="w-4 h-4" />
+);
+
+const CheckCircleIcon = () => (
+    <Image src="/Charters-icon/Cancel.svg" alt="check" width={16} height={16} className="w-4 h-4" />
+);
+
+const ChartIcon = () => (
+    <Image src="/Charters-icon/Cancel.svg" alt="chart" width={16} height={16} className="w-4 h-4" />
+);
+
+const StatsIcon = () => (
+    <Image src="/Charters-icon/Cancel.svg" alt="stats" width={24} height={24} className="w-6 h-6 text-gray-500" />
+);
+
 const getIcon = (iconName: string) => {
     switch (iconName) {
         case "document":
@@ -450,72 +579,6 @@ const getIcon = (iconName: string) => {
             return <DocumentIcon />;
     }
 };
-
-// Icons for the feature items
-const DocumentIcon = () => (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-    </svg>
-);
-
-const SearchIcon = () => (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-    </svg>
-);
-
-const UserGroupIcon = () => (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-    </svg>
-);
-
-const BriefcaseIcon = () => (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-    </svg>
-);
-
-const LightningIcon = () => (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-    </svg>
-);
-
-const WrenchIcon = () => (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-    </svg>
-);
-
-const DatabaseIcon = () => (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
-    </svg>
-);
-
-const CheckCircleIcon = () => (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>
-);
-
-const ChartIcon = () => (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-    </svg>
-);
-
-// Stats icon
-const StatsIcon = () => (
-    <svg className="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-        <circle cx="8" cy="7" r="1.5" fill="currentColor" />
-        <text x="12" y="9" fontSize="4" fill="currentColor" textAnchor="middle">?</text>
-    </svg>
-);
-
 const StrategicExpansion: React.FC = () => {
     const sectionRef = useRef<HTMLDivElement | null>(null);
     const isVisible = useInViewPlay(sectionRef, "200px", 0.1);
@@ -795,47 +858,47 @@ const StrategicExpansion: React.FC = () => {
                                 </div>
                             </div>
 
-                            {/* Emerge Career Unity Section */}
-                            <div className="border border-[#D5D0CA] p-4 my-2.5 text-center ">
-                                <h3 className="text-2xl font-semibold text-black mb-3">AI Brand Profile Engine</h3>
+                            {/* Emerge Career Unity Section - Dynamic */}
+                            <div className="border border-[#D5D0CA] p-4 my-2.5 text-center">
+                                <h3 className="text-2xl font-semibold text-black mb-3">
+                                    {currentContent.footer.title}
+                                </h3>
                                 <p className="text-gray-600 max-w-2xl mx-auto mb-2">
-                                    Emerge Career has everything you need to run a successful workforce development program, and reduce the workload on your staff.
+                                    {currentContent.footer.description}
                                 </p>
                             </div>
-                            {/* Feature Buttons */}
+
+                            {/* Feature Buttons - Dynamic */}
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 w-full">
-                                <button className="flex items-center justify-center gap-2 px-2 md:px-4 py-3 border border-[#D5D0CA] transition-colors hover:bg-gray-50">
-                                    <ChartIcon />
-                                    <span className="text-xs md:text-sm font-medium">Analytics</span>
-                                </button>
-                                <button className="flex items-center justify-center gap-2 px-2 md:px-4 py-3 border border-[#D5D0CA] transition-colors hover:bg-gray-50">
-                                    <ChartIcon />
-                                    <span className="text-xs md:text-sm font-medium whitespace-nowrap">Workflow Automation</span>
-                                </button>
-                                <button className="flex items-center justify-center gap-2 px-2 md:px-4 py-3 border border-[#D5D0CA] transition-colors hover:bg-gray-50">
-                                    <ChartIcon />
-                                    <span className="text-xs md:text-sm font-medium">Success Plan</span>
-                                </button>
-                                <button className="flex items-center justify-center gap-2 px-2 md:px-4 py-3 border border-[#D5D0CA] transition-colors hover:bg-gray-50">
-                                    <ChartIcon />
-                                    <span className="text-xs md:text-sm font-medium">Case Notes</span>
-                                </button>
+                                {currentContent.footer.features.map((feature, idx) => (
+                                    <button
+                                        key={idx}
+                                        className="flex items-center justify-center gap-2 px-2 md:px-4 py-3 border border-[#D5D0CA] transition-colors hover:bg-gray-50"
+                                    >
+                                        {getIcon(feature.icon)}
+                                        <span className="text-xs md:text-sm font-medium whitespace-nowrap">
+                                            {feature.label}
+                                        </span>
+                                    </button>
+                                ))}
                             </div>
 
                             {/* Curved Dotted Lines with Avatars Section */}
                             <div className="relative min-h-[60px] hidden md:flex justify-center items-end mt-4">
                                 {/* SVG for curved dotted lines */}
-                                <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 1000 50" preserveAspectRatio="none">
-                                    {/* Left outer curve - from button 1 to left side of avatars */}
+                                <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 1000 80" preserveAspectRatio="none">
+
+                                    {/* Left outer curve - Red (Smooth S-curve) */}
                                     <path
-                                        d="M 125 0 L 125 5 Q 125 15, 160 15 L 390 15 Q 410 15, 410 30 L 410 35 Q 410 42, 425 42 L 435 42"
+                                        d="M 125 0 L 125 5 Q 125 15, 160 15 L 390 15 Q 410 15, 410 30 L 410 35 Q 410 45, 425 48 L 439 51"
                                         fill="none"
                                         stroke="#B30437"
                                         strokeWidth="2"
                                         strokeDasharray="6 4"
                                         opacity="0.6"
                                     />
-                                    {/* Left inner curve - from button 2 to left side of avatars */}
+
+                                    {/* Left inner curve - Red (Adjusted for smooth curve) */}
                                     <path
                                         d="M 375 0 L 375 5 Q 375 15, 400 15 L 430 15 Q 445 15, 445 30 L 445 35 Q 445 42, 455 42 L 465 42"
                                         fill="none"
@@ -844,7 +907,8 @@ const StrategicExpansion: React.FC = () => {
                                         strokeDasharray="6 4"
                                         opacity="0.6"
                                     />
-                                    {/* Right inner curve - from button 3 to right side of avatars */}
+
+                                    {/* Right inner curve - Orange (Adjusted for smooth curve) */}
                                     <path
                                         d="M 625 0 L 625 5 Q 625 15, 600 15 L 570 15 Q 555 15, 555 30 L 555 35 Q 555 42, 545 42 L 535 42"
                                         fill="none"
@@ -853,41 +917,35 @@ const StrategicExpansion: React.FC = () => {
                                         strokeDasharray="6 4"
                                         opacity="0.6"
                                     />
-                                    {/* Right outer curve - from button 4 to right side of avatars */}
+
+                                    {/* Right outer curve - Orange (Smooth S-curve) */}
                                     <path
-                                        d="M 875 0 L 875 5 Q 875 15, 840 15 L 610 15 Q 590 15, 590 30 L 590 35 Q 590 42, 575 42 L 565 42"
+                                        d="M 875 0 L 875 5 Q 875 15, 840 15 L 610 15 Q 590 15, 590 30 L 590 35 Q 590 45, 575 48 L 561 51"
                                         fill="none"
                                         stroke="#F97316"
                                         strokeWidth="2"
                                         strokeDasharray="6 4"
                                         opacity="0.6"
                                     />
-                                    {/* Arrow heads pointing INWARD (toward circles) */}
-                                    <polygon points="440,42 432,38 432,46" fill="#F6F4F2" opacity="0.6" />
-                                    <polygon points="470,42 462,38 462,46" fill="#F6F4F2" opacity="0.6" />
-                                    <polygon points="530,42 538,38 538,46" fill="#F6F4F2" opacity="0.6" />
-                                    <polygon points="560,42 568,38 568,46" fill="#F6F4F2" opacity="0.6" />
+
+                                    {/* Arrow heads - Adjusted positions to match new curve ends */}
+                                    <polygon points="447,52 439,47 439,56" fill="#B30437" opacity="0.6" />
+                                    <polygon points="470,42 462,38 462,46" fill="#B30437" opacity="0.6" />
+                                    <polygon points="530,42 538,38 538,46" fill="#F97316" opacity="0.6" />
+                                    <polygon points="553,52 561,47 561,56" fill="#F97316" opacity="0.6" />
                                 </svg>
 
                                 {/* Avatar Group */}
-                                <div className="relative z-10 mt-8 flex items-center justify-center -space-x-3 ">
-                                    <div className="w-12 h-12 rounded-full border-2 border-white overflow-hidden shadow-md">
-                                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Team member" className="w-full h-full object-cover" />
-                                    </div>
-                                    <div className="w-14 h-14 rounded-full border-2 border-white overflow-hidden shadow-md z-10">
-                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Team member" className="w-full h-full object-cover" />
-                                    </div>
+                                <div className="relative z-10 mt-8 flex items-center justify-center -space-x-3">
                                     <div
-                                        className="w-16 h-16 rounded-full border-4 border-yellow-400 overflow-hidden shadow-lg z-20 cursor-pointer"
+                                        className={`w-19 h-19 rounded-full border-4 ${currentContent.avatar.borderColor} overflow-hidden shadow-lg z-20 cursor-pointer transition-transform hover:scale-110`}
                                         onClick={() => setShowInterviewAI(true)}
                                     >
-                                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop" alt="Team member" className="w-full h-full object-cover" />
-                                    </div>
-                                    <div className="w-14 h-14 rounded-full border-2 border-white overflow-hidden shadow-md z-10">
-                                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop" alt="Team member" className="w-full h-full object-cover" />
-                                    </div>
-                                    <div className="w-12 h-12 rounded-full border-2 border-white overflow-hidden shadow-md">
-                                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop" alt="Team member" className="w-full h-full object-cover" />
+                                        <img
+                                            src={currentContent.avatar.src}
+                                            alt={currentContent.avatar.alt}
+                                            className="w-full h-full object-cover"
+                                        />
                                     </div>
                                 </div>
                             </div>

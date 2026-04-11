@@ -1,6 +1,5 @@
 "use client";
 
-import { ChevronDown, Menu, X } from "lucide-react";
 import Image from "next/image";
 import { useState, useEffect, useRef, useCallback, memo } from "react";
 import { useRouter } from "next/navigation";
@@ -243,7 +242,7 @@ function Navbar() {
                 }}
                 className="absolute left-1/2 -translate-x-1/2 flex text-[13px] text-[#0F1419] font-semibold items-center whitespace-nowrap cursor-pointer"
               >
-                <p className={msgVisible ? "msg-visible" : "msg-hidden"} style={{ margin: 0 }}>
+                <p className="{msgVisible ? 'msg-visible' : 'msg-hidden'} m-0">
                   {messages[currentMsgIndex]}
                 </p>
                 <Image
@@ -349,10 +348,14 @@ function Navbar() {
                     onClick={() => setIsAcademicsOpen(!isAcademicsOpen)}
                   >
                     <span>ACADEMICS</span>
-                    <ChevronDown
-                      className={`w-3 h-3 lg:w-4 lg:h-4 transition-transform duration-200 ${isAcademicsOpen ? "rotate-180" : ""
+
+                    <Image
+                      src="/Charters-icon/Dropdown.svg"
+                      alt="dropdown"
+                      width={12}
+                      height={12}
+                      className={`w-2 h-2 lg:w-3 lg:h-3 transition-transform duration-200 ${isAcademicsOpen ? "rotate-180" : ""
                         }`}
-                      aria-hidden="true"
                     />
                   </button>
                 </li>
@@ -406,9 +409,18 @@ function Navbar() {
                   aria-label="Toggle navigation menu"
                 >
                   {isMobileMenuOpen ? (
-                    <X className="w-5 h-5 text-gray-700" />
+                    <Image
+                      src="/Charters-icon/Cancel.svg"
+                      alt="dropdown"
+                      width={14}
+                      height={14} className="w-4 h-4 text-gray-700" />
                   ) : (
-                    <Menu className="w-5 h-5 text-gray-700" />
+                      <Image
+                        src="/Charters-icon/manu.svg"
+                        alt="dropdown"
+                        width={14}
+                        height={14}
+                        className="w-5 h-5 text-gray-700" />
                   )}
                 </button>
               </div>
@@ -456,8 +468,12 @@ function Navbar() {
                     onClick={() => setIsAcademicsOpen(!isAcademicsOpen)}
                   >
                     <span>ACADEMICS</span>
-                    <ChevronDown
-                      className={`w-4 h-4 transition-transform duration-200 ${isAcademicsOpen ? "rotate-180" : ""
+                    <Image
+                      src="/Charters-icon/Dropdown.svg"
+                      alt="dropdown"
+                      width={16}
+                      height={16}
+                      className={`w-3 h-3 lg:w-4 lg:h-4 transition-transform duration-200 ${isAcademicsOpen ? "rotate-180" : ""
                         }`}
                     />
                   </button>
