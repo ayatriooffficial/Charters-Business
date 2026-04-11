@@ -41,7 +41,7 @@ function ChartersUnionHero() {
   const [showInterviewAI, setShowInterviewAI] = useState(false);
   return (
     <section
-      className="relative w-full h-[86vh] md:h-[100vh] overflow-hidden"
+      className="relative w-full h-[86vh] md:h-[100vh] overflow-hidden mt-10"
       role="banner"
       aria-labelledby="hero-heading"
     >
