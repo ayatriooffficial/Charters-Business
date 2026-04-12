@@ -117,10 +117,7 @@ export default async function CareersTypeLayout({ children, params }: LayoutProp
         strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <DashboardNavbar />
-      <div className='mx-[7%] mt-16'>
         {children}
-      </div>
     </>
   );
 }

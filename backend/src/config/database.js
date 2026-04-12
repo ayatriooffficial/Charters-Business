@@ -11,8 +11,6 @@ const connectDB = async () => {
     console.error(`MongoDB Connection Error: ${error.message}`);
     process.exit(1);
   }
-  console.log("MONGODB_URI loaded?", !!process.env.MONGODB_URI);
-  console.log("URI =", process.env.MONGODB_URI);
 };
 
 export default connectDB;

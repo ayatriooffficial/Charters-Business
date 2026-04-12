@@ -47,7 +47,7 @@ class AuthService {
     }
 
     // Check if user is active
-    if (!user.isActive) {
+    if ((user.status && user.status !== 'active') || (!user.status && !user.isActive)) {
       throw new ApiError(401, 'Your account has been deactivated');
     }
 
@@ -68,7 +68,7 @@ class AuthService {
   // Get user profile
   async getProfile(userId) {
     const user = await User.findById(userId).select('-password');
-    
+
     if (!user) {
       throw new ApiError(404, 'User not found');
     }

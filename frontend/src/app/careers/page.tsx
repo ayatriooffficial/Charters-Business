@@ -134,7 +134,7 @@ export default function CareersPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(careersSchemaGraph) }}
       />
       {/* Hero Banner */}
-      <div role="banner" className="w-full">
+      <div role="banner" className="w-full mt-10">
         <div className="mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 md:py-8">
           <section className="flex flex-col gap-6 sm:gap-10 md:flex-row md:items-center">
 

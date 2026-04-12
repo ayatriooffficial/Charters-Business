@@ -6,7 +6,7 @@ import { heroGalleryItems, pageContent } from '@/data/applyPageData';
 
 export default function ApplicationHero() {
   return (
-    <section className="relative pt-[var(--navbar-height)] pb-8 md:pb-14">
+    <section className="relative pt-[var(--navbar-height)] pb-8 md:pb-14 mt-10">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-8 items-start">
 
