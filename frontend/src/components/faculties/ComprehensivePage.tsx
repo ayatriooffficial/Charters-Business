@@ -265,7 +265,7 @@ export default function ComprehensivePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative z-[5] pt-[72px] sm:pt-[48px] md:pt-[50px] pb-8 md:pb-12 bg-white">
+      <section className="relative z-[5] pt-[72px] sm:pt-[48px] md:pt-[50px] pb-8 md:pb-12 bg-white mt-10">
         <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="text-black">
