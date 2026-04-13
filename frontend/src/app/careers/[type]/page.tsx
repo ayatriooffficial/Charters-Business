@@ -13,6 +13,7 @@ import {
 import { useAuth } from "@/context/AuthContext";
 import DashboardNavbar from "@/components/dashboard/DashboardNavbar";
 import MultiSelectDropdown from "@/components/careers/Type_FilterDropdown";
+import ChipMultiSelect from "@/components/careers/ChipMultiSelect";
 
 type PageType = "jobs" | "internships";
 
@@ -450,7 +451,7 @@ export default function CareersPage({
   // Left panel state
   const [list, setList] = useState<ListItem[]>([]);
   const [locations, setLocations] = useState<string[]>(["All"]);
-  const [categories, setCategories] = useState<string[]>(["All"]); 
+  const [categories, setCategories] = useState<string[]>(["All"]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLocations, setSelectedLocations] = useState<string[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -571,7 +572,7 @@ export default function CareersPage({
   }, []);
 
   return (
-    <main className="h-screen flex flex-col overflow-hidden">
+    <main className="h-screen flex flex-col overflow-hidden bg-[#F4F2EE]">
       <style>{`
         .custom-scroll::-webkit-scrollbar { width: 4px; }
         .custom-scroll::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 10px; }
@@ -591,9 +592,32 @@ export default function CareersPage({
         selectedCategories={selectedCategories}
         onCategoriesChange={setSelectedCategories}
       />
+      <div className="pt-16 pb-1 mx-[5%] bg-white px-2 border-b border-gray-200 flex flex-row items-center justify-between">
+        <div className="w-full max-w-[70%]">
+          <ChipMultiSelect
+            options={categories.filter((c) => c !== "All")}
+            selected={selectedCategories}
+            onChange={setSelectedCategories}
+          />
+        </div>
+        <MultiSelectDropdown
+          label="Location"
+          icon={
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          }
+          options={locations.filter((l) => l !== "All")}
+          selected={selectedLocations}
+          onChange={setSelectedLocations}
+        />
+      </div>
 
       {/* Split Layout */}
-      <div className="bg-[#F4F2EE] flex flex-1 overflow-hidden mt-10">
+      <div className="bg-[#F4F2EE] flex flex-1 overflow-hidden ">
 
         {/* LEFT PANEL */}
         <aside className="w-full sm:w-[38%] border-r border-gray-200 flex flex-col bg-white overflow-hidden ml-[5%]">
@@ -684,40 +708,15 @@ export default function CareersPage({
             <div className="w-full mx-auto">
 
               {/* Detail Header */}
-                    <div className="relative bg-white border-r border-b border-gray-200 p-6">
-                      
-                      {/* {filter pills} */}
-                      <div className="absolute top-4 right-4 flex items-center gap-2">
+              <div className="relative bg-white border-r border-b border-gray-200 p-6">
 
-                        <MultiSelectDropdown
-                          label="Location"
-                          icon={
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                          }
-                          options={locations.filter((l) => l !== "All")}
-                          selected={selectedLocations}
-                          onChange={setSelectedLocations}
-                        />
+                {/* filter pills */}
+                <div className="absolute top-4 right-4 flex items-center gap-2">
 
-                        <MultiSelectDropdown
-                          label="Category"
-                          icon={
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                d="M4 6h16M4 10h16M4 14h10" />
-                            </svg>
-                          }
-                          options={categories.filter((c) => c !== "All")}
-                          selected={selectedCategories}
-                          onChange={setSelectedCategories}
-                        />
+                  {/* Location */}
 
-                      </div>
+
+                </div>
 
                 <h1 className="text-2xl font-bold text-gray-900 mb-1">
                   {selectedItem.title}
