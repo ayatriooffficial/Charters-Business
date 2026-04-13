@@ -142,7 +142,7 @@ export default function AmplifySection() {
                     }}
                   >
                     <p className="text-xs font-medium text-gray-900 text-center">{profile.name}</p>
-                    <p className="text-[11px] text-gray-400 text-center">{profile.role}</p>
+                    <p className="text-[8px] line-clamp-1 text-gray-400 text-left">{profile.role}</p>
                   </div>
                 ))}
               </div>
