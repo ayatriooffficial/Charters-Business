@@ -45,6 +45,7 @@ function clearAuthCookie(res) {
   });
 }
 
+<<<<<<< HEAD
 const TRUSTED_DEVICE_COOKIE_NAME = "trustedDevice";
 const TRUSTED_DEVICE_MAX_AGE = 180 * 24 * 60 * 60 * 1000; // 180 days
 
@@ -120,6 +121,17 @@ function clearTrustedDeviceCookie(res) {
     sameSite: "lax",
     secure: process.env.NODE_ENV === "production",
   });
+=======
+async function markLastLogin(user) {
+  const loginTime = new Date();
+  user.lastLogin = loginTime;
+
+  // Avoid full-document validation on legacy users while still recording login.
+  await User.updateOne(
+    { _id: user._id },
+    { $set: { lastLogin: loginTime } },
+  );
+>>>>>>> fd59a7c (updated auth.controller for login access)
 }
 
 // Login
