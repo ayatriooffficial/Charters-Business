@@ -1,5 +1,5 @@
 "use client";
-
+import { createPortal } from "react-dom";
 import { use, useState, useEffect, useCallback } from "react";
 import { notFound, useRouter } from "next/navigation";
 import Link from "next/link";
@@ -14,6 +14,7 @@ import { useAuth } from "@/context/AuthContext";
 import DashboardNavbar from "@/components/dashboard/DashboardNavbar";
 import MultiSelectDropdown from "@/components/careers/Type_FilterDropdown";
 import ChipMultiSelect from "@/components/careers/ChipMultiSelect";
+import ChartersInterviewAi from "@/components/home/Chartersinterview_ai";
 
 type PageType = "jobs" | "internships";
 
@@ -113,6 +114,7 @@ function ApplySection({
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showInterviewAI, setShowInterviewAI] = useState(false);
 
   useEffect(() => {
     setResumeFile(null);
@@ -190,11 +192,8 @@ function ApplySection({
             </p>
             <button
               onClick={() => {
-                sessionStorage.setItem(
-                  "redirectAfterLogin",
-                  window.location.pathname
-                );
-                router.push("/login");
+                setShowInterviewAI(true);
+                document.body.style.overflow = 'hidden';
               }}
               className="rounded-lg px-6 py-2.5 text-sm font-semibold text-white transition-all hover:scale-105"
               style={{ backgroundColor: "#B30437" }}
@@ -247,6 +246,7 @@ function ApplySection({
                 </div>
               </div>
             )}
+
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -382,6 +382,26 @@ function ApplySection({
           </form>
         )}
       </div>
+
+      {showInterviewAI && createPortal(
+        <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-black/60">
+          <div className="w-[85vw] max-w-4xl h-[85vh] relative">
+            <button
+              onClick={() => {
+                setShowInterviewAI(false);
+                document.body.style.overflow = '';
+              }}
+              className="absolute -top-3 -right-3 z-40 bg-white rounded-full w-8 h-8 flex items-center justify-center shadow-md text-gray-600 hover:text-red-500 transition-colors text-sm"
+            >
+              ✕
+            </button>
+            <div className="w-full h-full overflow-hidden rounded-xl shadow-2xl">
+              <ChartersInterviewAi />
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
 
       {showSuccessModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">

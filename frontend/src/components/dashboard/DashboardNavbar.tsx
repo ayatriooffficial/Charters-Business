@@ -1,10 +1,12 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
+import ChartersInterviewAi from "@/components/home/Chartersinterview_ai";
 
 interface DashboardNavbarProps {
   pageType?: "jobs" | "internships";
@@ -37,6 +39,7 @@ export default function DashboardNavbar({
   const { user, logout } = useAuth();
   const router = useRouter();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [showLoginPopup, setShowLoginPopup] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Determine dashboard URL based on role
@@ -85,6 +88,7 @@ export default function DashboardNavbar({
   };
 
   return (
+    <>
     <nav
       className="fixed top-0 left-0 right-0 z-50 border-b border-gray-200"
       style={{
@@ -106,7 +110,7 @@ export default function DashboardNavbar({
           />
         </Link>
 
-        {/* Center: Career Controls (toggle + search) */}
+        {/*toggle + search */}
         {showCareerControls && (
           <div className="flex items-center gap-3 flex-1 max-w-2xl mx-6">
 
@@ -173,19 +177,29 @@ export default function DashboardNavbar({
               aria-haspopup="true"
             >
               {/* Avatar */}
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-[#B30437] to-[#8B0329] text-white font-semibold text-sm">
-                {user?.avatar ? (
-                  <Image
-                    src={user.avatar}
-                    alt={user.name}
-                    width={40}
-                    height={40}
-                    className="rounded-full"
-                  />
-                ) : (
-                  <span>{getInitials(user?.name || "U")}</span>
-                )}
-              </div>
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-[#B30437] to-[#8B0329] text-white font-semibold text-sm overflow-hidden">
+                  {user ? (
+                    user.avatar ? (
+                      <Image
+                        src={user.avatar}
+                        alt={user.name}
+                        width={40}
+                        height={40}
+                        className="rounded-full object-cover"
+                      />
+                    ) : (
+                      <span>{getInitials(user.name)}</span>
+                    )
+                  ) : (
+                    <Image
+                      src="/Charters-icon/ic_user_defolt_avator.svg"
+                      alt="default avatar"
+                      width={40}
+                      height={40}
+                      className="object-cover"
+                    />
+                  )}
+                </div>
 
               {/* Name (hidden on mobile) */}
               <div className="hidden sm:flex flex-col items-start">
@@ -228,11 +242,8 @@ export default function DashboardNavbar({
                     <button
                       onClick={() => {
                         setIsDropdownOpen(false);
-                        sessionStorage.setItem(
-                          "redirectAfterLogin",
-                          window.location.pathname
-                        );
-                        router.push("/login");
+                        setShowLoginPopup(true);
+                        document.body.style.overflow = 'hidden';
                       }}
                       className="w-full text-left px-4 py-3 hover:bg-gray-50 transition-colors flex items-center gap-3"
                     >
@@ -434,5 +445,26 @@ export default function DashboardNavbar({
         </div>
       </div>
     </nav>
+
+      {showLoginPopup && createPortal(
+        <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-black/60">
+          <div className="w-[85vw] max-w-4xl h-[85vh] relative">
+            <button
+              onClick={() => {
+                setShowLoginPopup(false);
+                document.body.style.overflow = '';
+              }}
+              className="absolute -top-3 -right-3 z-40 bg-white rounded-full w-8 h-8 flex items-center justify-center shadow-md text-gray-600 hover:text-red-500 transition-colors text-sm"
+            >
+              ✕
+            </button>
+            <div className="w-full h-full overflow-hidden rounded-xl shadow-2xl">
+              <ChartersInterviewAi />
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
+    </>
   );
 }

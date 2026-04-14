@@ -117,6 +117,15 @@ const userSchema = new mongoose.Schema(
       sessionId: { type: String, default: null },
       lastMergedAt: { type: Date, default: null },
     },
+
+    trustedDevices: [
+      {
+        tokenHash: { type: String, required: true },
+        deviceName: { type: String, default: "Unknown Device" },
+        createdAt: { type: Date, default: Date.now },
+        lastUsed: { type: Date, default: Date.now },
+      },
+    ],
   },
   { timestamps: true }
 );

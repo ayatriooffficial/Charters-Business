@@ -36,7 +36,7 @@ export default function PhoneOtpLogin({
   onSuccess?: () => void;
   mode?: AuthMode;
 }) {
-    const { loginWithPhone, signupWithPhone } = useAuth();
+    const { loginWithPhone, signupWithPhone, user } = useAuth();
     const router = useRouter();
     const isSignupMode = mode === 'signup';
 
@@ -75,6 +75,11 @@ export default function PhoneOtpLogin({
     }, []);
 
     const handleSendOtp = async () => {
+        if (user) {
+            router.push('/dashboard');
+            return;
+        }
+
         setError('');
 
         const cleaned = phoneNumber.replace(/\D/g, '');

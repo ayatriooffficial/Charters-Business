@@ -5,6 +5,7 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import path from "path";
 import { fileURLToPath } from "url";
+import rateLimit from "express-rate-limit";
 
 import appConfig from "./config/app.config.js";
 import errorHandler from "./middlewares/error.middleware.js";
