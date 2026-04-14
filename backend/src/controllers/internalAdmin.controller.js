@@ -6,7 +6,7 @@ import ApiError from '../utils/ApiError.js';
 import ApiResponse from '../utils/ApiResponse.js';
 import asyncHandler from '../utils/asyncHandler.js';
 
-const CANDIDATE_ROLES = ['user'];
+const MANAGED_USER_ROLES = ['user', 'candidate'];
 const JOB_ALLOWED_FIELDS = [
   'title',
   'company',
@@ -71,11 +71,16 @@ function pickAllowed(input, allowed) {
 }
 
 export const getCandidates = asyncHandler(async (req, res) => {
-  const { search, status } = req.query;
+  const { search, status, role } = req.query;
   const { page, limit, skip } = toPagination(req.query);
 
+  const normalizedRole = String(role || '').trim().toLowerCase();
+  const roleFilter = MANAGED_USER_ROLES.includes(normalizedRole)
+    ? [normalizedRole]
+    : MANAGED_USER_ROLES;
+
   const query = {
-    role: { $in: CANDIDATE_ROLES },
+    role: { $in: roleFilter },
   };
 
   if (search) {
@@ -126,8 +131,8 @@ export const getCandidateById = asyncHandler(async (req, res) => {
     throw new ApiError(404, 'Candidate not found');
   }
 
-  if (!CANDIDATE_ROLES.includes(user.role)) {
-    throw new ApiError(403, 'Only candidate accounts can be read via this endpoint');
+  if (!MANAGED_USER_ROLES.includes(String(user.role || '').toLowerCase())) {
+    throw new ApiError(403, 'Only user/candidate accounts can be read via this endpoint');
   }
 
   res.status(200).json(new ApiResponse(200, serializeCandidate(user), 'Candidate fetched successfully'));
@@ -147,8 +152,8 @@ export const updateCandidateStatus = asyncHandler(async (req, res) => {
     throw new ApiError(404, 'Candidate not found');
   }
 
-  if (!CANDIDATE_ROLES.includes(user.role)) {
-    throw new ApiError(403, 'Only candidate accounts can be updated via this endpoint');
+  if (!MANAGED_USER_ROLES.includes(String(user.role || '').toLowerCase())) {
+    throw new ApiError(403, 'Only user/candidate accounts can be updated via this endpoint');
   }
 
   user.status = status;
