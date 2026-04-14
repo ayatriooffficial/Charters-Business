@@ -8,6 +8,7 @@ const router = express.Router();
 router.post("/login", authController.login);
 router.post("/firebase-login", authController.firebaseLogin);
 router.post("/firebase-signup", authController.firebaseSignup);
+router.post("/quick-login", authController.quickLogin);
 
 // Protected routes
 router.get("/me", protect, authController.getMe);

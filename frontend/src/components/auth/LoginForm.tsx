@@ -1,6 +1,9 @@
 'use client';
 
 import Link from 'next/link';
+import { useEffect, useState, useRef } from 'react';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext';
 import PhoneOtpLogin from './PhoneOtpLogin';
 
 type LoginFormMode = 'login' | 'signup';
@@ -11,6 +14,39 @@ export default function LoginForm({
   mode?: LoginFormMode;
 }) {
   const isSignup = mode === 'signup';
+  const { user, isLoading, quickLogin } = useAuth();
+  const router = useRouter();
+  const [isQuickLoggingIn, setIsQuickLoggingIn] = useState(false);
+  const hasAttemptedQuickLogin = useRef(false);
+
+  useEffect(() => {
+    if (!isLoading && user) {
+      if (user.role === 'admin' || user.role === 'recruiter') {
+        router.replace('/admin/dashboard');
+      } else {
+        router.replace('/dashboard');
+      }
+    } else if (!isLoading && !user && !hasAttemptedQuickLogin.current && !isQuickLoggingIn) {
+      hasAttemptedQuickLogin.current = true;
+      setIsQuickLoggingIn(true);
+      quickLogin().catch(() => {
+        setIsQuickLoggingIn(false);
+      });
+    }
+  }, [user, isLoading, router, quickLogin, isQuickLoggingIn]);
+
+  if (isLoading || user || isQuickLoggingIn) {
+    return (
+      <div className="bg-white p-6 sm:p-8 flex items-center justify-center min-h-[400px]">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#B30437] mx-auto mb-4"></div>
+          <p className="text-gray-600">
+            {user ? 'Redirecting...' : isQuickLoggingIn ? 'Quick Login in progress...' : 'Verifying session...'}
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white  p-6 sm:p-8">

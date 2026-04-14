@@ -10,7 +10,7 @@ import React, {
 } from "react";
 import { useRouter } from "next/navigation";
 import { flushTrackingToBackend } from "@/lib/Tracking";
-import { getAuthToken, removeAuthToken } from "@/lib/utils/cookies";
+import { getAuthToken, removeAuthToken, setAuthToken } from "@/lib/utils/cookies";
 
 interface User {
   id: string;
@@ -55,6 +55,7 @@ interface AuthContextType {
     program?: string
   ) => Promise<string | undefined>;
   logout: () => void;
+  quickLogin: () => Promise<string | undefined>;
   setAuth: (
     user: User,
     token: string,
@@ -145,29 +146,79 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (!isMounted) return;
 
-    const storedToken = localStorage.getItem("token") || getAuthToken();
-    const storedUser = localStorage.getItem("user");
-    const storedApplications = localStorage.getItem("applications");
-    const storedCounselings = localStorage.getItem("counselings");
+    const initAuth = async () => {
+      const storedToken = localStorage.getItem("token") || getAuthToken();
+      const storedUser = localStorage.getItem("user");
+      const storedApplications = localStorage.getItem("applications");
+      const storedCounselings = localStorage.getItem("counselings");
 
-    if (storedToken && storedUser) {
+      if (!storedToken) {
+        setUser(null);
+        setToken(null);
+        setIsLoading(false);
+        return;
+      }
+
+      if (storedUser) {
+        try {
+          setUser(JSON.parse(storedUser));
+          if (storedApplications) setApplications(JSON.parse(storedApplications));
+          if (storedCounselings) setCounselings(JSON.parse(storedCounselings));
+        } catch (error) {
+          console.error("Error loading auth data:", error);
+        }
+      }
+      setToken(storedToken);
+
       try {
-        setToken(storedToken);
-        setUser(JSON.parse(storedUser));
+        const res = await fetch(`${API_V1}/auth/me`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${storedToken}`,
+          },
+          credentials: "include",
+        });
 
-        if (storedApplications)
-          setApplications(JSON.parse(storedApplications));
+        if (!res.ok) throw new Error("Invalid session");
 
-        if (storedCounselings)
-          setCounselings(JSON.parse(storedCounselings));
-      } catch (error) {
-        console.error("Error loading auth data:", error);
+        const data = await readJsonSafely<{ data?: any }>(res);
+        const apiUser = data?.data;
+
+        if (apiUser) {
+          const userData: User = {
+            id: apiUser.id || apiUser._id,
+            name: apiUser.name,
+            email: apiUser.email,
+            avatar: apiUser.avatar || null,
+            role: apiUser.role,
+            courseInterestedIn: apiUser.courseInterestedIn || null,
+            isFirstLogin: apiUser.isFirstLogin || false,
+            lastResumeUrl: apiUser.lastResumeUrl || null,
+            lastResumeUploadedAt: apiUser.lastResumeUploadedAt || null,
+          };
+
+          setAuthToken(storedToken);
+          setUser(userData);
+          localStorage.setItem("user", JSON.stringify(userData));
+
+          if (apiUser.applications) {
+            setApplications(apiUser.applications);
+            localStorage.setItem("applications", JSON.stringify(apiUser.applications));
+          }
+        }
+      } catch (err) {
+        console.error("Session revalidation failed:", err);
         localStorage.clear();
         sessionStorage.clear();
+        removeAuthToken();
+        setUser(null);
+        setToken(null);
+      } finally {
+        setIsLoading(false);
       }
-    }
+    };
 
-    setIsLoading(false);
+    initAuth();
   }, [isMounted]);
 
   const refreshApplications = useCallback(
@@ -260,6 +311,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setCounselings(payload?.data?.counselings || []);
 
       if (isMounted) {
+        setAuthToken(tokenFromApi);
         localStorage.setItem("token", tokenFromApi);
         localStorage.setItem("user", JSON.stringify(userData));
 
@@ -389,6 +441,28 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     [finalizeLogin]
   );
 
+  const quickLogin = useCallback(async () => {
+    try {
+      const response = await fetch(`${API_V1}/auth/quick-login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      });
+
+      const data = await readJsonSafely<LoginPayload & { message?: string }>(
+        response,
+      );
+
+      if (!response.ok || !data) {
+        throw new Error(data?.message || "Quick login failed");
+      }
+
+      return finalizeLogin(data);
+    } catch (error) {
+      throw error;
+    }
+  }, [finalizeLogin]);
+
   const logout = useCallback(() => {
     const headers: HeadersInit | undefined = token
       ? {
@@ -433,6 +507,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (newCounselings) setCounselings(newCounselings);
 
       if (isMounted) {
+        setAuthToken(newToken);
         localStorage.setItem("token", newToken);
         localStorage.setItem("user", JSON.stringify(newUser));
       }
@@ -464,6 +539,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       loginWithPhone,
       signupWithPhone,
       logout,
+      quickLogin,
       setAuth,
       updateUser,
       refreshApplications,
@@ -479,6 +555,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       loginWithPhone,
       signupWithPhone,
       logout,
+      quickLogin,
       setAuth,
       updateUser,
       refreshApplications,

@@ -1,3 +1,5 @@
+import bcrypt from "bcryptjs";
+import crypto from "crypto";
 import User from "../models/User.model.js";
 import Application from "../models/Application.model.js";
 import JobApplication from "../models/JobApplication.model.js";
@@ -42,15 +44,81 @@ function clearAuthCookie(res) {
   });
 }
 
-async function markLastLogin(user) {
-  const loginTime = new Date();
-  user.lastLogin = loginTime;
+const TRUSTED_DEVICE_COOKIE_NAME = "trustedDevice";
+const TRUSTED_DEVICE_MAX_AGE = 180 * 24 * 60 * 60 * 1000; // 180 days
 
-  // Avoid full-document validation on legacy users while still recording login.
-  await User.updateOne(
-    { _id: user._id },
-    { $set: { lastLogin: loginTime } },
-  );
+function setTrustedDeviceCookie(res, rawToken) {
+  res.cookie(TRUSTED_DEVICE_COOKIE_NAME, rawToken, {
+    path: "/",
+    httpOnly: true,
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+    maxAge: TRUSTED_DEVICE_MAX_AGE,
+  });
+}
+
+async function setupTrustedDevice(req, res, user) {
+  // Fix 1: Safe initialization — old users may not have this field yet
+  if (!Array.isArray(user.trustedDevices)) {
+    user.trustedDevices = [];
+  }
+
+  const trustedCookie = req.cookies && req.cookies["trustedDevice"];
+
+  if (trustedCookie) {
+    const [userId, plainToken] = trustedCookie.split(":");
+    if (userId === user._id.toString()) {
+      for (const device of user.trustedDevices) {
+        const isMatch = await bcrypt.compare(plainToken, device.tokenHash);
+        if (isMatch) {
+          // Existing device — update lastUsed and refresh cookie max-age
+          device.lastUsed = new Date();
+          await user.save();
+          setTrustedDeviceCookie(res, trustedCookie);
+          return;
+        }
+      }
+    }
+  }
+
+  const plainToken = crypto.randomBytes(32).toString("hex");
+  const tokenHash = await bcrypt.hash(plainToken, 10);
+
+  // Fix 2 & 3: Evict oldest device without mutating array via sort
+  // Use safe Date fallback for missing/corrupted createdAt values
+  const MAX_TRUSTED_DEVICES = 3;
+  if (user.trustedDevices.length >= MAX_TRUSTED_DEVICES) {
+    let oldestIndex = 0;
+    let oldestTime = new Date(user.trustedDevices[0]?.createdAt ?? 0).getTime();
+
+    for (let i = 1; i < user.trustedDevices.length; i++) {
+      const t = new Date(user.trustedDevices[i]?.createdAt ?? 0).getTime();
+      if (t < oldestTime) {
+        oldestTime = t;
+        oldestIndex = i;
+      }
+    }
+    user.trustedDevices.splice(oldestIndex, 1);
+  }
+
+  user.trustedDevices.push({
+    tokenHash,
+    createdAt: new Date(),
+    lastUsed: new Date(),
+  });
+  await user.save();
+
+  const cookieValue = `${user._id.toString()}:${plainToken}`;
+  setTrustedDeviceCookie(res, cookieValue);
+}
+
+function clearTrustedDeviceCookie(res) {
+  res.clearCookie(TRUSTED_DEVICE_COOKIE_NAME, {
+    path: "/",
+    httpOnly: true,
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+  });
 }
 
 // Login
@@ -316,9 +384,10 @@ export const firebaseLogin = asyncHandler(async (req, res) => {
     // Update last login without triggering unrelated schema validation.
     await markLastLogin(user);
 
-    // Generate JWT token
+    // Generate JWT token & trusted device token
     const token = user.generateToken();
     setAuthCookie(res, token);
+    await setupTrustedDevice(req, res, user);
 
     // Get all applications for this user
     const applications = await Application.find({ userId: user._id })
@@ -352,6 +421,7 @@ export const firebaseLogin = asyncHandler(async (req, res) => {
           token,
           applications,
           application: applications[0] || null,
+          hasTrustedDevice: true,
         },
         "Login successful",
       ),
@@ -403,9 +473,10 @@ export const firebaseSignup = asyncHandler(async (req, res) => {
       isFirstLogin: false,
     });
 
-    // Generate JWT token
+    // Generate JWT token & trusted device token
     const token = user.generateToken();
     setAuthCookie(res, token);
+    await setupTrustedDevice(req, res, user);
 
     res.status(201).json(
       new ApiResponse(
@@ -424,6 +495,7 @@ export const firebaseSignup = asyncHandler(async (req, res) => {
           token,
           applications: [],
           application: null,
+          hasTrustedDevice: true,
         },
         "Account created and login successful",
       ),
@@ -433,5 +505,90 @@ export const firebaseSignup = asyncHandler(async (req, res) => {
     if (error instanceof ApiError) throw error;
     throw new ApiError(401, "Invalid or expired Firebase token");
   }
+});
+
+// Quick Login (Trusted Device)
+export const quickLogin = asyncHandler(async (req, res) => {
+  const trustedCookie = req.cookies && req.cookies["trustedDevice"];
+  if (!trustedCookie) {
+    throw new ApiError(401, "No trusted device found");
+  }
+
+  const [userId, plainToken] = trustedCookie.split(":");
+  if (!userId || !plainToken) {
+    clearTrustedDeviceCookie(res);
+    throw new ApiError(401, "Invalid trusted device token format");
+  }
+
+  const user = await User.findById(userId)
+    .select("+isFirstLogin")
+    .populate("applicationId");
+
+  if (!user || !isUserActive(user)) {
+    clearTrustedDeviceCookie(res);
+    throw new ApiError(401, "Account not found or inactive");
+  }
+
+  // Validate trusted device
+  let matchedDevice = null;
+  for (const device of user.trustedDevices) {
+    const isMatch = await bcrypt.compare(plainToken, device.tokenHash);
+    if (isMatch) {
+      matchedDevice = device;
+      break;
+    }
+  }
+
+  if (!matchedDevice) {
+    clearTrustedDeviceCookie(res);
+    throw new ApiError(401, "Trusted device verification failed");
+  }
+
+  // Update last used
+  matchedDevice.lastUsed = new Date();
+  
+  // Re-roll token for extra security? (Optional, skipping to preserve simplicity and prevent race conditions)
+  user.lastLogin = new Date();
+  await user.save();
+
+  // Generate new standard session token
+  const token = user.generateToken();
+  setAuthCookie(res, token);
+
+  const applications = await Application.find({ userId: user._id })
+    .select(
+      "applicationNumber status program counselingDate counselingTime createdAt",
+    )
+    .sort({ createdAt: -1 });
+
+  const lastJobApplication = await JobApplication.findOne({ user: user._id })
+    .sort("-createdAt")
+    .select("resume createdAt")
+    .lean();
+
+  res.status(200).json(
+    new ApiResponse(
+      200,
+      {
+        user: {
+          id: user._id,
+          name: user.name,
+          email: user.email,
+          avatar: user.avatar,
+          courseInterestedIn: user.courseInterestedIn || null,
+          role: user.role,
+          lastLogin: user.lastLogin,
+          isFirstLogin: user.isFirstLogin,
+          lastResumeUrl: lastJobApplication?.resume || null,
+          lastResumeUploadedAt: lastJobApplication?.createdAt || null,
+        },
+        token,
+        applications,
+        application: applications[0] || null,
+        hasTrustedDevice: true,
+      },
+      "Quick login successful",
+    ),
+  );
 });
 
