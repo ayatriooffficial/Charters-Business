@@ -42,6 +42,17 @@ function clearAuthCookie(res) {
   });
 }
 
+async function markLastLogin(user) {
+  const loginTime = new Date();
+  user.lastLogin = loginTime;
+
+  // Avoid full-document validation on legacy users while still recording login.
+  await User.updateOne(
+    { _id: user._id },
+    { $set: { lastLogin: loginTime } },
+  );
+}
+
 // Login
 export const login = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -74,9 +85,8 @@ export const login = asyncHandler(async (req, res) => {
     );
   }
 
-  // Update last login
-  user.lastLogin = new Date();
-  await user.save();
+  // Update last login without triggering unrelated schema validation.
+  await markLastLogin(user);
 
   // Generate JWT token
   const token = user.generateToken();
@@ -303,9 +313,8 @@ export const firebaseLogin = asyncHandler(async (req, res) => {
       );
     }
 
-    // Update last login
-    user.lastLogin = new Date();
-    await user.save();
+    // Update last login without triggering unrelated schema validation.
+    await markLastLogin(user);
 
     // Generate JWT token
     const token = user.generateToken();
