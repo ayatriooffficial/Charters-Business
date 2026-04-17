@@ -24,27 +24,32 @@ function isUserActive(user) {
   return Boolean(user.isActive);
 }
 
-function getCookieOptions(httpOnly = false) {
+function getCookieOptions(req, httpOnly = false) {
+  const isLocalhost = req.get("host")?.includes("localhost");
   const isProduction = process.env.NODE_ENV === "production";
-  
+  const cookieDomain = process.env.COOKIE_DOMAIN;
+
+  // In production or when accessed via public URL, SameSite=None and Secure=true are required.
+  // We use SameSite=None if we're not on localhost to ensure cross-domain compatibility.
+  const useSecure = !isLocalhost || isProduction;
+
   return {
     path: "/",
-    // In production (cross-domain), sameSite: 'none' and secure: true are required.
-    // In development (localhost), 'lax' and secure: false are more compatible.
-    sameSite: isProduction ? "none" : "lax",
-    secure: isProduction,
+    sameSite: useSecure ? "none" : "lax",
+    secure: useSecure,
     httpOnly: httpOnly,
     maxAge: AUTH_COOKIE_MAX_AGE,
+    ...(cookieDomain && { domain: cookieDomain }),
   };
 }
 
-function setAuthCookie(res, token) {
+function setAuthCookie(req, res, token) {
   // session token is not httpOnly because frontend needs to read it for lib/utils/cookies.ts participation
-  res.cookie(AUTH_COOKIE_NAME, token, getCookieOptions(false));
+  res.cookie(AUTH_COOKIE_NAME, token, getCookieOptions(req, false));
 }
 
-function clearAuthCookie(res) {
-  const options = getCookieOptions(false);
+function clearAuthCookie(req, res) {
+  const options = getCookieOptions(req, false);
   delete options.maxAge;
   res.clearCookie(AUTH_COOKIE_NAME, options);
 }
@@ -52,8 +57,8 @@ function clearAuthCookie(res) {
 const TRUSTED_DEVICE_COOKIE_NAME = "trustedDevice";
 const TRUSTED_DEVICE_MAX_AGE = 180 * 24 * 60 * 60 * 1000; // 180 days
 
-function setTrustedDeviceCookie(res, rawToken) {
-  const options = getCookieOptions(true); // httpOnly for security
+function setTrustedDeviceCookie(req, res, rawToken) {
+  const options = getCookieOptions(req, true); // httpOnly for security
   options.maxAge = TRUSTED_DEVICE_MAX_AGE;
   res.cookie(TRUSTED_DEVICE_COOKIE_NAME, rawToken, options);
 }
@@ -75,7 +80,7 @@ async function setupTrustedDevice(req, res, user) {
           // Existing device — update lastUsed and refresh cookie max-age
           device.lastUsed = new Date();
           await user.save();
-          setTrustedDeviceCookie(res, trustedCookie);
+          setTrustedDeviceCookie(req, res, trustedCookie);
           return;
         }
       }
@@ -110,11 +115,11 @@ async function setupTrustedDevice(req, res, user) {
   await user.save();
 
   const cookieValue = `${user._id.toString()}:${plainToken}`;
-  setTrustedDeviceCookie(res, cookieValue);
+  setTrustedDeviceCookie(req, res, cookieValue);
 }
 
-function clearTrustedDeviceCookie(res) {
-  const options = getCookieOptions(true);
+function clearTrustedDeviceCookie(req, res) {
+  const options = getCookieOptions(req, true);
   delete options.maxAge;
   res.clearCookie(TRUSTED_DEVICE_COOKIE_NAME, options);
 }
@@ -167,7 +172,7 @@ export const login = asyncHandler(async (req, res) => {
 
   // Generate JWT token & setup trusted device
   const token = user.generateToken();
-  setAuthCookie(res, token);
+  setAuthCookie(req, res, token);
   await setupTrustedDevice(req, res, user);
 
   // Get all applications for this user
@@ -349,7 +354,7 @@ export const changePassword = asyncHandler(async (req, res) => {
 
 // Logout
 export const logout = asyncHandler(async (req, res) => {
-  clearAuthCookie(res);
+  clearAuthCookie(req, res);
   res.status(200).json(new ApiResponse(200, null, "Logged out successfully"));
 });
 
@@ -396,7 +401,7 @@ export const firebaseLogin = asyncHandler(async (req, res) => {
 
     // Generate JWT token & trusted device token
     const token = user.generateToken();
-    setAuthCookie(res, token);
+    setAuthCookie(req, res, token);
     await setupTrustedDevice(req, res, user);
 
     // Get all applications for this user
@@ -485,7 +490,7 @@ export const firebaseSignup = asyncHandler(async (req, res) => {
 
     // Generate JWT token & trusted device token
     const token = user.generateToken();
-    setAuthCookie(res, token);
+    setAuthCookie(req, res, token);
     await setupTrustedDevice(req, res, user);
 
     res.status(201).json(
@@ -526,7 +531,7 @@ export const quickLogin = asyncHandler(async (req, res) => {
 
   const [userId, plainToken] = trustedCookie.split(":");
   if (!userId || !plainToken) {
-    clearTrustedDeviceCookie(res);
+    clearTrustedDeviceCookie(req, res);
     throw new ApiError(401, "Invalid trusted device token format");
   }
 
@@ -535,7 +540,7 @@ export const quickLogin = asyncHandler(async (req, res) => {
     .populate("applicationId");
 
   if (!user || !isUserActive(user)) {
-    clearTrustedDeviceCookie(res);
+    clearTrustedDeviceCookie(req, res);
     throw new ApiError(401, "Account not found or inactive");
   }
 
@@ -550,7 +555,7 @@ export const quickLogin = asyncHandler(async (req, res) => {
   }
 
   if (!matchedDevice) {
-    clearTrustedDeviceCookie(res);
+    clearTrustedDeviceCookie(req, res);
     throw new ApiError(401, "Trusted device verification failed");
   }
 
@@ -562,7 +567,7 @@ export const quickLogin = asyncHandler(async (req, res) => {
 
   // Generate new standard session token
   const token = user.generateToken();
-  setAuthCookie(res, token);
+  setAuthCookie(req, res, token);
 
   const applications = await Application.find({ userId: user._id })
     .select(
@@ -633,7 +638,7 @@ export const exchangeCode = asyncHandler(async (req, res) => {
     throw new ApiError(404, "User not found");
   }
   const token = user.generateToken();
-  setAuthCookie(res, token);
+  setAuthCookie(req, res, token);
   res.status(200).json(
     new ApiResponse(
       200,
