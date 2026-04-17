@@ -11,6 +11,27 @@ export default function UserDropdown() {
   const [redirectTarget, setRedirectTarget] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  
+  // Determine if user is admin/recruiter
+  const isAdminOrRecruiter = user?.role === 'admin' || user?.role === 'recruiter';
+  const adminUrl = process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3001';
+  const dashboardText = isAdminOrRecruiter ? 'Admin Dashboard' : 'Dashboard';
+
+  // Handle back-navigation and mount reset
+  useEffect(() => {
+    // Reset loading state on mount
+    setRedirectTarget(null);
+
+    // Reset loading state if user returns via back button (bfcache)
+    const handlePageShow = (event: PageTransitionEvent) => {
+      if (event.persisted) {
+        setRedirectTarget(null);
+      }
+    };
+
+    window.addEventListener('pageshow', handlePageShow);
+    return () => window.removeEventListener('pageshow', handlePageShow);
+  }, []);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -52,10 +73,6 @@ export default function UserDropdown() {
   };
 
 
-  // Determine if user is admin/recruiter
-  const isAdminOrRecruiter = user.role === 'admin' || user.role === 'recruiter';
-  const adminUrl = process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3001';
-  const dashboardText = isAdminOrRecruiter ? 'Admin Dashboard' : 'Dashboard';
 
   return (
     <div className="relative" ref={dropdownRef}>

@@ -24,41 +24,38 @@ function isUserActive(user) {
   return Boolean(user.isActive);
 }
 
-function getAuthCookieOptions() {
+function getCookieOptions(httpOnly = false) {
   const isProduction = process.env.NODE_ENV === "production";
+  
   return {
     path: "/",
+    // In production (cross-domain), sameSite: 'none' and secure: true are required.
+    // In development (localhost), 'lax' and secure: false are more compatible.
     sameSite: isProduction ? "none" : "lax",
     secure: isProduction,
+    httpOnly: httpOnly,
     maxAge: AUTH_COOKIE_MAX_AGE,
   };
 }
 
 function setAuthCookie(res, token) {
-  res.cookie(AUTH_COOKIE_NAME, token, getAuthCookieOptions());
+  // session token is not httpOnly because frontend needs to read it for lib/utils/cookies.ts participation
+  res.cookie(AUTH_COOKIE_NAME, token, getCookieOptions(false));
 }
 
 function clearAuthCookie(res) {
-  const isProduction = process.env.NODE_ENV === "production";
-  res.clearCookie(AUTH_COOKIE_NAME, {
-    path: "/",
-    sameSite: isProduction ? "none" : "lax",
-    secure: isProduction,
-  });
+  const options = getCookieOptions(false);
+  delete options.maxAge;
+  res.clearCookie(AUTH_COOKIE_NAME, options);
 }
 
 const TRUSTED_DEVICE_COOKIE_NAME = "trustedDevice";
 const TRUSTED_DEVICE_MAX_AGE = 180 * 24 * 60 * 60 * 1000; // 180 days
 
 function setTrustedDeviceCookie(res, rawToken) {
-  const isProduction = process.env.NODE_ENV === "production";
-  res.cookie(TRUSTED_DEVICE_COOKIE_NAME, rawToken, {
-    path: "/",
-    httpOnly: true,
-    sameSite: isProduction ? "none" : "lax",
-    secure: isProduction,
-    maxAge: TRUSTED_DEVICE_MAX_AGE,
-  });
+  const options = getCookieOptions(true); // httpOnly for security
+  options.maxAge = TRUSTED_DEVICE_MAX_AGE;
+  res.cookie(TRUSTED_DEVICE_COOKIE_NAME, rawToken, options);
 }
 
 async function setupTrustedDevice(req, res, user) {
@@ -117,13 +114,9 @@ async function setupTrustedDevice(req, res, user) {
 }
 
 function clearTrustedDeviceCookie(res) {
-  const isProduction = process.env.NODE_ENV === "production";
-  res.clearCookie(TRUSTED_DEVICE_COOKIE_NAME, {
-    path: "/",
-    httpOnly: true,
-    sameSite: isProduction ? "none" : "lax",
-    secure: isProduction,
-  });
+  const options = getCookieOptions(true);
+  delete options.maxAge;
+  res.clearCookie(TRUSTED_DEVICE_COOKIE_NAME, options);
 }
 
 async function markLastLogin(user) {
