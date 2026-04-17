@@ -236,10 +236,6 @@ function Navbar() {
 
               {/* Center text */}
               <div
-                onClick={() => {
-                  setShowInterviewAI(true);
-                  document.body.style.overflow = 'hidden';
-                }}
                 className="absolute left-1/2 -translate-x-1/2 flex text-[13px] text-[#0F1419] font-semibold items-center whitespace-nowrap cursor-pointer"
               >
                 <p className="{msgVisible ? 'msg-visible' : 'msg-hidden'} m-0">
@@ -291,15 +287,18 @@ function Navbar() {
                   ) : (
                     <li>
 
-                      <a href="/login"
+                      <button
+                        onClick={() => {
+                          setShowInterviewAI(true);
+                          document.body.style.overflow = 'hidden';
+                        }}
                         className={`cursor-pointer hover:text-[#B30437] transition-colors ${selectedSecondaryTab === "login"
                           ? "border-b-2 border-[#B30437] text-[#B30437] pb-1"
                           : ""
                           }`}
-                        onClick={() => setSelectedSecondaryTab("login")}
                       >
                         Login
-                      </a>
+                      </button>
                     </li>
                   )}
                 </ul>
@@ -647,19 +646,19 @@ function Navbar() {
                     </>
                   ) : (
                     <li>
-                      <a
-                        href="/login"
+                      <button
                         className={`block py-2 text-xs text-gray-600 hover:text-[#B30437] ${selectedSecondaryTab === "login"
                           ? "text-[#B30437] font-medium"
                           : ""
                           }`}
                         onClick={() => {
-                          setSelectedSecondaryTab("login");
                           setIsMobileMenuOpen(false);
+                          setShowInterviewAI(true);
+                          document.body.style.overflow = 'hidden';
                         }}
                       >
                         Login
-                      </a>
+                      </button>
                     </li>
                   )}
                 </ul>
