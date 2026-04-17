@@ -3,11 +3,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
+import { useRouter } from 'next/navigation';
 
 export default function UserDropdown() {
-  const { user, logout } = useAuth();
+  const { user, logout, generateRedirectCode } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
+  const [redirectTarget, setRedirectTarget] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -23,9 +26,35 @@ export default function UserDropdown() {
 
   if (!user) return null;
 
+  const handleRedirect = async (remotePath: string, localPath: string, targetId: string) => {
+    if (isAdminOrRecruiter) {
+      setIsOpen(false);
+      router.push(localPath);
+      return;
+    }
+
+    setRedirectTarget(targetId);
+    try {
+      const code = await generateRedirectCode();
+      if (code) {
+        const baseUrl = process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3001';
+        const url = new URL(remotePath, baseUrl);
+        url.searchParams.set('code', code);
+        window.location.href = url.toString();
+      } else {
+        alert("Failed to generate redirect code. Please try again.");
+        setRedirectTarget(null);
+      }
+    } catch (error) {
+      console.error(`${targetId} redirect error:`, error);
+      setRedirectTarget(null);
+    }
+  };
+
+
   // Determine if user is admin/recruiter
   const isAdminOrRecruiter = user.role === 'admin' || user.role === 'recruiter';
-  const dashboardUrl = isAdminOrRecruiter ? '/admin/dashboard' : '/dashboard';
+  const adminUrl = process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3001';
   const dashboardText = isAdminOrRecruiter ? 'Admin Dashboard' : 'Dashboard';
 
   return (
@@ -36,9 +65,8 @@ export default function UserDropdown() {
       >
         <span className="hidden text-[13px] font-medium md:block text-gray-600">{user.name}</span>
         <svg
-          className={`w-4 h-4 text-gray-500 transition-transform ${
-            isOpen ? 'rotate-180' : ''
-          }`}
+          className={`w-4 h-4 text-gray-500 transition-transform ${isOpen ? 'rotate-180' : ''
+            }`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -65,21 +93,25 @@ export default function UserDropdown() {
           </div>
 
           {/* Dashboard Link */}
-          <Link
-            href={dashboardUrl}
-            onClick={() => setIsOpen(false)}
-            className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
+          <button
+            onClick={() => handleRedirect('/profile', '/admin/dashboard', 'dashboard')}
+            disabled={!!redirectTarget}
+            className="w-full flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors disabled:opacity-50"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-              />
-            </svg>
-            <span>{dashboardText}</span>
-          </Link>
+            {redirectTarget === 'dashboard' ? (
+              <div className="w-5 h-5 border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin" />
+            ) : (
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                />
+              </svg>
+            )}
+            <span>{redirectTarget === 'dashboard' ? 'Redirecting...' : dashboardText}</span>
+          </button>
 
           {/* Conditional Menu Items based on role */}
           {isAdminOrRecruiter ? (
@@ -118,53 +150,65 @@ export default function UserDropdown() {
             </>
           ) : (
             <>
-              <Link
-                href="/dashboard/profile"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
+              <button
+                onClick={() => handleRedirect('/profile', '/dashboard/profile', 'profile')}
+                disabled={!!redirectTarget}
+                className="w-full flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors disabled:opacity-50"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                  />
-                </svg>
-                <span>View Profile</span>
-              </Link>
+                {redirectTarget === 'profile' ? (
+                  <div className="w-5 h-5 border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin" />
+                ) : (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                    />
+                  </svg>
+                )}
+                <span>{redirectTarget === 'profile' ? 'Redirecting...' : 'View Profile'}</span>
+              </button>
 
-              <Link
-                href="/dashboard/application-status"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
+              <button
+                onClick={() => handleRedirect('/application-status', '/dashboard/application-status', 'applications')}
+                disabled={!!redirectTarget}
+                className="w-full flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors disabled:opacity-50"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                  />
-                </svg>
-                <span>My Applications</span>
-              </Link>
+                {redirectTarget === 'applications' ? (
+                  <div className="w-5 h-5 border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin" />
+                ) : (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
+                  </svg>
+                )}
+                <span>{redirectTarget === 'applications' ? 'Redirecting...' : 'My Applications'}</span>
+              </button>
 
-              <Link
-                href="/dashboard/counseling"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
+              <button
+                onClick={() => handleRedirect('/counseling', '/dashboard/counseling', 'counseling')}
+                disabled={!!redirectTarget}
+                className="w-full flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors disabled:opacity-50"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
-                <span>My Counseling</span>
-              </Link>
+                {redirectTarget === 'counseling' ? (
+                  <div className="w-5 h-5 border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin" />
+                ) : (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    />
+                  </svg>
+                )}
+                <span>{redirectTarget === 'counseling' ? 'Redirecting...' : 'My Counseling'}</span>
+              </button>
             </>
           )}
 

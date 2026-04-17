@@ -27,6 +27,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+app.set("trust proxy", 1);
 
 /* SECURITY */
 
@@ -36,10 +37,7 @@ app.use(requestId);
 /* ---------------- CORS ---------------- */
 
 const corsOptions = {
-  origin: [
-    "https://charters-business.vercel.app",
-    "http://localhost:3000",
-  ],
+  origin: appConfig.corsOrigin,
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   credentials: true,
 };

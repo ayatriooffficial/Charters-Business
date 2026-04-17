@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
+import jwt from "jsonwebtoken";
 import User from "../models/User.model.js";
 import Application from "../models/Application.model.js";
 import JobApplication from "../models/JobApplication.model.js";
@@ -138,6 +139,9 @@ export const login = asyncHandler(async (req, res) => {
   if (!user) {
     throw new ApiError(401, "Invalid email or password");
   }
+
+  // Setting id for code generation
+  req.session.userId = user._id;
 
   // Check password
   const isPasswordMatch = await user.comparePassword(password);
@@ -546,7 +550,7 @@ export const quickLogin = asyncHandler(async (req, res) => {
 
   // Update last used
   matchedDevice.lastUsed = new Date();
-  
+
   // Re-roll token for extra security? (Optional, skipping to preserve simplicity and prevent race conditions)
   user.lastLogin = new Date();
   await user.save();
@@ -592,3 +596,55 @@ export const quickLogin = asyncHandler(async (req, res) => {
   );
 });
 
+// Generate Redirect Code
+export const redirectCode = asyncHandler(async (req, res) => {
+  const { _id: userId, email } = req.user;
+  const code = jwt.sign({ userId, email }, process.env.JWT_SECRET, {
+    expiresIn: "1m",
+  });
+  res.status(200).json(
+    new ApiResponse(
+      200,
+      { code },
+      "Redirect code generated successfully",
+    ),
+  );
+});
+
+// ExchangeCode
+export const exchangeCode = asyncHandler(async (req, res) => {
+  const { code } = req.body;
+  if (!code) {
+    throw new ApiError(400, "Please provide code");
+  }
+  const decodedToken = jwt.verify(code, process.env.JWT_SECRET);
+  const { userId, email } = decodedToken;
+  
+  let user = null;
+  if (userId) user = await User.findById(userId);
+  if (!user && email) user = await User.findOne({ email });
+
+  if (!user) {
+    throw new ApiError(404, "User not found");
+  }
+  const token = user.generateToken();
+  setAuthCookie(res, token);
+  res.status(200).json(
+    new ApiResponse(
+      200,
+      {
+        token,
+        user: {
+          id: user._id,
+          name: user.name,
+          email: user.email,
+          avatar: user.avatar,
+          role: user.role,
+          lastLogin: user.lastLogin,
+          isFirstLogin: user.isFirstLogin,
+        },
+      },
+      "Code exchanged successfully",
+    ),
+  );
+})

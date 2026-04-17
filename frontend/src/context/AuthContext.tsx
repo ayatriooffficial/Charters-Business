@@ -65,11 +65,15 @@ interface AuthContextType {
   updateUser: (userData: Partial<User>) => void;
   refreshApplications: () => Promise<void>;
   refreshCounselings: () => Promise<void>;
+  generateRedirectCode: () => Promise<string | null>;
+  exchangeCode: (code: string) => Promise<void>;
+  redirectCode: string | null;
+  isCodeGenerated: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const API_V1 = "/api/backend/api/v1";
+const API_V1 = (process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") || "/api/backend") + "/api/v1";
 
 function createHttpError(message: string, status: number) {
   const error = new Error(message) as Error & { status?: number };
@@ -137,6 +141,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [token, setToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isMounted, setIsMounted] = useState(false);
+  const [redirectCode, setRedirectCode] = useState<string | null>(null);
+  const [isCodeGenerated, setIsCodeGenerated] = useState(false);
+
 
   const router = useRouter();
   useEffect(() => {
@@ -463,11 +470,75 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }, [finalizeLogin]);
 
+  const generateRedirectCode = useCallback(async () => {
+    try {
+      const response = await fetch(`${API_V1}/auth/redirect-code`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      });
+
+      const data = await readJsonSafely<{ data?: { code?: string }; message?: string }>(response);
+
+      if (!response.ok || !data) {
+        throw new Error(data?.message || "Redirect code generation failed");
+      }
+
+      const code = data.data?.code || null;
+      setRedirectCode(code);
+      setIsCodeGenerated(true);
+      return code;
+    } catch (error) {
+      console.error("Error generating redirect code:", error);
+      return null;
+    }
+  }, []);
+
+  const exchangeCode = useCallback(async (code: string) => {
+    try {
+      setIsLoading(true);
+      const response = await fetch(`${API_V1}/auth/exchange-code`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ code }),
+      });
+
+      const data = await readJsonSafely<LoginPayload & { message?: string }>(response);
+
+      if (!response.ok || !data) {
+        throw new Error(data?.message || "Code exchange failed");
+      }
+
+      await finalizeLogin(data);
+    } catch (error) {
+      console.error("Exchanging code failed:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [finalizeLogin]);
+
+  // Handle automatic code exchange if 'code' is present in URL
+  useEffect(() => {
+    if (!isMounted) return;
+
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get("code");
+
+    if (code) {
+      exchangeCode(code).then(() => {
+        // Clean up URL
+        const newUrl = window.location.pathname + window.location.search.replace(/[?&]code=[^&]+/, "").replace(/^&/, "?").replace(/\?$/, "");
+        window.history.replaceState({}, document.title, newUrl);
+      });
+    }
+  }, [isMounted, exchangeCode]);
+
   const logout = useCallback(() => {
     const headers: HeadersInit | undefined = token
       ? {
-          Authorization: `Bearer ${token}`,
-        }
+        Authorization: `Bearer ${token}`,
+      }
       : undefined;
 
     void fetch(`${API_V1}/auth/logout`, {
@@ -544,6 +615,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       updateUser,
       refreshApplications,
       refreshCounselings,
+      generateRedirectCode,
+      exchangeCode,
+      redirectCode,
+      isCodeGenerated,
     }),
     [
       user,
@@ -560,6 +635,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       updateUser,
       refreshApplications,
       refreshCounselings,
+      exchangeCode,
     ]
   );
 
