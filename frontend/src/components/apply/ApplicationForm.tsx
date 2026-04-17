@@ -48,7 +48,7 @@ const timeSlots = [
 export default function ApplicationForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { user, token, login } = useAuth();
+  const { user, token, login, navigateToRemoteDashboard } = useAuth();
 
   const [formType, setFormType] = useState<FormType>('application');
   const [isAutoSubmitting, setIsAutoSubmitting] = useState(false);
@@ -112,7 +112,7 @@ export default function ApplicationForm() {
 
           if (!programTitle) {
             console.error('Invalid programme');
-            router.push('/dashboard-overview');
+            navigateToRemoteDashboard('/dashboard-overview');
             return;
           }
 
@@ -132,7 +132,7 @@ export default function ApplicationForm() {
 
           if (response.success) {
             setTimeout(() => {
-              router.push('/dashboard-overview');
+              navigateToRemoteDashboard('/dashboard-overview');
             }, 1500);
           } else {
             throw new Error(response.message || 'Application failed');
@@ -163,7 +163,7 @@ export default function ApplicationForm() {
 
           setIsAutoSubmitting(false);
           alert(error.message || 'Failed to submit application.');
-          setTimeout(() => router.push('/dashboard-overview'), 1000);
+          setTimeout(() => navigateToRemoteDashboard('/dashboard-overview'), 1000);
         }
       }
     };
@@ -294,7 +294,7 @@ export default function ApplicationForm() {
         if (response.data.isNewUser && response.data.generatedPassword) {
           await login(response.data.email, response.data.generatedPassword);
         } else {
-          router.push('/dashboard-overview');
+          navigateToRemoteDashboard('/dashboard-overview');
         }
       }
     } catch (error: any) {
@@ -350,7 +350,7 @@ export default function ApplicationForm() {
           Check your application status on the dashboard
         </p>
         <button
-          onClick={() => router.push('/dashboard-overview')}
+          onClick={() => navigateToRemoteDashboard('/dashboard-overview')}
           className="bg-[#B30437] hover:bg-[#8B0329] text-white font-semibold py-3 px-8 rounded-lg transition-all transform hover:scale-105"
         >
           Go to Dashboard

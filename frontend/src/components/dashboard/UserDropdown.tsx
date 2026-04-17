@@ -6,7 +6,7 @@ import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 
 export default function UserDropdown() {
-  const { user, logout, generateRedirectCode } = useAuth();
+  const { user, logout, navigateToRemoteDashboard } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [redirectTarget, setRedirectTarget] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -56,18 +56,10 @@ export default function UserDropdown() {
 
     setRedirectTarget(targetId);
     try {
-      const code = await generateRedirectCode();
-      if (code) {
-        const baseUrl = process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3001';
-        const url = new URL(remotePath, baseUrl);
-        url.searchParams.set('code', code);
-        window.location.href = url.toString();
-      } else {
-        alert("Failed to generate redirect code. Please try again.");
-        setRedirectTarget(null);
-      }
+      await navigateToRemoteDashboard(remotePath);
     } catch (error) {
       console.error(`${targetId} redirect error:`, error);
+    } finally {
       setRedirectTarget(null);
     }
   };

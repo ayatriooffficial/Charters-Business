@@ -236,6 +236,10 @@ function Navbar() {
 
               {/* Center text */}
               <div
+                onClick={() => {
+                  setShowInterviewAI(true);
+                  document.body.style.overflow = 'hidden';
+                }}
                 className="absolute left-1/2 -translate-x-1/2 flex text-[13px] text-[#0F1419] font-semibold items-center whitespace-nowrap cursor-pointer"
               >
                 <p className="{msgVisible ? 'msg-visible' : 'msg-hidden'} m-0">

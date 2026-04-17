@@ -69,6 +69,7 @@ interface AuthContextType {
   exchangeCode: (code: string) => Promise<void>;
   redirectCode: string | null;
   isCodeGenerated: boolean;
+  navigateToRemoteDashboard: (remotePath: string) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -500,6 +501,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       return null;
     }
   }, [token]);
+  
+  const navigateToRemoteDashboard = useCallback(async (remotePath: string) => {
+    try {
+      const code = await generateRedirectCode();
+      if (code) {
+        const baseUrl = process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3001';
+        const url = new URL(remotePath, baseUrl);
+        url.searchParams.set('code', code);
+        window.location.href = url.toString();
+      } else {
+        console.error("Failed to generate redirect code for remote navigation");
+      }
+    } catch (error) {
+      console.error("Remote redirect error:", error);
+    }
+  }, [generateRedirectCode]);
 
   const exchangeCode = useCallback(async (code: string) => {
     try {
@@ -626,6 +643,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       exchangeCode,
       redirectCode,
       isCodeGenerated,
+      navigateToRemoteDashboard,
     }),
     [
       user,
@@ -644,6 +662,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       refreshCounselings,
       generateRedirectCode,
       exchangeCode,
+      navigateToRemoteDashboard,
     ]
   );
 
