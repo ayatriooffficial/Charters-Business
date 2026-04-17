@@ -76,7 +76,7 @@ export default function PhoneOtpLogin({
 
     const handleSendOtp = async () => {
         if (user) {
-            router.push('/dashboard');
+            router.push('/');
             return;
         }
 
@@ -180,7 +180,7 @@ export default function PhoneOtpLogin({
                 if (role === 'admin' || role === 'recruiter') {
                     router.push('/admin/dashboard');
                 } else {
-                    router.push('/dashboard');
+                    router.push('/');
                 }
             }
         } catch (err: unknown) {
@@ -235,7 +235,7 @@ export default function PhoneOtpLogin({
                 if (role === 'admin' || role === 'recruiter') {
                     router.push('/admin/dashboard');
                 } else {
-                    router.push('/dashboard');
+                    router.push('/');
                 }
             }
         } catch (err: unknown) {

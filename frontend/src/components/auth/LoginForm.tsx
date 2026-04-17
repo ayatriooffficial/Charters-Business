@@ -24,7 +24,7 @@ export default function LoginForm({
       if (user.role === 'admin' || user.role === 'recruiter') {
         router.replace('/admin/dashboard');
       } else {
-        router.replace('/dashboard');
+        router.replace('/');
       }
     } else if (!isLoading && !user && !hasAttemptedQuickLogin.current && !isQuickLoggingIn) {
       hasAttemptedQuickLogin.current = true;
