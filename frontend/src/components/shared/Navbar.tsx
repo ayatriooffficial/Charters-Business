@@ -258,23 +258,28 @@ function Navbar() {
               <nav aria-label="Quick links" className="ml-auto">
                 <ul className="flex text-[13px] font-semibold text-[#000] items-center space-x-3 sm:space-x-4 lg:space-x-6">
                   <li>
-
-                    <a href="/careers/internships"
+                    <a
+                      href="/careers/internships"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className={`cursor-pointer hover:text-[#B30437] transition-colors ${selectedSecondaryTab === "internships"
-                        ? "border-b-2 border-[#B30437] text-[#B30437] pb-1"
-                        : ""
+                          ? "border-b-2 border-[#B30437] text-[#B30437] pb-1"
+                          : ""
                         }`}
                       onClick={() => setSelectedSecondaryTab("internships")}
                     >
                       Find Internship
                     </a>
                   </li>
-                  <li>
 
-                    <a href="/careers/jobs"
+                  <li>
+                    <a
+                      href="/careers/jobs"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className={`cursor-pointer hover:text-[#B30437] transition-colors ${selectedSecondaryTab === "jobs"
-                        ? "border-b-2 border-[#B30437] text-[#B30437] pb-1"
-                        : ""
+                          ? "border-b-2 border-[#B30437] text-[#B30437] pb-1"
+                          : ""
                         }`}
                       onClick={() => setSelectedSecondaryTab("jobs")}
                     >

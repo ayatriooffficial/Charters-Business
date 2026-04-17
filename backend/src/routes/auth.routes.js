@@ -22,6 +22,10 @@ router.put(
   authController.changePasswordFirstLogin,
 );
 
+// Redirect Code
+router.post("/redirect-code", protect, authController.redirectCode);
+router.post("/exchange-code", authController.exchangeCode);
+
 router.post("/logout", protect, authController.logout);
 
 export default router;
