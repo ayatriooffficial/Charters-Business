@@ -36,7 +36,7 @@ export const setAuthToken = (token: string): void => {
     `${COOKIE_NAME}=${encodeURIComponent(token)}`,
     "path=/",
     `expires=${expires.toUTCString()}`,
-    "SameSite=Lax",
+    `SameSite=${SECURE ? "None" : "Lax"}`,
     ...(SECURE ? ["Secure"] : []),
   ];
 
@@ -53,7 +53,7 @@ export const removeAuthToken = (): void => {
     `${COOKIE_NAME}=`,
     "path=/",
     "expires=Thu, 01 Jan 1970 00:00:00 UTC",
-    "SameSite=Lax",
+    `SameSite=${SECURE ? "None" : "Lax"}`,
     ...(SECURE ? ["Secure"] : []),
   ];
 

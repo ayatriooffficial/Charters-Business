@@ -471,10 +471,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [finalizeLogin]);
 
   const generateRedirectCode = useCallback(async () => {
+    if (!token) {
+      console.warn("No auth token available for redirect-code generation");
+      return null;
+    }
     try {
       const response = await fetch(`${API_V1}/auth/redirect-code`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
         credentials: "include",
       });
 
@@ -492,7 +499,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       console.error("Error generating redirect code:", error);
       return null;
     }
-  }, []);
+  }, [token]);
 
   const exchangeCode = useCallback(async (code: string) => {
     try {
@@ -635,6 +642,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       updateUser,
       refreshApplications,
       refreshCounselings,
+      generateRedirectCode,
       exchangeCode,
     ]
   );

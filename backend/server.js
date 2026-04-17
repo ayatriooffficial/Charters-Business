@@ -60,20 +60,6 @@ const startServer = async () => {
 
 startServer();
 
-app.get("/", (req, res) => {
-  res.status(200).json({
-    status: "ok",
-    message: "Charters Business API is running",
-  });
-});
-
-app.get("/health", (req, res) => {
-  res.status(200).json({
-    status: "healthy",
-    uptime: process.uptime(),
-    timestamp: Date.now(),
-  });
-});
 
 
 // Unhandled Promise Rejection
