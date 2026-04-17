@@ -45,83 +45,6 @@ function clearAuthCookie(res) {
   });
 }
 
-<<<<<<< HEAD
-const TRUSTED_DEVICE_COOKIE_NAME = "trustedDevice";
-const TRUSTED_DEVICE_MAX_AGE = 180 * 24 * 60 * 60 * 1000; // 180 days
-
-function setTrustedDeviceCookie(res, rawToken) {
-  res.cookie(TRUSTED_DEVICE_COOKIE_NAME, rawToken, {
-    path: "/",
-    httpOnly: true,
-    sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
-    maxAge: TRUSTED_DEVICE_MAX_AGE,
-  });
-}
-
-async function setupTrustedDevice(req, res, user) {
-  // Fix 1: Safe initialization — old users may not have this field yet
-  if (!Array.isArray(user.trustedDevices)) {
-    user.trustedDevices = [];
-  }
-
-  const trustedCookie = req.cookies && req.cookies["trustedDevice"];
-
-  if (trustedCookie) {
-    const [userId, plainToken] = trustedCookie.split(":");
-    if (userId === user._id.toString()) {
-      for (const device of user.trustedDevices) {
-        const isMatch = await bcrypt.compare(plainToken, device.tokenHash);
-        if (isMatch) {
-          // Existing device — update lastUsed and refresh cookie max-age
-          device.lastUsed = new Date();
-          await user.save();
-          setTrustedDeviceCookie(res, trustedCookie);
-          return;
-        }
-      }
-    }
-  }
-
-  const plainToken = crypto.randomBytes(32).toString("hex");
-  const tokenHash = await bcrypt.hash(plainToken, 10);
-
-  // Fix 2 & 3: Evict oldest device without mutating array via sort
-  // Use safe Date fallback for missing/corrupted createdAt values
-  const MAX_TRUSTED_DEVICES = 3;
-  if (user.trustedDevices.length >= MAX_TRUSTED_DEVICES) {
-    let oldestIndex = 0;
-    let oldestTime = new Date(user.trustedDevices[0]?.createdAt ?? 0).getTime();
-
-    for (let i = 1; i < user.trustedDevices.length; i++) {
-      const t = new Date(user.trustedDevices[i]?.createdAt ?? 0).getTime();
-      if (t < oldestTime) {
-        oldestTime = t;
-        oldestIndex = i;
-      }
-    }
-    user.trustedDevices.splice(oldestIndex, 1);
-  }
-
-  user.trustedDevices.push({
-    tokenHash,
-    createdAt: new Date(),
-    lastUsed: new Date(),
-  });
-  await user.save();
-
-  const cookieValue = `${user._id.toString()}:${plainToken}`;
-  setTrustedDeviceCookie(res, cookieValue);
-}
-
-function clearTrustedDeviceCookie(res) {
-  res.clearCookie(TRUSTED_DEVICE_COOKIE_NAME, {
-    path: "/",
-    httpOnly: true,
-    sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
-  });
-=======
 async function markLastLogin(user) {
   const loginTime = new Date();
   user.lastLogin = loginTime;
@@ -131,7 +54,6 @@ async function markLastLogin(user) {
     { _id: user._id },
     { $set: { lastLogin: loginTime } },
   );
->>>>>>> fd59a7c (updated auth.controller for login access)
 }
 
 // Login
