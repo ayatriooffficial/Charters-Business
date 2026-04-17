@@ -51,14 +51,6 @@ const startServer = async () => {
 
     // Graceful shutdown
     process.on("SIGINT", shutdown);
-    // Graceful shutdown
-    process.on("SIGINT", () => {
-      console.log("Shutting down server...");
-      server.close(() => {
-        console.log("Server closed");
-        process.exit(0);
-      });
-    });
 
   } catch (error) {
     console.error("Failed to start server:", error);
