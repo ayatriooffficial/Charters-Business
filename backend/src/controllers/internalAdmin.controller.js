@@ -70,6 +70,28 @@ function pickAllowed(input, allowed) {
   return out;
 }
 
+function buildPostingListQuery(input = {}, ownerId = null) {
+  const { search, isActive } = input;
+  const query = {};
+
+  if (ownerId) {
+    query.createdBy = ownerId;
+  }
+
+  if (search) {
+    query.$or = [
+      { title: { $regex: search, $options: 'i' } },
+      { company: { $regex: search, $options: 'i' } },
+      { category: { $regex: search, $options: 'i' } },
+    ];
+  }
+
+  if (isActive === 'true') query.isActive = true;
+  if (isActive === 'false') query.isActive = false;
+
+  return query;
+}
+
 export const getCandidates = asyncHandler(async (req, res) => {
   const { search, status, role } = req.query;
   const { page, limit, skip } = toPagination(req.query);
@@ -174,20 +196,7 @@ export const deactivateCandidate = asyncHandler(async (req, res) => {
 
 export const listJobs = asyncHandler(async (req, res) => {
   const { page, limit, skip } = toPagination(req.query);
-  const { search, isActive } = req.query;
-
-  const query = {};
-
-  if (search) {
-    query.$or = [
-      { title: { $regex: search, $options: 'i' } },
-      { company: { $regex: search, $options: 'i' } },
-      { category: { $regex: search, $options: 'i' } },
-    ];
-  }
-
-  if (isActive === 'true') query.isActive = true;
-  if (isActive === 'false') query.isActive = false;
+  const query = buildPostingListQuery(req.query);
 
   const [jobs, total] = await Promise.all([
     JobPosting.find(query)
@@ -202,6 +211,25 @@ export const listJobs = asyncHandler(async (req, res) => {
     jobs,
     pagination: { page, limit, total, pages: Math.ceil(total / limit) },
   }, 'Jobs fetched successfully'));
+});
+
+export const listMyJobs = asyncHandler(async (req, res) => {
+  const { page, limit, skip } = toPagination(req.query);
+  const query = buildPostingListQuery(req.query, req.actingAdmin._id);
+
+  const [jobs, total] = await Promise.all([
+    JobPosting.find(query)
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit)
+      .lean(),
+    JobPosting.countDocuments(query),
+  ]);
+
+  res.status(200).json(new ApiResponse(200, {
+    jobs,
+    pagination: { page, limit, total, pages: Math.ceil(total / limit) },
+  }, 'My jobs fetched successfully'));
 });
 
 export const getJobById = asyncHandler(async (req, res) => {
@@ -263,20 +291,7 @@ export const deleteJob = asyncHandler(async (req, res) => {
 
 export const listInternships = asyncHandler(async (req, res) => {
   const { page, limit, skip } = toPagination(req.query);
-  const { search, isActive } = req.query;
-
-  const query = {};
-
-  if (search) {
-    query.$or = [
-      { title: { $regex: search, $options: 'i' } },
-      { company: { $regex: search, $options: 'i' } },
-      { category: { $regex: search, $options: 'i' } },
-    ];
-  }
-
-  if (isActive === 'true') query.isActive = true;
-  if (isActive === 'false') query.isActive = false;
+  const query = buildPostingListQuery(req.query);
 
   const [internships, total] = await Promise.all([
     InternshipPosting.find(query)
@@ -291,6 +306,25 @@ export const listInternships = asyncHandler(async (req, res) => {
     internships,
     pagination: { page, limit, total, pages: Math.ceil(total / limit) },
   }, 'Internships fetched successfully'));
+});
+
+export const listMyInternships = asyncHandler(async (req, res) => {
+  const { page, limit, skip } = toPagination(req.query);
+  const query = buildPostingListQuery(req.query, req.actingAdmin._id);
+
+  const [internships, total] = await Promise.all([
+    InternshipPosting.find(query)
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit)
+      .lean(),
+    InternshipPosting.countDocuments(query),
+  ]);
+
+  res.status(200).json(new ApiResponse(200, {
+    internships,
+    pagination: { page, limit, total, pages: Math.ceil(total / limit) },
+  }, 'My internships fetched successfully'));
 });
 
 export const getInternshipById = asyncHandler(async (req, res) => {

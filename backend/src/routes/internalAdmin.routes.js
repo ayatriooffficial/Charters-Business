@@ -5,11 +5,13 @@ import {
   updateCandidateStatus,
   deactivateCandidate,
   listJobs,
+  listMyJobs,
   getJobById,
   createJob,
   updateJob,
   deleteJob,
   listInternships,
+  listMyInternships,
   getInternshipById,
   createInternship,
   updateInternship,
@@ -31,6 +33,7 @@ router.patch('/candidates/:id/status', updateCandidateStatus);
 router.patch('/candidates/:id/deactivate', deactivateCandidate);
 
 router.get('/jobs', listJobs);
+router.get('/jobs/my-postings', listMyJobs);
 router.post('/jobs', createJob);
 router.get('/jobs/:id', getJobById);
 router.put('/jobs/:id', updateJob);
@@ -39,6 +42,7 @@ router.delete('/jobs/:id', deleteJob);
 router.get('/jobs/:id/applications', listApplicationsForJob);
 
 router.get('/internships', listInternships);
+router.get('/internships/my-postings', listMyInternships);
 router.post('/internships', createInternship);
 router.get('/internships/:id', getInternshipById);
 router.put('/internships/:id', updateInternship);
