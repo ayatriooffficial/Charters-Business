@@ -25,10 +25,11 @@ function isUserActive(user) {
 }
 
 function getAuthCookieOptions() {
+  const isProduction = process.env.NODE_ENV === "production";
   return {
     path: "/",
-    sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
+    sameSite: isProduction ? "none" : "lax",
+    secure: isProduction,
     maxAge: AUTH_COOKIE_MAX_AGE,
   };
 }
@@ -38,10 +39,11 @@ function setAuthCookie(res, token) {
 }
 
 function clearAuthCookie(res) {
+  const isProduction = process.env.NODE_ENV === "production";
   res.clearCookie(AUTH_COOKIE_NAME, {
     path: "/",
-    sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
+    sameSite: isProduction ? "none" : "lax",
+    secure: isProduction,
   });
 }
 
@@ -49,11 +51,12 @@ const TRUSTED_DEVICE_COOKIE_NAME = "trustedDevice";
 const TRUSTED_DEVICE_MAX_AGE = 180 * 24 * 60 * 60 * 1000; // 180 days
 
 function setTrustedDeviceCookie(res, rawToken) {
+  const isProduction = process.env.NODE_ENV === "production";
   res.cookie(TRUSTED_DEVICE_COOKIE_NAME, rawToken, {
     path: "/",
     httpOnly: true,
-    sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
+    sameSite: isProduction ? "none" : "lax",
+    secure: isProduction,
     maxAge: TRUSTED_DEVICE_MAX_AGE,
   });
 }
@@ -114,11 +117,12 @@ async function setupTrustedDevice(req, res, user) {
 }
 
 function clearTrustedDeviceCookie(res) {
+  const isProduction = process.env.NODE_ENV === "production";
   res.clearCookie(TRUSTED_DEVICE_COOKIE_NAME, {
     path: "/",
     httpOnly: true,
-    sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
+    sameSite: isProduction ? "none" : "lax",
+    secure: isProduction,
   });
 }
 
@@ -161,9 +165,10 @@ export const login = asyncHandler(async (req, res) => {
   user.lastLogin = new Date();
   await user.save();
 
-  // Generate JWT token
+  // Generate JWT token & setup trusted device
   const token = user.generateToken();
   setAuthCookie(res, token);
+  await setupTrustedDevice(req, res, user);
 
   // Get all applications for this user
   const applications = await Application.find({ userId: user._id })
