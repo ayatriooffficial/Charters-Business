@@ -112,7 +112,7 @@ export default function ApplicationForm() {
 
           if (!programTitle) {
             console.error('Invalid programme');
-            router.push('/dashboard');
+            router.push('/dashboard-overview');
             return;
           }
 
@@ -132,7 +132,7 @@ export default function ApplicationForm() {
 
           if (response.success) {
             setTimeout(() => {
-              router.push('/dashboard');
+              router.push('/dashboard-overview');
             }, 1500);
           } else {
             throw new Error(response.message || 'Application failed');
@@ -163,7 +163,7 @@ export default function ApplicationForm() {
 
           setIsAutoSubmitting(false);
           alert(error.message || 'Failed to submit application.');
-          setTimeout(() => router.push('/dashboard'), 1000);
+          setTimeout(() => router.push('/dashboard-overview'), 1000);
         }
       }
     };
@@ -294,7 +294,7 @@ export default function ApplicationForm() {
         if (response.data.isNewUser && response.data.generatedPassword) {
           await login(response.data.email, response.data.generatedPassword);
         } else {
-          router.push('/dashboard');
+          router.push('/dashboard-overview');
         }
       }
     } catch (error: any) {
@@ -350,7 +350,7 @@ export default function ApplicationForm() {
           Check your application status on the dashboard
         </p>
         <button
-          onClick={() => router.push('/dashboard')}
+          onClick={() => router.push('/dashboard-overview')}
           className="bg-[#B30437] hover:bg-[#8B0329] text-white font-semibold py-3 px-8 rounded-lg transition-all transform hover:scale-105"
         >
           Go to Dashboard
@@ -375,7 +375,7 @@ export default function ApplicationForm() {
             {getProgramTitleFromSlug(programmeParam || '')}
           </strong>
         </p>
-        <p className="text-sm text-gray-500">Please wait, redirecting to dashboard...</p>
+        <p className="text-sm text-gray-500">Please wait, redirecting to dashboard overview...</p>
       </div>
     );
   }
