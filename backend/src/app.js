@@ -34,10 +34,28 @@ app.set("trust proxy", 1);
 app.use(helmet());
 app.use(requestId);
 
-/* ---------------- CORS ---------------- */
+const ALLOWED_ORIGIN_PATTERNS = [
+  /^https:\/\/charters-business(-[a-z0-9-]+)?\.vercel\.app$/i,
+  /^https:\/\/charters-business-admin(-[a-z0-9-]+)?\.vercel\.app$/i,
+  /^https:\/\/chartersbusiness\.com$/i,
+];
 
 const corsOptions = {
-  origin: appConfig.corsOrigin,
+  origin: (origin, callback) => {
+    // allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    if (appConfig.corsOrigin.includes(origin)) {
+      return callback(null, true);
+    }
+
+    const isMatch = ALLOWED_ORIGIN_PATTERNS.some(pattern => pattern.test(origin));
+    if (isMatch) {
+      return callback(null, true);
+    }
+
+    return callback(new Error('Not allowed by CORS'));
+  },
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   credentials: true,
 };
