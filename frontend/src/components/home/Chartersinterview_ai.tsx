@@ -9,6 +9,7 @@ import {
 import { auth, setupRecaptcha } from '@/lib/firebase';
 import { useAuth } from '@/context/AuthContext';
 import { COURSE_OPTIONS } from '@/data/courseOptions';
+import { useRouter } from 'next/navigation';
 
 type AuthStep = 'phone' | 'otp' | 'details' | 'done';
 
@@ -20,7 +21,7 @@ function getAuthError(error: unknown): AuthError {
 
 export default function ChartersInterviewAi() {
     const { user, loginWithPhone, signupWithPhone, quickLogin } = useAuth();
-
+    const router = useRouter();
     const [authStep, setAuthStep] = useState<AuthStep>('phone');
     const [loginPhone, setLoginPhone] = useState('');
     const [otp, setOtp] = useState(['', '', '', '', '', '']);
@@ -38,7 +39,6 @@ export default function ChartersInterviewAi() {
     const otpRefs = useRef<(HTMLInputElement | null)[]>([]);
     const recaptchaVerifierRef = useRef<RecaptchaVerifier | null>(null);
     const hasAttemptedQuickLogin = useRef(false);
-
     // If already logged in, mark as done immediately
     useEffect(() => {
         if (user) setAuthStep('done');
@@ -120,7 +120,11 @@ export default function ChartersInterviewAi() {
         setError('');
         const otpCode = otp.join('');
         if (otpCode.length !== 6) { setError('Please enter the complete 6-digit OTP.'); return; }
-        if (!confirmationResult) { setError('Session expired. Please resend the OTP.'); return; }
+
+        if (!confirmationResult) {
+            setError('Session expired. Please resend the OTP.');
+            return;
+        }
         setIsLoading(true);
         let token: string | null = null;
         try {

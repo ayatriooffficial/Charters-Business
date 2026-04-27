@@ -93,35 +93,62 @@ function ChartersUnionHero() {
           <p className="text-white/90 text-sm leading-relaxed">
             {heroData.description}
           </p>
+          {/* CTA Buttons */}
+          <div className="w-full mt-2 flex flex-col gap-3">
+            <button
+              type="button"
+              aria-label={heroData.cta.buttonAriaLabel}
+              className="w-full bg-[#B30437] hover:bg-[#8B0329] text-white py-3 px-8 rounded-lg text-sm font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              onClick={() => {
+                setShowInterviewAI(true);
+                document.body.style.overflow = 'hidden';
+              }}
+            >
+              {heroData.cta.buttonText}
+            </button>
 
-          {/* CTA Button */}
-          <button
-            type="button"
-            aria-label={heroData.cta.buttonAriaLabel}
-            className="w-full mt-2 bg-[#B30437] hover:bg-[#8B0329] text-white py-3 px-8 rounded-lg text-sm font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-            onClick={() => {
-              setShowInterviewAI(true);
-              document.body.style.overflow = 'hidden';
-            }}
-          >
-            {heroData.cta.buttonText}
-          </button>
+            <button
+              type="button"
+              aria-label="Track your career path"
+              className="w-full bg-black hover:bg-[#B30437] text-white py-3 px-8 rounded-lg text-sm font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              onClick={() => {
+                window.location.href = "/career-path";
+              }}
+            >
+              Track Your Career Path
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Desktop Button — hidden on mobile */}
+      {/* Desktop Buttons */}
       <div className="hidden md:flex absolute inset-0 items-end justify-center pb-[14vh]">
-        <button
-          className="bg-black hover:bg-gray-900 text-white py-2 px-6 rounded-lg text-base font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-          type="button"
-          aria-label={heroData.cta.buttonAriaLabel}
-          onClick={() => {
-            setShowInterviewAI(true);
-            document.body.style.overflow = 'hidden';
-          }}
-        >
-          {heroData.cta.buttonText}
-        </button>
+        <div className="flex flex-col gap-3 items-center">
+    
+          {/* Join Webinar */}
+          <button
+            className="bg-black hover:bg-gray-900 text-white py-2 px-6 rounded-lg text-base font-medium transition-all duration-300 hover:scale-105"
+            type="button"
+            onClick={() => {
+              setShowInterviewAI(true);
+              document.body.style.overflow = "hidden";
+            }}
+          >
+            Join Webinar
+          </button>
+
+          {/* Track Career Path */}
+          <button
+            className="bg-black hover:bg-[#B30437] text-white py-2 px-6 rounded-lg text-base font-medium transition-all duration-300 hover:scale-105"
+            type="button"
+            onClick={() => {
+              window.location.href = "/career-path";
+            }}
+          >
+            Track Your Career Path
+          </button>
+
+        </div>
       </div>
       {showInterviewAI && createPortal(
               <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-black/20">

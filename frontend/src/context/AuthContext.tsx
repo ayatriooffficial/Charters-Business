@@ -472,6 +472,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [finalizeLogin]);
 
   const generateRedirectCode = useCallback(async () => {
+    if (token === "local-dev-token") {
+      console.warn("Skipping redirect code generation in local bypass mode");
+      return null;
+    }
     if (!token) {
       console.warn("No auth token available for redirect-code generation");
       return null;
@@ -503,6 +507,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [token]);
   
   const navigateToRemoteDashboard = useCallback(async (remotePath: string) => {
+    
     try {
       const code = await generateRedirectCode();
       if (code) {
@@ -516,7 +521,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } catch (error) {
       console.error("Remote redirect error:", error);
     }
-  }, [generateRedirectCode]);
+  }, [generateRedirectCode,token,router]);
 
   const exchangeCode = useCallback(async (code: string) => {
     try {
