@@ -63,6 +63,44 @@ body {
   scrollbar-width: none;
 }
 
+/* Styled horizontal scrollbar for card carousels */
+.custom-x-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #b7b7b7 #ececec;
+}
+
+.custom-x-scrollbar::-webkit-scrollbar {
+  height: 8px;
+}
+
+.custom-x-scrollbar::-webkit-scrollbar-track {
+  background: #ececec;
+  border-radius: 9999px;
+}
+
+.custom-x-scrollbar::-webkit-scrollbar-thumb {
+  background: #b7b7b7;
+  border-radius: 9999px;
+}
+
+.custom-x-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #9c9c9c;
+}
+
+@keyframes marqueeLeft {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marqueeLeft 14s linear infinite;
+}
+
 /* Masters Union Hero Card Transition */
 /* No CSS transition - handled by JS for smooth performance */
 .masters-union-card-transition {

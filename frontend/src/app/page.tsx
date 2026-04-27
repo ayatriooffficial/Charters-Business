@@ -13,6 +13,7 @@ import SectionWrapper from "@/components/shared/SectionWrapper";
 import PlacementReport from "@/components/home/PlacementReport";
 import OurProgrammesSection from "@/components/home/OurProgrammesSection";
 import BuiltByHarvard from "@/components/home/BuiltByHarvard";
+import HomeBottomCardsCarousel from "@/components/home/HomeBottomCardsCarousel";
 
 export const metadata: Metadata = {
   title: {
@@ -193,6 +194,8 @@ export default function Home() {
           <PremiumFeaturesSection />
         </SectionWrapper>
       </div>
+
+      <HomeBottomCardsCarousel />
     </>
   );
 }

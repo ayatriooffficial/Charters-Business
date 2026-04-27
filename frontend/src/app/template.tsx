@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import dynamic from 'next/dynamic';
+import Breadcrumbs from '@/components/shared/Breadcrumbs';
 
 // Dynamic imports split Navbar/Footer JS into separate chunks
 // SSR stays on so HTML renders immediately, but hydration doesn't block main content
@@ -24,6 +25,8 @@ export default function Template({ children }: { children: React.ReactNode }) {
           <Navbar />
         </header>
       )}
+
+      {!hideNavFooter && <Breadcrumbs />}
 
       <main className={hideNavFooter ? '' : 'flex-grow'}>
         {children}
