@@ -21,6 +21,7 @@ function formatSegmentLabel(segment: string) {
 }
 
 export default function Breadcrumbs() {
+
   const pathname = usePathname() || '/';
   if (pathname === '/') return null;
 
@@ -36,7 +37,7 @@ export default function Breadcrumbs() {
   return (
     <nav
       aria-label="Breadcrumb"
-      className="sticky top-[var(--navbar-height,86px)] z-40 w-full px-4 sm:px-6 lg:px-8 py-2 bg-white/95 backdrop-blur-sm border-b border-gray-100"
+      className="relative z-10 w-full px-4 sm:px-6 lg:px-8 py-2 bg-white border-b border-gray-100"
     >
       <ol className="mx-auto max-w-7xl flex flex-wrap items-center gap-1 text-xs sm:text-sm text-gray-600">
         {crumbs.map((crumb, index) => {

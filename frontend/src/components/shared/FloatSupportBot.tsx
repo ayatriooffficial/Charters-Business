@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Send, X } from "lucide-react";
 import ReactMarkdown from "react-markdown";
@@ -26,8 +27,9 @@ export default function FloatSupportBot() {
   const [input, setInput] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(true);
   const [typing, setTyping] = useState(false);
+  
   const endRef = useRef<HTMLDivElement | null>(null);
-
+  const pathname = usePathname();
   useEffect(() => {
     if (open && messages.length === 0) {
       setMessages([
@@ -99,7 +101,7 @@ export default function FloatSupportBot() {
   return (
     <>
       {!open && (
-        <div className="fixed bottom-2 right-3 z-30 flex items-center gap-1">
+        <div className={`fixed right-3 z-[999] flex items-center gap-1 ${pathname === '/career-path' ? 'bottom-20' : 'bottom-3'}`}>
 
           {showQueryPill && (
             <div className="group relative w-[200px] h-[56px] flex items-left rounded-t-[12px] rounded-bl-[15px] bg-white border border-[#cccccc] shadow-md px-4 py-2">
@@ -150,7 +152,7 @@ export default function FloatSupportBot() {
       )}
 
       {open && (
-        <div className="fixed bottom-3 right-3 z-[100] flex h-[530px] w-[360px] max-w-[95vw] flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white/90 shadow-[0_20px_60px_rgba(0,0,0,0.15)]">
+        <div className={`fixed right-3 z-[999] flex h-[530px] w-[360px] max-w-[95vw] flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white/90 shadow-[0_20px_60px_rgba(0,0,0,0.15)] ${pathname === '/career-path' ? 'bottom-24' : 'bottom-7'}`}>
           <div className="flex items-center justify-between border-b border-gray-200 bg-white px-3 py-2">
             <div className="flex items-center gap-3">
               <div className="rounded-full bg-[#B30437] p-1">

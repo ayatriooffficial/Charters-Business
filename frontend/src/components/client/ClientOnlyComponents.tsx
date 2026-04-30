@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
+
 const TrackingBootstrap = dynamic(
   () => import("@/components/shared/TrackingBootstrap"),
   { ssr: false }
