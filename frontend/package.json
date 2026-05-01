@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@next/bundle-analyzer": "^16.1.6",
     "@tailwindcss/typography": "^0.5.19",
     "@tiptap/extension-placeholder": "^2.10.4",
     "@tiptap/pm": "^2.10.4",
@@ -31,6 +30,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@next/bundle-analyzer": "^16.2.4",
     "@tailwindcss/postcss": "4.2.2",
     "@types/node": "^20",
     "@types/react": "^19",

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
+import Image from 'next/image';
 interface NewsItem {
   id: number;
   image: string;
@@ -208,14 +209,14 @@ const NewsSliderComponent: React.FC<NewsSliderComponentProps> = ({
                 key={item.id}
                 className="w-full md:w-[30%] h-full flex-shrink-0 overflow-hidden relative snap-start border-r border-t border-gray-200 pb-13"
               >
-                <picture>
-                  <source media="(max-width: 768px)" srcSet={item.mobileImage} />
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-contain block"
-                  />
-                </picture>
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 768px) 100vw, 30vw"
+                  loading="lazy"
+                />
                 <div className="absolute bottom-0 left-0 right-0 py-8 sm:py-5 bg-gradient-to-t from-black via-black/80 to-transparent text-white z-10 transform translate-y-full hover:translate-y-0 transition-transform duration-400 delay-200">
                   <h3 className="m-0 mb-2 text-xl sm:text-lg font-semibold leading-snug text-[#B30437]">
                     {item.title}

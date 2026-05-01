@@ -159,8 +159,6 @@ const BottomStatSVG = () => (
       <path
         d="M20 40 Q10 20 30 15 Q50 10 60 25 Q70 40 55 55 Q40 70 25 60 Q10 50 20 40 Z"
         fill="rgba(34, 197, 94, 0.15)"
-        className="animate-pulse"
-        style={{ animationDelay: '1s' }}
       />
     </svg>
     <div className="relative z-10 bg-gray-50 p-4 border-l-4 border-[#B30437] max-w-full">
@@ -289,8 +287,8 @@ export default function ChartersUnionDistinctive() {
                     key={program.id}
                     onClick={() => handleProgramChange(program.id)}
                     className={`w-full text-left p-4 sm:p-6 border-2 transition-all duration-300 max-w-full overflow-hidden ${selectedProgram === program.id
-                        ? 'border-[#B30437] bg-[#B30437]/5'
-                        : 'border-transparent hover:border-gray-200'
+                      ? 'border-[#B30437] bg-[#B30437]/5'
+                      : 'border-transparent hover:border-gray-200'
                       }`}
                   >
                     <h3

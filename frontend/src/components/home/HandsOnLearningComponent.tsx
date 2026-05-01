@@ -1092,10 +1092,13 @@ function HandsOnLearningComponent() {
                       100+ Top MNC's in class
                     </h3> */}
                     <div className="mb-3">
-                      <img
+                      <Image
                         src="/home/charters-faculty-member.avif"
                         alt="Charters Faculty Member"
+                        width={330}
+                        height={104}
                         className="h-25 w-full p-[7px] object-contain rounded"
+                        sizes="(max-width: 768px) 100vw, 330px"
                       />
                     </div>
                     <p className="text-gray-400 text-xs pl-4">

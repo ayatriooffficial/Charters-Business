@@ -149,7 +149,7 @@ export default function Home() {
       <Script
         id="all-schemas"
         type="application/ld+json"
-        strategy="beforeInteractive"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(allSchemas) }}
       />
 

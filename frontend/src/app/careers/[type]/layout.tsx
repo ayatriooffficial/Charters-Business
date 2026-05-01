@@ -114,7 +114,7 @@ export default async function CareersTypeLayout({ children, params }: LayoutProp
       <Script
         id={`career-type-schema-${type}`}
         type="application/ld+json"
-        strategy="beforeInteractive"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
         {children}

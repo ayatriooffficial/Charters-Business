@@ -397,7 +397,6 @@ export default function FirstStepSuccessComponent() {
               key={video.id}
               className="shrink-0 w-[80vw] sm:w-[320px] lg:w-auto snap-center bg-white overflow-hidden group cursor-pointer border-r border-t border-gray-200 last:border-r-0 pb-8"
               role="listitem"
-              style={{ animation: `fadeIn 0.4s ease-out ${index * 0.1}s both` }}
             >
               <div className="relative aspect-video overflow-hidden bg-gray-100">
                 <Image
@@ -574,11 +573,14 @@ export default function FirstStepSuccessComponent() {
       </div>
 
       <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-\\[fadeIn_0\\.4s_ease-out_forwards\\] {
+    will-change: transform, opacity;
+  }
+`}</style>
     </section>
   );
 }
