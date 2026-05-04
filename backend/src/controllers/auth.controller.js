@@ -151,7 +151,7 @@ export const login = asyncHandler(async (req, res) => {
   }
 
   // Setting id for code generation
-  req.session.userId = user._id;
+  //req.session.userId = user._id;
 
   // Check password
   const isPasswordMatch = await user.comparePassword(password);

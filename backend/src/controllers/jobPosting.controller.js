@@ -2,6 +2,7 @@ import JobPosting from '../models/JobPosting.model.js';
 import asyncHandler from '../utils/asyncHandler.js';
 import ApiResponse from '../utils/ApiResponse.js';
 import ApiError from '../utils/ApiError.js';
+import jwt from 'jsonwebtoken';
 
 // Create job posting (Admin/Recruiter only)
 export const createJobPosting = asyncHandler(async (req, res) => {
@@ -16,28 +17,64 @@ export const createJobPosting = asyncHandler(async (req, res) => {
     description,
   } = req.body;
 
-  // Validation
   if (!title || !location || !jobType || !category || !salary || !experience || !description) {
     throw new ApiError(400, 'All fields are required');
   }
 
-  const jobPosting = await JobPosting.create({
-    title: title.trim(),
-    company: company?.trim() || 'Charters Business',
-    location: location.trim(),
-    jobType,
-    category: category.trim(),
-    salary: salary.trim(),
-    experience: experience.trim(),
-    description,
-    createdBy: req.user.id,
-  });
+  // 🔐 Mint a short-lived acting token so admin backend knows WHO is acting
+  const actingToken = jwt.sign(
+    {
+      adminId: req.user.id || req.user._id,
+      role: req.user.role,       // must be 'admin' or 'recruiter'
+      email: req.user.email,
+    },
+    process.env.INTERNAL_SHARED_SECRET,
+    {
+      issuer: 'profile-branding',   // admin backend verifies this exact issuer
+      expiresIn: '5m',
+    }
+  );
+
+  console.log("USER ROLE:", req.user.role);
+  console.log("SERVICE KEY:", process.env.INTERNAL_SERVICE_KEY);
+  console.log("ADMIN URL:", process.env.ADMIN_BASE_URL);
+  console.log("SHARED SECRET SET:", !!process.env.INTERNAL_SHARED_SECRET);
+
+  // 🔥 CALL ADMIN BACKEND
+  const response = await fetch(
+    `${process.env.ADMIN_BASE_URL}/internal/admin/jobs`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-service-key": process.env.INTERNAL_SERVICE_KEY,       // ✅ service auth
+        "x-acting-admin-token": actingToken,                      // ✅ correct header name
+      },
+      body: JSON.stringify({
+        title,
+        company,
+        location,
+        jobType,
+        category,
+        salary,
+        experience,
+        description,
+      }),
+    }
+  );
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new ApiError(response.status, data.message || "Failed to create job");
+  }
 
   res.status(201).json(
-    new ApiResponse(201, jobPosting, 'Job posting created successfully')
+    new ApiResponse(201, data.data, "Job created via admin service")
   );
 });
 
+// Get all job postings (Public with filters)
 // Get all job postings (Public with filters)
 export const getAllJobPostings = asyncHandler(async (req, res) => {
   const { 
@@ -51,71 +88,53 @@ export const getAllJobPostings = asyncHandler(async (req, res) => {
     order = 'desc'
   } = req.query;
 
-  const query = { isActive: true };
+  // Build query string to forward to admin backend
+  const params = new URLSearchParams();
+  if (location && location !== 'All') params.append('location', location);
+  if (category) params.append('category', category);
+  if (jobType) params.append('jobType', jobType);
+  if (search) params.append('search', search);
+  params.append('page', page);
+  params.append('limit', limit);
+  params.append('sortBy', sortBy);
+  params.append('order', order);
 
-  // Filters
-  if (location && location !== 'All') {
-    query.location = location;
+  // 🔥 CALL ADMIN BACKEND (public route - no auth needed)
+  const response = await fetch(
+    `${process.env.ADMIN_BASE_URL}/internal/admin/jobs?${params.toString()}`
+  );
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new ApiError(response.status, data.message || "Failed to fetch jobs");
   }
 
-  if (category) {
-    query.category = category;
-  }
-
-  if (jobType) {
-    query.jobType = jobType;
-  }
-
-  // Text search
-  if (search) {
-    query.$text = { $search: search };
-  }
-
-  // Sort options
-  const sortOptions = {};
-  sortOptions[sortBy] = order === 'desc' ? -1 : 1;
-
-  // Execute query with pagination
-  const [jobPostings, count] = await Promise.all([
-    JobPosting.find(query)
-      .populate('createdBy', 'name email')
-      .sort(sortOptions)
-      .limit(parseInt(limit))
-      .skip((parseInt(page) - 1) * parseInt(limit))
-      .lean(), // Performance: Use lean() for read-only data
-    JobPosting.countDocuments(query)
-  ]);
-
+  // Admin backend returns { jobs, pagination } inside data.data
   res.status(200).json(
     new ApiResponse(200, {
-      jobPostings,
-      pagination: {
-        total: count,
-        page: parseInt(page),
-        pages: Math.ceil(count / limit),
-        limit: parseInt(limit),
-      }
+      jobPostings: data.data?.jobs || [],
+      pagination: data.data?.pagination || {},
     }, 'Job postings retrieved successfully')
   );
 });
 
 // Get single job posting by ID (Public)
+// Get single job posting by ID (Public)
 export const getJobPostingById = asyncHandler(async (req, res) => {
-  const jobPosting = await JobPosting.findById(req.params.id)
-    .populate('createdBy', 'name email');
+  const response = await fetch(
+    `${process.env.ADMIN_BASE_URL}/internal/admin/jobs/${req.params.id}`
+  );
 
-  if (!jobPosting) {
-    throw new ApiError(404, 'Job posting not found');
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new ApiError(response.status, data.message || "Job posting not found");
   }
 
-  // Increment views (async, don't wait)
-  JobPosting.findByIdAndUpdate(
-    req.params.id,
-    { $inc: { views: 1 } },
-    { new: false }
-  ).exec();
-
-  res.status(200).json(new ApiResponse(200, jobPosting, 'Job posting retrieved successfully'));
+  res.status(200).json(
+    new ApiResponse(200, data.data, 'Job posting retrieved successfully')
+  );
 });
 
 // Update job posting (Admin/Recruiter only)

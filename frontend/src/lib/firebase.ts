@@ -1,3 +1,8 @@
+
+if (typeof window !== "undefined" && window.location.hostname === "localhost") {
+  (self as any).FIREBASE_APPCHECK_DEBUG_TOKEN = "B71C6CA9-5989-4F8A-8834-D5027CD271F2";
+}
+
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth, RecaptchaVerifier } from "firebase/auth";
 
