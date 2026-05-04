@@ -193,9 +193,10 @@ export default function Home() {
         <SectionWrapper hideCorners={"all"} borderBottom={false}>
           <PremiumFeaturesSection />
         </SectionWrapper>
-      </div>
+      
 
       <HomeBottomCardsCarousel />
+      </div>
     </>
   );
 }

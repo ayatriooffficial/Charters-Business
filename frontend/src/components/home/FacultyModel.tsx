@@ -4,7 +4,13 @@ import { memo, useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import HighlightObserver from "@/components/shared/HighlightObserver";
 import HighlightText from "@/components/shared/HighlightObserver";
-
+const randomLogos = [
+  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/cocacola.svg",
+  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/colgate.svg",
+  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/epicgames.svg",
+  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/google.svg",
+  "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/amazon.svg",
+];
 interface Faculty {
   name: string;
   title: string;
@@ -15,6 +21,7 @@ interface Faculty {
   imageSrc: string;
   linkedinUrl?: string;
   category: string;
+  logos?: string[];
 }
 
 interface FacultyCategory {
@@ -42,6 +49,7 @@ const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/home.jpeg",
     linkedinUrl: "#",
     category: "leadership",
+    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
   },
   {
     name: "Mr. Leadership Expert 2",
@@ -53,6 +61,7 @@ const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/home.jpeg",
     linkedinUrl: "#",
     category: "leadership",
+    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
   },
   {
     name: "Mr. Leadership Expert 3",
@@ -64,6 +73,7 @@ const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/home.jpeg",
     linkedinUrl: "#",
     category: "leadership",
+    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
   },
   // Entrepreneurship Category
   {
@@ -76,6 +86,7 @@ const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/home.jpeg",
     linkedinUrl: "#",
     category: "entrepreneurship",
+    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
   },
   {
     name: "Mr. Arjun Vaidya",
@@ -87,6 +98,7 @@ const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/home.jpeg",
     linkedinUrl: "#",
     category: "entrepreneurship",
+    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
   },
   {
     name: "Mr. Entrepreneur Expert 3",
@@ -98,6 +110,7 @@ const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/home.jpeg",
     linkedinUrl: "#",
     category: "entrepreneurship",
+    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
   },
   // Finance Category
   {
@@ -110,6 +123,7 @@ const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/home.jpeg",
     linkedinUrl: "#",
     category: "finance",
+    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
   },
   {
     name: "Mr. Finance Expert 2",
@@ -121,6 +135,7 @@ const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/home.jpeg",
     linkedinUrl: "#",
     category: "finance",
+    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
   },
   {
     name: "Mr. Finance Expert 3",
@@ -132,6 +147,7 @@ const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/home.jpeg",
     linkedinUrl: "#",
     category: "finance",
+    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
   },
   // Technology Category
   {
@@ -144,6 +160,7 @@ const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/home.jpeg",
     linkedinUrl: "#",
     category: "technology",
+    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
   },
   {
     name: "Mr. Tech Expert 2",
@@ -155,6 +172,7 @@ const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/home.jpeg",
     linkedinUrl: "#",
     category: "technology",
+    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
   },
   {
     name: "Mr. Tech Expert 3",
@@ -166,6 +184,7 @@ const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/home.jpeg",
     linkedinUrl: "#",
     category: "technology",
+    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
   },
   // Consulting Category
   {
@@ -178,6 +197,7 @@ const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/home.jpeg",
     linkedinUrl: "#",
     category: "consulting",
+    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
   },
   {
     name: "Mr. Consulting Expert 2",
@@ -189,6 +209,7 @@ const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/home.jpeg",
     linkedinUrl: "#",
     category: "consulting",
+    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
   },
   {
     name: "Mr. Consulting Expert 3",
@@ -200,6 +221,7 @@ const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/home.jpeg",
     linkedinUrl: "#",
     category: "consulting",
+    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
   },
 ];
 
@@ -347,80 +369,58 @@ function FacultyModel() {
               aria-label="Faculty members"
             >
               {filteredFaculty.map((faculty, index) => (
-                <article
-                  key={faculty.name}
-                  className="bg-[#F4F2EE] border-r border-b border-gray-300 overflow-hidden group transition-all duration-300 hover:-translate-y-1 flex flex-col flex-none w-[70vw] sm:w-[45%] md:w-[30%] lg:w-[21%] min-w-[160px] snap-start"
-                  role="listitem"
-                  aria-labelledby={`faculty-name-${index}`}
-                >
-                  <figure className="relative bg-gray-100 aspect-[7/8] w-full overflow-hidden">
-                    <Image
-                      src={faculty.imageSrc}
-                      alt={`Professional headshot of ${faculty.name}`}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 20vw"
-                      className="object-cover object-top transition-transform duration-300 "
-                      loading="lazy"
-                    />
-                  </figure>
+  <article
+  key={faculty.name}
+  className="bg-[#F4F2EE] border-r border-b border-gray-300 flex flex-col flex-none w-[340px] snap-start"
+>
+  {/* Image */}
+  <div className="w-full h-[280px] bg-gray-200">
+    <Image
+      src={faculty.imageSrc}
+      alt={faculty.name}
+      width={400}
+      height={400}
+      className="w-full h-full object-contain"
+    />
+  </div>
 
-                  <div className="p-3 sm:p-4 flex-1 flex flex-col">
-                    <div className="flex-1">
-                      {/* Name with LinkedIn Logo */}
-                      <div className="flex items-center gap-2 mb-1">
-                        <h3
-                          id={`faculty-name-${index}`}
-                          className="font-semibold text-black text-[15px] leading-tight"
-                        >
-                          {faculty.name}
-                        </h3>
-                        <a
-                          href={faculty.linkedinUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-600 hover:text-blue-800 transition-colors"
-                          aria-label={`${faculty.name} LinkedIn profile`}
-                        >
-                          <svg
-                            className="w-3 h-3 sm:w-4 sm:h-4"
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
-                          </svg>
-                        </a>
-                      </div>
+  {/* Content */}
+  <div className="p-5">
+    <h2 className="text-2xl font-semibold text-black">
+      {faculty.title}
+    </h2>
 
-                      {/* Subtitle - Current Role */}
-                      <p className="text-[11px] sm:text-xs text-gray-700 font-medium mb-1.5 leading-tight">
-                        {faculty.subtitle}
-                      </p>
+    <p className="text-gray-700 font-medium mt-1">
+      by {faculty.name}
+    </p>
 
-                      {/* Divider */}
-                      <div className="w-full h-px bg-gray-300 my-1.5"></div>
+    <div className="h-px bg-gray-400 my-3" />
 
-                      {/* Experience */}
-                      {faculty.experience && (
-                        <p className="text-[10px] text-gray-600 mb-1 leading-relaxed">
-                          {faculty.experience}
-                        </p>
-                      )}
+    <p className="text-sm text-gray-700 mb-4">
+      {faculty.experience}
+    </p>
 
-                      {/* Teaching Section */}
-                      {faculty.teaching && (
-                        <div className="mb-1">
-                          <p className="text-[9px] font-semibold text-gray-500 uppercase tracking-wider mb-0.5">
-                            Teaching
-                          </p>
-                          <p className="text-[10px] text-gray-700 leading-relaxed">
-                            {faculty.teaching}
-                          </p>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </article>
-              ))}
+    <p className="font-semibold text-black mb-2">
+      Research Publications
+    </p>
+
+    <p className="text-sm text-gray-700 mb-4">
+      {faculty.teaching}
+    </p>
+
+    {/* Logos */}
+    <div className="flex gap-3 mt-2">
+      {faculty.logos?.map((logo, i) => (
+        <img
+          key={i}
+          src={logo}
+          className="h-8 w-auto object-contain bg-white rounded-md px-2 py-1"
+        />
+      ))}
+    </div>
+  </div>
+</article>
+))}
             </div>
 
             {/* Navigation Buttons */}

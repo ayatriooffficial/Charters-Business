@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import HighlightText from '../shared/HighlightObserver';
-
+import Link from "next/link";
 // Company tabs data
 const companyTabs = [
   { id: 'google', name: 'Google', logo: '/logos/google.svg' },
@@ -301,143 +301,8 @@ export default function FirstStepSuccessComponent() {
   };
 
   const renderMentorTab = () => (
-    <>
-      {/* Go Behind the Scenes Section */}
-      <div className="mb-16 lg:mb-20">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center px-8">
-          {/* Left: Featured Video */}
-          <div className="space-y-6">
-            <div>
-              <h2 id="behind-scenes-heading" className="text-3xl sm:text-4xl lg:text-5xl font-light leading-tight mb-2">
-                Go Behind<br />
-                the Scenes at <span className="italic">Tetr</span>
-              </h2>
-            </div>
-            <div className="space-y-3">
-              <h3 className="text-lg sm:text-xl font-medium">The story behind Tetr</h3>
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                Our Leaders discuss how Tetr is redefining education through &apos;learning by doing&apos;.
-              </p>
-            </div>
-            {/* University Logos */}
-            <div className="flex items-center gap-6 pt-2">
-              {universityLogos.map((uni) => (
-                <div key={uni.name} className="flex items-center gap-2">
-                  <Image
-                    src={uni.logo}
-                    alt={uni.name}
-                    width={80}
-                    height={24}
-                    className="h-6 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Right: Video thumbnail */}
-          <div className="relative group">
-            <div className="relative aspect-video rounded-lg overflow-hidden bg-gray-100">
-              <Image
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop"
-                alt="Featured video thumbnail"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <button
-                  className="w-16 h-16 sm:w-20 sm:h-20 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white hover:scale-110 transition-all duration-300"
-                  aria-label="Play video"
-                >
-                  <Image src="/Charters-icon/Cancel.svg" alt="icon" width={12} height={12} className="w-6 h-6 sm:w-8 sm:h-8 text-[#B30437] ml-1" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Company Logos Tabs */}
-      <div className="border-b border-gray-200">
-        <div className="flex overflow-x-auto scrollbar-hide gap-2 sm:gap-4 lg:gap-8 pb-4 justify-start lg:justify-center">
-          {companyTabs.map((company) => (
-            <button
-              key={company.id}
-              onClick={() => setActiveTab(company.id)}
-              className={`shrink-0 px-4 py-2 transition-all duration-300 border-b-2 -mb-[17px] ${activeTab === company.id
-                ? 'border-[#B30437] opacity-100'
-                : 'border-transparent opacity-50 hover:opacity-80'
-                }`}
-              aria-pressed={activeTab === company.id}
-              aria-label={`View ${company.name} videos`}
-            >
-              <Image
-                src={company.logo}
-                alt={company.name}
-                width={100}
-                height={30}
-                className="h-6 sm:h-8 w-auto object-contain"
-              />
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Video Cards Grid */}
-      <div className="relative">
-        <div
-          ref={videoSliderRef}
-          className="flex overflow-x-auto lg:grid lg:grid-cols-4 snap-x snap-mandatory lg:snap-none -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide "
-          role="list"
-          aria-label={`${companyTabs.find((c) => c.id === activeTab)?.name} videos`}
-        >
-          {videoCardsByCompany[activeTab]?.map((video, index) => (
-            <article
-              key={video.id}
-              className="shrink-0 w-[80vw] sm:w-[320px] lg:w-auto snap-center bg-white overflow-hidden group cursor-pointer border-r border-t border-gray-200 last:border-r-0 pb-8"
-              role="listitem"
-            >
-              <div className="relative aspect-video overflow-hidden bg-gray-100">
-                <Image
-                  src={video.thumbnail}
-                  alt={video.title}
-                  fill
-                  sizes="(max-width: 640px) 80vw, (max-width: 1024px) 320px, 25vw"
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20">
-                  <div className="w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg">
-                    <Image src="/Charters-icon/Cancel.svg" alt="icon" width={12} height={12} className="w-5 h-5 text-[#B30437] ml-0.5" />
-                  </div>
-                </div>
-              </div>
-              <div className="p-4">
-                <h3 className="text-sm sm:text-base font-semibold mb-2 leading-tight line-clamp-2">{video.title}</h3>
-                <p className="text-gray-700 text-xs sm:text-sm mb-3">{video.speaker}</p>
-                <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
-                  <img
-                    src="/dot-icon.svg"
-                    alt=""
-                    className="w-4 h-4 mt-0.5 flex-shrink-0"
-                    aria-hidden="true"
-                  />
-                  <span>{video.role}, {video.company}</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs text-gray-500">
-                  <img
-                    src="/dot-icon.svg"
-                    alt=""
-                    className="w-4 h-4 mt-0.5 flex-shrink-0"
-                    aria-hidden="true"
-                  />
-                  <span>{video.university}</span>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
+    <>  
+<div>
 
         {/* Mobile Navigation Buttons */}
         <div className="lg:hidden absolute top-1/3 -translate-y-1/2 right-0 pointer-events-none z-10">
@@ -473,34 +338,8 @@ export default function FirstStepSuccessComponent() {
   );
 
   const renderOtherTab = () => (
-    <>
-      <div className="mb-16 lg:mb-20">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center px-8">
-          <div className="space-y-6">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light leading-tight mb-2">
-              Go Behind<br />
-              the Scenes at <span className="italic">Tetr</span>
-            </h2>
-            <div className="space-y-3">
-              <h3 className="text-lg sm:text-xl font-medium">{mainTabs.find((t) => t.id === mainTab)?.label}</h3>
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                Content coming soon for {mainTabs.find((t) => t.id === mainTab)?.label}.
-              </p>
-            </div>
-            <div className="flex items-center gap-6 pt-2">
-              {universityLogos.map((uni) => (
-                <div key={uni.name} className="flex items-center gap-2">
-                  <Image
-                    src={uni.logo}
-                    alt={uni.name}
-                    width={80}
-                    height={24}
-                    className="h-6 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
+    <><div>
+      <div>
           <div className="relative group">
             <div className="relative aspect-video rounded-lg overflow-hidden bg-gray-100">
               <Image
@@ -527,51 +366,44 @@ export default function FirstStepSuccessComponent() {
       </div>
     </>
   );
+  const blogs = [
+  {
+    title: "AI Agent Frameworks: What It Is & How It Works",
+    author: "Agnish Rawat",
+    time: "20 min read",
+    link: "/blog/ai-agent-frameworks",
+  },
+  {
+    title: "Will AI Replace Software Engineers? Truth, Opinions and Career Impact",
+    author: "Team Scaler",
+    time: "14 min read",
+    link: "/blog/ai-vs-engineers",
+  },
+  {
+    title: "SQL Roadmap 2026: Learning Paths, Career Roles and Tools",
+    author: "Tushar Bisht",
+    time: "18 min read",
+    link: "/blog/sql-roadmap",
+  },
+];
 
-  return (
-    <section className="mx-[0%] relative z-[5] bg-white text-black" role="region" aria-labelledby="behind-scenes-heading">
-      <div className="max-w-[85rem] w-full mx-auto">
+return (
+  <section className="relative z-[5] bg-white text-black py-10">
+    <div className="max-w-[85rem] w-full mx-auto px-4">
+      <div className="text-center mb-8">
+        <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-3">
+          FROM OUR BLOGS
+        </p>
 
-        {/* Page Header */}
-        <div className="text-center mb-6 sm:mb-8 lg:mb-10 pt-8">
-          <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-3" role="text">
-            BUILD YOUR FOUNDATION
-          </p>
-          <h2 id="courses-heading" className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
-            Your first step to{" "}
-            <HighlightText className="font-bold italic">
-              success
-            </HighlightText>
-          </h2>
-        </div>
-
-        {/* Main Tabs */}
-        <div className="mb-4">
-          <div className="border-b border-gray-200">
-            <div className="flex gap-4 sm:gap-8 justify-start sm:justify-center overflow-x-auto scrollbar-hide pb-[2px]">
-              {mainTabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setMainTab(tab.id)}
-                  className={`shrink-0 px-3 sm:px-6 py-3 text-xs sm:text-base font-medium transition-all duration-300 border-b-2 -mb-[2px] whitespace-nowrap ${mainTab === tab.id
-                    ? 'border-[#B30437] text-[#B30437]'
-                    : 'border-transparent text-gray-600 hover:text-gray-900'
-                    }`}
-                  aria-pressed={mainTab === tab.id}
-                  aria-label={`View ${tab.label} content`}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Tab Content */}
-        {mainTab === 'mentor' && renderMentorTab()}
-        {(mainTab === 'cocurriculars' || mainTab === 'localempact') && renderOtherTab()}
+        <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
+          Latest insights for your{" "}
+          <HighlightText className="font-bold italic">
+            career growth
+          </HighlightText>
+        </h2>
       </div>
 
+<<<<<<< HEAD
       <style jsx>{`
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
@@ -583,4 +415,27 @@ export default function FirstStepSuccessComponent() {
 `}</style>
     </section>
   );
+=======
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {blogs.map((blog) => (
+          <a
+            key={blog.title}
+            href={blog.link}
+            className="border border-gray-200 rounded-md bg-white p-5 min-h-[150px] shadow-sm"
+          >
+            <h3 className="text-xl font-bold leading-snug text-black mb-6">
+              {blog.title}
+            </h3>
+
+            <div className="border-t border-gray-200 pt-4 flex items-center justify-between text-sm text-gray-600">
+              <span>{blog.author}</span>
+              <span>{blog.time}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+>>>>>>> d5dadb3 (my latest changes)
 }

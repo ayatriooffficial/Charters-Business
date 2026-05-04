@@ -1,7 +1,6 @@
-"use client"
 
 import { getCloudinarySrcSet, getCloudinaryUrl } from "@/lib/cloudinary";
-
+import Link from "next/link";
 const heroData = {
   availableBadge: "Available Now",
   title: "Professional Accountant Training in Kolkata",
@@ -36,21 +35,22 @@ const heroData = {
 
 function ChartersUnionHero() {
   return (
+    <>
+    <div className="h-[112px] md:h-[118px]" />
     <section
-      className="relative w-full h-[86vh] md:h-[100vh] overflow-hidden mt-0.5rem"
-      role="banner"
+      className="relative w-full min-h-[520px] md:min-h-[640px] overflow-hidden"      role="banner"
       aria-labelledby="hero-heading"
     >
       <h1 id="hero-heading" className="sr-only">
         {heroData.title} {heroData.titleHighlight}
       </h1>
 
-      <div className="absolute inset-0 -z-10">
+      <div className="relative w-full min-h-[520px] md:min-h-[640px]">
         <picture>
           <source
             media="(min-width: 768px)"
-            srcSet={heroData.backgroundImageSrcSet}
-            sizes="(min-width: 1536px) 1536px, 100vw"
+            srcSet={`${heroData.backgroundImage} 1080w, ${heroData.backgroundImageSrcSet}`}
+            sizes="100vw" 
           />
           <img
             src={heroData.mobileBackgroundImage}
@@ -59,7 +59,7 @@ function ChartersUnionHero() {
             alt="Professional Accountant Training in Kolkata Background"
             fetchPriority="high"
             decoding="async"        
-            className="h-full w-full object-contain object-center"
+            className="absolute inset-0 h-full w-full object-cover object-center"
           />
         </picture>
       </div>
@@ -91,16 +91,15 @@ function ChartersUnionHero() {
           </p>
           {/* CTA Buttons */}
           <div className="w-full mt-2 flex flex-col gap-3">
-            <button
-              type="button"
-              aria-label="Track your career path"
-              className="w-full bg-black hover:bg-[#B30437] text-white py-3 px-8 rounded-lg text-sm font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-              onClick={() => {
-                window.location.href = "/career-path";
-              }}
-            >
-              Track Your Career Path
-            </button>
+
+            <Link href="/career-path" className="w-full">
+              <button
+                aria-label="Track your career path"
+                className="w-full bg-black hover:bg-[#B30437] text-white py-3 px-8 rounded-lg text-sm font-semibold"
+              >   
+                Track Your Career Path
+              </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -110,19 +109,18 @@ function ChartersUnionHero() {
         <div className="flex flex-col gap-3 items-center">
 
           {/* Track Career Path */}
-          <button
-            className="bg-black hover:bg-[#B30437] text-white py-2 px-6 rounded-lg text-base font-medium transition-all duration-300 hover:scale-105"
-            type="button"
-            onClick={() => {
-              window.location.href = "/career-path";
-            }}
-          >
-            Track Your Career Path
-          </button>
+          <Link href="/career-path">
+            <button
+              className="bg-black hover:bg-[#B30437] text-white py-2 px-6 rounded-lg text-base font-medium transition-all duration-300 hover:scale-105"
+            >
+              Track Your Career Path
+            </button>
+          </Link>
 
         </div>
       </div>
     </section>
+    </>
   );
 }
 

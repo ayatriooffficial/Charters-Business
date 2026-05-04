@@ -107,7 +107,6 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
                     <button
                       type="button"
                       onClick={() => handleProgramChange(item.key)}
-                      onMouseEnter={() => handleProgramChange(item.key)}
                       aria-current={selectedProgram === item.key ? 'true' : 'false'}
                       className={`w-full text-left group cursor-pointer py-4 px-6 transition-colors duration-200 ${index < programMenuItems.length - 1 ? 'border-b border-gray-200' : ''
                         } ${selectedProgram === item.key

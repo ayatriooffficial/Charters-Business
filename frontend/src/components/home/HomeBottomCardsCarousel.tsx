@@ -82,26 +82,6 @@ export default function HomeBottomCardsCarousel() {
   return (
     <section className="w-full py-8 sm:py-10 border-t border-gray-200 bg-white">
       <div className="max-w-[85rem] w-full md:w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <div className="flex gap-4 overflow-x-auto pb-3 snap-x snap-mandatory custom-x-scrollbar" style={{ touchAction: 'pan-x pan-y' }}>
-            {insightCards.map((card) => (
-              <a
-                key={card.id}
-                href={card.href}
-                className="snap-start shrink-0 w-[88%] sm:w-[62%] lg:w-[32%] bg-white border border-gray-200 rounded-sm shadow-sm p-5"
-              >
-                <h3 className="text-2xl font-semibold text-gray-900 leading-snug mb-4 line-clamp-3">
-                  {card.title}
-                </h3>
-                <div className="h-px w-full bg-gray-200 mb-4" />
-                <div className="flex items-center justify-between text-sm text-gray-600">
-                  <span>{card.author}</span>
-                  <span>{card.readTime}</span>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
 
         <div
           className="flex gap-4 overflow-x-auto pb-3 snap-x snap-mandatory custom-x-scrollbar"
@@ -115,7 +95,10 @@ export default function HomeBottomCardsCarousel() {
               <h3 className="leading-snug text-xl font-semibold text-gray-900 mb-3">
                 {card.title}
               </h3>
-              <p className="text-base text-gray-700 leading-relaxed mb-4">{card.description}</p>
+
+              <p className="text-base text-gray-700 leading-relaxed mb-4">
+                {card.description}
+              </p>
 
               <div className="overflow-hidden border-t border-gray-200 pt-3">
                 <div className="flex w-max marquee-track">
@@ -124,17 +107,8 @@ export default function HomeBottomCardsCarousel() {
                       <img
                         src={logo.src}
                         alt={logo.name}
-                        loading="lazy"
                         className="h-6 w-auto object-contain"
-                        onError={(e) => {
-                          e.currentTarget.style.display = 'none';
-                          const fallback = e.currentTarget.nextElementSibling as HTMLElement | null;
-                          if (fallback) fallback.style.display = 'inline-flex';
-                        }}
                       />
-                      <span className="hidden items-center rounded-full border border-gray-300 px-2 py-0.5 text-xs font-semibold text-gray-700">
-                        {logo.name}
-                      </span>
                     </div>
                   ))}
                 </div>
@@ -142,6 +116,7 @@ export default function HomeBottomCardsCarousel() {
             </article>
           ))}
         </div>
+
       </div>
     </section>
   );
