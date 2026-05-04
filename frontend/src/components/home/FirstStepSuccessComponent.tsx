@@ -301,9 +301,8 @@ export default function FirstStepSuccessComponent() {
   };
 
   const renderMentorTab = () => (
-    <>  
-<div>
-
+    <>
+    <div>
         {/* Mobile Navigation Buttons */}
         <div className="lg:hidden absolute top-1/3 -translate-y-1/2 right-0 pointer-events-none z-10">
           {canScrollRight && (
@@ -403,19 +402,7 @@ return (
         </h2>
       </div>
 
-<<<<<<< HEAD
-      <style jsx>{`
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .animate-\\[fadeIn_0\\.4s_ease-out_forwards\\] {
-    will-change: transform, opacity;
-  }
-`}</style>
-    </section>
-  );
-=======
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {blogs.map((blog) => (
           <a
@@ -437,5 +424,4 @@ return (
     </div>
   </section>
 );
->>>>>>> d5dadb3 (my latest changes)
 }
