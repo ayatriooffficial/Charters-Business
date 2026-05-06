@@ -255,7 +255,7 @@ export const programmes: Programme[] = [
 
     // Card Data
     card: {
-      image: "https://images.mastersunion.link/uploads/24062025/v1/image6.webp",
+      image: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081780/bytdizxcq2cy5hzcb1xv_qpykcw.avif",
       hasVideo: false,
       rating: { score: 4.8, reviews: 495 / 500 },
       title: "DIGITAL GROWTH ENGINEER",
@@ -1303,7 +1303,7 @@ export const programmes: Programme[] = [
 
     // Card Data
     card: {
-      image: "/images/programmes/DSC09198.webp",
+      image: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081780/mn8bwcdnx9ld2kmmywvz_crgadc.avif",
       hasVideo: false,
       rating: { score: 4.7, reviews: 1876 },
       title: "POST GRADUATE DIPLOMA IN MANAGEMENT",
@@ -1719,7 +1719,7 @@ export const programmes: Programme[] = [
 
     // Card Data
     card: {
-      image: "/images/programmes/P10714292.webp",
+      image: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081779/ajbcjzco3yfsj7ns1f2j_dvqing.avif",
       hasVideo: false,
       rating: { score: 4.9, reviews: 956 },
       title: "PRODUCT GROWTH ENGINEERING",

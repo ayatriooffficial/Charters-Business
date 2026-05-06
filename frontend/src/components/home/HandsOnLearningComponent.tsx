@@ -50,18 +50,13 @@ const MenuItem = memo<{
   return (
     <button
       onClick={onClick}
-      className={`w-full flex justify-center border-b  border-[#efefef] px-2 sm:px-[15px] py-2 sm:py-3 hands-on-menu-transition group ${isActive ? "bg-[#F4F2EE] text-black" : "text-[#272C18] "
-        }`}
+      className="w-full flex justify-center border-b border-[#efefef] px-2 sm:px-[15px] py-2 sm:py-3 bg-white text-[#272C18]"
       aria-pressed={isActive}
       type="button"
     >
       <div className="w-5 h-5 sm:w-6 sm:h-6 flex flex-shrink-0 relative">
         <Image
-          src={
-            isActive
-              ? "/Charters-icon/new store white.svg"
-              : "/Charters-icon/new_campas.svg"
-          }
+          src="/Charters-icon/new_campas.svg"
           alt="Format icon"
           width={20}
           height={20}
@@ -71,13 +66,13 @@ const MenuItem = memo<{
 
       <div className="flex-1 text-left min-w-0">
         <p
-          className={`uppercase tracking-wider font-semibold text-[11px] sm:text-[14px] transition-colors ${isActive ? "text-black" : "text-[#272C18]"
+          className={`uppercase tracking-wider font-semibold text-[11px] sm:text-[14px] transition-colors text-black
             }`}
         >
           Month {index + 1}
         </p>
         <div
-          className={`font-semibold text-[18px] transition-colors text-xs md:text-sm  ${isActive ? "text-black" : "text-[#272C18]"
+          className={`font-semibold text-[18px] transition-colors text-xs md:text-sm  text-black
             }`}
         >
           {category}
@@ -239,7 +234,7 @@ const ContentCard = memo<{
                 } program`}
               width={640}
               height={160}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-top"
               loading="lazy"
             />
           </div>
@@ -694,7 +689,7 @@ function HandsOnLearningComponent() {
         "Students have dropshipped products ranging from pet supplies to green stationery worth over INR 2 Cr.",
       linkText: "Shop At Our Students' Stores",
       image:
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop",
+        "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081795/vgq4vkzkcvefkpv1lss2_h6ydos.avif",
       stores: [
         { name: "LIGHTRANCE", url: null, logo: null },
         { name: "kaRaR", url: null, logo: null },
@@ -711,7 +706,7 @@ function HandsOnLearningComponent() {
       achievement: "Meet Our Resident Influencers",
       linkText: "Meet Our Resident Influencers",
       image:
-        "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop",
+        "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081795/pnh1arwigr92tkawxv6t_wetftd.avif",
       profiles: [
         { name: "Anurag Bansal", handle: "@businesswithbansal", avatar: "" },
         { name: "Sunakshi", handle: "@the_humming_snitch", avatar: "" },
@@ -726,7 +721,7 @@ function HandsOnLearningComponent() {
         "After mastering the fundamentals, students choose a specialization and build real-world, scalable systems.",
 
       image:
-        "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop",
+        "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081795/m64yqpshdiwiztfj3xry_e03vqn.avif",
 
       specializationTracks: [
         "Software Development",
@@ -782,7 +777,7 @@ function HandsOnLearningComponent() {
       achievement: "Our Mentors Include",
       linkText: "Meet Our Mentors",
       image:
-        "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=400&h=300&fit=crop",
+        "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081794/k9yb4pex58iqxdce2zru_xjcckt.avif",
       mentors: [
         {
           name: "Rajnish Virmani",
@@ -811,7 +806,7 @@ function HandsOnLearningComponent() {
       description:
         "After mastering the basics, it's time to choose your path and specialize.",
       image:
-        "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=400&h=300&fit=crop",
+        "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081794/dmmnhtok1iwgjpzvzgjw_l3zfw9.avif",
 
       specializations: [
         "Foundations of AI & No-Code Product Building",

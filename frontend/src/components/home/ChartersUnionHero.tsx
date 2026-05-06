@@ -36,17 +36,18 @@ const heroData = {
 function ChartersUnionHero() {
   return (
     <>
-    <div className="h-[112px] md:h-[118px]" />
+    <div className="h-[92px] md:h-[80px]" />
     <section
-      className="relative w-full min-h-[520px] md:min-h-[640px] overflow-hidden"      role="banner"
-      aria-labelledby="hero-heading"
+className="relative w-full h-[calc(100vh-96px)] min-h-[560px] overflow-hidden"
+ role="banner"
+aria-labelledby="hero-heading"
     >
       <h1 id="hero-heading" className="sr-only">
         {heroData.title} {heroData.titleHighlight}
       </h1>
 
-      <div className="relative w-full min-h-[520px] md:min-h-[640px]">
-        <picture>
+<div className="relative w-full h-full">
+  <picture>
           <source
             media="(min-width: 768px)"
             srcSet={`${heroData.backgroundImage} 1080w, ${heroData.backgroundImageSrcSet}`}
@@ -106,19 +107,25 @@ function ChartersUnionHero() {
 
       {/* Desktop Buttons */}
       <div className="hidden md:flex absolute inset-0 items-end justify-center pb-[14vh]">
-        <div className="flex flex-col gap-3 items-center">
+  <div className="flex flex-row gap-4 items-center">
 
-          {/* Track Career Path */}
-          <Link href="/career-path">
-            <button
-              className="bg-black hover:bg-[#B30437] text-white py-2 px-6 rounded-lg text-base font-medium transition-all duration-300 hover:scale-105"
-            >
-              Track Your Career Path
-            </button>
-          </Link>
+    {/* JOIN WEBINAR BUTTON */}
+    <button
+      aria-label={heroData.cta.buttonAriaLabel}
+className="bg-black hover:bg-[#B30437] text-white py-2 px-6 rounded-lg text-base font-medium transition-all duration-300 hover:scale-105"    >
+      {heroData.cta.buttonText}
+    </button>
 
-        </div>
-      </div>
+    {/* TRACK CAREER BUTTON */}
+    <Link href="/career-path">
+      <button
+className="bg-black hover:bg-[#B30437] text-white py-2 px-5 rounded-md text-sm font-medium transition-all duration-300 hover:scale-105"      >
+        Track Your Career Path
+      </button>
+    </Link>
+
+  </div>
+</div>
     </section>
     </>
   );

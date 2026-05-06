@@ -262,6 +262,16 @@ const universityLogos = [
 ];
 
 export default function FirstStepSuccessComponent() {
+  const blogSliderRef = useRef<HTMLDivElement>(null);
+
+const scrollBlogs = () => {
+  if (!blogSliderRef.current) return;
+
+  blogSliderRef.current.scrollBy({
+    left: 420,
+    behavior: "smooth",
+  });
+};
   const [mainTab, setMainTab] = useState('mentor');
   const [activeTab, setActiveTab] = useState('google');
   const videoSliderRef = useRef<HTMLDivElement>(null);
@@ -384,10 +394,22 @@ export default function FirstStepSuccessComponent() {
     time: "18 min read",
     link: "/blog/sql-roadmap",
   },
+  {
+  title: "Top AI Skills Every Student Should Learn in 2026",
+  author: "Charters Team",
+  time: "12 min read",
+  link: "/blog/top-ai-skills",
+},
+{
+  title: "How to Build a Career in Data Analytics from Scratch",
+  author: "Career Desk",
+  time: "16 min read",
+  link: "/blog/data-analytics-career",
+},
 ];
 
 return (
-  <section className="relative z-[5] bg-white text-black py-10">
+  <section className="relative z-[5] bg-white text-black pt-10 pb-0">
     <div className="max-w-[85rem] w-full mx-auto px-4">
       <div className="text-center mb-8">
         <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-3">
@@ -401,15 +423,19 @@ return (
           </HighlightText>
         </h2>
       </div>
+      </div>
 
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="relative">
+  <div
+    ref={blogSliderRef}
+    className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide scroll-smooth"
+  >
         {blogs.map((blog) => (
           <a
             key={blog.title}
             href={blog.link}
-            className="border border-gray-200 rounded-md bg-white p-5 min-h-[150px] shadow-sm"
-          >
+className="flex-none w-[85vw] sm:w-[380px] lg:w-[420px] snap-start border-t border-b border-r border-gray-200 border-l-0 bg-white p-6 min-h-[170px] flex flex-col justify-between"          >
             <h3 className="text-xl font-bold leading-snug text-black mb-6">
               {blog.title}
             </h3>
@@ -421,6 +447,26 @@ return (
           </a>
         ))}
       </div>
+      {true && (
+  <div className="absolute top-1/2 -translate-y-1/2 right-4 pointer-events-none">
+    <button
+      onClick={scrollBlogs}
+      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#B30437] hover:bg-red-700 shadow flex items-center justify-center pointer-events-auto transition-all"
+      aria-label="Next"
+      type="button"
+    >
+      <svg viewBox="0 0 24 24" className="w-5 h-5 text-white">
+        <path
+          d="M9 18l6-6-6-6"
+          stroke="currentColor"
+          strokeWidth="2"
+          fill="none"
+          strokeLinecap="round"
+        />
+      </svg>
+    </button>
+  </div>
+)}
     </div>
   </section>
 );

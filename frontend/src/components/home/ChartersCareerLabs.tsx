@@ -251,18 +251,13 @@ const TetrCareerLabs: React.FC = () => {
               <button
                 key={card.id}
                 onClick={() => handleCardClick(card.id)}
-                className={`p-2 text-left transition-all text-nowrap duration-300 border
-          ${selectedCard === card.id
-                    ? "bg-white  border-[#B30437]"
-                    : "hover:bg-gray-50 border-transparent"
-                  }`}
+                className="p-2 text-left text-nowrap border border-transparent hover:bg-gray-50"
               >
                 <p className="text-xs text-gray-600 leading-relaxed">
                   {card.description}
                 </p>
                 <h3
-                  className={`font-semibold text-sm mb-1 ${selectedCard === card.id ? "text-[#B30437]" : "text-black"
-                    }`}
+                  className="font-semibold text-sm mb-1 text-black"
                 >
                   {card.title}
                 </h3>

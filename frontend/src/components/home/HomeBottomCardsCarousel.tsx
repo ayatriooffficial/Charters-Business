@@ -1,43 +1,13 @@
 'use client';
 
+import { useRef } from 'react';
+
 type PartnershipCard = {
   id: number;
   title: string;
   description: string;
   logos: { name: string; src: string }[];
 };
-
-type InsightCard = {
-  id: number;
-  title: string;
-  author: string;
-  readTime: string;
-  href: string;
-};
-
-const insightCards: InsightCard[] = [
-  {
-    id: 1,
-    title: 'AI Agent Frameworks: What It Is & How It Works',
-    author: 'Agnish Rawat',
-    readTime: '20 min read',
-    href: '#',
-  },
-  {
-    id: 2,
-    title: 'Will AI Replace Software Engineers? Truth, Opinions and Career Impact',
-    author: 'Team Scaler',
-    readTime: '14 min read',
-    href: '#',
-  },
-  {
-    id: 3,
-    title: 'SQL Roadmap 2026: Learning Paths, Career Roles and Tools',
-    author: 'Tushar Bisht',
-    readTime: '18 min read',
-    href: '#',
-  },
-];
 
 const partnershipCards: PartnershipCard[] = [
   {
@@ -61,7 +31,6 @@ const partnershipCards: PartnershipCard[] = [
       { name: 'NPTEL', src: 'https://upload.wikimedia.org/wikipedia/en/8/87/NPTEL_logo.png' },
       { name: 'IIT', src: 'https://upload.wikimedia.org/wikipedia/en/5/58/IIT_Kanpur_Logo.svg' },
       { name: 'IIM', src: 'https://upload.wikimedia.org/wikipedia/en/e/e8/IIM_Ahmedabad_Logo.svg' },
-      { name: 'NPTEL', src: 'https://upload.wikimedia.org/wikipedia/en/8/87/NPTEL_logo.png' },
     ],
   },
   {
@@ -79,45 +48,62 @@ const partnershipCards: PartnershipCard[] = [
 ];
 
 export default function HomeBottomCardsCarousel() {
+  const capabilityRef = useRef<HTMLDivElement>(null);
+
+  const scrollCapability = () => {
+    if (!capabilityRef.current) return;
+
+    capabilityRef.current.scrollBy({
+      left: 420,
+      behavior: 'smooth',
+    });
+  };
+
   return (
-    <section className="w-full py-8 sm:py-10 border-t border-gray-200 bg-white">
-      <div className="max-w-[85rem] w-full md:w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="w-full py-12 border-t border-gray-200 bg-white">
+      <div className="max-w-[85rem] w-full mx-auto">
+        <div className="text-center mb-10 px-4">
+          <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-3">
+            OUR CAPABILITIES
+          </p>
 
-        <div
-          className="flex gap-4 overflow-x-auto pb-3 snap-x snap-mandatory custom-x-scrollbar"
-          style={{ touchAction: 'pan-x pan-y' }}
-        >
-          {partnershipCards.map((card) => (
-            <article
-              key={card.id}
-              className="snap-start shrink-0 w-[88%] sm:w-[62%] lg:w-[32%] bg-[#F5F5F5] border border-gray-200 rounded-sm shadow-sm p-5"
-            >
-              <h3 className="leading-snug text-xl font-semibold text-gray-900 mb-3">
-                {card.title}
-              </h3>
-
-              <p className="text-base text-gray-700 leading-relaxed mb-4">
-                {card.description}
-              </p>
-
-              <div className="overflow-hidden border-t border-gray-200 pt-3">
-                <div className="flex w-max marquee-track">
-                  {[...card.logos, ...card.logos].map((logo, index) => (
-                    <div key={`${card.id}-${logo.name}-${index}`} className="mr-6 shrink-0">
-                      <img
-                        src={logo.src}
-                        alt={logo.name}
-                        className="h-6 w-auto object-contain"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </article>
-          ))}
+          <h2 className="text-2xl sm:text-3xl md:text-[35px] font-bold text-black">
+            What makes us{' '}
+            <span className="bg-green-200 px-2 italic">
+              industry ready
+            </span>
+          </h2>
         </div>
 
-      </div>
+        <div className="grid grid-cols-3 border-t border-b border-gray-200">
+            {partnershipCards.map((card, index) => (
+              <article
+                key={card.id}
+className={`bg-[#F5F5F5] p-6 min-h-[220px] border-r border-gray-200 ${
+        index === partnershipCards.length - 1 ? "border-r-0" : ""
+      }`}              >
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  {card.title}
+                </h3>
+
+                <p className="text-base text-gray-700 leading-relaxed mb-5">
+                  {card.description}
+                </p>
+
+                <div className="border-t border-gray-200 pt-4 flex items-center gap-5 overflow-hidden">
+                  {card.logos.map((logo) => (
+                    <img
+                      key={logo.name}
+                      src={logo.src}
+                      alt={logo.name}
+                      className="h-6 w-auto object-contain"
+                    />
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
     </section>
   );
 }

@@ -651,21 +651,34 @@ const StrategicExpansion: React.FC = () => {
                     <div aria-label="Career Labs categories" className="border-b border-gray-300">
                         <ul className="flex w-[93%] mx-auto overflow-x-auto scrollbar-hide">
                             {cardsData.map((card) => (
-                                <li key={card.id} className="flex-1">
-                                    <button
-                                        onClick={() => {
-                                            handleCardClick(card.id);
-                                        }}
-                                        className={`w-full px-3 text-nowrap sm:px-4 py-2 transition-all focus-visible:outline-none focus-visible:border-b-2 focus-visible:border-[#B30437] text-sm ${selectedCard === card.id
-                                            ? "text-black border-b-2 border-black"
-                                            : "text-gray-700 hover:bg-gray-50"
-                                            }`}
-                                        aria-label={`${card.title} program`}
-                                        aria-pressed={selectedCard === card.id}
-                                    >
-                                        <span className="block text-xs text-gray-500">{card.description}</span>
-                                        <span className="block font-semibold">{card.title}</span>
-                                    </button>
+                                <li
+  key={card.id}
+  className="flex-1 bg-white"
+>
+    <button
+  onClick={() => handleCardClick(card.id)}
+  className="w-full px-3 sm:px-4 py-4 text-left border-b border-gray-200 !bg-white hover:!bg-white active:!bg-white focus:!bg-white transition-none"
+  aria-label={`${card.title} program`}
+>
+  <div className="flex items-center gap-3">
+    <img
+      src="/dot-icon.svg"
+      alt=""
+      className="w-5 h-5"
+      aria-hidden="true"
+    />
+
+    <div>
+      <span className="block text-xs font-semibold text-black uppercase tracking-wide">
+        {card.description}
+      </span>
+
+      <span className="block text-lg font-semibold text-black">
+        {card.title}
+      </span>
+    </div>
+  </div>
+</button>
                                 </li>
                             ))}
                         </ul>
