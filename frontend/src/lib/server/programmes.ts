@@ -1,6 +1,9 @@
 
-export type ProgramKey = "mba" | "pgdm" | "executive" | "diploma";
-
+export type ProgramKey =
+  | "digital-growth-engineer"
+  | "post-graduate-diploma-in-management"
+  | "product-growth-engineering"
+  | "diploma-in-business-administration";
 // BASE INTERFACES
 
 export interface ProgrammeStat {
@@ -235,8 +238,7 @@ export interface Programme {
 export const programmes: Programme[] = [
   {
     id: "1",
-    slug: "mba",
-
+slug: "digital-growth-engineer",
     // Dropdown Data
     dropdown: {
       title: "Digital Growth Engineer", 
@@ -248,8 +250,7 @@ export const programmes: Programme[] = [
         { value: "150+", label: "COMPANIES" },
         { value: "95%", label: "PLACEMENT RATE" },
       ],
-      link: "/mba",
-      imageUrl: "/images/programmes/mba.jpg",
+link: "/digital-growth-engineer",     imageUrl: "/images/programmes/mba.jpg",
     },
 
     // Card Data
@@ -1283,8 +1284,7 @@ export const programmes: Programme[] = [
   },
   {
     id: "2",
-    slug: "pgdm",
-
+slug: "post-graduate-diploma-in-management",
     // Dropdown Data
     dropdown: {
       title: "POST GRADUATE DIPLOMA IN MANAGEMENT",
@@ -1297,7 +1297,7 @@ export const programmes: Programme[] = [
         { value: "250+", label: "COMPANIES" },
         { value: "92%", label: "SUCCESS RATE" },
       ],
-      link: "/pgdm",
+      link: "/post-graduate-diploma-in-management",
       imageUrl: "/images/programmes/DSC09198.webp",
     },
 
@@ -1699,8 +1699,7 @@ export const programmes: Programme[] = [
 
   {
     id: "3",
-    slug: "executive",
-
+slug: "product-growth-engineering",
     // Dropdown Data
     dropdown: {
       title: "Product Growth Engineering",
@@ -1713,7 +1712,7 @@ export const programmes: Programme[] = [
         { value: "5+", label: "YRS EXP AVG" },
         { value: "98%", label: "RETENTION RATE" },
       ],
-      link: "/executive",
+      link: "/product-growth-engineering",
       imageUrl: "/images/programmes/P10714292.webp",
     },
 

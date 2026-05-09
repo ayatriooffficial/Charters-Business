@@ -2,8 +2,7 @@
 
 import { useState, forwardRef } from 'react';
 import Image from 'next/image';
-import { getAllDropdownData, getAllProgrammes, type ProgramKey } from '@/data/programmes';
-
+import { getAllProgrammes, type ProgramKey } from '@/data/programmes';
 interface AcademicsDropdownProps {
   isOpen: boolean;
   dropdownTop: number;
@@ -18,8 +17,10 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
 }, ref) => {
   // Get all available programs
   const allProgrammes = getAllProgrammes();
-  const programDetails = getAllDropdownData();
-
+const programDetails = allProgrammes.reduce((acc, programme) => {
+  acc[programme.slug] = programme;
+  return acc;
+}, {} as Record<ProgramKey, (typeof allProgrammes)[number]>);
   // Get available program keys (only programs that have data)
   const availablePrograms = allProgrammes.map(p => p.slug);
 
@@ -28,10 +29,10 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
 
   // State for handling image errors
   const [imageErrors, setImageErrors] = useState<Record<ProgramKey, boolean>>({
-    mba: false,
-    pgdm: false,
-    executive: false,
-    diploma: false,
+    "digital-growth-engineer": false,
+"post-graduate-diploma-in-management": false,
+"product-growth-engineering": false,
+"diploma-in-business-administration": false,
   });
 
   const handleImageError = (programKey: ProgramKey) => {
@@ -53,20 +54,21 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
   };
 
   // Handle explore more click
-  const handleExploreMoreClick = () => {
-    const currentProgram = programDetails[selectedProgram];
-    if (currentProgram && currentProgram.link) {
-      window.location.href = currentProgram.link;
-    }
-  };
+ const handleExploreMoreClick = () => {
+  const currentProgram = programDetails[selectedProgram];
+
+  if (currentProgram) {
+    window.location.href = `/${currentProgram.slug}`;
+  }
+};
 
   // Program menu items - only show programs that have data
   const allProgramMenuItems: { key: ProgramKey; label: string }[] = [
-    { key: 'mba', label: 'DIGITAL GROWTH ENGINEER' },
-    { key: 'pgdm', label: 'POST GRADUATE DIPLOMA IN MANAGEMENT' },
-    { key: 'executive', label: 'PRODUCT GROWTH ENGINEERING' },
-    { key: 'diploma', label: 'DIPLOMA IN BUSINESS ADMINISTRATION' }
-  ];
+  { key: 'digital-growth-engineer', label: 'DIGITAL GROWTH ENGINEER' },
+  { key: 'post-graduate-diploma-in-management', label: 'POST GRADUATE DIPLOMA IN MANAGEMENT' },
+  { key: 'product-growth-engineering', label: 'PRODUCT GROWTH ENGINEERING' },
+  { key: 'diploma-in-business-administration', label: 'DIPLOMA IN BUSINESS ADMINISTRATION' },
+];
 
   // Filter to only show programs that exist in data
   const programMenuItems = allProgramMenuItems.filter(item =>
@@ -151,13 +153,13 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
                   }`}
               >
                 <a
-                  href={currentProgramData.link}
-                  onClick={(e) => {
+href={`/${currentProgramData.slug}`}
+onClick={(e) => {
                     e.preventDefault();
                     handleExploreMoreClick();
                   }}
                   className="flex flex-col items-center text-center"
-                  aria-label={`Explore more about ${currentProgramData.title}`}
+                  aria-label={`Explore more about ${currentProgramData.card.title}`}
                 >
                   <span className="text-xs text-gray-500 mb-4 tracking-wider font-medium">
                     ACADEMIC PROGRAMS
@@ -199,21 +201,21 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
                   <div className="flex-1 flex flex-col justify-start min-w-0">
                     <header>
                       <h2 className="text-xl lg:text-2xl font-bold mb-2 text-gray-900 leading-tight">
-                        {currentProgramData.title}
+                        {currentProgramData.card.title}
                       </h2>
 
                       <p className="text-red-600 text-sm font-semibold mb-4">
-                        {currentProgramData.duration}
+                        {currentProgramData.card.duration.type}
                       </p>
                     </header>
 
                     <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                      {currentProgramData.description}
+                      {currentProgramData.card.description}
                     </p>
 
                     {/* Statistics */}
                     <dl className="grid grid-cols-1 gap-3">
-                      {currentProgramData.stats?.map((stat, index) => (
+                      {currentProgramData.hero.stats?.map((stat, index) => (
                         <div
                           key={`${selectedProgram}-${index}`}
                           className="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0"
@@ -234,12 +236,12 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
                     <div className={`transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'
                       }`}>
                       <figure className="w-full h-90 relative overflow-hidden">
-                        {!imageErrors[selectedProgram] && currentProgramData.imageUrl ? (
+                        {!imageErrors[selectedProgram] && currentProgramData.card.image ? (
                           <div className="relative w-full h-full">
                             <Image
                               key={selectedProgram}
-                              src={currentProgramData.imageUrl}
-                              alt={currentProgramData.title}
+                              src={currentProgramData.card.image}
+                              alt={currentProgramData.card.title}
                               fill
                               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 256px, (max-width: 1280px) 288px, 320px"
                               className="object-cover"
@@ -266,7 +268,7 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
                                 </svg>
                               </div>
                               <h4 className="text-red-700 font-semibold text-sm leading-tight">
-                                {currentProgramData.title.split(' ').slice(0, 2).join(' ')}
+                                {currentProgramData.card.title.split(' ').slice(0, 2).join(' ')}
                               </h4>
                             </figcaption>
                           </div>
