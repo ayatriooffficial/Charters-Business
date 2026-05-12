@@ -1,13 +1,13 @@
 "use client";
-
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useState, useEffect, useRef, useCallback, memo } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import UserDropdown from "@/components/dashboard/UserDropdown";
-import AcademicsDropdown from "./AcademicsDropdown";
+const AcademicsDropdown = dynamic(() => import("./AcademicsDropdown"), { ssr: false });
 import { createPortal } from "react-dom";
-import ChartersInterviewAi from "../home/Chartersinterview_ai";
+const ChartersInterviewAi = dynamic(() => import("../home/Chartersinterview_ai"), { ssr: false });
 
 
 function Navbar() {

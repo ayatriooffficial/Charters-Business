@@ -673,9 +673,9 @@ const StrategicExpansion: React.FC = () => {
         {card.description}
       </span>
 
-      <span className="block text-lg font-semibold text-black">
-        {card.title}
-      </span>
+      <span className="block text-lg font-semibold text-black whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px] lg:max-w-[220px]">
+  {card.title}
+</span>
     </div>
   </div>
 </button>

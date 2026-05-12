@@ -16,11 +16,22 @@ const partnershipCards: PartnershipCard[] = [
     description:
       "We run custom AI training and capability programs for some of the world's largest engineering and product teams.",
     logos: [
-      { name: 'Google', src: 'https://cdn.jsdelivr.net/npm/simple-icons@11/icons/google.svg' },
-      { name: 'Amazon', src: 'https://cdn.jsdelivr.net/npm/simple-icons@11/icons/amazon.svg' },
-      { name: 'Meta', src: 'https://cdn.jsdelivr.net/npm/simple-icons@11/icons/meta.svg' },
-      { name: 'Microsoft', src: 'https://cdn.jsdelivr.net/npm/simple-icons@11/icons/microsoft.svg' },
-    ],
+  {
+    name: 'Google',
+    src: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg',
+  },
+  {
+    name: 'Amazon',
+    src: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg',
+  },
+  {
+    name: 'Meta',
+src: 'https://upload.wikimedia.org/wikipedia/commons/a/ab/Meta-Logo.png'  },
+  {
+    name: 'Microsoft',
+    src: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg',
+  },
+],
   },
   {
     id: 2,
@@ -28,22 +39,24 @@ const partnershipCards: PartnershipCard[] = [
     description:
       "We co-create programs with India's top institutions, blending academic rigor with AI-era industry relevance.",
     logos: [
-      { name: 'NPTEL', src: 'https://upload.wikimedia.org/wikipedia/en/8/87/NPTEL_logo.png' },
-      { name: 'IIT', src: 'https://upload.wikimedia.org/wikipedia/en/5/58/IIT_Kanpur_Logo.svg' },
-      { name: 'IIM', src: 'https://upload.wikimedia.org/wikipedia/en/e/e8/IIM_Ahmedabad_Logo.svg' },
-    ],
+  {
+    name: 'NPTEL',
+    src: 'https://nptel.ac.in/assets/shared/logo-m.jpg',
+  },
+  {
+  name: 'IIT',
+src: 'https://upload.wikimedia.org/wikipedia/en/thumb/1/1d/Indian_Institute_of_Technology_Roorkee_logo.svg/512px-Indian_Institute_of_Technology_Roorkee_logo.svg.png'},
+{
+  name: 'IIM',
+src: 'https://upload.wikimedia.org/wikipedia/en/5/5e/IIM_Ahmedabad_Logo.png'},
+],
   },
   {
     id: 3,
     title: 'Government AI training',
     description:
       "We partnered with ADGM Academy to train citizens of Abu Dhabi in the future of AI, extending impact beyond India.",
-    logos: [
-      { name: 'Google', src: 'https://cdn.jsdelivr.net/npm/simple-icons@11/icons/google.svg' },
-      { name: 'Amazon', src: 'https://cdn.jsdelivr.net/npm/simple-icons@11/icons/amazon.svg' },
-      { name: 'Meta', src: 'https://cdn.jsdelivr.net/npm/simple-icons@11/icons/meta.svg' },
-      { name: 'Microsoft', src: 'https://cdn.jsdelivr.net/npm/simple-icons@11/icons/microsoft.svg' },
-    ],
+    logos: [],
   },
 ];
 
@@ -90,20 +103,41 @@ className={`bg-[#F5F5F5] p-6 min-h-[220px] border-r border-gray-200 ${
                   {card.description}
                 </p>
 
-                <div className="border-t border-gray-200 pt-4 flex items-center gap-5 overflow-hidden">
-                  {card.logos.map((logo) => (
-                    <img
-                      key={logo.name}
-                      src={logo.src}
-                      alt={logo.name}
-                      className="h-6 w-auto object-contain"
-                    />
-                  ))}
-                </div>
+                <div className="border-t border-gray-200 pt-4 overflow-hidden">
+  <div className="flex w-max animate-logo-scroll gap-6">
+    {[...card.logos, ...card.logos].map((logo, index) => (
+      <div
+        key={`${card.id}-${logo.name}-${index}`}
+className="border border-gray-200 rounded-lg px-4 py-2 flex items-center justify-center min-w-[120px] h-[60px]"      >
+        <img
+          src={logo.src}
+          alt={logo.name}
+          className="h-10 w-auto object-contain"
+        />
+      </div>
+    ))}
+  </div>
+</div>
               </article>
             ))}
           </div>
         </div>
+        <style jsx>{`
+  @keyframes logoScroll {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-logo-scroll {
+    animation: logoScroll 12s linear infinite;
+  }
+`}</style>
     </section>
+    
   );
 }

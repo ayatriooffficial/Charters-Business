@@ -7,6 +7,7 @@ import HighlightText from "../shared/HighlightObserver";
 const immersionData = [
   {
     location: "India",
+flag: "https://flagcdn.com/w40/in.png", // India
     business: {
       imageSrc: "/images/tetr/indiaMarket.webp",
       title: "Business Immersions",
@@ -24,6 +25,7 @@ const immersionData = [
   },
   {
     location: "United States",
+flag: "https://flagcdn.com/w40/us.png", // US
     business: {
       imageSrc: "/images/tetr/usGoogle.webp",
       title: "Business Immersions",
@@ -41,6 +43,7 @@ const immersionData = [
   },
   {
     location: "Canada",
+flag: "https://flagcdn.com/w40/ca.png", // Canada
     business: {
       imageSrc: "/images/tetr/arGrobo.webp",
       title: "Business Immersions",
@@ -58,6 +61,7 @@ const immersionData = [
   },
   {
     location: "Saudi Arabia",
+flag: "https://flagcdn.com/w40/sa.png", // Saudi
     business: {
       imageSrc: "/images/tetr/dubaiEmirates.webp",
       title: "Business Immersions",
@@ -75,6 +79,7 @@ const immersionData = [
   },
   {
     location: "Dubai",
+flag: "https://flagcdn.com/w40/ae.png", // Dubai/UAE
     business: {
       imageSrc: "/images/tetr/dubaiEmirates.webp",
       title: "Business Immersions",
@@ -92,6 +97,7 @@ const immersionData = [
   },
   {
     location: "Qatar",
+flag: "https://flagcdn.com/w40/qa.png", // Qatar
     business: {
       imageSrc: "/images/tetr/dubaiEmirates.webp",
       title: "Business Immersions",
@@ -109,6 +115,7 @@ const immersionData = [
   },
   {
     location: "Singapore",
+    flag: "https://flagcdn.com/w40/sg.png", // Singapore
     business: {
       imageSrc: "/images/tetr/singSkyline.webp",
       title: "Business Immersions",
@@ -245,8 +252,16 @@ function WorldImmersion() {
                     aria-label={`${d.location} immersion`}
                     aria-pressed={isActive}
                   >
-                    {d.location}
-                  </button>
+<div className="flex items-center gap-2">
+  <img
+  src={d.flag}
+  alt={d.location}
+  className="w-5 h-5 rounded-sm object-cover"
+/>
+
+  <span>{d.location}</span>
+</div>                
+</button>
                 </li>
               );
             })}
@@ -271,16 +286,14 @@ function WorldImmersion() {
                     { type: "biz", data: active.business },
                     { type: "cul", data: active.cultural },
                     { type: "biz-repeat", data: active.business },
-                    { type: "cul-repeat", data: active.cultural },
                   ].map((item, index) => (
                     <article
                       key={`${item.type}-${activeIndex}`}
                       className="flex flex-col shrink-0 lg:shrink bg-white border-r border-t border-gray-200 min-h-[420px] lg:min-h-[480px] w-[85vw] sm:w-[calc(50%-0.25rem)] lg:flex-1 snap-center lg:snap-align-none hover:shadow-sm transition-shadow"
                     >
                       <div className="w-full mb-4 overflow-hidden">
-                        <div className="relative w-full h-34 bg-gray-50">
-                          <Image
-                            src={getSafeImageSrc(item.data.imageSrc)}
+<div className="relative w-full h-[250px] bg-gray-50">
+  <Image src={getSafeImageSrc(item.data.imageSrc)}
                             alt={`${item.data.title} — ${item.data.subtitle}`}
                             fill
                             sizes="160px"
