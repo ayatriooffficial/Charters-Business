@@ -198,14 +198,22 @@ const studentMembers: Student[] = [
 },
 ];
 
-function StudentModel() {
+interface StudentModelProps {
+  data?: {
+    students?: Student[];
+    categories?: StudentCategory[];
+  };
+}
+
+function StudentModel({ data }: StudentModelProps) {
+  const dynamicCategories = data?.categories || studentCategories;
+  const studentsData = data?.students || studentMembers;
   const [isAnimating, setIsAnimating] = useState(false);
   const [offsetPercent, setOffsetPercent] = useState(0);
   const [activeCategory, setActiveCategory] = useState<string>("jan");
   const [isTabSwitching, setIsTabSwitching] = useState(false);
   const slidesContainerRef = useRef<HTMLDivElement>(null);
-
-  const filteredStudents = studentMembers.filter(
+  const filteredStudents = studentsData.filter(
     (s) => s.category === activeCategory
   );
 
@@ -279,7 +287,7 @@ function StudentModel() {
           {/* Tabs */}
           <div aria-label="Student batch categories">
             <ul className="flex overflow-scroll scrollbar-hide sm:justify-center gap-1 sm:gap-3 md:gap-6 border-b border-gray-300">
-              {studentCategories.map((category) => (
+              {dynamicCategories.map((category) => (
                 <li key={category.id}>
                   <button
                     onClick={() => handleCategoryChange(category.id)}

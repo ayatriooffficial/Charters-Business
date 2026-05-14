@@ -225,14 +225,22 @@ const facultyMembers: Faculty[] = [
   },
 ];
 
-function FacultyModel() {
+interface FacultyModelProps {
+  data?: {
+    faculty?: Faculty[];
+    categories?: FacultyCategory[];
+  };
+}
+
+function FacultyModel({ data }: FacultyModelProps) {
   const [isAnimating, setIsAnimating] = useState(false);
   const [offsetPercent, setOffsetPercent] = useState(0);
   const [activeCategory, setActiveCategory] = useState<string>("leadership");
   const [isTabSwitching, setIsTabSwitching] = useState(false);
   const slidesContainerRef = useRef<HTMLDivElement>(null);
-
-  const filteredFaculty = facultyMembers.filter(
+  const dynamicCategories = data?.categories || facultyCategories;
+  const facultyData = data?.faculty || facultyMembers;
+  const filteredFaculty = facultyData.filter(
     (faculty) => faculty.category === activeCategory
   );
 
@@ -336,7 +344,7 @@ function FacultyModel() {
           {/* Category Tabs */}
           <div aria-label="Faculty categories">
             <ul className="flex overflow-scroll scrollbar-hide sm:justify-center gap-1 sm:gap-3 md:gap-6 border-b border-gray-300">
-              {facultyCategories.map((category) => (
+              {dynamicCategories.map((category) => (
                 <li key={category.id}>
                   <button
                     onClick={() => handleCategoryChange(category.id)}

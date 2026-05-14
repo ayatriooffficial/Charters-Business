@@ -18,11 +18,16 @@ interface LearningOutcomeData {
   images: ImageData[];
 }
 
-function LearningOutcomesComponent() {
+interface LearningOutcomesProps {
+  data?: any;
+}
+
+function LearningOutcomes({ data }: LearningOutcomesProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const contentData: LearningOutcomeData[] = [
+  const staticContentData: LearningOutcomeData[] = [
+    
     {
       title: 'Data-driven decision making',
       description:
@@ -232,6 +237,9 @@ function LearningOutcomesComponent() {
       ],
     },
   ];
+  const contentData: LearningOutcomeData[] = Array.isArray(data)
+  ? data
+  : staticContentData;
 
   const handleMenuClick = (index: number) => {
     if (index === activeIndex) return;
@@ -244,7 +252,7 @@ function LearningOutcomesComponent() {
   };
 
   const outcomeData = contentData[activeIndex];
-
+  
   return (
     <section className="bg-white text-black pt-16 isolate">
       <div className=" max-w-7xl mx-auto">
@@ -279,7 +287,7 @@ function LearningOutcomesComponent() {
               </div>
 
               <nav className="" aria-label="Learning outcomes navigation">
-                {contentData.map((item, index) => (
+                {contentData.map((item: LearningOutcomeData, index: number) => (
                   <button
                     key={item.title}
                     onClick={() => handleMenuClick(index)}
@@ -299,7 +307,7 @@ function LearningOutcomesComponent() {
             {/* Mobile Menu */}
             <div className="lg:hidden overflow-x-auto scrollbar-hide">
               <div className="flex min-w-max">
-                {contentData.map((item, index) => (
+                {contentData.map((item: LearningOutcomeData, index: number) => (
                   <button
                     key={item.title}
                     onClick={() => handleMenuClick(index)}
@@ -336,7 +344,7 @@ function LearningOutcomesComponent() {
 
                   {/* Learning Objectives */}
                   <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
-                    {outcomeData.outcomes.map((outcome, idx) => (
+                    {outcomeData.outcomes.map((outcome: string, idx: number) => (
                       <li key={idx} className="flex items-start space-x-2 sm:space-x-3">
                         <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#B30437] rounded-full mt-1.5 sm:mt-2 flex-shrink-0" />
                         <span className="text-gray-700 leading-relaxed text-xs sm:text-sm md:text-base">{outcome}</span>
@@ -347,7 +355,7 @@ function LearningOutcomesComponent() {
 
                 {/* Images */}
                 <div className="flex flex-row">
-                  {outcomeData.images.slice(0, 3).map((image, idx) => (
+                  {outcomeData.images.slice(0, 3).map((image: ImageData, idx: number) => (
                     <div key={idx} className="flex-1 space-y-2 sm:space-y-3 border-r border-gray-200 border-t last:border-r-0">
                       <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
                         <Image
@@ -372,4 +380,4 @@ function LearningOutcomesComponent() {
   );
 }
 
-export default memo(LearningOutcomesComponent);
+export default memo(LearningOutcomes);

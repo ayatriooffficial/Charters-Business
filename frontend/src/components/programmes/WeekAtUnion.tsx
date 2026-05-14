@@ -5,7 +5,25 @@ import Image from "next/image";
 import { getCloudinaryUrl } from "@/lib/cloudinary";
 import HighlightText from "../shared/HighlightObserver";
 
-const WeekAtTetr = () => {
+interface WeekAtTetrProps {
+  data?: {
+    imageSrc?: string;
+    title?: string;
+    subtitle?: string;
+  };
+}
+
+const WeekAtTetr = ({ data }: WeekAtTetrProps) => {
+  const timetableImage =
+  data?.imageSrc ||
+  "charters-business/images/weekattetr/ug-timetable";
+
+const heading =
+  data?.title || "What's a Week at Charters Business Like?";
+
+const subtitle =
+  data?.subtitle ||
+  "Start your day with ambition and end it with impact. At Charters, every week pushes boundaries.";
   return (
     <>
       {/* Skip Navigation Link for Accessibility */}
@@ -28,15 +46,12 @@ const WeekAtTetr = () => {
               id="week-heading"
               className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-black mb-3 sm:mb-4 text-center"
             >
-              What&apos;s a{" "}
               <HighlightText className="font-bold">
-                Week at Charters Business
-              </HighlightText>{" "}
-              Like?
+                {heading}
+              </HighlightText>
             </h2>
             <p className="text-gray-700 text-sm md:text-base lg:text-lg  ">
-              Start your day with ambition and end it with impact. At Charters ,
-              every week pushes boundaries.
+              {subtitle}
             </p>
           </div>
 
@@ -52,7 +67,7 @@ const WeekAtTetr = () => {
             <figure className="relative w-full ">
               <Image
                 src={getCloudinaryUrl(
-                  "charters-business/images/weekattetr/ug-timetable",
+                  timetableImage,
                   {
                     width: 1200,
                     quality: "auto",

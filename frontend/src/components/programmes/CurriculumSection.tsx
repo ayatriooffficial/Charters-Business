@@ -5,7 +5,11 @@ import { Plus, Sun } from "lucide-react";
 import Image from "next/image";
 import HighlightText from "../shared/HighlightObserver";
 
-const CurriculumSection = () => {
+interface CurriculumSectionProps {
+  data?: any;
+}
+
+const CurriculumSection = ({ data }: CurriculumSectionProps) => {
   const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>(
     {},
   );
@@ -19,7 +23,7 @@ const CurriculumSection = () => {
   const [mounted, setMounted] = useState(false);
 
   // Image mapping for each country/term
-  const imageMapping = {
+  const staticImageMapping = {
     dubai: "/images/curriculumsection/dubaicurriculum.webp",
     india: "/images/curriculumsection/indiacurriculum.webp",
     singapore: "/images/tetr/singSkyline.webp",
@@ -29,6 +33,7 @@ const CurriculumSection = () => {
     europe: "/images/curriculumsection/europe.webp",
     internship: "/images/curriculumsection/internship.webp",
   };
+  const imageMapping = data?.imageMapping || staticImageMapping;
 
   const toggleExpand = (id: string) => {
     setExpandedItems((prev) => ({
@@ -69,7 +74,7 @@ const CurriculumSection = () => {
     }
   }, [mounted]);
 
-  const curriculumItems = [
+  const staticCurriculumItems = [
     {
       id: "dubai",
       term: "TERM 1",
@@ -179,6 +184,7 @@ const CurriculumSection = () => {
       badges: [],
     },
   ];
+  const curriculumItems = data?.items || staticCurriculumItems;
 
   return (
     <section
@@ -238,7 +244,7 @@ const CurriculumSection = () => {
               role="list"
               aria-label="Curriculum terms and locations"
             >
-              {curriculumItems.map((item , index) => (
+              {curriculumItems.map((item: any, index: number) => (
                 <div key={item.id} role="listitem">
                   {/* Main curriculum item */}
                   <article
@@ -263,7 +269,7 @@ const CurriculumSection = () => {
                                 {item.title}
                               </h3>
                               <div className="flex flex-wrap gap-2">
-                                {item.badges.map((badge, badgeIndex) => (
+                                {item.badges.map((badge: any, badgeIndex: number) => (
                                   <span
                                     key={badgeIndex}
                                     className={badge.className}

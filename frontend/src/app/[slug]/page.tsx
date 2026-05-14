@@ -158,28 +158,29 @@ export default async function ProgrammePage({
           <TrackRecord data={programme.trackRecord} />
         </SectionWrapper>
         <SectionWrapper hideCorners={"all"}>
-          <CurriculumSection />
+          <CurriculumSection data={programme.curriculumSection} />
         </SectionWrapper>
         <SectionWrapper hideCorners={"all"}>
           <AIDegreeProgram data={programme.degreeProgram} />
         </SectionWrapper>
         <SectionWrapper hideCorners={"all"}>
-          <WeekAtTetr />
+          <WeekAtTetr data={programme.weekAtUnion} />
+
         </SectionWrapper>
         <SectionWrapper hideCorners={"all"} borderBottom={false}>
-          <FacultyModel />
+          <FacultyModel data={programme.faculty} />
         </SectionWrapper>
         <SectionWrapper hideCorners={"all"} borderBottom={false}>
           <LearnApplyReflectRepeat data={programme.learnApply} />
         </SectionWrapper>
         <SectionWrapper hideCorners={"all"} borderBottom={false} >
-          <StudentModel />
+          <StudentModel data={programme.students} />
         </SectionWrapper>
         <SectionWrapper hideCorners={"all"}>
-          <LearningOutcomes />
+          <LearningOutcomes data={programme.learningOutcomes} />
         </SectionWrapper>
         <SectionWrapper hideCorners={"all"}>
-          <PricingTabs />
+          <PricingTabs data={programme.pricing} />
         </SectionWrapper>
         <SectionWrapper hideCorners={"all"}>
           <ScholarshipsSection scholarships={programme.scholarships} />
