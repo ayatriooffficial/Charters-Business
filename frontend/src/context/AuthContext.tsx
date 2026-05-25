@@ -46,12 +46,14 @@ interface AuthContextType {
   counselings: Counseling[];
   token: string | null;
   isLoading: boolean;
+  authReady: boolean;
   login: (email: string, password: string) => Promise<string | undefined>;
   loginWithPhone: (idToken: string) => Promise<string | undefined>;
   signupWithPhone: (
     idToken: string,
     name: string,
     email: string,
+    password: string,
     program?: string
   ) => Promise<string | undefined>;
   logout: () => void;
@@ -141,6 +143,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [counselings, setCounselings] = useState<Counseling[]>([]);
   const [token, setToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  //add
+  const [authReady, setAuthReady] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [redirectCode, setRedirectCode] = useState<string | null>(null);
   const [isCodeGenerated, setIsCodeGenerated] = useState(false);
@@ -164,6 +168,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setUser(null);
         setToken(null);
         setIsLoading(false);
+        setAuthReady(true);
         return;
       }
 
@@ -222,8 +227,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setUser(null);
         setToken(null);
       } finally {
-        setIsLoading(false);
-      }
+        setIsLoading(false); setAuthReady(true);
+}
+      
     };
 
     initAuth();
@@ -418,13 +424,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       idToken: string,
       name: string,
       email: string,
+      password: string,
       program?: string
     ) => {
       const response = await fetch(`${API_V1}/auth/firebase-signup`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ idToken, name, email, program }),
+        body: JSON.stringify({ idToken, name, email, password, program }),
       });
 
       const data = await readJsonSafely<LoginPayload & { message?: string }>(
@@ -450,33 +457,29 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   );
 
   const quickLogin = useCallback(async () => {
-    try {
-      const response = await fetch(`${API_V1}/auth/quick-login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-      });
+    // Quick login removed per security requirements (do not auto auth with cookies)
+    throw new Error("Quick login disabled");
+  }, []);
 
-      const data = await readJsonSafely<LoginPayload & { message?: string }>(
-        response,
-      );
+   const generateRedirectCode = useCallback(async () => {
+    // 1. Sync fallback: read token from state, localStorage, or cookie
+    let activeToken = 
+      token || 
+      (typeof window !== 'undefined' 
+        ? (localStorage.getItem("token") || getAuthToken()) 
+        : null);
 
-      if (!response.ok || !data) {
-        throw new Error(data?.message || "Quick login failed");
-      }
+        if (!activeToken) {
+    activeToken =
+      token ||
+      getAuthToken();
+  }
 
-      return finalizeLogin(data);
-    } catch (error) {
-      throw error;
-    }
-  }, [finalizeLogin]);
-
-  const generateRedirectCode = useCallback(async () => {
-    if (token === "local-dev-token") {
+    if (activeToken === "local-dev-token") {
       console.warn("Skipping redirect code generation in local bypass mode");
       return null;
     }
-    if (!token) {
+    if (!activeToken) {
       console.warn("No auth token available for redirect-code generation");
       return null;
     }
@@ -485,7 +488,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${activeToken}`, // 2. Pass the activeToken
         },
         credentials: "include",
       });
@@ -544,6 +547,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       console.error("Exchanging code failed:", error);
     } finally {
       setIsLoading(false);
+      setAuthReady(true);
     }
   }, [finalizeLogin]);
 
@@ -635,6 +639,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       counselings,
       token,
       isLoading,
+      authReady,
       login,
       loginWithPhone,
       signupWithPhone,
@@ -656,6 +661,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       counselings,
       token,
       isLoading,
+      authReady,
       login,
       loginWithPhone,
       signupWithPhone,

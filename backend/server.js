@@ -19,6 +19,32 @@ const startServer = async () => {
     await connectDB();
     console.log("MongoDB connected");
 
+    // Auto-seed default Admin user if not present
+    try {
+      const adminPhone = process.env.SEED_ADMIN_PHONE || "+919999999999";
+      const adminPassword = process.env.SEED_ADMIN_PASSWORD || "SecureAdmin123!";
+      
+      const User = (await import("./src/models/User.model.js")).default;
+      const adminExists = await User.findOne({ phoneNumber: adminPhone });
+      if (!adminExists) {
+        console.log(`[Auto-Seed] Seeding default Admin user in database for number: ${adminPhone}...`);
+        await User.create({
+          name: "System Admin",
+          email: "admin@chartersbusiness.com",
+          phoneNumber: adminPhone,
+          password: adminPassword,
+          role: "admin",
+          isFirstLogin: false,
+          status: "active"
+        });
+        console.log("[Auto-Seed] Default Admin user seeded successfully!");
+      } else {
+        console.log(`[Auto-Seed] Admin user (${adminPhone}) already exists in database.`);
+      }
+    } catch (err) {
+      console.error("[Auto-Seed] Failed to seed default Admin user:", err);
+    }
+
     const server = app.listen(PORT, () => {
       console.log(
         `Server running in ${process.env.NODE_ENV || "development"} mode on port ${PORT}`

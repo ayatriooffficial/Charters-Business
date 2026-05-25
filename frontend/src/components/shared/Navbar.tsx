@@ -29,7 +29,7 @@ function Navbar() {
   const [msgVisible, setMsgVisible] = useState(true);
 
 
-  const { user } = useAuth();
+  const { user, navigateToRemoteDashboard } = useAuth();
 
   const headerRef = useRef<HTMLDivElement>(null);
   const secondaryRef = useRef<HTMLDivElement>(null);
@@ -628,23 +628,27 @@ function Navbar() {
                   {user ? (
                     <>
                       <li>
-                        <a
-                          href={dashboardUrl}
-                          className="block py-2 text-xs text-gray-600 hover:text-[#B30437]"
-                          onClick={() => setIsMobileMenuOpen(false)}
+                        <button
+                          className="block w-full text-left py-2 text-xs text-gray-600 hover:text-[#B30437]"
+                          onClick={() => { 
+                            setIsMobileMenuOpen(false); 
+                            navigateToRemoteDashboard(dashboardUrl);
+                          }}
                         >
                           {dashboardText}
-                        </a>
+                        </button>
                       </li>
                       {user.role !== "admin" && user.role !== "recruiter" && (
                         <li>
-                          <a
-                            href="/dashboard/profile"
-                            className="block py-2 text-xs text-gray-600 hover:text-[#B30437]"
-                            onClick={() => setIsMobileMenuOpen(false)}
+                          <button
+                            className="block w-full text-left py-2 text-xs text-gray-600 hover:text-[#B30437]"
+                            onClick={() => { 
+                              setIsMobileMenuOpen(false); 
+                              navigateToRemoteDashboard('/profile');
+                            }}
                           >
                             Profile
-                          </a>
+                          </button>
                         </li>
                       )}
                     </>

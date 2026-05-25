@@ -132,22 +132,36 @@ async function markLastLogin(user) {
   await User.updateOne({ _id: user._id }, { $set: { lastLogin: loginTime } });
 }
 
+// Check user exists
+export const checkUserExists = asyncHandler(async (req, res) => {
+  const { phoneNumber } = req.body;
+  if (!phoneNumber) {
+    throw new ApiError(400, "Please provide phone number");
+  }
+
+  const user = await User.findOne({ phoneNumber });
+  res.status(200).json(new ApiResponse(200, { exists: !!user }, "User check complete"));
+});
+
 // Login
 export const login = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
+  const { email, phoneNumber, password } = req.body;
+  const identifier = email || phoneNumber;
 
   // Validation
-  if (!email || !password) {
-    throw new ApiError(400, "Please provide email and password");
+  if (!identifier || !password) {
+    throw new ApiError(400, "Please provide email/phone and password");
   }
 
   // Find user with password field
-  const user = await User.findOne({ email })
+  const user = await User.findOne({
+    $or: [{ email: identifier }, { phoneNumber: identifier }]
+  })
     .select("+password +isFirstLogin")
     .populate("applicationId");
 
   if (!user) {
-    throw new ApiError(401, "Invalid email or password");
+    throw new ApiError(401, "Invalid credentials");
   }
 
   // Setting id for code generation
@@ -156,7 +170,7 @@ export const login = asyncHandler(async (req, res) => {
   // Check password
   const isPasswordMatch = await user.comparePassword(password);
   if (!isPasswordMatch) {
-    throw new ApiError(401, "Invalid email or password");
+    throw new ApiError(401, "Invalid credentials");
   }
 
   // Check if account is active
@@ -450,12 +464,12 @@ export const firebaseLogin = asyncHandler(async (req, res) => {
 
 // Firebase OTP Signup
 export const firebaseSignup = asyncHandler(async (req, res) => {
-  const { idToken, name, email, program } = req.body;
+  const { idToken, name, email, program, password } = req.body;
 
-  if (!idToken || !name || !email || !program) {
+  if (!idToken || !name || !email || !program || !password) {
     throw new ApiError(
       400,
-      "Please provide ID token, name, email, and course selection",
+      "Please provide ID token, name, email, password, and course selection",
     );
   }
 
@@ -481,7 +495,7 @@ export const firebaseSignup = asyncHandler(async (req, res) => {
     const user = await User.create({
       name,
       email,
-      password: User.generateRandomPassword(), // Dummy password
+      password,
       phoneNumber: phone_number,
       courseInterestedIn: program,
       lastLogin: new Date(),
@@ -522,89 +536,8 @@ export const firebaseSignup = asyncHandler(async (req, res) => {
   }
 });
 
-// Quick Login (Trusted Device)
-export const quickLogin = asyncHandler(async (req, res) => {
-  const trustedCookie = req.cookies && req.cookies["trustedDevice"];
-  if (!trustedCookie) {
-    throw new ApiError(401, "No trusted device found");
-  }
+// Quick Login removed per security requirements
 
-  const [userId, plainToken] = trustedCookie.split(":");
-  if (!userId || !plainToken) {
-    clearTrustedDeviceCookie(req, res);
-    throw new ApiError(401, "Invalid trusted device token format");
-  }
-
-  const user = await User.findById(userId)
-    .select("+isFirstLogin")
-    .populate("applicationId");
-
-  if (!user || !isUserActive(user)) {
-    clearTrustedDeviceCookie(req, res);
-    throw new ApiError(401, "Account not found or inactive");
-  }
-
-  // Validate trusted device
-  let matchedDevice = null;
-  for (const device of user.trustedDevices) {
-    const isMatch = await bcrypt.compare(plainToken, device.tokenHash);
-    if (isMatch) {
-      matchedDevice = device;
-      break;
-    }
-  }
-
-  if (!matchedDevice) {
-    clearTrustedDeviceCookie(req, res);
-    throw new ApiError(401, "Trusted device verification failed");
-  }
-
-  // Update last used
-  matchedDevice.lastUsed = new Date();
-
-  // Re-roll token for extra security? (Optional, skipping to preserve simplicity and prevent race conditions)
-  await markLastLogin(user);
-
-  // Generate new standard session token
-  const token = user.generateToken();
-  setAuthCookie(req, res, token);
-
-  const applications = await Application.find({ userId: user._id })
-    .select(
-      "applicationNumber status program counselingDate counselingTime createdAt",
-    )
-    .sort({ createdAt: -1 });
-
-  const lastJobApplication = await JobApplication.findOne({ user: user._id })
-    .sort("-createdAt")
-    .select("resume createdAt")
-    .lean();
-
-  res.status(200).json(
-    new ApiResponse(
-      200,
-      {
-        user: {
-          id: user._id,
-          name: user.name,
-          email: user.email,
-          avatar: user.avatar,
-          courseInterestedIn: user.courseInterestedIn || null,
-          role: user.role,
-          lastLogin: user.lastLogin,
-          isFirstLogin: user.isFirstLogin,
-          lastResumeUrl: lastJobApplication?.resume || null,
-          lastResumeUploadedAt: lastJobApplication?.createdAt || null,
-        },
-        token,
-        applications,
-        application: applications[0] || null,
-        hasTrustedDevice: true,
-      },
-      "Quick login successful",
-    ),
-  );
-});
 
 // Generate Redirect Code
 export const redirectCode = asyncHandler(async (req, res) => {

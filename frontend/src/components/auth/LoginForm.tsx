@@ -14,7 +14,7 @@ export default function LoginForm({
   mode?: LoginFormMode;
 }) {
   const isSignup = mode === 'signup';
-  const { user, isLoading, quickLogin } = useAuth();
+  const { user, isLoading, applications, navigateToRemoteDashboard } = useAuth();
   const router = useRouter();
   const [isQuickLoggingIn, setIsQuickLoggingIn] = useState(false);
   const hasAttemptedQuickLogin = useRef(false);
@@ -22,26 +22,25 @@ export default function LoginForm({
   useEffect(() => {
     if (!isLoading && user) {
       if (user.role === 'admin' || user.role === 'recruiter') {
-        router.replace('/admin/dashboard');
+        navigateToRemoteDashboard('/admin/dashboard');
       } else {
-        router.replace('/');
+        const isApproved = (applications || []).some((app) => app.status === 'approved');
+        if (!isApproved) {
+          navigateToRemoteDashboard('/dashboard');
+        } else {
+          router.push('/dashboard');
+        }
       }
-    } else if (!isLoading && !user && !hasAttemptedQuickLogin.current && !isQuickLoggingIn) {
-      hasAttemptedQuickLogin.current = true;
-      setIsQuickLoggingIn(true);
-      quickLogin().catch(() => {
-        setIsQuickLoggingIn(false);
-      });
     }
-  }, [user, isLoading, router, quickLogin, isQuickLoggingIn]);
+  }, [user, isLoading, applications, navigateToRemoteDashboard, router]);
 
-  if (isLoading || user || isQuickLoggingIn) {
+  if (isLoading || user) {
     return (
       <div className="bg-white p-6 sm:p-8 flex items-center justify-center min-h-[400px]">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#B30437] mx-auto mb-4"></div>
           <p className="text-gray-600">
-            {user ? 'Redirecting...' : isQuickLoggingIn ? 'Quick Login in progress...' : 'Verifying session...'}
+            {user ? 'Redirecting...' : 'Verifying session...'}
           </p>
         </div>
       </div>
