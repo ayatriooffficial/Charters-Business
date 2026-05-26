@@ -1,6 +1,7 @@
 import programsData from "@/lib/data/programs.json";
 import institute from "@/lib/data/institute.json";
 import faculty from "@/lib/data/faculty.json";
+import homeData from "@/lib/data/home.json";
 
 const programs = programsData.programs;
 
@@ -123,19 +124,26 @@ ${program.name} is conducted in **${program.format}** format.
 /* ---------------- AI SAFE REPLY ---------------- */
 async function getAIReply(question, program) {
   try {
-    const programNames = programs.map((p) => p.name).join(", ");
+    const programFocus = program 
+      ? `The user is specifically asking about/referring to the following program: ${program.name}. Prioritize details of this program in your response while answering.`
+      : "";
 
-    const context = program
-      ? `
-Program: ${program.name}
-Duration: ${program.duration}
-Format: ${program.format}
-Global Exposure: ${program.global_exposure?.join(", ")}
-`
-      : `
-Institute Overview: ${institute.overview}
-Global Presence: ${institute.global_presence.join(", ")}
-Faculty: ${faculty.faculty_overview}
+    const context = `
+You have access to the complete database of Charters Union. Use ONLY the following details to answer the user's questions. Do not make up, assume, or invent details that are not present in this data.
+
+### 🎓 PROGRAMS & COURSES AVAILABLE
+${JSON.stringify(programsData.programs, null, 2)}
+
+### 🏢 INSTITUTE OVERVIEW & DETAILS
+${JSON.stringify(institute, null, 2)}
+
+### 🎓 FACULTY, MENTORSHIP & NETWORKING
+${JSON.stringify(faculty, null, 2)}
+
+### 📈 INSTITUTE-WIDE PLACEMENT & HOME PAGE STATS
+${JSON.stringify(homeData, null, 2)}
+
+${programFocus}
 `;
 
     const res = await fetch(
@@ -152,30 +160,25 @@ Faculty: ${faculty.faculty_overview}
             {
               role: "system",
               content: `
-You are an admission counselor.
-
-
+You are Ragini, the AI Admission Counselor for Charters Union.
 
 STRICT RULES:
-• Only answer using provided data
-• Do NOT invent courses
-• Keep replies structured
-• Use headings (##)
-• Highlight important values using **bold**
-• If availability asked → start with YES or NO
-• If info missing → say:
+• Only answer using the provided context/data.
+• Do NOT invent courses or program options not listed in the data.
+• Keep replies structured and easy to read.
+• Use headings (##) and subheadings (###) for structure.
+• Highlight important values (like fees, CTC, durations, percentages) using **bold**.
+• If asked about availability/options, answer clearly.
+• If information is not available in the context, politely explain:
 "I can help with programs, fees, placements, or admissions."
 
 STRICT FORMAT RULES:
-
 • Use markdown headings:
    ## Main Heading
    ### Sub Heading
-
 • Use bullet lists:
    - Point 1
    - Point 2
-
 • Do NOT write plain text headings.
 • Keep structure clean.
 
