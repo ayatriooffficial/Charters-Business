@@ -1,11 +1,23 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import dynamic from "next/dynamic";
+const CookieConsent = dynamic(
+  () => import("@/components/shared/CookieConsent"),
+  { ssr: true }
+);
 
-import CookieConsent from "@/components/shared/CookieConsent";
-import GoogleTagManager from "@/components/shared/GoogleTagManager";
+const GoogleTagManager = dynamic(
+  () => import("@/components/shared/GoogleTagManager"),
+  { ssr: true }
+);
+
+const ClientOnlyComponents = dynamic(
+  () => import("@/components/client/ClientOnlyComponents"),
+  { ssr: true }
+);
+
 import Providers from "./providers";
-import ClientOnlyComponents from "@/components/client/ClientOnlyComponents";
 
 const inter = Inter({
   subsets: ["latin"],

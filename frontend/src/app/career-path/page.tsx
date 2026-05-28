@@ -1,9 +1,10 @@
 "use client";
-
+import dynamic from "next/dynamic";
 import { useMemo, useState, useEffect } from "react";
 import { createPortal } from "react-dom";
-import ChartersInterviewAi from "@/components/home/Chartersinterview_ai";
-
+const ChartersInterviewAi = dynamic(
+  () => import("@/components/home/Chartersinterview_ai")
+);
 type Option = {
   label: string;
   description?: string;
@@ -936,3 +937,4 @@ function ReportPage({ score, answers }: { score: number; answers: Record<string,
     </>
   );
 }
+

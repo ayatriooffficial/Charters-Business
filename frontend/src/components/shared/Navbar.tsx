@@ -7,6 +7,7 @@ import { useAuth } from "@/context/AuthContext";
 import UserDropdown from "@/components/dashboard/UserDropdown";
 const AcademicsDropdown = dynamic(() => import("./AcademicsDropdown"), { ssr: false });
 import { createPortal } from "react-dom";
+
 const ChartersInterviewAi = dynamic(() => import("../home/Chartersinterview_ai"), { ssr: false });
 
 
@@ -404,12 +405,7 @@ function Navbar() {
 
               {/* Mobile Apply Button and Menu */}
               <div className="lg:hidden flex items-center gap-2">
-                <a
-                  href="/apply"
-                  className="px-3 py-1.5 text-xs font-semibold text-white bg-[#B30437] hover:bg-[#8B0329] rounded-md transition-colors"
-                >
-                  APPLY
-                </a>
+                
                 <button
                   className="p-2 rounded-md hover:bg-gray-100/60 transition-colors duration-150 relative z-[9999]"
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

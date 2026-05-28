@@ -8,13 +8,30 @@ import {
   websiteSchema,
 } from "@/lib/schema";
 import { Metadata } from "next";
-import ChartersUnionHero from "@/components/home/ChartersUnionHero";
-import SectionWrapper from "@/components/shared/SectionWrapper";
-import PlacementReport from "@/components/home/PlacementReport";
-import OurProgrammesSection from "@/components/home/OurProgrammesSection";
-import BuiltByHarvard from "@/components/home/BuiltByHarvard";
-import HomeBottomCardsCarousel from "@/components/home/HomeBottomCardsCarousel";
 
+const ChartersUnionHero = dynamic(
+  () => import("@/components/home/ChartersUnionHero")
+);
+
+const SectionWrapper = dynamic(
+  () => import("@/components/shared/SectionWrapper")
+);
+
+const PlacementReport = dynamic(
+  () => import("@/components/home/PlacementReport")
+);
+
+const OurProgrammesSection = dynamic(
+  () => import("@/components/home/OurProgrammesSection")
+);
+
+const BuiltByHarvard = dynamic(
+  () => import("@/components/home/BuiltByHarvard")
+);
+
+const HomeBottomCardsCarousel = dynamic(
+  () => import("@/components/home/HomeBottomCardsCarousel")
+);
 export const metadata: Metadata = {
   title: {
     absolute: "Job-ready Accounting Course | 90% Placement Rate | 7 Months | Charter's Union",
