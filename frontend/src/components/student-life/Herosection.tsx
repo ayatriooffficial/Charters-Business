@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { scholarshipBanner } from "@/data/applyPageData";
 import { generateBreadcrumbSchema } from "@/lib/schema";
-
+import Breadcrumbs from "../shared/Breadcrumbs";
 type Stat = { value: string; label: string; detail: string; gradient?: string };
 const HERO_HEADING = "Accelerate Your Career Growth";
 const HERO_TAGLINE =
@@ -46,9 +46,11 @@ export default function Hersection() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
             />
             <div role="banner" className="w-full mt-10">
+                 <Breadcrumbs compact/>
                 <div className="mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 md:py-8">
+                   
                     <section className="flex flex-col gap-6 sm:gap-10 md:flex-row md:items-center">
-
+                    
                         {/* Left*/}
                         <section className="flex flex-1 flex-col justify-center">
                             <h1

@@ -20,7 +20,11 @@ function formatSegmentLabel(segment: string) {
     .join(' ');
 }
 
-export default function Breadcrumbs() {
+export default function Breadcrumbs({
+  compact = false,
+}: {
+  compact?: boolean;
+}) {
 
   const pathname = usePathname() || '/';
   if (pathname === '/') return null;

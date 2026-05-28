@@ -3,13 +3,23 @@
 import Image from 'next/image';
 import { HeroData } from '@/data/programmes';
 import Link from 'next/link';
-
+import { useAuth } from '@/context/AuthContext';
+import dynamic from "next/dynamic";
+import Breadcrumbs from '@/components/shared/Breadcrumbs';
+ const ChartersInterviewAi = dynamic(
+  () => import("../home/Chartersinterview_ai"),
+  { ssr: false }
+);
+import { useState } from "react";
 interface ProgramHeroProps {
   data: HeroData;
   programmeSlug: string;
 }
 
 const ProgramHero = ({ data, programmeSlug }: ProgramHeroProps) => {
+ 
+const { user, navigateToRemoteDashboard } = useAuth();
+const [showInterviewAI, setShowInterviewAI] = useState(false);
   return (
     <div
       className="mx-[1%] sm:mx-[2%] md:mx-[3%] relative z-[5] mt-10 bg-white pb-4 sm:pb-6 md:pb-8"
@@ -20,6 +30,8 @@ const ProgramHero = ({ data, programmeSlug }: ProgramHeroProps) => {
         <div className="flex flex-col-reverse  xl:flex-row gap-8 lg:gap-12 items-center">
           {/* Left Content Section */}
           <div className="flex-1 space-y-4 w-full">
+           
+              <Breadcrumbs compact />
             <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-3">
               {data.categoryLabel}
             </p>
@@ -75,20 +87,35 @@ const ProgramHero = ({ data, programmeSlug }: ProgramHeroProps) => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mt-6 sm:mt-8">
-              <Link
-                href={`/apply?type=application&programme=${programmeSlug}`}
-                className="flex items-center justify-center gap-2 bg-[#B30437] hover:bg-[#8B0329] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm font-semibold transition-all duration-300 transform hover:scale-105 flex-shrink-0"
-              >
-                <span>Apply Now</span>
-              </Link>
+            <button
+  onClick={() => {
+    if (user) {
+      navigateToRemoteDashboard("/dashboard");
+    } else {
+      setShowInterviewAI(true);
+      document.body.style.overflow = "hidden";
+    }
+  }}
+  className="flex items-center justify-center gap-2 bg-[#B30437] hover:bg-[#8B0329] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm font-semibold transition-all duration-300 transform hover:scale-105 flex-shrink-0"
+>
+  <span>Apply Now</span>
+</button>
 
-              <Link
-                href={`/apply?type=counseling&programme=${programmeSlug}`}
-                className="flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-[#B30437] px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg border-2 border-[#B30437] text-sm font-semibold transition-all duration-300 transform hover:scale-105 flex-shrink-0"
-              >
-                <span>Book Counseling</span>
-              </Link>
+ <button
+  onClick={() => {
+    if (user) {
+      navigateToRemoteDashboard("/dashboard");
+    } else {
+      setShowInterviewAI(true);
+      document.body.style.overflow = "hidden";
+    }
+  }}
+  className="flex items-center justify-center gap-2 bg-[#B30437] hover:bg-[#8B0329] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm font-semibold transition-all duration-300 transform hover:scale-105 flex-shrink-0"
+>
+  <span>Book Counseling</span>
+</button>
 
+             
               <button
                 type="button"
                 className="flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-900 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm font-semibold transition-all duration-300 flex-shrink-0"
@@ -153,6 +180,25 @@ const ProgramHero = ({ data, programmeSlug }: ProgramHeroProps) => {
           </div>
         </div>
       </div>
+            {showInterviewAI && (
+        <div className="fixed inset-0 flex items-center mt-14 justify-center z-[9999] bg-black/20">
+          <div className="w-[80%] h-[90%] relative">
+            <button
+              onClick={() => {
+                setShowInterviewAI(false);
+                document.body.style.overflow = "";
+              }}
+              className="absolute -top-3 -right-3 z-40 bg-white rounded-full w-7 h-7 flex items-center justify-center shadow-md text-gray-600 hover:text-red-500 transition-colors"
+            >
+              ✕
+            </button>
+
+            <div className="w-full h-full overflow-hidden rounded-xl shadow-2xl">
+              <ChartersInterviewAi />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
