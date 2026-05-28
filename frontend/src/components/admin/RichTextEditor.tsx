@@ -9,7 +9,7 @@ const TipTapEditor = dynamic(
   {
     ssr: false, // Don't load on server
     loading: () => (
-      <div className="border border-gray-300 rounded-lg p-4 min-h-[300px] bg-gray-50 animate-pulse">
+      <div className="border border-gray-300 rounded-lg p-4 min-h-[280px] bg-gray-50 animate-pulse">
         <div className="h-8 bg-gray-200 rounded mb-4"></div>
         <div className="h-64 bg-gray-200 rounded"></div>
       </div>

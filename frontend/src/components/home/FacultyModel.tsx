@@ -4,6 +4,7 @@ import { memo, useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import HighlightObserver from "@/components/shared/HighlightObserver";
 import HighlightText from "@/components/shared/HighlightObserver";
+import Breadcrumbs from "../shared/Breadcrumbs";
 const randomLogos = [
   "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/cocacola.svg",
   "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/colgate.svg",
@@ -379,6 +380,7 @@ function FacultyModel({ data }: FacultyModelProps) {
         aria-labelledby="faculty-heading"
       >
         <div className="max-w-[85rem] w-full mx-auto  ">
+            <Breadcrumbs compact/>
           {/* Section Header */}
           <div className="relative text-center pb-[3.25rem] sm:pb-[3.25rem]">
             <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-4 sm:mb-6">

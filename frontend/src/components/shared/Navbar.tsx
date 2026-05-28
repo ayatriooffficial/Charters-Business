@@ -404,12 +404,19 @@ function Navbar() {
 
               {/* Mobile Apply Button and Menu */}
               <div className="lg:hidden flex items-center gap-2">
-                <a
-                  href="/apply"
-                  className="px-3 py-1.5 text-xs font-semibold text-white bg-[#B30437] hover:bg-[#8B0329] rounded-md transition-colors"
-                >
-                  APPLY
-                </a>
+              <button
+  onClick={() => {
+    if (user) {
+      navigateToRemoteDashboard("/dashboard");
+    } else {
+      setShowInterviewAI(true);
+      document.body.style.overflow = "hidden";
+    }
+  }}
+  className="px-3 py-1.5 text-xs font-semibold text-white bg-[#B30437] hover:bg-[#8B0329] rounded-md transition-colors"
+>
+  APPLY
+</button>
                 <button
                   className="p-2 rounded-md hover:bg-gray-100/60 transition-colors duration-150 relative z-[9999]"
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

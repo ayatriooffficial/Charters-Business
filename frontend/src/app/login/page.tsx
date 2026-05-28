@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 export default function LoginPage() {
   return (
-    <main className="min-h-screen flex items-center justify-center px-4 py-12 bg-gradient-to-br from-gray-50 to-gray-100">
+    <main className="min-h-screen flex items-center justify-center px-4 py-12 bg-gradient-to-br from-gray-50 to-gray-100 pt-20">
       <div className="w-full max-w-6xl flex flex-col lg:flex-row items-center justify-center gap-12">
         {/*  Welcome Text */}
         <section className="flex-1 text-center lg:text-left flex flex-col justify-center">
