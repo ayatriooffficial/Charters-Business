@@ -56,7 +56,7 @@ const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
 
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = "/home/Capdsdsfture.JPG"; 
+    link.href = "/home/Capdsdsfture.JPG";
     link.download = "placement-report.JPG";
     document.body.appendChild(link);
     link.click();
@@ -177,7 +177,7 @@ const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
             <div className="w-full md:w-1/4 mt-6 md:mt-0 flex justify-center md:justify-end">
               <button
                 onClick={handleDownload}
-                className="bg-black rounded-full text-sm text-white px-8 py-2.5 font-semibold flex items-center gap-2 hover:bg-gray-900 transition-colors"
+                className="bg-[#B30437] text-sm text-white px-8 py-2.5 font-semibold flex items-center gap-2 hover:bg-gray-900 transition-colors"
                 aria-label="Download the complete placement report PDF"
               >
                 Placement Report
