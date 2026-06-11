@@ -66,18 +66,18 @@ const OneSpaceForEveryTeam = () => {
             className="text-sm font-semibold text-[#B30437] tracking-wider mb-3"
             role="text"
           >
-            In class intranshiph at Top Companys{" "}
+            FULL-TIME OFFER EXTENDED - BEFORE INTERNSHIP END{" "}
           </p>
           <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
-            Class curriculum aling{" "}
+            Charter's Impact{" "}
             <HighlightText className="font-bold">
-              every Sector
+              Global Company
             </HighlightText>
           </h2>
           <div className="flex justify-center">
             <p className="text-black text-sm sm:text-base md:text-lg max-w-4xl">
-              Learn from industry leaders, academic experts, and seasoned
-              practitioners who bring real-world experience to your education.
+              We trained to contribute in <strong>real business</strong> environments—earning recognition from <strong>managers, team leaders, and directors</strong> through practical performance, professional behavior, and measurable workplace
+
             </p>
           </div>
         </div>

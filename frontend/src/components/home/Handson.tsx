@@ -19,11 +19,11 @@ const cardsData = [
   {
     id: "creator",
     variant: "editorial",
-    badge: "Content Creator Challenge",
-    title: "Become an influencer-",
-    subtitle: "Content Creator Challenge",
+    badge: "Globally Job-Ready Career Conversion",
+    title: "AI-Powered Curriculum for",
+    subtitle: "Corporate foundation",
     description:
-      "Learn marketing by building your own influencer brand. Create channels that run into thousands & even millions of followers.",
+      "",
     mediaSrc: "/images/world-map-illistarter.avif",
     logos: ["ieseg", "babson", "bocconi", "harvard"],
   },
@@ -35,14 +35,6 @@ const cardsData = [
     subtitle: "",
     description: "",
     logos: [],
-    gridItems: [
-      { title: "AI in Healthcare", icon: "/Charters-icon/Cancel.svg" },
-      { title: "Hospital Management", icon: "/Charters-icon/Cancel.svg" },
-      { title: "Healthcare Information Systems", icon: "/Charters-icon/Cancel.svg" },
-      { title: "Healthcare Analytics", icon: "/Charters-icon/Cancel.svg" },
-    ],
-    mediaSrc:
-      "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1600&h=1200&fit=crop",
   },
   {
     id: "flagship",
@@ -52,13 +44,15 @@ const cardsData = [
     subtitle: "",
     description: "",
     logos: [],
-    mediaSrc:
-      "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1600&h=1200&fit=crop",
     programs: [
-      { name: "Women's Leadership Program", duration: "8 Weeks" },
-      { name: "First Time Manager", duration: "10 Weeks" },
-      { name: "Women Accelerator", duration: "12 Weeks" },
-      { name: "Product Management", duration: "14 Weeks" },
+      { name: "AI-powered corporate spoken English training", duration: "1st Weeks" },
+      { name: "Corporate body language & professional conduct", duration: "3rd Weeks" },
+      { name: "LinkedIn profile building & professional networking", duration: "5th Weeks" },
+      { name: "1:1 mentorship sessions industries guest faculty", duration: "7th Weeks" },
+      { name: "Corporate critical thinking training", duration: "8th Weeks" },
+      { name: "leadership development", duration: "10th Weeks" },
+      { name: "JD-based resume writing", duration: "11th Weeks" },
+      { name: "an AI-powered intranshiph/job search engine", duration: "12th Weeks" },
     ],
   },
 ];
@@ -101,42 +95,22 @@ function EditorialCard({ card }: EditorialCardProps) {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 flex-1">
         <div className="lg:col-span-6 flex flex-col justify-start md:justify-center px-3 sm:px-6 lg:px-7 py-2 sm:py-0">
-          <span className="inline-flex w-fit items-center py-1 sm:py-[7px] text-black text-[10px] sm:text-[12px] font-bold tracking-wide">
+          <span className="inline-flex w-fit items-center py-2 sm:py-[15px] text-black text-[10px] sm:text-[12px] font-bold tracking-wide">
             {card.badge}
           </span>
 
-          <h2 className="text-[22px] sm:text-[28px] lg:text-[36px] leading-[1.15] font-normal text-black mb-1 sm:mb-2 font-fraunces">
+          <h2 className="text-[22px] sm:text-[28px] lg:text-[36px] leading-[1.15] font-semibold text-black mb-1 sm:mb-2">
             {card.title}
             <br />
             {card.subtitle}
           </h2>
 
-          <p className="text-[12px] sm:text-[14px] text-gray-500 leading-[1.6] sm:leading-[1.7] max-w-[48ch] mb-2 sm:mb-6">
-            {card.description}
+          <p className="text-[12px] sm:text-[14px] text-gray-500 leading-[1.6] sm:leading-[1.7] max-w-[52ch] mb-4 sm:mb-8">
+            Foundation designed on <strong>7 globally recognized bodies</strong> + <strong>Harvard-style case studies</strong> — the closest thing to global certification preparation inside a job-ready program.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 pb-[20px] space-y-2 sm:space-y-0">
-            <div className="flex flex-col space-y-2">
-              <span className="inline-flex w-fit border border-[#D5D0CA] px-[12px] rounded-full  items-center py-1 sm:py-[1px] text-gray-600 text-[9px] sm:text-[10px] tracking-wide">
-                #1 surging business skill
-              </span>
-              <h2 className="text-[22px] sm:text-[28px] lg:text-[36px] leading-[1] font-bold text-black">
-                +3457%
-              </h2>
-              <p className="text-[9px] sm:text-[10px] lg:text-[12px] font-bold text-gray-600">Growth yoy microsoft</p>
-            </div>
 
-            <div className="flex flex-col space-y-2">
-              <span className="inline-flex border border-[#D5D0CA] w-fit px-[12px] rounded-full items-center py-1 sm:py-[1px] text-gray-600 text-[9px] sm:text-[10px] tracking-wide">
-                #1 surging tech skill
-              </span>
-              <h2 className="text-[22px] sm:text-[28px] lg:text-[36px] leading-[1] font-bold text-black">
-                +13457%
-              </h2>
-              <p className="text-[9px] sm:text-[10px] lg:text-[12px] font-bold text-gray-600">Growth yoy microsoft copilot</p>
-            </div>
-          </div>
 
-          <div className="mb-5">
+          <div className="mb-6">
             <p className="text-[11px] font-semibold text-gray-400 mb-2 uppercase tracking-wider">
               Curriculum structure based on partner institution
             </p>
@@ -153,7 +127,7 @@ function EditorialCard({ card }: EditorialCardProps) {
 
           <div className="mb-2">
             <p className="text-[11px] font-semibold text-gray-400 pt-2 mb-2 uppercase tracking-wider">
-              In-class paid internship across the 12 countries
+              Curriculum allows to works 12 international markets
             </p>
             <div className="relative object-contain w-full h-[40px] overflow-hidden">
               <Image
@@ -212,42 +186,22 @@ function HealthGridCard({ card }: HealthGridCardProps) {
         {/* Left content column */}
         <div className="lg:col-span-6 flex flex-col px-3 sm:px-6 lg:px-7 py-2">
           <span className="inline-flex w-fit items-center mt-3 sm:mt-[30px] pb-1 sm:pb-[10px] text-gray-600 text-[10px] sm:text-[11px] font-medium tracking-wide">
-            Content Creator Challenge
+            Paid internship in 7 countries, 1,257+ companies
           </span>
 
-          <h2 className="text-[22px] sm:text-[28px] lg:text-[36px] leading-[1.15] font-normal text-[#B30437] mb-2 font-fraunces">
-            Become an influencer-
+          <h2 className="text-[22px] sm:text-[28px] lg:text-[36px] leading-[1.15] font-semibold text-black mb-1 sm:mb-2">
+            In-class Paid Internship
             <br />
-            Content Creator Challenge
+            Guided by faculty
           </h2>
 
-          <p className="text-[12px] sm:text-[14px] text-gray-500 leading-[1.6] sm:leading-[1.7] max-w-[48ch] mb-2 sm:mb-4">
-            Learn marketing by building your own influencer brand. Create channels
-            that run into thousands & even millions of followers.
+          <p className="text-[12px] sm:text-[14px] text-gray-500 leading-[1.6] sm:leading-[1.7] max-w-[48ch] mb-4 sm:mb-8">
+            <strong>+4 months</strong> of your program, you work inside a real company — in India or across <strong>6 international markets</strong>. You are earning while learning, building a global level portfolio.
           </p>
 
-          <div className="max-w-full sm:max-w-[520px] border border-gray-300">
-            <div className="grid grid-cols-2">
-              {features.map((item, idx) => (
-                <div
-                  key={item.title}
-                  className={`flex items-center gap-x-3 gap-y-2 px-3 sm:px-4 py-3 sm:py-4 min-h-[60px] sm:min-h-[72px] border-gray-300 ${idx % 2 === 0 ? "border-r" : ""} ${idx < 2 ? "border-b" : ""}`}
-                >
-                  <div className="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center bg-green-100 flex-shrink-0">
-                    <Image src={item.icon} alt={item.title} width={12} height={12} className="w-4 h-4 sm:w-5 sm:h-5 text-green-700" />
-                  </div>
-                  <div className="max-w-full sm:max-w-[100px]">
-                    <span className="block text-[11px] sm:text-[12px] leading-[1.25] font-medium text-gray-800">
-                      {item.title}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
 
-          <div className="mb-2">
-            <p className="text-[11px] font-semibold text-gray-400 pt-2 mb-2 uppercase tracking-wider">
+          <div className="mb-6">
+            <p className="text-[11px] font-semibold text-gray-400 mb-2 uppercase tracking-wider">
               In-class paid internship across the 12 countries
             </p>
             <div className="relative object-contain w-full h-[40px] overflow-hidden">
@@ -328,7 +282,7 @@ function FlagshipCard({ card }: FlagshipCardProps) {
       <div
         className="grid grid-cols-1 lg:grid-cols-12 gap-x-0 h-full"
       >
-        <div className="lg:col-span-6 flex flex-col pt-3 sm:pt-[30px] px-3 sm:px-6 lg:px-8 pb-4 sm:pb-6 lg:pb-8">
+        <div className="lg:col-span-6 flex flex-col pt-3 sm:pt-[30px] px-3 sm:px-6 lg:px-8 pb-2 sm:pb-4 lg:pb-6">
           <div className="flex items-center mb-2 sm:mb-3">
             <div className="flex -space-x-2">
               {[
@@ -343,21 +297,21 @@ function FlagshipCard({ card }: FlagshipCardProps) {
             </div>
           </div>
 
-          <h2 className="text-[20px] sm:text-[28px] lg:text-[34px] leading-[1.1] font-normal text-[#1E8E3E] mb-1 font-fraunces">
-            Become an influencer-
+
+          <h2 className="text-[22px] sm:text-[28px] lg:text-[36px] leading-[1.15] font-semibold text-black mb-1 sm:mb-2">
+            AI-Powered Career
             <br />
-            Content Creator Challenge
+            Persona Development
           </h2>
 
-          <p className="text-[11px] sm:text-[13px] text-gray-500 leading-[1.5] sm:leading-[1.6] max-w-[46ch] mb-2 sm:mb-4">
-            Learn marketing by building your own influencer brand. Create channels
-            that run into thousands & even millions of followers.
+          <p className="text-[12px] sm:text-[14px] text-gray-500 leading-[1.6] sm:leading-[1.7] max-w-[52ch] mb-2 sm:mb-6">
+            <strong>Month 1 to Final Month</strong>: <strong> AI-Powered Corporate English, Mock Interviews, Leadership Training, LinkedIn Profile, Resume, and 1:1 Mentorship</strong> — All Included
           </p>
 
           <div className="overflow-hidden">
-            <div className="h-[30px] flex items-center justify-between">
+            <div className="h-[40px] flex items-center justify-between">
               <span className="text-[11px] font-semibold text-gray-700 uppercase tracking-wide">
-                Flagship projects
+                A 7-Month Career Identity Transformation
               </span>
               <div className="flex items-center gap-1">
                 <button onClick={scrollLeft} type="button" className="w-6 h-6 flex items-center justify-center text-gray-700 hover:bg-black hover:text-white transition" aria-label="Scroll left">←</button>
@@ -365,9 +319,9 @@ function FlagshipCard({ card }: FlagshipCardProps) {
               </div>
             </div>
 
-            <div ref={sliderRef} className="flex overflow-x-auto scrollbar-hide h-[180px] sm:h-[200px] gap-1 items-stretch scroll-smooth">
+            <div ref={sliderRef} className="flex overflow-x-auto scrollbar-hide h-[160px] sm:h-[180px] gap-1 items-stretch scroll-smooth">
               {card.programs?.map((p: { name: string; duration: string }) => (
-                <div key={p.name} className="min-w-[140px] sm:min-w-[170px] h-full mr-1 bg-[#A2C1B9] px-3 sm:px-4 py-4 sm:py-5 flex flex-col justify-between">
+                <div key={p.name} className="min-w-[140px] sm:min-w-[150px] h-full mr-1 bg-[#A2C1B9] px-3 sm:px-4 py-4 sm:py-5 flex flex-col justify-between">
                   <span className="text-[9px] bg-black text-white px-2 py-[2px] w-fit">PROGRAM</span>
                   <h3 className="mt-3 text-sm font-semibold text-black leading-snug">{p.name}</h3>
                   <p className="text-[11px] text-gray-600">{p.duration}</p>
@@ -602,14 +556,14 @@ function Handson() {
           {/* Sticky Header */}
           <div ref={headerRef} className="text-center lg:text-center mx-auto relative bg-white ">
             <p className="text-xs sm:text-sm font-semibold text-[#B30437] tracking-wider mb-2 sm:mb-3" role="text">
-              EXPERIENTIAL EDUCATION
+              SEVEN MONTHS. A WORLD OF DIFFERENCE.
             </p>
 
             <h2
               id="programs-heading"
               className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]"
             >
-              Train with{" "}
+              AI-Ready{" "}
               <HighlightText className="mx-2 font-bold">
                 &apos;Global curriculum&apos;
               </HighlightText>
@@ -618,9 +572,9 @@ function Handson() {
             </h2>
 
 
-            <p className="text-base sm:text-lg text-[#5f6368]">
-              Top roles, disruptive startups and industry-leading firms. See where our graduates landed and their career transformations.
-            </p>
+            <h3 className="text-base px-[70px] sm:text-lg text-[#5f6368]">
+              India's First Job-Ready AI-Powered Global Curriculum with Paid Internship in 7 Countries, Business communication training, 1:1 mentorship — Built for BCom, BBA, BA, BSc.
+            </h3>
           </div>
 
           <div className="sticky top-0 h-dvh sm:h-screen overflow-hidden">
