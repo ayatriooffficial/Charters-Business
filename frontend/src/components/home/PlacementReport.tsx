@@ -4,14 +4,14 @@ import PlacementReportClient from "./PlacementReportClient";
 const placementReportData = {
   title: "Charter's Career Transition '25",
   description:
-    "100% internship rate | Avg students earned +2 offers | +35% global internships/jobs",
+    "100% internship rate | Avg students earned +3 offers | +34% global internships/jobs",
   stats: {
     salaryJump: 3.05,
     highestSalary: 12.3,
     recruiters: 3120,
   },
   verification: {
-    by: "B2K Analytics",
+    by: "B2j Analytics",
     verified: true,
   },
 };

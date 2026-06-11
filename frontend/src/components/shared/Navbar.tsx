@@ -263,8 +263,8 @@ function Navbar() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className={`cursor-pointer hover:text-[#B30437] transition-colors ${selectedSecondaryTab === "internships"
-                          ? "border-b-2 border-[#B30437] text-[#B30437] pb-1"
-                          : ""
+                        ? "border-b-2 border-[#B30437] text-[#B30437] pb-1"
+                        : ""
                         }`}
                       onClick={() => setSelectedSecondaryTab("internships")}
                     >
@@ -278,8 +278,8 @@ function Navbar() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className={`cursor-pointer hover:text-[#B30437] transition-colors ${selectedSecondaryTab === "jobs"
-                          ? "border-b-2 border-[#B30437] text-[#B30437] pb-1"
-                          : ""
+                        ? "border-b-2 border-[#B30437] text-[#B30437] pb-1"
+                        : ""
                         }`}
                       onClick={() => setSelectedSecondaryTab("jobs")}
                     >
@@ -404,19 +404,19 @@ function Navbar() {
 
               {/* Mobile Apply Button and Menu */}
               <div className="lg:hidden flex items-center gap-2">
-              <button
-  onClick={() => {
-    if (user) {
-      navigateToRemoteDashboard("/dashboard");
-    } else {
-      setShowInterviewAI(true);
-      document.body.style.overflow = "hidden";
-    }
-  }}
-  className="px-3 py-1.5 text-xs font-semibold text-white bg-[#B30437] hover:bg-[#8B0329] rounded-md transition-colors"
->
-  APPLY
-</button>
+                <button
+                  onClick={() => {
+                    if (user) {
+                      navigateToRemoteDashboard("/dashboard");
+                    } else {
+                      setShowInterviewAI(true);
+                      document.body.style.overflow = "hidden";
+                    }
+                  }}
+                  className="px-3 py-1.5 text-xs font-semibold text-white bg-[#B30437] hover:bg-[#8B0329] rounded-md transition-colors"
+                >
+                  APPLY
+                </button>
                 <button
                   className="p-2 rounded-md hover:bg-gray-100/60 transition-colors duration-150 relative z-[9999]"
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -430,12 +430,12 @@ function Navbar() {
                       width={14}
                       height={14} className="w-4 h-4 text-gray-700" />
                   ) : (
-                      <Image
-                        src="/Charters-icon/manu.svg"
-                        alt="dropdown"
-                        width={14}
-                        height={14}
-                        className="w-5 h-5 text-gray-700" />
+                    <Image
+                      src="/Charters-icon/manu.svg"
+                      alt="dropdown"
+                      width={14}
+                      height={14}
+                      className="w-5 h-5 text-gray-700" />
                   )}
                 </button>
               </div>
@@ -637,8 +637,8 @@ function Navbar() {
                       <li>
                         <button
                           className="block w-full text-left py-2 text-xs text-gray-600 hover:text-[#B30437]"
-                          onClick={() => { 
-                            setIsMobileMenuOpen(false); 
+                          onClick={() => {
+                            setIsMobileMenuOpen(false);
                             navigateToRemoteDashboard(dashboardUrl);
                           }}
                         >
@@ -649,8 +649,8 @@ function Navbar() {
                         <li>
                           <button
                             className="block w-full text-left py-2 text-xs text-gray-600 hover:text-[#B30437]"
-                            onClick={() => { 
-                              setIsMobileMenuOpen(false); 
+                            onClick={() => {
+                              setIsMobileMenuOpen(false);
                               navigateToRemoteDashboard('/profile');
                             }}
                           >

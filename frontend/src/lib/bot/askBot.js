@@ -225,9 +225,9 @@ How can I assist you today?
   return `
 ## 🎓 Available Programs
 
-- **Master of Business Administration (MBA)**
-- **Post Graduate Diploma in Management (PGDM)**
-- **Executive MBA (Product Growth Engineering)**
+- **CBA®(Certified Business Accountant)**
+- **DGM™(Digital Growth & Marketing)**
+- **TBM™(Technology & Business Management)**
 
 Reply with a program name to get details.
 `;

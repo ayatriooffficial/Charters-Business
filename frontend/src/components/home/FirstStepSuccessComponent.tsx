@@ -264,14 +264,14 @@ const universityLogos = [
 export default function FirstStepSuccessComponent() {
   const blogSliderRef = useRef<HTMLDivElement>(null);
 
-const scrollBlogs = () => {
-  if (!blogSliderRef.current) return;
+  const scrollBlogs = () => {
+    if (!blogSliderRef.current) return;
 
-  blogSliderRef.current.scrollBy({
-    left: 420,
-    behavior: "smooth",
-  });
-};
+    blogSliderRef.current.scrollBy({
+      left: 420,
+      behavior: "smooth",
+    });
+  };
   const [mainTab, setMainTab] = useState('mentor');
   const [activeTab, setActiveTab] = useState('google');
   const videoSliderRef = useRef<HTMLDivElement>(null);
@@ -312,7 +312,7 @@ const scrollBlogs = () => {
 
   const renderMentorTab = () => (
     <>
-    <div>
+      <div>
         {/* Mobile Navigation Buttons */}
         <div className="lg:hidden absolute top-1/3 -translate-y-1/2 right-0 pointer-events-none z-10">
           {canScrollRight && (
@@ -349,125 +349,125 @@ const scrollBlogs = () => {
   const renderOtherTab = () => (
     <><div>
       <div>
-          <div className="relative group">
-            <div className="relative aspect-video rounded-lg overflow-hidden bg-gray-100">
-              <Image
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop"
-                alt="Featured video thumbnail"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <button
-                  className="w-16 h-16 sm:w-20 sm:h-20 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white hover:scale-110 transition-all duration-300"
-                  aria-label="Play video"
-                >
-                  <Image src="/Charters-icon/Cancel.svg" alt="icon" width={12} height={12} className="w-6 h-6 sm:w-8 sm:h-8 text-[#B30437] ml-1" />
-                </button>
-              </div>
+        <div className="relative group">
+          <div className="relative aspect-video rounded-lg overflow-hidden bg-gray-100">
+            <Image
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop"
+              alt="Featured video thumbnail"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <button
+                className="w-16 h-16 sm:w-20 sm:h-20 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white hover:scale-110 transition-all duration-300"
+                aria-label="Play video"
+              >
+                <Image src="/Charters-icon/Cancel.svg" alt="icon" width={12} height={12} className="w-6 h-6 sm:w-8 sm:h-8 text-[#B30437] ml-1" />
+              </button>
             </div>
           </div>
         </div>
       </div>
+    </div>
       <div className="py-10 text-center">
         <p className="text-gray-500 text-lg">No additional data available for {mainTabs.find((t) => t.id === mainTab)?.label}</p>
       </div>
     </>
   );
   const blogs = [
-  {
-    title: "AI Agent Frameworks: What It Is & How It Works",
-    author: "Agnish Rawat",
-    time: "20 min read",
-    link: "/blog/ai-agent-frameworks",
-  },
-  {
-    title: "Will AI Replace Software Engineers? Truth, Opinions and Career Impact",
-    author: "Team Scaler",
-    time: "14 min read",
-    link: "/blog/ai-vs-engineers",
-  },
-  {
-    title: "SQL Roadmap 2026: Learning Paths, Career Roles and Tools",
-    author: "Tushar Bisht",
-    time: "18 min read",
-    link: "/blog/sql-roadmap",
-  },
-  {
-  title: "Top AI Skills Every Student Should Learn in 2026",
-  author: "Charters Team",
-  time: "12 min read",
-  link: "/blog/top-ai-skills",
-},
-{
-  title: "How to Build a Career in Data Analytics from Scratch",
-  author: "Career Desk",
-  time: "16 min read",
-  link: "/blog/data-analytics-career",
-},
-];
+    {
+      title: "AI Agent Frameworks: What It Is & How It Works",
+      author: "Agnish Rawat",
+      time: "20 min read",
+      link: "/blog/ai-agent-frameworks",
+    },
+    {
+      title: "Will AI Replace Software Engineers? Truth, Opinions and Career Impact",
+      author: "Team Scaler",
+      time: "14 min read",
+      link: "/blog/ai-vs-engineers",
+    },
+    {
+      title: "SQL Roadmap 2026: Learning Paths, Career Roles and Tools",
+      author: "Tushar Bisht",
+      time: "18 min read",
+      link: "/blog/sql-roadmap",
+    },
+    {
+      title: "Top AI Skills Every Student Should Learn in 2026",
+      author: "Charters Team",
+      time: "12 min read",
+      link: "/blog/top-ai-skills",
+    },
+    {
+      title: "How to Build a Career in Data Analytics from Scratch",
+      author: "Career Desk",
+      time: "16 min read",
+      link: "/blog/data-analytics-career",
+    },
+  ];
 
-return (
-  <section className="relative z-[5] bg-white text-black pt-10 pb-0">
-    <div className="max-w-[85rem] w-full mx-auto px-4">
-      <div className="text-center mb-8">
-        <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-3">
-          FROM OUR BLOGS
-        </p>
+  return (
+    <section className="relative z-[5] bg-white text-black pt-10 pb-0">
+      <div className="max-w-[85rem] w-full mx-auto px-4">
+        <div className="text-center mb-8">
+          <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-3">
+            FROM OUR BLOGS
+          </p>
 
-        <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
-          Latest insights for your{" "}
-          <HighlightText className="font-bold italic">
-            career growth
-          </HighlightText>
-        </h2>
-      </div>
+          <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
+            Latest insights for your{" "}
+            <HighlightText className="font-bold italic">
+              career growth
+            </HighlightText>
+          </h2>
+        </div>
       </div>
 
 
       <div className="relative">
-  <div
-    ref={blogSliderRef}
-    className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide scroll-smooth"
-  >
-        {blogs.map((blog) => (
-          <a
-            key={blog.title}
-            href={blog.link}
-className="flex-none w-[85vw] sm:w-[380px] lg:w-[420px] snap-start border-t border-b border-r border-gray-200 border-l-0 bg-white p-6 min-h-[170px] flex flex-col justify-between"          >
-            <h3 className="text-xl font-bold leading-snug text-black mb-6">
-              {blog.title}
-            </h3>
+        <div
+          ref={blogSliderRef}
+          className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide scroll-smooth"
+        >
+          {blogs.map((blog) => (
+            <a
+              key={blog.title}
+              href={blog.link}
+              className="flex-none w-[85vw] sm:w-[380px] lg:w-[420px] snap-start border-t border-r border-gray-200 border-l-0 bg-white p-6 min-h-[170px] flex flex-col justify-between"          >
+              <h3 className="text-xl font-bold leading-snug text-black mb-6">
+                {blog.title}
+              </h3>
 
-            <div className="border-t border-gray-200 pt-4 flex items-center justify-between text-sm text-gray-600">
-              <span>{blog.author}</span>
-              <span>{blog.time}</span>
-            </div>
-          </a>
-        ))}
+              <div className="border-t border-gray-200 pt-4 flex items-center justify-between text-sm text-gray-600">
+                <span>{blog.author}</span>
+                <span>{blog.time}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+        {true && (
+          <div className="absolute top-1/2 -translate-y-1/2 right-4 pointer-events-none">
+            <button
+              onClick={scrollBlogs}
+              className="w-10 h-10 sm:w-10 sm:h-10 rounded-full bg-[#000000] hover:bg-red-700 shadow flex items-center justify-center pointer-events-auto transition-all"
+              aria-label="Next"
+              type="button"
+            >
+              <svg viewBox="0 0 24 24" className="w-5 h-5 text-white">
+                <path
+                  d="M9 18l6-6-6-6"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  fill="none"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </button>
+          </div>
+        )}
       </div>
-      {true && (
-  <div className="absolute top-1/2 -translate-y-1/2 right-4 pointer-events-none">
-    <button
-      onClick={scrollBlogs}
-      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#B30437] hover:bg-red-700 shadow flex items-center justify-center pointer-events-auto transition-all"
-      aria-label="Next"
-      type="button"
-    >
-      <svg viewBox="0 0 24 24" className="w-5 h-5 text-white">
-        <path
-          d="M9 18l6-6-6-6"
-          stroke="currentColor"
-          strokeWidth="2"
-          fill="none"
-          strokeLinecap="round"
-        />
-      </svg>
-    </button>
-  </div>
-)}
-    </div>
-  </section>
-);
+    </section>
+  );
 }

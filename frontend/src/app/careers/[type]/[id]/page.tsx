@@ -129,7 +129,7 @@ export default function CareerDetailPage({
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <p className="text-red-600 text-lg">{error || 'Not found'}</p>
+          <p className="text-[#B30437] text-lg">{error || 'Not found'}</p>
           <Link
             href={`/careers/${pageType}`}
             className="mt-4 inline-block text-[#B30437] hover:underline"
@@ -306,7 +306,7 @@ export default function CareerDetailPage({
               </h2>
 
               {submitError && (
-                <div className="mb-4 rounded-lg bg-red-50 p-4 text-red-600">
+                <div className="mb-4 rounded-lg bg-red-50 p-4 text-[#B30437]">
                   {submitError}
                 </div>
               )}
@@ -455,7 +455,7 @@ export default function CareerDetailPage({
                           <button
                             type="button"
                             onClick={() => setResumeFile(null)}
-                            className="text-red-600 hover:text-red-800 transition-colors"
+                            className="text-[#B30437] hover:text-red-800 transition-colors"
                             title="Remove file"
                           >
                             <svg

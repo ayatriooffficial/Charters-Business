@@ -34,17 +34,17 @@ const HomeBottomCardsCarousel = dynamic(
 );
 export const metadata: Metadata = {
   title: {
-    absolute: "Job-ready Accounting Course | 90% Placement Rate | 7 Months | Charter's Union",
+    absolute: "Job-Ready Training Institute Kolkata | AI Curriculum | Paid Internship 7 Countries | BCom BSc BBA BA Freshers",
   },
   description:
-    "Get placed in 7 months with practical accounting skills, internship experience, and placement support. 90% placement rate. ₹3.5 LPA average salary. Free counseling call.",
+    "Kolkata's AI-first job-ready training institute. 3 programs: Certified Business Accountant, Digital Growth & Marketing, Technology & Business Management. AICPA/ACCA/HBS/Google aligned. 4–6 month paid internship in 7 countries. Corporate English. AI interview coaching. Placement support. Book free demo.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "B.Com Accounting Course | 90% Placement Rate | 7 Months",
+    title: "Job-Ready Training Institute Kolkata | AI Curriculum | Paid Internship 7 Countries | BCom BSc BBA BA Freshers",
     description:
-      "Transform your B.Com degree into a corporate accounting career. 90% placement, ₹3.5 LPA avg salary, internship & placement support.",
+      "Kolkata's AI-first job-ready training institute. 3 programs: Certified Business Accountant, Digital Growth & Marketing, Technology & Business Management. AICPA/ACCA/HBS/Google aligned. 4–6 month paid internship in 7 countries. Corporate English. AI interview coaching. Placement support. Book free demo.",
     url: "https://chartersbusiness.com",
     type: "website",
     images: [
@@ -58,9 +58,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "B.Com Accounting Course | 90% Placement | Charter's Union",
+    title: "Job-Ready Training Institute Kolkata | AI Curriculum | Paid Internship 7 Countries | BCom BSc BBA BA Freshers",
     description:
-      "7-month accounting course for B.Com graduates. 90% placement, ₹3.5 LPA avg salary, internship & placement support.",
+      "Kolkata's AI-first job-ready training institute. 3 programs: Certified Business Accountant, Digital Growth & Marketing, Technology & Business Management. AICPA/ACCA/HBS/Google aligned. 4–6 month paid internship in 7 countries. Corporate English. AI interview coaching. Placement support. Book free demo.",
     images: ["https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp"],
   },
 };
@@ -210,9 +210,9 @@ export default function Home() {
         <SectionWrapper hideCorners={"all"} borderBottom={false}>
           <PremiumFeaturesSection />
         </SectionWrapper>
-      
 
-      <HomeBottomCardsCarousel />
+
+        <HomeBottomCardsCarousel />
       </div>
     </>
   );

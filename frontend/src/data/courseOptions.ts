@@ -1,6 +1,6 @@
 export const COURSE_OPTIONS = [
   "Certified Management Professional (CMP)",
-  "Digital Growth Engineer",
-  "Product Growth Engineering",
+  "Certified Digital Growth Marketing",
+  "TBM™(Technology & Business Management)",
 ] as const;
 

@@ -71,7 +71,7 @@ const OneSpaceForEveryTeam = () => {
           <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
             Charter's Impact{" "}
             <HighlightText className="font-bold">
-              Global Company
+              Global Companys
             </HighlightText>
           </h2>
           <div className="flex justify-center">

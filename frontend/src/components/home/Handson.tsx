@@ -565,7 +565,7 @@ function Handson() {
             >
               AI-Ready{" "}
               <HighlightText className="mx-2 font-bold">
-                &apos;Global curriculum&apos;
+                &apos;Global Curriculum&apos;
               </HighlightText>
               {" "}along with{" "}
               MNC&apos;s
@@ -573,7 +573,7 @@ function Handson() {
 
 
             <h3 className="text-base px-[70px] sm:text-lg text-[#5f6368]">
-              India's First Job-Ready AI-Powered Global Curriculum with Paid Internship in 7 Countries, Business communication training, 1:1 mentorship — Built for BCom, BBA, BA, BSc.
+              India's First <strong>Job-Ready AI-Powered</strong> Global Curriculum with <strong>Paid Internship</strong> in <strong>7 Countries, Business communication training, 1:1 mentorship</strong> — Built for <strong>BCom, BBA, BA, BSc</strong>.
             </h3>
           </div>
 

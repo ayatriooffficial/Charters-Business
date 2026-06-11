@@ -238,7 +238,7 @@ export interface Programme {
   pricing?: any;
   faculty?: any;
   curriculumSection?: any;
-  
+
 }
 
 // PROGRAMMES DATA - MBA
@@ -249,7 +249,7 @@ export const programmes: Programme[] = [
     slug: "digital-growth-engineer",
     // Dropdown Data
     dropdown: {
-      title: "DIGITAL GROWTH ENGINEER",
+      title: "CBA®(Certified Business Accountant)",
       description:
         "Comprehensive MBA program designed for future business leaders Comprehensive MBA program designed for. Combines theoretical knowledge with practical application through real-world case studies and industry partnerships.",
       duration: "2 Years Full-time",
@@ -258,18 +258,18 @@ export const programmes: Programme[] = [
         { value: "150+", label: "COMPANIES" },
         { value: "95%", label: "PLACEMENT RATE" },
       ],
-      link: "/digital-growth-engineer",      
+      link: "/Certified Business Accountant",
       imageUrl: "/images/programmes/mba.jpg",
     },
 
     // Card Data
     card: {
-      image: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081780/bytdizxcq2cy5hzcb1xv_qpykcw.avif",
+      image: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081780/mn8bwcdnx9ld2kmmywvz_crgadc.avif",
       hasVideo: false,
       rating: { score: 4.8, reviews: 495 / 500 },
-      title: "DIGITAL GROWTH ENGINEER",
+      title: "CBA®(Certified Business Accountant)",
 
-      level: "Postgraduate",
+      level: "Certified",
       certificateType: "Corporate Certificate",
       description:
         "Gain real-world corporate accounting through Harvard/Columbia case study, IIMK, US-CMA&CPA/CFA/ACCA integrated AI-led curriculum under top 1% industry faculty.",
@@ -1290,117 +1290,117 @@ export const programmes: Programme[] = [
       ],
     },
     students: {
-  categories: [
-    { id: "jan", name: "January" },
-    { id: "apr", name: "April" },
-    { id: "jul", name: "July" },
-  ],
+      categories: [
+        { id: "jan", name: "January" },
+        { id: "apr", name: "April" },
+        { id: "jul", name: "July" },
+      ],
 
-  students: [
-    {
-      name: "Riya Kapoor",
-      batch: "APR 2026",
-      city: "Kolkata",
-      company: "Jio",
-      role: "Growth Engineer",
-      timeToPlace: "10 Months later",
-      previousCollege: "Techno India",
-      background: "2nd Year MCA Fresher",
-      internship:
-        "Jio Platforms — Growth engineering and analytics",
-      researchPaper:
-        "AI-based customer engagement strategies in telecom industry",
-      caseStudies:
-        "How Jio scaled digital adoption across India...",
-      imageSrc:
-        "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081839/21_bnm51l.jpg",
-      linkedinUrl: "#",
-      category: "apr",
-    },
+      students: [
+        {
+          name: "Riya Kapoor",
+          batch: "APR 2026",
+          city: "Kolkata",
+          company: "Jio",
+          role: "Growth Engineer",
+          timeToPlace: "10 Months later",
+          previousCollege: "Techno India",
+          background: "2nd Year MCA Fresher",
+          internship:
+            "Jio Platforms — Growth engineering and analytics",
+          researchPaper:
+            "AI-based customer engagement strategies in telecom industry",
+          caseStudies:
+            "How Jio scaled digital adoption across India...",
+          imageSrc:
+            "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081839/21_bnm51l.jpg",
+          linkedinUrl: "#",
+          category: "apr",
+        },
 
-    {
-      name: "Sneha Dutta",
-      batch: "DEC 2025",
-      city: "Kolkata",
-      company: "WishCare",
-      role: "Digital Marketing",
-      timeToPlace: "Just in 9 months",
-      previousCollege: "Loreto College",
-      background: "2025 Pass Out Fresher",
-      internship:
-        "WishCare — Brand marketing and influencer campaigns",
-      researchPaper:
-        "Social media growth strategies for D2C brands",
-      caseStudies:
-        "How WishCare built a beauty-first digital audience...",
-      imageSrc:
-        "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081840/23_obnfxo.jpg",
-      linkedinUrl: "#",
-      category: "jan",
-    },
+        {
+          name: "Sneha Dutta",
+          batch: "DEC 2025",
+          city: "Kolkata",
+          company: "WishCare",
+          role: "Digital Marketing",
+          timeToPlace: "Just in 9 months",
+          previousCollege: "Loreto College",
+          background: "2025 Pass Out Fresher",
+          internship:
+            "WishCare — Brand marketing and influencer campaigns",
+          researchPaper:
+            "Social media growth strategies for D2C brands",
+          caseStudies:
+            "How WishCare built a beauty-first digital audience...",
+          imageSrc:
+            "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081840/23_obnfxo.jpg",
+          linkedinUrl: "#",
+          category: "jan",
+        },
 
-    {
-      name: "Arjun Malhotra",
-      batch: "JUL 2025",
-      city: "Bangalore",
-      company: "Google",
-      role: "SEO Growth Associate",
-      timeToPlace: "Just in 8 months",
-      previousCollege: "Christ University",
-      background: "BBA Marketing Fresher",
-      internship:
-        "Google India — Search and content optimization",
-      researchPaper:
-        "Consumer retention through AI recommendation systems",
-      caseStudies:
-        "How Swiggy increased retention using growth loops...",
-      imageSrc:
-        "https://res.cloudinary.com/ducgcl4dg/image/upload/v1777886817/bytg0uyh5ebkd2zwuzm0_yalhuk.avif",
-      linkedinUrl: "#",
-      category: "jul",
+        {
+          name: "Arjun Malhotra",
+          batch: "JUL 2025",
+          city: "Bangalore",
+          company: "Google",
+          role: "SEO Growth Associate",
+          timeToPlace: "Just in 8 months",
+          previousCollege: "Christ University",
+          background: "BBA Marketing Fresher",
+          internship:
+            "Google India — Search and content optimization",
+          researchPaper:
+            "Consumer retention through AI recommendation systems",
+          caseStudies:
+            "How Swiggy increased retention using growth loops...",
+          imageSrc:
+            "https://res.cloudinary.com/ducgcl4dg/image/upload/v1777886817/bytg0uyh5ebkd2zwuzm0_yalhuk.avif",
+          linkedinUrl: "#",
+          category: "jul",
+        },
+      ],
     },
-  ],
-},
-faculty: {
-  categories: [
-    { id: "technology", name: "Technology" },
-    { id: "entrepreneurship", name: "Entrepreneurship" },
-  ],
-  faculty: [
-    {
-      name: "Mr. Manoj Kohli",
-      title: "Former Country Head",
-      company: "SoftBank",
-      subtitle: "Former Country Head at SoftBank India",
-      experience: "Ex MD at Bharti Airtel",
-      teaching: "Tech investments and growth strategy",
-      imageSrc: "/images/faculty/home.jpeg",
-      linkedinUrl: "#",
-      category: "technology",
+    faculty: {
+      categories: [
+        { id: "technology", name: "Technology" },
+        { id: "entrepreneurship", name: "Entrepreneurship" },
+      ],
+      faculty: [
+        {
+          name: "Mr. Manoj Kohli",
+          title: "Former Country Head",
+          company: "SoftBank",
+          subtitle: "Former Country Head at SoftBank India",
+          experience: "Ex MD at Bharti Airtel",
+          teaching: "Tech investments and growth strategy",
+          imageSrc: "/images/faculty/home.jpeg",
+          linkedinUrl: "#",
+          category: "technology",
+        },
+        {
+          name: "Mr. Naveen Munjal",
+          title: "Managing Director",
+          company: "HEROELECTRIC",
+          subtitle: "Founder & MD at Hero Electric",
+          experience: "Ex VP at Hero MotoCorp",
+          teaching: "EV industry and startup scaling",
+          imageSrc: "/images/faculty/home.jpeg",
+          linkedinUrl: "#",
+          category: "entrepreneurship",
+        },
+      ],
     },
-    {
-      name: "Mr. Naveen Munjal",
-      title: "Managing Director",
-      company: "HEROELECTRIC",
-      subtitle: "Founder & MD at Hero Electric",
-      experience: "Ex VP at Hero MotoCorp",
-      teaching: "EV industry and startup scaling",
-      imageSrc: "/images/faculty/home.jpeg",
-      linkedinUrl: "#",
-      category: "entrepreneurship",
-    },
-  ],
-},
   },
   {
     id: "2",
     slug: "post-graduate-diploma-in-management",
     // Dropdown Data
     dropdown: {
-      title: "POST GRADUATE DIPLOMA IN MANAGEMENT",
+      title: "DGM™(Digital Growth & Marketing)",
       description:
         "Industry-focused program that bridges the gap between academic learning and corporate requirements. Emphasis on practical skills, live projects, and leadership development through hands-on experience with real business challenges.",
-      duration: "2 Years Full-time",
+      duration: "7 Months Full-time",
       stats: [
         { value: "24", label: "MONTHS" },
         { value: "200+", label: "CASE STUDIES" },
@@ -1413,18 +1413,18 @@ faculty: {
 
     // Card Data
     card: {
-      image: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081780/mn8bwcdnx9ld2kmmywvz_crgadc.avif",
+      image: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081780/bytdizxcq2cy5hzcb1xv_qpykcw.avif",
       hasVideo: false,
       rating: { score: 4.7, reviews: 1876 },
-      title: "POST GRADUATE DIPLOMA IN MANAGEMENT",
-      level: "Postgraduate",
-      certificateType: "PG Diploma",
+      title: "DGM™(Digital Growth & Marketing)",
+      level: "Certified",
+      certificateType: "Corporate Certificate",
       description:
-        "A 2-year industry-focused program emphasizing practical learning, live projects and management excellence.",
-      format: { type: "On Campus (Opt-in Residential)" },
-      eligibility: { type: "Bachelor's degree in any discipline" },
-      duration: { type: "2 Years" },
-      deadline: { type: "Round 2: 15th Nov '25" },
+        "Gain real-world corporate accounting through Harvard/Columbia case study, IIMK, US-CMA&CPA/CFA/ACCA integrated AI-led curriculum under top 1% industry faculty.",
+      format: { type: "On Campus" },
+      eligibility: { type: "12 Pass-out & Early under graduates." },
+      duration: { type: "3 Months theory + 4 Months in-class intranship" },
+      deadline: { type: "Round 1: 30th Oct '25" },
       careerOutcomes: ["Management Trainee", "Project Manager"],
       jobOpenings: "9,87,654",
     },
@@ -1806,118 +1806,118 @@ faculty: {
       ],
     },
     students: {
-  categories: [
-    { id: "jan", name: "January" },
-    { id: "apr", name: "April" },
-  ],
+      categories: [
+        { id: "jan", name: "January" },
+        { id: "apr", name: "April" },
+      ],
 
-  students: [
-    {
-      name: "Rahul Sharma",
-      batch: "JAN 2025",
-      city: "Mumbai",
-      company: "Deloitte",
-      role: "Finance Analyst",
-      timeToPlace: "Just in 7 months",
-      previousCollege: "Mumbai University",
-      background: "3rd Year BCOM Fresher",
-      internship:
-        "Deloitte India — Tax advisory and financial reporting",
-      researchPaper:
-        "Impact of GST on SME growth in India",
-      caseStudies:
-        "How Infosys restructured its finance division post-2020...",
-      imageSrc:
-        "https://res.cloudinary.com/ducgcl4dg/image/upload/v1777886819/fwwshpnqwsid71f8dgtt_ytkxtr.avif",
-      linkedinUrl: "#",
-      category: "jan",
-    },
+      students: [
+        {
+          name: "Rahul Sharma",
+          batch: "JAN 2025",
+          city: "Mumbai",
+          company: "Deloitte",
+          role: "Finance Analyst",
+          timeToPlace: "Just in 7 months",
+          previousCollege: "Mumbai University",
+          background: "3rd Year BCOM Fresher",
+          internship:
+            "Deloitte India — Tax advisory and financial reporting",
+          researchPaper:
+            "Impact of GST on SME growth in India",
+          caseStudies:
+            "How Infosys restructured its finance division post-2020...",
+          imageSrc:
+            "https://res.cloudinary.com/ducgcl4dg/image/upload/v1777886819/fwwshpnqwsid71f8dgtt_ytkxtr.avif",
+          linkedinUrl: "#",
+          category: "jan",
+        },
 
-    {
-      name: "Priya Mehta",
-      batch: "JAN 2025",
-      city: "Delhi",
-      company: "PwC",
-      role: "Operations Executive",
-      timeToPlace: "Just in 6 months",
-      previousCollege: "Delhi University",
-      background: "Graduate Fresher",
-      internship:
-        "PwC India — Business process optimization",
-      researchPaper:
-        "Digital transformation in Indian banking sector",
-      caseStudies:
-        "Why Jet Airways failed despite strong brand equity...",
-      imageSrc:
-        "https://res.cloudinary.com/ducgcl4dg/image/upload/v1777886821/v56rnsmx8rkyg4qf8zlt_govysb.avif",
-      linkedinUrl: "#",
-      category: "jan",
-    },
+        {
+          name: "Priya Mehta",
+          batch: "JAN 2025",
+          city: "Delhi",
+          company: "PwC",
+          role: "Operations Executive",
+          timeToPlace: "Just in 6 months",
+          previousCollege: "Delhi University",
+          background: "Graduate Fresher",
+          internship:
+            "PwC India — Business process optimization",
+          researchPaper:
+            "Digital transformation in Indian banking sector",
+          caseStudies:
+            "Why Jet Airways failed despite strong brand equity...",
+          imageSrc:
+            "https://res.cloudinary.com/ducgcl4dg/image/upload/v1777886821/v56rnsmx8rkyg4qf8zlt_govysb.avif",
+          linkedinUrl: "#",
+          category: "jan",
+        },
 
-    {
-      name: "Amit Kumar",
-      batch: "APR 2025",
-      city: "Bangalore",
-      company: "KPMG",
-      role: "Business Analyst",
-      timeToPlace: "Just in 7 months",
-      previousCollege: "Christ University",
-      background: "BBA Graduate Fresher",
-      internship:
-        "KPMG — Market research and data analysis",
-      researchPaper:
-        "Role of fintech in financial inclusion in rural India",
-      caseStudies:
-        "How Byju's lost market cap despite rapid expansion...",
-      imageSrc:
-        "https://res.cloudinary.com/ducgcl4dg/image/upload/v1777886818/dbubonqa0x47h1dsrjv0_nqgglk.avif",
-      linkedinUrl: "#",
-      category: "apr",
+        {
+          name: "Amit Kumar",
+          batch: "APR 2025",
+          city: "Bangalore",
+          company: "KPMG",
+          role: "Business Analyst",
+          timeToPlace: "Just in 7 months",
+          previousCollege: "Christ University",
+          background: "BBA Graduate Fresher",
+          internship:
+            "KPMG — Market research and data analysis",
+          researchPaper:
+            "Role of fintech in financial inclusion in rural India",
+          caseStudies:
+            "How Byju's lost market cap despite rapid expansion...",
+          imageSrc:
+            "https://res.cloudinary.com/ducgcl4dg/image/upload/v1777886818/dbubonqa0x47h1dsrjv0_nqgglk.avif",
+          linkedinUrl: "#",
+          category: "apr",
+        },
+      ],
     },
-  ],
-},
-faculty: {
-  categories: [
-    { id: "leadership", name: "Leadership" },
-    { id: "finance", name: "Finance" },
-    { id: "consulting", name: "Consulting" },
-  ],
-  faculty: [
-    {
-      name: "Mr. Rajat Mathur",
-      title: "Managing Director",
-      company: "MorganStanley",
-      subtitle: "MD, India at Morgan Stanley",
-      experience: "Ex Managing Director at Goldman Sachs",
-      teaching: "Corporate strategy and financial markets",
-      imageSrc: "/images/faculty/home.jpeg",
-      linkedinUrl: "#",
-      category: "leadership",
+    faculty: {
+      categories: [
+        { id: "leadership", name: "Leadership" },
+        { id: "finance", name: "Finance" },
+        { id: "consulting", name: "Consulting" },
+      ],
+      faculty: [
+        {
+          name: "Mr. Rajat Mathur",
+          title: "Managing Director",
+          company: "MorganStanley",
+          subtitle: "MD, India at Morgan Stanley",
+          experience: "Ex Managing Director at Goldman Sachs",
+          teaching: "Corporate strategy and financial markets",
+          imageSrc: "/images/faculty/home.jpeg",
+          linkedinUrl: "#",
+          category: "leadership",
+        },
+        {
+          name: "Mr. Finance Expert 1",
+          title: "CFO",
+          company: "FinanceCo",
+          subtitle: "Chief Financial Officer",
+          experience: "22+ years in finance",
+          teaching: "Financial management",
+          imageSrc: "/images/faculty/home.jpeg",
+          linkedinUrl: "#",
+          category: "finance",
+        },
+        {
+          name: "Captain Raghu Raman",
+          title: "Former President",
+          company: "Reliance",
+          subtitle: "Former President, Strategy at Reliance",
+          experience: "Led energy & infrastructure divisions",
+          teaching: "Corporate leadership and operations",
+          imageSrc: "/images/faculty/home.jpeg",
+          linkedinUrl: "#",
+          category: "consulting",
+        },
+      ],
     },
-    {
-      name: "Mr. Finance Expert 1",
-      title: "CFO",
-      company: "FinanceCo",
-      subtitle: "Chief Financial Officer",
-      experience: "22+ years in finance",
-      teaching: "Financial management",
-      imageSrc: "/images/faculty/home.jpeg",
-      linkedinUrl: "#",
-      category: "finance",
-    },
-    {
-      name: "Captain Raghu Raman",
-      title: "Former President",
-      company: "Reliance",
-      subtitle: "Former President, Strategy at Reliance",
-      experience: "Led energy & infrastructure divisions",
-      teaching: "Corporate leadership and operations",
-      imageSrc: "/images/faculty/home.jpeg",
-      linkedinUrl: "#",
-      category: "consulting",
-    },
-  ],
-},
   },
 
   {
@@ -1925,12 +1925,12 @@ faculty: {
     slug: "product-growth-engineering",
     // Dropdown Data
     dropdown: {
-      title: "PRODUCT GROWTH ENGINEERING",
+      title: "TBM™(Technology & Business Management)",
       description:
         "Designed for working professionals with significant management experience. Flexible schedule with weekend classes and online modules for career advancement while continuing your job. Focus on executive leadership, strategic thinking, and C-suite preparation.",
-      duration: "18 Months Part-time",
+      duration: "12 Months Full-time",
       stats: [
-        { value: "18", label: "MONTHS" },
+        { value: "12", label: "MONTHS" },
         { value: "50+", label: "EXECUTIVES" },
         { value: "5+", label: "YRS EXP AVG" },
         { value: "98%", label: "RETENTION RATE" },
@@ -1944,18 +1944,24 @@ faculty: {
       image: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081779/ajbcjzco3yfsj7ns1f2j_dvqing.avif",
       hasVideo: false,
       rating: { score: 4.9, reviews: 956 },
-      title: "PRODUCT GROWTH ENGINEERING",
+      title: "TBM™(Technology & Business Management)",
 
-      level: "Executive",
-      certificateType: "Executive MBA",
+      level: "Certified",
+      certificateType: "Corporate Certificate",
       description:
-        "A flexible 18-month program for working professionals with weekend classes and executive networking.",
-      format: { type: "Blended (Online / Weekend Classes)" },
-      eligibility: { type: "Bachelor's + 3 years experience" },
-      duration: { type: "18 Months" },
-      deadline: { type: "Round 1: 20th Oct '25" },
-      careerOutcomes: ["Senior Manager", "Director"],
-      jobOpenings: "5,43,210",
+        "Gain real-world corporate accounting through Harvard/Columbia case study, IIMK, US-CMA&CPA/CFA/ACCA integrated AI-led curriculum under top 1% industry faculty.",
+      format: { type: "On Campus" },
+      eligibility: { type: "12 Pass-out & Early under graduates." },
+      duration: { type: "6 Months theory + 6 Months in-class intranship" },
+      deadline: { type: "Round 1: 30th Oct '25" },
+      careerOutcomes: [
+        "Foundations in Industry-led learning base on Hardvard casestudy with US-CMA/CPA, Indian CA and ACCA specialisation carruculam.",
+        "In-class live projects intranship under faculty with top Startup & MNC from India, USA, CANADA, SAUDI, QATAR and Singapore.",
+        "AI-powered corporate accountant, finance, FP&A, fintech & GCC-ready roles.",
+        "Personal devlopment prep with communication, bodylangusge and placement cell.",
+        "Applying class carruiculam with small amd medium busness at real-world ",
+      ],
+      jobOpenings: "2.12 Cr",
     },
     // Hero Data
     hero: {
@@ -2089,7 +2095,7 @@ faculty: {
       badge: "EXECUTIVE DEGREE",
       title: {
         prefix: "Graduate with prestigious",
-        highlight: "Product Growth Engineering",
+        highlight: "TBM™(Technology & Business Management)",
         suffix: "from Charter's Executive Business School",
       },
       accordions: [
@@ -2358,119 +2364,119 @@ faculty: {
       ],
     },
     students: {
-  categories: [
-    { id: "jan", name: "January" },
-    { id: "apr", name: "April" },
-    { id: "dec", name: "December" },
-  ],
+      categories: [
+        { id: "jan", name: "January" },
+        { id: "apr", name: "April" },
+        { id: "dec", name: "December" },
+      ],
 
-  students: [
-    {
-      name: "Sunita Das",
-      batch: "AUG 2025",
-      city: "Kolkata",
-      company: "TATA",
-      role: "Executive Finance",
-      timeToPlace: "Just in 7 months",
-      previousCollege: "Goenka College",
-      background: "2nd Year BCOM Fresher",
-      internship:
-        "Kripton PVT Ltd / Horyzen PVT Ltd — Quarter Taxation, 2025 income tax, strategy on price section",
-      researchPaper:
-        "How AI impacts on taxation automation at global countries",
-      caseStudies:
-        "Why Amule SAP automation failed 100 million revenue at 2...",
-      imageSrc:
-        "https://res.cloudinary.com/ducgcl4dg/image/upload/v1777886820/t6szcvb54fwgjs0swgh1_xuaz6y.avif",
-      linkedinUrl: "#",
-      category: "jan",
-    },
+      students: [
+        {
+          name: "Sunita Das",
+          batch: "AUG 2025",
+          city: "Kolkata",
+          company: "TATA",
+          role: "Executive Finance",
+          timeToPlace: "Just in 7 months",
+          previousCollege: "Goenka College",
+          background: "2nd Year BCOM Fresher",
+          internship:
+            "Kripton PVT Ltd / Horyzen PVT Ltd — Quarter Taxation, 2025 income tax, strategy on price section",
+          researchPaper:
+            "How AI impacts on taxation automation at global countries",
+          caseStudies:
+            "Why Amule SAP automation failed 100 million revenue at 2...",
+          imageSrc:
+            "https://res.cloudinary.com/ducgcl4dg/image/upload/v1777886820/t6szcvb54fwgjs0swgh1_xuaz6y.avif",
+          linkedinUrl: "#",
+          category: "jan",
+        },
 
-    {
-      name: "Neha Singh",
-      batch: "APR 2025",
-      city: "Pune",
-      company: "Wipro",
-      role: "HR Executive",
-      timeToPlace: "Just in 7 months",
-      previousCollege: "Symbiosis College",
-      background: "BBA HR Fresher",
-      internship:
-        "Wipro HR — Talent acquisition and onboarding",
-      researchPaper:
-        "Employee retention strategies in post-pandemic era",
-      caseStudies:
-        "How Zomato scaled its workforce from 500 to 5000...",
-      imageSrc:
-        "https://res.cloudinary.com/ducgcl4dg/image/upload/v1777886822/wsp4kdxh2fsyp6ehxrpp_gttfyp.avif",
-      linkedinUrl: "#",
-      category: "apr",
-    },
+        {
+          name: "Neha Singh",
+          batch: "APR 2025",
+          city: "Pune",
+          company: "Wipro",
+          role: "HR Executive",
+          timeToPlace: "Just in 7 months",
+          previousCollege: "Symbiosis College",
+          background: "BBA HR Fresher",
+          internship:
+            "Wipro HR — Talent acquisition and onboarding",
+          researchPaper:
+            "Employee retention strategies in post-pandemic era",
+          caseStudies:
+            "How Zomato scaled its workforce from 500 to 5000...",
+          imageSrc:
+            "https://res.cloudinary.com/ducgcl4dg/image/upload/v1777886822/wsp4kdxh2fsyp6ehxrpp_gttfyp.avif",
+          linkedinUrl: "#",
+          category: "apr",
+        },
 
-    {
-      name: "Karan Gupta",
-      batch: "DEC 2025",
-      city: "Hyderabad",
-      company: "McKinsey",
-      role: "Strategy Analyst",
-      timeToPlace: "Just in 7 months",
-      previousCollege: "BITS Pilani",
-      background: "B.Tech Graduate Fresher",
-      internship:
-        "McKinsey & Company — Strategy consulting",
-      researchPaper:
-        "AI disruption in traditional consulting models",
-      caseStudies:
-        "How TCS transformed its delivery model for Gen AI...",
-      imageSrc:
-        "https://res.cloudinary.com/ducgcl4dg/image/upload/v1777886817/a07zod5okvybawy1kj0u_ef4niw.avif",
-      linkedinUrl: "#",
-      category: "dec",
+        {
+          name: "Karan Gupta",
+          batch: "DEC 2025",
+          city: "Hyderabad",
+          company: "McKinsey",
+          role: "Strategy Analyst",
+          timeToPlace: "Just in 7 months",
+          previousCollege: "BITS Pilani",
+          background: "B.Tech Graduate Fresher",
+          internship:
+            "McKinsey & Company — Strategy consulting",
+          researchPaper:
+            "AI disruption in traditional consulting models",
+          caseStudies:
+            "How TCS transformed its delivery model for Gen AI...",
+          imageSrc:
+            "https://res.cloudinary.com/ducgcl4dg/image/upload/v1777886817/a07zod5okvybawy1kj0u_ef4niw.avif",
+          linkedinUrl: "#",
+          category: "dec",
+        },
+      ],
     },
-  ],
-},
-faculty: {
-  categories: [
-    { id: "technology", name: "Technology" },
-    { id: "consulting", name: "Consulting" },
-    { id: "entrepreneurship", name: "Entrepreneurship" },
-  ],
-  faculty: [
-    {
-      name: "Mr. Tech Expert 2",
-      title: "CTO",
-      company: "TechGiant",
-      subtitle: "Chief Technology Officer",
-      experience: "20+ years in technology",
-      teaching: "Technology strategy",
-      imageSrc: "/images/faculty/home.jpeg",
-      linkedinUrl: "#",
-      category: "technology",
+    faculty: {
+      categories: [
+        { id: "technology", name: "Technology" },
+        { id: "consulting", name: "Consulting" },
+        { id: "entrepreneurship", name: "Entrepreneurship" },
+      ],
+      faculty: [
+        {
+          name: "Mr. Tech Expert 2",
+          title: "CTO",
+          company: "TechGiant",
+          subtitle: "Chief Technology Officer",
+          experience: "20+ years in technology",
+          teaching: "Technology strategy",
+          imageSrc: "/images/faculty/home.jpeg",
+          linkedinUrl: "#",
+          category: "technology",
+        },
+        {
+          name: "Mr. Arjun Vaidya",
+          title: "Founder",
+          company: "DR. VAIDYA's",
+          subtitle: "Founder & CMD at Dr. Vaidya's",
+          experience: "Built Ayurveda brand from scratch",
+          teaching: "Founding a health-tech venture",
+          imageSrc: "/images/faculty/home.jpeg",
+          linkedinUrl: "#",
+          category: "entrepreneurship",
+        },
+        {
+          name: "Mr. Consulting Expert 3",
+          title: "Strategy Consultant",
+          company: "StrategyCo",
+          subtitle: "Principal Consultant",
+          experience: "18+ years in strategy",
+          teaching: "Strategic consulting",
+          imageSrc: "/images/faculty/home.jpeg",
+          linkedinUrl: "#",
+          category: "consulting",
+        },
+      ],
     },
-    {
-      name: "Mr. Arjun Vaidya",
-      title: "Founder",
-      company: "DR. VAIDYA's",
-      subtitle: "Founder & CMD at Dr. Vaidya's",
-      experience: "Built Ayurveda brand from scratch",
-      teaching: "Founding a health-tech venture",
-      imageSrc: "/images/faculty/home.jpeg",
-      linkedinUrl: "#",
-      category: "entrepreneurship",
-    },
-    {
-      name: "Mr. Consulting Expert 3",
-      title: "Strategy Consultant",
-      company: "StrategyCo",
-      subtitle: "Principal Consultant",
-      experience: "18+ years in strategy",
-      teaching: "Strategic consulting",
-      imageSrc: "/images/faculty/home.jpeg",
-      linkedinUrl: "#",
-      category: "consulting",
-    },
-  ],
-},
   },
 ];
 

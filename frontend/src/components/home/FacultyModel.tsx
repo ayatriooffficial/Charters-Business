@@ -380,7 +380,7 @@ function FacultyModel({ data }: FacultyModelProps) {
         aria-labelledby="faculty-heading"
       >
         <div className="max-w-[85rem] w-full mx-auto  ">
-            <Breadcrumbs compact/>
+          <Breadcrumbs compact />
           {/* Section Header */}
           <div className="relative text-center pb-[3.25rem] sm:pb-[3.25rem]">
             <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-4 sm:mb-6">
@@ -439,58 +439,58 @@ function FacultyModel({ data }: FacultyModelProps) {
               aria-label="Faculty members"
             >
               {filteredFaculty.map((faculty, index) => (
-  <article
-  key={faculty.name}
-  className="bg-[#F4F2EE] border-r border-b border-gray-300 flex flex-col flex-none w-[340px] snap-start"
->
-  {/* Image */}
-  <div className="w-full h-[280px] bg-gray-200">
-    <Image
-      src={faculty.imageSrc}
-      alt={faculty.name}
-      width={400}
-      height={400}
-      className="w-full h-full object-contain"
-    />
-  </div>
+                <article
+                  key={faculty.name}
+                  className="bg-[#F4F2EE] border-r border-b border-gray-300 flex flex-col flex-none w-[340px] snap-start"
+                >
+                  {/* Image */}
+                  <div className="w-full h-[280px] bg-gray-200">
+                    <Image
+                      src={faculty.imageSrc}
+                      alt={faculty.name}
+                      width={400}
+                      height={400}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
 
-  {/* Content */}
-  <div className="p-5">
-    <h2 className="text-2xl font-semibold text-black">
-      {faculty.title}
-    </h2>
+                  {/* Content */}
+                  <div className="p-5">
+                    <h2 className="text-2xl font-semibold text-black">
+                      {faculty.title}
+                    </h2>
 
-    <p className="text-gray-700 font-medium mt-1">
-      by {faculty.name}
-    </p>
+                    <p className="text-gray-700 font-medium mt-1">
+                      by {faculty.name}
+                    </p>
 
-    <div className="h-px bg-gray-400 my-3" />
+                    <div className="h-px bg-gray-400 my-3" />
 
-    <p className="text-sm text-gray-700 mb-4">
-      {faculty.experience}
-    </p>
+                    <p className="text-sm text-gray-700 mb-4">
+                      {faculty.experience}
+                    </p>
 
-    <p className="font-semibold text-black mb-2">
-      Research Publications
-    </p>
+                    <p className="font-semibold text-black mb-2">
+                      Research Publications
+                    </p>
 
-    <p className="text-sm text-gray-700 mb-4">
-      {faculty.teaching}
-    </p>
+                    <p className="text-sm text-gray-700 mb-4">
+                      {faculty.teaching}
+                    </p>
 
-    {/* Logos */}
-    <div className="flex gap-3 mt-2">
-      {faculty.logos?.map((logo, i) => (
-        <img
-          key={i}
-          src={logo}
-          className="h-8 w-auto object-contain bg-white rounded-md px-2 py-1"
-        />
-      ))}
-    </div>
-  </div>
-</article>
-))}
+                    {/* Logos */}
+                    <div className="flex gap-3 mt-2">
+                      {faculty.logos?.map((logo, i) => (
+                        <img
+                          key={i}
+                          src={logo}
+                          className="h-8 w-auto object-contain bg-white rounded-md px-2 py-1"
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </article>
+              ))}
             </div>
 
             {/* Navigation Buttons */}
@@ -499,7 +499,7 @@ function FacultyModel({ data }: FacultyModelProps) {
                 <button
                   onClick={() => changeSlide(1)}
                   disabled={isAnimating}
-                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#B30437] hover:bg-red-700 transition-all duration-300 ease-in-out shadow-sm hover:shadow flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B30437] pointer-events-auto"
+                  className="w-10 h-10 sm:w-10 sm:h-10 rounded-full bg-[#000000] hover:bg-red-700 transition-all duration-300 ease-in-out shadow-sm hover:shadow flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B30437] pointer-events-auto"
                   aria-label="Next slide"
                   type="button"
                 >
@@ -524,7 +524,7 @@ function FacultyModel({ data }: FacultyModelProps) {
                 <button
                   onClick={() => changeSlide(-1)}
                   disabled={isAnimating}
-                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#B30437] hover:bg-red-700 transition-all duration-300 ease-in-out shadow-sm hover:shadow flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B30437] pointer-events-auto"
+                  className="w-10 h-10 sm:w-10 sm:h-10 rounded-full bg-[#000000] hover:bg-red-700 transition-all duration-300 ease-in-out shadow-sm hover:shadow flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B30437] pointer-events-auto"
                   aria-label="Previous slide"
                   type="button"
                 >

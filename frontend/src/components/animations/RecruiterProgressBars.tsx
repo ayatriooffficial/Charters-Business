@@ -27,7 +27,7 @@ const RecruiterProgressBars: React.FC<RecruiterProgressBarsProps> = ({
 
   const recruiterData = useMemo(
     () => [
-      { year: "2025", value: 1523, label: "Recruiters" },
+      { year: "2025", value: 1257, label: "Recruiters" },
       { year: "2024", value: 677, label: "Recruiters" },
       { year: "2023", value: 143, label: "Recruiters" },
     ],
@@ -101,11 +101,11 @@ const RecruiterProgressBars: React.FC<RecruiterProgressBarsProps> = ({
     >
       <div className="mb-4 flex-shrink-0">
         <h4 className="flex flex-row">
-          <p className="text-3xl font-bold">+1523 MNCs</p>
+          <p className="text-3xl font-bold">+1257 MNCs</p>
           <span className="pl-[5px] pt-[15px] text-[10px]"> | Growth 39% </span>
         </h4>
         <p className="text-sm text-gray-600">
-          33% International + 67% Indian Recruiters
+          33.7% International + 66.3% Indian Recruiters
         </p>
       </div>
 
@@ -171,11 +171,10 @@ const RecruiterProgressBars: React.FC<RecruiterProgressBarsProps> = ({
                   animatedBars[item.year] > getBarPercentage(item.value) * 0.9
                     ? 1
                     : 0,
-                transform: `scale(${
-                  animatedBars[item.year] > getBarPercentage(item.value) * 0.9
-                    ? 1
-                    : 0.8
-                })`,
+                transform: `scale(${animatedBars[item.year] > getBarPercentage(item.value) * 0.9
+                  ? 1
+                  : 0.8
+                  })`,
                 transition: "opacity 0.4s ease-out, transform 0.4s ease-out",
               }}
             >

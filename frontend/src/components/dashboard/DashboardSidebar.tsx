@@ -82,11 +82,10 @@ export default function DashboardSidebar() {
           <Link
             key={item.path}
             href={item.path}
-            className={`flex flex-row items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
-              isActive(item.path)
+            className={`flex flex-row items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${isActive(item.path)
                 ? 'bg-[#B30437] text-white shadow-md'
                 : 'text-gray-700 hover:bg-gray-100'
-            }`}
+              }`}
           >
             {item.icon}
             <span className="font-medium">{item.label}</span>
@@ -95,7 +94,7 @@ export default function DashboardSidebar() {
 
         <button
           onClick={logout}
-          className="flex flex-row items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all duration-200 mt-4"
+          className="flex flex-row items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-red-50 hover:text-[#B30437] transition-all duration-200 mt-4"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
