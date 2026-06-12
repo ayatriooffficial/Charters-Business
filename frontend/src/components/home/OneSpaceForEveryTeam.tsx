@@ -69,7 +69,7 @@ const OneSpaceForEveryTeam = () => {
             FULL-TIME OFFER EXTENDED - BEFORE INTERNSHIP END{" "}
           </p>
           <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
-            Charter's Impact{" "}
+            Young Charter's at{" "}
             <HighlightText className="font-bold">
               Global Companys
             </HighlightText>

@@ -1,21 +1,22 @@
 "use client";
 import Image from "next/image";
+import HighlightText from '../shared/HighlightObserver';
 
 const cards = [
   {
-    title: "Career councling",
+    title: "Career",
     body: "What make Chater's Union of business distinctive What make Chater's Union of business distinctive",
   },
   {
-    title: "Career councling",
+    title: "Book a Visit",
     body: "What make Chater's Union of business distinctive What make Chater's Union of business distinctive",
   },
   {
-    title: "Career councling",
-    body: "What make Chater's Union of business distinctive What make Chater's Union of business distinctive",
+    title: "Scholarships & Financing",
+    body: "The Chater's Union classroom exceptional & diverse candidates. We are committed to eliminating all financial barriers for these outstanding candidates, guaranteeing an unparalleled peer learning experience.",
   },
   {
-    title: "Career councling",
+    title: "1:1 Career councling",
     body: "What make Chater's Union of business distinctive What make Chater's Union of business distinctive",
   },
 ];
@@ -39,8 +40,7 @@ const testimonials = [
         role: "Finance analysys",
       },
     ],
-    title: "Career councling",
-    body: "What make Chater's Union of business distinctive What make Chater's Union of business distinctive",
+    title: "Or Call +91 9836465083",
   },
   {
     profiles: [
@@ -60,8 +60,7 @@ const testimonials = [
         role: "Finance analysys",
       },
     ],
-    title: "Career councling",
-    body: "What make Chater's Union of business distinctive What make Chater's Union of business distinctive",
+    title: "Or Call +91 8910171085",
   },
 ];
 
@@ -71,15 +70,14 @@ const STEP = AVATAR_SIZE - OVERLAP;
 
 export default function AmplifySection() {
   return (
-    <section className="pt-12 mx-auto">
+    <section className="pt-14 mx-auto">
       {/* Header */}
-      <h1 className="text-4xl font-semibold text-center leading-tight mb-3">
-        Amplify instruction with tools that simplify everyday tasks
-      </h1>
-      <p className="text-center text-gray-500 text-sm mb-10">
-        Boost instructional time with tools purpose-built for teaching, productivity, and collaboration.
-      </p>
-
+      <h2 className="text-4xl font-semibold text-center leading-tight mb-3">
+        Explore
+        <HighlightText className="mx-1 sm:mx-2 font-bold">
+          Charter's Union
+        </HighlightText>
+      </h2>
       {/* Feature Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 bg-gray-200">
         {cards.map((card, i) => (

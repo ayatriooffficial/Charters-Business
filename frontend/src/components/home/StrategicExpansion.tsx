@@ -61,7 +61,7 @@ interface ContentData {
     };
 }
 const heading_description = {
-    description: "Learn from industry leaders | Academic experts | Experience real-world insights"
+    description: "AI-Powered English Speaking | 1:1 Career Mentorship | AI-powered Job Search "
 }
 const cardsData: CardData[] = [
     {
@@ -628,8 +628,8 @@ const StrategicExpansion: React.FC = () => {
                         <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
 
                             <HighlightText className="font-bold">
-                                AI-powered
-                            </HighlightText>{" "} Career Labs
+                                Week 1 to Final Week
+                            </HighlightText>:{" "} AI-Powered Career Development
                         </h2>
                         <div className="flex flex-col items-start sm:flex-row sm:flex-wrap sm:justify-center sm:items-center gap-3 sm:gap-6 mb-2 sm:mb-4 w-fit mx-auto sm:w-full">
                             {heading_description.description.split("|").map((item: string, index: number) => (
@@ -652,33 +652,33 @@ const StrategicExpansion: React.FC = () => {
                         <ul className="flex w-[93%] mx-auto overflow-x-auto scrollbar-hide">
                             {cardsData.map((card) => (
                                 <li
-  key={card.id}
-  className="flex-1 bg-white"
->
-    <button
-  onClick={() => handleCardClick(card.id)}
-  className="w-full px-3 sm:px-4 py-4 text-left border-b border-gray-200 !bg-white hover:!bg-white active:!bg-white focus:!bg-white transition-none"
-  aria-label={`${card.title} program`}
->
-  <div className="flex items-center gap-3">
-    <img
-      src="/dot-icon.svg"
-      alt=""
-      className="w-5 h-5"
-      aria-hidden="true"
-    />
+                                    key={card.id}
+                                    className="flex-1 bg-white"
+                                >
+                                    <button
+                                        onClick={() => handleCardClick(card.id)}
+                                        className="w-full px-3 sm:px-4 py-4 text-left border-b border-gray-200 !bg-white hover:!bg-white active:!bg-white focus:!bg-white transition-none"
+                                        aria-label={`${card.title} program`}
+                                    >
+                                        <div className="flex items-center gap-3">
+                                            <img
+                                                src="/dot-icon.svg"
+                                                alt=""
+                                                className="w-5 h-5"
+                                                aria-hidden="true"
+                                            />
 
-    <div>
-      <span className="block text-xs font-semibold text-black uppercase tracking-wide">
-        {card.description}
-      </span>
+                                            <div>
+                                                <span className="block text-xs font-semibold text-black uppercase tracking-wide">
+                                                    {card.description}
+                                                </span>
 
-      <span className="block text-lg font-semibold text-black whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px] lg:max-w-[220px]">
-  {card.title}
-</span>
-    </div>
-  </div>
-</button>
+                                                <span className="block text-lg font-semibold text-black whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px] lg:max-w-[220px]">
+                                                    {card.title}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </button>
                                 </li>
                             ))}
                         </ul>

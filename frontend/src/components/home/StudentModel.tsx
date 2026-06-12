@@ -314,7 +314,7 @@ function StudentModel({ data }: StudentModelProps) {
               {filteredStudents.map((student, index) => (
                 <article
                   key={student.name}
-                  className="flex-none w-[28.571%] snap-start mr-0 first:ml-0 overflow-hidden border border-gray-200 border-r-0 bg-white"                >
+                  className="flex-none w-[28.571%] snap-start mr-0 first:ml-0 overflow-hidden border border-gray-200 border-r-0 bg-[#F4F2EE]"                >
                   {/* Top — full image */}
                   <div className="w-full">
                     <Image
@@ -328,7 +328,7 @@ function StudentModel({ data }: StudentModelProps) {
                   </div>
 
                   {/* Bottom — white details */}
-                  <div className="p-4 bg-white">
+                  <div className="p-4 ">
                     {/* Name + LinkedIn */}
                     <div className="flex items-center gap-2 mb-0.5">
                       <h3 className="font-bold text-black text-base">{student.name}</h3>

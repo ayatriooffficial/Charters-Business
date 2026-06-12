@@ -225,13 +225,14 @@ function WorldImmersion() {
       <div className="max-w-[85rem] mx-auto">
         <div className="text-center mb-8 sm:mb-12">
           <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
-            Internship,{" "}
+
             <HighlightText className=" font-bold">
-              Across the World
+              7 International Markets.
             </HighlightText>
+            {" "} 7 Business Culture.
           </h2>
-          <p className="text-sm sm:text-base text-gray-600">
-            Global business and culture — 7 countries, 1 program.
+          <p className="text-sm sm:text-base text-gray-600 px-[70px]">
+            <strong>4 Months of your program</strong>, work you inside a real company — in <strong>India</strong> or across <strong>6 international markets</strong>. You are <strong>earning while learning</strong>, building a <strong>globally accepted portfolio</strong>.
           </p>
         </div>
 
@@ -293,7 +294,7 @@ function WorldImmersion() {
                       className="flex flex-col shrink-0 lg:shrink bg-white border-r border-t border-gray-200 min-h-[420px] lg:min-h-[480px] w-[85vw] sm:w-[calc(50%-0.25rem)] lg:flex-1 snap-center lg:snap-align-none hover:shadow-sm transition-shadow"
                     >
                       <div className="w-full mb-4 overflow-hidden">
-                        <div className="relative w-full h-[170px] bg-gray-50">
+                        <div className="relative w-full h-[150px] bg-gray-50">
                           <Image src={getSafeImageSrc(item.data.imageSrc)}
                             alt={`${item.data.title} — ${item.data.subtitle}`}
                             fill

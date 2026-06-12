@@ -413,15 +413,19 @@ export default function FirstStepSuccessComponent() {
       <div className="max-w-[85rem] w-full mx-auto px-4">
         <div className="text-center mb-8">
           <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-3">
-            FROM OUR BLOGS
+            FROM OUR BLOGS & EVENTS
           </p>
 
           <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
-            Latest insights for your{" "}
-            <HighlightText className="font-bold italic">
-              career growth
+            From the Charter's{" "}
+            <HighlightText className="font-bold ">
+              Editorial Desk
             </HighlightText>
           </h2>
+
+          <p className="text-black text-sm sm:text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
+            Deep dives on AI careers and <strong>Accounting</strong>, <strong>Business & Marketing</strong>, learning strategies global <strong>top MNC's</strong>, and what the data actually says about the <strong>global market</strong>.
+          </p>
         </div>
       </div>
 
@@ -436,9 +440,10 @@ export default function FirstStepSuccessComponent() {
               key={blog.title}
               href={blog.link}
               className="flex-none w-[85vw] sm:w-[380px] lg:w-[420px] snap-start border-t border-r border-gray-200 border-l-0 bg-white p-6 min-h-[170px] flex flex-col justify-between"          >
-              <h3 className="text-xl font-bold leading-snug text-black mb-6">
+              <h3 className="text-xl font-bold leading-snug text-black mb-4">
                 {blog.title}
               </h3>
+              <p className="text-black text-[14px] mx-auto leading-relaxed mb-4">This article covers AI agent frameworks, their framerworks, core fundamentals and implementation</p>
 
               <div className="border-t border-gray-200 pt-4 flex items-center justify-between text-sm text-gray-600">
                 <span>{blog.author}</span>
