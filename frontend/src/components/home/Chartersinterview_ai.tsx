@@ -42,17 +42,17 @@ export default function ChartersInterviewAi() {
     const recaptchaVerifierRef = useRef<RecaptchaVerifier | null>(null);
     const hasAttemptedQuickLogin = useRef(false);
     // If already logged in, mark as done immediately
-     useEffect(() => {
-    if (user) {
-        setAuthStep('done');
-        // Automatically redirect to remote dashboard based on role
-        if (user.role === 'admin' || user.role === 'recruiter') {
-            navigateToRemoteDashboard('/admin/dashboard');
-        } else {
-            navigateToRemoteDashboard('/dashboard');
+    useEffect(() => {
+        if (user) {
+            setAuthStep('done');
+            // Automatically redirect to remote dashboard based on role
+            if (user.role === 'admin' || user.role === 'recruiter') {
+                navigateToRemoteDashboard('/admin/dashboard');
+            } else {
+                navigateToRemoteDashboard('/dashboard');
+            }
         }
-    }
-}, [user, navigateToRemoteDashboard]);
+    }, [user, navigateToRemoteDashboard]);
 
     // Attempt silent quick login on mount (trustedDevice cookie)
     useEffect(() => {
@@ -362,7 +362,7 @@ export default function ChartersInterviewAi() {
                                         />
                                     </div>
                                 </div>
-                                {error && <p className="text-sm text-red-600">{error}</p>}
+                                {error && <p className="text-sm text-[#B30437]">{error}</p>}
                                 <button
                                     onClick={handleSendOtp}
                                     disabled={isLoading || loginPhone.replace(/\D/g, '').length < 7}
@@ -396,7 +396,7 @@ export default function ChartersInterviewAi() {
                                         onKeyDown={(e) => e.key === 'Enter' && handlePasswordLogin()}
                                     />
                                 </div>
-                                {error && <p className="text-sm text-red-600">{error}</p>}
+                                {error && <p className="text-sm text-[#B30437]">{error}</p>}
                                 <button
                                     onClick={handlePasswordLogin}
                                     disabled={isLoading || !loginPassword}
@@ -447,7 +447,7 @@ export default function ChartersInterviewAi() {
                                         ))}
                                     </div>
                                 </div>
-                                {error && <p className="text-sm text-red-600">{error}</p>}
+                                {error && <p className="text-sm text-[#B30437]">{error}</p>}
                                 <button
                                     onClick={handleVerifyOtp}
                                     disabled={isLoading || otp.join('').length !== 6}
@@ -531,7 +531,7 @@ export default function ChartersInterviewAi() {
                                         </div>
                                     </div>
                                 )}
-                                {error && <p className="text-sm text-red-600">{error}</p>}
+                                {error && <p className="text-sm text-[#B30437]">{error}</p>}
                                 <button
                                     onClick={handleSignup}
                                     disabled={isLoading || !signupPassword || (!loginPhone.replace(/\D/g, '').endsWith('1234567890') && (!signupName.trim() || !signupEmail.trim() || !signupProgram))}

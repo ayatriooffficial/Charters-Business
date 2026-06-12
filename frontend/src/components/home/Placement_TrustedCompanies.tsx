@@ -180,7 +180,7 @@ function TrustedCompanies() {
         <div className="mx-auto w-full max-w-7xl py-[15px] px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-[30px]">
             <p className="mx-auto text-base text-black sm:text-lg lg:text-xl">
-              Join 1250+ Companies Hiring Young Charter's Worldwide
+              4-Month Paid Internship in 1,257+ Companies Across 7 Countries
             </p>
           </div>
 

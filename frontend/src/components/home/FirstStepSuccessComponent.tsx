@@ -440,7 +440,6 @@ export default function FirstStepSuccessComponent() {
       behavior: "smooth",
     });
   };
-
   const [mainTab, setMainTab] = useState('mentor');
   const [activeTab, setActiveTab] = useState('google');
   const videoSliderRef = useRef<HTMLDivElement>(null);
@@ -581,24 +580,22 @@ export default function FirstStepSuccessComponent() {
   const renderOtherTab = () => (
     <>
       <div>
-        <div>
-          <div className="relative group">
-            <div className="relative aspect-video rounded-lg overflow-hidden bg-gray-100">
-              <Image
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop"
-                alt="Featured video thumbnail"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <button
-                  className="w-16 h-16 sm:w-20 sm:h-20 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white hover:scale-110 transition-all duration-300"
-                  aria-label="Play video"
-                >
-                  <Image src="/Charters-icon/Cancel.svg" alt="icon" width={12} height={12} className="w-6 h-6 sm:w-8 sm:h-8 text-[#B30437] ml-1" />
-                </button>
-              </div>
+        <div className="relative group">
+          <div className="relative aspect-video rounded-lg overflow-hidden bg-gray-100">
+            <Image
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop"
+              alt="Featured video thumbnail"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <button
+                className="w-16 h-16 sm:w-20 sm:h-20 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white hover:scale-110 transition-all duration-300"
+                aria-label="Play video"
+              >
+                <Image src="/Charters-icon/Cancel.svg" alt="icon" width={12} height={12} className="w-6 h-6 sm:w-8 sm:h-8 text-[#B30437] ml-1" />
+              </button>
             </div>
           </div>
         </div>
@@ -608,7 +605,6 @@ export default function FirstStepSuccessComponent() {
       </div>
     </>
   );
-
   // Simple parser to render basic markdown paragraphs and bolding in modal
   const renderBlogContent = (markdownText: string) => {
     if (!markdownText) return null;
@@ -675,15 +671,19 @@ export default function FirstStepSuccessComponent() {
       <div className="max-w-[85rem] w-full mx-auto px-4">
         <div className="text-center mb-8">
           <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-3">
-            FROM OUR BLOGS
+            FROM OUR BLOGS & EVENTS
           </p>
 
           <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
-            Latest insights for your{" "}
-            <HighlightText className="font-bold italic">
-              career growth
+            From the Charter's{" "}
+            <HighlightText className="font-bold">
+              Editorial Desk
             </HighlightText>
           </h2>
+
+          <p className="text-black text-sm sm:text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
+            Deep dives on AI careers and <strong>Accounting</strong>, <strong>Business & Marketing</strong>, learning strategies global <strong>top MNC's</strong>, and what the data actually says about the <strong>global market</strong>.
+          </p>
         </div>
       </div>
 

@@ -29,7 +29,7 @@ const heroData = {
   ),
   cta: {
     buttonText: "Placement Report",
-    buttonAriaLabel: "Join Mastering the Management webinar",
+    buttonAriaLabel: "2025 Placement Report",
   },
 };
 

@@ -5,7 +5,7 @@ import Image from "next/image";
 import HighlightText from "@/components/shared/HighlightObserver";
 
 const hanson_heading = {
-  description: "Innovative learning programs | Practical, hands-on experience | Real-world business exposure"
+  description: "AI-Powered Job-Ready Program | Explore Business Culture Across 7 Countries | Internship Guided Curriculum "
 }
 
 type CategoryKey =
@@ -978,20 +978,20 @@ function HandsOnLearningComponent() {
             {/* Title Section */}
             <div className="">
               <p
-                className="text-xs sm:text-sm text-[#B30437] pb-2 sm:pb-3 md:pb-4"
+                className="text-sm font-semibold text-[#B30437] tracking-wider pb-2 sm:pb-3 md:pb-4"
                 role="text"
               >
-                HANDS-ON APPROACH
+                THE YOUNG CHARTER'S HANDS-ON
               </p>
               <h2
                 id="hands-on-heading"
                 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]"
               >
-                Hands-on.
+                Real Clients.
                 <HighlightText className="mx-1 sm:mx-2 font-bold">
-                  Disruptive.
+                  Real Problems.
                 </HighlightText>
-                Experiential.
+                Real Impact.
               </h2>
             </div>
 

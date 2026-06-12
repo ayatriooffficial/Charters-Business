@@ -28,11 +28,11 @@ interface StudentCategory {
 }
 
 const studentCategories: StudentCategory[] = [
-  { id: "jan", name: "January" },
-  { id: "apr", name: "April" },
-  { id: "jul", name: "July" },
-  { id: "oct", name: "October" },
-  { id: "dec", name: "December" },
+  { id: "jul", name: "July'26" },
+  { id: "apr", name: "April'26" },
+  { id: "jan", name: "January'26" },
+  { id: "oct", name: "October'25" },
+  { id: "dec", name: "August'25" },
 ];
 const studentMembers: Student[] = [
   {
@@ -164,38 +164,38 @@ const studentMembers: Student[] = [
     category: "dec",
   },
   {
-  name: "Riya Kapoor",
-  batch: "APR 2026",
-  city: "Kolkata",
-  company: "Jio",
-  role: "Growth Engineer",
-  timeToPlace: "10 Months later",
-  previousCollege: "Techno India",
-  background: "2nd Year MCA Fresher",
-  internship: "Jio Platforms — Growth engineering and analytics",
-  researchPaper: "AI-based customer engagement strategies in telecom industry",
-  caseStudies: "How Jio scaled digital adoption across India...",
-  imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081839/21_bnm51l.jpg",
-  linkedinUrl: "#",
-  category: "apr",
-},
+    name: "Riya Kapoor",
+    batch: "APR 2026",
+    city: "Kolkata",
+    company: "Jio",
+    role: "Growth Engineer",
+    timeToPlace: "10 Months later",
+    previousCollege: "Techno India",
+    background: "2nd Year MCA Fresher",
+    internship: "Jio Platforms — Growth engineering and analytics",
+    researchPaper: "AI-based customer engagement strategies in telecom industry",
+    caseStudies: "How Jio scaled digital adoption across India...",
+    imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081839/21_bnm51l.jpg",
+    linkedinUrl: "#",
+    category: "apr",
+  },
 
-{
-  name: "Sneha Dutta",
-  batch: "DEC 2025",
-  city: "Kolkata",
-  company: "WishCare",
-  role: "Digital Marketing",
-  timeToPlace: "Just in 9 months",
-  previousCollege: "Loreto College",
-  background: "2025 Pass Out Fresher",
-  internship: "WishCare — Brand marketing and influencer campaigns",
-  researchPaper: "Social media growth strategies for D2C brands",
-  caseStudies: "How WishCare built a beauty-first digital audience...",
-  imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081840/23_obnfxo.jpg",
-  linkedinUrl: "#",
-  category: "jan",
-},
+  {
+    name: "Sneha Dutta",
+    batch: "DEC 2025",
+    city: "Kolkata",
+    company: "WishCare",
+    role: "Digital Marketing",
+    timeToPlace: "Just in 9 months",
+    previousCollege: "Loreto College",
+    background: "2025 Pass Out Fresher",
+    internship: "WishCare — Brand marketing and influencer campaigns",
+    researchPaper: "Social media growth strategies for D2C brands",
+    caseStudies: "How WishCare built a beauty-first digital audience...",
+    imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081840/23_obnfxo.jpg",
+    linkedinUrl: "#",
+    category: "jan",
+  },
 ];
 
 interface StudentModelProps {
@@ -291,11 +291,10 @@ function StudentModel({ data }: StudentModelProps) {
                 <li key={category.id}>
                   <button
                     onClick={() => handleCategoryChange(category.id)}
-                    className={`px-3 text-nowrap sm:px-4 py-2 transition-all text-sm ${
-                      activeCategory === category.id
-                        ? "text-black border-b-2 border-black"
-                        : "text-gray-700 hover:bg-gray-50"
-                    }`}
+                    className={`px-3 text-nowrap sm:px-4 py-2 transition-all text-sm ${activeCategory === category.id
+                      ? "text-black border-b-2 border-black"
+                      : "text-gray-700 hover:bg-gray-50"
+                      }`}
                     aria-pressed={activeCategory === category.id}
                   >
                     {category.name}
@@ -309,14 +308,13 @@ function StudentModel({ data }: StudentModelProps) {
           <div className="relative">
             <div
               ref={slidesContainerRef}
-              className={`flex overflow-x-auto snap-x snap-mandatory scrollbar-hide scroll-smooth transition-all duration-300 ease-out ${
-                isTabSwitching ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"
-              }`}
+              className={`flex overflow-x-auto snap-x snap-mandatory scrollbar-hide scroll-smooth transition-all duration-300 ease-out ${isTabSwitching ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"
+                }`}
             >
               {filteredStudents.map((student, index) => (
                 <article
                   key={student.name}
-                  className="flex-none w-[28.571%] snap-start mr-0 first:ml-0 overflow-hidden border border-gray-200 border-r-0 bg-white"                >
+                  className="flex-none w-[28.571%] snap-start mr-0 first:ml-0 overflow-hidden border border-gray-200 border-r-0 bg-[#F4F2EE]"                >
                   {/* Top — full image */}
                   <div className="w-full">
                     <Image
@@ -328,23 +326,23 @@ function StudentModel({ data }: StudentModelProps) {
                       loading="lazy"
                     />
                   </div>
-                  
+
                   {/* Bottom — white details */}
-                  <div className="p-4 bg-white">
+                  <div className="p-4 ">
                     {/* Name + LinkedIn */}
                     <div className="flex items-center gap-2 mb-0.5">
                       <h3 className="font-bold text-black text-base">{student.name}</h3>
-                      
-                        <a
-                          href={student.linkedinUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={student.name + " LinkedIn"}
-                        >
-                          <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
-                          </svg>
-                        </a>
+
+                      <a
+                        href={student.linkedinUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={student.name + " LinkedIn"}
+                      >
+                        <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
+                        </svg>
+                      </a>
                     </div>
 
                     {/* Batch + City */}
@@ -394,7 +392,7 @@ function StudentModel({ data }: StudentModelProps) {
                 <button
                   onClick={() => changeSlide(1)}
                   disabled={isAnimating}
-                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#B30437] hover:bg-red-700 shadow flex items-center justify-center pointer-events-auto transition-all"
+                  className="w-10 h-10 sm:w-10 sm:h-10 rounded-full bg-[#000000] hover:bg-red-700 shadow flex items-center justify-center pointer-events-auto transition-all"
                   aria-label="Next"
                   type="button"
                 >
@@ -411,7 +409,7 @@ function StudentModel({ data }: StudentModelProps) {
                 <button
                   onClick={() => changeSlide(-1)}
                   disabled={isAnimating}
-                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#B30437] hover:bg-red-700 shadow flex items-center justify-center pointer-events-auto transition-all"
+                  className="w-10 h-10 sm:w-10 sm:h-10 rounded-full bg-[#000000] hover:bg-red-700 shadow flex items-center justify-center pointer-events-auto transition-all"
                   aria-label="Previous"
                   type="button"
                 >

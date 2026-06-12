@@ -17,10 +17,10 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
 }, ref) => {
   // Get all available programs
   const allProgrammes = getAllProgrammes();
-const programDetails = allProgrammes.reduce((acc, programme) => {
-  acc[programme.slug] = programme;
-  return acc;
-}, {} as Record<ProgramKey, (typeof allProgrammes)[number]>);
+  const programDetails = allProgrammes.reduce((acc, programme) => {
+    acc[programme.slug] = programme;
+    return acc;
+  }, {} as Record<ProgramKey, (typeof allProgrammes)[number]>);
   // Get available program keys (only programs that have data)
   const availablePrograms = allProgrammes.map(p => p.slug);
 
@@ -30,9 +30,9 @@ const programDetails = allProgrammes.reduce((acc, programme) => {
   // State for handling image errors
   const [imageErrors, setImageErrors] = useState<Record<ProgramKey, boolean>>({
     "digital-growth-engineer": false,
-"post-graduate-diploma-in-management": false,
-"product-growth-engineering": false,
-"diploma-in-business-administration": false,
+    "post-graduate-diploma-in-management": false,
+    "product-growth-engineering": false,
+    "diploma-in-business-administration": false,
   });
 
   const handleImageError = (programKey: ProgramKey) => {
@@ -54,21 +54,21 @@ const programDetails = allProgrammes.reduce((acc, programme) => {
   };
 
   // Handle explore more click
- const handleExploreMoreClick = () => {
-  const currentProgram = programDetails[selectedProgram];
+  const handleExploreMoreClick = () => {
+    const currentProgram = programDetails[selectedProgram];
 
-  if (currentProgram) {
-    window.location.href = `/${currentProgram.slug}`;
-  }
-};
+    if (currentProgram) {
+      window.location.href = `/${currentProgram.slug}`;
+    }
+  };
 
   // Program menu items - only show programs that have data
   const allProgramMenuItems: { key: ProgramKey; label: string }[] = [
-  { key: 'digital-growth-engineer', label: 'DIGITAL GROWTH ENGINEER' },
-  { key: 'post-graduate-diploma-in-management', label: 'POST GRADUATE DIPLOMA IN MANAGEMENT' },
-  { key: 'product-growth-engineering', label: 'PRODUCT GROWTH ENGINEERING' },
-  { key: 'diploma-in-business-administration', label: 'DIPLOMA IN BUSINESS ADMINISTRATION' },
-];
+    { key: 'digital-growth-engineer', label: 'CBA®' },
+    { key: 'post-graduate-diploma-in-management', label: 'DGM™' },
+    { key: 'product-growth-engineering', label: 'TBM™' },
+
+  ];
 
   // Filter to only show programs that exist in data
   const programMenuItems = allProgramMenuItems.filter(item =>
@@ -93,14 +93,14 @@ const programDetails = allProgrammes.reduce((acc, programme) => {
     ${isOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}
   `}
     >
-      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-[25px]">
         <div className="py-6 lg:py-8">
           {/* Main Layout */}
           <div className="flex flex-col lg:flex-row gap-2 lg:gap-2">
 
             {/* Left Section - Program Navigation Menu */}
             <aside
-              className="flex flex-col w-full sm:w-full md:w-full lg:w-80 xl:w-96 2xl:w-[350px] space-y-0 overflow-hidden"
+              className="flex flex-col w-full sm:w-full md:w-full lg:w-42 xl:w-50 2xl:w-[350px] space-y-0 overflow-hidden"
               aria-label="Program Selection Menu"
             >
               <ul className="list-none m-0 p-0">
@@ -112,20 +112,20 @@ const programDetails = allProgrammes.reduce((acc, programme) => {
                       aria-current={selectedProgram === item.key ? 'true' : 'false'}
                       className={`w-full text-left group cursor-pointer py-4 px-6 transition-colors duration-200 ${index < programMenuItems.length - 1 ? 'border-b border-gray-200' : ''
                         } ${selectedProgram === item.key
-                          ? 'bg-red-50 border-l-4 border-l-red-600'
-                          : 'hover:bg-gray-100 hover:border-l-4 hover:border-l-red-300'
+                          ? 'bg-[#F4F2EE] border-l-4 border-l-red-600'
+                          : 'hover:bg-[#F4F2EE] hover:border-l-4 hover:border-l-red-300'
                         }`}
                     >
                       <div className="flex items-center justify-between">
                         <span className={`text-sm font-medium transition-colors duration-200 ${selectedProgram === item.key
                           ? 'text-red-700'
-                          : 'text-gray-700 group-hover:text-red-600'
+                          : 'text-gray-700 group-hover:text-[#B30437]'
                           }`}>
                           {item.label}
                         </span>
                         <span
                           className={`text-lg transition-colors duration-200 ${selectedProgram === item.key
-                            ? 'text-red-600'
+                            ? 'text-[#B30437]'
                             : 'text-gray-400 group-hover:text-red-500'
                             }`}
                           aria-hidden="true"
@@ -147,14 +147,14 @@ const programDetails = allProgrammes.reduce((acc, programme) => {
 
               {/* Explore More Link */}
               <aside
-                className={`bg-gray-50 hover:bg-gray-200 flex flex-col items-center justify-center p-4 sm:p-6 border-r border-gray-200 cursor-pointer transition-colors duration-200
+                className={`bg-[#F4F2EE] hover:bg-gray-200 flex flex-col items-center justify-center p-4 sm:p-6 border-r border-gray-200 cursor-pointer transition-colors duration-200
                           w-full lg:w-40 xl:w-48 2xl:w-56 
                           flex-shrink-0 group ${isTransitioning ? 'opacity-0' : 'opacity-100'
                   }`}
               >
                 <a
-href={`/${currentProgramData.slug}`}
-onClick={(e) => {
+                  href={`/${currentProgramData.slug}`}
+                  onClick={(e) => {
                     e.preventDefault();
                     handleExploreMoreClick();
                   }}
@@ -204,7 +204,7 @@ onClick={(e) => {
                         {currentProgramData.card.title}
                       </h2>
 
-                      <p className="text-red-600 text-sm font-semibold mb-4">
+                      <p className="text-[#B30437] text-sm font-semibold mb-4">
                         {currentProgramData.card.duration.type}
                       </p>
                     </header>
@@ -220,7 +220,7 @@ onClick={(e) => {
                           key={`${selectedProgram}-${index}`}
                           className="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0"
                         >
-                          <dt className="text-red-600 text-2xl lg:text-3xl font-bold">
+                          <dt className="text-[#B30437] text-2xl lg:text-3xl font-bold">
                             {stat.value}
                           </dt>
                           <dd className="text-gray-500 text-xs font-medium tracking-wider uppercase">
@@ -235,7 +235,7 @@ onClick={(e) => {
                   <aside className="w-full sm:w-full lg:w-64 xl:w-72 2xl:w-80 flex-shrink-0">
                     <div className={`transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'
                       }`}>
-                      <figure className="w-full h-90 relative overflow-hidden">
+                      <figure className="w-full h-100 relative overflow-hidden">
                         {!imageErrors[selectedProgram] && currentProgramData.card.image ? (
                           <div className="relative w-full h-full">
                             <Image

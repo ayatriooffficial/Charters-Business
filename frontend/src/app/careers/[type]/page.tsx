@@ -175,7 +175,7 @@ function ApplySection({
         </h2>
 
         {submitError && (
-          <div className="mb-4 rounded-lg bg-red-50 p-3 text-sm text-red-600">
+          <div className="mb-4 rounded-lg bg-red-50 p-3 text-sm text-[#B30437]">
             {submitError}
           </div>
         )}
@@ -671,7 +671,7 @@ export default function CareersPage({
               </div>
             ) : listError ? (
               <div className="p-6 text-center">
-                <p className="text-sm text-red-600">{listError}</p>
+                <p className="text-sm text-[#B30437]">{listError}</p>
               </div>
             ) : list.length === 0 ? (
               <div className="p-6 text-center">
@@ -705,7 +705,7 @@ export default function CareersPage({
             </div>
           ) : detailError ? (
             <div className="flex items-center justify-center flex-1">
-              <p className="text-red-600">{detailError}</p>
+              <p className="text-[#B30437]">{detailError}</p>
             </div>
           ) : !selectedItem ? (
             <div className="flex flex-col items-center justify-center flex-1 gap-2 text-gray-400">

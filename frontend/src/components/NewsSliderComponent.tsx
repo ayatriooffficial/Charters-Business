@@ -244,7 +244,7 @@ const NewsSliderComponent: React.FC<NewsSliderComponentProps> = ({
             <button
               onClick={() => changeSlide(1)}
               disabled={isAnimating}
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#B30437] hover:bg-red-700 transition-all duration-300 ease-in-out shadow-sm hover:shadow flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B30437] pointer-events-auto"
+              className="w-10 h-10 sm:w-10 sm:h-10 rounded-full bg-[#000000] hover:bg-red-700 transition-all duration-300 ease-in-out shadow-sm hover:shadow flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B30437] pointer-events-auto"
               aria-label="Next slide"
               type="button"
             >
@@ -269,7 +269,7 @@ const NewsSliderComponent: React.FC<NewsSliderComponentProps> = ({
             <button
               onClick={() => changeSlide(-1)}
               disabled={isAnimating}
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#B30437] hover:bg-red-700 transition-all duration-300 ease-in-out shadow-sm hover:shadow flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B30437] pointer-events-auto"
+              className="w-10 h-10 sm:w-10 sm:h-10 rounded-full bg-[#000000] hover:bg-red-700 transition-all duration-300 ease-in-out shadow-sm hover:shadow flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B30437] pointer-events-auto"
               aria-label="Previous slide"
               type="button"
             >

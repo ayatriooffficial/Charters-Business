@@ -7,7 +7,7 @@ import HighlightText from "../shared/HighlightObserver";
 const immersionData = [
   {
     location: "India",
-flag: "https://flagcdn.com/w40/in.png", // India
+    flag: "https://flagcdn.com/w40/in.png", // India
     business: {
       imageSrc: "/images/tetr/indiaMarket.webp",
       title: "Business Immersions",
@@ -25,7 +25,7 @@ flag: "https://flagcdn.com/w40/in.png", // India
   },
   {
     location: "United States",
-flag: "https://flagcdn.com/w40/us.png", // US
+    flag: "https://flagcdn.com/w40/us.png", // US
     business: {
       imageSrc: "/images/tetr/usGoogle.webp",
       title: "Business Immersions",
@@ -43,7 +43,7 @@ flag: "https://flagcdn.com/w40/us.png", // US
   },
   {
     location: "Canada",
-flag: "https://flagcdn.com/w40/ca.png", // Canada
+    flag: "https://flagcdn.com/w40/ca.png", // Canada
     business: {
       imageSrc: "/images/tetr/arGrobo.webp",
       title: "Business Immersions",
@@ -61,7 +61,7 @@ flag: "https://flagcdn.com/w40/ca.png", // Canada
   },
   {
     location: "Saudi Arabia",
-flag: "https://flagcdn.com/w40/sa.png", // Saudi
+    flag: "https://flagcdn.com/w40/sa.png", // Saudi
     business: {
       imageSrc: "/images/tetr/dubaiEmirates.webp",
       title: "Business Immersions",
@@ -79,7 +79,7 @@ flag: "https://flagcdn.com/w40/sa.png", // Saudi
   },
   {
     location: "Dubai",
-flag: "https://flagcdn.com/w40/ae.png", // Dubai/UAE
+    flag: "https://flagcdn.com/w40/ae.png", // Dubai/UAE
     business: {
       imageSrc: "/images/tetr/dubaiEmirates.webp",
       title: "Business Immersions",
@@ -97,7 +97,7 @@ flag: "https://flagcdn.com/w40/ae.png", // Dubai/UAE
   },
   {
     location: "Qatar",
-flag: "https://flagcdn.com/w40/qa.png", // Qatar
+    flag: "https://flagcdn.com/w40/qa.png", // Qatar
     business: {
       imageSrc: "/images/tetr/dubaiEmirates.webp",
       title: "Business Immersions",
@@ -225,13 +225,14 @@ function WorldImmersion() {
       <div className="max-w-[85rem] mx-auto">
         <div className="text-center mb-8 sm:mb-12">
           <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
-            Internship,{" "}
+
             <HighlightText className=" font-bold">
-              Across the World
+              7 International Markets.
             </HighlightText>
+            {" "} 7 Business Culture.
           </h2>
-          <p className="text-sm sm:text-base text-gray-600">
-            Global business and culture — 7 countries, 1 program.
+          <p className="text-sm sm:text-base text-gray-600 px-[70px]">
+            <strong>4 Months of your program</strong>, work you inside a real company — in <strong>India</strong> or across <strong>6 international markets</strong>. You are <strong>earning while learning</strong>, building a <strong>globally accepted portfolio</strong>.
           </p>
         </div>
 
@@ -252,16 +253,17 @@ function WorldImmersion() {
                     aria-label={`${d.location} immersion`}
                     aria-pressed={isActive}
                   >
-<div className="flex items-center gap-2">
-  <img
-  src={d.flag}
-  alt={d.location}
-  className="w-5 h-5 rounded-sm object-cover"
-/>
+                    <div className="flex items-center gap-2">
 
-  <span>{d.location}</span>
-</div>                
-</button>
+                      <span>{d.location}</span>
+                      <img
+                        src={d.flag}
+                        alt={d.location}
+                        className="w-7 h-5 object-cover"
+                      />
+
+                    </div>
+                  </button>
                 </li>
               );
             })}
@@ -292,8 +294,8 @@ function WorldImmersion() {
                       className="flex flex-col shrink-0 lg:shrink bg-white border-r border-t border-gray-200 min-h-[420px] lg:min-h-[480px] w-[85vw] sm:w-[calc(50%-0.25rem)] lg:flex-1 snap-center lg:snap-align-none hover:shadow-sm transition-shadow"
                     >
                       <div className="w-full mb-4 overflow-hidden">
-<div className="relative w-full h-[250px] bg-gray-50">
-  <Image src={getSafeImageSrc(item.data.imageSrc)}
+                        <div className="relative w-full h-[150px] bg-gray-50">
+                          <Image src={getSafeImageSrc(item.data.imageSrc)}
                             alt={`${item.data.title} — ${item.data.subtitle}`}
                             fill
                             sizes="160px"

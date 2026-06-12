@@ -2,16 +2,16 @@ import React from "react";
 import PlacementReportClient from "./PlacementReportClient";
 
 const placementReportData = {
-  title: "Charter's Career Transition '24",
+  title: "Charter's Career Transition '25",
   description:
-    "Top roles, disruptive startups | industry-leading firms | From graduation to career success",
+    "100% internship rate | Avg students earned +3 offers | +34% global internships/jobs",
   stats: {
     salaryJump: 3.05,
     highestSalary: 12.3,
     recruiters: 3120,
   },
   verification: {
-    by: "B2K Analytics",
+    by: "B2j Analytics",
     verified: true,
   },
 };
