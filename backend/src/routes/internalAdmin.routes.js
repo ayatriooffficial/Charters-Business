@@ -20,6 +20,9 @@ import {
   listApplicationsForJob,
   listApplicationsForInternship,
   updateApplicationStatus,
+  listBlogs,
+  updateBlogStatus,
+  manuallyGenerateBlog,
 } from '../controllers/internalAdmin.controller.js';
 import { requireServiceKey, requireActingAdmin } from '../middlewares/internalAdmin.middleware.js';
 
@@ -52,5 +55,9 @@ router.get('/internships/:id/applications', listApplicationsForInternship);
 
 router.get('/applications', listApplications);
 router.patch('/applications/:id/status', updateApplicationStatus);
+
+router.get('/blogs', listBlogs);
+router.patch('/blogs/:id/status', updateBlogStatus);
+router.post('/blogs/generate', manuallyGenerateBlog);
 
 export default router;

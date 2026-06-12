@@ -5,6 +5,10 @@ import {
   startUserSheetExporter,
   stopUserSheetExporter,
 } from "./src/scripts/exportUsersToSheet.js";
+import {
+  startBlogScheduler,
+  stopBlogScheduler,
+} from "./src/scripts/blogScheduler.js";
 
 const PORT = process.env.PORT || 10000;
 const SHOULD_START_SHEET_EXPORTER =
@@ -57,8 +61,22 @@ const startServer = async () => {
       });
     }
 
+    // Start Blog Scheduler
+    try {
+      startBlogScheduler();
+    } catch (error) {
+      console.error("Blog scheduler failed to start:", error.message);
+    }
+
     const shutdown = () => {
       console.log("Shutting down server...");
+
+      // Stop Blog Scheduler
+      try {
+        stopBlogScheduler();
+      } catch (error) {
+        console.error("Blog scheduler shutdown error:", error.message);
+      }
 
       void stopUserSheetExporter()
         .catch((error) => {

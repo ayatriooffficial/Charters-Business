@@ -22,6 +22,7 @@ import internshipPostingRoutes from "./routes/internshipPosting.routes.js";
 import jobApplicationRoutes from "./routes/jobApplication.routes.js";
 import meetingRoutes from "./routes/meeting.routes.js";
 import internalAdminRoutes from "./routes/internalAdmin.routes.js";
+import blogRoutes from "./routes/blog.routes.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -106,6 +107,7 @@ app.use("/api/v1/jobs", jobPostingRoutes);
 app.use("/api/v1/internships", internshipPostingRoutes);
 app.use("/api/v1/job-applications", jobApplicationRoutes);
 app.use("/api/v1/meetings", meetingRoutes);
+app.use("/api/v1/blogs", blogRoutes);
 
 // Internal server-to-server admin surface.
 app.use("/api/internal/admin", requestLog, internalAdminRoutes);

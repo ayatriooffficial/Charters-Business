@@ -2,6 +2,8 @@ import User from '../models/User.model.js';
 import JobPosting from '../models/JobPosting.model.js';
 import InternshipPosting from '../models/InternshipPosting.model.js';
 import JobApplication from '../models/JobApplication.model.js';
+import Blog from '../models/Blog.model.js';
+import { generateNextBlog } from '../services/blogGenerator.service.js';
 import ApiError from '../utils/ApiError.js';
 import ApiResponse from '../utils/ApiResponse.js';
 import asyncHandler from '../utils/asyncHandler.js';
@@ -469,4 +471,71 @@ export const updateApplicationStatus = asyncHandler(async (req, res) => {
   }
 
   res.status(200).json(new ApiResponse(200, application, 'Application status updated successfully'));
+});
+
+export const listBlogs = asyncHandler(async (req, res) => {
+  const { status, search } = req.query;
+  const { page, limit, skip } = toPagination(req.query);
+
+  const query = {};
+  if (status) {
+    query.status = status;
+  }
+  if (search) {
+    query.$or = [
+      { title: { $regex: search, $options: 'i' } },
+      { content: { $regex: search, $options: 'i' } },
+      { category: { $regex: search, $options: 'i' } },
+    ];
+  }
+
+  const [blogs, total] = await Promise.all([
+    Blog.find(query)
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit)
+      .lean(),
+    Blog.countDocuments(query),
+  ]);
+
+  res.status(200).json(
+    new ApiResponse(
+      200,
+      {
+        blogs,
+        pagination: { page, limit, total, pages: Math.ceil(total / limit) },
+      },
+      'Blogs fetched successfully'
+    )
+  );
+});
+
+export const updateBlogStatus = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body || {};
+
+  if (!['pending', 'approved', 'rejected'].includes(status)) {
+    throw new ApiError(400, 'Invalid status. Allowed: pending, approved, rejected');
+  }
+
+  const updates = { status };
+  if (status === 'approved') {
+    updates.releasedAt = new Date();
+  }
+
+  const blog = await Blog.findByIdAndUpdate(id, updates, {
+    new: true,
+    runValidators: true,
+  });
+
+  if (!blog) {
+    throw new ApiError(404, 'Blog not found');
+  }
+
+  res.status(200).json(new ApiResponse(200, blog, 'Blog status updated successfully'));
+});
+
+export const manuallyGenerateBlog = asyncHandler(async (req, res) => {
+  const newBlog = await generateNextBlog();
+  res.status(201).json(new ApiResponse(201, newBlog, 'Blog generated successfully'));
 });

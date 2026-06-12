@@ -1034,3 +1034,33 @@ export const getAllMeetings = async (params?: {
     throw error;
   }
 };
+
+export interface Blog {
+  _id: string;
+  title: string;
+  content: string;
+  author: string;
+  readTime: string;
+  category: string;
+  tags: string[];
+  status: 'pending' | 'approved' | 'rejected';
+  releasedAt?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export const getApprovedBlogs = async (): Promise<ApiResponse<Blog[]>> => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/blogs`);
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Failed to fetch blogs");
+    }
+
+    return data;
+  } catch (error: any) {
+    console.error("Error fetching approved blogs:", error);
+    throw error;
+  }
+};
