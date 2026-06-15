@@ -18,6 +18,7 @@ function Navbar() {
   const [selectedSecondaryTab, setSelectedSecondaryTab] = useState("for-you");
   const [dropdownTop, setDropdownTop] = useState(0);
   const [showInterviewAI, setShowInterviewAI] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   const messages = [
     "Talk to us at 08045579576 or Request Callback",
@@ -76,6 +77,7 @@ function Navbar() {
   }, [isSecondaryVisible]);
 
   useEffect(() => {
+    setIsMounted(true);
     const interval = setInterval(() => {
       setMsgVisible(false);
       setTimeout(() => {
@@ -237,8 +239,7 @@ function Navbar() {
               {/* Center text */}
               <div
                 onClick={() => {
-                  setShowInterviewAI(true);
-                  document.body.style.overflow = 'hidden';
+                  router.push("/login");
                 }}
                 className="absolute left-1/2 -translate-x-1/2 flex text-[13px] text-[#0F1419] font-semibold items-center whitespace-nowrap cursor-pointer"
               >
@@ -293,8 +294,7 @@ function Navbar() {
 
                       <button
                         onClick={() => {
-                          setShowInterviewAI(true);
-                          document.body.style.overflow = 'hidden';
+                          router.push("/login");
                         }}
                         className={`cursor-pointer hover:text-[#B30437] transition-colors ${selectedSecondaryTab === "login"
                           ? "border-b-2 border-[#B30437] text-[#B30437] pb-1"
@@ -409,8 +409,7 @@ function Navbar() {
                     if (user) {
                       navigateToRemoteDashboard("/dashboard");
                     } else {
-                      setShowInterviewAI(true);
-                      document.body.style.overflow = "hidden";
+                      router.push("/login");
                     }
                   }}
                   className="px-3 py-1.5 text-xs font-semibold text-white bg-[#B30437] hover:bg-[#8B0329] rounded-md transition-colors"
@@ -668,8 +667,7 @@ function Navbar() {
                           }`}
                         onClick={() => {
                           setIsMobileMenuOpen(false);
-                          setShowInterviewAI(true);
-                          document.body.style.overflow = 'hidden';
+                          router.push("/login");
                         }}
                       >
                         Login
@@ -682,25 +680,7 @@ function Navbar() {
           </div>
         </div>
       </div>
-      {showInterviewAI && createPortal(
-        <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-black/20">
-          <div className="w-[80%] h-[90%] relative">
-            <button
-              onClick={() => {
-                setShowInterviewAI(false);
-                document.body.style.overflow = '';
-              }}
-              className="absolute -top-3 -right-3 z-40 bg-white rounded-full w-7 h-7 flex items-center justify-center shadow-md text-gray-600 hover:text-red-500 transition-colors"
-            >
-              ✕
-            </button>
-            <div className="w-full h-full overflow-hidden rounded-xl shadow-2xl">
-              <ChartersInterviewAi />
-            </div>
-          </div>
-        </div>,
-        document.body
-      )}
+      {/* Portal removed in favor of direct /login redirect */}
     </div>
   );
 }

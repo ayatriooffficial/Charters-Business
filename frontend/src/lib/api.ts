@@ -1064,3 +1064,20 @@ export const getApprovedBlogs = async (): Promise<ApiResponse<Blog[]>> => {
     throw error;
   }
 };
+
+export const getBlogById = async (id: string): Promise<ApiResponse<Blog>> => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/blogs/${id}`);
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Failed to fetch blog");
+    }
+
+    return data;
+  } catch (error: any) {
+    console.error("Error fetching blog by ID:", error);
+    throw error;
+  }
+};
+

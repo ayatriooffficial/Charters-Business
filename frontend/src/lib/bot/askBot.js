@@ -3,6 +3,21 @@ import institute from "@/lib/data/institute.json";
 import faculty from "@/lib/data/faculty.json";
 import homeData from "@/lib/data/home.json";
 
+// Additional page-specific data
+import { programmes } from "@/data/programmes";
+import { jobs } from "@/data/jobs";
+import { internships } from "@/data/internships";
+import { careerPageData } from "@/data/careers";
+import testimonials from "@/data/testimonials.json";
+import { STATIC_BLOGS } from "@/data/staticBlogs";
+import { 
+  programs as applyPrograms,
+  scholarships as applyScholarships,
+  counsellors,
+  applicationSteps,
+  pageContent as applyPageContent
+} from "@/data/applyPageData";
+
 const programs = programsData.programs;
 
 /* ---------------- FOOTER ---------------- */
@@ -29,8 +44,9 @@ function findProgram(question) {
     (p) =>
       q.includes(p.id) ||
       q.includes(p.name.toLowerCase()) ||
-      (p.id === "executive" &&
-        (q.includes("executive") || q.includes("product growth")))
+      (p.id === "mba" && (q.includes("cba") || q.includes("certified business accountant"))) ||
+      (p.id === "pgdm" && (q.includes("dgm") || q.includes("digital growth") || q.includes("post graduate"))) ||
+      (p.id === "executive" && (q.includes("tbm") || q.includes("technology") || q.includes("product growth")))
   );
 }
 
@@ -129,7 +145,7 @@ async function getAIReply(question, program) {
       : "";
 
     const context = `
-You have access to the complete database of Charters Union. Use ONLY the following details to answer the user's questions. Do not make up, assume, or invent details that are not present in this data.
+You have access to the complete database and page contents of Charters Union. Use ONLY the following details to answer the user's questions. Do not make up, assume, or invent details that are not present in this data.
 
 ### 🎓 PROGRAMS & COURSES AVAILABLE
 ${JSON.stringify(programsData.programs, null, 2)}
@@ -143,34 +159,49 @@ ${JSON.stringify(faculty, null, 2)}
 ### 📈 INSTITUTE-WIDE PLACEMENT & HOME PAGE STATS
 ${JSON.stringify(homeData, null, 2)}
 
+### 📚 DETAILED MODULES, CURRICULUMS, SEMESTERS, FEES & FAQS OF CORE PROGRAMMES
+${JSON.stringify(programmes, null, 2)}
+
+### 💼 CAREERS & OPEN POSITIONS AT CHARTERS BUSINESS
+${JSON.stringify(jobs, null, 2)}
+
+### 🎓 INTERNSHIPS AVAILABLE
+${JSON.stringify(internships, null, 2)}
+
+### 🏢 CAREERS OVERVIEW, GENERAL BENEFITS & FAQS
+${JSON.stringify(careerPageData, null, 2)}
+
+### 💬 ALUMNI & STUDENT TESTIMONIALS
+${JSON.stringify(testimonials, null, 2)}
+
+### 📰 PORTAL BLOG ARTICLES (STANDALONE NEWS & CAREER GUIDES)
+${JSON.stringify(STATIC_BLOGS, null, 2)}
+
+### 📝 ADMISSION & APPLICATION DETAIL DATA (STEPS, SCHOLARSHIPS, COUNSELLORS)
+- **Degrees Levels Offered:** ${JSON.stringify(applyPrograms, null, 2)}
+- **Scholarships details:** ${JSON.stringify(applyScholarships, null, 2)}
+- **Admission Counsellors contact details:** ${JSON.stringify(counsellors, null, 2)}
+- **Detailed Step-by-Step Admission Process:** ${JSON.stringify(applicationSteps, null, 2)}
+- **Apply page configuration details:** ${JSON.stringify(applyPageContent, null, 2)}
+
 ${programFocus}
 `;
 
-    const res = await fetch(
-      "https://api.groq.com/openai/v1/chat/completions",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model: "llama-3.1-8b-instant",
-          messages: [
-            {
-              role: "system",
-              content: `
-You are Ragini, the AI Admission Counselor for Charters Union.
+    const systemPrompt = `
+You are Ragini, the AI Admission Counselor for Charters Union (also referred to as Charters Business College).
 
 STRICT RULES:
-• Only answer using the provided context/data.
-• Do NOT invent courses or program options not listed in the data.
-• Keep replies structured and easy to read.
+• Only answer using the provided context/data. Do NOT assume, invent, or make up facts.
+• Keep replies structured, concise, and easy to read.
 • Use headings (##) and subheadings (###) for structure.
-• Highlight important values (like fees, CTC, durations, percentages) using **bold**.
+• Highlight important values (like fees, CTC, durations, percentages, ROI) using **bold**.
 • If asked about availability/options, answer clearly.
-• If information is not available in the context, politely explain:
-"I can help with programs, fees, placements, or admissions."
+• Answer general questions (e.g. "fees", "placements", "ROI", "salary", "admission process", "eligibility") by comparing/summarizing info across ALL available programs (MBA/CBA, PGDM/DGM, and Executive/TBM) to provide a complete and informative answer. Do not say information is not available when general fees/placements/ROI are asked; extract them from the database and compare them.
+• Specifically:
+  - **ROI (Return on Investment):** If the user asks about ROI, MBA ROI, or PGDM ROI, explain it clearly using the program fee/EMI structure (EMI starts at ₹5,555/month, up to ₹16,000 scholarships, success fee, and seat booking ₹2,000) versus the outstanding placement outcomes (Average CTC: MBA/CBA is **26.5 LPA** with 3.05x average jump; PGDM/DGM is **24.5 LPA** with 2.5x hike; Executive/TBM is **38.5 LPA** with 1.8x increase). Point out the program durations: PGDM/DGM is **7 months**, MBA/CBA is **2 years**, Executive/TBM is **12 months**. Highlight that the short durations paired with high salaries yield an outstanding ROI.
+  - **Fees:** Outline the EMI structure, no-cost EMI options, seat booking, scholarships, and success fees for each program.
+  - **Placements:** Show placement rates (95% for MBA/CBA, 92% for PGDM/DGM, 98% promotion rate for Executive/TBM) and Average CTCs/Salary ranges.
+• If the information is not present in the context at all, politely state: "I can help with programs, fees, placements, or admissions."
 
 STRICT FORMAT RULES:
 • Use markdown headings:
@@ -183,22 +214,39 @@ STRICT FORMAT RULES:
 • Keep structure clean.
 
 ${context}
-`,
-            },
-            { role: "user", content: question },
+`;
+
+    const res = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              role: "user",
+              parts: [{ text: question }]
+            }
           ],
-          temperature: 0.2,
+          systemInstruction: {
+            parts: [{ text: systemPrompt }]
+          },
+          generationConfig: {
+            temperature: 0.2
+          }
         }),
       }
     );
 
     const data = await res.json();
-    const reply =
-      data?.choices?.[0]?.message?.content ||
-      "I can help with programs, fees, placements, or admissions.";
+    const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || 
+                  "I can help with programs, fees, placements, or admissions.";
 
     return reply + admissionFooter();
-  } catch {
+  } catch (err) {
+    console.error("Chatbot Error:", err);
     return "Please contact our counselor for more details.";
   }
 }
