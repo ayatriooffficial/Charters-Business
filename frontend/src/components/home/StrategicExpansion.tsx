@@ -650,37 +650,48 @@ const StrategicExpansion: React.FC = () => {
                     {/* Tabs at the top */}
                     <div aria-label="Career Labs categories" className="border-b border-gray-300">
                         <ul className="flex w-[93%] mx-auto overflow-x-auto scrollbar-hide">
-                            {cardsData.map((card) => (
-                                <li
-                                    key={card.id}
-                                    className="flex-1 bg-white"
-                                >
-                                    <button
-                                        onClick={() => handleCardClick(card.id)}
-                                        className="w-full px-3 sm:px-4 py-4 text-left border-b border-gray-200 !bg-white hover:!bg-white active:!bg-white focus:!bg-white transition-none"
-                                        aria-label={`${card.title} program`}
+                            {cardsData.map((card) => {
+                                const isActive = selectedCard === card.id;
+                                return (
+                                    <li
+                                        key={card.id}
+                                        className="flex-1 bg-white"
                                     >
-                                        <div className="flex items-center gap-3">
-                                            <img
-                                                src="/dot-icon.svg"
-                                                alt=""
-                                                className="w-5 h-5"
-                                                aria-hidden="true"
-                                            />
+                                        <button
+                                            onClick={() => handleCardClick(card.id)}
+                                            className={`w-full px-3 sm:px-4 py-4 text-left border-b-2 !bg-white hover:!bg-white active:!bg-white focus:!bg-white transition-all duration-200 ${
+                                                isActive ? 'border-black' : 'border-transparent'
+                                            }`}
+                                            aria-label={`${card.title} program`}
+                                        >
+                                            <div className="flex items-center gap-3">
+                                                <img
+                                                    src="/dot-icon.svg"
+                                                    alt=""
+                                                    className={`w-5 h-5 transition-opacity duration-200 ${
+                                                        isActive ? 'opacity-100' : 'opacity-30'
+                                                    }`}
+                                                    aria-hidden="true"
+                                                />
 
-                                            <div>
-                                                <span className="block text-xs font-semibold text-black uppercase tracking-wide">
-                                                    {card.description}
-                                                </span>
+                                                <div>
+                                                    <span className={`block text-xs font-semibold uppercase tracking-wide transition-colors duration-200 ${
+                                                        isActive ? 'text-black' : 'text-gray-400'
+                                                    }`}>
+                                                        {card.description}
+                                                    </span>
 
-                                                <span className="block text-lg font-semibold text-black whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px] lg:max-w-[220px]">
-                                                    {card.title}
-                                                </span>
+                                                    <span className={`block text-lg font-semibold whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px] lg:max-w-[220px] transition-colors duration-200 ${
+                                                        isActive ? 'text-black' : 'text-gray-400'
+                                                    }`}>
+                                                        {card.title}
+                                                    </span>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </button>
-                                </li>
-                            ))}
+                                        </button>
+                                    </li>
+                                );
+                            })}
                         </ul>
                     </div>
 
