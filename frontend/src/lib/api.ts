@@ -1076,7 +1076,12 @@ export const getBlogById = async (id: string): Promise<ApiResponse<Blog>> => {
 
     return data;
   } catch (error: any) {
-    console.error("Error fetching blog by ID:", error);
+    const msg = error?.message || "";
+    if (msg.toLowerCase().includes("not found") || msg.includes("404") || msg.includes("failed to fetch")) {
+      console.warn("Error fetching blog by ID:", error.message);
+    } else {
+      console.error("Error fetching blog by ID:", error);
+    }
     throw error;
   }
 };

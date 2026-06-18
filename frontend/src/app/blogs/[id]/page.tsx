@@ -52,7 +52,12 @@ export default function BlogDetailPage({
           setBlog(null);
         }
       } catch (error) {
-        console.error("Failed to load blog from database:", error);
+        const message = error instanceof Error ? error.message : "";
+        if (message.toLowerCase().includes("not found") || message.includes("404")) {
+          console.warn(`Blog not found: ${id}`);
+        } else {
+          console.error("Failed to load blog from database:", error);
+        }
         setBlog(null);
       } finally {
         setIsLoading(false);
@@ -155,26 +160,14 @@ export default function BlogDetailPage({
   return (
     <article className="min-h-screen bg-white text-black py-16 sm:py-24">
       <div className="max-w-4xl w-full mx-auto px-4">
-        {/* Back Link */}
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 text-sm font-semibold text-[#B30437] hover:text-red-700 transition-colors mb-8 group"
-        >
-          <svg
-            className="w-5 h-5 transform group-hover:-translate-x-1 transition-transform"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M10 19l-7-7m0 0l7-7m-7 7h18"
-            />
-          </svg>
-          Back to Home
-        </Link>
+        {/* Breadcrumbs */}
+        <div className="text-sm text-gray-500 mb-8 font-medium">
+          <Link href="/" className="hover:text-[#B30437] transition-colors">
+            Home
+          </Link>
+          <span className="mx-2 text-gray-300">/</span>
+          <span className="text-gray-950 font-semibold">Blogs</span>
+        </div>
 
         {/* Header Section */}
         <header className="mb-10 pb-8 border-b border-gray-100">
@@ -246,15 +239,7 @@ export default function BlogDetailPage({
           {renderBlogContent(blog.content)}
         </section>
 
-        {/* Footer actions */}
-        <div className="mt-12 pt-8 border-t border-gray-100 flex justify-between items-center">
-          <Link
-            href="/"
-            className="px-6 py-3 bg-gray-900 hover:bg-gray-800 text-white rounded-lg font-semibold text-sm transition-colors shadow-sm"
-          >
-            Done Reading
-          </Link>
-        </div>
+
       </div>
     </article>
   );
