@@ -430,8 +430,8 @@ function FacultyModel({ data }: FacultyModelProps) {
               ref={slidesContainerRef}
               className={
                 // change gap
-                `flex  transition-all duration-300 ease-out ` +
-                `overflow-x-auto snap-x snap-mandatory scrollbar-hide scroll-smooth ` +
+                `flex lg:grid lg:grid-cols-4 transition-all duration-300 ease-out ` +
+                `overflow-x-auto lg:overflow-x-visible snap-x snap-mandatory lg:snap-none scrollbar-hide scroll-smooth ` +
                 `${isTabSwitching ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'}`
               }
               style={{ transition: 'opacity 200ms ease-out, transform 200ms ease-out' }}
@@ -441,7 +441,7 @@ function FacultyModel({ data }: FacultyModelProps) {
               {filteredFaculty.map((faculty, index) => (
                 <article
                   key={faculty.name}
-                  className="bg-[#F4F2EE] border-r border-b border-gray-300 flex flex-col flex-none w-[340px] snap-start"
+                  className="bg-[#F4F2EE] border-r border-b border-gray-300 flex flex-col flex-none w-[340px] lg:w-full snap-start lg:snap-align-none"
                 >
                   {/* Image */}
                   <div className="w-full h-[280px] bg-gray-200">
@@ -494,7 +494,7 @@ function FacultyModel({ data }: FacultyModelProps) {
             </div>
 
             {/* Navigation Buttons */}
-            <div className="absolute top-1/2 -translate-y-1/2 right-4 sm:right-2 pointer-events-none">
+            <div className="absolute top-1/2 -translate-y-1/2 right-4 sm:right-2 pointer-events-none lg:hidden">
               {offsetPercent < 95 && (
                 <button
                   onClick={() => changeSlide(1)}
@@ -519,7 +519,7 @@ function FacultyModel({ data }: FacultyModelProps) {
                 </button>
               )}
             </div>
-            <div className="absolute top-1/2 -translate-y-1/2 left-4 sm:left-2 pointer-events-none">
+            <div className="absolute top-1/2 -translate-y-1/2 left-4 sm:left-2 pointer-events-none lg:hidden">
               {offsetPercent > 5 && (
                 <button
                   onClick={() => changeSlide(-1)}
