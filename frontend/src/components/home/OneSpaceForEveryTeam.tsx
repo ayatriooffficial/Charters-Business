@@ -84,15 +84,16 @@ const OneSpaceForEveryTeam = () => {
 
         {/* Navigation Tags */}
         <div aria-label="Team categories">
-          <ul className="flex overflow-scroll scrollbar-hide sm:justify-center gap-1 sm:gap-3 md:gap-6">
+          <ul className="flex overflow-scroll scrollbar-hide sm:justify-center gap-1 sm:gap-3 md:gap-6 border-b border-gray-300">
             {teamCategories.map((category) => (
               <li key={category.id}>
                 <button
                   onClick={() => setActiveCategory(category.id)}
-                  className={`px-3 text-nowrap sm:px-4 py-2  transition-all focus-visible:outline-none focus-visible:border-b-2 focus-visible:border-[#B30437] text-sm ${activeCategory === category.id
-                    ? " text-black border-b-2 "
-                    : "text-gray-700  hover:bg-gray-50"
-                    }`}
+                  className={`px-3 text-nowrap sm:px-4 py-2 transition-all duration-200 focus-visible:outline-none text-sm ${
+                    activeCategory === category.id
+                      ? "text-black border-b-2 border-black font-semibold"
+                      : "text-gray-400 border-b-2 border-transparent hover:text-black"
+                  }`}
                   aria-label={`${category.name} teams`}
                   aria-pressed={activeCategory === category.id}
                 >
