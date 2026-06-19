@@ -291,10 +291,11 @@ function StudentModel({ data }: StudentModelProps) {
                 <li key={category.id}>
                   <button
                     onClick={() => handleCategoryChange(category.id)}
-                    className={`px-3 text-nowrap sm:px-4 py-2 transition-all text-sm ${activeCategory === category.id
-                      ? "text-black border-b-2 border-black"
-                      : "text-gray-700 hover:bg-gray-50"
-                      }`}
+                    className={`px-3 text-nowrap sm:px-4 py-2 transition-all duration-200 focus-visible:outline-none text-sm ${
+                      activeCategory === category.id
+                        ? "text-black border-b-2 border-black font-semibold"
+                        : "text-gray-400 border-b-2 border-transparent hover:text-black"
+                    }`}
                     aria-pressed={activeCategory === category.id}
                   >
                     {category.name}
