@@ -13,12 +13,12 @@ import requestId from "./middlewares/requestId.middleware.js";
 import requestLog from "./middlewares/requestLog.middleware.js";
 
 import authRoutes from "./routes/auth.routes.js";
-import applicationRoutes from "./routes/application.routes.js";
+//import applicationRoutes from "./routes/application.routes.js";
 import counselingRoutes from "./routes/counseling.routes.js";
 import userRoutes from "./routes/user.routes.js";
 
-import jobPostingRoutes from "./routes/jobPosting.routes.js";
-import internshipPostingRoutes from "./routes/internshipPosting.routes.js";
+//import jobPostingRoutes from "./routes/jobPosting.routes.js";
+//import internshipPostingRoutes from "./routes/internshipPosting.routes.js";
 import jobApplicationRoutes from "./routes/jobApplication.routes.js";
 import meetingRoutes from "./routes/meeting.routes.js";
 import internalAdminRoutes from "./routes/internalAdmin.routes.js";
@@ -76,7 +76,13 @@ app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 /* LOGGING */
 
 if (appConfig.env === "development") {
+  // Colorful concise logging for local development.
   app.use(morgan("dev"));
+} else {
+  // Apache 'combined' format for production: includes IP, method, URL,
+  // status code, response size, referrer, and user-agent.
+  // Essential for debugging incidents and monitoring in log aggregators.
+  app.use(morgan("combined"));
 }
 
 /* ROOT ROUTE */
@@ -96,15 +102,54 @@ app.get("/health", (req, res) => {
   });
 });
 
+/* RATE LIMITING */
+
+// Strict limiter for authentication endpoints — prevents brute-force and credential stuffing.
+const authRateLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 10,                   // max 10 attempts per IP per window
+  standardHeaders: true,     // Return rate-limit info in `RateLimit-*` headers
+  legacyHeaders: false,
+  message: {
+    success: false,
+    message: "Too many requests from this IP. Please try again after 15 minutes.",
+  },
+  skipSuccessfulRequests: false,
+});
+
+// Moderate limiter for public form submissions (applications, counseling).
+const submissionRateLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 hour
+  max: 20,                   // max 20 submissions per IP per hour
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    success: false,
+    message: "Too many submissions from this IP. Please try again after 1 hour.",
+  },
+});
+
+// Heartbeat limiter — prevents session-collection flooding.
+const heartbeatRateLimiter = rateLimit({
+  windowMs: 60 * 1000,  // 1 minute
+  max: 60,              // max 60 pings per IP per minute (1 per second)
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    success: false,
+    message: "Too many heartbeat requests. Please slow down.",
+  },
+});
+
 /* API ROUTES */
 
-app.use("/api/v1/auth", authRoutes);
-app.use("/api/v1/applications", applicationRoutes);
-app.use("/api/v1/counseling", counselingRoutes);
-app.use("/api/v1/users", userRoutes);
+app.use("/api/v1/auth", authRateLimiter, authRoutes);
+//app.use("/api/v1/applications", submissionRateLimiter, applicationRoutes);
+app.use("/api/v1/counseling", submissionRateLimiter, counselingRoutes);
+app.use("/api/v1/users", heartbeatRateLimiter, userRoutes);
 
-app.use("/api/v1/jobs", jobPostingRoutes);
-app.use("/api/v1/internships", internshipPostingRoutes);
+//app.use("/api/v1/jobs", jobPostingRoutes);
+//app.use("/api/v1/internships", internshipPostingRoutes);
 app.use("/api/v1/job-applications", jobApplicationRoutes);
 app.use("/api/v1/meetings", meetingRoutes);
 app.use("/api/v1/blogs", blogRoutes);
@@ -127,4 +172,4 @@ app.use((req, res) => {
 app.use(errorHandler);
 
 export default app;
-// Trigger restart to load new environment variables (including CORS_ORIGIN)
+// Trigger restart to load new MONGODB_URI environment variable

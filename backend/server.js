@@ -23,30 +23,51 @@ const startServer = async () => {
     await connectDB();
     console.log("MongoDB connected");
 
-    // Auto-seed default Admin user if not present
+    // Auto-seed default Admin user if not present.
+    // SECURITY: Never use hardcoded fallback credentials.
+    // In production, SEED_ADMIN_PHONE and SEED_ADMIN_PASSWORD MUST be set explicitly.
     try {
-      const adminPhone = process.env.SEED_ADMIN_PHONE || "+919999999999";
-      const adminPassword = process.env.SEED_ADMIN_PASSWORD || "SecureAdmin123!";
-      
-      const User = (await import("./src/models/User.model.js")).default;
-      const adminExists = await User.findOne({ phoneNumber: adminPhone });
-      if (!adminExists) {
-        console.log(`[Auto-Seed] Seeding default Admin user in database for number: ${adminPhone}...`);
-        await User.create({
-          name: "System Admin",
-          email: "admin@chartersbusiness.com",
-          phoneNumber: adminPhone,
-          password: adminPassword,
-          role: "admin",
-          isFirstLogin: false,
-          status: "active"
-        });
-        console.log("[Auto-Seed] Default Admin user seeded successfully!");
+      const adminPhone = process.env.SEED_ADMIN_PHONE;
+      const adminPassword = process.env.SEED_ADMIN_PASSWORD;
+
+      if (!adminPhone || !adminPassword) {
+        if (process.env.NODE_ENV === "production") {
+          // Hard-fail in production — do not start with unknown credentials.
+          throw new Error(
+            "[Auto-Seed] SEED_ADMIN_PHONE and SEED_ADMIN_PASSWORD must be set in production. " +
+            "Refusing to start without explicit admin credentials."
+          );
+        } else {
+          console.warn(
+            "[Auto-Seed] SEED_ADMIN_PHONE or SEED_ADMIN_PASSWORD not set. " +
+            "Skipping admin auto-seed in development mode."
+          );
+        }
       } else {
-        console.log(`[Auto-Seed] Admin user (${adminPhone}) already exists in database.`);
+        const User = (await import("./src/models/User.model.js")).default;
+        const adminExists = await User.findOne({ phoneNumber: adminPhone });
+        if (!adminExists) {
+          console.log(`[Auto-Seed] Seeding default Admin user for number: ${adminPhone}...`);
+          await User.create({
+            name: "System Admin",
+            email: "admin@chartersbusiness.com",
+            phoneNumber: adminPhone,
+            password: adminPassword,
+            role: "admin",
+            isFirstLogin: false,
+            status: "active",
+          });
+          console.log("[Auto-Seed] Default Admin user seeded successfully!");
+        } else {
+          console.log(`[Auto-Seed] Admin user (${adminPhone}) already exists in database.`);
+        }
       }
     } catch (err) {
       console.error("[Auto-Seed] Failed to seed default Admin user:", err);
+      if (process.env.NODE_ENV === "production") {
+        // Re-throw so the server does not silently start with a broken admin state.
+        throw err;
+      }
     }
 
     const server = app.listen(PORT, () => {
@@ -93,8 +114,12 @@ const startServer = async () => {
         });
     };
 
-    // Graceful shutdown
+    // Graceful shutdown on SIGINT (Ctrl+C in dev) and SIGTERM (cloud platform stop).
+    // SIGTERM is sent by Render, Railway, Kubernetes, Docker when stopping a container.
+    // Without SIGTERM handling the process is killed immediately, dropping in-flight
+    // requests and skipping background process cleanup.
     process.on("SIGINT", shutdown);
+    process.on("SIGTERM", shutdown);
 
   } catch (error) {
     console.error("Failed to start server:", error);

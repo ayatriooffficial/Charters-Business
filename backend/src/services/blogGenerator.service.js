@@ -1,92 +1,180 @@
 import Blog from '../models/Blog.model.js';
+import sanitizeHtml from 'sanitize-html';
 
-// Predefined high-quality articles to use as fallback or testing (strictly commerce/business)
+/**
+ * Sanitize AI-generated text content before persisting.
+ * Strips all HTML tags and event handlers while preserving plain text
+ * and Markdown formatting characters (##, **, *, etc.).
+ *
+ * This guards against prompt-injection attacks where the LLM is tricked
+ * into returning malicious HTML or JavaScript in the blog body.
+ */
+function sanitizeBlogContent(raw) {
+  if (typeof raw !== 'string') return '';
+  // Strip ALL HTML tags — blog content is stored and rendered as Markdown,
+  // so no HTML tags should be present.
+  return sanitizeHtml(raw, { allowedTags: [], allowedAttributes: {} }).trim();
+}
+
+function sanitizeTags(tags) {
+  if (!Array.isArray(tags)) return ['career'];
+  return tags
+    .map((t) => sanitizeBlogContent(String(t || '')))
+    .filter(Boolean)
+    .slice(0, 10); // cap at 10 tags
+}
+
+// Predefined high-quality articles to use as fallback or testing
 const PRESET_BLOGS = [
   {
-    title: 'The Future of Corporate Accounting: Career Pathways in CBA®',
-    author: 'Charters Finance Team',
-    readTime: '15 min read',
-    category: 'Corporate Finance',
-    tags: ['cba', 'accounting', 'finance', 'career growth'],
-    content: `## The Modern Corporate Accountant
-    
-In 2026, corporate accounting has transformed from simple bookkeeping to a core strategic function. Modern companies are looking for **Certified Business Accountants (CBA®)** who understand advanced analytical models, automation, and global compliance systems.
+    title: 'AI Agent Frameworks: What It Is & How It Works',
+    author: 'Agnish Rawat',
+    readTime: '20 min read',
+    category: 'Technology',
+    tags: ['AI', 'Agentic Workflow', 'LLM', 'Development'],
+    content: `## The Rise of Agentic Workflows
 
-### What is the CBA® Specialization?
+In 2026, the discussion around Artificial Intelligence has shifted from simple chatbots to autonomous agents. Unlike traditional AI applications that respond to single prompts, **AI Agent Frameworks** allow systems to plan, execute multi-step workflows, handle tools, and self-correct their outputs.
 
-The CBA® path combines rigorous theoretical standards with live corporate case studies (aligned with Harvard, Columbia, and ACCA systems) to build finance leaders. Essential modules include:
-1. **Financial Planning & Analysis (FP&A)**: Mapping budgets, cashflows, and corporate investments.
-2. **AI-Led Corporate Accounting**: Utilizing modern ERPs and analytical tools to streamline compliance.
-3. **Global Tax & GCC Readiness**: Preparing for cross-border financial systems across Singapore, Dubai, and the USA.
+### What is an AI Agent Framework?
 
-### Career Opportunities for CBA® Graduates
-Graduates of this program enter highly lucrative roles such as:
-* **FP&A Analyst**: Reviewing financial health and forecasting revenue.
-* **Fintech Specialist**: Navigating digital banking and payment structures.
-* **Internal Auditor**: Designing risk mitigation models for multinational enterprises.
+An AI Agent Framework is a software framework that helps developers build autonomous systems. These systems possess:
+1. **Memory**: Long-term and short-term memory to keep track of conversations and tasks.
+2. **Planning**: The ability to break down complex tasks into smaller, manageable steps.
+3. **Tools**: Capabilities to query databases, call external APIs, or execute code.
+
+### Core Frameworks in 2026
+
+Several frameworks have emerged as industry standards:
+* **LangGraph**: Excellent for building cyclical and stateful multi-agent workflows.
+* **CrewAI**: Designed for orchestrating group tasks where different AI agents play distinct roles (e.g., researcher, writer, validator).
+* **AutoGen**: Microsoft's framework that enables multi-agent conversations to solve complex programming tasks.
+
+## Why Businesses are Adopting AI Agents
+
+AI Agents are transforming operations because they don't just answer questions; they complete jobs. For example, a customer support agent can retrieve user info, check refund eligibility rules, call the payment processor API to trigger a refund, and send a confirmation email—all without human intervention.
 `,
   },
   {
-    title: 'How Digital Growth & Marketing (DGM™) is Redefining Brand Scaling',
-    author: 'Vatsal Mehta',
-    readTime: '12 min read',
-    category: 'Growth Marketing',
-    tags: ['dgm', 'digital marketing', 'user acquisition', 'brand strategy'],
-    content: `## The Era of Performance Marketing
-    
-Traditional branding is no longer sufficient to scale businesses in 2026. Companies are looking for **Digital Growth & Marketing (DGM™)** experts who can bridge product management, consumer psychology, and data-driven user acquisition.
-
-### Core Pillars of Digital Growth
-To successfully scale a brand today, professionals focus on three pillars:
-1. **Customer Acquisition Cost (CAC) Optimization**: Leveraging programmatic ads and viral loops to keep marketing costs efficient.
-2. **Conversion Rate Optimization (CRO)**: Redesigning user experiences to ensure visitors convert into active customers.
-3. **Retention & Content Commerce**: Building long-term user communities that buy repeatedly.
-
-### Career Roles in DGM™
-* **Performance Marketing Manager**: Scaling ad budgets and analyzing channel ROI.
-* **Growth Product Manager**: Aligning product features with user growth strategy.
-* **Brand Strategist**: Developing high-level omnichannel narratives.
-`,
-  },
-  {
-    title: 'Bridging Tech & Leadership: Why TBM™ is the C-Suite Fast-Track',
-    author: 'Aparna Sen',
-    readTime: '18 min read',
-    category: 'Business Strategy',
-    tags: ['tbm', 'management', 'leadership', 'tech business'],
-    content: `## The Rise of Technical Business Managers
-    
-As technology dominates every industry, companies face a bottleneck: tech teams don't speak business, and business leaders don't speak tech. The **Technology & Business Management (TBM™)** program is designed to bridge this divide.
-
-### Executive Skills for Modern Leaders
-TBM™ prepares senior managers and aspiring executives through:
-1. **CXO Mentorship**: Real-world strategic leadership advice from industry veterans.
-2. **Product Growth Engineering**: Managing tech-driven product launches without needing to write code.
-3. **Strategic Portfolios**: Assessing mergers, acquisitions, and technological integrations.
-
-### Strategic Career Paths
-TBM™ is built for C-suite preparation, leading to positions like:
-* **Vice President of Operations**: Overseeing large-scale business integrations.
-* **Strategic Growth Director**: Designing corporate expansion roadmaps.
-* **C-Suite Executive**: Leading companies through digital transformation.
-`,
-  },
-  {
-    title: 'Demystifying ROI in Professional Business Education',
-    author: 'Charters Team',
+    title: 'Will AI Replace Software Engineers? Truth, Opinions and Career Impact',
+    author: 'Team Scaler',
     readTime: '14 min read',
+    category: 'Career Roadmaps',
+    tags: ['AI', 'Software Engineering', 'Career Growth', 'Software Development'],
+    content: `## The Software Engineering Shift
+
+As generative AI models become increasingly proficient at writing, debugging, and refactoring code, many aspiring developers are asking a critical question: **Will AI replace software engineers?**
+
+The short answer is **no, but it will fundamentally redefine what a software engineer does.**
+
+### From Syntax Writers to System Architects
+
+AI tools like GitHub Copilot, Cursor, and custom coding agents are highly efficient at generating boilerplate code and fixing syntax errors. However, they lack:
+1. **Deep Business Context**: Understanding why a feature is being built and how it aligns with user needs.
+2. **System Design & Architecture**: Designing scalable, distributed systems that integrate securely.
+3. **Complex Debugging**: Troubleshooting edge-case race conditions in large legacy codebases.
+
+### The Rise of the "AI-Augmented" Engineer
+
+In 2026, the most successful engineers are those who know how to collaborate with AI. By offloading repetitive coding tasks to AI agents, human developers can focus on:
+* **System Design & Security**
+* **Product Management and UX**
+* **Ensuring Data Privacy and Compliance**
+
+Rather than shrinking, the software engineering field is expanding for developers who elevate their skills from syntax writing to high-level system engineering.
+`,
+  },
+  {
+    title: 'SQL Roadmap 2026: Learning Paths, Career Roles and Tools',
+    author: 'Tushar Bisht',
+    readTime: '18 min read',
+    category: 'Career Roadmaps',
+    tags: ['SQL', 'Data Analytics', 'Database', 'Backend Development'],
+    content: `## Why SQL Remains King in 2026
+
+Despite the proliferation of NoSQL, vector databases, and AI-driven data extraction tools, Structured Query Language (SQL) remains the absolute foundation of data handling. Whether you are building a backend application, performing data analytics, or training machine learning models, SQL is an indispensable skill.
+
+### The 2026 SQL Learning Path
+
+To master SQL today, you should follow this structured roadmap:
+
+### Phase 1: Basic Queries
+* **Basic Syntax**: SELECT, WHERE, ORDER BY, LIMIT.
+* **Aggregations**: GROUP BY, HAVING, and standard aggregation functions like SUM, AVG, COUNT.
+
+### Phase 2: Joins & Relational Design
+* **Joins**: INNER JOIN, LEFT/RIGHT JOIN, FULL OUTER JOIN.
+* **Relationships**: One-to-One, One-to-Many, and Many-to-Many relational designs.
+
+### Phase 3: Advanced SQL
+* **Window Functions**: ROW_NUMBER(), RANK(), DENSE_RANK(), and cumulative statistics.
+* **Common Table Expressions (CTEs)**: Writing readable, modular queries using the \`WITH\` clause.
+* **Performance Tuning**: Indexes, execution plans, and query optimization.
+
+## Relevant Roles for SQL Experts
+SQL is a core requirement for several high-paying roles:
+1. **Data Analyst**: Querying relational databases to build business reports.
+2. **Backend Engineer**: Managing system databases and database migrations.
+3. **Data Engineer**: Constructing data pipelines and managing data warehouses (e.g., Snowflake, BigQuery).
+`,
+  },
+  {
+    title: 'Top AI Skills Every Student Should Learn in 2026',
+    author: 'Charters Team',
+    readTime: '12 min read',
     category: 'Professional Skills',
-    tags: ['roi', 'business school', 'career tips', 'mba'],
-    content: `## Evaluating the Returns of Your Education
-    
-When choosing a professional course or MBA, the single most important metric is the **Return on Investment (ROI)**. Aspiring students must look beyond simple degree labels and analyze the actual financial and career outcomes of their investment.
+    tags: ['AI Skills', 'Prompt Engineering', 'RAG', 'Career Tips'],
+    content: `## The New AI Literacy
 
-### Key Factors for ROI Calculations
-1. **Opportunity Cost & Duration**: Longer programs mean more time out of the job market. Accelerated programs (like 7-month DGM™ or 12-month TBM™) minimize this cost.
-2. **Flexible Financing**: Low upfront seat bookings paired with EMI options (e.g. ₹5,555/month) keep student debt minimal.
-3. **Average Post-Program CTC**: Comparing program fees to the average starting salary (like **24.5 LPA** for PGDM or **26.5 LPA** for MBA) provides a clear picture of how fast you recoup your education expenses.
+Being "computer literate" is no longer enough. In 2026, employers expect a level of **AI literacy** across almost all business and technology domains. For students preparing to enter the job market, mastering these skills is key to securing competitive positions.
 
-Investing in industry-aligned certifications guarantees you enter high-impact corporate roles equipped with modern business skills.
+### Essential AI Skills to Master
+
+### 1. Advanced Prompt Engineering
+Moving beyond simple questions. Learn how to use **few-shot prompting**, **chain-of-thought prompting**, and **structured output parsing** to get reliable outputs from LLMs.
+
+### 2. Retrieval-Augmented Generation (RAG)
+Learn how businesses feed proprietary data to AI models securely. Understanding how document chunking, embeddings, and vector databases (like Pinecone or Chroma) work will make you a highly valuable hire in any tech-adjacent team.
+
+### 3. Workflow Automation
+Understand how to connect AI models with tools like Zapier, Make, or custom python scripts to automate manual tasks such as content creation, database entry, and report aggregation.
+
+## How to Showcase Your AI Skills
+Don't just write "AI" on your resume. Build projects:
+* Automate a daily task and write a case study.
+* Build a simple Q&A chatbot using a custom knowledge base.
+* Integrate an AI translation or summarization API into a web project.
+`,
+  },
+  {
+    title: 'How to Build a Career in Data Analytics from Scratch',
+    author: 'Career Desk',
+    readTime: '16 min read',
+    category: 'Career Roadmaps',
+    tags: ['Data Analytics', 'Python', 'Excel', 'Data Visualization'],
+    content: `## The Roadmap to Data Analytics
+
+Data is often called the new oil, and companies are searching for professionals who can extract actionable insights from raw data. If you have no background in programming, entering **Data Analytics** is one of the most accessible routes into technology.
+
+### Step-by-Step Learning Path
+
+### Step 1: Advanced Excel
+Excel is still the world's most popular data tool. Master VLOOKUP/XLOOKUP, Pivot Tables, Power Query, and basic statistical analysis.
+
+### Step 2: SQL (Structured Query Language)
+Learn to retrieve data directly from database systems. This is the single most critical technical skill for any data analyst.
+
+### Step 3: BI & Visualization Tools
+Master **Power BI** or **Tableau** to build interactive business dashboards that help leadership make decisions.
+
+### Step 4: Python Foundations (Optional but Recommended)
+Learn basic Python libraries like **Pandas** and **NumPy** for advanced data manipulation and cleaning.
+
+## Preparing Your Portfolio
+The best way to get hired is to prove you can do the work. Build 3 projects:
+* A public dashboard analyzing open-source data (e.g., Kaggle datasets).
+* An analysis query cleaning a messy raw database.
+* A written presentation explaining the business insights derived from your project.
 `,
   }
 ];
@@ -99,16 +187,7 @@ const generateDynamicBlogAI = async (apiKey) => {
   const promptText = `
 You are a world-class content writer and career counselor for "Charters Business", a premier business and career education platform in India.
 Write a highly engaging, professional, and educational blog post. 
-The article must be tailored to commerce, corporate finance, accounting, growth marketing, or business management students looking for career growth.
-
-STRICT FOCUS RULES:
-• Only write about business, accounting, corporate finance, digital growth marketing, and tech-business management.
-• Specifically align with these areas:
-  - CBA® (Certified Business Accountant) / Corporate Finance & FP&A.
-  - DGM™ (Digital Growth & Marketing) / Brand Strategy & Performance Marketing.
-  - TBM™ (Technology & Business Management) / Executive Business Strategy & Leadership.
-• Do NOT write software-related blogs (such as software development, coding, SQL, programming languages, web development, or software engineering).
-• Focus on career roadmaps, interview prep, industry trends, and business skills in these domains.
+The article must be tailored to commerce, MBA, technology, or business management students looking for career growth.
 
 You must output ONLY a valid JSON object matching this schema (do NOT include markdown code blocks like \`\`\`json, no trailing comments, just pure parseable JSON):
 {
@@ -116,9 +195,11 @@ You must output ONLY a valid JSON object matching this schema (do NOT include ma
   "author": "Choose a realistic writer name or 'Charters Team'",
   "content": "Full article body in Markdown format, using ## for H2 subheadings, ### for H3 details, bold text, and bullet points. Write 4-5 substantial paragraphs. Make it highly educational, practical, and inspiring.",
   "readTime": "Calculated read time (e.g., '12 min read')",
-  "category": "Choose one from: Business Strategy, Corporate Finance, Growth Marketing, Professional Skills",
+  "category": "Choose one from: Career Roadmaps, Technology, MBA Prep, Professional Skills",
   "tags": ["3 to 5 lowercase tags relevant to the topic"]
 }
+
+Vary the topics. Write about career roadmaps, emerging tech, productivity hacks for students, MBA preparation tips, interview mastery, or resume optimization.
 `;
 
   const response = await fetch(
@@ -205,14 +286,15 @@ export const generateNextBlog = async () => {
     console.log(`✅ Content Agent: Selected preset article "${blogData.title}"`);
   }
 
-  // Save the blog in pending status
+  // SECURITY: Sanitize all AI-generated fields before persisting.
+  // Guards against prompt-injection where the LLM returns malicious HTML/JS.
   const newBlog = await Blog.create({
-    title: blogData.title,
-    content: blogData.content,
-    author: blogData.author,
-    readTime: blogData.readTime,
-    category: blogData.category,
-    tags: blogData.tags,
+    title: sanitizeBlogContent(blogData.title),
+    content: sanitizeBlogContent(blogData.content),
+    author: sanitizeBlogContent(blogData.author),
+    readTime: sanitizeBlogContent(blogData.readTime),
+    category: sanitizeBlogContent(blogData.category),
+    tags: sanitizeTags(blogData.tags),
     status: 'pending',
   });
 

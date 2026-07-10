@@ -127,7 +127,12 @@ applicationSchema.pre('save', async function (next) {
   next();
 });
 
-// ✅ Add compound unique index for userId + program
+// Prevents duplicate applications by the same user for the same program.
+// This is the DB-level guard against race conditions between the pre-check
+// and the actual insert in application.controller.js.
 applicationSchema.index({ userId: 1, program: 1 }, { unique: true });
+
+// Also enforce uniqueness per email+program for unauthenticated submissions.
+applicationSchema.index({ email: 1, program: 1 }, { unique: true, sparse: true });
 
 export default mongoose.model('Application', applicationSchema);

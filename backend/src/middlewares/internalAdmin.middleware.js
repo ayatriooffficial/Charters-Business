@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken';
 import ApiError from '../utils/ApiError.js';
 import asyncHandler from '../utils/asyncHandler.js';
 import User from '../models/User.model.js';
+import { isUserActive } from '../utils/userStatus.js';
 
 const SERVICE_HEADER = 'x-service-key';
 const SERVICE_KEY_ID_HEADER = 'x-service-key-id';
@@ -102,18 +103,6 @@ function getRequestIp(req) {
   return req.ip || req.socket?.remoteAddress || '';
 }
 
-function isUserActive(user) {
-  if (!user) return false;
-  if (typeof user.isAccountActive === 'function') {
-    return user.isAccountActive();
-  }
-
-  if (user.status) {
-    return user.status === 'active';
-  }
-
-  return Boolean(user.isActive);
-}
 
 export const requireServiceKey = (req, res, next) => {
   const keyRing = getServiceKeyRing();

@@ -64,3 +64,14 @@ frontend/.env.local
 
 # Service account Credentials
 backend/serviceAccount.json
+
+docs 
+
+docs/extra
+
+docs/session-log.md
+docs/tags.md
+docs/fix.md
+docs/ssd.md
+
+

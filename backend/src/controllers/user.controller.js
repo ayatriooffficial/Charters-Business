@@ -4,6 +4,7 @@ import ApiResponse from "../utils/ApiResponse.js";
 import ApiError from "../utils/ApiError.js";
 import ActiveSession from "../models/ActiveSession.model.js";
 import { syncLeadFieldsOnUser } from "../services/userLeadSync.service.js";
+import { computeViewerScore } from "../services/viewerScore.service.js";
 
 export const getAllUsers = asyncHandler(async (req, res) => {
   const users = await User.find().select("-password");
@@ -11,6 +12,11 @@ export const getAllUsers = asyncHandler(async (req, res) => {
 });
 
 export const getUserById = asyncHandler(async (req, res) => {
+  // Non-admin users may only fetch their own profile.
+  if (req.user.role !== "admin" && req.user._id.toString() !== req.params.id) {
+    throw new ApiError(403, "You are not authorized to view this user");
+  }
+
   const user = await User.findById(req.params.id).select("-password");
 
   if (!user) {
@@ -54,9 +60,11 @@ export const mergeTracking = asyncHandler(async (req, res) => {
 
   const { sessionId, deviceId, pageViewsTotal, uniquePages, chatInteractions } = req.body || {};
 
-  const visitCount = Number(pageViewsTotal || 0);
-  const pagesNavigated = Array.isArray(uniquePages) ? uniquePages.length : 0;
-  const chatCount = Number(chatInteractions || 0);
+  // SECURITY: Cap all numeric inputs to prevent metric inflation attacks.
+  const visitCount = Math.min(Math.max(Number(pageViewsTotal || 0), 0), 10000);
+  const cappedPages = Array.isArray(uniquePages) ? uniquePages.slice(0, 500) : [];
+  const pagesNavigated = cappedPages.length;
+  const chatCount = Math.min(Math.max(Number(chatInteractions || 0), 0), 10000);
 
   const viewerMetrics = {
     visitCount,
@@ -154,7 +162,21 @@ export const clearHeartbeat = asyncHandler(async (req, res) => {
     throw new ApiError(400, "sessionId required");
   }
 
-  await ActiveSession.findOneAndDelete({ sessionId });
+  // SECURITY: Only allow clearing a session that belongs to the requesting user.
+  // This prevents unauthenticated callers from deleting arbitrary sessions.
+  const session = await ActiveSession.findOne({ sessionId });
+
+  if (session) {
+    const requestUserId = req.user ? req.user._id.toString() : null;
+    const sessionUserId = session.userId ? session.userId.toString() : null;
+
+    // Reject if the session is owned by a DIFFERENT logged-in user.
+    if (sessionUserId && requestUserId && sessionUserId !== requestUserId) {
+      throw new ApiError(403, "You are not authorized to clear this session");
+    }
+
+    await session.deleteOne();
+  }
 
   res.status(200).json(new ApiResponse(200, null, "Heartbeat cleared"));
 });

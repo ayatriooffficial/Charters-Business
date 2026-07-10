@@ -51,7 +51,8 @@ export const submitCounseling = asyncHandler(async (req, res) => {
         email: email.toLowerCase().trim(),
         password: generatedPassword,
         isFirstLogin: true,
-        tempPassword: generatedPassword,
+        // NOTE: generatedPassword is returned in the API response and must NOT
+        // be stored in the database as plain text.
       });
     }
 

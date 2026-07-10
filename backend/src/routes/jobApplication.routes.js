@@ -3,6 +3,7 @@ import * as jobApplicationController from "../controllers/jobApplication.control
 import { protect, authorize } from "../middlewares/auth.middleware.js";
 import {
   uploadResume,
+  validateFileMagicBytes,
   handleUploadError,
 } from "../middlewares/upload.middleware.js";
 
@@ -14,6 +15,7 @@ router.post(
   protect,
   uploadResume,
   handleUploadError,
+  validateFileMagicBytes, // Second-pass: verify actual file signature, not just declared MIME
   jobApplicationController.applyForPosition
 );
 

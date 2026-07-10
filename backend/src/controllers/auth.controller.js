@@ -8,21 +8,10 @@ import asyncHandler from "../utils/asyncHandler.js";
 import ApiResponse from "../utils/ApiResponse.js";
 import ApiError from "../utils/ApiError.js";
 import admin from "../config/firebase.config.js";
+import { isUserActive } from "../utils/userStatus.js";
 
 const AUTH_COOKIE_NAME = "authToken";
 const AUTH_COOKIE_MAX_AGE = 30 * 24 * 60 * 60 * 1000;
-function isUserActive(user) {
-  if (!user) return false;
-  if (typeof user.isAccountActive === "function") {
-    return user.isAccountActive();
-  }
-
-  if (user.status) {
-    return user.status === "active";
-  }
-
-  return Boolean(user.isActive);
-}
 
 function getCookieOptions(req, httpOnly = false) {
   const isLocalhost = req.get("host")?.includes("localhost");
@@ -44,12 +33,14 @@ function getCookieOptions(req, httpOnly = false) {
 }
 
 function setAuthCookie(req, res, token) {
-  // session token is not httpOnly because frontend needs to read it for lib/utils/cookies.ts participation
-  res.cookie(AUTH_COOKIE_NAME, token, getCookieOptions(req, false));
+  // SECURITY: httpOnly=true prevents JavaScript from reading the auth token,
+  // protecting against XSS-based token theft. The frontend should use
+  // credentials:'include' on fetch() and let the browser manage the cookie.
+  res.cookie(AUTH_COOKIE_NAME, token, getCookieOptions(req, true));
 }
 
 function clearAuthCookie(req, res) {
-  const options = getCookieOptions(req, false);
+  const options = getCookieOptions(req, true);
   delete options.maxAge;
   res.clearCookie(AUTH_COOKIE_NAME, options);
 }
@@ -242,17 +233,16 @@ export const changePasswordFirstLogin = asyncHandler(async (req, res) => {
   }
 
   const user = await User.findById(req.user.id).select(
-    "+password +isFirstLogin +tempPassword",
+    "+password +isFirstLogin",
   );
 
   if (!user) {
     throw new ApiError(404, "User not found");
   }
 
-  // Update password and mark first login
+  // Update password and mark first login complete
   user.password = newPassword;
   user.isFirstLogin = false;
-  user.tempPassword = null;
   await user.save();
 
   res

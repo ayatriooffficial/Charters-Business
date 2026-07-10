@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken';
 import ApiError from '../utils/ApiError.js';
 import asyncHandler from '../utils/asyncHandler.js';
 import User from '../models/User.model.js';
+import { isUserActive } from '../utils/userStatus.js';
 
 const AUTH_COOKIE_NAME = 'authToken';
 
@@ -15,19 +16,6 @@ function getRequestToken(req) {
   }
 
   return null;
-}
-
-function isUserActive(user) {
-  if (!user) return false;
-  if (typeof user.isAccountActive === 'function') {
-    return user.isAccountActive();
-  }
-
-  if (user.status) {
-    return user.status === 'active';
-  }
-
-  return Boolean(user.isActive);
 }
 
 // Standard protect middleware
