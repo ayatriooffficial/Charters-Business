@@ -122,6 +122,21 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        source: "/(.*)",
+        has: [
+          {
+            type: "host",
+            value: "charters-business.vercel.app",
+          },
+        ],
+        headers: [
+          {
+            key: "X-Robots-Tag",
+            value: "noindex, nofollow",
+          },
+        ],
+      },
+      {
         // Aggressively cache static assets (images, fonts, icons)
         source: "/:all*(svg|jpg|jpeg|png|webp|avif|ico|woff2)",
         headers: [
