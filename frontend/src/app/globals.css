@@ -94,20 +94,6 @@ body {
 /* ─── HighlightText animation (CSS-only, no JS timers → zero TBT) ─ */
 .hl-bg {
   transform: scaleX(0);
-  overflow: hidden;
-}
-.hl-bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.55) 50%,
-    transparent 100%
-  );
-  transform: translateX(-120%) skewX(-20deg);
-  opacity: 0;
 }
 .hl-text {
   color: var(--hl-color, #000000);
@@ -118,24 +104,11 @@ body {
 .hl-wrap.hl-active .hl-bg {
   transform: scaleX(1);
 }
-.hl-wrap.hl-active .hl-bg::after {
-  opacity: 1;
-  animation: hl-shimmer 1.6s ease-in-out infinite;
-}
 .hl-wrap.hl-active .hl-text {
   color: var(--hl-active-color, #000000);
 }
 .hl-wrap.hl-active .hl-dot {
   opacity: 1;
-}
-
-@keyframes hl-shimmer {
-  0% {
-    transform: translateX(-120%) skewX(-20deg);
-  }
-  100% {
-    transform: translateX(220%) skewX(-20deg);
-  }
 }
 
 /* ─── off-screen section optimization removed — was breaking LazyMount + IntersectionObserver inside the section ─ */
