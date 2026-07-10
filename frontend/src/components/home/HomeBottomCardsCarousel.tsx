@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+
 
 type PartnershipCard = {
   id: number;
@@ -17,20 +17,20 @@ const partnershipCards: PartnershipCard[] = [
       "We run custom AI training and capability programs for some of the world's largest engineering and product teams.",
     logos: [
       {
-        name: 'Google',
-        src: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg',
+        name: 'Reliance',
+        src: '/logos/student-at-reliance.avif',
       },
       {
-        name: 'Amazon',
-        src: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg',
+        name: 'TCS',
+        src: '/logos/student-at-tcs.avif',
       },
       {
-        name: 'Meta',
-        src: 'https://upload.wikimedia.org/wikipedia/commons/a/ab/Meta-Logo.png'
+        name: 'Aditya Birla',
+        src: '/logos/student-at-aditya-birla.avif'
       },
       {
-        name: 'Microsoft',
-        src: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg',
+        name: 'Genpact',
+        src: '/logos/student-at-genpact.avif',
       },
     ],
   },
@@ -42,15 +42,15 @@ const partnershipCards: PartnershipCard[] = [
     logos: [
       {
         name: 'NPTEL',
-        src: 'https://nptel.ac.in/assets/shared/logo-m.jpg',
+        src: '/images/brands/nptel.avif',
       },
       {
-        name: 'IIT',
-        src: 'https://upload.wikimedia.org/wikipedia/en/thumb/1/1d/Indian_Institute_of_Technology_Roorkee_logo.svg/512px-Indian_Institute_of_Technology_Roorkee_logo.svg.png'
+        name: 'IMA',
+        src: '/images/brands/ima.avif'
       },
       {
-        name: 'IIM',
-        src: 'https://upload.wikimedia.org/wikipedia/en/5/5e/IIM_Ahmedabad_Logo.png'
+        name: 'GNAM',
+        src: '/images/brands/GNAM-stack.avif'
       },
     ],
   },
@@ -64,46 +64,35 @@ const partnershipCards: PartnershipCard[] = [
 ];
 
 export default function HomeBottomCardsCarousel() {
-  const capabilityRef = useRef<HTMLDivElement>(null);
-
-  const scrollCapability = () => {
-    if (!capabilityRef.current) return;
-
-    capabilityRef.current.scrollBy({
-      left: 420,
-      behavior: 'smooth',
-    });
-  };
-
   return (
-    <section className="w-full pt-[100px] bg-white">
+    <section className="w-full pt-[70px] bg-white">
       <div className="max-w-[85rem] w-full mx-auto">
 
 
-        <div className="grid grid-cols-3 border-t border-b border-gray-200">
+        <div className="flex overflow-x-auto scrollbar-none md:grid md:grid-cols-3 border-t border-b border-gray-200">
           {partnershipCards.map((card, index) => (
             <article
               key={card.id}
-              className={`bg-[#F5F5F5] p-6 min-h-[220px] border-r border-gray-200 ${index === partnershipCards.length - 1 ? "border-r-0" : ""
+              className={`flex-shrink-0 w-[85vw] md:w-auto bg-white p-6 min-h-[200px] border-r border-gray-200 ${index === partnershipCards.length - 1 ? "border-r-0" : ""
                 }`}              >
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">
                 {card.title}
               </h3>
 
-              <p className="text-base text-gray-700 leading-relaxed mb-5">
+              <p className="text-[14px] text-[#5f6368] leading-relaxed mb-5">
                 {card.description}
               </p>
 
-              <div className="border-t border-gray-200 pt-4 overflow-hidden">
+              <div className="overflow-hidden">
                 <div className="flex w-max animate-logo-scroll gap-6">
                   {[...card.logos, ...card.logos].map((logo, index) => (
                     <div
                       key={`${card.id}-${logo.name}-${index}`}
-                      className="border border-gray-200 rounded-lg px-4 py-2 flex items-center justify-center min-w-[120px] h-[60px]"      >
+                      className="px-2 flex items-center justify-center min-w-[80px] h-[40px]"      >
                       <img
                         src={logo.src}
                         alt={logo.name}
-                        className="h-10 w-auto object-contain"
+                        className="h-8 w-auto object-contain"
                       />
                     </div>
                   ))}
@@ -113,21 +102,7 @@ export default function HomeBottomCardsCarousel() {
           ))}
         </div>
       </div>
-      <style jsx>{`
-  @keyframes logoScroll {
-    from {
-      transform: translateX(0);
-    }
-
-    to {
-      transform: translateX(-50%);
-    }
-  }
-
-  .animate-logo-scroll {
-    animation: logoScroll 12s linear infinite;
-  }
-`}</style>
+      {/* animation moved to globals.css as .animate-logo-scroll */}
     </section>
 
   );

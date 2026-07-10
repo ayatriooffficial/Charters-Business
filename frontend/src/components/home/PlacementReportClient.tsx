@@ -79,13 +79,13 @@ const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
           </h3>
 
           {/* ── MOBILE: horizontal scroll ── */}
-          <div className="md:hidden w-full overflow-x-auto scrollbar-none px-4">
-            <div className="flex pb-2" style={{ width: "max-content" }}>
+          <div className="md:hidden w-full overflow-x-auto scrollbar-none pb-4">
+            <div className="flex border-y border-gray-200 divide-x divide-gray-200 bg-white" style={{ width: "max-content" }}>
 
               {/* Card 1 */}
               <article
-                className="bg-white border-l-1 border-r-1 border-b-1 border-gray-200 p-4 flex flex-col"
-                style={{ width: "82vw", minHeight: "300px" }}
+                className="p-4 flex flex-col"
+                style={{ width: "85vw", minHeight: "340px" }}
               >
                 {shouldMount ? (
                   <SalaryGrowthChart isHovered={isVisible} value={stats.salaryJump} />
@@ -96,8 +96,8 @@ const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
 
               {/* Card 2 */}
               <article
-                className="bg-white border-l-1 border-r-1 border-b-1 border-gray-200 p-4 flex flex-col"
-                style={{ width: "82vw", minHeight: "300px" }}
+                className="p-4 flex flex-col"
+                style={{ width: "85vw", minHeight: "340px" }}
               >
                 {shouldMount ? (
                   <SalaryBarsChart isHovered={isVisible} value={stats.highestSalary} />
@@ -108,8 +108,8 @@ const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
 
               {/* Card 3 — intentionally slightly cut off to hint scrollability */}
               <article
-                className="bg-white border-l-1 border-r-1 border-b-1 border-gray-200 p-4 flex flex-col"
-                style={{ width: "82vw", minHeight: "300px" }}
+                className="p-4 flex flex-col"
+                style={{ width: "85vw", minHeight: "340px" }}
               >
                 {shouldMount ? (
                   <RecruiterProgressBars isHovered={isVisible} value={stats.recruiters} />
@@ -177,11 +177,11 @@ const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
             <div className="w-full md:w-1/4 mt-6 md:mt-0 flex justify-center md:justify-end">
               <button
                 onClick={handleDownload}
-                className="bg-[#B30437] text-sm text-white px-8 py-2.5 font-semibold flex items-center gap-2 hover:bg-gray-900 transition-colors"
+                className="bg-[#222222] cursor-pointer text-sm text-white px-8 py-2.5 font-semibold flex items-center gap-2 hover:bg-[#202124] transition-colors"
                 aria-label="Download the complete placement report PDF"
               >
                 Placement Report
-                <Image src="/Charters-icon/Cancel.svg" alt="icon" width={12} height={12} className="w-5 h-5" />
+                <img src="/Charters-icon/download.svg" alt="icon" width={12} height={12} className="w-5 h-5" />
               </button>
             </div>
           </div>

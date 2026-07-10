@@ -294,6 +294,8 @@ export interface JobPosting {
   views: number;
   applicationsCount: number;
   createdAt: string;
+  skills?: string[];
+  requirements?: string;
 }
 
 export const getAllJobs = async (params?: {
@@ -361,6 +363,8 @@ export interface InternshipPosting {
   views: number;
   applicationsCount: number;
   createdAt: string;
+  skills?: string[];
+  requirements?: string;
 }
 
 export const getAllInternships = async (params?: {
@@ -1076,12 +1080,7 @@ export const getBlogById = async (id: string): Promise<ApiResponse<Blog>> => {
 
     return data;
   } catch (error: any) {
-    const msg = error?.message || "";
-    if (msg.toLowerCase().includes("not found") || msg.includes("404") || msg.includes("failed to fetch")) {
-      console.warn("Error fetching blog by ID:", error.message);
-    } else {
-      console.error("Error fetching blog by ID:", error);
-    }
+    console.error("Error fetching blog by ID:", error);
     throw error;
   }
 };

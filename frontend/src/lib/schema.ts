@@ -4,8 +4,8 @@ export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL || "https://chartersbusiness.com"
 ).replace(/\/+$/, "");
 
-export const SITE_NAME = "Charters Business";
-export const SITE_BRAND_NAME = "Charters Union";
+export const SITE_NAME = "Charters' Union";
+export const SITE_BRAND_NAME = "Charters' Union";
 export const DEFAULT_LANGUAGE = "en-IN";
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
@@ -13,7 +13,7 @@ export const HOME_PAGE_ID = `${SITE_URL}/#homepage`;
 
 const DEFAULT_LOGO_URL = `${SITE_URL}/Chaters_Union.avif`;
 const DEFAULT_EMAIL = "admissions@chartersbusiness.com";
-const DEFAULT_PHONE = "08045579576";
+const DEFAULT_PHONE = "9836465083";
 
 export const buildSiteUrl = (path = "") => {
   if (!path || path === "/") {
@@ -81,6 +81,19 @@ const getValidAggregateRating = (rating?: { score?: number; reviews?: number }) 
   };
 };
 
+// Base Organization Reference Schema (Lightweight pointer for subpages)
+export const organizationReferenceSchema = {
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "@id": ORGANIZATION_ID,
+  name: SITE_NAME,
+  url: SITE_URL,
+  logo: {
+    "@type": "ImageObject",
+    url: DEFAULT_LOGO_URL,
+  },
+};
+
 // Base Organization Schema
 export const organizationSchema = {
   "@context": "https://schema.org",
@@ -95,8 +108,8 @@ export const organizationSchema = {
   },
   image: DEFAULT_LOGO_URL,
   description:
-    "Charters Business offers professional accounting and career-focused business education with paid internships, global case-based learning, and industry-led training.",
-  foundingDate: "2020",
+    "Kolkata's AI-first Job Ready training institute. 3 programs: Certified Business Accountant, Digital Growth & Marketing, Technology & Business Management. AICPA/ACCA/HBS/Google aligned. 4–6 month paid internship in 7 countries. Corporate English. AI interview coaching. Placement support. Book free democlass.",
+  foundingDate: "2025",
   email: DEFAULT_EMAIL,
   telephone: DEFAULT_PHONE,
   areaServed: {
@@ -104,10 +117,44 @@ export const organizationSchema = {
     name: "India",
   },
   knowsAbout: [
-    "Professional accounting training",
-    "Paid internships",
-    "Career-focused business education",
-    "Industry-led curriculum",
+    "AI-Powered Job-Ready Training Institute Kolkata",
+    "AI-Powered Industry-led Curriculum",
+    "Job Ready Training Institute Kolkata",
+    "Best Career Development Institute Kolkata",
+    "Industry Led Training Programs India",
+    "AI Powered Career Institute India",
+    "CBA™ (Certified Business Accountant)",
+    "DGM™(Digital Growth & Marketing)",
+    "TBM™(Technology & Business Management)",
+    "Explore Business Culture Across 7 Countries",
+    "In-class Paid Internship Guided by faculty",
+    "AI-Powered Career Persona Development",
+    "CareerPathx™ Career AI-Engine",
+    "Placement Focused Training Institute",
+    "Skill Development Institute Kolkata",
+    "Corporate Training Institute India",
+    "Future Ready Career Program",
+    "Employment Focused Education Institute",
+    "AI-Powered Learning Ecosystem",
+    "Industry-Led Curriculum",
+    "Live Corporate Projects",
+    "Real Internship Experience",
+    "Global Internship Opportunities",
+    "Career Development Framework",
+    "Interview Preparation Program",
+    "Resume Building Program",
+    "LinkedIn Personal Branding Program",
+    "Soft Skills Development",
+    "Communication Training",
+    "Corporate Mentorship",
+    "Placement Support",
+    "Job Readiness Framework",
+    "Portfolio Building",
+    "Industry Certification"
+
+
+
+
   ],
   address: {
     "@type": "PostalAddress",
@@ -144,10 +191,10 @@ export const homePageSchema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "@id": HOME_PAGE_ID,
-  name: "Professional Accountant Training in Kolkata with 100% Paid Internship | Charters Business",
+  name: "Charters' Union: Job-Ready Training Institute Kolkata | AI Curriculum | 100% Paid Internship 7 Countries | BCom BSc BBA BA Freshers",
   url: buildSiteUrl("/"),
   description:
-    "Learn professional accounting in Kolkata with a 3-month foundation and 4-month paid internship. Train for global roles with top companies.",
+    "Kolkata's AI-first Job Ready training institute. 3 programs: Certified Business Accountant, Digital Growth & Marketing, Technology & Business Management. AICPA/ACCA/HBS/Google aligned. 4–6 month paid internship in 7 countries. Corporate English. AI interview coaching. Placement support. Book free democlass.",
   inLanguage: DEFAULT_LANGUAGE,
   isPartOf: {
     "@id": WEBSITE_ID,
@@ -165,7 +212,7 @@ export const generateHomeProgrammesItemListSchema = (
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Professional Accounting Programmes",
+    name: "AI-Powered Industry-led Job-Ready Programmes - Charters' Union",
     itemListOrder: "https://schema.org/ItemListUnordered",
     numberOfItems: programmes.length,
     itemListElement: programmes.map((programme, index) => ({
@@ -238,13 +285,21 @@ export const generateCourseSchema = (programme: Programme) => {
   const courseId = `${courseUrl}#course`;
   const duration = toIsoDuration(programme.card.duration.type);
   const aggregateRating = getValidAggregateRating(programme.card.rating);
+  
+  const title = programme.card.title;
+  let courseCode = undefined;
+  if (title.includes("Accountant") || title.includes("CBA")) courseCode = "CBA";
+  else if (title.includes("Growth") || title.includes("DGM")) courseCode = "DGM";
+  else if (title.includes("Technology") || title.includes("TBM")) courseCode = "TBM";
 
   return {
     "@context": "https://schema.org",
     "@type": "Course",
     "@id": courseId,
-    name: programme.card.title,
+    name: title,
+    ...(courseCode ? { courseCode } : {}),
     description: normalizeText(programme.card.description),
+    financialAidEligible: "Paid Internship (4-6 Months)",
     url: courseUrl,
     provider: {
       "@id": ORGANIZATION_ID,
@@ -305,12 +360,12 @@ export const generateFAQSchema = (
     mainEntity: faqs
       .filter((faq) => faq.question?.trim() && faq.answer?.trim())
       .map((faq) => ({
-      "@type": "Question",
-      name: normalizeText(faq.question),
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: normalizeText(faq.answer),
-      },
+        "@type": "Question",
+        name: normalizeText(faq.question),
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: normalizeText(faq.answer),
+        },
       })),
   };
 };
@@ -328,6 +383,8 @@ export const generateJobPostingSchema = (job: {
     max: number;
     currency: string;
   };
+  skills?: string;
+  educationRequirements?: string;
 }) => {
   const schema: any = {
     "@context": "https://schema.org",
@@ -337,7 +394,7 @@ export const generateJobPostingSchema = (job: {
     datePosted: job.datePosted,
     hiringOrganization: {
       "@id": ORGANIZATION_ID,
-      "@type": "Organization",
+      "@type": "EducationalOrganization",
       name: SITE_NAME,
       sameAs: SITE_URL,
       logo: DEFAULT_LOGO_URL,
@@ -352,6 +409,17 @@ export const generateJobPostingSchema = (job: {
     },
     employmentType: job.employmentType,
   };
+
+  if (job.skills) {
+    schema.skills = job.skills;
+  }
+
+  if (job.educationRequirements) {
+    schema.educationRequirements = {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: job.educationRequirements,
+    };
+  }
 
   if (job.validThrough) {
     schema.validThrough = job.validThrough;
@@ -394,15 +462,15 @@ export const generateArticleSchema = (article: {
     dateModified: article.dateModified || article.datePublished,
     author: article.author
       ? {
-          "@type": "Person",
-          name: article.author,
-        }
+        "@type": "Person",
+        name: article.author,
+      }
       : {
-          "@id": ORGANIZATION_ID,
-          "@type": "Organization",
-          name: SITE_NAME,
-          url: SITE_URL,
-        },
+        "@id": ORGANIZATION_ID,
+        "@type": "Organization",
+        name: SITE_NAME,
+        url: SITE_URL,
+      },
     publisher: {
       "@id": ORGANIZATION_ID,
       "@type": "Organization",

@@ -302,10 +302,10 @@ export default function FirstStepSuccessComponent() {
             tags: b.tags,
             releasedAt: b.releasedAt ? String(b.releasedAt) : undefined
           }));
-          
+
           const combined = [...dbBlogsMapped];
           STATIC_BLOGS.forEach(sb => {
-            const titleExists = dbBlogsMapped.some(db => 
+            const titleExists = dbBlogsMapped.some(db =>
               db.title.toLowerCase().replace(/[^a-z0-9]/g, '') === sb.title.toLowerCase().replace(/[^a-z0-9]/g, '')
             );
             if (!titleExists) {
@@ -329,14 +329,20 @@ export default function FirstStepSuccessComponent() {
     { id: 'localempact', label: 'Local Empact' },
   ];
 
-  // Track scroll position for navigation buttons
   useEffect(() => {
     const slider = videoSliderRef.current;
     if (!slider) return;
 
+    let ticking = false;
     const handleScroll = () => {
-      setCanScrollLeft(slider.scrollLeft > 10);
-      setCanScrollRight(slider.scrollLeft < slider.scrollWidth - slider.clientWidth - 10);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setCanScrollLeft(slider.scrollLeft > 10);
+          setCanScrollRight(slider.scrollLeft < slider.scrollWidth - slider.clientWidth - 10);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     handleScroll();
@@ -407,14 +413,14 @@ export default function FirstStepSuccessComponent() {
                 className="w-16 h-16 sm:w-20 sm:h-20 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white hover:scale-110 transition-all duration-300"
                 aria-label="Play video"
               >
-                <Image src="/Charters-icon/Cancel.svg" alt="icon" width={12} height={12} className="w-6 h-6 sm:w-8 sm:h-8 text-[#B30437] ml-1" />
+                <img src="/Charters-icon/Cancel.svg" alt="icon" width={12} height={12} className="w-6 h-6 sm:w-8 sm:h-8 text-[#B30437] ml-1" />
               </button>
             </div>
           </div>
         </div>
       </div>
       <div className="py-10 text-center">
-        <p className="text-gray-500 text-lg">No additional data available for {mainTabs.find((t) => t.id === mainTab)?.label}</p>
+        <p className="text-[#5f6368] text-lg">No additional data available for {mainTabs.find((t) => t.id === mainTab)?.label}</p>
       </div>
     </>
   );
@@ -454,7 +460,7 @@ export default function FirstStepSuccessComponent() {
         return (
           <li
             key={index}
-            className="text-gray-700 leading-relaxed ml-6 list-disc mb-2"
+            className="text-[#5f6368] leading-relaxed ml-6 list-disc mb-2"
           >
             {parseBoldText(trimmed.substring(2))}
           </li>
@@ -464,7 +470,7 @@ export default function FirstStepSuccessComponent() {
       return (
         <p
           key={index}
-          className="text-gray-700 leading-relaxed mb-3 text-sm sm:text-base"
+          className="text-[#5f6368] leading-relaxed mb-3 text-sm sm:text-base"
         >
           {parseBoldText(trimmed)}
         </p>
@@ -474,28 +480,28 @@ export default function FirstStepSuccessComponent() {
 
   const parseBoldText = (text: string) => {
     const parts = text.split(/\*\*([\s\S]*?)\*\*/g);
-    return parts.map((part, i) => 
+    return parts.map((part, i) =>
       i % 2 === 1 ? <strong key={i} className="font-bold text-gray-950">{part}</strong> : part
     );
   };
 
   return (
-    <section className="relative z-[5] bg-white text-black pt-10 pb-0">
+    <section className="relative z-[5] bg-white text-black pt-22 pb-0">
       <div className="max-w-[85rem] w-full mx-auto px-4">
         <div className="text-center mb-8">
-          <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-3">
+          <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-6">
             FROM OUR BLOGS & EVENTS
           </p>
 
           <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
-            From the Charter's{" "}
+            From the Charter&apos;s{" "}
             <HighlightText className="font-bold">
               Editorial Desk
             </HighlightText>
           </h2>
 
-          <p className="text-black text-sm sm:text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
-            Deep dives on AI careers and <strong>Accounting</strong>, <strong>Business & Marketing</strong>, learning strategies global <strong>top MNC's</strong>, and what the data actually says about the <strong>global market</strong>.
+          <p className="text-black px-[20px] text-sm sm:text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
+            Deep dives on AI careers and <strong>Accounting</strong>, <strong>Business & Marketing</strong>, learning strategies global <strong>top MNC&apos;s</strong>, and what the data actually says about the <strong>global market</strong>.
           </p>
         </div>
       </div>
@@ -509,7 +515,7 @@ export default function FirstStepSuccessComponent() {
             <Link
               key={blog.title}
               href={`/blogs/${blog._id || slugify(blog.title)}`}
-              className="text-left flex-none w-[85vw] sm:w-[380px] lg:w-[420px] snap-start border-t border-b border-r border-gray-200 border-l-0 bg-white p-6 min-h-[170px] flex flex-col justify-between hover:bg-gray-50 transition-colors duration-200"
+              className="text-left flex-none w-[85vw] sm:w-[380px] lg:w-[420px] snap-start border-t border-r border-gray-200 border-l-0 bg-white p-6 min-h-[170px] flex flex-col justify-between hover:bg-gray-50 transition-colors duration-200"
             >
               <div>
                 <span className="text-xs font-semibold text-[#B30437] uppercase tracking-wider mb-2 block">

@@ -15,6 +15,7 @@ import DashboardNavbar from "@/components/dashboard/DashboardNavbar";
 import MultiSelectDropdown from "@/components/careers/Type_FilterDropdown";
 import ChipMultiSelect from "@/components/careers/ChipMultiSelect";
 import ChartersInterviewAi from "@/components/home/Chartersinterview_ai";
+import { generateBreadcrumbSchema, combineSchemas } from "@/lib/schema";
 
 type PageType = "jobs" | "internships";
 
@@ -81,10 +82,10 @@ function JobCard({
           </span>
         </div>
         <div className="flex items-center justify-between">
-          <span className="text-sm font-medium text-gray-700">
+          <span className="text-sm font-medium text-[#5f6368]">
             {isJob ? item.salary : item.stipend}
           </span>
-          <time className="text-xs text-gray-400">
+          <time className="text-xs text-[#80868b]">
             {new Date(item.createdAt).toLocaleDateString("en-IN", {
               month: "short",
               day: "numeric",
@@ -101,7 +102,7 @@ function ApplySection({
   pageType,
   itemId,
 }: {
-  item: any;
+  item: ListItem;
   pageType: PageType;
   itemId: string;
 }) {
@@ -160,8 +161,8 @@ function ApplySection({
       setSubmitSuccess(true);
       setShowSuccessModal(true);
       setResumeFile(null);
-    } catch (err: any) {
-      setSubmitError(err.message || "Failed to submit application");
+    } catch (err: unknown) {
+      setSubmitError(err instanceof Error ? err.message : "Failed to submit application");
     } finally {
       setIsSubmitting(false);
     }
@@ -204,9 +205,9 @@ function ApplySection({
         ) : (
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="rounded-lg bg-gray-50 p-3.5 border border-gray-200">
-              <p className="text-xs text-gray-500 mb-1">Applying as:</p>
+              <p className="text-xs text-[#5f6368] mb-1">Applying as:</p>
               <p className="font-semibold text-gray-900 text-sm">{user.name}</p>
-              <p className="text-xs text-gray-500">{user.email}</p>
+              <p className="text-xs text-[#5f6368]">{user.email}</p>
             </div>
 
             {user.lastResumeUrl && !resumeFile && (
@@ -239,7 +240,7 @@ function ApplySection({
                       </p>
                     )}
                     <p className="text-xs text-blue-600 mt-1">
-                      ✓ We'll use your previous resume, or upload a new one
+                      ✓ We&apos;ll use your previous resume, or upload a new one
                       below
                     </p>
                   </div>
@@ -249,7 +250,7 @@ function ApplySection({
 
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-[#5f6368] mb-2">
                 Resume (PDF only, Max 5MB){!user.lastResumeUrl && " *"}
               </label>
               <input
@@ -266,7 +267,7 @@ function ApplySection({
                 className="flex items-center justify-center gap-3 w-full rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 px-4 py-6 cursor-pointer hover:border-[#B30437] hover:bg-red-50 transition-all duration-200"
               >
                 <svg
-                  className="w-6 h-6 text-gray-400"
+                  className="w-6 h-6 text-[#80868b]"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -279,11 +280,11 @@ function ApplySection({
                   />
                 </svg>
                 <div>
-                  <p className="text-sm font-medium text-gray-700">
+                  <p className="text-sm font-medium text-[#5f6368]">
                     Click to upload{" "}
                     {user.lastResumeUrl ? "a new resume" : "your resume"}
                   </p>
-                  <p className="text-xs text-gray-500 mt-0.5">
+                  <p className="text-xs text-[#5f6368] mt-0.5">
                     PDF format, maximum 5MB
                   </p>
                 </div>
@@ -339,7 +340,7 @@ function ApplySection({
                 </div>
               )}
 
-              <p className="mt-1.5 text-xs text-gray-500">
+              <p className="mt-1.5 text-xs text-[#5f6368]">
                 {user.lastResumeUrl && !resumeFile
                   ? "Upload a new resume to replace your previous one, or leave empty to use the existing one."
                   : "Make sure your resume is up to date and highlights your relevant experience."}
@@ -384,7 +385,7 @@ function ApplySection({
       </div>
 
       {showInterviewAI && createPortal(
-        <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-black/60">
+        <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[#202124]/60">
           <div className="w-[85vw] max-w-4xl h-[85vh] relative">
             <button
               onClick={() => {
@@ -404,7 +405,7 @@ function ApplySection({
       )}
 
       {showSuccessModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#202124] bg-opacity-50 p-4">
           <div className="w-full max-w-md rounded-xl bg-white p-8 shadow-2xl">
             <div className="text-center">
               <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-green-100">
@@ -426,7 +427,7 @@ function ApplySection({
                 Application Submitted!
               </h3>
               <p className="mb-6 text-sm text-gray-600">
-                We've received your application. Our team will review it and get
+                We&apos;ve received your application. Our team will review it and get
                 back to you soon.
               </p>
               <div className="flex flex-col gap-3">
@@ -439,7 +440,7 @@ function ApplySection({
                 </button>
                 <Link
                   href="/"
-                  className="rounded-lg border-2 border-gray-300 px-6 py-2.5 text-center font-semibold text-gray-700 transition-all hover:border-gray-400 hover:bg-gray-50 text-sm"
+                  className="rounded-lg border-2 border-gray-300 px-6 py-2.5 text-center font-semibold text-[#5f6368] transition-all hover:border-gray-400 hover:bg-gray-50 text-sm"
                 >
                   Back to Home
                 </Link>
@@ -480,7 +481,7 @@ export default function CareersPage({
 
   // Right panel state
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [selectedItem, setSelectedItem] = useState<any>(null);
+  const [selectedItem, setSelectedItem] = useState<ListItem | null>(null);
   const [detailLoading, setDetailLoading] = useState(false);
   const [detailError, setDetailError] = useState<string | null>(null);
 
@@ -540,8 +541,8 @@ export default function CareersPage({
           setSelectedId(null);
           setSelectedItem(null);
         }
-      } catch (err: any) {
-        if (!cancelled) setListError(err.message || "Failed to load listings");
+      } catch (err: unknown) {
+        if (!cancelled) setListError(err instanceof Error ? err.message : "Failed to load listings");
       } finally {
         if (!cancelled) setListLoading(false);
       }
@@ -566,10 +567,10 @@ export default function CareersPage({
           ? await getJobById(selectedId)
           : await getInternshipById(selectedId);
 
-        if (!cancelled) setSelectedItem(response.data);
-      } catch (err: any) {
+        if (!cancelled) setSelectedItem(response.data ?? null);
+      } catch (err: unknown) {
         if (!cancelled)
-          setDetailError(err.message || "Failed to load details");
+          setDetailError(err instanceof Error ? err.message : "Failed to load details");
       } finally {
         if (!cancelled) setDetailLoading(false);
       }
@@ -591,8 +592,64 @@ export default function CareersPage({
     setSelectedItem(null);
   }, []);
 
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://chartersbusiness.com" },
+    { name: "Careers", url: "https://chartersbusiness.com/careers" },
+    { name: isJob ? "Jobs" : "Internships", url: `https://chartersbusiness.com/careers/${pageType}` },
+  ]);
+
+  const collectionSchema = {
+    "@type": "CollectionPage",
+    name: isJob ? "Job Openings at Charters' Union" : "Internship Opportunities at Charters' Union",
+    description: isJob
+      ? "Browse all available job positions at Charters' Union"
+      : "Explore internship opportunities at Charters' Union",
+    url: `https://chartersbusiness.com/careers/${pageType}`,
+    provider: {
+      "@type": "EducationalOrganization",
+      "@id": "https://chartersbusiness.com/#organization",
+      name: "Charters' Union",
+    },
+  };
+
+  const itemListSchema = list.length > 0 ? {
+    "@type": "ItemList",
+    name: isJob ? "Job Openings at Charters' Union" : "Internship Opportunities at Charters' Union",
+    numberOfItems: list.length,
+    itemListElement: list.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "JobPosting",
+        "@id": `https://chartersbusiness.com/careers/${pageType}/${item._id}#job`,
+        title: item.title,
+        description: item.description ? item.description.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().substring(0, 150) + "..." : "",
+        hiringOrganization: {
+          "@type": "EducationalOrganization",
+          "@id": "https://chartersbusiness.com/#organization",
+          name: "Charters' Union",
+        },
+        jobLocation: {
+          "@type": "Place",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: item.location,
+            addressCountry: "IN",
+          },
+        },
+        employmentType: isJob ? "FULL_TIME" : "INTERNSHIP",
+      },
+    })),
+  } : null;
+
+  const consolidatedSchema = combineSchemas(breadcrumbSchema, collectionSchema, itemListSchema);
+
   return (
     <main className="h-screen flex flex-col overflow-hidden bg-[#F4F2EE]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(consolidatedSchema) }}
+      />
       <style>{`
         .custom-scroll::-webkit-scrollbar { width: 4px; }
         .custom-scroll::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 10px; }
@@ -605,12 +662,6 @@ export default function CareersPage({
         onTypeChange={handleTypeChange}
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
-        locations={locations.filter((l) => l !== "All")}
-        selectedLocations={selectedLocations}
-        onLocationsChange={setSelectedLocations}
-        categories={categories.filter((c) => c !== "All")}
-        selectedCategories={selectedCategories}
-        onCategoriesChange={setSelectedCategories}
       />
       <div className="pt-16 pb-1 mx-[5%] bg-white px-2 border-b border-gray-200 flex flex-row items-center justify-between">
         <div className="w-full max-w-[70%]">
@@ -645,7 +696,7 @@ export default function CareersPage({
             <h2 className="text-m font-normal text-gray-900 tracking-tight">
               Top {isJob ? "job" : "internship"} picks for you
             </h2>
-            <p className="text-xs text-gray-500 leading-relaxed font-light">
+            <p className="text-xs text-[#5f6368] leading-relaxed font-light">
               {listLoading ? (
                 <span className="animate-pulse">
                   Loading your recommendations...
@@ -665,7 +716,7 @@ export default function CareersPage({
             {listLoading ? (
               <div className="flex flex-col items-center justify-center py-16 gap-3">
                 <Spinner />
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-[#5f6368]">
                   Loading {isJob ? "jobs" : "internships"}...
                 </p>
               </div>
@@ -675,7 +726,7 @@ export default function CareersPage({
               </div>
             ) : list.length === 0 ? (
               <div className="p-6 text-center">
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-[#5f6368]">
                   No {isJob ? "jobs" : "internships"} found matching your
                   criteria.
                 </p>
@@ -701,14 +752,14 @@ export default function CareersPage({
           {detailLoading ? (
             <div className="flex flex-col items-center justify-center flex-1 gap-3">
               <Spinner size={10} />
-              <p className="text-gray-500">Loading details...</p>
+              <p className="text-[#5f6368]">Loading details...</p>
             </div>
           ) : detailError ? (
             <div className="flex items-center justify-center flex-1">
               <p className="text-[#B30437]">{detailError}</p>
             </div>
           ) : !selectedItem ? (
-            <div className="flex flex-col items-center justify-center flex-1 gap-2 text-gray-400">
+            <div className="flex flex-col items-center justify-center flex-1 gap-2 text-[#80868b]">
               <svg
                 className="w-12 h-12 text-gray-300"
                 fill="none"
@@ -755,7 +806,7 @@ export default function CareersPage({
 
                 <div className="flex flex-wrap gap-3">
                   <div className="rounded-lg bg-red-50 px-4 py-2.5">
-                    <div className="text-xs text-gray-500 mb-0.5">
+                    <div className="text-xs text-[#5f6368] mb-0.5">
                       {isJob ? "Salary" : "Stipend"}
                     </div>
                     <div
@@ -766,7 +817,7 @@ export default function CareersPage({
                     </div>
                   </div>
                   <div className="rounded-lg bg-gray-50 px-4 py-2.5 border border-gray-100">
-                    <div className="text-xs text-gray-500 mb-0.5">
+                    <div className="text-xs text-[#5f6368] mb-0.5">
                       {isJob ? "Experience" : "Duration"}
                     </div>
                     <div className="font-semibold text-sm text-gray-900">
@@ -774,7 +825,7 @@ export default function CareersPage({
                     </div>
                   </div>
                   <div className="rounded-lg bg-gray-50 px-4 py-2.5 border border-gray-100">
-                    <div className="text-xs text-gray-500 mb-0.5">Posted</div>
+                    <div className="text-xs text-[#5f6368] mb-0.5">Posted</div>
                     <time className="font-semibold text-sm text-gray-900">
                       {new Date(selectedItem.createdAt).toLocaleDateString(
                         "en-IN",

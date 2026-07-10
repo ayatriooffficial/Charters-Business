@@ -138,51 +138,53 @@ interface LoginPayload {
 }
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
-  const [applications, setApplications] = useState<Application[]>([]);
-  const [counselings, setCounselings] = useState<Counseling[]>([]);
-  const [token, setToken] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  //add
-  const [authReady, setAuthReady] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
+  const getStoredValue = <T,>(key: string, parse: (raw: string) => T, fallback: T): T => {
+    if (typeof window === "undefined") return fallback;
+    try {
+      const raw = localStorage.getItem(key) || (key === "token" ? getAuthToken() : null);
+      if (!raw) return fallback;
+      return parse(raw);
+    } catch {
+      return fallback;
+    }
+  };
+
+  const [user, setUser] = useState<User | null>(() =>
+    getStoredValue<User | null>("user", (raw) => JSON.parse(raw) as User, null)
+  );
+  const [applications, setApplications] = useState<Application[]>(() =>
+    getStoredValue<Application[]>("applications", (raw) => JSON.parse(raw) as Application[], [])
+  );
+  const [counselings, setCounselings] = useState<Counseling[]>(() =>
+    getStoredValue<Counseling[]>("counselings", (raw) => JSON.parse(raw) as Counseling[], [])
+  );
+  const [token, setToken] = useState<string | null>(() =>
+    getStoredValue<string | null>("token", (raw) => raw, null)
+  );
+  const [isLoading, setIsLoading] = useState(() => {
+    if (typeof window === "undefined") return true;
+    const hasToken = !!localStorage.getItem("token") || !!getAuthToken();
+    return hasToken; // loading if we need to revalidate
+  });
+  const [authReady, setAuthReady] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return !localStorage.getItem("token") && !getAuthToken(); // ready if no token to validate
+  });
   const [redirectCode, setRedirectCode] = useState<string | null>(null);
   const [isCodeGenerated, setIsCodeGenerated] = useState(false);
 
-
   const router = useRouter();
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   useEffect(() => {
-    if (!isMounted) return;
+    const storedToken = localStorage.getItem("token") || getAuthToken();
 
-    const initAuth = async () => {
-      const storedToken = localStorage.getItem("token") || getAuthToken();
-      const storedUser = localStorage.getItem("user");
-      const storedApplications = localStorage.getItem("applications");
-      const storedCounselings = localStorage.getItem("counselings");
+    if (!storedToken) {
+      setIsLoading(false);
+      setAuthReady(true);
+      return;
+    }
 
-      if (!storedToken) {
-        setUser(null);
-        setToken(null);
-        setIsLoading(false);
-        setAuthReady(true);
-        return;
-      }
-
-      if (storedUser) {
-        try {
-          setUser(JSON.parse(storedUser));
-          if (storedApplications) setApplications(JSON.parse(storedApplications));
-          if (storedCounselings) setCounselings(JSON.parse(storedCounselings));
-        } catch (error) {
-          console.error("Error loading auth data:", error);
-        }
-      }
-      setToken(storedToken);
-
+    const revalidate = async () => {
       try {
         const res = await fetch(`${API_V1}/auth/me`, {
           headers: {
@@ -221,19 +223,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
       } catch (err) {
         console.error("Session revalidation failed:", err);
-        localStorage.clear();
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
         sessionStorage.clear();
         removeAuthToken();
         setUser(null);
         setToken(null);
       } finally {
-        setIsLoading(false); setAuthReady(true);
-}
-      
+        setIsLoading(false);
+        setAuthReady(true);
+      }
     };
 
-    initAuth();
-  }, [isMounted]);
+    revalidate();
+  }, []);
 
   const refreshApplications = useCallback(
     async (authToken?: string) => {
@@ -252,7 +255,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
         if (response.ok && data?.data) {
           setApplications(data.data);
-          if (isMounted)
+          if (typeof window !== "undefined")
             localStorage.setItem(
               "applications",
               JSON.stringify(data.data)
@@ -262,7 +265,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         console.error("Error fetching applications:", error);
       }
     },
-    [token, isMounted]
+    [token]
   );
 
   const refreshCounselings = useCallback(
@@ -282,7 +285,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
         if (response.ok && data?.data) {
           setCounselings(data.data);
-          if (isMounted)
+          if (typeof window !== "undefined")
             localStorage.setItem(
               "counselings",
               JSON.stringify(data.data)
@@ -292,7 +295,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         console.error("Error fetching counselings:", error);
       }
     },
-    [token, isMounted]
+    [token]
   );
 
   const finalizeLogin = useCallback(
@@ -324,7 +327,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setApplications(payload?.data?.applications || []);
       setCounselings(payload?.data?.counselings || []);
 
-      if (isMounted) {
+      if (typeof window !== "undefined") {
         setAuthToken(tokenFromApi);
         localStorage.setItem("token", tokenFromApi);
         localStorage.setItem("user", JSON.stringify(userData));
@@ -354,7 +357,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       return userData.role;
     },
-    [isMounted]
+    []
   );
 
   const login = useCallback(
@@ -553,19 +556,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   // Handle automatic code exchange if 'code' is present in URL
   useEffect(() => {
-    if (!isMounted) return;
-
     const params = new URLSearchParams(window.location.search);
     const code = params.get("code");
 
     if (code) {
       exchangeCode(code).then(() => {
-        // Clean up URL
         const newUrl = window.location.pathname + window.location.search.replace(/[?&]code=[^&]+/, "").replace(/^&/, "?").replace(/\?$/, "");
         window.history.replaceState({}, document.title, newUrl);
       });
     }
-  }, [isMounted, exchangeCode]);
+  }, [exchangeCode]);
 
   const logout = useCallback(() => {
     const headers: HeadersInit | undefined = token
@@ -589,13 +589,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setCounselings([]);
     removeAuthToken();
 
-    if (isMounted) {
-      localStorage.clear();
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      localStorage.removeItem("applications");
+      localStorage.removeItem("counselings");
       sessionStorage.clear();
     }
 
     router.push("/");
-  }, [router, isMounted, token]);
+  }, [router, token]);
 
   const setAuth = useCallback(
     (
@@ -610,13 +613,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (newApplications) setApplications(newApplications);
       if (newCounselings) setCounselings(newCounselings);
 
-      if (isMounted) {
+      if (typeof window !== "undefined") {
         setAuthToken(newToken);
         localStorage.setItem("token", newToken);
         localStorage.setItem("user", JSON.stringify(newUser));
       }
     },
-    [isMounted]
+    []
   );
 
   const updateUser = useCallback(
@@ -626,10 +629,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const updatedUser = { ...user, ...userData };
       setUser(updatedUser);
 
-      if (isMounted)
+      if (typeof window !== "undefined")
         localStorage.setItem("user", JSON.stringify(updatedUser));
     },
-    [user, isMounted]
+    [user]
   );
 
   const contextValue = useMemo(
@@ -676,8 +679,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       navigateToRemoteDashboard,
     ]
   );
-
-  if (!isMounted) return null;
 
   return (
     <AuthContext.Provider value={contextValue}>

@@ -1,25 +1,25 @@
 import Link from "next/link";
 import Image from "next/image";
 import { scholarshipBanner } from "@/data/applyPageData";
-import { generateBreadcrumbSchema } from "@/lib/schema";
 import Breadcrumbs from "../shared/Breadcrumbs";
+import HighlightText from "../shared/HighlightObserver";
 type Stat = { value: string; label: string; detail: string; gradient?: string };
-const HERO_HEADING = "Accelerate Your Career Growth";
+const HERO_HEADING = "CareerPathx™ gives 100% Career Growth";
 const HERO_TAGLINE =
-    "Benefit from an exceptional track record of our graduates' success";
+    "Benefit from an exceptional track record of our students success";
 
 const HERO_STATS: Stat[] = [
     {
-        value: "79",
+        value: "579",
         label: "Startups",
-        detail: "formed as part of Masters' Union Venture Initiation Program",
-        gradient: "bg-[#B30437]",
+        detail: "formed as part of Charters' Union internship Initiation Program",
+        gradient: "bg-[#222222}",
     },
     {
-        value: "₹ 3.3 Cr",
-        label: "Combined revenue",
-        detail: "of all Dropshipping teams in Term 1 (Cohort 2024)",
-        gradient: "bg-[#B30437]",
+        value: "₹ 1.3 Cr",
+        label: "Combined placement packege 25/26",
+        detail: "of all Accountant & Digital maketing in Term 1 to Term 4 (Cohort 2025/26)",
+        gradient: "bg-[#222222]",
     },
 ];
 
@@ -33,24 +33,14 @@ const HERO_IMAGE = {
 };
 
 export default function Hersection() {
-    const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: "Home", url: "https://chartersbusiness.com" },
-        { name: "Apply", url: "https://chartersbusiness.com/apply" },
-    ]);
-
     return (
         <>
-            <script
-                id="apply-breadcrumb-schema"
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-            />
             <div role="banner" className="w-full mt-10">
-                 <Breadcrumbs compact/>
-                <div className="mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 md:py-8">
-                   
-                    <section className="flex flex-col gap-6 sm:gap-10 md:flex-row md:items-center">
-                    
+                <div className="mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-4 sm:pb-6 md:pb-8">
+                    <Breadcrumbs compact />
+
+                    <section className="mt-3 sm:mt-4 flex flex-col gap-6 sm:gap-10 md:flex-row md:items-center">
+
                         {/* Left*/}
                         <section className="flex flex-1 flex-col justify-center">
                             <h1
@@ -68,13 +58,13 @@ export default function Hersection() {
                             <div
                                 role="list"
                                 aria-label="Key outcomes"
-                                className="mt-6 sm:mt-8 flex w-full flex-col gap-6 sm:flex-row sm:gap-8 md:gap-10"
+                                className="mt-6 sm:mt-8 flex w-full flex-row gap-6 sm:gap-8 md:gap-10"
                             >
                                 {/* Stat 1 */}
                                 <div role="listitem" className="flex flex-1 flex-col gap-2">
                                     <p
                                         className={[
-                                            "text-3xl sm:text-4xl font-extrabold leading-none text-transparent bg-clip-text",
+                                            "text-3xl sm:text-4xl font-extrabold leading-none text-[#222222] bg-clip-text",
                                             HERO_STATS[0].gradient ?? "",
                                         ].join(" ")}
                                     >
@@ -117,21 +107,10 @@ export default function Hersection() {
                             <div className="mt-6 sm:mt-10">
                                 <Link
                                     href={HERO_CTA.href}
-                                    className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-gray-900 shadow-sm hover:border-gray-400 transition-colors"
+                                    className="inline-flex items-center  bg-[#222222] hover:bg-[#000000]  px-4 sm:px-6 py-2 sm:py-2 text-xs sm:text-sm font-semibold text-white"
                                 >
                                     {HERO_CTA.label}
-                                    <svg
-                                        className="ml-2 h-4 w-4 shrink-0"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                        aria-hidden="true"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M10.293 3.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 11-1.414-1.414L13.586 11H4a1 1 0 110-2h9.586l-3.293-3.293a1 1 0 010-1.414z"
-                                            clipRule="evenodd"
-                                        />
-                                    </svg>
+
                                 </Link>
                             </div>
                         </section>
@@ -154,10 +133,20 @@ export default function Hersection() {
                 </div>
             </div>
 
+            <section className="bg-white pt-10 sm:pt-12 pb-2 sm:pb-3 text-center">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
+                    A{" "}
+                    <HighlightText className="mx-2 font-bold">
+                        Kaleidoscope
+                    </HighlightText>{" "}
+                    of Diversity
+                </h2>
+            </section>
+
             <div className="w-full border-gray-200 md:mx-auto flex flex-col items-center justify-center border-b">
 
                 <div
-                    className="md:border-x py-4 mt-4 sm:py-6 border-gray-200 md:w-[90%] max-w-[85rem]"
+                    className="md:border-x pt-2 pb-8 border-gray-200 md:w-[90%] max-w-[85rem]"
                     aria-label="Scholarship information"
                 >
                     <div className="px-4 sm:px-6 lg:px-8">

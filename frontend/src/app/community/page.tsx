@@ -1,50 +1,38 @@
 import CommunitySection from "@/components/community/CommunitySection";
 
-import { organizationSchema, generateBreadcrumbSchema } from "@/lib/schema";
+import { organizationReferenceSchema, generateBreadcrumbSchema, combineSchemas } from "@/lib/schema";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Community | Charters Business",
+  title: "Community | Charters' Union",
   description:
-    "Join the vibrant Charters Business community. Connect with students, alumni, and industry professionals who share your passion for business excellence.",
-  keywords: [
-    "community",
-    "alumni network",
-    "student community",
-    "business network",
-    "charters business community",
-    "professional network",
-  ],
+    "Join the vibrant Charters' Union community. Connect with students, alumni, and industry professionals who share your passion for business excellence.",
+  alternates: {
+    canonical: "https://chartersbusiness.com/community",
+  },
   openGraph: {
-    title: "Community | Charters Business",
+    title: "Community | Charters' Union",
     description:
-      "Join the vibrant Charters Business community of students, alumni, and industry professionals.",
-    type: "website",
+      "Join the vibrant Charters' Union community. Connect with students, alumni, and industry professionals who share your passion for business excellence.",
     url: "https://chartersbusiness.com/community",
+    siteName: "Charters' Union",
+    type: "website",
     images: [
       {
         url: "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp",
         width: 1200,
         height: 630,
-        alt: "Charters Business Community",
+        alt: "Community | Charters' Union",
       },
     ],
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Community | Charters Business",
+    title: "Community | Charters' Union",
     description:
-      "Join the vibrant Charters Business community of students, alumni, and industry professionals.",
-    images: [
-      "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp",
-    ],
-  },
-  alternates: {
-    canonical: "https://chartersbusiness.com/community",
-  },
-  robots: {
-    index: true,
-    follow: true,
+      "Join the vibrant Charters' Union community. Connect with students, alumni, and industry professionals who share your passion for business excellence.",
+    images: ["https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp"],
   },
 };
 
@@ -55,21 +43,32 @@ export default function CommunityPage() {
     { name: "Community", url: "https://chartersbusiness.com/community" },
   ]);
 
+  // Define WebPage schema
+  const communityPageSchema = {
+    "@type": "WebPage",
+    "@id": "https://chartersbusiness.com/community#webpage",
+    url: "https://chartersbusiness.com/community",
+    name: "Community | Charters' Union",
+    description: "Join the vibrant Charters' Union community. Connect with students, alumni, and industry professionals who share your passion for business excellence.",
+    inLanguage: "en-IN",
+    isPartOf: {
+      "@id": "https://chartersbusiness.com/#website",
+    },
+    about: {
+      "@id": "https://chartersbusiness.com/#organization",
+    },
+  };
+
+  // Combine into a single lightweight graph schema
+  const consolidatedSchema = combineSchemas(organizationReferenceSchema, breadcrumbSchema, communityPageSchema);
+
   return (
     <>
-      {/* Organization Schema */}
-      {/* Organization Schema */}
+      {/* Consolidated Page Schema */}
       <script
-        id="community-organization-schema"
+        id="community-page-schema"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-
-      {/* Breadcrumb Schema */}
-      <script
-        id="community-breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(consolidatedSchema) }}
       />
 
       <main role="main" className="space-y-0">

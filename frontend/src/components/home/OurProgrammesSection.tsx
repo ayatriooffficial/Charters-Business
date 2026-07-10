@@ -2,6 +2,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { programmes } from "@/data/programmes";
 
+const partnerLogosMap: Record<string, { partners: string; internships: string }> = {
+  "digital-growth-engineer": {
+    partners: "/charter-partner/charter-certified-busniess-accountant-partners.avif",
+    internships: "/charter-partner/certified_business_accountant_internship_partner.avif",
+  },
+  "post-graduate-diploma-in-management": {
+    partners: "/charter-partner/charter-digital-growth-marketing-partners.avif",
+    internships: "/charter-partner/digital_growth_marketing_internship_partner.avif",
+  },
+  "product-growth-engineering": {
+    partners: "/charter-partner/business_technology_curriculum_partner.avif",
+    internships: "/charter-partner/business_technology_internship_partner.avif",
+  },
+};
+
 export default function OurProgrammesSection() {
   return (
     <section
@@ -37,12 +52,12 @@ export default function OurProgrammesSection() {
       <div className="max-w-[85rem] mx-auto">
         <h3 className="sr-only">Available Academic Programmes</h3>
 
-        <div className="relative overflow-x-auto overflow-y-hidden scrollbar-hide ">
-          <div className="flex">
+        <div className="relative overflow-x-auto overflow-y-hidden scrollbar-hide">
+          <div className="flex border-y border-[#D5D0CA] divide-x divide-[#D5D0CA]">
             {programmes.map((programme, index) => (
               <article
                 key={programme.id}
-                className="flex-shrink-0 w-[330px] sm:w-[450px] lg:w-[525px] overflow-hidden hover:bg-[#f6f4f2] border-l-0 border-b-0 border border-[#D5D0CA] flex flex-col"
+                className="flex-shrink-0 w-[85vw] sm:w-[450px] lg:w-[525px] overflow-hidden hover:bg-[#f6f4f2] flex flex-col"
                 aria-labelledby={`programme-title-${programme.id}`}
               >
                 {/* Programme Image */}
@@ -52,9 +67,9 @@ export default function OurProgrammesSection() {
                     alt={programme.card.title}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 639px) calc(100vw - 1rem), (max-width: 1023px) 450px, 525px"
-                    quality={60}
-                    priority={index === 0}
+                    sizes="(max-width: 639px) 85vw, (max-width: 1023px) 450px, 525px"
+                    
+                    
                     loading={index === 0 ? "eager" : "lazy"}
                   />
                 </figure>
@@ -70,7 +85,7 @@ export default function OurProgrammesSection() {
                       {programme.card.title}
                     </h3>
 
-                    <p className="text-xs text-gray-700 leading-tight">
+                    <p className="text-xs text-[#5f6368] leading-tight">
                       {programme.card.description}
                     </p>
                   </div>
@@ -82,8 +97,7 @@ export default function OurProgrammesSection() {
                       {/* Format */}
                       <div className="flex flex-col gap-2">
                         <div className="flex md:flex-row items-center flex-shrink-0 relative">
-                          <Image
-                            src="/Charters-icon/new_campas.svg"
+                          <img src="/Charters-icon/on-campus.svg"
                             alt="Format icon"
                             width={15}
                             height={15}
@@ -94,7 +108,7 @@ export default function OurProgrammesSection() {
                           </h4>
                         </div>
                         <div className=" min-w-0">
-                          <p className="text-xs text-gray-700 font-medium break-words">
+                          <p className="text-xs text-[#5f6368] font-medium break-words">
                             {programme.card.format.type}
                           </p>
                         </div>
@@ -103,8 +117,7 @@ export default function OurProgrammesSection() {
                       {/* Eligibility */}
                       <div className="flex flex-col gap-2">
                         <div className="flex md:flex-row items-center flex-shrink-0 relative">
-                          <Image
-                            src="/Charters-icon/profile.svg"
+                          <img src="/Charters-icon/profile.svg"
                             alt="Eligibility icon"
                             width={15}
                             height={15}
@@ -115,7 +128,7 @@ export default function OurProgrammesSection() {
                           </h4>
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="text-xs text-gray-700 font-medium break-words">
+                          <p className="text-xs text-[#5f6368] font-medium break-words">
                             {programme.card.eligibility.type}
                           </p>
                         </div>
@@ -124,8 +137,7 @@ export default function OurProgrammesSection() {
                       {/* Duration */}
                       <div className="flex flex-col gap-2">
                         <div className="flex md:flex-row items-center flex-shrink-0 relative">
-                          <Image
-                            src="/Charters-icon/schudle.svg"
+                          <img src="/Charters-icon/duration.svg"
                             alt="Duration icon"
                             width={15}
                             height={15}
@@ -136,7 +148,7 @@ export default function OurProgrammesSection() {
                           </h4>
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="text-xs text-gray-700 font-medium break-words">
+                          <p className="text-xs text-[#5f6368] font-medium break-words">
                             {programme.card.duration.type}
                           </p>
                         </div>
@@ -145,8 +157,7 @@ export default function OurProgrammesSection() {
                       {/* Job Openings */}
                       <div className="flex flex-col gap-2">
                         <div className="flex md:flex-row items-center flex-shrink-0 relative">
-                          <Image
-                            src="/Charters-icon/offer.svg"
+                          <img src="/Charters-icon/jobs.svg"
                             alt="Job openings icon"
                             width={15}
                             height={15}
@@ -157,16 +168,15 @@ export default function OurProgrammesSection() {
                           </h4>
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="text-xs text-gray-700 font-medium">
+                          <p className="text-xs text-[#5f6368] font-medium">
                             2.12 Cr (Time&apos;s News)
-                            <sup className="text-xs text-gray-500">**</sup>
+                            <sup className="text-xs text-[#5f6368]">**</sup>
                           </p>
                         </div>
                       </div>
                       <div className="flex flex-col gap-2">
                         <div className="flex md:flex-row items-center flex-shrink-0 relative">
-                          <Image
-                            src="/Charters-icon/offer.svg"
+                          <img src="/Charters-icon/vision.svg"
                             alt="Job openings icon"
                             width={15}
                             height={15}
@@ -209,8 +219,7 @@ export default function OurProgrammesSection() {
                       <div>
                         <div className="flex items-center gap-2 mb-1">
                           <div className="w-5 h-5 flex  flex-shrink-0 relative">
-                            <Image
-                              src="/Charters-icon/new_campas.svg"
+                            <img src="/Charters-icon/Job-ready-carriculam.svg"
                               alt="Curriculum icon"
                               width={15}
                               height={15}
@@ -227,7 +236,7 @@ export default function OurProgrammesSection() {
                             .map((outcome, idx) => (
                               <li
                                 key={idx}
-                                className="text-[0.65rem] text-gray-700 flex items-start gap-1"
+                                className="text-[0.65rem] text-[#5f6368] flex items-start gap-1"
                               >
                                 <span className="text-gray-600 flex-shrink-0">
                                   •
@@ -242,8 +251,7 @@ export default function OurProgrammesSection() {
                       <div className="mt-[25px]">
                         <div className="flex items-center gap-2 mb-1">
                           <div className="w-5 h-5 flex flex-shrink-0 relative">
-                            <Image
-                              src="/Charters-icon/new_campas.svg"
+                            <img src="/Charters-icon/institution-partner.svg"
                               alt="Partners icon"
                               width={15}
                               height={15}
@@ -256,13 +264,14 @@ export default function OurProgrammesSection() {
                         </div>
 
                         <div className="flex items-center gap-1 items-center flex-wrap">
-                          <div className="relative h-8 w-[272px] flex flex-shrink-0">
+                          <div className="relative h-10 w-[280px] flex flex-shrink-0">
                             <Image
-                              src="/charter-partner/chater-accounating-partner.avif"
+                              src={partnerLogosMap[programme.slug]?.partners || "/charter-partner/charter-certified-busniess-accountant-partners.avif"}
                               alt="Partner 1"
                               fill
                               sizes="240px"
                               className="object-contain"
+                              loading="lazy"
                             />
                           </div>
                         </div>
@@ -272,8 +281,7 @@ export default function OurProgrammesSection() {
                       <div className="mt-[10px] space-y-1">
                         <div className="flex items-center gap-2 mb-1">
                           <div className="w-5 h-5 flex flex-shrink-0 relative">
-                            <Image
-                              src="/Charters-icon/new_campas.svg"
+                            <img src="/Charters-icon/publicicon.svg"
                               alt="Curriculum icon"
                               width={15}
                               height={15}
@@ -287,11 +295,12 @@ export default function OurProgrammesSection() {
                         <div className="flex items-center gap-1 items-center flex-wrap">
                           <div className="relative h-8 w-[272px] flex flex-shrink-0">
                             <Image
-                              src="/charter-partner/chater-accounating-partner.avif"
+                              src={partnerLogosMap[programme.slug]?.internships || "/charter-partner/certified_business_accountant_internship_partner.avif"}
                               alt="Partner 1"
                               fill
                               sizes="240px"
                               className="object-contain"
+                              loading="lazy"
                             />
                           </div>
                         </div>
@@ -306,15 +315,14 @@ export default function OurProgrammesSection() {
                       className="block w-full md:w-auto md:flex-1"
                     >
                       <button
-                        className="w-full hover:bg-[#ffffff] text-black py-2 px-4 md:px-3 flex items-center justify-center gap-2 transition-all duration-300 font-semibold text-sm md:text-xs whitespace-nowrap"
+                        className="w-full bg-[#ffffff] cursor-pointer text-black py-3 px-2 md:px-2 flex items-center justify-center gap-2 transition-all duration-300 font-semibold text-sm md:text-xs whitespace-nowrap"
                         aria-label={`Explore ${programme.card.title} programme details`}
                         type="button"
                       >
                         <span className="truncate">
                           Explore {programme.card.title}
                         </span>
-                        <Image
-                          src="/Charters-icon/top_arrow-black.svg"
+                        <img src="/Charters-icon/top_arrow-black.svg"
                           alt="Format icon"
                           width={15}
                           height={15}
@@ -328,17 +336,16 @@ export default function OurProgrammesSection() {
                       className="block w-full md:w-auto"
                     >
                       <button
-                        className="w-full md:w-auto bg-[#B30437] hover:bg-[#8B0329] text-white py-2 px-6 md:px-4 rounded-[5px] flex items-center justify-center gap-2 font-semibold text-sm md:text-xs transition-all duration-300 whitespace-nowrap"
+                        className="w-full md:w-auto cursor-pointer bg-[#222222] hover:bg-[#000000] text-white py-3 px-10 md:px-10 flex items-center justify-center gap-2 font-semibold text-sm md:text-xs transition-all duration-300 whitespace-nowrap"
                         aria-label={`Download ${programme.card.title} brochure`}
                         type="button"
                       >
                         <span>Brochure</span>
-                        <Image
-                          src="/Charters-icon/top_arrow-black.svg"
+                        <img src="/Charters-icon/download.svg"
                           alt="Format icon"
                           width={15}
                           height={15}
-                          className=" w-[12px] h-[12px] object-contain"
+                          className=" w-[14px] h-[14px] object-contain"
                         />
                       </button>
                     </Link>

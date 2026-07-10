@@ -12,7 +12,7 @@ interface CloudinaryImageProps {
   width?: number;
   height?: number;
   priority?: boolean;
-  quality?: number | "auto";
+  quality?: number | "auto" | "auto:best" | "auto:good" | "auto:eco" | "auto:low";
   crop?: "fill" | "fit" | "scale" | "crop" | "thumb";
   gravity?: "auto" | "face" | "center" | "north" | "south" | "east" | "west";
   sizes?: string;
@@ -30,10 +30,10 @@ export default function CloudinaryImage({
   width,
   height,
   priority = false,
-  quality = "auto",
+  quality = "auto:low",
   crop = "fill",
   gravity = "auto",
-  sizes = "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw",
+  sizes = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw",
 }: CloudinaryImageProps) {
   const [isLoading, setLoading] = useState(true);
 

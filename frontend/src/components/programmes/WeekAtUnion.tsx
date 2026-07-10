@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { getCloudinaryUrl } from "@/lib/cloudinary";
 import HighlightText from "../shared/HighlightObserver";
+import { ProgrammeAssetConfig } from "@/data/programmes";
 
 interface WeekAtTetrProps {
   data?: {
@@ -11,19 +12,26 @@ interface WeekAtTetrProps {
     title?: string;
     subtitle?: string;
   };
+  assets?: ProgrammeAssetConfig;
 }
 
-const WeekAtTetr = ({ data }: WeekAtTetrProps) => {
+const WeekAtTetr = ({ data, assets }: WeekAtTetrProps) => {
+  const config = assets || {
+    timetableImage: "charters-business/images/weekattetr/ug-timetable",
+  };
   const timetableImage =
-  data?.imageSrc ||
-  "charters-business/images/weekattetr/ug-timetable";
+    data?.imageSrc || config.timetableImage;
 
-const heading =
-  data?.title || "What's a Week at Charters Business Like?";
+  const heading = data?.title || "What's a Week at Charters' Union Like?";
 
-const subtitle =
-  data?.subtitle ||
-  "Start your day with ambition and end it with impact. At Charters, every week pushes boundaries.";
+  const subtitle =
+    data?.subtitle ||
+    "Start your day with ambition and end it with impact. At Charters' Union, every week pushes boundaries.";
+
+  // Highlight only "Charters' Union" within the heading, rest stays plain text
+  const highlightWord = "Charters' Union";
+  const headingParts = heading.split(highlightWord);
+
   return (
     <>
       {/* Skip Navigation Link for Accessibility */}
@@ -35,58 +43,71 @@ const subtitle =
       </a>
 
       <main
-        className="pt-4 sm:pt-6 md:pt-8 bg-white"
+        className="pt-[4rem] sm:pt-14 bg-white"
         role="main"
         aria-labelledby="week-heading"
       >
-        <div className="max-w-[85rem] mx-auto">
+        <div className="max-w-[85rem] pt-2 sm:pt-3 md:pt-4 section-header-block">
           {/* Header */}
           <div className="text-center mb-4 sm:mb-6 md:mb-8" id="week-content">
+            <p className="section-eyebrow" role="text">
+              WEEKLY SCHEDULE
+            </p>
             <h2
               id="week-heading"
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-black mb-3 sm:mb-4 text-center"
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-3 sm:mb-4 text-center"
             >
-              <HighlightText className="font-bold">
-                {heading}
-              </HighlightText>
+              {headingParts.length === 2 ? (
+                <>
+                  {headingParts[0]}
+                  <HighlightText className="font-bold !px-0 !py-0">
+                    {highlightWord}
+                  </HighlightText>
+                  {headingParts[1]}
+                </>
+              ) : (
+                heading
+              )}
             </h2>
-            <p className="text-gray-700 text-sm md:text-base lg:text-lg  ">
+            <p className="text-[#5f6368] text-sm md:text-base lg:text-lg">
               {subtitle}
             </p>
           </div>
 
           {/* Timetable Image */}
           <section
-            className="flex justify-center"
+            className="overflow-x-auto sm:overflow-visible"
             role="region"
             aria-labelledby="timetable-heading"
           >
             <h2 id="timetable-heading" className="sr-only">
               Weekly Schedule Overview
             </h2>
-            <figure className="relative w-full ">
-              <Image
-                src={getCloudinaryUrl(
-                  timetableImage,
-                  {
-                    width: 1200,
-                    quality: "auto",
-                    format: "auto",
-                  }
-                )}
-                alt="Weekly timetable showing daily activities at Tetr including morning sessions, afternoon workshops, evening projects, and weekend activities"
-                width={1200}
-                height={800}
-                className="w-full h-auto  shadow-lg border border-gray-200"
-                priority
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
-              />
-              <figcaption className="sr-only">
-                Comprehensive weekly schedule displaying structured learning
-                activities, practical workshops, and collaborative projects
-                throughout the week at Tetr.
-              </figcaption>
-            </figure>
+            <div className="min-w-[350vw] sm:min-w-full">
+              <figure className="relative w-[350vw] sm:w-full">
+                <Image
+                  src={getCloudinaryUrl(
+                    timetableImage,
+                    {
+                      width: 1200,
+                      quality: "auto",
+                      format: "auto",
+                    }
+                  )}
+                  alt="Weekly timetable showing daily activities at Charters' Union including morning sessions, afternoon workshops, evening projects, and weekend activities"
+                  width={1200}
+                  height={800}
+                  className="w-full h-auto shadow-lg border border-gray-200"
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                />
+                <figcaption className="sr-only">
+                  Comprehensive weekly schedule displaying structured learning
+                  activities, practical workshops, and collaborative projects
+                  throughout the week at Charters&apos; Union.
+                </figcaption>
+              </figure>
+            </div>
           </section>
         </div>
       </main>

@@ -42,7 +42,7 @@ export default function CookieConsent() {
         type="button"
         onClick={closeBanner}
         aria-label="Close cookie banner"
-        className="absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-full text-lg leading-none text-gray-500 transition hover:bg-gray-100 hover:text-gray-800"
+        className="absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-full text-lg leading-none text-[#5f6368] transition hover:bg-gray-100 hover:text-gray-800"
       >
         x
       </button>
@@ -65,7 +65,7 @@ export default function CookieConsent() {
         <button
           type="button"
           onClick={acceptAll}
-          className="w-full bg-[#0339F8] text-white px-5 py-2.5 text-[13.5px] font-medium rounded-sm hover:bg-[#022fcc] transition"
+          className="w-full bg-[#222222] text-white px-5 py-2.5 text-[13.5px] font-medium rounded-sm hover:bg-[#022fcc] transition"
         >
           Accept all cookies
         </button>

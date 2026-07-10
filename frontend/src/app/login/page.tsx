@@ -2,9 +2,9 @@ import { Metadata } from "next";
 import ChartersInterviewAiPage from "@/components/auth/ChartersInterviewAiPage";
 
 export const metadata: Metadata = {
-  title: "Login | Charters Business",
+  title: "Login | Charters' Union",
   description:
-    "Login to your Charters Business account. Access your dashboard, track application status, view counseling schedules, and manage your profile.",
+    "Login to your Charters' Union account. Access your dashboard, track application status, view counseling schedules, and manage your profile.",
   alternates: {
     canonical: "/login",
   },

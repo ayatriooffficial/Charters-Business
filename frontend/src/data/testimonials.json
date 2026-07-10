@@ -1,27 +1,27 @@
 [
   {
-    "id": "openai",
-    "company": "OpenAI",
-    "logo": "OpenAI",
+    "id": "Arabian Access",
+    "company": "Arabian Access",
+    "logo": "Arabian Access",
     "quote": "There's power in a single platform where you can do all your work. Notion is that single place.",
     "author": "Student Participant",
     "role": "Student Participant",
-    "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
+    "image": "/logos/student-at-arabian-access.avif",
     "category": "engineering"
   },
   {
     "id": "ramp",
     "company": "ramp",
-    "logo": "ramp ↗",
+    "logo": "/logos/student-at-arabian-access.avif",
     "quote": "With Notion, every person at Ramp has an AI assistant.",
     "author": "Engineering Team Lead",
     "role": "Engineering Team Lead",
-    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+    "image": "logos/student-at-reliance.avif",
     "category": "engineering"
   },
   {
     "id": "vercel",
-    "company": "▲Vercel",
+    "company": "/logos/student-at-arabian-access.avif",
     "logo": "▲Vercel",
     "quote": "Notion understands that you can solve a lot of problems with one tool.",
     "author": "Operations Manager",

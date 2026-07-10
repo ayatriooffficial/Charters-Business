@@ -204,7 +204,7 @@ function TrustedCompanies() {
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-[30px]">
             <p className="mx-auto text-base text-black sm:text-lg lg:text-xl">
-              Join 1250+ Companies Hiring Young Charter's Worldwide
+              Join 1250+ Companies Hiring Young Charter&apos;s Worldwide
             </p>
           </div>
 
@@ -250,7 +250,7 @@ function TrustedCompanies() {
                             <div className="text-sm font-semibold leading-tight text-gray-900">
                               {company.caseStudy.author}
                             </div>
-                            <div className="mt-0.5 text-[13px] text-gray-500">
+                            <div className="mt-0.5 text-[13px] text-[#5f6368]">
                               {company.caseStudy.role}
                             </div>
                           </div>
@@ -291,8 +291,7 @@ function TrustedCompanies() {
             >
               View all Companies
 
-              <Image
-                src="/Charters-icon/top_arrow-black.svg"
+              <img src="/Charters-icon/top_arrow-black.svg"
                 alt="Format icon"
                 width={15}
                 height={15}

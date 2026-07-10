@@ -17,7 +17,7 @@ interface NewsSliderComponentProps {
 const NewsSliderComponent: React.FC<NewsSliderComponentProps> = ({
   newsItems = [],
 }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const slidesContainerRef = useRef<HTMLDivElement>(null);
   const defaultNews: NewsItem[] = [
@@ -127,42 +127,25 @@ const NewsSliderComponent: React.FC<NewsSliderComponentProps> = ({
     moveSlide(direction);
   };
 
-  const goToSlide = (n: number): void => {
-    if (isAnimating) return;
-
-    const scrollContainer = slidesContainerRef.current?.parentElement;
-    if (!scrollContainer) return;
-
-    setIsAnimating(true);
-
-    const slideWidth = scrollContainer.clientWidth * (SLIDE_WIDTH / 100);
-    const targetScroll = n * slideWidth;
-
-    scrollContainer.scrollTo({
-      left: targetScroll,
-      behavior: 'smooth'
-    });
-
-    setTimeout(() => {
-      setCurrentIndex(n);
-      updateDots(n);
-      setIsAnimating(false);
-    }, getAnimationDuration());
-  };
-
   useEffect(() => {
     const scrollContainer = slidesContainerRef.current?.parentElement;
     if (!scrollContainer) return;
 
+    let ticking = false;
     const handleScroll = () => {
-      const slideWidth = scrollContainer.clientWidth * (SLIDE_WIDTH / 100);
-      const activeIndex = Math.round(scrollContainer.scrollLeft / slideWidth);
-      setCurrentIndex(activeIndex);
-      updateDots(activeIndex);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const slideWidth = scrollContainer.clientWidth * (SLIDE_WIDTH / 100);
+          const activeIndex = Math.round(scrollContainer.scrollLeft / slideWidth);
+          setCurrentIndex(activeIndex);
+          updateDots(activeIndex);
 
-      // Update offset for button visibility
-      const newOffset = scrollContainer.scrollLeft > 1 ? (scrollContainer.scrollLeft / scrollContainer.clientWidth) * 100 : 0;
-      setOffsetPercent(newOffset);
+          const newOffset = scrollContainer.scrollLeft > 1 ? (scrollContainer.scrollLeft / scrollContainer.clientWidth) * 100 : 0;
+          setOffsetPercent(newOffset);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
@@ -173,14 +156,14 @@ const NewsSliderComponent: React.FC<NewsSliderComponentProps> = ({
 
   return (
     <div className="mx-[0%] w-full m-0 p-0 box-border">
-      <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-13 ">
+      <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-22 pb-13 ">
         <div className="w-full mx-auto text-center">
           <div>
             <h2
               id="programmes-heading"
               className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]"
             >
-              Charter's in the News
+              Charter&apos;s in the News
             </h2>
           </div>
           <p className="text-base sm:text-lg text-[#5f6368]">

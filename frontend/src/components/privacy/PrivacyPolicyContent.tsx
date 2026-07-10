@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function PrivacyPolicyContent() {
   return (
     <section className="relative z-[5] pt-12 pb-12 bg-white">
@@ -31,8 +33,8 @@ export default function PrivacyPolicyContent() {
         {/* Content */}
         <div className="space-y-8 max-w-5xl mx-auto">
           <section>
-            <p className="text-gray-700 leading-relaxed text-base">
-              Your privacy is important to us. It is Charters Business's (A unit
+            <p className="text-[#5f6368] leading-relaxed text-base">
+              Your privacy is important to us. It is Charters Business&apos;s (A unit
               of Shanti Informatics) policy to respect your privacy regarding
               any information we may collect from you across our website{" "}
               <a
@@ -54,10 +56,10 @@ export default function PrivacyPolicyContent() {
             <h2 className="text-xl lg:text-2xl font-bold mb-4 text-black">
               How we collect your information
             </h2>
-            <p className="text-gray-700 leading-relaxed text-base">
+            <p className="text-[#5f6368] leading-relaxed text-base">
               We only ask for personal information when we truly need it to
               provide a service to you. We collect it by fair and lawful means,
-              with your knowledge and consent. We also let you know why we're
+              with your knowledge and consent. We also let you know why we&apos;re
               collecting it and how it will be used.
             </p>
           </section>
@@ -69,9 +71,9 @@ export default function PrivacyPolicyContent() {
             <h2 className="text-xl lg:text-2xl font-bold mb-4 text-black">
               How long we keep your data
             </h2>
-            <p className="text-gray-700 leading-relaxed text-base">
+            <p className="text-[#5f6368] leading-relaxed text-base">
               We only retain collected information for as long as necessary to
-              provide you with your requested service. What data we store, we'll
+              provide you with your requested service. What data we store, we&apos;ll
               protect within commercially acceptable means to prevent loss and
               theft, as well as unauthorized access, disclosure, copying, use or
               modification.
@@ -85,7 +87,7 @@ export default function PrivacyPolicyContent() {
             <h2 className="text-xl lg:text-2xl font-bold mb-4 text-black">
               How we communicate with you
             </h2>
-            <p className="text-gray-700 leading-relaxed text-base mb-4">
+            <p className="text-[#5f6368] leading-relaxed text-base mb-4">
               When you voluntarily send us electronic mail, we will keep a
               record of this information so that we can respond to you. We only
               collect information from you when you register on our site or fill
@@ -93,7 +95,7 @@ export default function PrivacyPolicyContent() {
               asked to enter your: name, e-mail address or phone number. You
               may, however, visit our site anonymously.
             </p>
-            <p className="text-gray-700 leading-relaxed text-base">
+            <p className="text-[#5f6368] leading-relaxed text-base">
               In case you have submitted your personal information and contact
               details, we reserve the rights to Call, SMS, Email or WhatsApp
               about our products and offers, even if your number has DND
@@ -106,10 +108,10 @@ export default function PrivacyPolicyContent() {
               Information Sharing
             </div>
             <h2 className="text-xl lg:text-2xl font-bold mb-4 text-black">
-              We don't share your data
+              We don&apos;t share your data
             </h2>
-            <p className="text-gray-700 leading-relaxed text-base">
-              We don't share any personally identifying information publicly or
+            <p className="text-[#5f6368] leading-relaxed text-base">
+              We don&apos;t share any personally identifying information publicly or
               with third-parties, except when required to by law.
             </p>
           </section>
@@ -121,7 +123,7 @@ export default function PrivacyPolicyContent() {
             <h2 className="text-xl lg:text-2xl font-bold mb-4 text-black">
               Third-party websites
             </h2>
-            <p className="text-gray-700 leading-relaxed text-base">
+            <p className="text-[#5f6368] leading-relaxed text-base">
               Our website may link to external sites that are not operated by
               us. Please be aware that we have no control over the content and
               practices of these sites, and cannot accept responsibility or
@@ -136,7 +138,7 @@ export default function PrivacyPolicyContent() {
             <h2 className="text-xl lg:text-2xl font-bold mb-4 text-black">
               You have control over your data
             </h2>
-            <p className="text-gray-700 leading-relaxed text-base">
+            <p className="text-[#5f6368] leading-relaxed text-base">
               You are free to refuse our request for your personal information,
               with the understanding that we may be unable to provide you with
               some of your desired services.
@@ -150,7 +152,7 @@ export default function PrivacyPolicyContent() {
             <h2 className="text-xl lg:text-2xl font-bold mb-4 text-black">
               By using our site, you accept this policy
             </h2>
-            <p className="text-gray-700 leading-relaxed text-base mb-4">
+            <p className="text-[#5f6368] leading-relaxed text-base mb-4">
               Your continued use of our website will be regarded as acceptance
               of our practices around privacy and personal information. If you
               have any questions about how we handle user data and personal
@@ -166,12 +168,12 @@ export default function PrivacyPolicyContent() {
         <div className="mt-12 text-center">
           <p className="text-gray-600 text-base">
             For any questions or concerns regarding this privacy policy, please{" "}
-            <a
+            <Link
               href="/contact"
               className="text-[#B30437] hover:text-[#8B0329] underline font-medium"
             >
               contact us
-            </a>
+            </Link>
             .
           </p>
         </div>

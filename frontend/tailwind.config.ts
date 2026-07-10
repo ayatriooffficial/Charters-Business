@@ -22,6 +22,17 @@ const config: Config = {
       screens: {
         'custom-xl': '1100px',
       },
+
+      keyframes: {
+        skeletonFade: {
+          '0%, 100%': { filter: 'grayscale(100%)', opacity: '0.4' },
+          '50%': { filter: 'grayscale(0%)', opacity: '1' },
+        },
+      },
+
+      animation: {
+        skeletonFade: 'skeletonFade 2.5s ease-in-out infinite',
+      },
     },
   },
 

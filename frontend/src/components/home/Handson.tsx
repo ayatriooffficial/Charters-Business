@@ -4,11 +4,6 @@ import { useState, useEffect, useRef, memo } from "react";
 import Image from "next/image";
 import HighlightText from "../shared/HighlightObserver";
 
-const features = [
-  { icon: "/Charters-icon/Cancel.svg", title: "AI in Healthcare" },
-  { icon: "/Charters-icon/Cancel.svg", title: "Healthcare Analytics" },
-];
-
 const CARD_MOBILE_BANNER_SIZES =
   "(max-width: 639px) calc(100vw - 0.5rem), (max-width: 1023px) calc(100vw - 1rem), 680px";
 const CARD_DESKTOP_IMAGE_SIZES =
@@ -81,12 +76,12 @@ interface EditorialCardProps {
 function EditorialCard({ card }: EditorialCardProps) {
   return (
     <div className="flex flex-col h-full w-full overflow-y-visible lg:overflow-y-auto">
-      <div className="relative block h-32 w-full flex-shrink-0 overflow-hidden lg:hidden">
+      <div className="relative block aspect-video w-full flex-shrink-0 overflow-hidden lg:hidden">
         <Image
-          src={card.mediaSrc}
+          src={card.mediaSrc!}
           alt={`${card.title} visual`}
           fill
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain scale-[0.90]"
           loading="lazy"
           quality={45}
           sizes={CARD_MOBILE_BANNER_SIZES}
@@ -105,19 +100,19 @@ function EditorialCard({ card }: EditorialCardProps) {
             {card.subtitle}
           </h2>
 
-          <p className="text-[12px] sm:text-[14px] text-gray-500 leading-[1.6] sm:leading-[1.7] max-w-[52ch] mb-4 sm:mb-8">
+          <p className="text-[12px] sm:text-[14px] text-[#5f6368] leading-[1.6] sm:leading-[1.7] max-w-[52ch] mb-4 sm:mb-8">
             Foundation designed on <strong>7 globally recognized bodies</strong> + <strong>Harvard-style case studies</strong> — the closest thing to global certification preparation inside a job-ready program.
           </p>
 
 
           <div className="mb-6">
-            <p className="text-[11px] font-semibold text-gray-400 mb-2 uppercase tracking-wider">
-              Curriculum structure based on partner institution
+            <p className="text-[11px] font-semibold text-[#80868b] mb-2 uppercase tracking-wider">
+              Curriculum structure based on globally recognized bodies
             </p>
             <div className="relative w-full h-[40px] object-contain overflow-hidden">
               <Image
-                src="/charter-partner/chater-accounating-partner.avif"
-                alt="Meet our creator alums"
+                src="/charter-partner/charter-academic-partner.avif"
+                alt="charter academic partner"
                 fill
                 sizes={PARTNER_LOGO_SIZES}
                 className="object-contain object-left"
@@ -126,13 +121,13 @@ function EditorialCard({ card }: EditorialCardProps) {
           </div>
 
           <div className="mb-2">
-            <p className="text-[11px] font-semibold text-gray-400 pt-2 mb-2 uppercase tracking-wider">
-              Curriculum allows to works 12 international markets
+            <p className="text-[11px] font-semibold text-[#80868b] pt-2 mb-2 uppercase tracking-wider">
+              100% AI-integratede curriculum
             </p>
-            <div className="relative object-contain w-full h-[40px] overflow-hidden">
+            <div className="relative object-contain w-full h-[55px] overflow-hidden">
               <Image
-                src="/charter-partner/charter_busness_school_works_country.avif"
-                alt="Meet our creator alums"
+                src="/charter-partner/young_charters_work_on_AI-agents_around_accounting_&_marketing.avif"
+                alt="100% AI-integratede curriculum around accounting & marketing"
                 fill
                 sizes={PARTNER_LOGO_SIZES}
                 className="object-contain object-left"
@@ -143,14 +138,14 @@ function EditorialCard({ card }: EditorialCardProps) {
 
         <div className="hidden lg:flex lg:col-span-6 flex-col relative h-full w-full overflow-hidden">
           <Image
-            src={card.mediaSrc}
+            src={card.mediaSrc!}
             alt={`${card.title} visual`}
             fill
             quality={45}
             sizes="(min-width: 1024px) 493px, 100vw"
             className="object-center scale-[0.99] h-auto object-contain w-full relative!"
           />
-          <p className="absolute bottom-2 left-8 right-8 text-[8px] text-gray-500 bg-white bg-opacity-75 p-1 rounded">
+          <p className="absolute bottom-2 left-8 right-8 text-[8px] text-[#5f6368] bg-white bg-opacity-75 p-1 rounded">
             Source: *(a)¹Cr:Crore. (b)²CCA: certified corporate accountant.
             (c)³Times™ India Job Postings (median indian salary with 0-5 years
             experience, Jan. 1, 2022 - Dec. 31, 2022).
@@ -169,12 +164,12 @@ function HealthGridCard({ card }: HealthGridCardProps) {
   return (
     <section className="flex flex-col w-full bg-[#F4F2EE] overflow-hidden h-full max-h-[90vh]">
       {/* Mobile banner image */}
-      <div className="relative block h-32 w-full flex-shrink-0 overflow-hidden lg:hidden">
+      <div className="relative block aspect-square w-full flex-shrink-0 overflow-hidden lg:hidden">
         <Image
-          src="/home/ima2.avif"
+          src="/home/ima11.avif"
           alt={`${card.title} visual`}
           fill
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
           loading="lazy"
           quality={40}
           sizes={CARD_MOBILE_BANNER_SIZES}
@@ -195,19 +190,19 @@ function HealthGridCard({ card }: HealthGridCardProps) {
             Guided by faculty
           </h2>
 
-          <p className="text-[12px] sm:text-[14px] text-gray-500 leading-[1.6] sm:leading-[1.7] max-w-[48ch] mb-4 sm:mb-8">
+          <p className="text-[12px] sm:text-[14px] text-[#5f6368] leading-[1.6] sm:leading-[1.7] max-w-[48ch] mb-4 sm:mb-8">
             <strong>+4 months</strong> of your program, you work inside a real company — in India or across <strong>6 international markets</strong>. You are earning while learning, building a global level portfolio.
           </p>
 
 
           <div className="mb-6">
-            <p className="text-[11px] font-semibold text-gray-400 mb-2 uppercase tracking-wider">
-              In-class paid internship across the 12 countries
+            <p className="text-[11px] font-semibold text-[#80868b] mb-2 uppercase tracking-wider">
+              In-class Paid internship across 1,257+ companies
             </p>
             <div className="relative object-contain w-full h-[40px] overflow-hidden">
               <Image
-                src="/charter-partner/charter_busness_school_works_country.avif"
-                alt="Meet our creator alums"
+                src="/charter-partner/charter-intrenshiph-company-around-the-world.avif"
+                alt="Charter intrenshiph company around the world"
                 fill
                 sizes={PARTNER_LOGO_SIZES}
                 className="object-contain object-left"
@@ -216,12 +211,12 @@ function HealthGridCard({ card }: HealthGridCardProps) {
           </div>
 
           <div className="mb-2">
-            <p className="text-[11px] font-semibold text-gray-400 pt-2 mb-2 uppercase tracking-wider">
-              In-class paid internship across the 12 countries
+            <p className="text-[11px] font-semibold text-[#80868b] pt-2 mb-2 uppercase tracking-wider">
+              Internship/Job around the 7 countries
             </p>
             <div className="relative object-contain w-full h-[40px] overflow-hidden">
               <Image
-                src="/charter-partner/charter_busness_school_works_country.avif"
+                src="/charter-partner/charter-hiring-company-from-7-countries.avif"
                 alt="Meet our creator alums"
                 fill
                 sizes={PARTNER_LOGO_SIZES}
@@ -239,7 +234,7 @@ function HealthGridCard({ card }: HealthGridCardProps) {
             fill
             quality={40}
             sizes={CARD_DESKTOP_IMAGE_SIZES}
-            className="object-cover object-center"
+            className="object-fill object-center"
           />
         </div>
       </div>
@@ -267,12 +262,12 @@ function FlagshipCard({ card }: FlagshipCardProps) {
 
   return (
     <section className="flex flex-col w-full bg-[#E6F4EA] overflow-hidden h-full max-h-[90vh]">
-      <div className="relative block h-32 w-full flex-shrink-0 overflow-hidden lg:hidden">
+      <div className="relative block aspect-square w-full flex-shrink-0 overflow-hidden lg:hidden">
         <Image
           src="/home/ima11.avif"
           alt={`${card.title} visual`}
           fill
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
           loading="lazy"
           quality={40}
           sizes={CARD_MOBILE_BANNER_SIZES}
@@ -304,29 +299,42 @@ function FlagshipCard({ card }: FlagshipCardProps) {
             Persona Development
           </h2>
 
-          <p className="text-[12px] sm:text-[14px] text-gray-500 leading-[1.6] sm:leading-[1.7] max-w-[52ch] mb-2 sm:mb-6">
+          <p className="text-[12px] sm:text-[14px] text-[#5f6368] leading-[1.6] sm:leading-[1.7] max-w-[52ch] mb-2 sm:mb-6">
             <strong>Month 1 to Final Month</strong>: <strong> AI-Powered Corporate English, Mock Interviews, Leadership Training, LinkedIn Profile, Resume, and 1:1 Mentorship</strong> — All Included
           </p>
 
           <div className="overflow-hidden">
             <div className="h-[40px] flex items-center justify-between">
-              <span className="text-[11px] font-semibold text-gray-700 uppercase tracking-wide">
+              <span className="text-[11px] font-semibold text-[#5f6368] uppercase tracking-wide">
                 A 7-Month Career Identity Transformation
               </span>
               <div className="flex items-center gap-1">
-                <button onClick={scrollLeft} type="button" className="w-6 h-6 flex items-center justify-center text-gray-700 hover:bg-black hover:text-white transition" aria-label="Scroll left">←</button>
-                <button onClick={scrollRight} type="button" className="w-6 h-6 flex items-center justify-center text-gray-700 hover:bg-black hover:text-white transition" aria-label="Scroll right">→</button>
+                <button onClick={scrollLeft} type="button" className="w-6 h-6 cursor-pointer flex items-center justify-center text-[#5f6368] bg-[#A2C1B9] transition" aria-label="Scroll left">
+                  <img src="/Charters-icon/backarrow.svg"
+                    alt="Format icon"
+                    width={15}
+                    height={15}
+                    className=" w-[12px] h-[12px] object-contain"
+                  /></button>
+                <button onClick={scrollRight} type="button" className="w-6 h-6 cursor-pointer flex items-center justify-center text-[#5f6368] bg-[#A2C1B9] transition" aria-label="Scroll right"> <img src="/Charters-icon/rightarrow.svg"
+                  alt="Format icon"
+                  width={15}
+                  height={15}
+                  className=" w-[12px] h-[12px] object-contain"
+                /></button>
               </div>
             </div>
 
-            <div ref={sliderRef} className="flex overflow-x-auto scrollbar-hide h-[160px] sm:h-[180px] gap-1 items-stretch scroll-smooth">
-              {card.programs?.map((p: { name: string; duration: string }) => (
-                <div key={p.name} className="min-w-[140px] sm:min-w-[150px] h-full mr-1 bg-[#A2C1B9] px-3 sm:px-4 py-4 sm:py-5 flex flex-col justify-between">
-                  <span className="text-[9px] bg-black text-white px-2 py-[2px] w-fit">PROGRAM</span>
-                  <h3 className="mt-3 text-sm font-semibold text-black leading-snug">{p.name}</h3>
-                  <p className="text-[11px] text-gray-600">{p.duration}</p>
-                </div>
-              ))}
+            <div className="-mx-3 sm:mx-0">
+              <div ref={sliderRef} className="flex overflow-x-auto scrollbar-hide h-[160px] sm:h-[180px] items-stretch scroll-smooth divide-x divide-white border-y border-white">
+                {card.programs?.map((p: { name: string; duration: string }) => (
+                  <div key={p.name} className="w-[85vw] sm:w-[220px] flex-shrink-0 h-full bg-[#A2C1B9] px-4 sm:px-5 py-4 sm:py-5 flex flex-col justify-between">
+                    <span className="text-[10px] bg-[#202124] text-white px-2 py-[2px] w-fit">PROGRAM</span>
+                    <h3 className="mt-3 text-[15px] sm:text-[14px] font-semibold text-black leading-snug">{p.name}</h3>
+                    <p className="text-[12px] text-gray-700">{p.duration}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -339,7 +347,7 @@ function FlagshipCard({ card }: FlagshipCardProps) {
             fill
             quality={40}
             sizes={CARD_DESKTOP_IMAGE_SIZES}
-            className="object-cover object-center"
+            className="object-fill object-center"
           />
         </div>
       </div>
@@ -416,7 +424,7 @@ const CardComponent = memo(
           transform: `translate3d(0, ${y}px, 0) scale(${scale})`,
           opacity: isVisible ? opacity : 0,
           zIndex,
-          pointerEvents: isCurrent ? "auto" : "none",
+          pointerEvents: isVisible ? "auto" : "none",
           willChange: "transform, opacity",
           transformOrigin: "center center",
         }}
@@ -479,31 +487,29 @@ function Handson() {
     if (!mounted || metrics.height === 0) return;
 
     const handleScroll = () => {
-      if (rafId.current !== null) cancelAnimationFrame(rafId.current);
+      // Skip if RAF already pending — one frame is enough
+      if (rafId.current !== null) return;
 
       rafId.current = requestAnimationFrame(() => {
         const winH = window.innerHeight;
 
         // 1. Calculate how far we have scrolled into THIS section
-        // We use Math.max(0, ...) to ensure we don't start at a negative number
         const rectTop = metrics.offsetTop - window.scrollY;
-        const headerHeight = scrollerRef.current
-          ? scrollerRef.current.querySelector('.sticky')?.previousElementSibling?.clientHeight ?? 0
-          : 0;
         const scrollTop = Math.max(0, -rectTop - metrics.headerHeight);
         const maxScroll = Math.max(1, metrics.height - winH - metrics.headerHeight);
 
-
-        // 3. Calculate progress (0 to 1)
+        // 2. Calculate progress (0 to 1)
         const progress = Math.max(0, Math.min(1, scrollTop / maxScroll));
 
-        // 4. Map to active index (0 to totalCards - 1)
+        // 3. Map to active index (0 to totalCards - 1)
         const smooth = progress * (totalCards - 1);
 
-        if (Math.abs(smooth - lastProgress.current) > 0.001) {
+        if (Math.abs(smooth - lastProgress.current) > 0.02) {
           setActiveIndex(smooth);
           lastProgress.current = smooth;
         }
+
+        rafId.current = null;
       });
     };
 
@@ -556,7 +562,7 @@ function Handson() {
           {/* Sticky Header */}
           <div ref={headerRef} className="text-center lg:text-center mx-auto relative bg-white ">
             <p className="text-xs sm:text-sm font-semibold text-[#B30437] tracking-wider mb-2 sm:mb-3" role="text">
-              SEVEN MONTHS. A WORLD OF DIFFERENCE.
+              SEVEN MONTHS. A WORLD OF DIFFERENCE
             </p>
 
             <h2
@@ -572,12 +578,12 @@ function Handson() {
             </h2>
 
 
-            <h3 className="text-base px-[70px] sm:text-lg text-[#5f6368]">
-              India's First <strong>Job-Ready AI-Powered</strong> Global Curriculum with <strong>Paid Internship</strong> in <strong>7 Countries, Business communication training, 1:1 mentorship</strong> — Built for <strong>BCom, BBA, BA, BSc</strong>.
+            <h3 className="text-base px-[20px] md:px-[50px] lg:px-[70px] sm:text-lg text-[#5f6368]">
+              India&apos;s First <strong>Job-Ready AI-Powered</strong> Global Curriculum with <strong>Paid Internship</strong> in <strong>7 Countries, Business communication training, 1:1 mentorship</strong> — Built for <strong>BCom, BBA, BA, BSc</strong>.
             </h3>
           </div>
 
-          <div className="sticky top-0 h-dvh sm:h-screen overflow-hidden">
+          <div className="sticky top-0 h-dvh sm:h-screen overflow-hidden" style={{ willChange: 'transform' }}>
             {cardsData.map((card, index) => {
               const current = Math.floor(activeIndex);
               if (index < current - 1 || index > current + 1) return null;

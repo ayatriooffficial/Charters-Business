@@ -89,7 +89,7 @@ export default function DashboardPage() {
       <div className="bg-gradient-to-r from-[#B30437] to-[#8B0329] p-6 sm:p-8 text-white">
         <h1 className="text-3xl font-bold mb-2">Welcome back, {user?.name}</h1>
         <p className="text-white/90">
-          Here's an overview of your applications and counseling sessions.
+          Here&apos;s an overview of your applications and counseling sessions.
         </p>
       </div>
 

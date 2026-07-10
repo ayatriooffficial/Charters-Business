@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
+import { ProgrammeAssetConfig } from "@/data/programmes";
 
 // Custom SVG Icons
 const BookOpenIcon = ({ className }: { className?: string }) => (
@@ -112,12 +113,6 @@ const CheckCircleIcon = ({ className }: { className?: string }) => (
     </svg>
 );
 
-const CircleIcon = ({ className, fill }: { className?: string; fill?: boolean }) => (
-    <svg className={className} viewBox="0 0 24 24" fill={fill ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-    </svg>
-);
-
 interface JobTrack {
     name: string;
     icon: React.ReactNode;
@@ -127,28 +122,39 @@ interface JobTrack {
 
 interface PricingTabsProps {
     nextBatchDate?: string;
+    data?: Record<string, unknown>;
+    assets?: ProgrammeAssetConfig;
 }
 
 const PricingTabs: React.FC<PricingTabsProps> = ({
-    nextBatchDate = "Feb 5th",
+    nextBatchDate = "3",
+    assets,
 }) => {
+    const config = assets || {
+        pricing: {
+            emiAmount: "₹5,499",
+            emiMonths: "8 months",
+            jobTracks: [
+                { name: "Corporate Finance & Accounting" },
+                { name: "Financial Planning & Analysis (FP&A)" },
+                { name: "US-CMA & ACCA Certifications", badge: "Seats filled. Next batch starts on", badgeDate: "01 Jul 2026" },
+                { name: "AI-led Business Valuation", badge: "Seats filled. Next batch starts on", badgeDate: "01 Jul 2026" }
+            ]
+        }
+    };
 
-    const jobTracks: JobTrack[] = [
-        { name: "Java Full Stack", icon: <MonitorIcon className="w-5 h-5" /> },
-        { name: "MERN Full Stack", icon: <MonitorIcon className="w-5 h-5" /> },
-        {
-            name: "Data Analytics",
-            icon: <BarChartIcon className="w-5 h-5" />,
-            badge: "Seats filled. Next batch starts on",
-            badgeDate: "01 Jul 2026",
-        },
-        {
-            name: "QA / Automation Testing",
-            icon: <TestTubeIcon className="w-5 h-5" />,
-            badge: "Seats filled. Next batch starts on",
-            badgeDate: "01 Jul 2026",
-        },
-    ];
+    const getIcon = (index: number) => {
+        if (index === 2) return <BarChartIcon className="w-5 h-5" />;
+        if (index === 3) return <TestTubeIcon className="w-5 h-5" />;
+        return <MonitorIcon className="w-5 h-5" />;
+    };
+
+    const jobTracks: JobTrack[] = config.pricing.jobTracks.map((track, index) => ({
+        name: track.name,
+        icon: getIcon(index),
+        badge: track.badge,
+        badgeDate: track.badgeDate,
+    }));
 
     const placementSupport = [
         "Aptitude Training",
@@ -178,7 +184,7 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
         },
         {
             icon: <RocketIcon className="w-5 h-5" />,
-            text: "NxtWave Intensive is not a Job Guarantee Program.",
+            text: "Charters' 100% Job Ready Program.",
             isDisclaimer: true,
         },
     ];
@@ -187,240 +193,232 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
         <section className="bg-white py-4 sm:py-6 md:py-8 ">
             <div className="max-w-[85rem] mx-auto">
                 <>
-                        {/* What's Included Section - Postpaid */}
+                    {/* What's Included Section - Postpaid */}
                     <div className="mb-8 sm:mb-12 px-4 sm:px-6 lg:px-8">
-                            <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-6 sm:mb-8">
-                                What&apos;s included ?
-                            </h2>
+                        <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-6 sm:mb-8">
+                            What&apos;s included ?
+                        </h2>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
-                                {/* Left Column - Job Tracks */}
-                                <div className="space-y-6">
-                                    {/* Fundamentals */}
-                                    <div className="flex items-start gap-3">
-                                        <div className="shrink-0 w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center">
-                                            <BookOpenIcon className="w-5 h-5 text-[#B30437]" />
-                                        </div>
-                                        <span className="text-gray-900 font-medium pt-2">
-                                            Fundamentals
-                                        </span>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
+                            {/* Left Column - Job Tracks */}
+                            <div className="space-y-6">
+                                {/* Fundamentals */}
+                                <div className="flex items-start gap-3">
+                                    <div className="shrink-0 w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center">
+                                        <BookOpenIcon className="w-5 h-5 text-[#B30437]" />
                                     </div>
+                                    <span className="text-gray-900 font-medium pt-2">
+                                        Fundamentals
+                                    </span>
+                                </div>
 
-                                    {/* Multiple Job Tracks */}
-                                    <div className="flex items-start gap-3">
-                                        <div className="shrink-0 w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center">
-                                            <BriefcaseIcon className="w-5 h-5 text-[#B30437]" />
-                                        </div>
-                                        <div>
-                                            <span className="text-gray-900 font-medium">
-                                                Multiple Job Tracks
-                                            </span>
-                                            <div className="mt-3 space-y-3 ml-2 border-l-2 border-gray-200 pl-4">
-                                                {jobTracks.map((track, index) => (
-                                                    <div key={index} className="flex items-start gap-2">
-                                                        <div className="flex-shrink-0 w-8 h-8 bg-gray-50 rounded flex items-center justify-center text-gray-600">
-                                                            {track.icon}
-                                                        </div>
-                                                        <div>
-                                                            <span className="text-gray-800 text-sm font-medium">
-                                                                {track.name}
-                                                            </span>
-                                                            {track.badge && (
-                                                                <div className="flex flex-wrap items-center gap-1 mt-1">
-                                                                    <span className="text-xs text-orange-600 bg-orange-50 px-2 py-0.5 rounded whitespace-normal">
-                                                                        {track.badge}
-                                                                    </span>
-                                                                    <span className="text-xs text-orange-600 font-medium">
-                                                                        {track.badgeDate}
-                                                                    </span>
-                                                                </div>
-                                                            )}
-                                                        </div>
+                                {/* Multiple Job Tracks */}
+                                <div className="flex items-start gap-3">
+                                    <div className="shrink-0 w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center">
+                                        <BriefcaseIcon className="w-5 h-5 text-[#B30437]" />
+                                    </div>
+                                    <div>
+                                        <span className="text-gray-900 font-medium">
+                                            Multiple Job Tracks
+                                        </span>
+                                        <div className="mt-3 space-y-3 ml-2 border-l-2 border-gray-200 pl-4">
+                                            {jobTracks.map((track, index) => (
+                                                <div key={index} className="flex items-start gap-2">
+                                                    <div className="flex-shrink-0 w-8 h-8 bg-gray-50 rounded flex items-center justify-center text-gray-600">
+                                                        {track.icon}
                                                     </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {/* 3 Hours Classes */}
-                                    <div className="flex items-start gap-3">
-                                        <div className="shrink-0 w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center">
-                                            <ClockIcon className="w-5 h-5 text-[#B30437]" />
-                                        </div>
-                                        <span className="text-gray-900 font-medium pt-2">
-                                            3 Hours classes and 3 Hours Labs Everyday
-                                        </span>
-                                    </div>
-
-                                    {/* Trainers */}
-                                    <div className="flex items-start gap-3">
-                                        <div className="shrink-0 w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center">
-                                            <UsersIcon className="w-5 h-5 text-[#B30437]" />
-                                        </div>
-                                        <span className="text-gray-900 font-medium pt-2">
-                                            Trainers: IIT alumni & Top MNCs like Amazon, Microsoft
-                                        </span>
-                                    </div>
-                                </div>
-
-                                {/* Center Column - Placement Support */}
-                                <div className="space-y-4">
-                                    <div className="flex items-start gap-3 mb-4">
-                                        <div className="shrink-0 w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center">
-                                            <BuildingIcon className="w-5 h-5 text-[#B30437]" />
-                                        </div>
-                                        <span className="text-gray-900 font-medium pt-2">
-                                            Unlimited opportunities from a pool of 3000+ companies
-                                        </span>
-                                    </div>
-
-                                    <div className="flex items-start gap-3">
-                                        <div className="shrink-0 w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center">
-                                            <ShieldIcon className="w-5 h-5 text-[#B30437]" />
-                                        </div>
-                                        <div>
-                                            <span className="text-gray-900 font-medium">
-                                                Placement Support
-                                            </span>
-                                            <ul className="mt-3 space-y-2 text-sm text-gray-700">
-                                                {placementSupport.map((item, index) => (
-                                                    <li key={index} className="flex items-start gap-2">
-                                                        <span className="text-gray-400 mt-1">•</span>
-                                                        {item}
-                                                    </li>
-                                                ))}
-                                            </ul>
+                                                    <div>
+                                                        <span className="text-gray-800 text-sm font-medium">
+                                                            {track.name}
+                                                        </span>
+                                                        {track.badge && (
+                                                            <div className="flex flex-wrap items-center gap-1 mt-1">
+                                                                <span className="text-xs text-orange-600 bg-orange-50 px-2 py-0.5 rounded whitespace-normal">
+                                                                    {track.badge}
+                                                                </span>
+                                                                <span className="text-xs text-orange-600 font-medium">
+                                                                    {track.badgeDate}
+                                                                </span>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
                                 </div>
 
-                                {/* Right Column - Benefits */}
-                                <div className="space-y-5">
-                                    {benefits.map((benefit, index) => (
+                                {/* 3 Hours Classes */}
+                                <div className="flex items-start gap-3">
+                                    <div className="shrink-0 w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center">
+                                        <ClockIcon className="w-5 h-5 text-[#B30437]" />
+                                    </div>
+                                    <span className="text-gray-900 font-medium pt-2">
+                                        3 Hours classes and 3 Hours Labs Everyday
+                                    </span>
+                                </div>
+
+                                {/* Trainers */}
+                                <div className="flex items-start gap-3">
+                                    <div className="shrink-0 w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center">
+                                        <UsersIcon className="w-5 h-5 text-[#B30437]" />
+                                    </div>
+                                    <span className="text-gray-900 font-medium pt-2">
+                                        Trainers: IIT alumni & Top MNCs like Amazon, Microsoft
+                                    </span>
+                                </div>
+                            </div>
+
+                            {/* Center Column - Placement Support */}
+                            <div className="space-y-4">
+                                <div className="flex items-start gap-3 mb-4">
+                                    <div className="shrink-0 w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center">
+                                        <BuildingIcon className="w-5 h-5 text-[#B30437]" />
+                                    </div>
+                                    <span className="text-gray-900 font-medium pt-2">
+                                        Unlimited opportunities from a pool of 3000+ companies
+                                    </span>
+                                </div>
+
+                                <div className="flex items-start gap-3">
+                                    <div className="shrink-0 w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center">
+                                        <ShieldIcon className="w-5 h-5 text-[#B30437]" />
+                                    </div>
+                                    <div>
+                                        <span className="text-gray-900 font-medium">
+                                            Placement Support
+                                        </span>
+                                        <ul className="mt-3 space-y-2 text-sm text-[#5f6368]">
+                                            {placementSupport.map((item, index) => (
+                                                <li key={index} className="flex items-start gap-2">
+                                                    <span className="text-[#80868b] mt-1">•</span>
+                                                    {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Right Column - Benefits */}
+                            <div className="space-y-5">
+                                {benefits.map((benefit, index) => (
+                                    <div
+                                        key={index}
+                                        className={`flex items-start gap-3 ${benefit.isDisclaimer ? "opacity-70" : ""
+                                            }`}
+                                    >
                                         <div
-                                            key={index}
-                                            className={`flex items-start gap-3 ${benefit.isDisclaimer ? "opacity-70" : ""
+                                            className={`shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${benefit.isDisclaimer ? "bg-gray-50" : "bg-red-50"
                                                 }`}
                                         >
                                             <div
-                                                className={`shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${benefit.isDisclaimer ? "bg-gray-50" : "bg-red-50"
-                                                    }`}
+                                                className={
+                                                    benefit.isDisclaimer ? "text-[#5f6368]" : "text-[#B30437]"
+                                                }
                                             >
-                                                <div
-                                                    className={
-                                                        benefit.isDisclaimer ? "text-gray-500" : "text-[#B30437]"
-                                                    }
-                                                >
-                                                    {benefit.icon}
-                                                </div>
+                                                {benefit.icon}
                                             </div>
-                                            <span
-                                                className={`pt-2 ${benefit.isDisclaimer
-                                                    ? "text-gray-500 text-sm"
-                                                    : "text-gray-900 font-medium"
-                                                    }`}
-                                            >
-                                                {benefit.text}
-                                                {benefit.isDisclaimer && (
-                                                    <span className="ml-1 inline-block w-4 h-4 bg-gray-200 rounded-full text-xs text-center leading-4">
-                                                        ⓘ
-                                                    </span>
-                                                )}
-                                            </span>
                                         </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Pricing Section - Postpaid */}
-                    <div className="px-4 sm:px-6 lg:px-8 border-t border-gray-200 pt-6 sm:pt-8">
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start">
-                                {/* Left - EMI Info */}
-                                <div className="space-y-4 sm:space-y-6">
-                                    <div className="inline-block bg-red-50 text-[#B30437] px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium">
-                                        EMI AS LOW AS
-                                    </div>
-
-                                    <div className="flex items-baseline gap-2 sm:gap-4 flex-wrap">
-                                        <div>
-                                            <span className="text-3xl sm:text-4xl font-bold text-gray-900">
-                                                ₹5,555
-                                            </span>
-                                            <span className="text-gray-600 text-sm sm:text-base">/month</span>
-                                            <div className="text-xs sm:text-sm text-gray-500">(For 8 months)</div>
-                                        </div>
-                                        <span className="text-xl sm:text-2xl text-gray-400">+</span>
-                                        <span className="text-lg sm:text-xl font-semibold text-gray-900">
-                                            10% of Annual CTC
+                                        <span
+                                            className={`pt-2 ${benefit.isDisclaimer
+                                                ? "text-[#5f6368] text-sm"
+                                                : "text-gray-900 font-medium"
+                                                }`}
+                                        >
+                                            {benefit.text}
+                                            {benefit.isDisclaimer && (
+                                                <span className="ml-1 inline-block w-4 h-4 bg-gray-200 rounded-full text-xs text-center leading-4">
+                                                    ⓘ
+                                                </span>
+                                            )}
                                         </span>
                                     </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
 
-                                    <div className="space-y-3">
-                                        <div className="flex items-center gap-3">
-                                            <CheckCircleIcon className="w-5 h-5 text-green-500" />
-                                            <div>
-                                                <span className="font-semibold text-gray-900">
-                                                    A Free Trial Session
-                                                </span>
-                                                <div className="text-sm text-gray-500">No Fee Required</div>
-                                            </div>
-                                        </div>
-                                        <div className="flex items-center gap-3">
-                                            <CheckCircleIcon className="w-5 h-5 text-green-500" />
-                                            <div>
-                                                <span className="font-semibold text-gray-900">
-                                                    Assured Scholarships
-                                                </span>
-                                                <div className="text-sm text-gray-500">After Free Trial</div>
-                                            </div>
-                                        </div>
+                    {/* Pricing Section - Postpaid */}
+                    <div className="px-4 sm:px-6 lg:px-8 border-t border-gray-200 pt-6 sm:pt-8">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start">
+                            {/* Left - EMI Info */}
+                            <div className="space-y-4 sm:space-y-6">
+                                <div className="inline-block bg-red-50 text-[#B30437] px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium">
+                                    EMI AS LOW AS
+                                </div>
+
+                                <div className="flex items-baseline gap-2 sm:gap-4 flex-wrap">
+                                    <div>
+                                        <span className="text-3xl sm:text-4xl font-bold text-gray-900">
+                                            {config.pricing.emiAmount}
+                                        </span>
+                                        <span className="text-gray-600 text-sm sm:text-base">/month</span>
+                                        <div className="text-xs sm:text-sm text-[#5f6368]">(For {config.pricing.emiMonths})</div>
                                     </div>
                                 </div>
 
-                                {/* Right - Scholarship Banner */}
-                                <div className="bg-gradient-to-r from-teal-500 to-teal-600 rounded-xl p-4 sm:p-6 text-white relative overflow-hidden">
-                                    <div className="relative z-10">
-                                        <div className="text-xs sm:text-sm font-medium mb-2">
-                                            Additional Scholarships Up To
+                                <div className="space-y-3">
+                                    <div className="flex items-center gap-3">
+                                        <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                                        <div>
+                                            <span className="font-semibold text-gray-900">
+                                                A Free Trial Session
+                                            </span>
+                                            <div className="text-sm text-[#5f6368]">No Fee Required</div>
                                         </div>
-                                        <div className="text-3xl sm:text-4xl font-bold mb-2">₹16,000/-</div>
-                                        <a
-                                            href="#"
-                                            className="text-xs sm:text-sm underline hover:no-underline flex items-center gap-1"
-                                        >
-                                            Book a Free Demo to know more.
-                                            <span>↗</span>
-                                        </a>
                                     </div>
-                                    {/* Decorative Image/Icon placeholder */}
-                                    <div className="absolute right-4 bottom-4 opacity-90 hidden sm:block">
-                                        <div className="w-16 sm:w-20 h-16 sm:h-20 bg-yellow-400 rounded-full flex items-center justify-center">
-                                            <span className="text-2xl sm:text-3xl">🎓</span>
+                                    <div className="flex items-center gap-3">
+                                        <CheckCircleIcon className="w-5 h-5 text-green-500" />
+                                        <div>
+                                            <span className="font-semibold text-gray-900">
+                                                Assured Scholarships
+                                            </span>
+                                            <div className="text-sm text-[#5f6368]">After Free Trial</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            {/* Right - Scholarship Banner */}
+                            <div className="bg-[#E3DFD2] p-4 sm:p-6 text-black relative overflow-hidden">
+                                <div className="relative z-10">
+                                    <div className="text-xs sm:text-sm font-medium mb-2">
+                                        Additional Scholarships Up To
+                                    </div>
+                                    <div className="text-3xl sm:text-4xl font-bold mb-2">100% Fees  </div>
+                                    <a
+                                        href="#"
+                                        className="text-xs sm:text-sm underline hover:no-underline flex items-center gap-1"
+                                    >
+                                        Book a Free Demo to know more.
+                                    </a>
+                                </div>
+                                {/* Decorative Image/Icon placeholder */}
+                                <div className="absolute right-4 bottom-4 opacity-90 hidden sm:block">
+                                    <div className="w-16 sm:w-20 h-16 sm:h-20 bg-yellow-400 rounded-full flex items-center justify-center">
+                                        <span className="text-2xl sm:text-3xl">🎓</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </>
+                    </div>
+                </>
 
 
                 {/* Next Batch + CTA */}
-                <div className="px-4 sm:px-6 lg:px-8 border-t border-gray-200 mt-6 sm:mt-8 pt-4 sm:pt-6">
+                <div className="px-4 sm:px-6 lg:px-8 mt-6 sm:mt-8 pt-4 sm:pt-6">
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                        <div className="flex items-center gap-2">
-                            <CircleIcon className="w-3 h-3 text-[#B30437]" fill />
-                            <span className="text-sm sm:text-base text-gray-900">
-                                Next batch starts on <strong>{nextBatchDate}</strong>
-                            </span>
-                        </div>
                         <div className="flex flex-col xs:flex-row w-full sm:w-auto gap-3">
                             <button className="w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 bg-[#B30437] hover:bg-[#9a0330] text-white text-sm sm:text-base font-semibold rounded-lg transition-colors duration-200">
                                 Book a Free Demo
                             </button>
-                            <button className="w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 border-2 border-gray-300 hover:border-gray-400 text-gray-700 text-sm sm:text-base font-semibold rounded-lg transition-colors duration-200">
-                                Book Your Seat for 2000/-
+                            <button className="w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 border-2 border-gray-300 hover:border-gray-400 text-[#5f6368] text-sm sm:text-base font-semibold rounded-lg transition-colors duration-200">
+                                Book Your Seat for 1000/-
                             </button>
+                            <span className="text-sm sm:text-base text-gray-900">
+                                Only <strong>{nextBatchDate}</strong> Seats left
+                            </span>
                         </div>
                     </div>
                 </div>

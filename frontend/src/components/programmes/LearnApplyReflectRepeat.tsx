@@ -19,8 +19,17 @@ const LearnApplyReflectRepeat: React.FC<LearnApplyReflectRepeatProps> = ({
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const checkScrollButtons = () => {
-    if (scrollContainerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+    if (!scrollContainerRef.current) return;
+
+    const el = scrollContainerRef.current;
+    if (typeof window !== "undefined") {
+      window.requestAnimationFrame(() => {
+        const { scrollLeft, scrollWidth, clientWidth } = el;
+        setShowLeftButton(scrollLeft > 0);
+        setShowRightButton(scrollLeft < scrollWidth - clientWidth - 1);
+      });
+    } else {
+      const { scrollLeft, scrollWidth, clientWidth } = el;
       setShowLeftButton(scrollLeft > 0);
       setShowRightButton(scrollLeft < scrollWidth - clientWidth - 1);
     }
@@ -81,15 +90,15 @@ const LearnApplyReflectRepeat: React.FC<LearnApplyReflectRepeatProps> = ({
         role="main"
         aria-labelledby="main-heading"
       >
-        <div className="max-w-[85rem] mx-auto">
+        <div className="max-w-[85rem] mx-auto pt-[4rem] sm:pt-14">
           {/* Header Section */}
           <header className="mb-4 sm:mb-6 md:mb-8">
             <h2
               id="main-heading"
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-3 sm:mb-4 md:mb-6 leading-tight text-center px-2"
+              className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight text-center px-2"
             >
               Learn. Apply. Reflect.{" "}
-              <HighlightText className="font-bold">
+              <HighlightText className="font-bold !px-0 !py-0">
                 Repeat.
               </HighlightText>
             </h2>
@@ -102,7 +111,7 @@ const LearnApplyReflectRepeat: React.FC<LearnApplyReflectRepeatProps> = ({
 
           {/* Subject Categories Navigation */}
           <nav
-            className="mb-4"
+            className=""
             role="navigation"
             aria-labelledby="category-nav-heading"
           >
@@ -118,9 +127,9 @@ const LearnApplyReflectRepeat: React.FC<LearnApplyReflectRepeatProps> = ({
                 <button
                   key={category.id}
                   onClick={() => handleCategoryChange(category.id)}
-                  className={`relative px-3 sm:px-4 py-3 sm:py-4 text-left focus:outline-none border-r border-gray-200 last:border-r-0 ${activeCategory === category.id
-                      ? "text-black"
-                      : "text-black hover:bg-gray-100"
+                  className={`relative px-3 sm:px-4 py-3 sm:py-4 text-left focus:outline-none ${activeCategory === category.id
+                    ? "text-black"
+                    : "text-black hover:bg-gray-100"
                     }`}
                   type="button"
                   role="tab"
@@ -136,7 +145,7 @@ const LearnApplyReflectRepeat: React.FC<LearnApplyReflectRepeatProps> = ({
 
                   {/* Bottom focus line */}
                   {activeCategory === category.id && (
-                    <span className="absolute left-2 right-2 bottom-0 h-[2px] bg-black" />
+                    <span className="absolute left-2 right-2 bottom-0 h-[2px] bg-[#202124]" />
                   )}
                 </button>
               ))}
@@ -205,7 +214,7 @@ const LearnApplyReflectRepeat: React.FC<LearnApplyReflectRepeatProps> = ({
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      strokeWidth={2} 
+                      strokeWidth={2}
                       d="M9 5l7 7-7 7"
                     />
                   </svg>
@@ -215,7 +224,7 @@ const LearnApplyReflectRepeat: React.FC<LearnApplyReflectRepeatProps> = ({
               {/* Scrollable Container */}
               <div
                 ref={scrollContainerRef}
-                className="flex overflow-x-auto scrollbar-hide py-3 sm:py-4"
+                className="flex overflow-x-auto scrollbar-hide"
                 style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                 role="list"
                 aria-label={`${data.categories.find((c) => c.id === activeCategory)?.title} course locations`}

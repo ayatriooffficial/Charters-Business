@@ -9,8 +9,6 @@ import {
 import { auth, setupRecaptcha } from '@/lib/firebase';
 import { useAuth } from '@/context/AuthContext';
 import { COURSE_OPTIONS } from '@/data/courseOptions';
-import { useRouter } from 'next/navigation';
-
 type AuthStep = 'phone' | 'password' | 'otp' | 'details' | 'done';
 
 type AuthError = Error & { code?: string; status?: number };
@@ -21,7 +19,6 @@ function getAuthError(error: unknown): AuthError {
 
 export default function ChartersInterviewAi() {
     const { user, loginWithPhone, signupWithPhone, login, quickLogin, navigateToRemoteDashboard } = useAuth();
-    const router = useRouter();
     const [authStep, setAuthStep] = useState<AuthStep>('phone');
     const [loginPhone, setLoginPhone] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
@@ -315,7 +312,7 @@ export default function ChartersInterviewAi() {
                         /* ── QUICK LOGIN IN PROGRESS ── */
                         <div className="flex flex-col items-center justify-center py-12">
                             <div className="w-10 h-10 rounded-full border-4 border-[#6D6DCE] border-t-transparent animate-spin mb-4" />
-                            <p className="text-sm text-gray-500">Checking session...</p>
+                            <p className="text-sm text-[#5f6368]">Checking session...</p>
                         </div>
 
                     ) : authStep === 'done' ? (
@@ -326,8 +323,8 @@ export default function ChartersInterviewAi() {
                                     <polyline points="20 6 9 17 4 12" />
                                 </svg>
                             </div>
-                            <h3 className="text-xl font-semibold text-black mb-2">You're logged in!</h3>
-                            <p className="text-gray-500 text-sm">You can now continue.</p>
+                            <h3 className="text-xl font-semibold text-black mb-2">You&apos;re logged in!</h3>
+                            <p className="text-[#5f6368] text-sm">You can now continue.</p>
                         </div>
 
                     ) : authStep === 'phone' ? (
@@ -339,7 +336,7 @@ export default function ChartersInterviewAi() {
                             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black leading-tight mb-1.5 text-center">
                                 Login / Sign Up
                             </h2>
-                            <p className="text-gray-500 text-sm sm:text-base mb-6 text-center">
+                            <p className="text-[#5f6368] text-sm sm:text-base mb-6 text-center">
                                 Enter your phone number to continue
                             </p>
                             <div className="space-y-4">
@@ -353,7 +350,7 @@ export default function ChartersInterviewAi() {
                                             <img src="/Charters-icon/uparrow.svg" alt="arrow" width={14} height={14} className="opacity-55" />
                                         </div>
                                         <input
-                                            className="bg-white flex-1 border border-gray-300 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#6D6DCE] transition-colors"
+                                            className="bg-white flex-1 border border-gray-300 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-[#5f6368] placeholder-gray-400 focus:outline-none focus:border-[#6D6DCE] transition-colors"
                                             placeholder="Enter phone number"
                                             type="tel"
                                             value={loginPhone}
@@ -379,7 +376,7 @@ export default function ChartersInterviewAi() {
                             <h2 className="text-2xl sm:text-3xl font-bold text-black mb-1.5 text-center">
                                 Welcome Back!
                             </h2>
-                            <p className="text-gray-500 text-sm sm:text-base mb-6 text-center">
+                            <p className="text-[#5f6368] text-sm sm:text-base mb-6 text-center">
                                 Enter your password for <span className="font-semibold">+91 {loginPhone}</span>
                             </p>
                             <div className="space-y-4">
@@ -388,7 +385,7 @@ export default function ChartersInterviewAi() {
                                         Password*
                                     </label>
                                     <input
-                                        className="bg-white w-full border border-gray-300 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#6D6DCE] transition-colors"
+                                        className="bg-white w-full border border-gray-300 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-[#5f6368] placeholder-gray-400 focus:outline-none focus:border-[#6D6DCE] transition-colors"
                                         placeholder="Enter your password"
                                         type="password"
                                         value={loginPassword}
@@ -408,7 +405,7 @@ export default function ChartersInterviewAi() {
                                     <button
                                         type="button"
                                         onClick={() => { setAuthStep('phone'); setLoginPassword(''); setError(''); }}
-                                        className="text-sm text-gray-500 hover:text-gray-700 underline"
+                                        className="text-sm text-[#5f6368] hover:text-[#5f6368] underline"
                                     >
                                         Back to Phone Number
                                     </button>
@@ -422,7 +419,7 @@ export default function ChartersInterviewAi() {
                             <h2 className="text-2xl sm:text-3xl font-bold text-black mb-1.5 text-center">
                                 Enter OTP
                             </h2>
-                            <p className="text-gray-500 text-sm sm:text-base mb-6 text-center">
+                            <p className="text-[#5f6368] text-sm sm:text-base mb-6 text-center">
                                 Sent to <span className="font-semibold">+91 {loginPhone}</span>
                             </p>
                             <div className="space-y-4">
@@ -455,7 +452,7 @@ export default function ChartersInterviewAi() {
                                 >
                                     {isLoading ? 'VERIFYING...' : 'VERIFY & CONTINUE →'}
                                 </button>
-                                <p className="text-xs text-center text-gray-400">
+                                <p className="text-xs text-center text-[#80868b]">
                                     {resendTimer > 0 ? (
                                         <>Resend OTP in <span className="text-[#6D6DCE] font-semibold">{resendTimer}s</span></>
                                     ) : (
@@ -473,7 +470,7 @@ export default function ChartersInterviewAi() {
                             <h2 className="text-2xl sm:text-3xl font-bold text-black mb-1.5 text-center">
                                 {loginPhone.replace(/\D/g, '').endsWith('1234567890') ? 'Set Admin Password' : 'Complete Your Profile'}
                             </h2>
-                            <p className="text-gray-500 text-sm sm:text-base mb-6 text-center">
+                            <p className="text-[#5f6368] text-sm sm:text-base mb-6 text-center">
                                 {loginPhone.replace(/\D/g, '').endsWith('1234567890') ? 'Create a secure password for future logins' : 'Just a few details to get you started'}
                             </p>
                             <div className="space-y-3 sm:space-y-4">
@@ -482,7 +479,7 @@ export default function ChartersInterviewAi() {
                                         <div>
                                             <label className="block text-sm font-medium text-black mb-1.5">Full Name*</label>
                                             <input
-                                                className="bg-white w-full border border-gray-300 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#6D6DCE] transition-colors"
+                                                className="bg-white w-full border border-gray-300 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-[#5f6368] placeholder-gray-400 focus:outline-none focus:border-[#6D6DCE] transition-colors"
                                                 placeholder="Enter your full name"
                                                 type="text"
                                                 value={signupName}
@@ -492,7 +489,7 @@ export default function ChartersInterviewAi() {
                                         <div>
                                             <label className="block text-sm font-medium text-black mb-1.5">Email Address*</label>
                                             <input
-                                                className="bg-white w-full border border-gray-300 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#6D6DCE] transition-colors"
+                                                className="bg-white w-full border border-gray-300 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-[#5f6368] placeholder-gray-400 focus:outline-none focus:border-[#6D6DCE] transition-colors"
                                                 placeholder="Enter your email"
                                                 type="email"
                                                 value={signupEmail}
@@ -504,7 +501,7 @@ export default function ChartersInterviewAi() {
                                 <div>
                                     <label className="block text-sm font-medium text-black mb-1.5">Create Password*</label>
                                     <input
-                                        className="bg-white w-full border border-gray-300 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#6D6DCE] transition-colors"
+                                        className="bg-white w-full border border-gray-300 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-[#5f6368] placeholder-gray-400 focus:outline-none focus:border-[#6D6DCE] transition-colors"
                                         placeholder="Min 6 characters"
                                         type="password"
                                         value={signupPassword}
@@ -516,7 +513,7 @@ export default function ChartersInterviewAi() {
                                         <label className="block text-sm font-medium text-black mb-1.5">Course Interested In*</label>
                                         <div className="relative">
                                             <select
-                                                className="w-full border border-gray-300 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-gray-700 bg-white appearance-none focus:outline-none focus:border-[#6D6DCE] transition-colors"
+                                                className="w-full border border-gray-300 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-[#5f6368] bg-white appearance-none focus:outline-none focus:border-[#6D6DCE] transition-colors"
                                                 value={signupProgram}
                                                 onChange={(e) => setSignupProgram(e.target.value)}
                                             >
@@ -525,7 +522,7 @@ export default function ChartersInterviewAi() {
                                                     <option key={s} value={s}>{s}</option>
                                                 ))}
                                             </select>
-                                            <svg className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                            <svg className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[#5f6368]" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                                 <polyline points="6 9 12 15 18 9" />
                                             </svg>
                                         </div>

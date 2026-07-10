@@ -3,10 +3,9 @@ import { getCloudinarySrcSet, getCloudinaryUrl } from "@/lib/cloudinary";
 import Link from "next/link";
 const heroData = {
   availableBadge: "Available Now",
-  title: "Professional Accountant Training in Kolkata",
-  titleHighlight: "with 100% Paid Internship",
+  title: "From Fresher to Global Career: AI in Every Class, Faculty-Guided Paid Internships, Job-Ready Training Built for top MNCs",
   description:
-    "Learn Professional Accounting in Kolkata with 3-month foundation + 4-month paid internship. Work with top companies from USA, Canada, Qatar, Singapore, Australia & UK. Join now!",
+    "Kolkata's AI-first Job Ready training institute. 3 programs: Certified Business Accountant, Digital Growth & Marketing, Technology & Business Management. AICPA/ACCA/HBS/Google aligned. 4–6 month paid internship in 7 countries. Corporate English. AI interview coaching. Placement support. Book free democlass.",
   backgroundImage: getCloudinaryUrl("charters-business/background", {
     width: 1080,
     quality: "auto:eco",
@@ -36,14 +35,14 @@ const heroData = {
 function ChartersUnionHero() {
   return (
     <>
-      <div className="h-[92px] md:h-[80px]" />
+      <div className="h-[44px] md:h-[80px]" />
       <section
-        className="relative w-full h-[calc(100vh-96px)] min-h-[560px] overflow-hidden"
+        className="relative w-full h-[calc(100vh-106px)] min-h-[545px] overflow-hidden"
         role="banner"
         aria-labelledby="hero-heading"
       >
         <h1 id="hero-heading" className="sr-only">
-          {heroData.title} {heroData.titleHighlight}
+          {heroData.title}
         </h1>
 
         <div className="relative w-full h-full">
@@ -57,9 +56,9 @@ function ChartersUnionHero() {
               src={heroData.mobileBackgroundImage}
               srcSet={heroData.mobileBackgroundImageSrcSet}
               sizes="100vw"
-              alt="Professional Accountant Training in Kolkata Background"
+              alt="From Fresher to Global Career: AI in Every Class, Faculty-Guided Paid Internships, Job-Ready Training Built for top MNCs"
               fetchPriority="high"
-              decoding="async"
+              decoding="sync"
               className="absolute inset-0 h-full w-full object-cover object-center"
             />
           </picture>
@@ -78,9 +77,6 @@ function ChartersUnionHero() {
               <h2 className="text-2xl sm:text-3xl font-bold text-white leading-tight">
                 {heroData.title}
               </h2>
-              <h2 className="text-2xl sm:text-3xl font-bold text-[#B30437] leading-tight italic">
-                {heroData.titleHighlight}
-              </h2>
             </div>
 
             {/* Divider */}
@@ -96,7 +92,7 @@ function ChartersUnionHero() {
               <Link href="/career-path" className="w-full">
                 <button
                   aria-label="Track your career path"
-                  className="w-full bg-black hover:bg-[#B30437] text-white py-3 px-8 rounded-lg text-sm font-semibold"
+                  className="w-full bg-[#202124] hover:bg-[#B30437] text-white py-3 px-8 rounded-lg text-sm font-semibold"
                 >
                   Track Your Career Path
                 </button>

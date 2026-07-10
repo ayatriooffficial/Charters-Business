@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { createPortal } from "react-dom";
 import Toast from "../ui/Toast";
 import {
@@ -30,6 +30,42 @@ const MeetingModal = ({ isOpen, onClose, defaultTab = 'instant' }: MeetingModalP
     const [isOAuthConnected, setIsOAuthConnected] = useState<boolean | null>(null);
     const [isCheckingOAuth, setIsCheckingOAuth] = useState(true);
     const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
+
+    // Refs for interval/timeout cleanup to prevent memory leak on unmount
+    const connectRefs = useRef<{
+        statusCheck: ReturnType<typeof setInterval> | null;
+        popupCheck: ReturnType<typeof setInterval> | null;
+        timeouts: ReturnType<typeof setTimeout>[];
+        messageHandler: ((event: MessageEvent) => void) | null;
+    }>({ statusCheck: null, popupCheck: null, timeouts: [], messageHandler: null });
+
+    const clearConnectRefs = useCallback(() => {
+        const refs = connectRefs.current;
+        if (refs.statusCheck !== null) {
+            clearInterval(refs.statusCheck);
+            refs.statusCheck = null;
+        }
+        if (refs.popupCheck !== null) {
+            clearInterval(refs.popupCheck);
+            refs.popupCheck = null;
+        }
+        refs.timeouts.forEach(clearTimeout);
+        refs.timeouts = [];
+        if (refs.messageHandler) {
+            window.removeEventListener("message", refs.messageHandler);
+            refs.messageHandler = null;
+        }
+    }, []);
+
+    // Clean up intervals/timeouts when modal closes or component unmounts
+    useEffect(() => {
+        if (!isOpen) {
+            clearConnectRefs();
+        }
+        return () => {
+            clearConnectRefs();
+        };
+    }, [isOpen, clearConnectRefs]);
 
     // Check OAuth status when modal opens
     useEffect(() => {
@@ -71,74 +107,55 @@ const MeetingModal = ({ isOpen, onClose, defaultTab = 'instant' }: MeetingModalP
 
     const handleConnectGoogle = async () => {
         try {
+            clearConnectRefs();
             const response = await getMeetingOAuthUrl();
             const authUrl = response.data?.authUrl;
             if (authUrl) {
                 const popup = window.open(authUrl, '_blank', 'width=600,height=700');
 
-                // Listen for message from popup
                 const handleMessage = async (event: MessageEvent) => {
                     if (event.data?.type === 'OAUTH_SUCCESS') {
-                        window.removeEventListener('message', handleMessage);
-                        clearInterval(statusCheckInterval);
-                        clearInterval(popupCheckInterval);
-                        // Verify connection and fetch user info
+                        clearConnectRefs();
                         await checkOAuthConnection();
                     }
                 };
                 window.addEventListener('message', handleMessage);
+                connectRefs.current.messageHandler = handleMessage;
 
-                // Actively check OAuth status every 2 seconds
                 const statusCheckInterval = setInterval(async () => {
                     try {
                         const statusResponse = await checkMeetingOAuthStatus();
                         if (statusResponse.data?.isConnected) {
-                            // User has successfully connected!
-                            clearInterval(statusCheckInterval);
-                            clearInterval(popupCheckInterval);
-                            window.removeEventListener('message', handleMessage);
+                            clearConnectRefs();
                             if (popup && !popup.closed) {
                                 popup.close();
                             }
-                            // Fetch user info and update forms
                             await checkOAuthConnection();
                         }
-                    } catch (error) {
+                    } catch {
                         // Silently continue polling if check fails
-                        console.log('Checking OAuth status...');
                     }
-                }, 2000); // Check every 2 seconds
+                }, 2000);
+                connectRefs.current.statusCheck = statusCheckInterval;
 
-                // Also check if popup was closed manually
                 const popupCheckInterval = setInterval(() => {
                     if (popup?.closed) {
-                        clearInterval(statusCheckInterval);
-                        clearInterval(popupCheckInterval);
-                        window.removeEventListener('message', handleMessage);
+                        clearConnectRefs();
 
-                        // Check OAuth status three times with delays after popup closes
-                        const checkWithDelay = async (delay: number, attempt: number) => {
-                            setTimeout(async () => {
-                                console.log(`Checking OAuth status (attempt ${attempt}/3)...`);
-                                await checkOAuthConnection();
-                            }, delay);
-                        };
-
-                        // Check after 500ms, 1000ms, and 1500ms
-                        checkWithDelay(500, 1);
-                        checkWithDelay(1000, 2);
-                        checkWithDelay(1500, 3);
+                        const t1 = setTimeout(() => checkOAuthConnection(), 500);
+                        const t2 = setTimeout(() => checkOAuthConnection(), 1000);
+                        const t3 = setTimeout(() => checkOAuthConnection(), 1500);
+                        connectRefs.current.timeouts = [t1, t2, t3];
                     }
                 }, 1000);
+                connectRefs.current.popupCheck = popupCheckInterval;
 
-                // Stop all polling after 3 minutes
-                setTimeout(() => {
-                    clearInterval(statusCheckInterval);
-                    clearInterval(popupCheckInterval);
-                    window.removeEventListener('message', handleMessage);
+                const stopTimeout = setTimeout(() => {
+                    clearConnectRefs();
                 }, 180000);
+                connectRefs.current.timeouts.push(stopTimeout);
             }
-        } catch (err: any) {
+        } catch {
             setError('Failed to get authorization URL');
         }
     };
@@ -158,7 +175,7 @@ const MeetingModal = ({ isOpen, onClose, defaultTab = 'instant' }: MeetingModalP
                 scheduledTime: "",
                 duration: 30,
             });
-        } catch (err: any) {
+        } catch {
             setError('Failed to disconnect Google account');
         }
     };
@@ -217,8 +234,8 @@ const MeetingModal = ({ isOpen, onClose, defaultTab = 'instant' }: MeetingModalP
                     `Meeting created! A notification has been sent. Meeting #: ${response.data?.meeting?.meetingNumber}`
                 );
             }
-        } catch (err: any) {
-            setError(err.message || "Failed to create meeting");
+        } catch {
+            setError("Failed to create meeting");
         } finally {
             setIsLoading(false);
         }
@@ -230,8 +247,7 @@ const MeetingModal = ({ isOpen, onClose, defaultTab = 'instant' }: MeetingModalP
         setError(null);
 
         try {
-            const response = await scheduleMeeting(scheduleForm);
-            const meetingNumber = response.data?.meeting?.meetingNumber;
+            await scheduleMeeting(scheduleForm);
 
             // Show success toast
             setToast({
@@ -243,10 +259,10 @@ const MeetingModal = ({ isOpen, onClose, defaultTab = 'instant' }: MeetingModalP
             setTimeout(() => {
                 handleClose();
             }, 2000);
-        } catch (err: any) {
-            setError(err.message || "Failed to schedule meeting");
+        } catch (err: unknown) {
+            setError("Failed to schedule meeting");
             setToast({
-                message: err.message || "Failed to schedule meeting",
+                message: err instanceof Error ? err.message : "Failed to schedule meeting",
                 type: "error"
             });
         } finally {
@@ -275,7 +291,7 @@ const MeetingModal = ({ isOpen, onClose, defaultTab = 'instant' }: MeetingModalP
         <div className="fixed inset-0 z-[99999] flex items-start justify-center pt-16">
             {/* Backdrop */}
             <div
-                className="absolute inset-0 bg-black/60 backdrop-blur-sm z-[99998]"
+                className="absolute inset-0 bg-[#202124]/60 backdrop-blur-sm z-[99998]"
                 onClick={handleClose}
             />
 
@@ -340,7 +356,7 @@ const MeetingModal = ({ isOpen, onClose, defaultTab = 'instant' }: MeetingModalP
                     ) : !isOAuthConnected ? (
                         <div className="text-center py-6">
                             <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
-                                <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-8 h-8 text-[#80868b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                                 </svg>
                             </div>
@@ -350,7 +366,7 @@ const MeetingModal = ({ isOpen, onClose, defaultTab = 'instant' }: MeetingModalP
                             </p>
                             <button
                                 onClick={handleConnectGoogle}
-                                className="inline-flex items-center gap-3 bg-white border-2 border-gray-300 hover:border-gray-400 text-gray-700 font-medium py-3 px-6 rounded-lg transition-all"
+                                className="inline-flex items-center gap-3 bg-white border-2 border-gray-300 hover:border-gray-400 text-[#5f6368] font-medium py-3 px-6 rounded-lg transition-all"
                             >
                                 <svg className="w-5 h-5" viewBox="0 0 24 24">
                                     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -411,7 +427,7 @@ const MeetingModal = ({ isOpen, onClose, defaultTab = 'instant' }: MeetingModalP
                                     </p>
 
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                                        <label className="block text-sm font-medium text-[#5f6368] mb-1">
                                             Your Name *
                                         </label>
                                         <input
@@ -427,7 +443,7 @@ const MeetingModal = ({ isOpen, onClose, defaultTab = 'instant' }: MeetingModalP
                                     </div>
 
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                                        <label className="block text-sm font-medium text-[#5f6368] mb-1">
                                             Your Email *
                                         </label>
                                         <input
@@ -443,7 +459,7 @@ const MeetingModal = ({ isOpen, onClose, defaultTab = 'instant' }: MeetingModalP
                                     </div>
 
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                                        <label className="block text-sm font-medium text-[#5f6368] mb-1">
                                             Subject (Optional)
                                         </label>
                                         <input
@@ -500,7 +516,7 @@ const MeetingModal = ({ isOpen, onClose, defaultTab = 'instant' }: MeetingModalP
 
                                     <div className="grid grid-cols-2 gap-4">
                                         <div>
-                                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                                            <label className="block text-sm font-medium text-[#5f6368] mb-1">
                                                 Your Name *
                                             </label>
                                             <input
@@ -516,7 +532,7 @@ const MeetingModal = ({ isOpen, onClose, defaultTab = 'instant' }: MeetingModalP
                                         </div>
 
                                         <div>
-                                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                                            <label className="block text-sm font-medium text-[#5f6368] mb-1">
                                                 Your Email *
                                             </label>
                                             <input
@@ -533,7 +549,7 @@ const MeetingModal = ({ isOpen, onClose, defaultTab = 'instant' }: MeetingModalP
                                     </div>
 
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                                        <label className="block text-sm font-medium text-[#5f6368] mb-1">
                                             Subject *
                                         </label>
                                         <input
@@ -550,7 +566,7 @@ const MeetingModal = ({ isOpen, onClose, defaultTab = 'instant' }: MeetingModalP
 
                                     <div className="grid grid-cols-2 gap-4">
                                         <div>
-                                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                                            <label className="block text-sm font-medium text-[#5f6368] mb-1">
                                                 Date *
                                             </label>
                                             <input
@@ -566,7 +582,7 @@ const MeetingModal = ({ isOpen, onClose, defaultTab = 'instant' }: MeetingModalP
                                         </div>
 
                                         <div>
-                                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                                            <label className="block text-sm font-medium text-[#5f6368] mb-1">
                                                 Time *
                                             </label>
                                             <select
@@ -588,7 +604,7 @@ const MeetingModal = ({ isOpen, onClose, defaultTab = 'instant' }: MeetingModalP
                                     </div>
 
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                                        <label className="block text-sm font-medium text-[#5f6368] mb-1">
                                             Duration
                                         </label>
                                         <select
@@ -606,7 +622,7 @@ const MeetingModal = ({ isOpen, onClose, defaultTab = 'instant' }: MeetingModalP
                                     </div>
 
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                                        <label className="block text-sm font-medium text-[#5f6368] mb-1">
                                             Notes (Optional)
                                         </label>
                                         <textarea

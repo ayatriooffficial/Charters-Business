@@ -1,10 +1,8 @@
 "use client";
 
-import { memo, useState, useEffect, useRef } from "react";
+import { memo, useState } from "react";
 import Image from "next/image";
-import HighlightObserver from "@/components/shared/HighlightObserver";
 import HighlightText from "@/components/shared/HighlightObserver";
-import Breadcrumbs from "../shared/Breadcrumbs";
 const randomLogos = [
   "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/cocacola.svg",
   "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/colgate.svg",
@@ -88,6 +86,18 @@ const facultyMembers: Faculty[] = [
     category: "leadership",
     logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
   },
+  {
+    name: "Dr. Leadership Expert 5",
+    title: "Chief Strategy Officer",
+    company: "StrategyCorp",
+    subtitle: "CSO & VP",
+    experience: "15+ years in corporate strategy and transformation",
+    teaching: "Strategic management and growth scaling",
+    imageSrc: "/images/faculty/home.jpeg",
+    linkedinUrl: "#",
+    category: "leadership",
+    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
+  },
   // Entrepreneurship Category
   {
     name: "Mr. Naveen Munjal",
@@ -132,6 +142,18 @@ const facultyMembers: Faculty[] = [
     subtitle: "Co-Founder at StartHub Ventures",
     experience: "Built and scaled 3 SaaS platforms globally",
     teaching: "Product-market fit and growth marketing",
+    imageSrc: "/images/faculty/home.jpeg",
+    linkedinUrl: "#",
+    category: "entrepreneurship",
+    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
+  },
+  {
+    name: "Ms. Entrepreneur Expert 5",
+    title: "Venture Partner",
+    company: "CapitalVentures",
+    subtitle: "Venture Partner",
+    experience: "Helped scale 15+ unicorn startups",
+    teaching: "Growth hacking and early stage funding",
     imageSrc: "/images/faculty/home.jpeg",
     linkedinUrl: "#",
     category: "entrepreneurship",
@@ -186,6 +208,18 @@ const facultyMembers: Faculty[] = [
     category: "finance",
     logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
   },
+  {
+    name: "Ms. Finance Expert 4",
+    title: "Risk Analyst",
+    company: "GlobalFinance",
+    subtitle: "Senior Risk Analyst",
+    experience: "15+ years in international risk management",
+    teaching: "Financial risk modeling and mitigation",
+    imageSrc: "/images/faculty/home.jpeg",
+    linkedinUrl: "#",
+    category: "finance",
+    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
+  },
   // Technology Category
   {
     name: "Mr. Manoj Kohli",
@@ -230,6 +264,18 @@ const facultyMembers: Faculty[] = [
     subtitle: "Lead Scientist at Google DeepMind",
     experience: "Ph.D. in Computer Science from MIT",
     teaching: "Artificial intelligence and neural network systems",
+    imageSrc: "/images/faculty/home.jpeg",
+    linkedinUrl: "#",
+    category: "technology",
+    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
+  },
+  {
+    name: "Dr. Tech Expert 4",
+    title: "Director of Analytics",
+    company: "DataSystems",
+    subtitle: "Lead Data Scientist",
+    experience: "12+ years in large scale machine learning systems",
+    teaching: "Big data engineering and artificial intelligence",
     imageSrc: "/images/faculty/home.jpeg",
     linkedinUrl: "#",
     category: "technology",
@@ -284,6 +330,18 @@ const facultyMembers: Faculty[] = [
     category: "consulting",
     logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
   },
+  {
+    name: "Ms. Consulting Expert 4",
+    title: "Principal Advisor",
+    company: "StrategyGroup",
+    subtitle: "Principal Consultant",
+    experience: "16+ years advising Fortune 100 on digital strategy",
+    teaching: "Digital transformation and corporate change",
+    imageSrc: "/images/faculty/home.jpeg",
+    linkedinUrl: "#",
+    category: "consulting",
+    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
+  },
 ];
 
 interface FacultyModelProps {
@@ -294,13 +352,14 @@ interface FacultyModelProps {
 }
 
 function FacultyModel({ data }: FacultyModelProps) {
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [offsetPercent, setOffsetPercent] = useState(0);
-  const [activeCategory, setActiveCategory] = useState<string>("leadership");
-  const [isTabSwitching, setIsTabSwitching] = useState(false);
-  const slidesContainerRef = useRef<HTMLDivElement>(null);
   const dynamicCategories = data?.categories || facultyCategories;
   const facultyData = data?.faculty || facultyMembers;
+
+  const [activeCategory, setActiveCategory] = useState<string>(
+    dynamicCategories[0]?.id || "leadership"
+  );
+  const [isTabSwitching, setIsTabSwitching] = useState(false);
+
   const filteredFaculty = facultyData.filter(
     (faculty) => faculty.category === activeCategory
   );
@@ -310,58 +369,11 @@ function FacultyModel({ data }: FacultyModelProps) {
     setIsTabSwitching(true);
     setTimeout(() => {
       setActiveCategory(categoryId);
-      if (slidesContainerRef.current) {
-        slidesContainerRef.current.scrollLeft = 0;
-      }
       setTimeout(() => {
         setIsTabSwitching(false);
       }, 50);
     }, 200);
   };
-
-  const STEP = 60;
-
-  const getAnimationDuration = () => {
-    return typeof window !== "undefined" && window.innerWidth <= 768 ? 800 : 600;
-  };
-
-  const changeSlide = (direction: number): void => {
-    if (isAnimating) return;
-
-    const scrollContainer = slidesContainerRef.current;
-    if (!scrollContainer) return;
-
-    setIsAnimating(true);
-
-    const scrollAmount = scrollContainer.clientWidth * (STEP / 100);
-    const targetScroll = scrollContainer.scrollLeft + (direction * scrollAmount);
-
-    scrollContainer.scrollTo({
-      left: targetScroll,
-      behavior: 'smooth'
-    });
-
-    setTimeout(() => {
-      setIsAnimating(false);
-    }, getAnimationDuration());
-  };
-
-  useEffect(() => {
-    const scrollContainer = slidesContainerRef.current;
-    if (!scrollContainer) return;
-
-    const handleScroll = () => {
-      const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-      const currentScroll = scrollContainer.scrollLeft;
-      const newOffset = maxScrollLeft > 0 ? (currentScroll / maxScrollLeft) * 100 : 0;
-      setOffsetPercent(newOffset);
-    };
-
-    scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-
-    return () => scrollContainer.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <>
@@ -375,12 +387,12 @@ function FacultyModel({ data }: FacultyModelProps) {
         }
       `}</style>
       <section
-        className="mx-[0%] relative z-[5] bg-white text-black overflow-x-hidden pt-12"
+        className="mx-[0%] relative z-[5] bg-white text-black overflow-hidden pt-22"
         role="region"
         aria-labelledby="faculty-heading"
       >
-        <div className="max-w-[85rem] w-full mx-auto  ">
-          <Breadcrumbs compact />
+        <div className="max-w-[85rem] w-full mx-auto">
+
           {/* Section Header */}
           <div className="relative text-center pb-[3.25rem] sm:pb-[3.25rem]">
             <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-4 sm:mb-6">
@@ -392,12 +404,12 @@ function FacultyModel({ data }: FacultyModelProps) {
               className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]"
             >
               Meet your{" "}
-              <HighlightText className="mx-1 sm:mx-2 font-bold">
+              <HighlightText className="mx-1 sm:mx-2 font-bold !px-0 !py-0">
                 Faculty
               </HighlightText>
             </h2>
 
-            <p className="text-black text-sm sm:text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
+            <p className="text-black px-[20px] md:px-[50px] lg:px-[70px] text-sm sm:text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
               Learn from industry leaders, academic experts, and seasoned
               practitioners who bring real-world experience to your education.
             </p>
@@ -405,14 +417,14 @@ function FacultyModel({ data }: FacultyModelProps) {
 
           {/* Category Tabs */}
           <div aria-label="Faculty categories">
-            <ul className="flex overflow-scroll scrollbar-hide sm:justify-center gap-1 sm:gap-3 md:gap-6 border-b border-gray-300">
+            <ul className="flex overflow-x-auto sm:overflow-visible scrollbar-hide sm:justify-center gap-1 sm:gap-3 md:gap-6 border-b border-gray-300">
               {dynamicCategories.map((category) => (
                 <li key={category.id}>
                   <button
                     onClick={() => handleCategoryChange(category.id)}
-                    className={`px-3 text-nowrap sm:px-4 py-2 transition-all duration-200 focus-visible:outline-none text-sm ${activeCategory === category.id
-                      ? "text-black border-b-2 border-black font-semibold"
-                      : "text-gray-400 border-b-2 border-transparent hover:text-black"
+                    className={`px-3 text-nowrap sm:px-4 py-2 transition-all focus-visible:outline-none focus-visible:border-b-2 focus-visible:border-[#B30437] text-sm ${activeCategory === category.id
+                      ? "text-black border-b-2 border-black font-semibold opacity-100"
+                      : "text-black opacity-40 hover:opacity-80 hover:bg-gray-50"
                       }`}
                     aria-label={`${category.name} faculty`}
                     aria-pressed={activeCategory === category.id}
@@ -424,27 +436,24 @@ function FacultyModel({ data }: FacultyModelProps) {
             </ul>
           </div>
 
-          {/* Faculty Members Section with Navigation */}
+          {/* Faculty Members Section - Grid on desktop, horizontal scroller on mobile (1:2 peek) */}
           <div className="relative">
             <div
-              ref={slidesContainerRef}
               className={
-                // change gap
-                `flex lg:grid lg:grid-cols-4 transition-all duration-300 ease-out ` +
-                `overflow-x-auto lg:overflow-x-visible snap-x snap-mandatory lg:snap-none scrollbar-hide scroll-smooth ` +
+                `flex overflow-x-auto scrollbar-none sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 border-l border-gray-300 transition-all duration-300 ease-out ` +
                 `${isTabSwitching ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'}`
               }
               style={{ transition: 'opacity 200ms ease-out, transform 200ms ease-out' }}
               role="list"
               aria-label="Faculty members"
             >
-              {filteredFaculty.map((faculty, index) => (
+              {filteredFaculty.map((faculty) => (
                 <article
                   key={faculty.name}
-                  className="bg-[#F4F2EE] border-r border-b border-gray-300 flex flex-col flex-none w-[340px] lg:w-full snap-start lg:snap-align-none"
+                  className="flex-shrink-0 w-[85vw] sm:w-auto hover:bg-[#F4F2EE] border-r border-b border-gray-300 flex flex-col"
                 >
                   {/* Image */}
-                  <div className="w-full h-[280px] bg-gray-200">
+                  <div className="w-full h-[230px]">
                     <Image
                       src={faculty.imageSrc}
                       alt={faculty.name}
@@ -456,25 +465,25 @@ function FacultyModel({ data }: FacultyModelProps) {
 
                   {/* Content */}
                   <div className="p-5">
-                    <h2 className="text-2xl font-semibold text-black">
+                    <h2 className="text-[16px] font-semibold text-black">
                       {faculty.title}
                     </h2>
 
-                    <p className="text-gray-700 font-medium mt-1">
+                    <p className="text-[#5f6368] text-[12px] font-semibold mt-1">
                       by {faculty.name}
                     </p>
 
                     <div className="h-px bg-gray-400 my-3" />
 
-                    <p className="text-sm text-gray-700 mb-4">
+                    <p className="text-sm text-[#5f6368] mb-4">
                       {faculty.experience}
                     </p>
 
-                    <p className="font-semibold text-black mb-2">
+                    <p className="text-[14px] font-semibold mb-2">
                       Research Publications
                     </p>
 
-                    <p className="text-sm text-gray-700 mb-4">
+                    <p className="text-[12px] font-semibold-gray-700 mb-4">
                       {faculty.teaching}
                     </p>
 
@@ -491,58 +500,6 @@ function FacultyModel({ data }: FacultyModelProps) {
                   </div>
                 </article>
               ))}
-            </div>
-
-            {/* Navigation Buttons */}
-            <div className="absolute top-1/2 -translate-y-1/2 right-4 sm:right-2 pointer-events-none lg:hidden">
-              {offsetPercent < 95 && (
-                <button
-                  onClick={() => changeSlide(1)}
-                  disabled={isAnimating}
-                  className="w-10 h-10 sm:w-10 sm:h-10 rounded-full bg-[#000000] hover:bg-red-700 transition-all duration-300 ease-in-out shadow-sm hover:shadow flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B30437] pointer-events-auto"
-                  aria-label="Next slide"
-                  type="button"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="w-5 h-5 sm:w-6 sm:h-6 text-white"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M9 18l6-6-6-6"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      fill="none"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </button>
-              )}
-            </div>
-            <div className="absolute top-1/2 -translate-y-1/2 left-4 sm:left-2 pointer-events-none lg:hidden">
-              {offsetPercent > 5 && (
-                <button
-                  onClick={() => changeSlide(-1)}
-                  disabled={isAnimating}
-                  className="w-10 h-10 sm:w-10 sm:h-10 rounded-full bg-[#000000] hover:bg-red-700 transition-all duration-300 ease-in-out shadow-sm hover:shadow flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B30437] pointer-events-auto"
-                  aria-label="Previous slide"
-                  type="button"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="w-5 h-5 sm:w-6 sm:h-6 text-white"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M15 18l-6-6 6-6"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      fill="none"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </button>
-              )}
             </div>
           </div>
         </div>

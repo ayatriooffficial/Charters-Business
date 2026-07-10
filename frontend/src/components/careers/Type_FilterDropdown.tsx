@@ -129,7 +129,7 @@ export default function MultiSelectDropdown({
                     {/* Options list */}
                     <ul className="max-h-56 overflow-y-auto">
                         {filtered.length === 0 ? (
-                            <li className="px-4 py-3 text-sm text-gray-400">No results</li>
+                            <li className="px-4 py-3 text-sm text-[#80868b]">No results</li>
                         ) : (
                             filtered.map((option) => {
                                 const checked = draft.includes(option); // ← use draft not selected
@@ -144,8 +144,8 @@ export default function MultiSelectDropdown({
                                             />
                                             <div
                                                 className={`w-4 h-4 flex-shrink-0 border-2 rounded-sm flex items-center justify-center transition-colors ${checked
-                                                        ? "bg-[#B30437] border-[#B30437]"
-                                                        : "border-gray-300"
+                                                    ? "bg-[#B30437] border-[#B30437]"
+                                                    : "border-gray-300"
                                                     }`}
                                             >
                                                 {checked && (
@@ -154,7 +154,7 @@ export default function MultiSelectDropdown({
                                                     </svg>
                                                 )}
                                             </div>
-                                            <span className="text-sm text-gray-700">{option}</span>
+                                            <span className="text-sm text-[#5f6368]">{option}</span>
                                         </label>
                                     </li>
                                 );
@@ -166,7 +166,7 @@ export default function MultiSelectDropdown({
                     <div className="flex items-center justify-between px-4 py-2.5 border-t border-gray-100 bg-gray-50">
                         <button
                             onClick={reset}
-                            className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
+                            className="text-sm text-[#5f6368] hover:text-[#5f6368] transition-colors"
                         >
                             Reset
                         </button>

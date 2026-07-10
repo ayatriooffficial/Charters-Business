@@ -37,7 +37,7 @@ export default function RichTextEditor({
         <button
           type="button"
           onClick={() => setIsEditorReady(true)}
-          className="w-full border border-gray-300 rounded-lg p-4 min-h-[300px] bg-white hover:bg-gray-50 transition-colors text-left text-gray-500"
+          className="w-full border border-gray-300 rounded-lg p-4 min-h-[300px] bg-white hover:bg-gray-50 transition-colors text-left text-[#5f6368]"
         >
           Click to load editor...
         </button>

@@ -227,17 +227,17 @@ export default function SalaryGrowthChart({
   const tooltipY = Math.max(markY, 40);
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex-1 flex flex-col justify-between h-full w-full">
       {/* Heading */}
       <div className="mb-4 flex-shrink-0">
         <h4 className="flex flex-row">
           <p className="text-3xl font-bold">+{value.toFixed(2)}x</p> <span className="text-[10px] pl-[5px] pt-[15px]">| Growth 39% </span>
         </h4>
-        <p className="text-sm text-gray-600">1:3 Internship Global Offer's</p>
+        <p className="text-sm text-gray-600">1:3 Internship Global Offer&apos;s</p>
       </div>
 
       {/* Chart */}
-      <div className="w-full flex-1 flex items-end overflow-hidden">
+      <div className="w-full flex-1 flex items-end overflow-hidden mt-6">
         <div
           className="relative w-full overflow-hidden"
           style={{

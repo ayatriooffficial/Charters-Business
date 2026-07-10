@@ -235,12 +235,12 @@ const TetrCareerLabs: React.FC = () => {
           <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
             <span className="text-[#B30437]">Week 1 to Final Month:</span>AI-Powered Career Persona Development
           </h2>
-          <div className="flex justify-center">
-            <p className="text-black text-sm sm:text-base md:text-lg max-w-4xl">
-              Learn from industry leaders, academic experts, and seasoned
-              practitioners who bring real-world experience to your education.
-            </p>
-          </div>
+
+          <p className="text-black px-[20px] md:px-[50px] lg:px-[70px] text-sm sm:text-base md:text-lg max-w-4xl">
+            Learn from industry leaders, academic experts, and seasoned
+            practitioners who bring real-world experience to your education.
+          </p>
+
         </div>
 
         {/* Main Content Section */}

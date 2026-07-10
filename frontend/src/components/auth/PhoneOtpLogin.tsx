@@ -2,9 +2,9 @@
 
 import { useState, useRef, useEffect } from 'react';
 import {
-  signInWithPhoneNumber,
-  ConfirmationResult,
-  RecaptchaVerifier,
+    signInWithPhoneNumber,
+    ConfirmationResult,
+    RecaptchaVerifier,
 } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import { auth, setupRecaptcha } from '@/lib/firebase';
@@ -17,24 +17,24 @@ type Step = 'phone' | 'otp' | 'details' | 'password';
 type AuthMode = 'login' | 'signup';
 
 type AuthError = Error & {
-  code?: string;
-  status?: number;
+    code?: string;
+    status?: number;
 };
 
 function getAuthError(error: unknown): AuthError {
-  if (error instanceof Error) {
-    return error as AuthError;
-  }
+    if (error instanceof Error) {
+        return error as AuthError;
+    }
 
-  return new Error('Unexpected error') as AuthError;
+    return new Error('Unexpected error') as AuthError;
 }
 
 export default function PhoneOtpLogin({
-  onSuccess,
-  mode = 'login',
+    onSuccess,
+    mode = 'login',
 }: {
-  onSuccess?: () => void;
-  mode?: AuthMode;
+    onSuccess?: () => void;
+    mode?: AuthMode;
 }) {
     const { loginWithPhone, signupWithPhone, login, user, navigateToRemoteDashboard } = useAuth();
     const router = useRouter();
@@ -79,7 +79,7 @@ export default function PhoneOtpLogin({
                 console.error('[PhoneOtpLogin] Failed to setup RecaptchaVerifier:', error);
             }
         }
-        
+
         // Proper cleanup handling if component unmounts
         return () => {
             if (recaptchaVerifierRef.current) {
@@ -122,8 +122,8 @@ export default function PhoneOtpLogin({
             console.log("[PhoneOtpLogin] Firebase Client Auth Configuration:", {
                 apiKey: auth.config?.apiKey ? "LOADED" : "MISSING (check .env)",
                 authDomain: auth.config?.authDomain ? "LOADED" : "MISSING (check .env)",
-                projectId: auth.config?.projectId ? "LOADED" : "MISSING (check .env)",
-                appId: auth.config?.appId ? "LOADED" : "MISSING (check .env)",
+                projectId: (auth.config as any)?.projectId ? "LOADED" : "MISSING (check .env)",
+                appId: (auth.config as any)?.appId ? "LOADED" : "MISSING (check .env)",
             });
 
             // Verify RecaptchaVerifier initialized successfully
@@ -144,7 +144,7 @@ export default function PhoneOtpLogin({
             });
             const checkData = await checkRes.json();
             console.log("[PhoneOtpLogin] Backend user check response:", checkData);
-            
+
             if (checkRes.ok && checkData?.data?.exists) {
                 console.log("[PhoneOtpLogin] User exists in database. Redirecting to password sign-in step.");
                 setStep('password');
@@ -156,7 +156,7 @@ export default function PhoneOtpLogin({
             console.log("[PhoneOtpLogin] Sending signInWithPhoneNumber request to Firebase...");
             const result = await signInWithPhoneNumber(auth, fullNumber, recaptchaVerifierRef.current);
             console.log("[PhoneOtpLogin] signInWithPhoneNumber success! confirmationResult received successfully.");
-            
+
             setConfirmationResult(result);
             setStep('otp');
             setResendTimer(30);
@@ -364,7 +364,7 @@ export default function PhoneOtpLogin({
                 /* ── Step 1: Phone Number Input ── */
                 <div className="space-y-4">
                     <div>
-                        <label htmlFor="phone-country" className="block text-sm font-medium text-gray-700 mb-1">
+                        <label htmlFor="phone-country" className="block text-sm font-medium text-[#5f6368] mb-1">
                             Phone Number *
                         </label>
                         <div className="flex gap-2">
@@ -436,7 +436,7 @@ export default function PhoneOtpLogin({
 
                     {/* OTP Inputs */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-[#5f6368] mb-2">
                             Enter 6-digit OTP *
                         </label>
                         <div className="flex gap-2 justify-center" onPaste={handleOtpPaste}>
@@ -487,7 +487,7 @@ export default function PhoneOtpLogin({
                     {/* Resend */}
                     <div className="text-center">
                         {resendTimer > 0 ? (
-                            <p className="text-sm text-gray-500">
+                            <p className="text-sm text-[#5f6368]">
                                 Resend OTP in <span className="font-semibold text-[#B30437]">{resendTimer}s</span>
                             </p>
                         ) : (
@@ -516,7 +516,7 @@ export default function PhoneOtpLogin({
                         <>
                             {/* Name Input */}
                             <div>
-                                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                                <label htmlFor="name" className="block text-sm font-medium text-[#5f6368] mb-1">
                                     Full Name *
                                 </label>
                                 <input
@@ -532,7 +532,7 @@ export default function PhoneOtpLogin({
 
                             {/* Email Input */}
                             <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                                <label htmlFor="email" className="block text-sm font-medium text-[#5f6368] mb-1">
                                     Email Address *
                                 </label>
                                 <input
@@ -550,7 +550,7 @@ export default function PhoneOtpLogin({
 
                     {/* Password Input */}
                     <div>
-                        <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+                        <label htmlFor="password" className="block text-sm font-medium text-[#5f6368] mb-1">
                             {phoneNumber.replace(/\D/g, '').endsWith('1234567890') ? 'Set Password *' : 'Password *'}
                         </label>
                         <input
@@ -563,11 +563,11 @@ export default function PhoneOtpLogin({
                             required
                         />
                     </div>
- 
+
                     {!phoneNumber.replace(/\D/g, '').endsWith('1234567890') && (
                         /* Course Selection */
                         <div>
-                            <label htmlFor="program" className="block text-sm font-medium text-gray-700 mb-1">
+                            <label htmlFor="program" className="block text-sm font-medium text-[#5f6368] mb-1">
                                 Course Interested In *
                             </label>
                             <select
@@ -591,7 +591,7 @@ export default function PhoneOtpLogin({
                             <p className="text-sm text-red-800">{error}</p>
                         </div>
                     )}
- 
+
                     {/* Complete Signup Button */}
                     <button
                         type="button"
@@ -622,7 +622,7 @@ export default function PhoneOtpLogin({
                     </div>
 
                     <div>
-                        <label htmlFor="login-password" className="block text-sm font-medium text-gray-700 mb-1">
+                        <label htmlFor="login-password" className="block text-sm font-medium text-[#5f6368] mb-1">
                             Password *
                         </label>
                         <input
@@ -664,12 +664,12 @@ export default function PhoneOtpLogin({
                             'Login'
                         )}
                     </button>
-                    
+
                     <div className="text-center">
                         <button
                             type="button"
                             onClick={() => { setStep('phone'); setPassword(''); setError(''); }}
-                            className="text-sm text-gray-500 hover:text-gray-700 underline"
+                            className="text-sm text-[#5f6368] hover:text-[#5f6368] underline"
                         >
                             Back to Phone Number
                         </button>

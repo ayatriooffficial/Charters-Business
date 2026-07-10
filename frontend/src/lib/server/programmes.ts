@@ -8,6 +8,7 @@ export {
   getCardData,
   getAllCardData,
   getHeroData,
+  courseSeoMetadata,
 } from "@/data/programmes";
 
 export type {
@@ -16,4 +17,6 @@ export type {
   DropdownData,
   ProgrammeCardData,
   HeroData,
+  CourseSeoData,
+  ProgrammeAssetConfig,
 } from "@/data/programmes";

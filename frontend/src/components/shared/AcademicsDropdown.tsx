@@ -13,7 +13,6 @@ interface AcademicsDropdownProps {
 const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
   isOpen,
   dropdownTop,
-  isSecondaryVisible = false
 }, ref) => {
   // Get all available programs
   const allProgrammes = getAllProgrammes();
@@ -29,10 +28,9 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
 
   // State for handling image errors
   const [imageErrors, setImageErrors] = useState<Record<ProgramKey, boolean>>({
-    "digital-growth-engineer": false,
-    "post-graduate-diploma-in-management": false,
-    "product-growth-engineering": false,
-    "diploma-in-business-administration": false,
+    "certified-business-accountant": false,
+    "digital-growth-&-marketing": false,
+    "technology-&-business-management": false,
   });
 
   const handleImageError = (programKey: ProgramKey) => {
@@ -64,9 +62,9 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
 
   // Program menu items - only show programs that have data
   const allProgramMenuItems: { key: ProgramKey; label: string }[] = [
-    { key: 'digital-growth-engineer', label: 'CBA®' },
-    { key: 'post-graduate-diploma-in-management', label: 'DGM™' },
-    { key: 'product-growth-engineering', label: 'TBM™' },
+    { key: 'certified-business-accountant', label: 'CBA®' },
+    { key: 'digital-growth-&-marketing', label: 'DGM™' },
+    { key: 'technology-&-business-management', label: 'TBM™' },
 
   ];
 
@@ -119,14 +117,14 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
                       <div className="flex items-center justify-between">
                         <span className={`text-sm font-medium transition-colors duration-200 ${selectedProgram === item.key
                           ? 'text-red-700'
-                          : 'text-gray-700 group-hover:text-[#B30437]'
+                          : 'text-[#5f6368] group-hover:text-[#B30437]'
                           }`}>
                           {item.label}
                         </span>
                         <span
                           className={`text-lg transition-colors duration-200 ${selectedProgram === item.key
                             ? 'text-[#B30437]'
-                            : 'text-gray-400 group-hover:text-red-500'
+                            : 'text-[#80868b] group-hover:text-red-500'
                             }`}
                           aria-hidden="true"
                         >
@@ -147,7 +145,7 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
 
               {/* Explore More Link */}
               <aside
-                className={`bg-[#F4F2EE] hover:bg-gray-200 flex flex-col items-center justify-center p-4 sm:p-6 border-r border-gray-200 cursor-pointer transition-colors duration-200
+                className={`bg-[#F4F2EE] hover:bg-[#E3DFD2] flex flex-col items-center justify-center p-4 sm:p-6 border-r border-gray-200 cursor-pointer transition-colors duration-200
                           w-full lg:w-40 xl:w-48 2xl:w-56 
                           flex-shrink-0 group ${isTransitioning ? 'opacity-0' : 'opacity-100'
                   }`}
@@ -161,28 +159,18 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
                   className="flex flex-col items-center text-center"
                   aria-label={`Explore more about ${currentProgramData.card.title}`}
                 >
-                  <span className="text-xs text-gray-500 mb-4 tracking-wider font-medium">
+                  <span className="text-xs text-[#5f6368] mb-4 tracking-wider font-medium">
                     ACADEMIC PROGRAMS
                   </span>
 
                   <div className="mb-6">
                     <div className="w-20 h-20 flex items-center justify-center transition-colors duration-200">
-                      <svg
-                        width="100"
-                        height="100"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        className="text-black transition-colors duration-200"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M7 17L17 7M17 7H9M17 7V15"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
+                      <Image src="/Charters-icon/top_arrow-black.svg"
+                        alt="Format icon"
+                        width={35}
+                        height={35}
+                        className="ml-[6px] w-[30px] h-[30px] object-contain"
+                      />
                     </div>
                   </div>
 
@@ -223,7 +211,7 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
                           <dt className="text-[#B30437] text-2xl lg:text-3xl font-bold">
                             {stat.value}
                           </dt>
-                          <dd className="text-gray-500 text-xs font-medium tracking-wider uppercase">
+                          <dd className="text-[#5f6368] text-xs font-medium tracking-wider uppercase">
                             {stat.label}
                           </dd>
                         </div>

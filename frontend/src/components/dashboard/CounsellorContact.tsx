@@ -23,7 +23,7 @@ export default function CounsellorContact() {
             className="  p-5 "
           >
             <div className="flex flex-col sm:flex-row items-center sm:items-start  gap-4">
-              
+
 
               <div className="flex-1 text-center sm:text-left w-full">
                 <h4 className="text-lg font-bold text-gray-900">{counsellor.name}</h4>
@@ -31,7 +31,7 @@ export default function CounsellorContact() {
 
                 <div className="space-y-2 text-sm">
                   <div className="flex items-start justify-center sm:justify-start gap-2">
-                    <span className="text-gray-500 font-semibold mt-0.5">Email:</span>
+                    <span className="text-[#5f6368] font-semibold mt-0.5">Email:</span>
                     <a
                       href={`mailto:${counsellor.email}`}
                       className="text-green-700 hover:text-green-800 hover:underline transition-colors break-all"
@@ -41,7 +41,7 @@ export default function CounsellorContact() {
                   </div>
 
                   <div className="flex items-start justify-center sm:justify-start gap-2">
-                    <span className="text-gray-500 font-semibold mt-0.5">Phone:</span>
+                    <span className="text-[#5f6368] font-semibold mt-0.5">Phone:</span>
                     <a
                       href={`tel:${counsellor.phone.replace(/\s/g, '')}`}
                       className="text-green-700 hover:text-green-800 hover:underline transition-colors"
@@ -51,14 +51,14 @@ export default function CounsellorContact() {
                   </div>
 
                   <div className="flex items-start justify-center sm:justify-start gap-2">
-                    <span className="text-gray-500 font-semibold mt-0.5">Available:</span>
-                    <span className="text-gray-700">{counsellor.availability}</span>
+                    <span className="text-[#5f6368] font-semibold mt-0.5">Available:</span>
+                    <span className="text-[#5f6368]">{counsellor.availability}</span>
                   </div>
 
                   {counsellor.specialization && counsellor.specialization.length > 0 && (
                     <div className="flex items-start justify-center sm:justify-start gap-2 pt-2">
-                      <span className="text-gray-500 font-semibold mt-0.5">Specializes in:</span>
-                      <span className="text-gray-700">
+                      <span className="text-[#5f6368] font-semibold mt-0.5">Specializes in:</span>
+                      <span className="text-[#5f6368]">
                         {counsellor.specialization.join(', ')}
                       </span>
                     </div>
@@ -66,8 +66,8 @@ export default function CounsellorContact() {
 
                   {counsellor.languages && counsellor.languages.length > 0 && (
                     <div className="flex items-start justify-center sm:justify-start gap-2">
-                      <span className="text-gray-500 font-semibold mt-0.5">Languages:</span>
-                      <span className="text-gray-700">
+                      <span className="text-[#5f6368] font-semibold mt-0.5">Languages:</span>
+                      <span className="text-[#5f6368]">
                         {counsellor.languages.join(', ')}
                       </span>
                     </div>
@@ -96,10 +96,10 @@ export default function CounsellorContact() {
       </div>
 
       <footer className="mt-6 text-center p-4 ">
-        <p className="text-sm text-gray-700">
+        <p className="text-sm text-[#5f6368]">
           <span className="font-semibold">General Inquiries:</span>{' '}
-          <a 
-            href="mailto:admissions@chartersbusiness.com" 
+          <a
+            href="mailto:admissions@chartersbusiness.com"
             className="text-green-700 font-semibold hover:underline"
           >
             admissions@chartersbusiness.com

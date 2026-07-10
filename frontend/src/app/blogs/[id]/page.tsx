@@ -1,246 +1,137 @@
-"use client";
-
-import { use, useState, useEffect } from "react";
-import { notFound } from "next/navigation";
-import Link from "next/link";
-import { getBlogById } from "@/lib/api";
+import type { Metadata } from "next";
+import BlogDetailPageClient from "./BlogDetailClient";
 import { STATIC_BLOGS, slugify } from "@/data/staticBlogs";
-import type { DisplayBlog } from "@/data/staticBlogs";
+import { getBlogById } from "@/lib/api";
+import { generateBreadcrumbSchema, combineSchemas } from "@/lib/schema";
 
-export default function BlogDetailPage({
-  params,
-}: {
+interface Props {
   params: Promise<{ id: string }>;
-}) {
-  const { id } = use(params);
-  const [blog, setBlog] = useState<DisplayBlog | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+}
 
-  useEffect(() => {
-    const fetchBlog = async () => {
-      setIsLoading(true);
-      
-      // 1. Check if ID matches a static blog slug
-      const matchedStatic = STATIC_BLOGS.find(
-        (sb) => slugify(sb.title) === id
-      );
+const SCHEMA_IMAGE = "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp";
 
-      if (matchedStatic) {
-        setBlog(matchedStatic);
-        setIsLoading(false);
-        return;
-      }
+interface BlogData {
+  title: string;
+  author: string;
+  description: string;
+  datePublished?: string;
+  image?: string;
+}
 
-      // 2. Fetch from DB
-      try {
-        const response = await getBlogById(id);
-        if (response && response.success && response.data) {
-          setBlog({
-            _id: response.data._id,
-            title: response.data.title,
-            author: response.data.author,
-            readTime: response.data.readTime,
-            category: response.data.category,
-            content: response.data.content,
-            tags: response.data.tags,
-            releasedAt: response.data.releasedAt
-              ? String(response.data.releasedAt)
-              : undefined,
-          });
-        } else {
-          // Fallback if success isn't true or data is empty
-          setBlog(null);
-        }
-      } catch (error) {
-        const message = error instanceof Error ? error.message : "";
-        if (message.toLowerCase().includes("not found") || message.includes("404")) {
-          console.warn(`Blog not found: ${id}`);
-        } else {
-          console.error("Failed to load blog from database:", error);
-        }
-        setBlog(null);
-      } finally {
-        setIsLoading(false);
-      }
+async function getBlogData(id: string): Promise<BlogData | null> {
+  // 1. Check static
+  const matchedStatic = STATIC_BLOGS.find((sb) => slugify(sb.title) === id);
+  if (matchedStatic) {
+    return {
+      title: matchedStatic.title,
+      author: matchedStatic.author || "Charters' Union",
+      description: matchedStatic.content.substring(0, 155).replace(/[\r\n\t]+/g, " ").trim() + "...",
+      datePublished: matchedStatic.releasedAt || undefined,
+      image: SCHEMA_IMAGE,
     };
-
-    fetchBlog();
-  }, [id]);
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-white">
-        <div className="text-center">
-          <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-solid border-[#B30437] border-r-transparent"></div>
-          <p className="mt-4 text-gray-600 font-medium">Loading Article...</p>
-        </div>
-      </div>
-    );
   }
-
-  if (!blog) {
-    notFound();
+  // 2. Fetch from DB
+  try {
+    const response = await getBlogById(id);
+    if (response && response.success && response.data) {
+      return {
+        title: response.data.title,
+        author: response.data.author || "Charters' Union",
+        description: response.data.content.substring(0, 155).replace(/[\r\n\t]+/g, " ").trim() + "...",
+        datePublished: response.data.releasedAt || response.data.createdAt,
+        image: SCHEMA_IMAGE,
+      };
+    }
+  } catch (error) {
+    console.error("Error getting blog data:", error);
   }
+  return null;
+}
 
-  // Simple parser to render basic markdown paragraphs and bolding
-  const renderBlogContent = (markdownText: string) => {
-    if (!markdownText) return null;
-    return markdownText.split("\n").map((paragraph, index) => {
-      const trimmed = paragraph.trim();
-      if (!trimmed) return <div key={index} className="h-4" />;
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
+  const blog = await getBlogData(id);
 
-      // Header 2 (##)
-      if (trimmed.startsWith("## ")) {
-        return (
-          <h2
-            key={index}
-            className="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-8 mb-4 border-b border-gray-100 pb-3"
-          >
-            {trimmed.replace("## ", "")}
-          </h2>
-        );
-      }
+  const title = blog ? `${blog.title} | Charters' Union Blog` : "Blog Article | Charters' Union Blog";
+  const description = blog ? blog.description : "Read the latest insights and updates from Charters' Union.";
+  const canonicalUrl = `https://chartersbusiness.com/blogs/${id}`;
+  const imageUrl = "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp";
 
-      // Header 3 (###)
-      if (trimmed.startsWith("### ")) {
-        return (
-          <h3
-            key={index}
-            className="text-xl sm:text-2xl font-bold text-gray-900 mt-6 mb-3"
-          >
-            {trimmed.replace("### ", "")}
-          </h3>
-        );
-      }
-
-      // Bullet points (* or -)
-      if (trimmed.startsWith("* ") || trimmed.startsWith("- ")) {
-        return (
-          <li
-            key={index}
-            className="text-gray-700 text-base sm:text-lg leading-relaxed ml-6 list-disc mb-3"
-          >
-            {parseBoldText(trimmed.substring(2))}
-          </li>
-        );
-      }
-
-      return (
-        <p
-          key={index}
-          className="text-gray-700 text-base sm:text-lg leading-relaxed mb-4"
-        >
-          {parseBoldText(trimmed)}
-        </p>
-      );
-    });
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      url: canonicalUrl,
+      siteName: "Charters' Union",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+      locale: "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [imageUrl],
+    },
   };
+}
 
-  const parseBoldText = (text: string) => {
-    const parts = text.split(/\*\*([\s\S]*?)\*\*/g);
-    return parts.map((part, i) =>
-      i % 2 === 1 ? (
-        <strong key={i} className="font-bold text-gray-950">
-          {part}
-        </strong>
-      ) : (
-        part
-      )
-    );
-  };
+export default async function BlogDetailPage({ params }: Props) {
+  const { id } = await params;
+  const blog = await getBlogData(id);
 
-  const formattedDate = blog.releasedAt
-    ? new Date(blog.releasedAt).toLocaleDateString("en-IN", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      })
+  // Generate breadcrumb schema
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://chartersbusiness.com" },
+    { name: "Blogs", url: "https://chartersbusiness.com/blogs" },
+    { name: blog ? blog.title : "Blog Article", url: `https://chartersbusiness.com/blogs/${id}` },
+  ]);
+
+  // Generate article schema
+  const blogSchema = blog
+    ? ({
+        "@type": "BlogPosting",
+        "headline": blog.title,
+        "description": blog.description,
+        "url": `https://chartersbusiness.com/blogs/${id}`,
+        "image": blog.image,
+        "datePublished": blog.datePublished,
+        "author": {
+          "@type": "Person",
+          "name": blog.author,
+        },
+        "publisher": {
+          "@type": "EducationalOrganization",
+          "@id": "https://chartersbusiness.com/#organization",
+          "name": "Charters' Union",
+        },
+      } as const)
     : null;
 
+  const consolidatedSchema = combineSchemas(breadcrumbSchema, blogSchema);
+
   return (
-    <article className="min-h-screen bg-white text-black py-16 sm:py-24">
-      <div className="max-w-4xl w-full mx-auto px-4">
-        {/* Breadcrumbs */}
-        <div className="text-sm text-gray-500 mb-8 font-medium">
-          <Link href="/" className="hover:text-[#B30437] transition-colors">
-            Home
-          </Link>
-          <span className="mx-2 text-gray-300">/</span>
-          <span className="text-gray-950 font-semibold">Blogs</span>
-        </div>
+    <>
+      {/* Consolidated Page Schema */}
+      <script
+        id={`blog-page-schema-${id}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(consolidatedSchema) }}
+      />
 
-        {/* Header Section */}
-        <header className="mb-10 pb-8 border-b border-gray-100">
-          <span className="inline-block bg-[#B30437]/10 text-[#B30437] text-xs sm:text-sm font-bold uppercase tracking-wider px-3 py-1.5 rounded-md mb-4">
-            {blog.category}
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-black text-gray-900 leading-tight tracking-tight mb-6">
-            {blog.title}
-          </h1>
-
-          <div className="flex flex-wrap items-center gap-6 text-sm sm:text-base text-gray-500 font-medium">
-            <span className="flex items-center gap-2">
-              <svg
-                className="w-5 h-5 text-gray-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                />
-              </svg>
-              By <span className="text-gray-900">{blog.author}</span>
-            </span>
-
-            <span className="flex items-center gap-2">
-              <svg
-                className="w-5 h-5 text-gray-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              {blog.readTime}
-            </span>
-
-            {formattedDate && (
-              <span className="flex items-center gap-2">
-                <svg
-                  className="w-5 h-5 text-gray-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
-                Published on {formattedDate}
-              </span>
-            )}
-          </div>
-        </header>
-
-        {/* Article Content */}
-        <section className="prose max-w-none text-left">
-          {renderBlogContent(blog.content)}
-        </section>
-
-
-      </div>
-    </article>
+      <BlogDetailPageClient params={params} />
+    </>
   );
 }

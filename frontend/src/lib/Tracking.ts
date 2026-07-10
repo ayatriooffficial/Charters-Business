@@ -162,7 +162,7 @@ function normalizeTrackedPages(value: unknown): TrackedPage[] {
     pages.push({ path, title });
   });
 
-  return pages;
+  return pages.slice(-50);
 }
 
 function getStoredAnonSession(): AnonSession | null {
@@ -256,6 +256,9 @@ export function trackPage(pathname: string, title?: string) {
 
   session.pageViewsTotal += 1;
   if (!session.uniquePages.some((page) => page.path === normalizedPath)) {
+    if (session.uniquePages.length >= 50) {
+      session.uniquePages.shift();
+    }
     session.uniquePages.push({
       path: normalizedPath,
       title: normalizedTitle,

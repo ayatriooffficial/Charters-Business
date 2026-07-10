@@ -27,7 +27,7 @@ function LearningOutcomes({ data }: LearningOutcomesProps) {
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   const staticContentData: LearningOutcomeData[] = [
-    
+
     {
       title: 'Data-driven decision making',
       description:
@@ -238,8 +238,8 @@ function LearningOutcomes({ data }: LearningOutcomesProps) {
     },
   ];
   const contentData: LearningOutcomeData[] = Array.isArray(data)
-  ? data
-  : staticContentData;
+    ? data
+    : staticContentData;
 
   const handleMenuClick = (index: number) => {
     if (index === activeIndex) return;
@@ -252,7 +252,7 @@ function LearningOutcomes({ data }: LearningOutcomesProps) {
   };
 
   const outcomeData = contentData[activeIndex];
-  
+
   return (
     <section className="bg-white text-black pt-16 isolate">
       <div className=" max-w-7xl mx-auto">
@@ -283,7 +283,7 @@ function LearningOutcomes({ data }: LearningOutcomesProps) {
             <div className="hidden lg:block">
               <div className="mb-6 text-left pl-4">
                 <h3 className="text-lg font-light text-black mb-2">LEARNING OUTCOMES</h3>
-                <p className="text-gray-400 text-xs">Navigate through our mastery areas</p>
+                <p className="text-[#80868b] text-xs">Navigate through our mastery areas</p>
               </div>
 
               <nav className="" aria-label="Learning outcomes navigation">
@@ -332,7 +332,7 @@ function LearningOutcomes({ data }: LearningOutcomesProps) {
               <div className="bg-white">
                 {/* Description */}
                 <div className="mb-6 sm:mb-8 px-2 sm:px-6 pt-2 sm:pt-6">
-                  <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed mb-4 sm:mb-6">
+                  <p className="text-sm sm:text-base md:text-lg text-[#5f6368] leading-relaxed mb-4 sm:mb-6">
                     {outcomeData.description.split(outcomeData.highlight)[0]}
                     <span className="text-[#B30437] font-medium">{outcomeData.highlight}</span>
                     {outcomeData.description.split(outcomeData.highlight)[1]}
@@ -347,7 +347,7 @@ function LearningOutcomes({ data }: LearningOutcomesProps) {
                     {outcomeData.outcomes.map((outcome: string, idx: number) => (
                       <li key={idx} className="flex items-start space-x-2 sm:space-x-3">
                         <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#B30437] rounded-full mt-1.5 sm:mt-2 flex-shrink-0" />
-                        <span className="text-gray-700 leading-relaxed text-xs sm:text-sm md:text-base">{outcome}</span>
+                        <span className="text-[#5f6368] leading-relaxed text-xs sm:text-sm md:text-base">{outcome}</span>
                       </li>
                     ))}
                   </ul>

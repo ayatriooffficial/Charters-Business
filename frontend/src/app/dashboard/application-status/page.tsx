@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from 'react';
+import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 
 export default function ApplicationStatusPage() {
@@ -24,7 +25,7 @@ export default function ApplicationStatusPage() {
       <div className="flex flex-col items-center justify-center py-12 px-4">
         <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-6">
           <svg
-            className="w-12 h-12 text-gray-400"
+            className="w-12 h-12 text-[#80868b]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -38,12 +39,12 @@ export default function ApplicationStatusPage() {
           </svg>
         </div>
         <p className="text-gray-600 text-lg mb-4">No applications found</p>
-        <a
+        <Link
           href="/apply"
           className="flex items-center gap-2 bg-[#B30437] hover:bg-[#8B0329] text-white font-semibold py-3 px-6 rounded-lg transition-colors"
         >
           Apply Now
-        </a>
+        </Link>
       </div>
     );
   }
@@ -67,7 +68,7 @@ export default function ApplicationStatusPage() {
               <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
                 {application.program || 'Program Not Specified'}
               </h2>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-[#5f6368]">
                 Application #{application.applicationNumber}
               </p>
             </div>

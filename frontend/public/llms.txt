@@ -2,7 +2,7 @@ site: Charters Business
 version: 1.0
 canonical: https://chartersbusiness.com
 language: en
-updated: 2026-05-29
+updated: 2026-07-07
 
 description:
   Charters Business is an education and admissions platform
@@ -10,11 +10,14 @@ description:
   placement insights, and student onboarding experiences.
 
 primary-content:
-  https://chartersbusiness.com/programmes
+  https://chartersbusiness.com/
   https://chartersbusiness.com/about
-  https://chartersbusiness.com/admissions
-  https://chartersbusiness.com/placements
-  https://chartersbusiness.com/blog
+  https://chartersbusiness.com/student-life
+  https://chartersbusiness.com/career-path
+  https://chartersbusiness.com/careers
+  https://chartersbusiness.com/certified-business-accountant
+  https://chartersbusiness.com/digital-growth-&-marketing
+  https://chartersbusiness.com/technology-&-business-management
 
 ai-policy:
   Public programme and marketing content may be indexed,
@@ -25,27 +28,29 @@ ai-policy:
   must not be used for training or public generation.
 
 allow:
-  /programmes/
-  /placements/
-  /blog/
-  /about/
-  /admissions/
-  /faq/
-  /contact/
+  /
+  /about
+  /student-life
+  /career-path
+  /careers
+  /careers/jobs
+  /careers/internships
+  /community
+  /faculties
+  /certified-business-accountant
+  /digital-growth-&-marketing
+  /technology-&-business-management
+  /blogs/
+  /privacy-policy
+  /terms-and-conditions
 
 disallow:
-  /dashboard/
-  /admin/
-  /api/
-  /login/
-  /register/
-  /application/
-  /apply/
-  /profile/
-  /settings/
-  /checkout/
-  /payment/
-  /internal/
+  /dashboard
+  /admin
+  /api
+  /login
+  /signup
+  /application
 
 preview-deployments:
   https://charters-business-*.vercel.app

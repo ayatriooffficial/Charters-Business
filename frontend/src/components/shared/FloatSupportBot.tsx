@@ -27,7 +27,7 @@ export default function FloatSupportBot() {
   const [input, setInput] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(true);
   const [typing, setTyping] = useState(false);
-  
+
   const endRef = useRef<HTMLDivElement | null>(null);
   const pathname = usePathname();
   useEffect(() => {
@@ -122,7 +122,7 @@ export default function FloatSupportBot() {
                 }}
                 className="text-sm text-gray-800 hover:text-[#B30437] transition"
               >
-                Got any questions? I'm happy to help.
+                Got any questions? I&apos;m happy to help.
               </button>
             </div>
           )}
@@ -176,7 +176,7 @@ export default function FloatSupportBot() {
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="text-black cursor-pointer transition hover:text-gray-700"
+              className="text-black cursor-pointer transition hover:text-[#5f6368]"
               aria-label="Close support chat"
             >
               <X className="h-6 w-6" size={18} />
@@ -245,7 +245,7 @@ export default function FloatSupportBot() {
                             className={`block w-full rounded-lg px-4 py-2.5 text-center text-sm font-medium shadow-sm transition ${isWhatsapp
                               ? "bg-green-500 text-white hover:bg-green-600"
                               : isApply
-                                ? "bg-black text-white hover:bg-gray-800"
+                                ? "bg-[#202124] text-white hover:bg-gray-800"
                                 : "text-blue-600 underline"
                               }`}
                           >
@@ -314,8 +314,7 @@ export default function FloatSupportBot() {
 
           <div className="bg-[#ffffff] p-4">
             <div className="flex w-full rounded-full border border-gray-300 px-4 py-[6px] text-sm outline-none">
-              <Image
-                src="/Charters-icon/AI-icon.svg"
+              <img src="/Charters-icon/AI-icon.svg"
                 alt="AI icon"
                 width={25}
                 height={25}
@@ -337,7 +336,7 @@ export default function FloatSupportBot() {
                 <button
                   type="button"
                   onClick={() => void sendMessage()}
-                  className="flex h-auto w-10 items-center justify-center rounded-full bg-black text-white"
+                  className="flex h-auto w-10 items-center justify-center rounded-full bg-[#202124] text-white"
                   aria-label="Send message"
                 >
                   <Send size={16} />

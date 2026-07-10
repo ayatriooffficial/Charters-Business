@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from 'react';
+import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 
 export default function CounselingPage() {
@@ -42,7 +43,7 @@ export default function CounselingPage() {
       <div className="flex flex-col items-center justify-center py-12 px-4">
         <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-6">
           <svg
-            className="w-12 h-12 text-gray-400"
+            className="w-12 h-12 text-[#80868b]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -57,14 +58,14 @@ export default function CounselingPage() {
         </div>
         <div className="text-2xl font-bold text-gray-900 mb-2">No Counseling Sessions</div>
         <p className="text-gray-600 text-center mb-6">
-          You haven't scheduled any counseling sessions yet.
+          You haven&apos;t scheduled any counseling sessions yet.
         </p>
-        <a
+        <Link
           href="/apply?type=counseling"
           className="flex items-center gap-2 bg-[#B30437] hover:bg-[#8B0329] text-white font-semibold py-3 px-6 rounded-lg transition-colors"
         >
           Book Counseling Session
-        </a>
+        </Link>
       </div>
     );
   }
@@ -90,7 +91,7 @@ export default function CounselingPage() {
                 <div className="text-xl sm:text-2xl font-bold text-gray-900">
                   {counseling.program || 'Program Not Specified'}
                 </div>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-[#5f6368]">
                   Session #{counseling.counselingNumber}
                 </p>
               </div>
@@ -110,7 +111,7 @@ export default function CounselingPage() {
                 <div className="flex flex-row items-center gap-3">
                   <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center flex-shrink-0">
                     <svg
-                      className="w-5 h-5 text-gray-700"
+                      className="w-5 h-5 text-[#5f6368]"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -137,7 +138,7 @@ export default function CounselingPage() {
                 <div className="flex flex-row items-center gap-3">
                   <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center flex-shrink-0">
                     <svg
-                      className="w-5 h-5 text-gray-700"
+                      className="w-5 h-5 text-[#5f6368]"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -176,7 +177,7 @@ export default function CounselingPage() {
                     d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <p className="text-xs text-gray-700 flex-1">
+                <p className="text-xs text-[#5f6368] flex-1">
                   Our counselor will contact you at the scheduled time via email or phone.
                 </p>
               </div>

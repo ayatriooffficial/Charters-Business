@@ -1,9 +1,13 @@
 "use client";
 import { createPortal } from 'react-dom'
-import React, { useState, memo, useCallback, useRef, useEffect } from "react";
+import React, { useState, memo, useCallback, useRef } from "react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import useInViewPlay from "@/components/micro/useInViewPlay";
-import ChartersInterviewAi from "./Chartersinterview_ai";
+const ChartersInterviewAi = dynamic(
+    () => import("./Chartersinterview_ai"),
+    { ssr: false, loading: () => <div /> }
+);
 import HighlightText from "../shared/HighlightObserver";
 
 interface CardData {
@@ -60,111 +64,116 @@ interface ContentData {
         borderColor: string;
     };
 }
-const heading_description = {
-    description: "AI-Powered English Speaking | 1:1 Career Mentorship | AI-powered Job Search "
-}
+
+
 const cardsData: CardData[] = [
     {
         id: "shadow-cxos",
-        title: "Build Your Brand",
-        description: "Month 1",
+        title: "Career Identity Engineering",
+        description: "Week 1-3",
         color: "bg-pink-500",
         bgColor: "hover:bg-pink-50",
     },
     {
         id: "not-summer",
-        title: "1&1 Career Counselling",
-        description: "Month 2",
+        title: "Business Communication & Critical Thinking",
+        description: "Week 4-9",
         color: "bg-purple-500",
         bgColor: "hover:bg-purple-50",
     },
     {
         id: "not-summer-month3",
-        title: "1&1 Career Counselling",
-        description: "Month 3",
+        title: "Real-World Paid Internship Across 7 Countries",
+        description: "Week 10-4",
         color: "bg-purple-500",
         bgColor: "hover:bg-purple-50",
     },
     {
         id: "not-summer-month4",
-        title: "VRise: Your Job Application Hub",
-        description: "Month 4",
+        title: "AI-Powered Placement Launch & Long-Term Career",
+        description: "Week 16-22",
         color: "bg-purple-500",
         bgColor: "hover:bg-purple-50",
     },
     {
         id: "real-assignments",
-        title: "Placement Readiness Test",
-        description: "Month 5",
+        title: "Leadership & Social Impact Lab",
+        description: "Week 22-26",
         color: "bg-cyan-400",
         bgColor: "hover:bg-cyan-50",
     }
+
 ];
 
 const contentData: Record<string, ContentData> = {
     "shadow-cxos": {
-        title: "Leadership",
-        highlightText: "Mentorship",
+        title: "Career Identity Engineering",
+        highlightText: "",
         description:
-            "Work directly alongside C-level executives and senior management teams. Students get unprecedented access to boardroom discussions, strategic planning sessions, and high-level decision making processes across multiple industries.",
+            "CareerPathx™ fast steps start with students undergo a structured identity transformation — moving from frashers  mindset to professional mindset. First 2 weeks rewires how students see themselves — from learners to professionals-in-training.",
         stats: {
             main: {
-                value: "250,000+ USD",
-                label: "Average Executive Exposure Value",
-                bgColor: "bg-gradient-to-r from-[#FF5A9D]/20 to-transparent",
+                value: "",
+                label: "",
+                bgColor: "",
             },
             secondary: [
                 {
-                    value: "50+",
-                    label: "C-Level Mentors",
-                    bgColor: "bg-[#000000]/10",
+                    value: "94%",
+                    label: "students complete career blueprint within 3 week",
+                    bgColor: "",
                 },
                 {
-                    value: "12+",
-                    label: "Industry Sectors",
-                    bgColor: "bg-[#000000]/10",
+                    value: "3.2×",
+                    label: "higher LinkedIn profesonal profile completion",
+                    bgColor: "",
+                },
+                {
+                    value: "100%",
+                    label: "score with a named industry mentor before month 2",
+                    bgColor: "",
                 },
             ],
         },
         buttonText: "Charter Carrer AI Engine",
         buttonColor: "bg-none text-[#B30437]",
-        imageSrc: "/home/intern.jpg",
+        imageSrc: "/home/placement-service.avif",
         imageAlt: "Students in leadership mentorship program with executives",
         serviceCards: [
             {
-                title: "Executive Shadowing",
-                description: "Shadow C-level executives and learn leadership strategies firsthand.",
+                title: "Career DNA Assessment",
+                description: "A framework that identify whether a student has the natural aptitude, behavioral strengths, personality skill, cognitive abilities, & career-fit potential.",
                 iconColor: "text-[#B30437]",
                 accentColor: "from-[#B30437] to-[#B30437]/50",
                 features: [
-                    { icon: "document", label: "Leadership Workshops" },
-                    { icon: "search", label: "Strategic Planning" },
-                    { icon: "users", label: "Boardroom Access" },
+                    { icon: "document", label: "AI-powered psychometric + strength profiling" },
+                    { icon: "search", label: "Personal Career Blueprint Mapping" },
+                    { icon: "users", label: "12-week personal brand roadmap creation" },
                 ],
             },
             {
-                title: "Mentorship Network",
-                description: "Connect with industry leaders and build lasting professional relationships.",
+                title: "Professional Identity Architecture",
+                description: "Designing a student’s career identity, credibility, positioning, reputation, authority, and employability narrative before they enter the job market.",
                 iconColor: "text-orange-500",
                 accentColor: "from-orange-500 to-orange-300",
                 features: [
-                    { icon: "briefcase", label: "1:1 Mentoring" },
-                    { icon: "lightning", label: "Career Guidance" },
-                    { icon: "wrench", label: "Industry Insights" },
-                    { icon: "users", label: "Networking Events" },
-                    { icon: "database", label: "Resource Library" },
-                    { icon: "check", label: "Success Tracking" },
+                    { icon: "briefcase", label: "LinkedIn profile recruiter-reverse-engineered templates" },
+                    { icon: "lightning", label: "Professional headshot session" },
+                    { icon: "wrench", label: "Personal narrative framework" },
+                    { icon: "users", label: "Digital footprint audit" },
+                    { icon: "database", label: "AI Resource Library" },
+                    { icon: "check", label: "Personal Brnad Success Tracking" },
                 ],
             },
             {
-                title: "Leadership Training",
-                description: "Develop essential leadership skills through hands-on training programs.",
+                title: "Digital Professional Identity",
+                description: "Build Digital Professional Identity, Create Personal Brand, and Become Globally Visible to Employers, Clients, and Career Opportunities.",
                 iconColor: "text-[#B30437]",
                 accentColor: "from-[#B30437] to-[#B30437]/50",
                 features: [
-                    { icon: "database", label: "Leadership Library" },
-                    { icon: "search", label: "Skill Assessments" },
-                    { icon: "check", label: "Certification" },
+                    { icon: "database", label: "Professional services website creation " },
+                    { icon: "search", label: "Freelancing profile creation" },
+                    { icon: "check", label: "Professional group & events" },
                 ],
             },
         ],
@@ -179,26 +188,31 @@ const contentData: Record<string, ContentData> = {
             ]
         },
         avatar: {
-            src: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&h=100&fit=crop",
+            src: "",
             alt: "Placement Officer",
             borderColor: "border-cyan-400"
         },
     },
     "real-assignments": {
-        title: "Placement",
-        highlightText: "Readiness",
+        title: "Leadership & Social Impact",
+        highlightText: "",
         description:
-            "Prepare comprehensively for placements with our readiness test program. Assess your skills, get personalized feedback, and access targeted training to excel in interviews and assessments.",
+            "Build leadership skills, accelerate your career, and create real social impact. Join India's most comprehensive student development and mentorship program.",
         stats: {
             main: {
-                value: "88%",
-                label: "Placement Success Rate",
+                value: "",
+                label: "",
                 bgColor: "bg-gradient-to-r from-[#00D4FF]/20 to-transparent",
             },
             secondary: [
                 {
                     value: "15+",
                     label: "Skill Assessments",
+                    bgColor: "bg-[#00D4FF]/10",
+                },
+                {
+                    value: "200+",
+                    label: "Mock Interviews",
                     bgColor: "bg-[#00D4FF]/10",
                 },
                 {
@@ -214,39 +228,39 @@ const contentData: Record<string, ContentData> = {
         imageAlt: "Placement readiness test and training",
         serviceCards: [
             {
-                title: "Skill Assessment",
-                description: "Comprehensive evaluations to identify strengths and areas for improvement.",
+                title: "Drive Social Change",
+                description: "Lead with Purpose. Drive Social Change. Build the Future.",
                 iconColor: "text-[#00D4FF]",
                 accentColor: "from-[#00D4FF] to-[#00D4FF]/50",
                 features: [
-                    { icon: "document", label: "Aptitude Tests" },
-                    { icon: "search", label: "Technical Assessments" },
-                    { icon: "users", label: "Soft Skills Evaluation" },
+                    { icon: "document", label: "Lead community initiatives" },
+                    { icon: "search", label: "Solve real-world challenges" },
+                    { icon: "users", label: "Create sustainable impact" },
                 ],
             },
             {
-                title: "Mock Interviews",
-                description: "Practice interviews with industry professionals and get detailed feedback.",
+                title: "Learn Social Leadership",
+                description: "Build Leadership Skills to Inspire Change and Shape the Future.",
                 iconColor: "text-orange-500",
-                accentColor: "from-orange-500 to-orange-300",
+                accentColor: "",
                 features: [
-                    { icon: "briefcase", label: "HR Rounds" },
-                    { icon: "lightning", label: "Technical Rounds" },
-                    { icon: "wrench", label: "Group Discussions" },
-                    { icon: "users", label: "Panel Interviews" },
+                    { icon: "briefcase", label: "Manage social projects" },
+                    { icon: "lightning", label: "Collaborate with teams" },
+                    { icon: "wrench", label: "Community leadership" },
+                    { icon: "users", label: "Problem-solving ability" },
                     { icon: "database", label: "Video Practice" },
                     { icon: "check", label: "Feedback Reports" },
                 ],
             },
             {
-                title: "Interview Prep",
-                description: "Targeted training to help you ace your placement interviews.",
+                title: "Future leadership readiness",
+                description: "Develop Future Leadership Skills for Career Growth and Global Success.",
                 iconColor: "text-[#00D4FF]",
                 accentColor: "from-[#00D4FF] to-[#00D4FF]/50",
                 features: [
-                    { icon: "database", label: "Company Research" },
-                    { icon: "search", label: "Resume Review" },
-                    { icon: "check", label: "Confidence Building" },
+                    { icon: "database", label: "problem-solving ability" },
+                    { icon: "search", label: "Future-ready leader" },
+                    { icon: "check", label: "Leadership + employability" },
                 ],
             },
         ],
@@ -267,69 +281,74 @@ const contentData: Record<string, ContentData> = {
         },
     },
     "not-summer": {
-        title: "Flexible",
-        highlightText: "Internships",
+        title: "AI-Powered Corporate English & Presentation Training ",
+        highlightText: " ",
         description:
-            "Unlike traditional summer-only programs, our internships run year-round with flexible scheduling. Students can gain practical experience while maintaining their academic commitments through evening and weekend opportunities.",
+            "Master spoken English, business communication, executive body language, presentation skills, workplace communication, and become job-ready for corporate success.",
         stats: {
             main: {
-                value: "131,760+ USD",
-                label: "Cumulative Stipend (in the first year)",
-                bgColor: "bg-gradient-to-r from-[#8B5CF6]/20 to-transparent",
+                value: "",
+                label: "",
+                bgColor: "",
             },
             secondary: [
                 {
-                    value: "110+",
-                    label: "Internships (in the first year)",
-                    bgColor: "bg-[#8B5CF6]/10",
+                    value: "+91%",
+                    label: "Improvement in spoken English fluency",
+                    bgColor: "",
                 },
                 {
-                    value: "15+",
-                    label: "Countries",
-                    bgColor: "bg-[#8B5CF6]/10",
+                    value: "+4.6/5",
+                    label: "employer rating of 24/25",
+                    bgColor: "",
+                },
+                {
+                    value: "100%",
+                    label: "Students deliver a live recorded presentation to industry panel",
+                    bgColor: "",
                 },
             ],
         },
         buttonText: "VIEW CAREER LAB REPORT →",
         buttonColor: "bg-[#8B5CF6] hover:bg-[#8B5CF6]/90",
-        imageSrc: "/home/intern3.png",
+        imageSrc: "/home/careerlunch.avif",
         imageAlt:
             "Students in flexible internship program working evenings and weekends",
         serviceCards: [
             {
-                title: "Recruitment",
-                description: "We build partnerships to recruit and give you visibility over the recruitment pipeline.",
+                title: "AI-powered corporate English",
+                description: "Improve Spoken English, Business Communication, Workplace Communication, Professional Vocabulary, Pronunciation.",
                 iconColor: "text-[#8B5CF6]",
                 accentColor: "from-[#8B5CF6] to-[#8B5CF6]/50",
                 features: [
-                    { icon: "document", label: "Document Management" },
-                    { icon: "search", label: "Readiness Assessment" },
-                    { icon: "users", label: "Vocational Eligibility" },
+                    { icon: "document", label: "English Specking  (daily 15-min sessions)" },
+                    { icon: "search", label: "Real-time fluency correction" },
+                    { icon: "users", label: "Industry vocabulary immersion (domain-specific)" },
                 ],
             },
             {
-                title: "Training",
-                description: "Hybrid job training programs with online and in-person components.",
+                title: "Executive body language training",
+                description: "Build executive presence, professional confidence, non-verbal communication mastery, interview confidence, corporate personality development.",
                 iconColor: "text-orange-500",
                 accentColor: "from-orange-500 to-orange-300",
                 features: [
-                    { icon: "briefcase", label: "Job Readiness" },
-                    { icon: "lightning", label: "Clean Energy" },
-                    { icon: "wrench", label: "Technical Skills" },
-                    { icon: "users", label: "Team Building" },
-                    { icon: "database", label: "Online Modules" },
-                    { icon: "check", label: "Certification" },
+                    { icon: "briefcase", label: "Personality development" },
+                    { icon: "lightning", label: "Non-verbal communication" },
+                    { icon: "wrench", label: "Group posture debate" },
+                    { icon: "users", label: "Corporate presentations" },
+                    { icon: "database", label: "Corporate client interactions" },
+                    { icon: "check", label: "Interview confidence" },
                 ],
             },
             {
-                title: "Job Placement",
-                description: "Partnerships with nationwide trades associations that hire our graduates.",
+                title: "Presentation Skill training",
+                description: "Presentation design, audience engagement, business storytelling, and presentation delivery to become career-ready and succeed in interviews, meetings.",
                 iconColor: "text-[#8B5CF6]",
                 accentColor: "from-[#8B5CF6] to-[#8B5CF6]/50",
                 features: [
-                    { icon: "database", label: "1000+ Employer Database" },
-                    { icon: "search", label: "Job Matching" },
-                    { icon: "check", label: "Interview Preparation" },
+                    { icon: "database", label: "Public speaking confidence" },
+                    { icon: "search", label: "Digital presentation mastery" },
+                    { icon: "check", label: "Audience engagemen" },
                 ],
             },
         ],
@@ -350,68 +369,73 @@ const contentData: Record<string, ContentData> = {
         },
     },
     "not-summer-month3": {
-        title: "Career",
-        highlightText: "Development",
+        title: "Paid internship in 7 countries",
+        highlightText: "",
         description:
-            "Structured career development programs tailored to your goals. Work with career coaches to identify your strengths, overcome challenges, and create actionable plans for your professional growth.",
+            "CareerPathx™ delivers work experience through structured micro-internships, live client projects, and the institution's own employer partnership network — including international internship pathways across 7 countries.",
         stats: {
             main: {
-                value: "95%",
-                label: "Career Goals Achievement Rate",
-                bgColor: "bg-gradient-to-r from-[#8B5CF6]/20 to-transparent",
+                value: "",
+                label: "",
+                bgColor: "",
             },
             secondary: [
                 {
-                    value: "1:1",
-                    label: "Career Coaching Sessions",
-                    bgColor: "bg-[#8B5CF6]/10",
+                    value: "+87%",
+                    label: "Student offer PPO offer before Internship end",
+                    bgColor: "",
                 },
                 {
-                    value: "100+",
-                    label: "Career Paths Supported",
-                    bgColor: "bg-[#8B5CF6]/10",
+                    value: "100%",
+                    label: "Internship placement rate (domestic + international)",
+                    bgColor: "",
+                },
+                {
+                    value: "+2.4 avg. ",
+                    label: "Internship experiences per student before 7 months",
+                    bgColor: "",
                 },
             ],
         },
         buttonText: "VIEW CAREER DEVELOPMENT →",
         buttonColor: "bg-[#8B5CF6] hover:bg-[#8B5CF6]/90",
-        imageSrc: "/home/intern3.png",
+        imageSrc: "/home/careerlunch.avif",
         imageAlt: "Career development and coaching program",
         serviceCards: [
             {
-                title: "Career Coaching",
-                description: "Personalized 1:1 sessions with experienced career coaches.",
+                title: "Global Industry Internship Placement Program™",
+                description: "Join a global paid internship program, global work experience, work on live projects, earn stipends, and build career-ready skills.",
                 iconColor: "text-[#8B5CF6]",
                 accentColor: "from-[#8B5CF6] to-[#8B5CF6]/50",
                 features: [
-                    { icon: "document", label: "Goal Setting" },
-                    { icon: "search", label: "Strength Analysis" },
-                    { icon: "users", label: "Progress Tracking" },
+                    { icon: "document", label: "Faculty guieded paid-internship" },
+                    { icon: "search", label: "Global companies across 7+ countries" },
+                    { icon: "users", label: "Professional Global networking" },
                 ],
             },
             {
-                title: "Skill Building",
-                description: "Develop essential skills for your chosen career path.",
+                title: "External Freelancing Program",
+                description: "Build a freelance career with global client networking, remote work opportunities, portfolio development, international projects, proposal writing.",
                 iconColor: "text-orange-500",
                 accentColor: "from-orange-500 to-orange-300",
                 features: [
-                    { icon: "briefcase", label: "Professional Skills" },
-                    { icon: "lightning", label: "Communication" },
-                    { icon: "wrench", label: "Problem Solving" },
-                    { icon: "users", label: "Leadership" },
-                    { icon: "database", label: "Time Management" },
-                    { icon: "check", label: "Critical Thinking" },
+                    { icon: "briefcase", label: "Local MSME Mindset" },
+                    { icon: "lightning", label: "Customer acquisition" },
+                    { icon: "wrench", label: "AI Tools for Business" },
+                    { icon: "users", label: "Market Research" },
+                    { icon: "database", label: "Competitive Analysis" },
+                    { icon: "check", label: "Professional Communication" },
                 ],
             },
             {
-                title: "Career Planning",
-                description: "Create actionable roadmaps for your professional journey.",
+                title: "Local MSME Program",
+                description: "Accelerate your career by working directly with Local MSMEs, Startups, Emerging Businesses, and Fast-Growing Companies.",
                 iconColor: "text-[#8B5CF6]",
                 accentColor: "from-[#8B5CF6] to-[#8B5CF6]/50",
                 features: [
-                    { icon: "database", label: "Career Mapping" },
-                    { icon: "search", label: "Industry Research" },
-                    { icon: "check", label: "Milestone Setting" },
+                    { icon: "database", label: "real-world business experience" },
+                    { icon: "search", label: "Problem-solving mindset" },
+                    { icon: "check", label: "Project execution capability" },
                 ],
             },
         ],
@@ -432,76 +456,82 @@ const contentData: Record<string, ContentData> = {
         },
     },
     "not-summer-month4": {
-        title: "Job",
-        highlightText: "Applications",
+        title: "AI-Powered Placement-Ready Preparation programs",
+        highlightText: "",
         description:
-            "VRise is your comprehensive job application hub. Track applications, get real-time updates, manage interviews, and access resources to perfect your application strategy across multiple employers.",
+            "CareerPathx™ delivers your first job with AI-powered career coaching, day to day placement preparation, ATS-friendly resume building, LinkedIn optimization, AI-mock interviews, internship support, and long-term career growth planning.",
         stats: {
             main: {
-                value: "75,000+",
-                label: "Jobs Listed",
-                bgColor: "bg-gradient-to-r from-[#8B5CF6]/20 to-transparent",
+                value: "",
+                label: "",
+                bgColor: "",
             },
             secondary: [
                 {
-                    value: "500+",
-                    label: "Partner Companies",
-                    bgColor: "bg-[#8B5CF6]/10",
+                    value: "+87%",
+                    label: "Student earn Internship to full time offer",
+                    bgColor: "",
                 },
                 {
-                    value: "30+",
-                    label: "Job Categories",
-                    bgColor: "bg-[#8B5CF6]/10",
+                    value: "+3 Offer",
+                    label: "per students across 11 batchs 2024/25'",
+                    bgColor: "",
+                },
+                {
+                    value: "180 days",
+                    label: "Placement guarantee window",
+                    bgColor: "",
                 },
             ],
         },
         buttonText: "VIEW JOB APPLICATIONS →",
         buttonColor: "bg-[#8B5CF6] hover:bg-[#8B5CF6]/90",
-        imageSrc: "/home/intern3.png",
+        imageSrc: "/home/careerlunch.avif",
         imageAlt: "VRise job application hub",
         serviceCards: [
             {
-                title: "Application Tracker",
-                description: "Track all your job applications in one centralized dashboard.",
-                iconColor: "text-[#8B5CF6]",
-                accentColor: "from-[#8B5CF6] to-[#8B5CF6]/50",
+                title: "Employer Access & Talent Pipeline",
+                description: "Create ATS-friendly resumes, improve interview chances, build confidence, and get job-ready with recruiter-approved resume training.",
+                iconColor: "",
+                accentColor: "",
                 features: [
-                    { icon: "document", label: "Status Updates" },
-                    { icon: "search", label: "Application History" },
-                    { icon: "users", label: "Interview Scheduling" },
+                    { icon: "database", label: "AI-Powerd Mock interview" },
+                    { icon: "search", label: "ATS-friendly resume" },
+                    { icon: "check", label: "Job Application tracking system" },
                 ],
             },
             {
-                title: "Job Matching",
-                description: "AI-powered recommendations based on your skills and preferences.",
+                title: "Pre-Placement Offer Pipeline ",
+                description: "Secure early job offers through placement training, employer networking, interview preparation, and job-ready career development programs.",
+                iconColor: "text-[#8B5CF6]",
+                accentColor: "from-[#8B5CF6] to-[#8B5CF6]/50",
+                features: [
+                    { icon: "document", label: "Proprietary job-matching algorithm" },
+                    { icon: "search", label: "Daily curated job alerts" },
+                    { icon: "users", label: "Application tracking dashboard" },
+                    { icon: "users", label: "Offer negotiation training" },
+                    { icon: "database", label: "Day 1 employment prep" },
+                    { icon: "check", label: "first 90-day performance framework" },
+                ],
+            },
+            {
+                title: "AI-Powered Job Search Engine",
+                description: "Find jobs faster with AI-powered job search, resume optimization, smart job matching, remote jobs, and career growth tools.",
                 iconColor: "text-orange-500",
                 accentColor: "from-orange-500 to-orange-300",
                 features: [
-                    { icon: "briefcase", label: "Skill Matching" },
-                    { icon: "lightning", label: "Smart Filters" },
-                    { icon: "wrench", label: "Salary Insights" },
-                    { icon: "users", label: "Culture Fit" },
-                    { icon: "database", label: "Job Alerts" },
-                    { icon: "check", label: "Match Score" },
+                    { icon: "briefcase", label: "12-Week placement framework" },
+                    { icon: "lightning", label: "Applications tracke" },
+                    { icon: "wrench", label: "Placement coach review" },
                 ],
             },
-            {
-                title: "Application Resources",
-                description: "Templates, guides, and tools to perfect your applications.",
-                iconColor: "text-[#8B5CF6]",
-                accentColor: "from-[#8B5CF6] to-[#8B5CF6]/50",
-                features: [
-                    { icon: "database", label: "Resume Templates" },
-                    { icon: "search", label: "Cover Letters" },
-                    { icon: "check", label: "Application Tips" },
-                ],
-            },
+
         ],
         footer: {
-            title: "Placement Intelligence Engine",
-            description: "Data-driven insights into placement readiness, ensuring students are 100% prepared before they face their first technical round.",
+            title: "Leadership & Social Impact",
+            description: "Build leadership skills, communication confidence, teamwork, social impact experience, public speaking, problem solving, and career-ready leadership for future success..",
             features: [
-                { icon: "chart", label: "Test Analytics" },
+                { icon: "chart", label: "On-campus employer summit" },
                 { icon: "lightning", label: "Result Automation" },
                 { icon: "check", label: "Readiness Score" },
                 { icon: "document", label: "Review Notes" }
@@ -518,43 +548,35 @@ const contentData: Record<string, ContentData> = {
 
 // Icons for the feature items
 const DocumentIcon = () => (
-    <Image src="/Charters-icon/Cancel.svg" alt="document" width={16} height={16} className="w-4 h-4" />
+    <img src="/Charters-icon/Cancel.svg" alt="document" width={16} height={16} className="w-4 h-4" />
 );
 
 const SearchIcon = () => (
-    <Image src="/Charters-icon/Cancel.svg" alt="search" width={16} height={16} className="w-4 h-4" />
+    <img src="/Charters-icon/Cancel.svg" alt="search" width={16} height={16} className="w-4 h-4" />
 );
 
 const UserGroupIcon = () => (
-    <Image src="/Charters-icon/Cancel.svg" alt="users" width={16} height={16} className="w-4 h-4" />
+    <img src="/Charters-icon/Cancel.svg" alt="users" width={16} height={16} className="w-4 h-4" />
 );
 
 const BriefcaseIcon = () => (
-    <Image src="/Charters-icon/Cancel.svg" alt="briefcase" width={16} height={16} className="w-4 h-4" />
+    <img src="/Charters-icon/Cancel.svg" alt="briefcase" width={16} height={16} className="w-4 h-4" />
 );
 
 const LightningIcon = () => (
-    <Image src="/Charters-icon/Cancel.svg" alt="lightning" width={16} height={16} className="w-4 h-4" />
+    <img src="/Charters-icon/Cancel.svg" alt="lightning" width={16} height={16} className="w-4 h-4" />
 );
 
 const WrenchIcon = () => (
-    <Image src="/Charters-icon/Cancel.svg" alt="wrench" width={16} height={16} className="w-4 h-4" />
+    <img src="/Charters-icon/Cancel.svg" alt="wrench" width={16} height={16} className="w-4 h-4" />
 );
 
 const DatabaseIcon = () => (
-    <Image src="/Charters-icon/Cancel.svg" alt="database" width={16} height={16} className="w-4 h-4" />
+    <img src="/Charters-icon/Cancel.svg" alt="database" width={16} height={16} className="w-4 h-4" />
 );
 
 const CheckCircleIcon = () => (
-    <Image src="/Charters-icon/Cancel.svg" alt="check" width={16} height={16} className="w-4 h-4" />
-);
-
-const ChartIcon = () => (
-    <Image src="/Charters-icon/Cancel.svg" alt="chart" width={16} height={16} className="w-4 h-4" />
-);
-
-const StatsIcon = () => (
-    <Image src="/Charters-icon/Cancel.svg" alt="stats" width={24} height={24} className="w-6 h-6 text-gray-500" />
+    <img src="/Charters-icon/Cancel.svg" alt="check" width={16} height={16} className="w-4 h-4" />
 );
 
 const getIcon = (iconName: string) => {
@@ -585,9 +607,6 @@ const StrategicExpansion: React.FC = () => {
 
     const [selectedCard, setSelectedCard] = useState<string>("shadow-cxos");
     const currentContent = React.useMemo(() => contentData[selectedCard], [selectedCard]);
-    const sliderRef = useRef<HTMLDivElement>(null);
-    const [canScrollLeft, setCanScrollLeft] = useState(false);
-    const [canScrollRight, setCanScrollRight] = useState(true);
 
     const handleCardClick = useCallback((cardId: string) => {
         setSelectedCard(cardId);
@@ -595,103 +614,58 @@ const StrategicExpansion: React.FC = () => {
 
     const [showInterviewAI, setShowInterviewAI] = useState(false);
 
-    // Track scroll position for navigation buttons
-    useEffect(() => {
-        const slider = sliderRef.current;
-        if (!slider) return;
-
-        const handleScroll = () => {
-            setCanScrollLeft(slider.scrollLeft > 10);
-            setCanScrollRight(slider.scrollLeft < slider.scrollWidth - slider.clientWidth - 10);
-        };
-
-        handleScroll(); // Initial check
-        slider.addEventListener('scroll', handleScroll, { passive: true });
-        return () => slider.removeEventListener('scroll', handleScroll);
-    }, [selectedCard]);
-
-    const scrollSlider = useCallback((direction: number) => {
-        const slider = sliderRef.current;
-        if (!slider) return;
-        const cardWidth = slider.clientWidth * 0.82; // 82vw card width
-        slider.scrollTo({
-            left: slider.scrollLeft + (direction * cardWidth),
-            behavior: 'smooth'
-        });
-    }, []);
-
     return (
         <section ref={sectionRef} className="mx-[0%] pt-12 bg-white">
             {isVisible && (
                 <>
-                    <div className="flex-shrink-0 text-center mb-13 sm:mb-13">
-                        <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
-
-                            <HighlightText className="font-bold">
-                                Week 1 to Final Week
-                            </HighlightText>:{" "} AI-Powered Career Development
+                    <div className="flex-shrink-0 text-center mb-8 sm:mb-8">
+                        <p className=" text-sm px-[40px] font-semibold text-[#B30437] tracking-wider mb-4 sm:mb-6">NEXT-GENERATION EMPLOYABILITY ASSURANCE ECOSYSTEM</p>
+                        <h2 className="leading-none text-black px-[20px] text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
+                            1st Week to 1st Job:
+                            <HighlightText className="font-bold">CareerPathx™</HighlightText>{" "} Career AI-Engine
                         </h2>
                         <div className="flex flex-col items-start sm:flex-row sm:flex-wrap sm:justify-center sm:items-center gap-3 sm:gap-6 mb-2 sm:mb-4 w-fit mx-auto sm:w-full">
-                            {heading_description.description.split("|").map((item: string, index: number) => (
-                                <div key={index} className="flex items-center gap-2">
-                                    <img
-                                        src="/dot-icon.svg"
-                                        alt=""
-                                        className="w-4 h-4 flex-shrink-0"
-                                        aria-hidden="true"
-                                    />
-                                    <span className="text-sm sm:text-base text-black font-medium leading-snug whitespace-nowrap">
-                                        {item.trim()}
-                                    </span>
-                                </div>
-                            ))}
+                            <p className="text-sm sm:text-base text-gray-600 px-[20px] md:px-[50px] lg:px-[70px]">A complete AI-Powerd career-operating system that transforms enrolled students in <strong>accounting</strong>, <strong>digital marketing</strong>, and <strong>technology & business</strong> into <strong>100% employability assurance</strong> — through <strong>7 sequential stages</strong> in <strong>7 months</strong>.</p>
                         </div>
                     </div>
                     {/* Tabs at the top */}
                     <div aria-label="Career Labs categories" className="border-b border-gray-300">
                         <ul className="flex w-[93%] mx-auto overflow-x-auto scrollbar-hide">
-                            {cardsData.map((card) => {
-                                const isActive = selectedCard === card.id;
-                                return (
-                                    <li
-                                        key={card.id}
-                                        className="flex-1 bg-white"
-                                    >
-                                        <button
-                                            onClick={() => handleCardClick(card.id)}
-                                            className={`w-full px-3 sm:px-4 py-4 text-left border-b-2 !bg-white hover:!bg-white active:!bg-white focus:!bg-white transition-all duration-200 ${
-                                                isActive ? 'border-black' : 'border-transparent'
+                            {cardsData.map((card) => (
+                                <li
+                                    key={card.id}
+                                    className="flex-1 cursor-pointer bg-white"
+                                >
+                                    <button
+                                        onClick={() => handleCardClick(card.id)}
+                                        className={`w-full px-3 sm:px-4 cursor-pointer py-4 text-left border-b-2 !bg-white hover:!bg-white active:!bg-white focus:!bg-white transition-all duration-200 ${selectedCard === card.id
+                                            ? "border-black opacity-100 font-semibold"
+                                            : "border-transparent opacity-40 hover:opacity-80"
                                             }`}
-                                            aria-label={`${card.title} program`}
-                                        >
-                                            <div className="flex items-center gap-3">
-                                                <img
-                                                    src="/dot-icon.svg"
-                                                    alt=""
-                                                    className={`w-5 h-5 transition-opacity duration-200 ${
-                                                        isActive ? 'opacity-100' : 'opacity-30'
-                                                    }`}
-                                                    aria-hidden="true"
-                                                />
+                                        aria-label={`${card.title} program`}
+                                    >
+                                        <div className="flex items-center gap-3">
+                                            <img src="/dot-icon.svg"
+                                                alt=""
+                                                width={20}
+                                                height={20}
+                                                className="w-5 opacity-[0.5] h-5"
+                                                aria-hidden="true"
+                                            />
 
-                                                <div>
-                                                    <span className={`block text-xs font-semibold uppercase tracking-wide transition-colors duration-200 ${
-                                                        isActive ? 'text-black' : 'text-gray-400'
-                                                    }`}>
-                                                        {card.description}
-                                                    </span>
+                                            <div>
+                                                <span className="block text-[12px] font-semibold text-black uppercase tracking-wide">
+                                                    {card.description}
+                                                </span>
 
-                                                    <span className={`block text-lg font-semibold whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px] lg:max-w-[220px] transition-colors duration-200 ${
-                                                        isActive ? 'text-black' : 'text-gray-400'
-                                                    }`}>
-                                                        {card.title}
-                                                    </span>
-                                                </div>
+                                                <span className="block text-[16px] font-semibold text-black whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px] lg:max-w-[220px]">
+                                                    {card.title}
+                                                </span>
                                             </div>
-                                        </button>
-                                    </li>
-                                );
-                            })}
+                                        </div>
+                                    </button>
+                                </li>
+                            ))}
                         </ul>
                     </div>
 
@@ -703,43 +677,26 @@ const StrategicExpansion: React.FC = () => {
                             {/* Content Section */}
                             <div className="flex flex-col lg:flex-row gap-8 items-start mb-8">
                                 {/* Left Side - Text and Stats */}
-                                <div className="flex-1 space-y-6">
-                                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light text-black leading-tight">
+                                <div className="flex-1 space-y-3 pt-2">
+                                    <h2 className="text-2xl font-semibold sm:text-3xl lg:text-4xl font-light text-black leading-tight">
                                         {currentContent.title}{" "}
                                         <em className="italic font-serif text-[#B30437]">
                                             {currentContent.highlightText}
                                         </em>
                                     </h2>
 
-                                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                                    <p className="text-sm sm:text-base pb-2 text-[#5f6368] leading-relaxed">
                                         {currentContent.description}
                                     </p>
 
                                     {/* Stats */}
                                     <div className="space-y-6">
-                                        <div className="relative pl-4">
-                                            <div
-                                                className={`absolute left-0 -top-2 w-16 h-12 ${currentContent.stats.main.bgColor} rounded-lg`}
-                                            />
-                                            <div className="relative z-10">
-                                                <div className="text-2xl lg:text-3xl font-light text-black">
-                                                    {currentContent.stats.main.value}
-                                                </div>
-                                                <p className="text-[#B30437] text-xs font-medium">
-                                                    {currentContent.stats.main.label}
-                                                </p>
-                                            </div>
-                                        </div>
-
                                         <div className="flex gap-6">
                                             {currentContent.stats.secondary.map((stat, i) => (
-                                                <div key={i} className="relative pl-4">
-                                                    <div
-                                                        className={`absolute left-0 top-0 w-8 h-8 ${stat.bgColor} rounded-lg`}
-                                                    />
+                                                <div key={i} className="bg-[#E3DFD2] p-[10px] relative pl-4">
                                                     <div className="relative z-10">
-                                                        <div className="text-xl font-light text-black">{stat.value}</div>
-                                                        <p className="text-[#B30437] text-xs font-medium">
+                                                        <div className="text-xl font-semibold text-black">{stat.value}</div>
+                                                        <p className="text-black text-xs font-medium">
                                                             {stat.label}
                                                         </p>
                                                     </div>
@@ -753,16 +710,17 @@ const StrategicExpansion: React.FC = () => {
 
                                 {/* Right Side - Profile Image */}
                                 <div className="flex-1 flex justify-center">
-                                    <div className="relative w-72 h-80 lg:w-80 lg:h-96">
-                                        <div className="w-full h-full bg-gradient-to-b from-gray-200 to-gray-300 rounded-lg overflow-hidden relative">
+                                    <div className=" relative w-auto h-auto lg:w-140 lg:h-84">
+                                        <div className="w-full h-full relative">
                                             <Image
                                                 key={selectedCard}
                                                 src={currentContent.imageSrc}
                                                 alt={currentContent.imageAlt}
-                                                fill
+                                                width={550}
+                                                height={350}
                                                 loading="lazy"
                                                 priority={false}
-                                                className="object-cover"
+                                                className="object-cover ml-[25px]"
                                                 sizes="(max-width: 768px) 100vw, 320px"
                                             />
                                         </div>
@@ -774,13 +732,12 @@ const StrategicExpansion: React.FC = () => {
                             {/* Three Service Cards - Dynamic based on selected tab */}
                             <div className="relative">
                                 <div
-                                    ref={sliderRef}
-                                    className="md:grid md:grid-cols-3 mb-2 flex overflow-x-auto scrollbar-hide snap-x snap-mandatory md:overflow-visible border border-gray-300"
+                                    className="grid grid-cols-1 md:grid-cols-3 mb-2 border border-gray-300"
                                 >
                                     {currentContent.serviceCards.map((card, index) => (
-                                        <div key={index} className="border-r border-gray-300 p-6 relative overflow-hidden min-w-[82vw] md:min-w-0 snap-center last:border-r-0">
+                                        <div key={index} className="border-b md:border-b-0 md:border-r border-gray-300 p-6 relative overflow-hidden w-full md:min-w-0 last:border-b-0 last:border-r-0">
                                             <h3 className="text-lg font-semibold text-black mb-2">{card.title}</h3>
-                                            <p className="text-sm text-gray-600 mb-6">
+                                            <p className=" text-[12px] text-gray-600 mb-6 ">
                                                 {card.description}
                                             </p>
 
@@ -794,14 +751,14 @@ const StrategicExpansion: React.FC = () => {
                                                                 <div className="shrink-0">
                                                                     {getIcon(card.features[rowIndex]?.icon || "document")}
                                                                 </div>
-                                                                <span className="text-xs text-gray-700">{card.features[rowIndex]?.label}</span>
+                                                                <span className="text-xs text-[#5f6368]">{card.features[rowIndex]?.label}</span>
                                                             </div>
                                                             {/* Right item */}
                                                             <div className="border-b border-[#D5D0CA] p-3 sm:p-4 flex items-center gap-2">
                                                                 <div className="shrink-0">
                                                                     {getIcon(card.features[rowIndex + 3]?.icon || "document")}
                                                                 </div>
-                                                                <span className="text-xs text-gray-700">{card.features[rowIndex + 3]?.label}</span>
+                                                                <span className="text-xs text-[#5f6368]">{card.features[rowIndex + 3]?.label}</span>
                                                             </div>
                                                         </React.Fragment>
                                                     ))}
@@ -816,48 +773,15 @@ const StrategicExpansion: React.FC = () => {
                                                             <div className="shrink-0 px-2">
                                                                 {getIcon(feature.icon)}
                                                             </div>
-                                                            <span className="text-xs text-gray-700">{feature.label}</span>
+                                                            <span className="text-xs text-[#5f6368]">{feature.label}</span>
                                                         </div>
                                                     ))}
                                                 </div>
                                             )}
-
-                                            <div className="-mx-6  py-0.5 px-4">
-                                                <span className="text-xs text-gray-500">And more</span>
-                                            </div>
                                         </div>
                                     ))}
                                 </div>
 
-                                {/* Mobile Navigation Buttons */}
-                                <div className="md:hidden absolute top-1/2 -translate-y-1/2 right-2 pointer-events-none z-10">
-                                    {canScrollRight && (
-                                        <button
-                                            onClick={() => scrollSlider(1)}
-                                            className="w-10 h-10 rounded-full bg-[#B30437] hover:bg-red-700 transition-all duration-300 shadow-md flex items-center justify-center pointer-events-auto"
-                                            aria-label="Next slide"
-                                            type="button"
-                                        >
-                                            <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" aria-hidden="true">
-                                                <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
-                                            </svg>
-                                        </button>
-                                    )}
-                                </div>
-                                <div className="md:hidden absolute top-1/2 -translate-y-1/2 left-2 pointer-events-none z-10">
-                                    {canScrollLeft && (
-                                        <button
-                                            onClick={() => scrollSlider(-1)}
-                                            className="w-10 h-10 rounded-full bg-[#B30437] hover:bg-red-700 transition-all duration-300 shadow-md flex items-center justify-center pointer-events-auto"
-                                            aria-label="Previous slide"
-                                            type="button"
-                                        >
-                                            <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" aria-hidden="true">
-                                                <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
-                                            </svg>
-                                        </button>
-                                    )}
-                                </div>
                             </div>
 
                             {/* Dotted Lines Connecting Cards to Bottom Section */}
@@ -965,17 +889,24 @@ const StrategicExpansion: React.FC = () => {
                                         className={`w-19 h-19 rounded-full border-4 ${currentContent.avatar.borderColor} overflow-hidden shadow-lg z-20 cursor-pointer transition-transform hover:scale-110`}
                                         onClick={() => setShowInterviewAI(true)}
                                     >
-                                        <img
-                                            src={currentContent.avatar.src}
-                                            alt={currentContent.avatar.alt}
-                                            className="w-full h-full object-cover"
-                                        />
+                                        {currentContent.avatar.src ? (
+                                            <Image
+                                                src={currentContent.avatar.src}
+                                                alt={currentContent.avatar.alt}
+                                                width={50}
+                                                height={50}
+                                                loading="lazy"
+                                                priority={false}
+                                                className="w-full h-full object-cover"
+                                                sizes="(max-width: 768px) 100vw, 320px"
+                                            />
+                                        ) : null}
                                     </div>
                                 </div>
                             </div>
 
                             {showInterviewAI && createPortal(
-                                <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-black/20">
+                                <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[#202124]/20">
                                     <div className="w-[80%] h-[90%] relative">
                                         <button
                                             onClick={() => setShowInterviewAI(false)}

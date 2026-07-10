@@ -40,11 +40,11 @@ const FAQ: React.FC<FAQProps> = ({ data }) => {
   const currentCategoryFAQs = data.categories.find((cat) => cat.id === activeCategory)?.faqs || [];
 
   return (
-    <section className="bg-white pt-4 sm:pt-6 md:pt-8" aria-labelledby="faq-heading">
-      <div className="mx-auto">
+    <section className="bg-white" aria-labelledby="faq-heading">
+      <div className="max-w-[85rem] pt-12 sm:pt-16 md:pt-18">
         {/* Header */}
-        <header className="text-center mb-6 sm:mb-8">
-          <p className="text-xs sm:text-sm font-semibold text-gray-500 tracking-wider mb-2 sm:mb-3">FAQS</p>
+        <header className="text-center mb-6 sm:mb-8 border-b border-gray-200">
+          <p className="text-xs sm:text-sm font-semibold text-[#5f6368] tracking-wider mb-2 sm:mb-3">FAQS</p>
           <h2 id="faq-heading" className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-black mb-4 sm:mb-6">
             Have more Questions?
           </h2>
@@ -58,9 +58,9 @@ const FAQ: React.FC<FAQProps> = ({ data }) => {
               <button
                 key={category.id}
                 onClick={() => handleCategoryChange(category.id)}
-                className={`relative px-3 sm:px-4 py-3 sm:py-4 text-left focus:outline-none border-r border-gray-200 last:border-r-0 whitespace-nowrap ${activeCategory === category.id
-                    ? "text-black"
-                    : "text-black hover:bg-gray-100"
+                className={`relative px-3 sm:px-4 py-3 sm:py-4 text-left focus:outline-none whitespace-nowrap ${activeCategory === category.id
+                  ? "text-black"
+                  : "text-black hover:bg-gray-100"
                   }`}
                 type="button"
                 role="tab"
@@ -71,7 +71,7 @@ const FAQ: React.FC<FAQProps> = ({ data }) => {
                 </div>
 
                 {activeCategory === category.id && (
-                  <span className="absolute left-2 right-2 bottom-0 h-[2px] bg-black" />
+                  <span className="absolute left-2 right-2 bottom-0 h-[2px] bg-[#202124]" />
                 )}
               </button>
             ))}
@@ -98,9 +98,9 @@ const FAQ: React.FC<FAQProps> = ({ data }) => {
                   <span className="text-base sm:text-lg font-medium text-gray-900 pr-4">{faq.question}</span>
                   <div className="flex-shrink-0">
                     {openQuestions.has(faq.id) ? (
-                      <ChevronUp className="w-5 h-5 text-gray-500" />
+                      <ChevronUp className="w-5 h-5 text-[#5f6368]" />
                     ) : (
-                      <ChevronDown className="w-5 h-5 text-gray-500" />
+                      <ChevronDown className="w-5 h-5 text-[#5f6368]" />
                     )}
                   </div>
                 </button>
@@ -123,7 +123,7 @@ const FAQ: React.FC<FAQProps> = ({ data }) => {
         {/* Empty State */}
         {currentCategoryFAQs.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-gray-500">No questions available for this category yet.</p>
+            <p className="text-[#5f6368]">No questions available for this category yet.</p>
           </div>
         )}
       </div>

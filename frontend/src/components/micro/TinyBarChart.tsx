@@ -39,8 +39,6 @@ function TinyBarChart({
   // detect when visible
   const inView = useInViewPlay(containerRef, "200px", 0.1);
 
-  const [containerHeight, setContainerHeight] = useState(112);
-
   const [heights, setHeights] = useState<number[]>(bars.map(() => 0));
 
   // observe container height
@@ -53,7 +51,7 @@ function TinyBarChart({
     const updateHeight = () => {
       frame = requestAnimationFrame(() => {
         const height = container.offsetHeight;
-        setContainerHeight(height);
+        void height;
       });
     };
 

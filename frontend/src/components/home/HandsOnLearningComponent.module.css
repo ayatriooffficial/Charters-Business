@@ -1,0 +1,29 @@
+.handsOnContainer {
+  will-change: transform;
+  height: calc(var(--category-count, 5) * 100vh);
+}
+
+.handsOnStickyTransition {
+  will-change: transform;
+  transition: all 200ms ease-in-out;
+}
+
+.handsOnMenuTransition {
+  transition: all 200ms ease-in-out;
+}
+
+.handsOnCardContainer {
+  transition: none;
+}
+
+.handsOnCardScale {
+  transition: none;
+}
+
+.handsOnStoreCard {
+  transition: background-color 200ms ease-in-out;
+}
+
+.handsOnCtaButton {
+  transition: background-color 200ms ease-in-out;
+}

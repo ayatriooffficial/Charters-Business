@@ -1,6 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect, useRef, useCallback, memo } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
@@ -8,6 +9,7 @@ import UserDropdown from "@/components/dashboard/UserDropdown";
 const AcademicsDropdown = dynamic(() => import("./AcademicsDropdown"), { ssr: false });
 import { createPortal } from "react-dom";
 const ChartersInterviewAi = dynamic(() => import("../home/Chartersinterview_ai"), { ssr: false });
+import styles from "./Navbar.module.css";
 
 
 function Navbar() {
@@ -29,7 +31,6 @@ function Navbar() {
   const [currentMsgIndex, setCurrentMsgIndex] = useState(0);
   const [msgVisible, setMsgVisible] = useState(true);
 
-
   const { user, navigateToRemoteDashboard } = useAuth();
 
   const headerRef = useRef<HTMLDivElement>(null);
@@ -37,6 +38,7 @@ function Navbar() {
   const primaryRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const academicsButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileAcademicsButtonRef = useRef<HTMLButtonElement>(null);
   const router = useRouter();
 
   const dashboardUrl =
@@ -65,16 +67,12 @@ function Navbar() {
   const calculateDropdownPosition = useCallback(() => {
     if (!primaryRef.current) return;
 
+    // The secondary bar sits above the primary bar in normal document flow,
+    // so primaryRect.bottom already accounts for the secondary bar's height
+    // (including when it's collapsed/hidden) — no need to read secondaryRef.
     const primaryRect = primaryRef.current.getBoundingClientRect();
-    let totalTop = primaryRect.bottom;
-
-    if (isSecondaryVisible && secondaryRef.current) {
-      const secondaryRect = secondaryRef.current.getBoundingClientRect();
-      totalTop = secondaryRect.bottom;
-    }
-
-    setDropdownTop(totalTop);
-  }, [isSecondaryVisible]);
+    setDropdownTop(primaryRect.bottom);
+  }, []);
 
   useEffect(() => {
     setIsMounted(true);
@@ -94,8 +92,10 @@ function Navbar() {
       const target = event.target as Node;
 
       if (
-        academicsButtonRef.current &&
-        academicsButtonRef.current.contains(target)
+        (academicsButtonRef.current &&
+          academicsButtonRef.current.contains(target)) ||
+        (mobileAcademicsButtonRef.current &&
+          mobileAcademicsButtonRef.current.contains(target))
       ) {
         return;
       }
@@ -122,72 +122,82 @@ function Navbar() {
     calculateDropdownPosition();
   }, [calculateDropdownPosition, isSecondaryVisible, isNavbarVisible]);
 
-  useEffect(() => {
-    // Use ResizeObserver to watch primary and secondary navbar elements
-    const resizeObserver = new ResizeObserver(() => {
-      calculateDropdownPosition();
-    });
-
-    if (primaryRef.current) resizeObserver.observe(primaryRef.current);
-    if (secondaryRef.current) resizeObserver.observe(secondaryRef.current);
-
-    return () => {
-      resizeObserver.disconnect();
-    };
-  }, [calculateDropdownPosition]);
+  // Cache navbar heights — zero-cost reads in scroll handler
+  const navbarHeightsCache = useRef({ primary: 0, secondary: 0 });
 
   useEffect(() => {
     const updateNavbarHeight = () => {
       const primaryHeight = primaryRef.current?.offsetHeight || 0;
       const secondaryHeight = secondaryRef.current?.offsetHeight || 0;
-      const fullHeight = primaryHeight + secondaryHeight;
-      document.documentElement.style.setProperty('--navbar-height', `${fullHeight}px`);
+      navbarHeightsCache.current = { primary: primaryHeight, secondary: secondaryHeight };
+      document.documentElement.style.setProperty('--navbar-height', `${primaryHeight + secondaryHeight}px`);
     };
 
-    updateNavbarHeight();
-
-    const resizeObserver = new ResizeObserver(() => {
+    const onResize = () => {
+      calculateDropdownPosition();
       updateNavbarHeight();
+    };
+
+    const roRef = { id: null as number | null };
+    const resizeObserver = new ResizeObserver(() => {
+      if (roRef.id !== null) cancelAnimationFrame(roRef.id);
+      roRef.id = requestAnimationFrame(() => {
+        onResize();
+        roRef.id = null;
+      });
     });
 
+    onResize();
     if (primaryRef.current) resizeObserver.observe(primaryRef.current);
     if (secondaryRef.current) resizeObserver.observe(secondaryRef.current);
 
     return () => {
+      if (roRef.id !== null) cancelAnimationFrame(roRef.id);
       resizeObserver.disconnect();
     };
-  }, []);
+  }, [calculateDropdownPosition]);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
+    const rafRef = { id: null as number | null };
 
     const handleScroll = () => {
+      if (typeof window === "undefined") return;
       const currentScrollY = window.scrollY;
-      const scrollingDown = currentScrollY > lastScrollY;
-      const atTop = currentScrollY < 10;
 
-      const primaryHeight = primaryRef.current?.offsetHeight || 0;
-      const secondaryHeight = secondaryRef.current?.offsetHeight || 0;
+      // Batch reads/writes inside rAF
+      if (rafRef.id !== null) return;
+      rafRef.id = requestAnimationFrame(() => {
+        const scrollingDown = currentScrollY > lastScrollY;
+        const atTop = currentScrollY < 10;
 
-      if (atTop) {
-        setIsNavbarVisible(true);
-        setIsSecondaryVisible(true);
-        document.documentElement.style.setProperty('--navbar-height', `${primaryHeight + secondaryHeight}px`);
-      } else if (scrollingDown) {
-        setIsNavbarVisible(false);
-        setIsSecondaryVisible(false);
-        document.documentElement.style.setProperty('--navbar-height', `0px`);
-      } else {
-        setIsNavbarVisible(true);
-        setIsSecondaryVisible(false);
-        document.documentElement.style.setProperty('--navbar-height', `${primaryHeight}px`);
-      }
+        // Read from cache — no layout forced in scroll handler
+        const { primary: primaryHeight, secondary: secondaryHeight } = navbarHeightsCache.current;
 
-      lastScrollY = currentScrollY;
+        if (atTop) {
+          setIsNavbarVisible(true);
+          setIsSecondaryVisible(true);
+          document.documentElement.style.setProperty('--navbar-height', `${primaryHeight + secondaryHeight}px`);
+        } else if (scrollingDown) {
+          setIsNavbarVisible(false);
+          setIsSecondaryVisible(false);
+          document.documentElement.style.setProperty('--navbar-height', `0px`);
+        } else {
+          setIsNavbarVisible(true);
+          setIsSecondaryVisible(false);
+          document.documentElement.style.setProperty('--navbar-height', `${primaryHeight}px`);
+        }
+
+        lastScrollY = currentScrollY;
+        rafRef.id = null;
+      });
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      if (rafRef.id !== null) cancelAnimationFrame(rafRef.id);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -199,7 +209,7 @@ function Navbar() {
   return (
     <div
       ref={headerRef}
-      className={`fixed left-0 right-0 z-[100] text-gray-900 w-full font-sans navbar-transition ${isNavbarVisible ? "translate-y-0" : "-translate-y-full"
+      className={`fixed left-0 right-0 z-[100] text-gray-900 w-full font-sans ${styles.navbarTransition} ${isNavbarVisible ? "translate-y-0" : "-translate-y-full"
         }`}
       style={{ top: 0 }}
       role="banner"
@@ -208,7 +218,7 @@ function Navbar() {
         {/* Secondary Navigation */}
         <div
           ref={secondaryRef}
-          className={`border-none hidden sm:flex items-center navbar-secondary-transition bg-[#f5f5f7] ${isSecondaryVisible
+          className={`border-none hidden sm:flex items-center ${styles.navbarSecondaryTransition} bg-[#f5f5f7] ${isSecondaryVisible
             ? "h-[30px] opacity-100 transform translate-y-0"
             : "h-0 opacity-0 transform -translate-y-full overflow-hidden"
             }`}
@@ -223,7 +233,7 @@ function Navbar() {
                 <ul className="flex text-[13px] text-[#0F1419] font-semibold items-center space-x-3 sm:space-x-4 lg:space-x-6">
                   <li>
 
-                    <a href="/for-companies"
+                    <Link href="/for-companies"
                       className={`cursor-pointer hover:text-[#B30437] transition-colors ${selectedSecondaryTab === "for-companies"
                         ? "border-b-3 border-[#B30437] text-[#B30437]"
                         : ""
@@ -231,7 +241,7 @@ function Navbar() {
                       onClick={() => setSelectedSecondaryTab("for-companies")}
                     >
                       Companies + Recruiters
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </nav>
@@ -247,8 +257,7 @@ function Navbar() {
                 <p className="{msgVisible ? 'msg-visible' : 'msg-hidden'} m-0">
                   {messages[currentMsgIndex]}
                 </p>
-                <Image
-                  src="/Charters-icon/top_arrow-black.svg"
+                <Image src="/Charters-icon/top_arrow-black.svg"
                   alt="Format icon"
                   width={15}
                   height={15}
@@ -316,7 +325,7 @@ function Navbar() {
         {/* Primary Navigation*/}
         <nav
           ref={primaryRef}
-          className={`border-white/30 navbar-primary-slide relative z-[110] ${isNavbarVisible
+          className={`border-white/30 ${styles.navbarPrimarySlide} relative z-[110] ${isNavbarVisible
             ? "translate-y-0 opacity-100"
             : "-translate-y-4 opacity-0"
             }`}
@@ -339,11 +348,12 @@ function Navbar() {
                 onKeyPress={(e) => e.key === "Enter" && handleLogoClick()}
               >
                 <Image
-                  src="/Chaters_Union.webp"
+                  src="/Chaters_Union.avif"
                   alt="Charters Union of Business - Home"
                   fill
                   sizes="(max-width: 640px) 112px, (max-width: 768px) 144px, 160px"
                   className="object-contain object-left"
+                  quality={50}
                   priority
                 />
               </div>
@@ -359,8 +369,7 @@ function Navbar() {
                   >
                     <span>ACADEMICS</span>
 
-                    <Image
-                      src="/Charters-icon/Dropdown.svg"
+                    <Image src="/Charters-icon/Dropdown.svg"
                       alt="dropdown"
                       width={12}
                       height={12}
@@ -371,36 +380,36 @@ function Navbar() {
                 </li>
 
                 <li>
-                  <a
+                  <Link
                     href="/faculties"
                     className="gap-2 hover:underline decoration-black hover:text-[#B30437] transition-colors duration-300 cursor-pointer"
                   >
                     <span>FACULTY + RESEARCH</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/student-life"
                     className="gap-2 hover:underline decoration-black hover:text-[#B30437] transition-colors duration-300 cursor-pointer"
                   >
                     <span>STUDENT LIFE</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/careers"
                     className="gap-2 hover:underline decoration-black hover:text-[#B30437] transition-colors duration-300 cursor-pointer"
                   >
                     <span>PLACEMENTS++</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/community"
                     className="gap-2 hover:underline decoration-black hover:text-[#B30437] transition-colors duration-300 cursor-pointer"
                   >
                     <span>COMMUNITY</span>
-                  </a>
+                  </Link>
                 </li>
               </ul>
 
@@ -426,18 +435,16 @@ function Navbar() {
                   aria-label="Toggle navigation menu"
                 >
                   {isMobileMenuOpen ? (
-                    <Image
-                      src="/Charters-icon/Cancel.svg"
+                    <Image src="/Charters-icon/Cancel.svg"
                       alt="dropdown"
                       width={14}
-                      height={14} className="w-4 h-4 text-gray-700" />
+                      height={14} className="w-4 h-4 text-[#5f6368]" />
                   ) : (
-                    <Image
-                      src="/Charters-icon/manu.svg"
+                    <Image src="/Charters-icon/manu.svg"
                       alt="dropdown"
                       width={14}
                       height={14}
-                      className="w-5 h-5 text-gray-700" />
+                      className="w-5 h-5 text-[#5f6368]" />
                   )}
                 </button>
               </div>
@@ -456,7 +463,7 @@ function Navbar() {
 
         {/* Mobile Menu */}
         <div
-          className={`lg:hidden fixed inset-0 z-[50] navbar-mobile-transition ${isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+          className={`lg:hidden fixed inset-0 z-[50] ${styles.navbarMobileTransition} ${isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
             }`}
           style={{ top: `${dropdownTop}px` }}
         >
@@ -465,28 +472,24 @@ function Navbar() {
             onClick={() => setIsMobileMenuOpen(false)}
           />
           <div
-            className={`relative bg-white w-full min-h-screen navbar-mobile-slide ${isMobileMenuOpen ? "translate-y-0" : "-translate-y-full"
+            className={`relative bg-white w-full min-h-screen ${styles.navbarMobileSlide} ${isMobileMenuOpen ? "translate-y-0" : "-translate-y-full"
               }`}
           >
             <nav className="px-4 sm:px-6 py-6" aria-label="Mobile navigation">
               <ul className="space-y-4">
                 <li>
-                  <a
-                    href="/about"
-                    className="block py-3 text-sm font-medium text-gray-900 hover:text-[#B30437] transition-colors"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    ABOUT
-                  </a>
-                </li>
-                <li>
                   <button
+                    ref={mobileAcademicsButtonRef}
                     className="w-full flex items-center justify-between py-3 text-sm font-medium text-gray-900 hover:text-[#B30437] transition-colors"
-                    onClick={() => setIsAcademicsOpen(!isAcademicsOpen)}
+                    aria-expanded={isAcademicsOpen}
+                    aria-haspopup="true"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      setIsAcademicsOpen(true);
+                    }}
                   >
                     <span>ACADEMICS</span>
-                    <Image
-                      src="/Charters-icon/Dropdown.svg"
+                    <Image src="/Charters-icon/Dropdown.svg"
                       alt="dropdown"
                       width={16}
                       height={16}
@@ -494,72 +497,49 @@ function Navbar() {
                         }`}
                     />
                   </button>
-                  {isAcademicsOpen && (
-                    <div className="pl-4 pb-2 space-y-2">
-                      <button
-                        onClick={() => handleCourseClick("curriculum-section")}
-                        className="block py-2 text-xs text-gray-600 hover:text-[#B30437] w-full text-left"
-                      >
-                        Business Strategy
-                      </button>
-                      <button
-                        onClick={() =>
-                          handleCourseClick("google-workspace-education")
-                        }
-                        className="block py-2 text-xs text-gray-600 hover:text-[#B30437] w-full text-left"
-                      >
-                        Financial Management
-                      </button>
-                      <button
-                        onClick={() => handleCourseClick("week-at-tetr")}
-                        className="block py-2 text-xs text-gray-600 hover:text-[#B30437] w-full text-left"
-                      >
-                        Marketing Management
-                      </button>
-                      <button
-                        onClick={() =>
-                          handleCourseClick("learn-apply-reflect-repeat")
-                        }
-                        className="block py-2 text-xs text-gray-600 hover:text-[#B30437] w-full text-left"
-                      >
-                        Operations Management
-                      </button>
-                    </div>
-                  )}
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/faculties"
                     className="block py-3 text-sm font-medium text-gray-900 hover:text-[#B30437] transition-colors"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     FACULTY + RESEARCH
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
+                    href="/student-life"
+                    className="block py-3 text-sm font-medium text-gray-900 hover:text-[#B30437] transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    STUDENT LIFE
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href="/careers"
                     className="block py-3 text-sm font-medium text-gray-900 hover:text-[#B30437] transition-colors"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    CAREERS
-                  </a>
+                    PLACEMENTS++
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/community"
                     className="block py-3 text-sm font-medium text-gray-900 hover:text-[#B30437] transition-colors"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     COMMUNITY
-                  </a>
+                  </Link>
                 </li>
               </ul>
 
               <div className="mt-8 pt-8 border-t border-gray-200">
                 <ul className="space-y-3">
                   <li>
-                    <a
+                    <Link
                       href="/for-you"
                       className={`block py-2 text-xs text-gray-600 hover:text-[#B30437] ${selectedSecondaryTab === "for-you"
                         ? "text-[#B30437] font-medium"
@@ -571,10 +551,10 @@ function Navbar() {
                       }}
                     >
                       For Individuals
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
                       href="/for-companies"
                       className={`block py-2 text-xs text-gray-600 hover:text-[#B30437] ${selectedSecondaryTab === "for-companies"
                         ? "text-[#B30437] font-medium"
@@ -586,10 +566,10 @@ function Navbar() {
                       }}
                     >
                       For Companies
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
                       href="/careers/internships"
                       className={`block py-2 text-xs text-gray-600 hover:text-[#B30437] ${selectedSecondaryTab === "internships"
                         ? "text-[#B30437] font-medium"
@@ -601,10 +581,10 @@ function Navbar() {
                       }}
                     >
                       Find Internship
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
                       href="/careers/jobs"
                       className={`block py-2 text-xs text-gray-600 hover:text-[#B30437] ${selectedSecondaryTab === "jobs"
                         ? "text-[#B30437] font-medium"
@@ -616,10 +596,10 @@ function Navbar() {
                       }}
                     >
                       Find Jobs
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
+                    <Link
                       href="/events"
                       className={`block py-2 text-xs text-gray-600 hover:text-[#B30437] ${selectedSecondaryTab === "events"
                         ? "text-[#B30437] font-medium"
@@ -631,7 +611,7 @@ function Navbar() {
                       }}
                     >
                       Events
-                    </a>
+                    </Link>
                   </li>
 
                   {user ? (
@@ -685,7 +665,7 @@ function Navbar() {
         </div>
       </div>
       {isMounted && showInterviewAI && createPortal(
-        <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-black/20">
+        <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[#202124]/20">
           <div className="w-[80%] h-[90%] relative">
             <button
               onClick={() => {

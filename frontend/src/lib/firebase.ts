@@ -89,4 +89,4 @@ export function setupRecaptcha(containerId: string = 'firebase-recaptcha-root'):
   }
 }
 
-export default app;
+export default app;

@@ -184,7 +184,7 @@ const StatsContent: React.FC<StatsContentProps> = ({ selectedData, selectedProgr
       }`}
   >
     <div className="mb-6 lg:mb-8 relative z-10 overflow-hidden">
-      <p className="text-sm text-gray-500 mb-4 lg:mb-6 break-words">{selectedData.header}</p>
+      <p className="text-sm text-[#5f6368] mb-4 lg:mb-6 break-words">{selectedData.header}</p>
 
       {/* Conditional rendering of chart SVGs for local-startup-intraship */}
       {selectedProgram === 'local-startup-intraship' ? (
@@ -207,7 +207,7 @@ const StatsContent: React.FC<StatsContentProps> = ({ selectedData, selectedProgr
 
     {/* Quote Box */}
     <div className="bg-gray-50 p-4 sm:p-6 border-l-4 border-[#B30437] relative z-10 max-w-full overflow-hidden">
-      <p className="text-sm text-gray-700 leading-relaxed break-words">{selectedData.quote}</p>
+      <p className="text-sm text-[#5f6368] leading-relaxed break-words">{selectedData.quote}</p>
     </div>
 
     {/* Add bottom stat SVG only for local-startup-intraship */}
@@ -215,8 +215,8 @@ const StatsContent: React.FC<StatsContentProps> = ({ selectedData, selectedProgr
 
     {/* Author attribution */}
     <div className="mt-4 text-right flex flex-col items-end relative z-10 max-w-full overflow-hidden">
-      <div className="text-xs text-gray-400 font-bold break-words">{selectedData.author.title}</div>
-      <div className="text-xs text-gray-400 max-w-[200px] break-words">{selectedData.author.para}</div>
+      <div className="text-xs text-[#80868b] font-bold break-words">{selectedData.author.title}</div>
+      <div className="text-xs text-[#80868b] max-w-[200px] break-words">{selectedData.author.para}</div>
     </div>
   </div>
 );

@@ -38,7 +38,6 @@ function TinyLineChart({
   backgroundColor?: string;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const svgRef = useRef<HTMLDivElement>(null);
 
   const inView = useInViewPlay(containerRef, "200px", 0.1);
 

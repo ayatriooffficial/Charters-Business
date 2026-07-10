@@ -20,11 +20,7 @@ function formatSegmentLabel(segment: string) {
     .join(' ');
 }
 
-export default function Breadcrumbs({
-  compact = false,
-}: {
-  compact?: boolean;
-}) {
+export default function Breadcrumbs({ compact }: { compact?: boolean }) {
 
   const pathname = usePathname() || '/';
   if (pathname === '/') return null;
@@ -41,22 +37,22 @@ export default function Breadcrumbs({
   return (
     <nav
       aria-label="Breadcrumb"
-      className="relative z-10 w-full px-4 sm:px-6 lg:px-8 py-2 bg-white border-b border-gray-100"
+      className="relative z-10 w-full py-2 bg-white "
     >
-      <ol className="mx-auto max-w-7xl flex flex-wrap items-center gap-1 text-xs sm:text-sm text-gray-600">
+      <ol className="flex flex-wrap items-center gap-1 text-xs sm:text-sm text-gray-600">
         {crumbs.map((crumb, index) => {
           const isLast = index === crumbs.length - 1;
 
           return (
-            <li key={crumb.href} className="flex items-center gap-1">
+            <li key={crumb.href} className="flex items-center gap-2">
               {isLast ? (
-                <span className="font-medium text-gray-900">{crumb.label}</span>
+                <span className="text-gray-900">{crumb.label}</span>
               ) : (
-                <Link href={crumb.href} className="hover:text-[#B30437] transition-colors">
+                <Link href={crumb.href} className="hover:text-[#000000] transition-colors">
                   {crumb.label}
                 </Link>
               )}
-              {!isLast && <span className="text-gray-400">{'>'}</span>}
+              {!isLast && <span className="text-gray-900">{'/'}</span>}
             </li>
           );
         })}

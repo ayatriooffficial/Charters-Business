@@ -3,7 +3,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import SectionWrapper from "@/components/shared/SectionWrapper";
 
 const TetrLandingPage = () => {
   const [activeSection, setActiveSection] = useState<
@@ -220,8 +219,7 @@ const TetrLandingPage = () => {
             <div className="text-center mb-6">
               <h1 className="text-3xl font-bold leading-tight text-black">
                 Learn to Build
-              </h1>
-              <h1 className="text-3xl font-bold leading-tight text-black mt-1">
+                <br />
                 Build to Learn.
               </h1>
             </div>
@@ -256,11 +254,11 @@ const TetrLandingPage = () => {
           {/* Desktop Layout */}
           <div className="hidden md:block relative">
             <div className="absolute top-8 left-0 z-20">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[0.9] text-black">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[0.9] text-black">
                 Learn
                 <br />
                 to Build —————
-              </h1>
+              </h2>
             </div>
 
             <div className="flex justify-center relative">
@@ -282,11 +280,11 @@ const TetrLandingPage = () => {
             </div>
 
             <div className="absolute top-20 right-0 z-20">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[0.9] text-black text-right">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[0.9] text-black text-right">
                 Build to
                 <br />
                 Learn.
-              </h1>
+              </h2>
             </div>
 
             <div className="absolute bottom-8 left-1/4 transform -translate-x-1/2 bg-[#B30437] p-6 rounded-2xl shadow-xl max-w-xs sm:max-w-sm z-10">
@@ -488,7 +486,7 @@ const TetrLandingPage = () => {
                   </span>
                 </h3>
 
-                <p className="text-gray-700 mb-6 text-base leading-relaxed">
+                <p className="text-[#5f6368] mb-6 text-base leading-relaxed">
                   {sectionContent.values.description}
                 </p>
 
@@ -496,7 +494,7 @@ const TetrLandingPage = () => {
                   {sectionContent.values.points.map((point, index) => (
                     <div key={index} className="flex items-start gap-2">
                       <span className="text-[#B30437] text-lg">★</span>
-                      <p className="text-gray-700 text-sm">{point}</p>
+                      <p className="text-[#5f6368] text-sm">{point}</p>
                     </div>
                   ))}
                 </div>
@@ -541,7 +539,7 @@ const TetrLandingPage = () => {
                   </span>
                 </h3>
 
-                <p className="text-gray-700 mb-6 text-base leading-relaxed">
+                <p className="text-[#5f6368] mb-6 text-base leading-relaxed">
                   {sectionContent.exposure.description}
                 </p>
 
@@ -549,7 +547,7 @@ const TetrLandingPage = () => {
                   {sectionContent.exposure.points.map((point, index) => (
                     <div key={index} className="flex items-start gap-2">
                       <span className="text-[#B30437] text-lg">★</span>
-                      <p className="text-gray-700 text-sm">{point}</p>
+                      <p className="text-[#5f6368] text-sm">{point}</p>
                     </div>
                   ))}
                 </div>
@@ -591,7 +589,7 @@ const TetrLandingPage = () => {
                   </span>
                 </h3>
 
-                <p className="text-gray-700 mb-6 text-base leading-relaxed">
+                <p className="text-[#5f6368] mb-6 text-base leading-relaxed">
                   {sectionContent.experiences.description}
                 </p>
 
@@ -599,7 +597,7 @@ const TetrLandingPage = () => {
                   {sectionContent.experiences.points.map((point, index) => (
                     <div key={index} className="flex items-start gap-2">
                       <span className="text-[#B30437] text-lg">★</span>
-                      <p className="text-gray-700 text-sm">{point}</p>
+                      <p className="text-[#5f6368] text-sm">{point}</p>
                     </div>
                   ))}
                 </div>
@@ -646,7 +644,7 @@ const TetrLandingPage = () => {
                   </span>
                 </h3>
 
-                <p className="text-gray-700 mb-6 text-base leading-relaxed">
+                <p className="text-[#5f6368] mb-6 text-base leading-relaxed">
                   {sectionContent.skills.description}
                 </p>
 
@@ -654,7 +652,7 @@ const TetrLandingPage = () => {
                   {sectionContent.skills.points.map((point, index) => (
                     <div key={index} className="flex items-start gap-2">
                       <span className="text-[#B30437] text-lg">★</span>
-                      <p className="text-gray-700 text-sm">{point}</p>
+                      <p className="text-[#5f6368] text-sm">{point}</p>
                     </div>
                   ))}
                 </div>

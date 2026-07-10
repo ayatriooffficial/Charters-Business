@@ -15,15 +15,11 @@ export default function HighlightText({
     children,
     className = "",
     color = "black",
-    activeColor = "#0d2b1f",
-    bgColor = "#A9FF9B",
+    activeColor = "#000000",
+    bgColor = "#56BAB3",
     threshold = 0.6,
 }: HighlightTextProps) {
     const wrapRef = useRef<HTMLSpanElement>(null);
-    const bgRef = useRef<HTMLSpanElement>(null);
-    const textRef = useRef<HTMLSpanElement>(null);
-    const dotTLRef = useRef<HTMLSpanElement>(null);
-    const dotBRRef = useRef<HTMLSpanElement>(null);
 
     useEffect(() => {
         const el = wrapRef.current;
@@ -31,76 +27,59 @@ export default function HighlightText({
 
         const observer = new IntersectionObserver(
             ([entry]) => {
-                if (entry.isIntersecting) {
-                    if (bgRef.current) {
-                        bgRef.current.style.transform = "scaleX(1)";
-                    }
-
-                    setTimeout(() => {
-                        if (textRef.current) {
-                            textRef.current.style.color = activeColor;
-                        }
-                    }, 450);
-
-                    setTimeout(() => {
-                        if (dotTLRef.current) dotTLRef.current.style.opacity = "1";
-                        if (dotBRRef.current) dotBRRef.current.style.opacity = "1";
-                    }, 750);
-                } else {
-                    if (bgRef.current) {
-                        bgRef.current.style.transform = "scaleX(0)";
-                    }
-                    if (textRef.current) {
-                        textRef.current.style.color = color;
-                    }
-                    if (dotTLRef.current) dotTLRef.current.style.opacity = "0";
-                    if (dotBRRef.current) dotBRRef.current.style.opacity = "0";
-                }
+                // Toggle a single class — CSS handles all sequential transitions via transition-delay
+                el.classList.toggle("hl-active", entry.isIntersecting);
             },
             { threshold }
         );
 
         observer.observe(el);
         return () => observer.disconnect();
-    }, [color, activeColor, threshold]);
-
-    const dotStyle: React.CSSProperties = {
-        position: "absolute",
-        width: 11,
-        height: 11,
-        borderTopRightRadius: 5,
-        borderBottomRightRadius: 5,
-        borderBottomLeftRadius: 5,
-        borderTopLeftRadius: 5,
-        background: bgColor,
-        opacity: 0,
-        transition: "opacity 0.2s ease",
-        zIndex: 2,
-    };
+    }, [threshold]);
 
     return (
         <span
             ref={wrapRef}
-            className={className}
+            className={`hl-wrap ${className}`}
             style={{
                 position: "relative",
                 display: "inline-block",
                 padding: "2px 7px",
                 zIndex: 0,
-            }}
+                "--hl-bg": bgColor,
+                "--hl-color": color,
+                "--hl-active-color": activeColor,
+            } as React.CSSProperties}
         >
             {/* top-left dot */}
-            <span ref={dotTLRef} style={{ ...dotStyle, borderBottomRightRadius: 0, top: -11, left: -11 }} />
+            <span
+                aria-hidden="true"
+                className="hl-dot hl-dot-tl"
+                style={{
+                    position: "absolute",
+                    width: 11,
+                    height: 11,
+                    borderRadius: 5,
+                    borderTopRightRadius: 5,
+                    borderBottomRightRadius: 5,
+                    borderBottomLeftRadius: 5,
+                    borderTopLeftRadius: 0,
+                    background: bgColor,
+                    top: -11,
+                    left: -11,
+                    transition: "opacity 0.2s ease 0.75s",
+                    zIndex: 2,
+                }}
+            />
 
             {/* background */}
             <span
-                ref={bgRef}
                 aria-hidden="true"
+                className="hl-bg"
                 style={{
                     position: "absolute",
                     inset: 0,
                     background: bgColor,
-                    transform: "scaleX(0)",
                     transformOrigin: "left center",
                     transition: "transform 0.75s cubic-bezier(0.22, 1, 0.36, 1)",
                     zIndex: -1,
@@ -109,19 +88,33 @@ export default function HighlightText({
 
             {/* text */}
             <span
-                ref={textRef}
+                className="hl-text"
                 style={{
                     position: "relative",
                     zIndex: 1,
-                    color: color,
-                    transition: "color 0.15s ease",
+                    transition: "color 0.15s ease 0.45s",
                 }}
             >
                 {children}
             </span>
 
             {/* bottom-right dot */}
-            <span ref={dotBRRef} style={{ ...dotStyle, borderTopLeftRadius: 0, bottom: -11, right: -11 }} />
+            <span
+                aria-hidden="true"
+                className="hl-dot hl-dot-br"
+                style={{
+                    position: "absolute",
+                    width: 11,
+                    height: 11,
+                    borderRadius: 5,
+                    borderTopLeftRadius: 0,
+                    background: bgColor,
+                    bottom: -11,
+                    right: -11,
+                    transition: "opacity 0.2s ease 0.75s",
+                    zIndex: 2,
+                }}
+            />
         </span>
     );
 }

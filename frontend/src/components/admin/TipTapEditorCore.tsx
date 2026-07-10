@@ -24,7 +24,7 @@ export default function TipTapEditorCore({
       }),
     ],
     content,
-    onUpdate: ({ editor }: { editor: Editor }) => { 
+    onUpdate: ({ editor }: { editor: Editor }) => {
       onChange(editor.getHTML());
     },
     editorProps: {
@@ -53,11 +53,10 @@ export default function TipTapEditorCore({
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleBold().run()}
-          className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-            editor.isActive('bold')
+          className={`px-3 py-1 rounded text-sm font-medium transition-colors ${editor.isActive('bold')
               ? 'bg-[#B30437] text-white'
-              : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
-          }`}
+              : 'bg-white text-[#5f6368] hover:bg-gray-100 border border-gray-300'
+            }`}
           title="Bold"
         >
           <strong>B</strong>
@@ -67,11 +66,10 @@ export default function TipTapEditorCore({
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleItalic().run()}
-          className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-            editor.isActive('italic')
+          className={`px-3 py-1 rounded text-sm font-medium transition-colors ${editor.isActive('italic')
               ? 'bg-[#B30437] text-white'
-              : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
-          }`}
+              : 'bg-white text-[#5f6368] hover:bg-gray-100 border border-gray-300'
+            }`}
           title="Italic"
         >
           <em>I</em>
@@ -81,11 +79,10 @@ export default function TipTapEditorCore({
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-          className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-            editor.isActive('heading', { level: 1 })
+          className={`px-3 py-1 rounded text-sm font-medium transition-colors ${editor.isActive('heading', { level: 1 })
               ? 'bg-[#B30437] text-white'
-              : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
-          }`}
+              : 'bg-white text-[#5f6368] hover:bg-gray-100 border border-gray-300'
+            }`}
           title="Heading 1"
         >
           H1
@@ -95,11 +92,10 @@ export default function TipTapEditorCore({
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-          className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-            editor.isActive('heading', { level: 2 })
+          className={`px-3 py-1 rounded text-sm font-medium transition-colors ${editor.isActive('heading', { level: 2 })
               ? 'bg-[#B30437] text-white'
-              : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
-          }`}
+              : 'bg-white text-[#5f6368] hover:bg-gray-100 border border-gray-300'
+            }`}
           title="Heading 2"
         >
           H2
@@ -109,11 +105,10 @@ export default function TipTapEditorCore({
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
-          className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-            editor.isActive('heading', { level: 3 })
+          className={`px-3 py-1 rounded text-sm font-medium transition-colors ${editor.isActive('heading', { level: 3 })
               ? 'bg-[#B30437] text-white'
-              : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
-          }`}
+              : 'bg-white text-[#5f6368] hover:bg-gray-100 border border-gray-300'
+            }`}
           title="Heading 3"
         >
           H3
@@ -123,11 +118,10 @@ export default function TipTapEditorCore({
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleBulletList().run()}
-          className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-            editor.isActive('bulletList')
+          className={`px-3 py-1 rounded text-sm font-medium transition-colors ${editor.isActive('bulletList')
               ? 'bg-[#B30437] text-white'
-              : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
-          }`}
+              : 'bg-white text-[#5f6368] hover:bg-gray-100 border border-gray-300'
+            }`}
           title="Bullet List"
         >
           • List
@@ -137,11 +131,10 @@ export default function TipTapEditorCore({
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
-          className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-            editor.isActive('orderedList')
+          className={`px-3 py-1 rounded text-sm font-medium transition-colors ${editor.isActive('orderedList')
               ? 'bg-[#B30437] text-white'
-              : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
-          }`}
+              : 'bg-white text-[#5f6368] hover:bg-gray-100 border border-gray-300'
+            }`}
           title="Numbered List"
         >
           1. List
@@ -151,11 +144,10 @@ export default function TipTapEditorCore({
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
-          className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-            editor.isActive('blockquote')
+          className={`px-3 py-1 rounded text-sm font-medium transition-colors ${editor.isActive('blockquote')
               ? 'bg-[#B30437] text-white'
-              : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
-          }`}
+              : 'bg-white text-[#5f6368] hover:bg-gray-100 border border-gray-300'
+            }`}
           title="Quote"
         >
           &quot; Quote
@@ -165,7 +157,7 @@ export default function TipTapEditorCore({
         <button
           type="button"
           onClick={() => editor.chain().focus().setHorizontalRule().run()}
-          className="px-3 py-1 rounded text-sm font-medium bg-white text-gray-700 hover:bg-gray-100 transition-colors border border-gray-300"
+          className="px-3 py-1 rounded text-sm font-medium bg-white text-[#5f6368] hover:bg-gray-100 transition-colors border border-gray-300"
           title="Horizontal Line"
         >
           ─ Line
@@ -176,7 +168,7 @@ export default function TipTapEditorCore({
           type="button"
           onClick={() => editor.chain().focus().undo().run()}
           disabled={!editor.can().undo()}
-          className="px-3 py-1 rounded text-sm font-medium bg-white text-gray-700 hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed border border-gray-300"
+          className="px-3 py-1 rounded text-sm font-medium bg-white text-[#5f6368] hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed border border-gray-300"
           title="Undo"
         >
           ↶ Undo
@@ -187,7 +179,7 @@ export default function TipTapEditorCore({
           type="button"
           onClick={() => editor.chain().focus().redo().run()}
           disabled={!editor.can().redo()}
-          className="px-3 py-1 rounded text-sm font-medium bg-white text-gray-700 hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed border border-gray-300"
+          className="px-3 py-1 rounded text-sm font-medium bg-white text-[#5f6368] hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed border border-gray-300"
           title="Redo"
         >
           ↷ Redo

@@ -5,7 +5,6 @@ import { createPortal } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
 import { useAuth } from "@/context/AuthContext";
-import { useRouter } from "next/navigation";
 import ChartersInterviewAi from "@/components/home/Chartersinterview_ai";
 
 interface DashboardNavbarProps {
@@ -14,13 +13,6 @@ interface DashboardNavbarProps {
   searchQuery?: string;
   onSearchChange?: (q: string) => void;
   showCareerControls?: boolean;
-
-  locations?: string[];
-  selectedLocations?: string[];
-  onLocationsChange?: (locs: string[]) => void;
-  categories?: string[];
-  selectedCategories?: string[];
-  onCategoriesChange?: (cats: string[]) => void;
 }
 
 export default function DashboardNavbar({
@@ -29,15 +21,8 @@ export default function DashboardNavbar({
   searchQuery,
   onSearchChange,
   showCareerControls = false,
-  locations = [],
-  selectedLocations = [],
-  onLocationsChange,
-  categories = [],
-  selectedCategories = [],
-  onCategoriesChange,
 }: DashboardNavbarProps) {
   const { user, logout } = useAuth();
-  const router = useRouter();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -100,13 +85,12 @@ export default function DashboardNavbar({
         <div className="flex items-center justify-between px-4 sm:px-6 lg:px-8 h-30">
           {/* Left: Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <Image
-              src="/Chaters_Union.webp"
+            <Image priority src="/Chaters_Union.avif"
               alt="Charters Business Logo"
               width={120}
               height={40}
               className="h-8 w-auto"
-              priority
+              
             />
           </Link>
 
@@ -122,7 +106,7 @@ export default function DashboardNavbar({
                     onTypeChange?.(e.target.value as "jobs" | "internships")
                   }
                   className="appearance-none px-4 py-1.5 pr-10 rounded-lg text-sm font-semibold 
-               bg-gray-100 text-gray-700 shadow-sm 
+               bg-gray-100 text-[#5f6368] shadow-sm 
                hover:bg-gray-200 
                focus:outline-none focus:ring-2 focus:ring-[#B30437] focus:bg-white
                transition-all cursor-pointer"
@@ -132,7 +116,7 @@ export default function DashboardNavbar({
                 </select>
 
                 {/* Custom arrow */}
-                <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500">
+                <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-[#5f6368]">
                   <svg
                     className="w-4 h-4"
                     fill="none"
@@ -148,7 +132,7 @@ export default function DashboardNavbar({
               {/* Search*/}
               <div className="flex items-center bg-white border border-gray-400 rounded-full px-4 py-1 flex-1">
                 <div className="relative flex-1">
-                  <svg className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400"
+                  <svg className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-[#80868b]"
                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                       d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -158,7 +142,7 @@ export default function DashboardNavbar({
                     placeholder={pageType === "jobs" ? "Find your perfect job" : "Find your perfect internship"}
                     value={searchQuery}
                     onChange={(e) => onSearchChange?.(e.target.value)}
-                    className="w-full bg-transparent pl-8 pr-4 py-1 text-sm text-gray-700 placeholder-gray-400 focus:outline-none"
+                    className="w-full bg-transparent pl-8 pr-4 py-1 text-sm text-[#5f6368] placeholder-gray-400 focus:outline-none"
                   />
                 </div>
               </div>
@@ -191,8 +175,7 @@ export default function DashboardNavbar({
                       <span>{getInitials(user.name)}</span>
                     )
                   ) : (
-                    <Image
-                      src="/Charters-icon/ic_user_defolt_avator.svg"
+                    <img src="/Charters-icon/ic_user_defolt_avator.svg"
                       alt="default avatar"
                       width={40}
                       height={40}
@@ -206,12 +189,12 @@ export default function DashboardNavbar({
                   <span className="text-sm font-semibold text-gray-900">
                     {user?.name}
                   </span>
-                  <span className="text-xs text-gray-500">{user?.email}</span>
+                  <span className="text-xs text-[#5f6368]">{user?.email}</span>
                 </div>
 
                 {/* Dropdown Icon */}
                 <svg
-                  className={`w-4 h-4 text-gray-500 transition-transform ${isDropdownOpen ? "rotate-180" : ""
+                  className={`w-4 h-4 text-[#5f6368] transition-transform ${isDropdownOpen ? "rotate-180" : ""
                     }`}
                   fill="none"
                   stroke="currentColor"
@@ -247,7 +230,7 @@ export default function DashboardNavbar({
                         className="w-full text-left px-4 py-3 hover:bg-gray-50 transition-colors flex items-center gap-3"
                       >
                         <svg
-                          className="w-5 h-5 text-gray-500"
+                          className="w-5 h-5 text-[#5f6368]"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -271,7 +254,7 @@ export default function DashboardNavbar({
                         <div className="text-sm font-semibold text-gray-900">
                           {user?.name}
                         </div>
-                        <div className="text-xs text-gray-500">{user?.email}</div>
+                        <div className="text-xs text-[#5f6368]">{user?.email}</div>
                       </div>
 
                       {/* Menu Items */}
@@ -281,7 +264,7 @@ export default function DashboardNavbar({
                         className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
                       >
                         <svg
-                          className="w-5 h-5 text-gray-500"
+                          className="w-5 h-5 text-[#5f6368]"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -305,7 +288,7 @@ export default function DashboardNavbar({
                             className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
                           >
                             <svg
-                              className="w-5 h-5 text-gray-500"
+                              className="w-5 h-5 text-[#5f6368]"
                               fill="none"
                               stroke="currentColor"
                               viewBox="0 0 24 24"
@@ -326,7 +309,7 @@ export default function DashboardNavbar({
                             className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
                           >
                             <svg
-                              className="w-5 h-5 text-gray-500"
+                              className="w-5 h-5 text-[#5f6368]"
                               fill="none"
                               stroke="currentColor"
                               viewBox="0 0 24 24"
@@ -351,7 +334,7 @@ export default function DashboardNavbar({
                             className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
                           >
                             <svg
-                              className="w-5 h-5 text-gray-500"
+                              className="w-5 h-5 text-[#5f6368]"
                               fill="none"
                               stroke="currentColor"
                               viewBox="0 0 24 24"
@@ -374,7 +357,7 @@ export default function DashboardNavbar({
                             className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
                           >
                             <svg
-                              className="w-5 h-5 text-gray-500"
+                              className="w-5 h-5 text-[#5f6368]"
                               fill="none"
                               stroke="currentColor"
                               viewBox="0 0 24 24"
@@ -397,7 +380,7 @@ export default function DashboardNavbar({
                             className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
                           >
                             <svg
-                              className="w-5 h-5 text-gray-500"
+                              className="w-5 h-5 text-[#5f6368]"
                               fill="none"
                               stroke="currentColor"
                               viewBox="0 0 24 24"
@@ -446,7 +429,7 @@ export default function DashboardNavbar({
       </nav>
 
       {showLoginPopup && createPortal(
-        <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-black/60">
+        <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[#202124]/60">
           <div className="w-[85vw] max-w-4xl h-[85vh] relative">
             <button
               onClick={() => {

@@ -51,15 +51,16 @@ export default function FirstLoginPasswordChange({ onSuccess }: FirstLoginPasswo
     try {
       await changePasswordFirstLogin(token, newPassword);
       onSuccess();
-    } catch (err: any) {
-      setError(err.message || 'Failed to change password');
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'Failed to change password';
+      setError(message);
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+    <div className="fixed inset-0 bg-[#202124]/50 flex items-center justify-center z-50 p-4">
       <div className="bg-white  max-w-md w-full p-6 sm:p-8 relative">
         {/* Header */}
         <div className="flex flex-col items-center mb-6">
@@ -115,7 +116,7 @@ export default function FirstLoginPasswordChange({ onSuccess }: FirstLoginPasswo
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           {/* New Password */}
           <div className="flex flex-col">
-            <label htmlFor="newPassword" className="text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="newPassword" className="text-sm font-medium text-[#5f6368] mb-1">
               New Password *
             </label>
             <div className="relative">
@@ -131,7 +132,7 @@ export default function FirstLoginPasswordChange({ onSuccess }: FirstLoginPasswo
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#5f6368] hover:text-[#5f6368]"
                 aria-label={showPassword ? 'Hide password' : 'Show password'}
               >
                 <svg
@@ -180,7 +181,7 @@ export default function FirstLoginPasswordChange({ onSuccess }: FirstLoginPasswo
 
           {/* Confirm Password */}
           <div className="flex flex-col">
-            <label htmlFor="confirmPassword" className="text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="confirmPassword" className="text-sm font-medium text-[#5f6368] mb-1">
               Confirm Password *
             </label>
             <input
@@ -237,7 +238,7 @@ export default function FirstLoginPasswordChange({ onSuccess }: FirstLoginPasswo
             )}
           </button>
 
-          <p className="text-xs text-gray-500 text-center">
+          <p className="text-xs text-[#5f6368] text-center">
             Choose a strong password with at least 6 characters for better security.
           </p>
         </form>

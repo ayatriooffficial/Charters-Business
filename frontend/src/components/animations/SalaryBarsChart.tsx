@@ -100,11 +100,11 @@ const SalaryBarsChart: React.FC<SalaryBarsChartProps> = ({
     };
   }, [isHovered, salaryData]);
 
-  const chartHeight = 200;
+  const chartHeight = 220;
   const labelHeight = 34;
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex-1 flex flex-col justify-between h-full w-full">
       {/* Heading */}
       <div className="mb-4 flex-shrink-0">
         <h4 className="flex flex-row" >
@@ -114,7 +114,7 @@ const SalaryBarsChart: React.FC<SalaryBarsChartProps> = ({
       </div>
 
       {/* Chart  */}
-      <div className="flex-1 flex flex-col justify-end bg-white text-black">
+      <div className="flex-1 flex flex-col justify-end bg-white text-black mt-6">
         {/* Bars Container */}
         <div className="flex items-end w-full" style={{ height: chartHeight }}>
           {salaryData.map((item, index) => {
@@ -127,18 +127,17 @@ const SalaryBarsChart: React.FC<SalaryBarsChartProps> = ({
               >
                 {/* Value label above bar */}
                 <div
-                  className="text-center text-black font-bold text-[10px] sm:text-[11px] md:text-[12px] lg:text-[14px] leading-tight transition-all duration-800 ease-out mb-4"
+                  className="text-center text-black font-bold text-[9px] sm:text-[11px] md:text-[12px] lg:text-[14px] leading-tight transition-all duration-800 ease-out mb-6 sm:mb-4 w-full px-0.5"
                   style={{
                     opacity: visibleLabels[index] ? 1 : 0,
                     transform: `translateY(${visibleLabels[index] ? 0 : -10
                       }px)`,
                   }}
                 >
-                  {item.value}{" "}
-                  <p className="text-gray-400 px-[15px] leading-tight font-normal text-[10px] text-center">
-                    {" "}
-                    {item.label}{" "}
-                  </p>
+                  <div className="whitespace-nowrap tracking-tighter sm:tracking-normal">{item.value}</div>
+                  <div className="text-[#80868b] px-1 sm:px-[15px] pt-0.5 leading-[1.1] sm:leading-tight font-normal text-[8px] sm:text-[10px] text-center w-full break-words">
+                    {item.label}
+                  </div>
                 </div>
 
                 {/* Bar */}
@@ -200,13 +199,13 @@ const SalaryBarsChart: React.FC<SalaryBarsChartProps> = ({
           {salaryData.map((item, index) => (
             <div
               key={index}
-              className="flex-1 flex items-start justify-center transition-all duration-500 ease-out"
+              className="flex-1 flex items-start justify-center transition-all duration-500 ease-out px-0.5 sm:px-1"
               style={{
                 opacity: visibleLabels[index] ? 1 : 0,
                 transform: `translateY(${visibleLabels[index] ? 0 : 10}px)`,
               }}
             >
-              <div className="text-gray-400 text-[10px] text-center">
+              <div className="text-[#80868b] text-[8px] sm:text-[10px] text-center w-full break-words leading-[1.1] sm:leading-normal">
                 {item.label_sub}
               </div>
             </div>

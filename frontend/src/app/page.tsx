@@ -1,50 +1,36 @@
-import dynamic from "next/dynamic";
-import Script from "next/script";
 import {
+  combineSchemas,
+  generateHomeProgrammesItemListSchema,
   generateLocalBusinessSchema,
   generateSiteNavigationSchema,
   homePageSchema,
   organizationSchema,
   websiteSchema,
 } from "@/lib/schema";
+import { programmes } from "@/lib/server/programmes";
 import { Metadata } from "next";
 
-const ChartersUnionHero = dynamic(
-  () => import("@/components/home/ChartersUnionHero")
-);
+// Critical above-fold components — static imports so they SSR immediately
+import ChartersUnionHero from "@/components/home/ChartersUnionHero";
+import PlacementReport from "@/components/home/PlacementReport";
 
-const SectionWrapper = dynamic(
-  () => import("@/components/shared/SectionWrapper")
-);
+// Client Component that owns all ssr:false dynamic() calls
+// (ssr:false is not permitted inside Server Components)
+import BelowFoldSections from "@/components/home/BelowFoldSections";
 
-const PlacementReport = dynamic(
-  () => import("@/components/home/PlacementReport")
-);
-
-const OurProgrammesSection = dynamic(
-  () => import("@/components/home/OurProgrammesSection")
-);
-
-const BuiltByHarvard = dynamic(
-  () => import("@/components/home/BuiltByHarvard")
-);
-
-const HomeBottomCardsCarousel = dynamic(
-  () => import("@/components/home/HomeBottomCardsCarousel")
-);
 export const metadata: Metadata = {
   title: {
-    absolute: "Job-Ready Training Institute Kolkata | AI Curriculum | Paid Internship 7 Countries | BCom BSc BBA BA Freshers",
+    absolute: "Charters' Union: AI-Powered Job-Ready Training in Kolkata | Paid Internship",
   },
   description:
-    "Kolkata's AI-first job-ready training institute. 3 programs: Certified Business Accountant, Digital Growth & Marketing, Technology & Business Management. AICPA/ACCA/HBS/Google aligned. 4–6 month paid internship in 7 countries. Corporate English. AI interview coaching. Placement support. Book free demo.",
+    "Kolkata's AI-first Job Ready training institute. 3 programs: Certified Business Accountant, Digital Growth & Marketing, Technology & Business Management. AICPA/ACCA/HBS/Google aligned. 4–6 month paid internship in 7 countries. Corporate English. AI interview coaching. Placement support for BCom, BSc, BBA, BA, Freshers. Book free democlass.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Job-Ready Training Institute Kolkata | AI Curriculum | Paid Internship 7 Countries | BCom BSc BBA BA Freshers",
+    title: "Charters' Union: Job-Ready Training Institute Kolkata | AI Curriculum | 100% Paid Internship 7 Countries | BCom BSc BBA BA Freshers",
     description:
-      "Kolkata's AI-first job-ready training institute. 3 programs: Certified Business Accountant, Digital Growth & Marketing, Technology & Business Management. AICPA/ACCA/HBS/Google aligned. 4–6 month paid internship in 7 countries. Corporate English. AI interview coaching. Placement support. Book free demo.",
+      "Kolkata's AI-first 100% Job Guarantee training institute. 3 programs: Certified Business Accountant, Digital Growth & Marketing, Technology & Business Management. AICPA/ACCA/HBS/Google aligned. 4–6 month paid internship in 7 countries. Corporate English. AI interview coaching. Placement support. Book free democlass.",
     url: "https://chartersbusiness.com",
     type: "website",
     images: [
@@ -52,76 +38,30 @@ export const metadata: Metadata = {
         url: "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp",
         width: 1200,
         height: 630,
-        alt: "Charter's Union Accounting Course",
+        alt: "Charters' Union AI-Ready Training Institute Kolkata",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Job-Ready Training Institute Kolkata | AI Curriculum | Paid Internship 7 Countries | BCom BSc BBA BA Freshers",
+    title: "Charters' Union: Job-Ready Training Institute Kolkata | AI Curriculum | Paid Internship 7 Countries | BCom BSc BBA BA Freshers",
     description:
-      "Kolkata's AI-first job-ready training institute. 3 programs: Certified Business Accountant, Digital Growth & Marketing, Technology & Business Management. AICPA/ACCA/HBS/Google aligned. 4–6 month paid internship in 7 countries. Corporate English. AI interview coaching. Placement support. Book free demo.",
+      "Kolkata's AI-first job-ready training institute. 3 programs: Certified Business Accountant, Digital Growth & Marketing, Technology & Business Management. AICPA/ACCA/HBS/Google aligned. 4–6 month paid internship in 7 countries. Corporate English. AI interview coaching. Placement support. Book free democlass.",
     images: ["https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp"],
   },
 };
-
-const SectionSkeleton = ({ height = "h-96" }: { height?: string }) => (
-  <div className={`${height} w-full animate-pulse bg-gray-50 rounded`} />
-);
-
-// Below-the-fold interactive components — keep lazy loaded
-const HandsOn = dynamic(
-  () => import("@/components/home/Handson"),
-  { loading: () => <SectionSkeleton height="h-64" /> }
-);
-const HandsOnLearningComponent = dynamic(
-  () => import("@/components/home/HandsOnLearningComponent"),
-  { loading: () => <SectionSkeleton /> }
-);
-const FacultyModel = dynamic(
-  () => import("@/components/home/FacultyModel"),
-  { loading: () => <SectionSkeleton height="h-80" /> }
-);
-const OneSpaceForEveryTeam = dynamic(
-  () => import("@/components/home/OneSpaceForEveryTeam"),
-  { loading: () => <SectionSkeleton height="h-64" /> }
-);
-const WorldImmersion = dynamic(
-  () => import("@/components/home/WorldImmersion"),
-  { loading: () => <SectionSkeleton /> }
-);
-const StudentModel = dynamic(
-  () => import("@/components/home/StudentModel"),
-  { loading: () => <SectionSkeleton height="h-80" /> }
-);
-const StrategicExpansion = dynamic(
-  () => import("@/components/home/StrategicExpansion"),
-  { loading: () => <SectionSkeleton /> }
-);
-const FirstStepSuccessComponent = dynamic(
-  () => import("@/components/home/FirstStepSuccessComponent"),
-  { loading: () => <SectionSkeleton /> }
-);
-const NewsSliderComponent = dynamic(
-  () => import("@/components/NewsSliderComponent"),
-  { loading: () => <SectionSkeleton height="h-80" /> }
-);
-const PremiumFeaturesSection = dynamic(
-  () => import("@/components/home/PremiumFeaturesSection"),
-  { loading: () => <SectionSkeleton height="h-64" /> }
-);
 
 export default function Home() {
   const siteNavigationSchema = generateSiteNavigationSchema([
     {
       name: "Home",
       url: "https://chartersbusiness.com/",
-      description: "Professional Accountant Training in Kolkata with 100% Paid Internship",
+      description: "Kolkata's AI-first job-ready training institute. 3 programs: Certified Business Accountant, Digital Growth & Marketing, Technology & Business Management. AICPA/ACCA/HBS/Google aligned. 4–6 month paid internship in 7 countries. Corporate English. AI interview coaching. Placement support. Book free democlass.",
     },
     {
       name: "Programmes",
       url: "https://chartersbusiness.com/#programmes",
-      description: "Explore our professional accounting programmes",
+      description: "Explore our professional programmes",
     },
     {
       name: "Faculties",
@@ -131,88 +71,52 @@ export default function Home() {
     {
       name: "Careers",
       url: "https://chartersbusiness.com/careers",
-      description: "Career opportunities at Charters Business",
+      description: "Career opportunities at Charters' Union",
     },
     {
       name: "About",
       url: "https://chartersbusiness.com/#about",
-      description: "Learn more about Charters Business",
+      description: "Learn more about Charters' Union",
     },
   ]);
 
   const localBusinessSchema = generateLocalBusinessSchema({
-    name: "Charters Business",
+    name: "Charters' Union",
     address: {
-      street: "DLF Cyberpark, Phase II, Udyog Vihar, Sector 20",
-      city: "Gurugram",
-      state: "Haryana",
-      postalCode: "122022",
+      street: "Shantiniketan Building, 8 Camac St, Elgin",
+      city: "Kolkata",
+      state: "West Bengal",
+      postalCode: "700017",
       country: "IN",
     },
   });
 
-  // Combine all JSON-LD schemas into one script tag
-  const allSchemas = [
+  // Combine all JSON-LD schemas into one graph script tag
+  const consolidatedSchema = combineSchemas(
     organizationSchema,
     websiteSchema,
     homePageSchema,
     siteNavigationSchema,
     localBusinessSchema,
-  ];
+    generateHomeProgrammesItemListSchema(programmes)
+  );
 
   return (
     <>
       {/* SEO - JSON-LD Structured Data (combined into single script) */}
-      <Script
+      <script
         id="all-schemas"
         type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(allSchemas) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(consolidatedSchema) }}
       />
 
+      {/* Above-fold: Server-rendered immediately */}
       <ChartersUnionHero />
-
-      {/* Statically imported — renders in initial HTML stream */}
       <PlacementReport />
 
+      {/* Below-fold: Client Component handles all lazy + ssr:false loading */}
       <div className="md:border-x border-gray-200 max-w-[85rem] w-full md:w-[90%] mx-auto overflow-x-clip md:overflow-x-visible">
-        <SectionWrapper hideCorners={"all"} borderBottom={false}>
-          <HandsOn />
-        </SectionWrapper>
-        <SectionWrapper hideCorners={"all"}>
-          <OurProgrammesSection />
-        </SectionWrapper>
-        <SectionWrapper corners={{
-          br: { variant: "icon" }
-        }} hideCorners={["tr", "bl"]} borderBottom={false}>
-          <BuiltByHarvard />
-        </SectionWrapper>
-        <SectionWrapper hideCorners={"all"}>
-          <HandsOnLearningComponent />
-        </SectionWrapper>
-        <SectionWrapper hideCorners={"all"}>
-          <FacultyModel />
-          <OneSpaceForEveryTeam />
-        </SectionWrapper>
-        <SectionWrapper hideCorners={"all"}>
-          <WorldImmersion />
-        </SectionWrapper>
-        <SectionWrapper hideCorners={"all"}>
-          <StudentModel />
-          <StrategicExpansion />
-        </SectionWrapper>
-        <SectionWrapper hideCorners={"all"}>
-          <FirstStepSuccessComponent />
-        </SectionWrapper>
-        <SectionWrapper hideCorners={"all"}>
-          <NewsSliderComponent />
-        </SectionWrapper>
-        <SectionWrapper hideCorners={"all"} borderBottom={false}>
-          <PremiumFeaturesSection />
-        </SectionWrapper>
-
-
-        <HomeBottomCardsCarousel />
+        <BelowFoldSections />
       </div>
     </>
   );

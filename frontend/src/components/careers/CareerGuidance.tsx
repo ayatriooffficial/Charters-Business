@@ -128,7 +128,7 @@ export default function CareerGuidance() {
               height={14}
               className="sm:w-[18px] sm:h-[18px]"
             />
-            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.12em] text-gray-400">
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.12em] text-[#80868b]">
               ANNUAL ROADMAP
             </span>
           </div>
@@ -139,7 +139,7 @@ export default function CareerGuidance() {
                 Career Pathway
               </HighlightText>
             </h2>
-            <p className="text-xs sm:text-sm md:text-base text-gray-700 max-w-3xl">
+            <p className="text-xs sm:text-sm md:text-base text-[#5f6368] max-w-3xl">
               Leverage the opportunity to engage in workshops, training, panel
               discussions, counselling sessions, and personalised career
               progression plans.
@@ -162,7 +162,7 @@ export default function CareerGuidance() {
               >
                 {term.term}
                 {activeTerm === term.id && (
-                  <span className="absolute left-2 right-2 bottom-0 h-[2px] bg-black" />
+                  <span className="absolute left-2 right-2 bottom-0 h-[2px] bg-[#202124]" />
                 )}
               </button>
             ))}

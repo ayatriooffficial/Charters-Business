@@ -2,7 +2,7 @@ import React from "react";
 import PlacementReportClient from "./PlacementReportClient";
 
 const placementReportData = {
-  title: "Charter's Career Transition '25",
+  title: "Charter's Career Transition '25'",
   description:
     "100% internship rate | Avg students earned +3 offers | +34% global internships/jobs",
   stats: {
@@ -24,7 +24,7 @@ const PlacementReportDashboard = () => {
     >
       {/* Report Header */}
       <div
-        className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-[4rem] sm:pt-14"
+        className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-22 sm:pt-22"
         role="region"
         aria-labelledby="placement-report-heading"
       >
@@ -44,18 +44,18 @@ const PlacementReportDashboard = () => {
             </h2>
           </div>
 
-          <div className="flex flex-col items-start sm:flex-row sm:flex-wrap sm:justify-center sm:items-center gap-3 sm:gap-6 w-fit mx-auto sm:w-full">
+          <div className="flex flex-row overflow-x-auto scrollbar-none items-center gap-6 sm:flex-wrap sm:justify-center w-full px-4 sm:px-0 mb-5 sm:mb-0">
             {placementReportData.description
               .split("|")
               .map((item: string, index: number) => (
-                <div key={index} className="flex items-center gap-2">
+                <div key={index} className="flex items-center gap-2 flex-shrink-0">
                   <img
                     src="/dot-icon.svg"
                     alt=""
-                    className="w-4 h-4 flex-shrink-0"
+                    className="w-4 h-4 opacity-[0.5] flex-shrink-0"
                     aria-hidden="true"
                   />
-                  <span className="text-sm sm:text-base text-gray-700 font-medium leading-snug whitespace-nowrap">
+                  <span className="text-sm sm:text-base text-[#5f6368] font-medium leading-snug whitespace-nowrap">
                     {item.trim()}
                   </span>
                 </div>
@@ -84,7 +84,7 @@ const PlacementReportDashboard = () => {
       <div className="flex flex-row w-full">
         <div className="flex-1 bg-gray-200 hidden md:block">
           <div className="relative bg-white w-full h-full rounded-tr-xl">
-            <div className="absolute top-0 left-0 w-full h-[0.5px] bg-gradient-to-r from-gray-50 to-gray-200 rounded-tr-xl"></div>
+            <div className="absolute top-0 -right-[4px] w-[calc(100%+4px)] h-[1px] bg-gradient-to-r from-gray-50 to-gray-200 rounded-tr-xl"></div>
           </div>
         </div>
 
@@ -97,7 +97,7 @@ const PlacementReportDashboard = () => {
         </div>
         <div className="flex-1 bg-gray-200 hidden md:block">
           <div className="relative bg-white w-full h-full rounded-tl-xl">
-            <div className="absolute top-0 left-0 w-full h-[0.5px] bg-gradient-to-l from-gray-50 to-gray-200 rounded-tr-xl"></div>
+            <div className="absolute top-0 -left-[4px] w-[calc(100%+4px)] h-[1px] bg-gradient-to-l from-gray-50 to-gray-200 rounded-tr-xl"></div>
           </div>
         </div>
       </div>

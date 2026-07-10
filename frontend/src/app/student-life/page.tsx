@@ -1,4 +1,4 @@
-import { generateBreadcrumbSchema } from "@/lib/schema";
+import { generateBreadcrumbSchema, organizationReferenceSchema, combineSchemas } from "@/lib/schema";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import LifeAtCharters from "@/components/student-life/LifeAtCharters";
 import Diversity from "@/components/student-life/Diversity";
@@ -7,78 +7,81 @@ import HeroSection from "@/components/student-life/Herosection";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Student Life | Charters Business",
+  title: "Student Life | Charters' Union",
   description:
-    "Discover student life at Charters Business. Join a vibrant community, participate in events, and build your professional network.",
+    "Discover student life at Charters' Union. Join a vibrant community, participate in events, and build your professional network.",
   alternates: {
-    canonical: "/student-life",
+    canonical: "https://chartersbusiness.com/student-life",
   },
   openGraph: {
-    title: "Student Life | Charters Business",
+    title: "Student Life | Charters' Union",
     description:
-      "Discover student life at Charters Business. Join a vibrant community, participate in events, and build your professional network.",
+      "Discover student life at Charters' Union. Join a vibrant community, participate in events, and build your professional network.",
     url: "https://chartersbusiness.com/student-life",
+    siteName: "Charters' Union",
     type: "website",
     images: [
       {
         url: "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp",
         width: 1200,
         height: 630,
-        alt: "Student Life at Charters Business",
+        alt: "Student Life | Charters' Union",
       },
     ],
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Student Life | Charters Business",
+    title: "Student Life | Charters' Union",
     description:
-      "Discover student life at Charters Business. Join a vibrant community, participate in events, and build your professional network.",
-    images: [
-      "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp",
-    ],
+      "Discover student life at Charters' Union. Join a vibrant community, participate in events, and build your professional network.",
+    images: ["https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp"],
   },
 };
 
-type Stat = { value: string; label: string; detail: string; gradient?: string };
-const HERO_HEADING = "Accelerate Your Career Growth";
-const HERO_TAGLINE =
-    "Benefit from an exceptional track record of our graduates' success";
 
-const HERO_STATS: Stat[] = [
-    {
-        value: "79",
-        label: "Startups",
-        detail: "formed as part of Masters' Union Venture Initiation Program",
-        gradient: "bg-[#B30437]",
-    },
-    {
-        value: "₹ 3.3 Cr",
-        label: "Combined revenue",
-        detail: "of all Dropshipping teams in Term 1 (Cohort 2024)",
-        gradient: "bg-[#B30437]",
-    },
-];
-
-const HERO_CTA = {
-    label: "Download Placement Report",
-    href: "#download-report",
-};
-const HERO_IMAGE = {
-    src: "https://images.mastersunion.link/uploads/26122024/mahakgroup.webp",
-    alt: "Fireside chat about career growth",
-};
 
 export default function ApplyPage() {
     const breadcrumbSchema = generateBreadcrumbSchema([
         { name: "Home", url: "https://chartersbusiness.com" },
-        { name: "Apply", url: "https://chartersbusiness.com/apply" },
+        { name: "Student Life", url: "https://chartersbusiness.com/student-life" },
     ]);
+
+    // Define WebPage schema
+    const studentLifePageSchema = {
+      "@type": "WebPage",
+      "@id": "https://chartersbusiness.com/student-life#webpage",
+      url: "https://chartersbusiness.com/student-life",
+      name: "Student Life | Charters' Union",
+      description: "Discover student life at Charters' Union. Join a vibrant community, participate in events, and build your professional network.",
+      inLanguage: "en-IN",
+      isPartOf: {
+        "@id": "https://chartersbusiness.com/#website",
+      },
+      about: {
+        "@id": "https://chartersbusiness.com/#organization",
+      },
+    };
+
+    const consolidatedSchema = combineSchemas(organizationReferenceSchema, breadcrumbSchema, studentLifePageSchema);
 
     return (
         <>
+            {/* Consolidated Page Schema */}
+            <script
+                id="student-life-schema"
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(consolidatedSchema) }}
+            />
             <HeroSection />
             <div className="md:border-x border-gray-200 max-w-[85rem] w-full md:w-[90%] mx-auto overflow-x-clip md:overflow-x-visible">
-                <SectionWrapper hideCorners={"all"}>
+                <SectionWrapper
+                    corners={{
+                        tl: { variant: "icon", src: "/sparkle-icon.svg" },
+                        tr: { variant: "icon", src: "/sparkle-icon.svg" },
+                    }}
+                    hideCorners={["bl", "br"]}
+                >
                     <Diversity />
                 </SectionWrapper>
                 <SectionWrapper hideCorners={"all"}>

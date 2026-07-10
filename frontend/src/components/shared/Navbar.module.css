@@ -1,0 +1,21 @@
+.navbarTransition {
+  transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbarSecondaryTransition {
+  transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 200ms ease;
+}
+
+.navbarPrimarySlide {
+  transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbarMobileTransition {
+  transition: all 200ms ease-in-out;
+}
+
+.navbarMobileSlide {
+  transition: transform 200ms ease-in-out;
+}

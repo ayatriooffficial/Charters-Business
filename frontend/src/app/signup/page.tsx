@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import ChartersInterviewAiPage from "@/components/auth/ChartersInterviewAiPage";
 
 export const metadata: Metadata = {
-  title: "Sign Up | Charters Business",
+  title: "Sign Up | Charters' Union",
   description:
-    "Create your Charters Business account to apply, track your progress, and choose the course you're interested in.",
+    "Create your Charters' Union account to apply, track your progress, and choose the course you're interested in.",
   alternates: {
     canonical: "/signup",
   },
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "signup",
     "register",
     "create account",
-    "charters business signup",
+    "charters union signup",
     "student registration",
   ],
   robots: {

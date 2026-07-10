@@ -1,20 +1,16 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
-import { useRouter } from 'next/navigation';
 
 export default function UserDropdown() {
   const { user, logout, navigateToRemoteDashboard } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [redirectTarget, setRedirectTarget] = useState<string | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const router = useRouter();
 
   // Determine if user is admin/recruiter
   const isAdminOrRecruiter = user?.role === 'admin' || user?.role === 'recruiter';
-  const adminUrl = process.env.NEXT_PUBLIC_ADMIN_URL || 'http://localhost:3001';
   const dashboardText = isAdminOrRecruiter ? 'Admin Dashboard' : 'Dashboard';
 
   // Handle back-navigation and mount reset
@@ -69,7 +65,7 @@ export default function UserDropdown() {
       >
         <span className="hidden text-[13px] font-medium md:block text-gray-600">{user.name}</span>
         <svg
-          className={`w-4 h-4 text-gray-500 transition-transform ${isOpen ? 'rotate-180' : ''
+          className={`w-4 h-4 text-[#5f6368] transition-transform ${isOpen ? 'rotate-180' : ''
             }`}
           fill="none"
           stroke="currentColor"
@@ -88,7 +84,7 @@ export default function UserDropdown() {
         <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
           <div className="px-4 py-3 border-b border-gray-100">
             <p className="font-semibold text-gray-900">{user.name}</p>
-            <p className="text-sm text-gray-500 truncate">{user.email}</p>
+            <p className="text-sm text-[#5f6368] truncate">{user.email}</p>
             {isAdminOrRecruiter && (
               <span className="inline-block mt-1 px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">
                 {user.role === 'admin' ? 'Admin' : 'Recruiter'}
@@ -99,7 +95,7 @@ export default function UserDropdown() {
           <button
             onClick={() => handleRedirect('/dashboard', '/dashboard', 'dashboard')}
             disabled={!!redirectTarget}
-            className="w-full flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors disabled:opacity-50"
+            className="w-full flex items-center gap-3 px-4 py-2 text-[#5f6368] hover:bg-gray-100 transition-colors disabled:opacity-50"
           >
             {redirectTarget === 'dashboard' ? (
               <div className="w-5 h-5 border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin" />
@@ -122,7 +118,7 @@ export default function UserDropdown() {
               <button
                 onClick={() => handleRedirect('/admin/jobs', '/admin/jobs', 'jobs')}
                 disabled={!!redirectTarget}
-                className="w-full flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors disabled:opacity-50"
+                className="w-full flex items-center gap-3 px-4 py-2 text-[#5f6368] hover:bg-gray-100 transition-colors disabled:opacity-50"
               >
                 {redirectTarget === 'jobs' ? (
                   <div className="w-5 h-5 border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin" />
@@ -142,7 +138,7 @@ export default function UserDropdown() {
               <button
                 onClick={() => handleRedirect('/admin/internships', '/admin/internships', 'internships')}
                 disabled={!!redirectTarget}
-                className="w-full flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors disabled:opacity-50"
+                className="w-full flex items-center gap-3 px-4 py-2 text-[#5f6368] hover:bg-gray-100 transition-colors disabled:opacity-50"
               >
                 {redirectTarget === 'internships' ? (
                   <div className="w-5 h-5 border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin" />
@@ -164,7 +160,7 @@ export default function UserDropdown() {
               <button
                 onClick={() => handleRedirect('/profile', '/dashboard/profile', 'profile')}
                 disabled={!!redirectTarget}
-                className="w-full flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors disabled:opacity-50"
+                className="w-full flex items-center gap-3 px-4 py-2 text-[#5f6368] hover:bg-gray-100 transition-colors disabled:opacity-50"
               >
                 {redirectTarget === 'profile' ? (
                   <div className="w-5 h-5 border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin" />
@@ -184,7 +180,7 @@ export default function UserDropdown() {
               <button
                 onClick={() => handleRedirect('/application-status', '/dashboard/application-status', 'applications')}
                 disabled={!!redirectTarget}
-                className="w-full flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors disabled:opacity-50"
+                className="w-full flex items-center gap-3 px-4 py-2 text-[#5f6368] hover:bg-gray-100 transition-colors disabled:opacity-50"
               >
                 {redirectTarget === 'applications' ? (
                   <div className="w-5 h-5 border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin" />
@@ -204,7 +200,7 @@ export default function UserDropdown() {
               <button
                 onClick={() => handleRedirect('/counseling', '/dashboard/counseling', 'counseling')}
                 disabled={!!redirectTarget}
-                className="w-full flex items-center gap-3 px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors disabled:opacity-50"
+                className="w-full flex items-center gap-3 px-4 py-2 text-[#5f6368] hover:bg-gray-100 transition-colors disabled:opacity-50"
               >
                 {redirectTarget === 'counseling' ? (
                   <div className="w-5 h-5 border-2 border-gray-300 border-t-gray-600 rounded-full animate-spin" />

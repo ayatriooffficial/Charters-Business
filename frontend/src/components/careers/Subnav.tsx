@@ -14,7 +14,7 @@ export const CAREERS_NAV_ITEMS: NavItem[] = [
 ];
 
 type Props = {
-  offsetTop?: number; 
+  offsetTop?: number;
 };
 
 
@@ -83,13 +83,13 @@ export default function Subnav({ offsetTop = 0 }: Props) {
                       "group inline-flex items-center gap-2 whitespace-nowrap border-b-2 px-1 pb-2 text-xs font-semibold uppercase tracking-wide transition-colors",
                       isActive
                         ? "border-gray-900 text-gray-900"
-                        : "border-transparent text-gray-500 hover:text-gray-900",
+                        : "border-transparent text-[#5f6368] hover:text-gray-900",
                     ].join(" ")}
                   >
                     {item.withIcon ? (
                       <svg
                         viewBox="0 0 20 20"
-                        className="h-4 w-4 text-gray-700"
+                        className="h-4 w-4 text-[#5f6368]"
                         aria-hidden="true"
                       >
                         <path

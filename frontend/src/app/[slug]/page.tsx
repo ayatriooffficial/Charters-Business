@@ -1,27 +1,18 @@
 import { notFound } from "next/navigation";
 
-import { getProgrammeBySlug, getAllProgrammeSlugs } from "@/lib/server/programmes";
+import { getProgrammeBySlug, getAllProgrammeSlugs, courseSeoMetadata } from "@/lib/server/programmes";
 import type { Viewport } from "next";
 import ProgramHero from "@/components/programmes/ProgramHero";
-import CurriculumSection from "@/components/programmes/CurriculumSection";
-import WeekAtTetr from "@/components/programmes/WeekAtUnion";
-import LearnApplyReflectRepeat from "@/components/programmes/LearnApplyReflectRepeat";
-import ScholarshipsSection from "@/components/programmes/ScholarshipsSection";
 import ProgramInfo from "@/components/programmes/ProgramInfo";
-import AIDegreeProgram from "@/components/programmes/AIDegreeProgram";
-import FAQ from "@/components/programmes/FAQ";
-import TrackRecord from "@/components/programmes/TrackRecord";
-import PricingTabs from "@/components/programmes/PricingTabs";
-import SectionWrapper from "@/components/shared/SectionWrapper";
-import LearningOutcomes from "@/components/home/LearningOutcomes";
+import ProgrammeBelowFoldSections from "@/components/programmes/ProgrammeBelowFoldSections";
 
 import {
   generateCourseSchema,
   generateBreadcrumbSchema,
   generateFAQSchema,
+  combineSchemas,
 } from "@/lib/schema";
-import FacultyModel from "@/components/home/FacultyModel";
-import StudentModel from "@/components/home/StudentModel";
+
 
 export async function generateStaticParams() {
   const slugs = getAllProgrammeSlugs();
@@ -40,13 +31,16 @@ export const viewport: Viewport = {
   ],
 };
 
+
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const programme = getProgrammeBySlug(slug);
+  const decodedSlug = decodeURIComponent(slug);
+  const programme = getProgrammeBySlug(decodedSlug);
 
   if (!programme) {
     return {
@@ -54,39 +48,45 @@ export async function generateMetadata({
     };
   }
 
-  const baseUrl = "https://chartersbusiness.com";
-  const pageUrl = `${baseUrl}/${programme.slug}`;
+  const seo = courseSeoMetadata[programme.slug as keyof typeof courseSeoMetadata];
+  const title = seo?.title || `${programme.card.title} - Charters' Union`;
+  const description = seo?.description || programme.card.description;
+  const pageUrl = `https://chartersbusiness.com/${programme.slug}`;
 
   let imageUrl = programme.card.image;
   if (!imageUrl.startsWith("http://") && !imageUrl.startsWith("https://")) {
-    imageUrl = `${baseUrl}${imageUrl.startsWith("/") ? "" : "/"}${imageUrl}`;
+    imageUrl = `https://chartersbusiness.com${imageUrl.startsWith("/") ? "" : "/"}${imageUrl}`;
   }
 
   return {
-    title: `${programme.card.title} - Charter's Union`,
-    description: programme.card.description,
+    title: {
+      absolute: title,
+    },
+    description,
+    keywords: seo?.keywords || [],
     alternates: {
       canonical: pageUrl,
     },
     openGraph: {
-      title: `${programme.card.title} - Charter's Union`,
-      description: programme.card.description,
-      type: "website",
+      title,
+      description,
       url: pageUrl,
-      siteName: "Charter's Union",
+      siteName: "Charters' Union",
+      type: "website",
       images: [
         {
           url: imageUrl,
           width: 1200,
           height: 630,
-          alt: programme.card.title,
+          alt: title,
         },
       ],
+      locale: "en_US",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${programme.card.title} - Charter's Union`,
-      description: programme.card.description,
+      title,
+      description,
       images: [imageUrl],
     },
   };
@@ -98,7 +98,8 @@ export default async function ProgrammePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const programme = getProgrammeBySlug(slug);
+  const decodedSlug = decodeURIComponent(slug);
+  const programme = getProgrammeBySlug(decodedSlug);
 
   if (!programme) {
     notFound();
@@ -125,72 +126,22 @@ export default async function ProgrammePage({
   );
   const faqSchema = generateFAQSchema(allFaqs);
 
+  const consolidatedSchema = combineSchemas(courseSchema, breadcrumbSchema, faqSchema);
+
   return (
     <>
-      {/* SEO Structured Data - Course Schema */}
-
+      {/* Consolidated Page Schema */}
       <script
-        id={`course-schema-${slug}`}
+        id={`programme-page-schema-${slug}`}
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }}
-      />
-
-      {/* Breadcrumb Schema */}
-      <script
-        id={`breadcrumb-schema-${slug}`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-
-      {/* FAQ Schema */}
-      <script
-        id={`faq-schema-${slug}`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(consolidatedSchema) }}
       />
       {/* Hero Section */}
-      <ProgramHero data={programme.hero} programmeSlug={slug} />
+      <ProgramHero data={programme.hero} />
 
       {/* Other Sections */}
       <ProgramInfo data={programme.programInfo} />
-      <div className="md:border-x border-gray-200 max-w-[85rem] w-full md:w-[90%] mx-auto overflow-x-clip">
-        <SectionWrapper hideCorners={"all"}>
-          <TrackRecord data={programme.trackRecord} />
-        </SectionWrapper>
-        <SectionWrapper hideCorners={"all"}>
-          <CurriculumSection data={programme.curriculumSection} />
-        </SectionWrapper>
-        <SectionWrapper hideCorners={"all"}>
-          <AIDegreeProgram data={programme.degreeProgram} />
-        </SectionWrapper>
-        <SectionWrapper hideCorners={"all"}>
-          <WeekAtTetr data={programme.weekAtUnion} />
-
-        </SectionWrapper>
-        <SectionWrapper hideCorners={"all"} borderBottom={false}>
-          <FacultyModel data={programme.faculty} />
-        </SectionWrapper>
-        <SectionWrapper hideCorners={"all"} borderBottom={false}>
-          <LearnApplyReflectRepeat data={programme.learnApply} />
-        </SectionWrapper>
-        <SectionWrapper hideCorners={"all"} borderBottom={false} >
-          <StudentModel data={programme.students} />
-        </SectionWrapper>
-        <SectionWrapper hideCorners={"all"}>
-          <LearningOutcomes data={programme.learningOutcomes} />
-        </SectionWrapper>
-        <SectionWrapper hideCorners={"all"}>
-          <PricingTabs data={programme.pricing} />
-        </SectionWrapper>
-        <SectionWrapper hideCorners={"all"}>
-          <ScholarshipsSection scholarships={programme.scholarships} />
-        </SectionWrapper>
-
-
-        <SectionWrapper hideCorners={"all"}>
-          <FAQ data={programme.faq} />
-        </SectionWrapper>
-      </div>
+      <ProgrammeBelowFoldSections programme={programme} />
     </>
   );
 }

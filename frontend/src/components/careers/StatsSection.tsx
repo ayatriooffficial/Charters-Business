@@ -62,7 +62,7 @@ const REPORTS = [
     arrow: "https://files.mastersunion.link/resources/svg/gradientArow.svg",
   },
   {
-    href: "https://new.mastersunion.link/brochures/MasterUnion_Placement_Report_2024.pdf",
+    href: "https://new.mastersunion.link/brochures/CharterUnion_Placement_Report_2024.pdf",
     label: "Cohort 2024",
     img: "https://files.mastersunion.link/resources/img/report.webp",
     arrow: "https://files.mastersunion.link/resources/svg/gradientArow.svg",
@@ -75,12 +75,6 @@ const VERIFICATION_TEXT =
 const ECONOMICS_ARTICLE = {
   href: "https://economictimes.indiatimes.com/jobs/hr-policies-trends/masters-union-mba-cohort-2024-reports-rs-28-52-lakh-average-salary-top-offers-reach-rs-61-8-lakh/articleshow/115755571.cms?from=mdr",
   label: "Read The Economics Times article here",
-};
-
-const YLC_HIGHLIGHT = {
-  title: "For PGP TBM YLC",
-  numbers: ["₹23.57L", "₹27.17L", "₹27.76L"],
-  description: "First, Second & Third cohort's average CTC",
 };
 
 const RECRUITER_TABS = [
@@ -192,7 +186,7 @@ export default function StatsSection() {
           <div className="flex flex-col">
             {/* Heading */}
             <div className="px-6 sm:px-8 py-4 sm:py-6">
-              <span className="text-xs font-bold uppercase tracking-[0.12em] text-gray-400 mb-2 sm:mb-3 block">
+              <span className="text-xs font-bold uppercase tracking-[0.12em] text-[#80868b] mb-2 sm:mb-3 block">
                 {SECTION_HEADING.eyebrow}
               </span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-gray-900">
@@ -349,7 +343,7 @@ export default function StatsSection() {
           {/* Header */}
           <div className="mb-8 flex flex-col items-center text-center">
             <div className="flex items-center gap-2 mb-3">
-              <span className="text-xs font-bold uppercase tracking-[0.12em] text-gray-400">
+              <span className="text-xs font-bold uppercase tracking-[0.12em] text-[#80868b]">
                 Placement
               </span>
             </div>
@@ -372,7 +366,7 @@ export default function StatsSection() {
                 >
                   {tab.label}
                   {activeTab === tab.id && (
-                    <span className="absolute left-2 right-2 bottom-0 h-[2px] bg-black" />
+                    <span className="absolute left-2 right-2 bottom-0 h-[2px] bg-[#202124]" />
                   )}
                 </button>
               ))}
@@ -406,7 +400,7 @@ export default function StatsSection() {
           {/* Header */}
           <div className="mb-6 flex flex-col items-center text-center">
             <div className="mb-3">
-              <span className="text-xs font-bold uppercase tracking-[0.12em] text-gray-400">
+              <span className="text-xs font-bold uppercase tracking-[0.12em] text-[#80868b]">
                 Placement Statistics
               </span>
             </div>
@@ -446,7 +440,7 @@ export default function StatsSection() {
               <tbody>
                 {PGP_TBM_TABLE.map((row, i) => (
                   <tr key={i} className="border-b border-gray-200">
-                    <td className="py-3 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm text-gray-700">
+                    <td className="py-3 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm text-[#5f6368]">
                       {row.cohort}
                     </td>
                     <td className="py-3 sm:py-4 px-2 sm:px-4 text-center text-xs sm:text-sm font-semibold">
@@ -474,7 +468,7 @@ export default function StatsSection() {
           </div>
 
           {/* Footnote */}
-          <p className="text-xs text-gray-500 mt-4">
+          <p className="text-xs text-[#5f6368] mt-4">
             *Please note that the YLC numbers have been taken from the students
             having 0-1 years of experience from PGP TBM Cohort
           </p>
@@ -487,7 +481,7 @@ export default function StatsSection() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-6 flex-col items-center text-center">
             <div className="mb-3">
-              <span className="text-xs font-bold uppercase tracking-[0.12em] text-gray-400">
+              <span className="text-xs font-bold uppercase tracking-[0.12em] text-[#80868b]">
                 Placement Statistics
               </span>
             </div>
@@ -515,7 +509,7 @@ export default function StatsSection() {
               <tbody>
                 {PGP_YLC_TABLE.map((row, i) => (
                   <tr key={i} className="border-b border-gray-200">
-                    <td className="py-4 px-4 text-gray-700">{row.cohort}</td>
+                    <td className="py-4 px-4 text-[#5f6368]">{row.cohort}</td>
                     <td className="py-4 px-4 text-center font-semibold">
                       {row.avg}
                     </td>
@@ -531,7 +525,7 @@ export default function StatsSection() {
             </table>
           </div>
 
-          <p className="text-xs text-gray-500 mt-4 px-5">
+          <p className="text-xs text-[#5f6368] mt-4 px-5">
             *Please note that the YLC numbers have been taken from the students
             having 0-1 years of experience from PGP TBM Cohort
           </p>
@@ -563,8 +557,8 @@ export default function StatsSection() {
                   className="md:hidden w-full h-auto invert"
                 />
               </div>
-              <p className="text-gray-500 text-xs mt-4 text-center">
-                Cohort '24 Placement Statistics
+              <p className="text-[#5f6368] text-xs mt-4 text-center">
+                Cohort &apos;24 Placement Statistics
               </p>
             </div>
 

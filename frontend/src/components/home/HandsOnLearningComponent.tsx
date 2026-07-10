@@ -3,10 +3,7 @@
 import React, { useState, useEffect, useRef, memo, useCallback } from "react";
 import Image from "next/image";
 import HighlightText from "@/components/shared/HighlightObserver";
-
-const hanson_heading = {
-  description: "AI-Powered Job-Ready Program | Explore Business Culture Across 7 Countries | Internship Guided Curriculum "
-}
+import styles from "./HandsOnLearningComponent.module.css";
 
 type CategoryKey =
   | "No-code AI Development"
@@ -50,29 +47,22 @@ const MenuItem = memo<{
   return (
     <button
       onClick={onClick}
-      className="w-full flex justify-center border-b border-[#efefef] px-2 sm:px-[15px] py-2 sm:py-3 bg-white text-[#272C18]"
+      className={`flex-shrink-0 w-auto lg:w-full flex justify-center lg:border-b border-r lg:border-r-0 border-[#efefef] px-4 sm:px-[15px] py-2 sm:py-3 transition-colors ${isActive
+        ? "bg-[#F4F2EE] lg:bg-[#F4F2EE] border-l-4 lg:border-l-4 lg:border-l-[#B30437]"
+        : "bg-white lg:hover:bg-gray-50"
+        }`}
       aria-pressed={isActive}
       type="button"
     >
-      <div className="w-5 h-5 sm:w-6 sm:h-6 flex flex-shrink-0 relative">
-        <Image
-          src="/Charters-icon/new_campas.svg"
-          alt="Format icon"
-          width={20}
-          height={20}
-          className="object-contain"
-        />
-      </div>
-
       <div className="flex-1 text-left min-w-0">
         <p
-          className={`uppercase tracking-wider font-semibold text-[11px] sm:text-[14px] transition-colors text-black
+          className={`uppercase tracking-wider font-semibold text-[10px] sm:text-[12px] transition-colors ${isActive ? "text-black lg:text-black" : "text-gray-500 lg:text-gray-500"
             }`}
         >
           Month {index + 1}
         </p>
         <div
-          className={`font-semibold text-[18px] transition-colors text-xs md:text-sm  text-black
+          className={`font-semibold text-[11px] sm:text-[14px] lg:text-[16px] transition-colors whitespace-nowrap lg:whitespace-normal ${isActive ? "text-black lg:text-black" : "text-gray-500 lg:text-gray-500"
             }`}
         >
           {category}
@@ -206,7 +196,7 @@ const ContentCard = memo<{
 
     return (
       <div
-        className="absolute w-full h-full flex items-start justify-center hands-on-card-container "
+        className={`absolute w-full h-full flex items-start justify-center ${styles.handsOnCardContainer}`}
         style={{
           transform: `translateY(${yPosition}px)`,
           opacity: isVisible ? opacity : 0,
@@ -216,7 +206,7 @@ const ContentCard = memo<{
         }}
       >
         <div
-          className="w-full max-w-5xl bg-white overflow-hidden mx-2 sm:mx-auto hands-on-card-scale flex flex-col sm:flex-row"
+          className={`w-full max-w-5xl bg-white overflow-hidden mx-2 sm:mx-auto ${styles.handsOnCardScale} flex flex-col sm:flex-row`}
           style={{
             transform: `scale(${scale})`,
             height: "calc(100dvh - 2rem)",
@@ -260,7 +250,7 @@ const ContentCard = memo<{
                         }
                       />
                     );
-                  } catch (e) {
+                  } catch {
                     return (
                       <>
                         <h3 className="text-base sm:text-xl md:text-2xl font-bold text-black mb-1">
@@ -274,10 +264,7 @@ const ContentCard = memo<{
                     );
                   }
                 })()}
-                {/* YEAR-3 badge */}
-                <div className="absolute top-0 right-0 bg-blue-500 text-white text-[8px] sm:text-[10px] font-semibold px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full">
-                  YEAR-3
-                </div>
+
               </div>
 
               {/* Category-Specific Content */}
@@ -293,7 +280,7 @@ const ContentCard = memo<{
                         tracks
                       </div>
 
-                      <ol className="list-decimal list-inside flex flex-wrap gap-x-6 gap-y-1 text-[10px] text-gray-700 mb-1">
+                      <ol className="list-decimal list-inside flex flex-wrap gap-x-6 gap-y-1 text-[10px] text-[#5f6368] mb-1">
                         {contentData[category].specializationTracks?.map(
                           (track) => (
                             <li
@@ -306,7 +293,7 @@ const ContentCard = memo<{
                         )}
                       </ol>
 
-                      <p className="text-[10px] text-gray-500 italic">
+                      <p className="text-[10px] text-[#5f6368] italic">
                         Students build complex systems and applications in their
                         chosen track.
                       </p>
@@ -355,7 +342,7 @@ const ContentCard = memo<{
                         ✨ Skills you’ll build
                       </div>
 
-                      <div className="flex flex-wrap gap-x-3 gap-y-1 text-[10px] text-gray-700 mb-3">
+                      <div className="flex flex-wrap gap-x-3 gap-y-1 text-[10px] text-[#5f6368] mb-3">
                         {contentData[category].skills?.map((skill) => (
                           <span key={skill}>{skill}</span>
                         ))}
@@ -474,7 +461,7 @@ const ContentCard = memo<{
                         id="student-stores-heading"
                         className="text-xs sm:text-sm md:text-base font-semibold text-black mb-2 sm:mb-3 md:mb-4"
                       >
-                        Shop At Our Students' Stores
+                        Shop At Our Students&apos; Stores
                       </h4>
 
                       <div
@@ -486,7 +473,7 @@ const ContentCard = memo<{
                           (store, idx: number) => (
                             <div
                               key={idx}
-                              className="flex items-center justify-center p-1.5 sm:p-2 bg-gray-100 hover:bg-gray-50 hands-on-store-card cursor-pointer"
+                              className={`flex items-center justify-center p-1.5 sm:p-2 bg-gray-100 hover:bg-gray-50 ${styles.handsOnStoreCard} cursor-pointer`}
                               role="listitem"
                             >
                               <span
@@ -526,7 +513,7 @@ const ContentCard = memo<{
                                   : "border-b-transparent bg-gray-50 hover:border-b-gray-300"
                                 }`}
                             >
-                              <p className="text-[10px] text-gray-700 leading-snug line-clamp-2 text-left">
+                              <p className="text-[10px] text-[#5f6368] leading-snug line-clamp-2 text-left">
                                 {spec}
                               </p>
                             </button>
@@ -564,9 +551,9 @@ const ContentCard = memo<{
                                   className="border border-gray-200 rounded-md p-1.5 text-center"
                                 >
                                   <div className="mb-0.5 flex justify-center">
-                                    <Image src={tech.icon} alt={tech.name} width={12} height={12} className="w-5 h-5 text-gray-700" />
+                                    <Image src={tech.icon} alt={tech.name} width={12} height={12} className="w-5 h-5 text-[#5f6368]" />
                                   </div>
-                                  <p className="text-[10px] text-gray-700 leading-tight">
+                                  <p className="text-[10px] text-[#5f6368] leading-tight">
                                     {tech.name}
                                   </p>
                                 </div>
@@ -586,10 +573,10 @@ const ContentCard = memo<{
                         </div>
 
                         {/* Horizontal Cards */}
-                        <div className="flex gap-3 overflow-x-auto pb-2 crollbar-hide">
+                        <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
                           {contentData[category]?.projects?.map((project) => (
-                            <div key={project.name} className="w-[180px]">
-                              <h5 className="text-[10px] font-semibold text-gray-900 h-[28px] leading-tight mb-1">
+                            <div key={project.name} className="flex-shrink-0 w-[180px]">
+                              <h5 className="text-[10px] font-semibold text-gray-900 h-[28px] leading-tight mb-1 line-clamp-2">
                                 {project.name}
                               </h5>
                               <div
@@ -612,7 +599,7 @@ const ContentCard = memo<{
                   category !== "Specialization" && (
                     <div className="mt-auto pt-2 sm:pt-3 md:pt-4 flex-shrink-0">
                       <button
-                        className="bg-[#B30437] hover:bg-[#8B0329] text-white px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-lg font-semibold text-xs sm:text-sm md:text-base hands-on-cta-button flex items-center space-x-2"
+                        className={`bg-[#B30437] hover:bg-[#8B0329] text-white px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-lg font-semibold text-xs sm:text-sm md:text-base ${styles.handsOnCtaButton} flex items-center space-x-2`}
                         aria-label={`View all ${category} details`}
                         type="button"
                       >
@@ -671,6 +658,7 @@ function HandsOnLearningComponent() {
   // Refs for performance-critical values
   const rafId = useRef<number | null>(null);
   const lastProgress = useRef(0);
+  const [windowHeight, setWindowHeight] = useState(0);
 
   const categories: CategoryKey[] = [
     "No-code AI Development",
@@ -802,7 +790,7 @@ function HandsOnLearningComponent() {
       ],
     },
     "No-code AI Development": {
-      title: "AI on Curriculum",
+      title: "AI-Powerd Job-Ready Foundation on Curriculum",
       description:
         "After mastering the basics, it's time to choose your path and specialize.",
       image:
@@ -862,6 +850,10 @@ function HandsOnLearningComponent() {
 
   useEffect(() => {
     setMounted(true);
+    setWindowHeight(window.innerHeight);
+    const onResize = () => setWindowHeight(window.innerHeight);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
   }, []);
 
   const currentItemIndex = Math.round(activeIndex);
@@ -872,19 +864,25 @@ function HandsOnLearningComponent() {
     const handleScroll = () => {
       // Cancel any pending animation frame to prevent buildup
       if (rafId.current !== null) {
-        cancelAnimationFrame(rafId.current);
+        return; // Already waiting for next frame
       }
 
       rafId.current = requestAnimationFrame(() => {
-        if (!containerRef.current) return;
+        if (!containerRef.current) {
+          rafId.current = null;
+          return;
+        }
 
-        const containerRect = containerRef.current.getBoundingClientRect();
+        const rect = containerRef.current.getBoundingClientRect();
+        const height = containerRef.current.offsetHeight;
         const windowHeight = window.innerHeight;
 
-        if (containerRect.top <= 0 && containerRect.bottom >= windowHeight) {
-          const scrollableHeight =
-            containerRef.current.offsetHeight - windowHeight;
-          const currentScroll = Math.abs(containerRect.top);
+        const relativeTop = rect.top;
+        const relativeBottom = rect.top + height;
+
+        if (relativeTop <= 0 && relativeBottom >= windowHeight) {
+          const scrollableHeight = Math.max(1, height - windowHeight);
+          const currentScroll = Math.abs(relativeTop);
           const progress = Math.max(
             0,
             Math.min(1, currentScroll / scrollableHeight),
@@ -892,9 +890,8 @@ function HandsOnLearningComponent() {
 
           const smoothActiveIndex = progress * (categories.length - 1);
 
-          // Only update state if value has changed significantly
           const diff = Math.abs(progress - lastProgress.current);
-          if (diff > 0.001) {
+          if (diff > 0.02) {
             setActiveIndex(smoothActiveIndex);
             lastProgress.current = progress;
 
@@ -902,6 +899,8 @@ function HandsOnLearningComponent() {
             setShouldMenuScroll(isNearLastCard);
           }
         }
+
+        rafId.current = null;
       });
     };
 
@@ -981,7 +980,7 @@ function HandsOnLearningComponent() {
                 className="text-sm font-semibold text-[#B30437] tracking-wider pb-2 sm:pb-3 md:pb-4"
                 role="text"
               >
-                THE YOUNG CHARTER'S HANDS-ON
+                THE YOUNG CHARTER&apos;S HANDS-ON
               </p>
               <h2
                 id="hands-on-heading"
@@ -997,92 +996,37 @@ function HandsOnLearningComponent() {
 
             {/* Description */}
             <div className="flex flex-col items-start sm:flex-row sm:flex-wrap sm:justify-center sm:items-center gap-3 sm:gap-6 mb-2 sm:mb-4 w-fit mx-auto sm:w-full">
-              {hanson_heading.description.split("|").map((item: string, index: number) => (
-                <div key={index} className="flex items-center gap-2">
-                  <img
-                    src="/dot-icon.svg"
-                    alt=""
-                    className="w-4 h-4 flex-shrink-0"
-                    aria-hidden="true"
-                  />
-                  <span className="text-sm sm:text-base text-gray-700 font-medium leading-snug whitespace-nowrap">
-                    {item.trim()}
-                  </span>
-                </div>
-              ))}
+              <h3 className="text-base px-[20px] md:px-[50px] lg:px-[70px] sm:text-lg text-[#5f6368]">
+                <strong> 7 </strong>months. <strong>Paid internship</strong> at global companys. <strong>AI-powered</strong> curriculum. Corporate <strong>English training</strong>. <strong>1:1</strong> mentorship. <strong>7</strong> countries. <strong>1,257+</strong> companies.
+
+              </h3>
             </div>
           </div>
         </div>
       </div>
 
       {/* Sticky Container */}
-      <div ref={containerRef} className="relative hands-on-container">
+      <div
+        ref={containerRef}
+        className={`relative ${styles.handsOnContainer}`}
+        style={{
+          "--category-count": categories.length,
+          height: `${categories.length * 100}vh`,
+        } as React.CSSProperties}
+      >
         <div
-          className={`sticky flex flex-col h-dvh sm:h-screen hands-on-sticky-transition ${shouldMenuScroll ? "top-0" : "top-12 sm:top-16"
+          className={`sticky flex flex-col h-dvh sm:h-screen ${styles.handsOnStickyTransition} ${shouldMenuScroll ? "top-0" : "top-12 sm:top-16"
             }`}
         >
-          {/* Mobile Month Navigation - Horizontal at top */}
-          <div
-            ref={mobileNavRef}
-            className="lg:hidden w-full bg-white border-b border-gray-200 overflow-x-auto scrollbar-hide flex-shrink-0"
-          >
-            <div className="flex gap-2 px-2 py-3 min-w-max">
-              {categories.map((category, index) => (
-                <button
-                  key={category}
-                  onClick={() => handleMenuClick(index)}
-                  className={`flex-shrink-0 px-3 py-2 rounded-lg border transition-all ${index === currentItemIndex
-                    ? "bg-[#B30437] text-white border-[#B30437]"
-                    : "bg-white text-[#272C18] border-[#efefef]"
-                    }`}
-                  aria-pressed={index === currentItemIndex}
-                  type="button"
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 flex-shrink-0 relative">
-                      <Image
-                        src={
-                          index === currentItemIndex
-                            ? "/Charters-icon/new store white.svg"
-                            : "/Charters-icon/new_campas.svg"
-                        }
-                        alt="Format icon"
-                        width={16}
-                        height={16}
-                        className="object-contain"
-                      />
-                    </div>
-                    <div className="text-left">
-                      <p
-                        className={`uppercase tracking-wider font-semibold text-[9px] ${index === currentItemIndex
-                          ? "text-white"
-                          : "text-[#272C18]"
-                          }`}
-                      >
-                        Month {index + 1}
-                      </p>
-                      <div
-                        className={`font-semibold text-[11px] whitespace-nowrap ${index === currentItemIndex
-                          ? "text-white"
-                          : "text-[#272C18]"
-                          }`}
-                      >
-                        {category}
-                      </div>
-                    </div>
-                  </div>
-                </button>
-              ))}
-            </div>
-          </div>
 
-          <div className="w-full max-w-[85rem] border-t border-gray-200  mx-auto mt-2 flex flex-1 min-h-0">
-            {/* Left Section - menu (Desktop only) */}
-            <div className="w-1/4 hidden lg:block relative border-r border-gray-300">
-              <div ref={menuRef} className="flex flex-col">
-                <div className=" flex-1 flex flex-col ">
+
+          <div className="w-full max-w-[85rem] lg:border-t border-gray-200 mx-auto mt-0 lg:mt-2 flex flex-col lg:flex-row flex-1 min-h-0">
+            {/* Left Section - menu (Unified for Mobile & Desktop) */}
+            <div className="w-full lg:w-1/4 relative lg:border-r border-gray-300 flex-shrink-0 lg:flex-shrink">
+              <div ref={menuRef} className="flex flex-col h-full">
+                <div className="flex-1 flex flex-col">
                   {/* Header */}
-                  <div className="mb-6 pt-4">
+                  <div className="mb-6 pt-4 hidden lg:block">
                     {/* <h3 className="text-xl font-light text-black mb-2">
                       100+ Top MNC's in class
                     </h3> */}
@@ -1090,19 +1034,20 @@ function HandsOnLearningComponent() {
                       <Image
                         src="/home/charters-faculty-member.avif"
                         alt="Charters Faculty Member"
-                        width={330}
+                        width={300}
                         height={104}
-                        className="h-25 w-full p-[7px] object-contain rounded"
-                        sizes="(max-width: 768px) 100vw, 330px"
+                        className="h-22 w-full p-[7px] object-contain rounded"
+                        sizes="(max-width: 768px) 100vw, 300px"
                       />
                     </div>
-                    <p className="text-gray-400 text-xs pl-4">
+                    <p className="text-[#80868b] text-xs pl-4">
                       Built by Harvard Scholars, Led by Industry-
                     </p>
                   </div>
 
-                  <nav
-                    className="flex-1 overflow-y-auto"
+                  <div
+                    ref={mobileNavRef}
+                    className="flex lg:flex-col overflow-x-auto lg:overflow-x-hidden lg:overflow-y-auto scrollbar-hide border-b border-gray-200 lg:border-b-0"
                     aria-label="Program navigation"
                   >
                     {categories.map((category, index) => (
@@ -1114,7 +1059,7 @@ function HandsOnLearningComponent() {
                         onClick={() => handleMenuClick(index)}
                       />
                     ))}
-                  </nav>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1128,7 +1073,7 @@ function HandsOnLearningComponent() {
                     category={category}
                     index={index}
                     activeIndex={activeIndex}
-                    slideDistance={600}
+                    slideDistance={windowHeight ? windowHeight + 50 : 1000}
                     fadeThreshold={0.4}
                     zoomOutAmount={0.2}
                     fadeAmount={0.2}
@@ -1145,3 +1090,4 @@ function HandsOnLearningComponent() {
 }
 
 export default memo(HandsOnLearningComponent);
+

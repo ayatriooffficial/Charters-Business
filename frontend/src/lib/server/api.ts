@@ -314,6 +314,8 @@ export interface JobPosting {
   views: number;
   applicationsCount: number;
   createdAt: string;
+  skills?: string[];
+  requirements?: string;
 }
 
 export const getAllJobs = async (params?: {
@@ -381,6 +383,8 @@ export interface InternshipPosting {
   views: number;
   applicationsCount: number;
   createdAt: string;
+  skills?: string[];
+  requirements?: string;
 }
 
 export const getAllInternships = async (params?: {

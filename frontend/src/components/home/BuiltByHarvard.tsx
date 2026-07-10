@@ -1,22 +1,7 @@
 
 import { memo } from "react";
 import Image from "next/image";
-import { getCloudinaryUrl, CLOUDINARY_IMAGES } from "@/lib/cloudinary";
 import HighlightText from "@/components/shared/HighlightObserver";
-
-interface University {
-  name: string;
-  logoKey: keyof typeof CLOUDINARY_IMAGES.universities;
-}
-
-const universities: University[] = [
-  { name: "Tecnológico de Monterrey", logoKey: "tecDeMonterrey" },
-  { name: "University of Michigan", logoKey: "michigan" },
-  { name: "Imperial College London", logoKey: "imperial" },
-  { name: "The University of Melbourne", logoKey: "melbourne" },
-  { name: "Manipal", logoKey: "manipal" },
-  { name: "NMIMS", logoKey: "nmims" },
-];
 
 function BuiltByHarvard() {
   return (
@@ -50,16 +35,16 @@ function BuiltByHarvard() {
 
         <p className="text-[#5f6368] text-sm sm:text-base md:text-lg max-w-4xl mx-auto leading-relaxed px-4">
           Global leaders partner with Hardvard to drive workforce transformation
-          and unlock their organization's full potential through cutting-edge
+          and unlock their organization&apos;s full potential through cutting-edge
           tech skills.
         </p>
       </div>
 
       {/* Card */}
-      <div className="bg-white p-2 sm:p-4 md:p-6 max-w-6xl mx-auto">
+      <div className="bg-white p-4 sm:p-4 md:p-6 max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2">
           {/* Left Section */}
-          <div className="lg:pb-2">
+          <div className=" pb-4 sm:pb-4 md:pb-2 lg:pb-2">
             <h3 className="text-lg sm:text-[16px] md:text-[18px] font-semibold text-black mb-2 sm:mb-4 text-center">
               Built by alumni from{" "}
             </h3>

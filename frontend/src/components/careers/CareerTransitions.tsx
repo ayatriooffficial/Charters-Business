@@ -153,7 +153,7 @@ export default function CareerTransitions() {
                       className="sm:w-5 sm:h-5"
                     />
                   </div>
-                  <span className="text-xs sm:text-sm font-semibold text-gray-700">
+                  <span className="text-xs sm:text-sm font-semibold text-[#5f6368]">
                     {column.category}
                   </span>
                 </div>
@@ -165,13 +165,13 @@ export default function CareerTransitions() {
                       key={itemIndex}
                       className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 sm:gap-3"
                     >
-                      <p className="text-xs sm:text-sm text-gray-700 text-left">
+                      <p className="text-xs sm:text-sm text-[#5f6368] text-left">
                         {item.from}
                       </p>
                       <div className="flex items-center gap-0.5 px-1">
                         <div className="w-6 sm:w-10 border-t-2 border-dotted border-gray-300" />
                         <svg
-                          className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 flex-shrink-0"
+                          className="w-3 h-3 sm:w-4 sm:h-4 text-[#80868b] flex-shrink-0"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -202,7 +202,7 @@ export default function CareerTransitions() {
           <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-gray-900 mb-1 sm:mb-2">
             Career Transitions For PGP TBM
           </h2>
-          <p className="text-base sm:text-lg text-gray-700 mb-6 sm:mb-8 md:mb-12">
+          <p className="text-base sm:text-lg text-[#5f6368] mb-6 sm:mb-8 md:mb-12">
             (Pre-MBA to Post-MBA)
           </p>
         </div>
@@ -225,7 +225,7 @@ export default function CareerTransitions() {
                       className="sm:w-5 sm:h-5"
                     />
                   </div>
-                  <span className="text-xs sm:text-sm font-semibold text-gray-700">
+                  <span className="text-xs sm:text-sm font-semibold text-[#5f6368]">
                     {column.category}
                   </span>
                 </div>
@@ -237,13 +237,13 @@ export default function CareerTransitions() {
                       key={itemIndex}
                       className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 sm:gap-3"
                     >
-                      <p className="text-xs sm:text-sm text-gray-700 text-left">
+                      <p className="text-xs sm:text-sm text-[#5f6368] text-left">
                         {item.from}
                       </p>
                       <div className="flex items-center gap-0.5 px-1">
                         <div className="w-6 sm:w-10 border-t-2 border-dotted border-gray-300" />
                         <svg
-                          className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 flex-shrink-0"
+                          className="w-3 h-3 sm:w-4 sm:h-4 text-[#80868b] flex-shrink-0"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"

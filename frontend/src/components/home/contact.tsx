@@ -93,7 +93,7 @@ const Contact = () => {
             <div className="space-y-4">
                 <div className="bg-[#0f2922] text-white p-6 md:p-8 relative h-28 md:h-36">
                     <div className="absolute top-4 right-4">
-                        <Image src="/Charters-icon/Cancel.svg" alt="icon" width={12} height={12} className="w-4 h-4" />
+                        <img src="/Charters-icon/Cancel.svg" alt="icon" width={12} height={12} className="w-4 h-4" />
                     </div>
                     <div className="flex flex-col justify-center h-full">
                         <p className="text-sm mb-1">Write to Us</p>
@@ -103,7 +103,7 @@ const Contact = () => {
 
                 <div className="bg-[#B30437] text-white p-6 md:p-8 relative h-28 md:h-36">
                     <div className="absolute top-4 right-4">
-                        <Image src="/Charters-icon/Cancel.svg" alt="icon" width={12} height={12} className="w-4 h-4" />
+                        <img src="/Charters-icon/Cancel.svg" alt="icon" width={12} height={12} className="w-4 h-4" />
                     </div>
                     <div className="flex flex-col justify-center h-full">
                         <p className="text-base font-bold leading-tight">

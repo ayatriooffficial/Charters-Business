@@ -3,7 +3,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
-import SectionWrapper from '@/components/shared/SectionWrapper';
 
 export default function CommunitySection() {
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -137,7 +136,7 @@ export default function CommunitySection() {
                   <div className="space-y-4 sm:space-y-6 md:space-y-8">
                     {/* Header */}
                     <header>
-                      <p className="text-xs sm:text-sm font-semibold text-[#B30437] tracking-wider mb-2 sm:mb-3" role="text">MASTER UNION COMMUNITY</p>
+                      <p className="text-xs sm:text-sm font-semibold text-[#B30437] tracking-wider mb-2 sm:mb-3" role="text">CHARTERS UNION COMMUNITY</p>
                       <h2 id="community-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-black leading-tight mb-4 sm:mb-6 md:mb-8">
                         A ready-made<br />
                         <span className="italic font-serif text-[#B30437]">community</span> for life.
@@ -149,8 +148,8 @@ export default function CommunitySection() {
 
                     {/* Action Links */}
                     <nav className="space-y-3 sm:space-y-4" role="navigation" aria-label="Community links">
-                      <a href="#" className="flex items-center gap-2 sm:gap-3 text-[#B30437] font-medium hover:text-black transition-colors group" aria-label="Visit Master Union on Instagram">
-                        <span className="text-sm sm:text-base md:text-lg uppercase tracking-wide">@MASTERUNION ON INSTAGRAM</span>
+                      <a href="#" className="flex items-center gap-2 sm:gap-3 text-[#B30437] font-medium hover:text-black transition-colors group" aria-label="Visit Charters Union on Instagram">
+                        <span className="text-sm sm:text-base md:text-lg uppercase tracking-wide">@CHARTERS UNION ON INSTAGRAM</span>
                         <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                       </a>
 

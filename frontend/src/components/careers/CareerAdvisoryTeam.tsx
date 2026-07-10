@@ -51,78 +51,7 @@ const ADVISORY_TEAM = [
     company: "MBA, IIM-G | Ex. Categories",
     image: `${BASE_IMAGE_URL}/careerAdvisor8.webp`,
   },
-  {
-    name: "Puneet Aggarwal",
-    title: "Manager - Business Development & Operations",
-    company: "MBA, IIM-C | Ex. British Airways & IA-India",
-    image: `${BASE_IMAGE_URL}/careerAdvisor9.webp`,
-  },
-  {
-    name: "Simran Sharma",
-    title: "Asst. Manager - Marketing Operations",
-    company: "Ex, KPMG | I-Delhi-ncr-G",
-    image: `${BASE_IMAGE_URL}/careerAdvisor10.webp`,
-  },
-  {
-    name: "Dhwani Lalwani",
-    title: "Manager - Director's Office",
-    company: "Ex. Harness",
-    image: `${BASE_IMAGE_URL}/careerAdvisor11.webp`,
-  },
-  {
-    name: "Shreya Mishra",
-    title: "Manager - International Corporate Relations",
-    company: "Ex, Chartered Learning, Macquarie",
-    image: `${BASE_IMAGE_URL}/careerAdvisor12.webp`,
-  },
-  {
-    name: "Christopher",
-    title: "Assistant Manager - Career Prep",
-    company: "Ex, Bumbrus",
-    image: `${BASE_IMAGE_URL}/careerAdvisor13.webp`,
-  },
-  {
-    name: "Seema Mahna",
-    title: "Manager - International Corporate Relations",
-    company: "Ex, Dell Consulting",
-    image: `${BASE_IMAGE_URL}/careerAdvisor14.webp`,
-  },
-  {
-    name: "Prashant Gavhal",
-    title: "Executive - Career Preparation",
-    company: "MBA, IIM-G | Ex. Marketing",
-    image: `${BASE_IMAGE_URL}/careerAdvisor15.webp`,
-  },
-  {
-    name: "Akashdeep Nayak",
-    title: "Assistant Manager - Career Prep",
-    company: "MBA, IIM | Ex. Edemantic | Arethrica, Matsum",
-    image: `${BASE_IMAGE_URL}/careerAdvisor16.webp`,
-  },
-  {
-    name: "Swarna Soha",
-    title: "Senior Manager - Corporate Relations",
-    company: "Ex, Dell Consulting",
-    image: `${BASE_IMAGE_URL}/careerAdvisor17.webp`,
-  },
-  {
-    name: "Akashleena Senon",
-    title: "Program Manager - Operations",
-    company: "Ex, Shortation",
-    image: `${BASE_IMAGE_URL}/careerAdvisor18.webp`,
-  },
-  {
-    name: "Mateen Arora",
-    title: "Program Manager - Career Programmes",
-    company: "BA-Eng, I-E, Auckland | Ex, Education",
-    image: `${BASE_IMAGE_URL}/careerAdvisor2.webp`,
-  },
-  {
-    name: "Nandakisore Sathya",
-    title: "Program Associate",
-    company: "Ex, Vasso Divory",
-    image: `${BASE_IMAGE_URL}/careerAdvisor20.webp`,
-  },
+
 ];
 
 export default function CareerAdvisoryTeam() {
@@ -131,7 +60,7 @@ export default function CareerAdvisoryTeam() {
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
         <div className="mb-4 sm:mb-6 md:mb-8 flex-col text-center px-4 sm:px-5">
-          <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.12em] text-gray-400 mb-1 sm:mb-2">
+          <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.12em] text-[#80868b] mb-1 sm:mb-2">
             PROFESSIONAL GUIDANCE
           </p>
           <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold tracking-tight text-gray-900">
@@ -148,7 +77,7 @@ export default function CareerAdvisoryTeam() {
             >
               {/* Image */}
               <div className="relative w-full aspect-[3/4] overflow-hidden bg-gray-100 mb-2">
-                <Image 
+                <Image
                   src={member.image}
                   alt={member.name}
                   fill
@@ -160,9 +89,9 @@ export default function CareerAdvisoryTeam() {
               {/* Info */}
               <div className="p-2 sm:p-3">
                 <h3 className="text-xs sm:text-sm font-bold text-gray-900 mb-0.5 sm:mb-1 leading-tight">{member.name}</h3>
-              <p className="text-[10px] sm:text-xs font-semibold mb-0.5 sm:mb-1 leading-tight" style={{ color: "#B30437" }}>
-                {member.title}
-              </p>
+                <p className="text-[10px] sm:text-xs font-semibold mb-0.5 sm:mb-1 leading-tight" style={{ color: "#B30437" }}>
+                  {member.title}
+                </p>
                 <p className="text-[9px] sm:text-[10px] text-gray-600 leading-relaxed">{member.company}</p>
               </div>
             </div>

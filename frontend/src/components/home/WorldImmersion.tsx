@@ -10,17 +10,31 @@ const immersionData = [
     flag: "https://flagcdn.com/w40/in.png", // India
     business: {
       imageSrc: "/images/tetr/indiaMarket.webp",
-      title: "Business Immersions",
-      subtitle: "Gurgaon's Banjara Market",
+      title: "Accountant & Finance",
+      subtitle: "",
       description:
-        "Learn grassroots selling strategies | Observe real-time bargaining skills | Understand high-volume, low-margin business models",
+        "FinTech & Digital Payments | Accounting Consulting | Financial Services & Compliance | Global Bookkeeping | Payroll Management | Tax Consulting | SME Finance Departments",
     },
     cultural: {
       imageSrc: "/images/tetr/indiaParade.webp",
-      title: "Cultural Immersions",
+      title: "Digital Growth marketing",
       subtitle: "Republic Day Parade",
       description:
-        "Experience national pride and unity | Witness military and cultural showcases | Explore India's diverse traditions in one event",
+        "Digital Marketing | Product Growth Marketing | ",
+    },
+    growth: {
+      imageSrc: "/images/tetr/indiaParade.webp",
+      title: "Digital Growth marketing",
+      subtitle: "Republic Day Parade",
+      description:
+        "Digital Marketing | Product Growth Marketing | ",
+    },
+    social: {
+      imageSrc: "/images/tetr/FMCGBrandNew.webp",
+      title: "Social Immersions",
+      subtitle: "Rural Development Project",
+      description:
+        "Understand grassroots development projects | Engage with local community leaders | Analyze rural economic models",
     },
   },
   {
@@ -40,6 +54,13 @@ const immersionData = [
       description:
         "Witness high-stakes financial moments | Learn about IPO processes | Experience the energy of Wall Street",
     },
+    social: {
+      imageSrc: "/images/tetr/TechUSNew.webp",
+      title: "Social Immersions",
+      subtitle: "Silicon Valley Incubators",
+      description:
+        "Engage with startup accelerators | Study tech-incubator ecosystem models | Connect with social enterprise founders",
+    },
   },
   {
     location: "Canada",
@@ -57,6 +78,13 @@ const immersionData = [
       subtitle: "La Bombonera",
       description:
         "Experience passionate football culture | Engage with local fan traditions | Feel the intensity of live matches",
+    },
+    social: {
+      imageSrc: "/images/tetr/GreenArgentinaNew.webp",
+      title: "Social Immersions",
+      subtitle: "Sustainable Agriculture Labs",
+      description:
+        "Analyze eco-friendly farming practices | Work with green energy projects | Study sustainability compliance frameworks",
     },
   },
   {
@@ -76,6 +104,13 @@ const immersionData = [
       description:
         "Experience traditional desert life | Enjoy cultural performances and cuisine | Learn Bedouin heritage and customs",
     },
+    social: {
+      imageSrc: "/images/tetr/7ghanaNew.webp",
+      title: "Social Immersions",
+      subtitle: "Future Cities Projects",
+      description:
+        "Explore future smart-city concepts | Study sustainable urban planning | Analyze local community integration models",
+    },
   },
   {
     location: "Dubai",
@@ -93,6 +128,13 @@ const immersionData = [
       subtitle: "Desert Safari",
       description:
         "Experience traditional desert life | Enjoy cultural performances and cuisine | Learn Bedouin heritage and customs",
+    },
+    social: {
+      imageSrc: "/images/tetr/socialchannelEuropeNew.webp",
+      title: "Social Immersions",
+      subtitle: "Civic Tech Hubs",
+      description:
+        "Visit futuristic community spaces | Understand tech-driven civic initiatives | Study startup ecosystem launchpads",
     },
   },
   {
@@ -112,13 +154,20 @@ const immersionData = [
       description:
         "Experience traditional desert life | Enjoy cultural performances and cuisine | Learn Bedouin heritage and customs",
     },
+    social: {
+      imageSrc: "/images/tetr/euRace.webp",
+      title: "Social Immersions",
+      subtitle: "Cultural Heritage Conservation",
+      description:
+        "Analyze historical site preservation | Engage with heritage foundations | Study tourism's social and economic impact",
+    },
   },
   {
     location: "Singapore",
     flag: "https://flagcdn.com/w40/sg.png", // Singapore
     business: {
       imageSrc: "/images/tetr/singSkyline.webp",
-      title: "Business Immersions",
+      title: "Market Research, Branding & Digital Marketing",
       subtitle: "MAS, Singapore",
       description:
         "Learn global financial systems | Explore fintech innovation | Understand regulatory frameworks in banking",
@@ -130,14 +179,17 @@ const immersionData = [
       description:
         "Celebrate national identity and unity | Enjoy grand parades and fireworks | Experience multicultural performances",
     },
+    social: {
+      imageSrc: "/images/tetr/euMilan.webp",
+      title: "Social Immersions",
+      subtitle: "Green Hub Ecosystems",
+      description:
+        "Explore vertical garden architectures | Study urban sustainability projects | Analyze eco-conscious public policy",
+    },
   },
 ];
 
 const FALLBACK_IMAGE = "/images/placeholder.webp";
-
-const SLIDE_WIDTH_PERCENT = 100; // For mobile slides
-const STEP = 100;
-
 
 function WorldImmersion() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -202,11 +254,18 @@ function WorldImmersion() {
     const scrollContainer = slidesContainerRef.current?.parentElement;
     if (!scrollContainer) return;
 
+    let ticking = false;
     const handleScroll = () => {
-      const activeIdx = Math.round(scrollContainer.scrollLeft / scrollContainer.clientWidth);
-      setCurrentIndex(activeIdx);
-      const newOffset = scrollContainer.scrollLeft > 1 ? (scrollContainer.scrollLeft / scrollContainer.clientWidth) * 100 : 0;
-      setOffsetPercent(newOffset);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const activeIdx = Math.round(scrollContainer.scrollLeft / scrollContainer.clientWidth);
+          setCurrentIndex(activeIdx);
+          const newOffset = scrollContainer.scrollLeft > 1 ? (scrollContainer.scrollLeft / scrollContainer.clientWidth) * 100 : 0;
+          setOffsetPercent(newOffset);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
@@ -220,18 +279,23 @@ function WorldImmersion() {
   const active = immersionData[activeIndex] || immersionData[0];
 
   return (
-    <section className="bg-white text-black pt-16 isolate mx-[0%]">
+    <section className="bg-white text-black pt-22 isolate mx-[0%]">
       {/* Header Section */}
       <div className="max-w-[85rem] mx-auto">
         <div className="text-center mb-8 sm:mb-12">
-          <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
-
+          <p
+            className="text-sm font-semibold text-[#B30437] tracking-wider mb-3"
+            role="text"
+          >
+            Global Culture{" "}
+          </p>
+          <h2 className="leading-none px-[20px] text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
             <HighlightText className=" font-bold">
               7 International Markets.
             </HighlightText>
             {" "} 7 Business Culture.
           </h2>
-          <p className="text-sm sm:text-base text-gray-600 px-[70px]">
+          <p className="text-sm sm:text-base text-gray-600 px-[20px] md:px-[50px] lg:px-[70px]">
             <strong>4 Months of your program</strong>, work you inside a real company — in <strong>India</strong> or across <strong>6 international markets</strong>. You are <strong>earning while learning</strong>, building a <strong>globally accepted portfolio</strong>.
           </p>
         </div>
@@ -248,7 +312,7 @@ function WorldImmersion() {
                     onClick={() => handleLocationClick(i)}
                     className={`px-3 text-nowrap sm:px-4 py-2 transition-all focus-visible:outline-none focus-visible:border-b-2 focus-visible:border-[#B30437] text-sm ${isActive
                       ? "text-black border-b-2 border-black"
-                      : "text-gray-700 hover:bg-gray-50"
+                      : "text-[#5f6368] hover:bg-gray-50"
                       }`}
                     aria-label={`${d.location} immersion`}
                     aria-pressed={isActive}
@@ -256,12 +320,13 @@ function WorldImmersion() {
                     <div className="flex items-center gap-2">
 
                       <span>{d.location}</span>
-                      <img
+                      <Image
                         src={d.flag}
                         alt={d.location}
+                        width={28}
+                        height={20}
                         className="w-7 h-5 object-cover"
                       />
-
                     </div>
                   </button>
                 </li>
@@ -287,7 +352,7 @@ function WorldImmersion() {
                   {[
                     { type: "biz", data: active.business },
                     { type: "cul", data: active.cultural },
-                    { type: "biz-repeat", data: active.business },
+                    { type: "social", data: active.social },
                   ].map((item, index) => (
                     <article
                       key={`${item.type}-${activeIndex}`}
@@ -310,16 +375,17 @@ function WorldImmersion() {
                           {item.data.title}
                         </h3>
                         <p className="text-[14px] text-gray-600 mb-2  leading-relaxed">Experience one-on-one mentorship, coaching and guidance from CXOs across industries.</p>
+
                         <div className="flex flex-col gap-2 mt-2">
                           {item.data.description.split("|").map((point: string, i: number) => (
                             <div key={i} className="flex items-start gap-2">
                               <img
                                 src="/dot-icon.svg"
                                 alt=""
-                                className="w-4 h-4 mt-0.5 flex-shrink-0"
+                                className="w-4 h-4 opacity-[0.5] mt-0.5 flex-shrink-0"
                                 aria-hidden="true"
                               />
-                              <span className="text-sm text-gray-700 font-medium leading-snug">
+                              <span className="text-sm text-[#5f6368] font-medium leading-snug">
                                 {point.trim()}
                               </span>
                             </div>
@@ -350,7 +416,7 @@ function WorldImmersion() {
                   )}
                 </div>
                 <div className="absolute top-1/2 -translate-y-1/2 -right-2 sm:right-0 z-20">
-                  {currentIndex < 3 && (
+                  {currentIndex < 2 && (
                     <button
                       onClick={() => changeSlide(1)}
                       disabled={isAnimating}
@@ -367,7 +433,7 @@ function WorldImmersion() {
 
                 {/* Dots */}
                 <div className="flex justify-center gap-2 mt-4">
-                  {[0, 1, 2, 3].map((idx) => (
+                  {[0, 1, 2].map((idx) => (
                     <button
                       key={idx}
                       onClick={() => goToSlide(idx)}

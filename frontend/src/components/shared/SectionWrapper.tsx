@@ -6,6 +6,7 @@ type CornerVariant = "icon" | "line";
 interface CornerConfig {
     variant?: CornerVariant;
     hidden?: boolean;
+    src?: string;
 }
 
 interface SectionWrapperProps {
@@ -65,7 +66,8 @@ export default function SectionWrapper({
         const perCorner = corners[key] ?? {};
         const hidden = perCorner.hidden ?? globallyHidden.includes(key);
         const variant = perCorner.variant ?? cornerVariant;
-        return { key, hidden, variant };
+        const src = perCorner.src;
+        return { key, hidden, variant, src };
     });
 
     const iconCorners = resolved.filter((c) => !c.hidden && c.variant === "icon");
@@ -95,10 +97,10 @@ export default function SectionWrapper({
             ))}
 
             {/* joint icon */}
-            {iconCorners.map(({ key }) => (
+            {iconCorners.map(({ key, src }) => (
                 <img
                     key={key}
-                    src="/joint-icon.svg"
+                    src={src ?? "/joint-icon.svg"}
                     alt=""
                     aria-hidden="true"
                     style={{

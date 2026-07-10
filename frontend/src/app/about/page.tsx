@@ -1,52 +1,38 @@
 import TetrLandingPage from "@/components/about/About";
 
-import { organizationSchema, generateBreadcrumbSchema } from "@/lib/schema";
+import { organizationReferenceSchema, generateBreadcrumbSchema, combineSchemas } from "@/lib/schema";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us | Charters Business",
+  title: "About Us | Charters' Union",
   description:
-    "Learn about Charters Business and our mission to transform business education. Discover our world-class faculty, innovative programs, and commitment to producing industry-ready leaders.",
-  keywords: [
-    "about charters business",
-    "business school",
-    "education mission",
-    "tetr program",
-    "innovative learning",
-    "industry-ready leaders",
-    "business education India",
-  ],
+    "Learn about Charters' Union and our mission to transform business education. Discover our world-class faculty, programs, and industry-ready leaders.",
+  alternates: {
+    canonical: "https://chartersbusiness.com/about",
+  },
   openGraph: {
-    title: "About Us | Charters Business",
+    title: "About Us | Charters' Union",
     description:
-      "Learn about Charters Business and our mission to transform business education through real-world learning experiences.",
-    type: "website",
+      "Learn about Charters' Union and our mission to transform business education. Discover our world-class faculty, programs, and industry-ready leaders.",
     url: "https://chartersbusiness.com/about",
-    siteName: "Charter's Union",
+    siteName: "Charters' Union",
+    type: "website",
     images: [
       {
         url: "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp",
         width: 1200,
         height: 630,
-        alt: "About Charters Business - Transforming Business Education",
+        alt: "About Us | Charters' Union",
       },
     ],
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Us | Charters Business",
+    title: "About Us | Charters' Union",
     description:
-      "Learn about Charters Business and our mission to transform business education.",
-    images: [
-      "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp",
-    ],
-  },
-  alternates: {
-    canonical: "https://chartersbusiness.com/about",
-  },
-  robots: {
-    index: true,
-    follow: true,
+      "Learn about Charters' Union and our mission to transform business education. Discover our world-class faculty, programs, and industry-ready leaders.",
+    images: ["https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp"],
   },
 };
 
@@ -57,21 +43,32 @@ export default function AboutPage() {
     { name: "About", url: "https://chartersbusiness.com/about" },
   ]);
 
+  // Define AboutPage schema
+  const aboutPageSchema = {
+    "@type": "AboutPage",
+    "@id": "https://chartersbusiness.com/about#webpage",
+    url: "https://chartersbusiness.com/about",
+    name: "About Us | Charters' Union",
+    description: "Learn about Charters' Union and our mission to transform business education. Discover our world-class faculty, programs, and industry-ready leaders.",
+    inLanguage: "en-IN",
+    isPartOf: {
+      "@id": "https://chartersbusiness.com/#website",
+    },
+    about: {
+      "@id": "https://chartersbusiness.com/#organization",
+    },
+  };
+
+  // Combine into a single lightweight graph schema
+  const consolidatedSchema = combineSchemas(organizationReferenceSchema, breadcrumbSchema, aboutPageSchema);
+
   return (
     <>
-      {/* Organization Schema */}
-      {/* Organization Schema */}
+      {/* Consolidated Page Schema */}
       <script
-        id="about-organization-schema"
+        id="about-page-schema"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-
-      {/* Breadcrumb Schema */}
-      <script
-        id="about-breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(consolidatedSchema) }}
       />
 
       <TetrLandingPage />

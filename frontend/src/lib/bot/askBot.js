@@ -273,7 +273,7 @@ How can I assist you today?
   return `
 ## 🎓 Available Programs
 
-- **CBA®(Certified Business Accountant)**
+- **CBA™ (Certified Business Accountant)**
 - **DGM™(Digital Growth & Marketing)**
 - **TBM™(Technology & Business Management)**
 

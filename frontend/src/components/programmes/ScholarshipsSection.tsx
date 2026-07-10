@@ -66,11 +66,11 @@ const ScholarshipsSection: React.FC<ScholarshipsSectionProps> = ({
 
   return (
     <section
-      className="bg-white pt-4 sm:pt-6 md:pt-8"
+      className="bg-white"
       aria-labelledby="scholarships-heading"
     >
-      <div className="max-w-[85rem] mx-auto">
-        <header className="px-4 sm:px-6 text-center mb-13 sm:mb-14">
+      <div className="max-w-[85rem] pt-12 sm:pt-16 md:pt-18">
+        <header className="text-center mb-13 sm:mb-14">
           <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-4 sm:mb-6">
             Financial Aid
           </p>
@@ -79,7 +79,7 @@ const ScholarshipsSection: React.FC<ScholarshipsSectionProps> = ({
             className="font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-black leading-tight mb-3 sm:mb-4"
           >
             Empowering Dreams Through{" "}
-            <HighlightText className="font-bold">
+            <HighlightText className="font-bold !px-0 !py-0">
               Scholarships
             </HighlightText>
           </h2>
@@ -90,53 +90,53 @@ const ScholarshipsSection: React.FC<ScholarshipsSectionProps> = ({
         </header>
         <div className="grid grid-cols-1 lg:grid-cols-2 items-start">
           {/* Left Content */}
-            <div className="">
-              {scholarships.map((scholarship) => (
-                <div
-                  key={scholarship.id}
-                  className="border-b border-r border-gray-200 first:border-t last:border-b-0"
+          <div className="">
+            {scholarships.map((scholarship) => (
+              <div
+                key={scholarship.id}
+                className="border-b border-r border-gray-200 first:border-t last:border-b-0"
+              >
+                <button
+                  onClick={() => toggleExpanded(scholarship.id)}
+                  className="w-full flex items-center justify-between text-left group cursor-pointer hover:bg-gray-50 transition-colors duration-200 py-4 px-2 rounded-sm"
+                  type="button"
+                  aria-expanded={expandedItem === scholarship.id}
                 >
-                  <button
-                    onClick={() => toggleExpanded(scholarship.id)}
-                    className="w-full flex items-center justify-between text-left group cursor-pointer hover:bg-gray-50 transition-colors duration-200 py-4 px-2 rounded-sm"
-                    type="button"
-                    aria-expanded={expandedItem === scholarship.id}
-                  >
-                    <h3 className="text-lg font-medium text-black">
-                      {scholarship.title}
-                    </h3>
-                    <div className="ml-4 flex-shrink-0">
-                      {expandedItem === scholarship.id ? (
-                        <Minus className="w-5 h-5 text-[#B30437]" />
-                      ) : (
-                        <Plus className="w-5 h-5 text-[#B30437]" />
-                      )}
-                    </div>
-                  </button>
+                  <h3 className="text-lg font-medium text-black">
+                    {scholarship.title}
+                  </h3>
+                  <div className="ml-4 flex-shrink-0">
+                    {expandedItem === scholarship.id ? (
+                      <Minus className="w-5 h-5 text-[#B30437]" />
+                    ) : (
+                      <Plus className="w-5 h-5 text-[#B30437]" />
+                    )}
+                  </div>
+                </button>
 
-                  {expandedItem === scholarship.id && (
-                    <div className="mt-4 space-y-3 px-4 sm:px-6">
-                      <p className="text-black leading-relaxed">
-                        {scholarship.description}
-                      </p>
-                      <div className="flex items-start gap-2">
-                        <span className="text-sm font-medium text-[#B30437] mt-0.5">
-                          📋
+                {expandedItem === scholarship.id && (
+                  <div className="mt-4 space-y-3 px-4 sm:px-6">
+                    <p className="text-black leading-relaxed">
+                      {scholarship.description}
+                    </p>
+                    <div className="flex items-start gap-2">
+                      <span className="text-sm font-medium text-[#B30437] mt-0.5">
+                        📋
+                      </span>
+                      <div>
+                        <span className="text-sm font-medium text-black">
+                          Eligibility Criteria:{" "}
                         </span>
-                        <div>
-                          <span className="text-sm font-medium text-black">
-                            Eligibility Criteria:{" "}
-                          </span>
-                          <span className="text-sm text-black">
-                            {scholarship.eligibility}
-                          </span>
-                        </div>
+                        <span className="text-sm text-black">
+                          {scholarship.eligibility}
+                        </span>
                       </div>
                     </div>
-                  )}
-                </div>
-              ))}
-            </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
 
           {/* Right Image */}
           <aside className="relative">

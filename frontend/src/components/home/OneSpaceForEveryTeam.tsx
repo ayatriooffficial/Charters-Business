@@ -31,8 +31,8 @@ const teamCategories: TeamCategory[] = [
 ];
 
 const OneSpaceForEveryTeam = () => {
-  const [activeCategory, setActiveCategory] = useState<string>("engineering");
-  const [activeTestimonial, setActiveTestimonial] = useState<string>("openai");
+  const [activeCategory, setActiveCategory] = useState<string>("product");
+  const [activeTestimonial, setActiveTestimonial] = useState<string>("openai-product");
 
   const filteredTestimonials = testimonials.filter(
     (t) => t.category === activeCategory,
@@ -55,7 +55,7 @@ const OneSpaceForEveryTeam = () => {
 
   return (
     <section
-      className="mx-[0%] bg-white pt-16 relative z-[5]"
+      className="mx-[0%] bg-white pt-22 relative z-[5]"
       aria-labelledby="team-collaboration-heading"
       role="main"
     >
@@ -63,19 +63,19 @@ const OneSpaceForEveryTeam = () => {
         {/* Header Section */}
         <div className="text-center mb-8 md:mb-12">
           <p
-            className="text-sm font-semibold text-[#B30437] tracking-wider mb-3"
+            className="text-sm px-[40px] font-semibold text-[#B30437] tracking-wider mb-3"
             role="text"
           >
-            FULL-TIME OFFER EXTENDED - BEFORE INTERNSHIP END{" "}
+            FULL-TIME JOB OFFER EXTENDED - BEFORE INTERNSHIP END{" "}
           </p>
           <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
-            Young Charter's at{" "}
+            Young Charter&apos;s at{" "}
             <HighlightText className="font-bold">
               Global Companys
             </HighlightText>
           </h2>
           <div className="flex justify-center">
-            <p className="text-black text-sm sm:text-base md:text-lg max-w-4xl">
+            <p className="text-black px-[20px] md:px-[20px] text-sm sm:text-base md:text-lg max-w-4xl">
               We trained to contribute in <strong>real business</strong> environments—earning recognition from <strong>managers, team leaders, and directors</strong> through practical performance, professional behavior, and measurable workplace
 
             </p>
@@ -89,11 +89,10 @@ const OneSpaceForEveryTeam = () => {
               <li key={category.id}>
                 <button
                   onClick={() => setActiveCategory(category.id)}
-                  className={`px-3 text-nowrap sm:px-4 py-2 transition-all duration-200 focus-visible:outline-none text-sm ${
-                    activeCategory === category.id
-                      ? "text-black border-b-2 border-black font-semibold"
-                      : "text-gray-400 border-b-2 border-transparent hover:text-black"
-                  }`}
+                  className={`px-3 text-nowrap sm:px-4 py-2 transition-all focus-visible:outline-none focus-visible:border-b-2 focus-visible:border-[#B30437] text-sm ${activeCategory === category.id
+                    ? "text-black border-b-2 border-black font-semibold opacity-100"
+                    : "text-black opacity-40 hover:opacity-80 hover:bg-gray-50"
+                    }`}
                   aria-label={`${category.name} teams`}
                   aria-pressed={activeCategory === category.id}
                 >
@@ -215,17 +214,17 @@ const OneSpaceForEveryTeam = () => {
             </aside>
           </div>
 
-          {/* Company Testimonial Grid */}
+          {/* Company Testimonial Grid - Grid Layout */}
           <section aria-labelledby="testimonials-grid">
             <h2 id="testimonials-grid" className="sr-only">
               Company Testimonials
             </h2>
-            <div className="flex overflow-scroll scrollbar-hide lg:flex-wrap gap-1 sm:gap-3 mx-auto">
+            <div className="flex overflow-x-auto scrollbar-none sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-0 sm:gap-3 divide-x divide-gray-200 sm:divide-x-0 mx-auto snap-x snap-mandatory pb-2">
               {filteredTestimonials.slice(0, 6).map((testimonial, index) => (
                 <button
                   key={testimonial.id}
                   onClick={() => setActiveTestimonial(testimonial.id)}
-                  className={`text-left space-y-3 p-2 transition-all hover:shadow-md relative flex-1 min-w-[calc(100%-1rem)] sm:min-w-[calc(50%-0.75rem)] lg:min-w-[calc(33.333%-1rem)] ${activeTestimonial === testimonial.id
+                  className={`text-left space-y-3 p-3 transition-all hover:shadow-md relative flex-shrink-0 w-[85vw] sm:w-full snap-center ${activeTestimonial === testimonial.id
                     ? "bg-[#e3dfd2] border-l-2 border-black"
                     : "hover:bg-[#fafafa]"
                     }`}

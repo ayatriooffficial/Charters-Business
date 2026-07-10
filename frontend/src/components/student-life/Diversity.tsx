@@ -1,8 +1,6 @@
 // components/KaleidoscopeSection.tsx
 "use client";
 
-import HighlightText from "../shared/HighlightObserver";
-
 function PhotoTile({ image, number, numberSub, label, className = "" }: {
     image: string;
     number: string;
@@ -55,7 +53,7 @@ function DarkTile({ className = "" }: { className?: string }) {
 function GenderTile({ className = "" }: { className?: string }) {
     return (
         <div className={`bg-white flex flex-col justify-center px-6 py-7 ${className}`}>
-            <p className="text-[10px] font-semibold tracking-widest uppercase text-gray-400 mb-5">
+            <p className="text-[10px] font-semibold tracking-widest uppercase text-[#80868b] mb-5">
                 Gender Split
             </p>
             <div className="space-y-4">
@@ -65,7 +63,7 @@ function GenderTile({ className = "" }: { className?: string }) {
                 ].map(({ label, pct, fillClass }) => (
                     <div key={label}>
                         <div className="flex justify-between items-baseline mb-1.5">
-                            <span className="text-xs font-medium text-gray-500">{label}</span>
+                            <span className="text-xs font-medium text-[#5f6368]">{label}</span>
                             <span className="text-2xl font-bold text-gray-900">{pct}%</span>
                         </div>
                         <div className="w-full h-1 bg-gray-100 rounded-full overflow-hidden">
@@ -83,58 +81,57 @@ function GenderTile({ className = "" }: { className?: string }) {
 
 export default function Diversity() {
     return (
-        <section className="bg-white py-16">
-            <h2 className="text-center text-3xl sm:text-4xl text-gray-900 mb-10 tracking-tight font-bold">
-                A{" "}
-                <HighlightText className="font-bold">
-                    Kaleidoscope
-                </HighlightText>{" "}
-                of Diversity
-            </h2>
+        <section className="bg-white">
+            {/* Mobile: horizontal scroll (snap). md+: original 4-col / 2-row grid */}
+            <div className="overflow-x-auto snap-x snap-mandatory scrollbar-hide md:overflow-visible">
+                {/* gap-px gives the hairline grid-line effect using bg-[#dedad4] showing through */}
+                <div
+                    className="flex md:grid gap-px bg-[#dedad4] border-t-1 border-gray-200"
+                    style={{ gridTemplateColumns: "repeat(4, 1fr)", gridTemplateRows: "260px 260px" }}
+                >
+                    {/* Row 1 */}
+                    <PhotoTile
+                        image="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80"
+                        number="300+"
+                        label="Students"
+                        className="w-[45%] h-65 shrink-0 snap-start md:w-auto md:h-auto md:shrink"
+                    />
 
-            {/* gap-px gives the hairline grid-line effect using bg-[#dedad4] showing through */}
-            <div
-                className="grid gap-px bg-[#dedad4] border-t-1 border-b-1 border-gray-200"
-                style={{ gridTemplateColumns: "repeat(4, 1fr)", gridTemplateRows: "260px 260px" }}
-            >
-                {/* Row 1 */}
-                <PhotoTile
-                    image="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80"
-                    number="300+"
-                    label="Students"
-                />
+                    <DarkTile className="w-[45%] h-65 shrink-0 snap-start md:w-auto md:h-auto md:shrink" />
 
-                <DarkTile />
+                    <PhotoTile
+                        image="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&q=80"
+                        number="1490"
+                        numberSub="/ 1600"
+                        label="Average SAT Score"
+                        className="col-span-2 w-[90%] h-65 shrink-0 snap-start md:w-auto md:h-auto md:shrink"
+                    />
 
-                <PhotoTile
-                    image="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&q=80"
-                    number="1490"
-                    numberSub="/ 1600"
-                    label="Average SAT Score"
-                    className="col-span-2"
-                />
+                    {/* Row 2 */}
+                    <PhotoTile
+                        image="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&q=80"
+                        number="10"
+                        label="National-level Athletes"
+                        className="w-[45%] h-65 shrink-0 snap-start md:w-auto md:h-auto md:shrink"
+                    />
 
-                {/* Row 2 */}
-                <PhotoTile
-                    image="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&q=80"
-                    number="10"
-                    label="National-level Athletes"
-                />
+                    <PhotoTile
+                        image="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=600&q=80"
+                        number="18"
+                        numberSub="yrs"
+                        label="Average Age"
+                        className="w-[45%] h-65 shrink-0 snap-start md:w-auto md:h-auto md:shrink"
+                    />
 
-                <PhotoTile
-                    image="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=600&q=80"
-                    number="18"
-                    numberSub="yrs"
-                    label="Average Age"
-                />
+                    <GenderTile className="w-[45%] h-65 shrink-0 snap-start md:w-auto md:h-auto md:shrink" />
 
-                <GenderTile />
-
-                <PhotoTile
-                    image="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80"
-                    number="4"
-                    label="Student TEDx Speakers"
-                />
+                    <PhotoTile
+                        image="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80"
+                        number="4"
+                        label="Student TEDx Speakers"
+                        className="w-[45%] h-65 shrink-0 snap-start md:w-auto md:h-auto md:shrink"
+                    />
+                </div>
             </div>
         </section>
     );

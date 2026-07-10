@@ -3,7 +3,6 @@
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
-
 const TrackingBootstrap = dynamic(
   () => import("@/components/shared/TrackingBootstrap"),
   { ssr: false }
@@ -18,7 +17,6 @@ export default function ClientOnlyComponents() {
   const [loadChatbot, setLoadChatbot] = useState(false);
 
   useEffect(() => {
-
     if ("requestIdleCallback" in window) {
       requestIdleCallback(() => {
         setLoadChatbot(true);
@@ -28,6 +26,7 @@ export default function ClientOnlyComponents() {
         setLoadChatbot(true);
       }, 3000);
     }
+
 
   }, []);
 

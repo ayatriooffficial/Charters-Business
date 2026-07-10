@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 
 import Image from "next/image";
 import Link from "next/link";
-import Script from "next/script";
 import Subnav from "@/components/careers/Subnav";
 import StatsSection from "@/components/careers/StatsSection";
 import PlacementStories from "@/components/careers/PlacementStories";
@@ -13,42 +12,36 @@ import { generateBreadcrumbSchema } from "@/lib/schema";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 
 export const metadata: Metadata = {
-  title: "Careers | Accelerate Your Career Growth",
+  title: "Careers & Placements | Charters' Union",
   description:
-    "Benefit from an exceptional track record of graduates' success with measurable outcomes and expert guidance.",
-  keywords: [
-    "careers",
-    "career growth",
-    "placements",
-    "outcomes",
-    "programs",
-    "salary statistics",
-  ],
+    "Benefit from Charters' Union's exceptional track record of graduates' success with measurable outcomes and expert career guidance.",
+  alternates: {
+    canonical: "https://chartersbusiness.com/careers",
+  },
   openGraph: {
-    title: "Careers | Accelerate Your Career Growth",
+    title: "Careers & Placements | Charters' Union",
     description:
-      "Benefit from an exceptional track record of graduates' success with measurable outcomes and expert guidance.",
-    type: "website",
+      "Benefit from Charters' Union's exceptional track record of graduates' success with measurable outcomes and expert career guidance.",
     url: "https://chartersbusiness.com/careers",
-    siteName: "Charter's Union",
+    siteName: "Charters' Union",
+    type: "website",
     images: [
       {
         url: "https://images.mastersunion.link/uploads/26122024/mahakgroup.webp",
         width: 1200,
         height: 630,
-        alt: "Fireside chat about career growth",
+        alt: "Careers & Placements | Charters' Union",
       },
     ],
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Careers | Accelerate Your Career Growth",
+    title: "Careers & Placements | Charters' Union",
     description:
-      "Benefit from an exceptional track record of graduates' success with measurable outcomes and expert guidance.",
+      "Benefit from Charters' Union's exceptional track record of graduates' success with measurable outcomes and expert career guidance.",
     images: ["https://images.mastersunion.link/uploads/26122024/mahakgroup.webp"],
   },
-  robots: { index: true, follow: true },
-  alternates: { canonical: "https://chartersbusiness.com/careers" },
 };
 
 type Stat = { value: string; label: string; detail: string; gradient?: string };
@@ -93,9 +86,9 @@ export default function CareersPage() {
         "@type": "CollectionPage",
         "@id": "https://chartersbusiness.com/careers#webpage",
         url: "https://chartersbusiness.com/careers",
-        name: "Careers | Accelerate Your Career Growth",
+        name: "Careers & Placements | Charters' Union",
         description:
-          "Benefit from an exceptional track record of graduates' success with measurable outcomes and expert guidance.",
+          "Benefit from Charters' Union's exceptional track record of graduates' success with measurable outcomes and expert career guidance.",
         isPartOf: { "@id": "https://chartersbusiness.com/#website" },
         about: { "@id": "https://chartersbusiness.com/#organization" },
         breadcrumb: { "@id": "https://chartersbusiness.com/careers#breadcrumb" },
@@ -127,10 +120,9 @@ export default function CareersPage() {
 
   return (
     <>
-      <Script
+      <script
         id="careers-schema-graph"
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(careersSchemaGraph) }}
       />
       {/* Hero Banner */}

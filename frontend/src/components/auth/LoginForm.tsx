@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import PhoneOtpLogin from './PhoneOtpLogin';
@@ -16,8 +16,6 @@ export default function LoginForm({
   const isSignup = mode === 'signup';
   const { user, isLoading, applications, navigateToRemoteDashboard } = useAuth();
   const router = useRouter();
-  const [isQuickLoggingIn, setIsQuickLoggingIn] = useState(false);
-  const hasAttemptedQuickLogin = useRef(false);
 
   useEffect(() => {
     if (!isLoading && user) {

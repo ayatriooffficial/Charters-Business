@@ -3,14 +3,19 @@
 import React, { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import Image from "next/image";
-import { DegreeProgramData } from "@/lib/server/programmes";
+import { DegreeProgramData, ProgrammeAssetConfig } from "@/data/programmes";
 import HighlightText from "../shared/HighlightObserver";
 
 interface AIDegreeComponentProps {
   data: DegreeProgramData;
+  assets?: ProgrammeAssetConfig;
 }
 
-const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data }) => {
+const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data, assets }) => {
+  const config = assets || {
+    campusImage: "/images/programmes/certificate.JPG",
+    disclaimerText: "Every CBA™ (Certified Business Accountant) completed students who fulfil the minimum requirements will be eligible to apply for a US-CMA exam, Visa, Residence permit, allowing them to search for employment at Top 4.",
+  };
   const [openAccordion, setOpenAccordion] = useState<string | null>(
     data.accordions[0]?.id || null,
   );
@@ -21,12 +26,12 @@ const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data }) => {
 
   return (
     <section
-      className="bg-white pt-4 sm:pt-6 md:pt-8"
+      className="bg-white"
       aria-labelledby="degree-program-heading"
     >
-      <div className="max-w-[85rem] mx-auto">
+      <div className="max-w-[85rem] pt-12 sm:pt-16 md:pt-18">
         {/* Header */}
-        <header className="mb-8 lg:mb-12 text-center px-4 sm:px-6 lg:px-8">
+        <div className="mb-8 lg:mb-12 text-center">
           <p
             className="text-sm font-semibold text-[#B30437] tracking-wider mb-4 lg:mb-6"
             role="text"
@@ -35,24 +40,30 @@ const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data }) => {
           </p>
 
           <h2
-            id="degree-program-heading"
-            className="text-1xl sm:text-2xl lg:text-3xl text-black mb-4 lg:mb-6 leading-tight text-center"
+            id="track-record-heading"
+            className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]"
           >
             {data.title.prefix}{" "}
-            <HighlightText className="font-bold">
+            <HighlightText className="font-bold !px-0 !py-0">
               {data.title.highlight}
             </HighlightText>{" "}
             {data.title.suffix}
           </h2>
-        </header>
+          <h3 className="text-base px-[20px] md:px-[50px] lg:px-[70px] sm:text-lg text-[#5f6368]">
+            Our placement reports are audited by <strong>AnalystPK</strong>, auditor for IIM and follow the IPRS Revision 2.2 framework for
+            transparent and consistent compensation data.
+
+          </h3>
+
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 items-start w-full border-t border-gray-200">
           {/* Campus Image - Shows first on mobile, second on desktop */}
           <aside className="order-1 lg:order-2">
-            <div className="relative overflow-hidden rounded-lg lg:rounded-none">
+            <div className="relative p-[50px] md:p-[50px] lg:p-[50px] bg-[#B30437] overflow-hidden ">
               <Image
-                src={data.campusImage.src}
-                alt={data.campusImage.alt}
+                src={config.campusImage}
+                alt={data.campusImage?.alt || "Degree certificate details"}
                 width={600}
                 height={500}
                 className="w-full h-[300px] sm:h-[400px] lg:h-[500px] object-cover"
@@ -65,7 +76,7 @@ const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data }) => {
             {data.accordions.map((accordion) => (
               <div
                 key={accordion.id}
-                className="border-b border-r border-gray-200 bg-white overflow-hidden rounded-lg lg:rounded-none"
+                className="border-b border-r border-gray-200 bg-white overflow-hidden "
               >
                 <button
                   onClick={() => toggleAccordion(accordion.id)}
@@ -114,9 +125,11 @@ const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data }) => {
             ))}
 
             {/* Partners Section */}
-            <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 px-4 sm:px-6 lg:px-8">
+            <div className="mt-1 sm:mt-2 px-4 sm:px-6 lg:px-8">
+              <p className="text-black font-normal mb-4 sm:mb-6 text-[10px]" >{config.disclaimerText}</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
                 {/* Academic Partners */}
+
                 <div>
                   <h3 className="text-black font-semibold mb-4 sm:mb-6 text-sm sm:text-base">
                     Academic Partners

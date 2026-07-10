@@ -1,53 +1,38 @@
 import ComprehensivePage from "@/components/faculties/ComprehensivePage";
-import Script from "next/script";
 
 import { generateBreadcrumbSchema } from "@/lib/schema";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Our Faculty | Charters Business",
+  title: "Our Faculty | Charters' Union",
   description:
-    "Meet our world-class faculty of industry leaders, CEOs, and experts who bring real-world experience to the classroom at Charters Business.",
-  keywords: [
-    "faculty",
-    "professors",
-    "industry experts",
-    "CEO faculty",
-    "business mentors",
-    "charters business faculty",
-    "business education leaders",
-  ],
+    "Meet our world-class faculty of industry leaders, CEOs, and experts who bring real-world experience to the classroom at Charters' Union.",
+  alternates: {
+    canonical: "https://chartersbusiness.com/faculties",
+  },
   openGraph: {
-    title: "Our Faculty | Charters Business",
+    title: "Our Faculty | Charters' Union",
     description:
-      "Meet our world-class faculty of industry leaders and experts who bring real-world experience to business education.",
-    type: "website",
+      "Meet our world-class faculty of industry leaders, CEOs, and experts who bring real-world experience to the classroom at Charters' Union.",
     url: "https://chartersbusiness.com/faculties",
-    siteName: "Charter's Union",
+    siteName: "Charters' Union",
+    type: "website",
     images: [
       {
         url: "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp",
         width: 1200,
         height: 630,
-        alt: "Our World-Class Faculty - Industry Leaders and Experts",
+        alt: "Our Faculty | Charters' Union",
       },
     ],
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Our Faculty | Charters Business",
+    title: "Our Faculty | Charters' Union",
     description:
-      "Meet our world-class faculty of industry leaders and experts.",
-    images: [
-      "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp",
-    ],
-  },
-  alternates: {
-    canonical: "https://chartersbusiness.com/faculties",
-  },
-  robots: {
-    index: true,
-    follow: true,
+      "Meet our world-class faculty of industry leaders, CEOs, and experts who bring real-world experience to the classroom at Charters' Union.",
+    images: ["https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp"],
   },
 };
 
@@ -78,7 +63,7 @@ export default function FacultiesPage() {
     .map((person) => ({
       name: person.name?.trim() || "Faculty Member",
       jobTitle: person.jobTitle?.trim() || "Faculty",
-      worksFor: person.worksFor?.trim() || "Charters Business",
+      worksFor: person.worksFor?.trim() || "Charters' Union",
     }))
     .filter((person) => person.name.length > 0);
 
@@ -94,7 +79,7 @@ export default function FacultiesPage() {
         "@type": "CollectionPage",
         "@id": "https://chartersbusiness.com/faculties#webpage",
         url: "https://chartersbusiness.com/faculties",
-        name: "Our Faculty | Charters Business",
+        name: "Our Faculty | Charters' Union",
         description:
           "Meet our world-class faculty of industry leaders, CEOs, and experts who bring real-world experience to business education.",
         isPartOf: {
@@ -143,10 +128,9 @@ export default function FacultiesPage() {
 
   return (
     <>
-      <Script
+      <script
         id="faculties-schema-graph"
         type="application/ld+json"
-        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(facultiesSchemaGraph) }}
       />
 

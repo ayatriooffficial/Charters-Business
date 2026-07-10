@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { getCloudinaryUrl } from "@/lib/cloudinary";
+import Link from "next/link";
 
 const Footer = () => {
   const footerSections = [
@@ -8,9 +8,9 @@ const Footer = () => {
     {
       title: "Academics",
       links: [
-        "CMP® Program",
-        "Program Certified Product Engineering",
-        "Certified Digital Growth Marketing",
+        "CBA™ (Certified Business Accountant)",
+        "DGM™ (Digital Growth & Marketing)",
+        "TBM™ (Technology & Business Management)",
       ],
     },
     {
@@ -39,7 +39,7 @@ const Footer = () => {
 
   return (
     <footer
-      className="relative z-[5] bg-[#222222] pt-[50px] text-black"
+      className="relative z-[5] pt-[50px] mt-[70px] bg-[#fafafa] text-black"
       role="contentinfo"
     >
       {/* Main Footer Content */}
@@ -50,21 +50,41 @@ const Footer = () => {
           <div className="flex-shrink-0 w-full lg:w-auto mb-6 lg:mb-0">
             <div className="flex items-center gap-2 mb-6 lg:mb-8">
               <Image
-                src={
-                  "https://res.cloudinary.com/ducgcl4dg/image/upload/charters-business/Chaters_Union.webp"
-                }
+                src="/Chaters_Union.avif"
                 alt="Chaters' Union - Business Education Excellence"
-                width={120}
-                height={60}
-                className="h-10 sm:h-12 w-auto"
+                width={96}
+                height={48}
+                quality={50}
+                sizes="(max-width: 640px) 80px, 96px"
+                className="w-auto h-auto"
               />
               {/* https://res.cloudinary.com/ducgcl4dg/image/upload/charters-business/Chaters_Union.png
                   https://res.cloudinary.com/ducgcl4dg/image/upload/Chaters_Union
               */}
             </div>
-            <p className="text-sm text-white leading-relaxed max-w-xs">
-              Empowering the next generation of{" "}business leaders through innovative education.
+            <p className="text-sm text-[#222222] leading-relaxed max-w-xs">
+              Shantiniketan Building, 8 Camac St, Elgin, {" "} Kolkata, West Bengal 700017.
             </p>
+            <section aria-labelledby="partners-heading">
+              <h3 id="partners-heading" className="sr-only">
+                Our Accreditation Partners
+              </h3>
+              <div className="flex flex-wrap items-center pt-[10px] gap-4 sm:gap-6 lg:gap-8">
+                {/* EFMD Logo */}
+                <div className="flex items-center">
+                  <Image
+                    src="/charters-partners.avif"
+                    alt=" Global - Educational accreditation and quality assurance partner"
+                    width={270}
+                    height={60}
+                    quality={60}
+                    sizes="270px"
+                    className="w-auto h-auto max-w-full"
+                  />
+                </div>
+
+              </div>
+            </section>
           </div>
 
           {/* Navigation Sections Wrapper */}
@@ -79,7 +99,7 @@ const Footer = () => {
                 >
                   <h2
                     id={`footer-nav-${index}`}
-                    className="text-white font-semibold text-base sm:text-[16px] mb-4 lg:mb-6"
+                    className="text-[#222222] font-semibold text-base sm:text-[16px] mb-4 lg:mb-6"
                   >
                     {section.title}
                   </h2>
@@ -88,7 +108,7 @@ const Footer = () => {
                       <li key={linkIndex} role="listitem">
                         <a
                           href="#"
-                          className="text-white hover:text-[#B30437] transition-colors text-sm block"
+                          className="text-[#222222] hover:text-[#000000] transition-colors text-sm block"
                         >
                           {link}
                         </a>
@@ -105,40 +125,7 @@ const Footer = () => {
         <address className="mt-8 sm:mt-12 lg:mt-16 pt-6 lg:pt-8 not-italic">
           <div className="flex flex-col lg:flex-row justify-between items-start gap-6 lg:gap-8">
             {/* Partner Logos */}
-            <section aria-labelledby="partners-heading">
-              <h3 id="partners-heading" className="sr-only">
-                Our Accreditation Partners
-              </h3>
-              <div className="flex flex-wrap items-center gap-4 sm:gap-6 lg:gap-8">
-                {/* EFMD Logo */}
-                <div className="flex items-center">
-                  <Image
-                    src={getCloudinaryUrl(
-                      "charters-business/images/brands/EFMD-Global-H-Pantone-3-e1684843405296",
-                      { width: 240, quality: "auto", format: "auto" },
-                    )}
-                    alt="EFMD Global - Educational accreditation and quality assurance partner"
-                    width={120}
-                    height={60}
-                    className="h-8 sm:h-10 lg:h-12 w-auto"
-                  />
-                </div>
 
-                {/* BSIS Logo */}
-                <div className="flex items-center">
-                  <Image
-                    src={getCloudinaryUrl(
-                      "charters-business/images/brands/BSIS-Partners-Pantone-1024x462",
-                      { width: 240, quality: "auto", format: "auto" },
-                    )}
-                    alt="BSIS Partners - Business education certification and standards"
-                    width={120}
-                    height={60}
-                    className="h-8 sm:h-10 lg:h-12 w-auto"
-                  />
-                </div>
-              </div>
-            </section>
 
             {/* Contact Information */}
             <section
@@ -148,35 +135,6 @@ const Footer = () => {
               <h3 id="contact-heading" className="sr-only">
                 Contact Information
               </h3>
-              <div className="flex items-start lg:items-center gap-2 text-white text-xs sm:text-sm justify-start lg:justify-end">
-                <div className="relative w-4 h-4 flex-shrink-0 mt-0.5 lg:mt-0">
-                  <Image
-                    src="/Charters-icon/location-pin-svgrepo-com.svg"
-                    alt="location"
-                    fill
-                    className="object-contain invert text-2xl"
-                  />
-                </div>
-                <span className="leading-relaxed">
-                  DLF Cyberpark, Sector V, Bidhannagar, Kolkata, West Bengal 700091
-                </span>
-              </div>
-              <div className="flex items-center gap-2 text-white text-xs sm:text-sm justify-start lg:justify-end">
-                <div className="relative w-4 h-4 flex-shrink-0">
-                  <Image
-                    src="/Charters-icon/email-1-svgrepo-com.svg"
-                    alt="email"
-                    fill
-                    className="object-contain invert"
-                  />
-                </div>
-                <a
-                  href="mailto:info@mastersunion.org"
-                  className="hover:text-[#B30437] transition-colors"
-                >
-                  info@chartersunion.com
-                </a>
-              </div>
             </section>
           </div>
         </address>
@@ -192,7 +150,7 @@ const Footer = () => {
             >
               Copyright © 2025{" "}
               <span className="text-[#B30437] font-medium">
-                Charters' Union
+                Charters&apos; Union
               </span>
             </div>
 
@@ -201,18 +159,18 @@ const Footer = () => {
                 className="flex flex-wrap justify-center gap-3 sm:gap-6 text-xs sm:text-sm"
                 aria-label="Legal and policy links"
               >
-                <a
+                <Link
                   href="/privacy-policy"
                   className="text-gray-600 hover:text-[#B30437] transition-colors"
                 >
                   Privacy Policy
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/terms-and-conditions"
                   className="text-gray-600 hover:text-[#B30437] transition-colors"
                 >
                   Terms & Conditions
-                </a>
+                </Link>
                 <a
                   href="#"
                   className="text-gray-600 hover:text-[#B30437] transition-colors"

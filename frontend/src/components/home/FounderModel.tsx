@@ -163,7 +163,7 @@ function FacultyModel() {
               </span>
             </h2>
 
-            <p className="text-black text-sm sm:text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
+            <p className="text-black px-[20px] md:px-[50px] lg:px-[70px] text-sm sm:text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
               Learn from industry leaders, academic experts, and seasoned
               practitioners who bring real-world experience to your education.
             </p>
@@ -218,7 +218,7 @@ function FacultyModel() {
                       </div>
 
                       {/* Subtitle - Current Role */}
-                      <p className="text-[11px] sm:text-xs text-gray-700 font-medium mb-1.5 leading-tight">
+                      <p className="text-[11px] sm:text-xs text-[#5f6368] font-medium mb-1.5 leading-tight">
                         {faculty.subtitle}
                       </p>
 
