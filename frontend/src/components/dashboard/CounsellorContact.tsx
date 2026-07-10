@@ -99,10 +99,10 @@ export default function CounsellorContact() {
         <p className="text-sm text-[#5f6368]">
           <span className="font-semibold">General Inquiries:</span>{' '}
           <a
-            href="mailto:admissions@chartersbusiness.com"
+            href="mailto:admissions@chartersunion.com"
             className="text-green-700 font-semibold hover:underline"
           >
-            admissions@chartersbusiness.com
+            admissions@chartersunion.com
           </a>
         </p>
         <p className="text-xs text-gray-600 mt-2">

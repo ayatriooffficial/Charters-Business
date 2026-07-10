@@ -40,8 +40,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     : `Career Opportunity | ${isJobs ? 'Jobs' : 'Internships'} at Charters' Union`;
 
   const description = `Apply for the ${item?.title || 'role'} ${isJobs ? 'job' : 'internship'} at Charters' Union. ${cleanDescription}`;
-  const canonicalUrl = `https://chartersbusiness.com/careers/${type}/${id}`;
-  const imageUrl = `https://chartersbusiness.com/og-${type}.jpg`;
+  const canonicalUrl = `https://chartersunion.com/careers/${type}/${id}`;
+  const imageUrl = `https://chartersunion.com/og-${type}.jpg`;
 
   return {
     title,
@@ -89,10 +89,10 @@ export default async function CareerDetailPage({ params }: Props) {
 
   // Generate breadcrumb schema
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: 'Home', url: 'https://chartersbusiness.com' },
-    { name: 'Careers', url: 'https://chartersbusiness.com/careers' },
-    { name: type === 'jobs' ? 'Jobs' : 'Internships', url: `https://chartersbusiness.com/careers/${type}` },
-    { name: item.title, url: `https://chartersbusiness.com/careers/${type}/${id}` },
+    { name: 'Home', url: 'https://chartersunion.com' },
+    { name: 'Careers', url: 'https://chartersunion.com/careers' },
+    { name: type === 'jobs' ? 'Jobs' : 'Internships', url: `https://chartersunion.com/careers/${type}` },
+    { name: item.title, url: `https://chartersunion.com/careers/${type}/${id}` },
   ]);
 
   // Generate JobPosting schema

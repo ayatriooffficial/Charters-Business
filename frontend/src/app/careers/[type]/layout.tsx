@@ -19,12 +19,12 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
     jobs: {
       title: "Jobs at Charters' Union | Full-Time Career Opportunities",
       description: "Explore exciting full-time job openings at Charters' Union and build your career in a dynamic educational environment.",
-      canonical: 'https://chartersbusiness.com/careers/jobs',
+      canonical: 'https://chartersunion.com/careers/jobs',
     },
     internships: {
       title: "Internships at Charters' Union | Start Your Career Journey",
       description: "Launch your career with paid internships at Charters' Union and gain real-world industry experience.",
-      canonical: 'https://chartersbusiness.com/careers/internships',
+      canonical: 'https://chartersunion.com/careers/internships',
     },
   };
 
@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
       type: "website",
       images: [
         {
-          url: `https://chartersbusiness.com/og-${type}.jpg`,
+          url: `https://chartersunion.com/og-${type}.jpg`,
           width: 1200,
           height: 630,
           alt: `${isJobs ? 'Jobs' : 'Internships'} at Charters' Union`,
@@ -56,7 +56,7 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
       card: "summary_large_image",
       title: content.title,
       description: content.description,
-      images: [`https://chartersbusiness.com/og-${type}.jpg`],
+      images: [`https://chartersunion.com/og-${type}.jpg`],
     },
   };
 }

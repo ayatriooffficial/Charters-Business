@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const title = blog ? `${blog.title} | Charters' Union Blog` : "Blog Article | Charters' Union Blog";
   const description = blog ? blog.description : "Read the latest insights and updates from Charters' Union.";
-  const canonicalUrl = `https://chartersbusiness.com/blogs/${id}`;
+  const canonicalUrl = `https://chartersunion.com/blogs/${id}`;
   const imageUrl = "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp";
 
   return {
@@ -94,9 +94,9 @@ export default async function BlogDetailPage({ params }: Props) {
 
   // Generate breadcrumb schema
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://chartersbusiness.com" },
-    { name: "Blogs", url: "https://chartersbusiness.com/blogs" },
-    { name: blog ? blog.title : "Blog Article", url: `https://chartersbusiness.com/blogs/${id}` },
+    { name: "Home", url: "https://chartersunion.com" },
+    { name: "Blogs", url: "https://chartersunion.com/blogs" },
+    { name: blog ? blog.title : "Blog Article", url: `https://chartersunion.com/blogs/${id}` },
   ]);
 
   // Generate article schema
@@ -105,7 +105,7 @@ export default async function BlogDetailPage({ params }: Props) {
         "@type": "BlogPosting",
         "headline": blog.title,
         "description": blog.description,
-        "url": `https://chartersbusiness.com/blogs/${id}`,
+        "url": `https://chartersunion.com/blogs/${id}`,
         "image": blog.image,
         "datePublished": blog.datePublished,
         "author": {
@@ -114,7 +114,7 @@ export default async function BlogDetailPage({ params }: Props) {
         },
         "publisher": {
           "@type": "EducationalOrganization",
-          "@id": "https://chartersbusiness.com/#organization",
+          "@id": "https://chartersunion.com/#organization",
           "name": "Charters' Union",
         },
       } as const)

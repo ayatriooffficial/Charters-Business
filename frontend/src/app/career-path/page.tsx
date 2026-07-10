@@ -7,13 +7,13 @@ export const metadata: Metadata = {
   description:
     "Take our AI career path assessment to discover your strengths, explore customized program alignments, and receive a tailored growth plan.",
   alternates: {
-    canonical: "https://chartersbusiness.com/career-path",
+    canonical: "https://chartersunion.com/career-path",
   },
   openGraph: {
     title: "AI Career Path Assessment & Report | Charters' Union",
     description:
       "Take our AI career path assessment to discover your strengths, explore customized program alignments, and receive a tailored growth plan.",
-    url: "https://chartersbusiness.com/career-path",
+    url: "https://chartersunion.com/career-path",
     siteName: "Charters' Union",
     type: "website",
     images: [
@@ -37,23 +37,23 @@ export const metadata: Metadata = {
 
 export default function CareerPathPage() {
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://chartersbusiness.com" },
-    { name: "Career Path", url: "https://chartersbusiness.com/career-path" },
+    { name: "Home", url: "https://chartersunion.com" },
+    { name: "Career Path", url: "https://chartersunion.com/career-path" },
   ]);
 
   // Define WebPage schema
   const careerPathPageSchema = {
     "@type": "WebPage",
-    "@id": "https://chartersbusiness.com/career-path#webpage",
-    url: "https://chartersbusiness.com/career-path",
+    "@id": "https://chartersunion.com/career-path#webpage",
+    url: "https://chartersunion.com/career-path",
     name: "AI Career Path Assessment & Report | Charters' Union",
     description: "Take our AI career path assessment to discover your strengths, explore customized program alignments, and receive a tailored growth plan.",
     inLanguage: "en-IN",
     isPartOf: {
-      "@id": "https://chartersbusiness.com/#website",
+      "@id": "https://chartersunion.com/#website",
     },
     about: {
-      "@id": "https://chartersbusiness.com/#organization",
+      "@id": "https://chartersunion.com/#organization",
     },
   };
 

@@ -16,13 +16,13 @@ export const metadata: Metadata = {
   description:
     "Benefit from Charters' Union's exceptional track record of graduates' success with measurable outcomes and expert career guidance.",
   alternates: {
-    canonical: "https://chartersbusiness.com/careers",
+    canonical: "https://chartersunion.com/careers",
   },
   openGraph: {
     title: "Careers & Placements | Charters' Union",
     description:
       "Benefit from Charters' Union's exceptional track record of graduates' success with measurable outcomes and expert career guidance.",
-    url: "https://chartersbusiness.com/careers",
+    url: "https://chartersunion.com/careers",
     siteName: "Charters' Union",
     type: "website",
     images: [
@@ -76,32 +76,32 @@ const HERO_IMAGE = {
 
 export default function CareersPage() {
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://chartersbusiness.com" },
-    { name: "Careers", url: "https://chartersbusiness.com/careers" },
+    { name: "Home", url: "https://chartersunion.com" },
+    { name: "Careers", url: "https://chartersunion.com/careers" },
   ]);
   const careersSchemaGraph = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": "https://chartersbusiness.com/careers#webpage",
-        url: "https://chartersbusiness.com/careers",
+        "@id": "https://chartersunion.com/careers#webpage",
+        url: "https://chartersunion.com/careers",
         name: "Careers & Placements | Charters' Union",
         description:
           "Benefit from Charters' Union's exceptional track record of graduates' success with measurable outcomes and expert career guidance.",
-        isPartOf: { "@id": "https://chartersbusiness.com/#website" },
-        about: { "@id": "https://chartersbusiness.com/#organization" },
-        breadcrumb: { "@id": "https://chartersbusiness.com/careers#breadcrumb" },
-        mainEntity: { "@id": "https://chartersbusiness.com/careers#career-outcomes" },
+        isPartOf: { "@id": "https://chartersunion.com/#website" },
+        about: { "@id": "https://chartersunion.com/#organization" },
+        breadcrumb: { "@id": "https://chartersunion.com/careers#breadcrumb" },
+        mainEntity: { "@id": "https://chartersunion.com/careers#career-outcomes" },
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://chartersbusiness.com/careers#breadcrumb",
+        "@id": "https://chartersunion.com/careers#breadcrumb",
         itemListElement: breadcrumbSchema.itemListElement,
       },
       {
         "@type": "ItemList",
-        "@id": "https://chartersbusiness.com/careers#career-outcomes",
+        "@id": "https://chartersunion.com/careers#career-outcomes",
         name: "Career Outcomes",
         itemListOrder: "https://schema.org/ItemListUnordered",
         numberOfItems: HERO_STATS.length,

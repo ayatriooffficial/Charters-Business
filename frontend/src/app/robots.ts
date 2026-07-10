@@ -16,6 +16,6 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
     ],
-    sitemap: 'https://chartersbusiness.com/sitemap.xml',
+    sitemap: 'https://chartersunion.com/sitemap.xml',
   }
 }

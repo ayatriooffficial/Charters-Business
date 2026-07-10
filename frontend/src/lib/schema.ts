@@ -1,7 +1,7 @@
 import { Programme } from "@/lib/server/programmes";
 
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL || "https://chartersbusiness.com"
+  process.env.NEXT_PUBLIC_SITE_URL || "https://chartersunion.com"
 ).replace(/\/+$/, "");
 
 export const SITE_NAME = "Charters' Union";
@@ -12,7 +12,7 @@ export const WEBSITE_ID = `${SITE_URL}/#website`;
 export const HOME_PAGE_ID = `${SITE_URL}/#homepage`;
 
 const DEFAULT_LOGO_URL = `${SITE_URL}/Chaters_Union.avif`;
-const DEFAULT_EMAIL = "admissions@chartersbusiness.com";
+const DEFAULT_EMAIL = "admissions@chartersunion.com";
 const DEFAULT_PHONE = "9836465083";
 
 export const buildSiteUrl = (path = "") => {

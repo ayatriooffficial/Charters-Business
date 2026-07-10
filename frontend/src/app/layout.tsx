@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   description:
     "Get placed in 7 months with practical accounting skills, internship experience, and placement support. 90% placement rate. ₹3.5 LPA average salary. Free counseling call.",
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://chartersbusiness.com"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://chartersunion.com"
   ),
   alternates: {
     canonical: "/",

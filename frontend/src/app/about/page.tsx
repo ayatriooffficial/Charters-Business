@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description:
     "Learn about Charters' Union and our mission to transform business education. Discover our world-class faculty, programs, and industry-ready leaders.",
   alternates: {
-    canonical: "https://chartersbusiness.com/about",
+    canonical: "https://chartersunion.com/about",
   },
   openGraph: {
     title: "About Us | Charters' Union",
     description:
       "Learn about Charters' Union and our mission to transform business education. Discover our world-class faculty, programs, and industry-ready leaders.",
-    url: "https://chartersbusiness.com/about",
+    url: "https://chartersunion.com/about",
     siteName: "Charters' Union",
     type: "website",
     images: [
@@ -39,23 +39,23 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   // Generate breadcrumb schema
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://chartersbusiness.com" },
-    { name: "About", url: "https://chartersbusiness.com/about" },
+    { name: "Home", url: "https://chartersunion.com" },
+    { name: "About", url: "https://chartersunion.com/about" },
   ]);
 
   // Define AboutPage schema
   const aboutPageSchema = {
     "@type": "AboutPage",
-    "@id": "https://chartersbusiness.com/about#webpage",
-    url: "https://chartersbusiness.com/about",
+    "@id": "https://chartersunion.com/about#webpage",
+    url: "https://chartersunion.com/about",
     name: "About Us | Charters' Union",
     description: "Learn about Charters' Union and our mission to transform business education. Discover our world-class faculty, programs, and industry-ready leaders.",
     inLanguage: "en-IN",
     isPartOf: {
-      "@id": "https://chartersbusiness.com/#website",
+      "@id": "https://chartersunion.com/#website",
     },
     about: {
-      "@id": "https://chartersbusiness.com/#organization",
+      "@id": "https://chartersunion.com/#organization",
     },
   };
 

@@ -51,11 +51,11 @@ export async function generateMetadata({
   const seo = courseSeoMetadata[programme.slug as keyof typeof courseSeoMetadata];
   const title = seo?.title || `${programme.card.title} - Charters' Union`;
   const description = seo?.description || programme.card.description;
-  const pageUrl = `https://chartersbusiness.com/${programme.slug}`;
+  const pageUrl = `https://chartersunion.com/${programme.slug}`;
 
   let imageUrl = programme.card.image;
   if (!imageUrl.startsWith("http://") && !imageUrl.startsWith("https://")) {
-    imageUrl = `https://chartersbusiness.com${imageUrl.startsWith("/") ? "" : "/"}${imageUrl}`;
+    imageUrl = `https://chartersunion.com${imageUrl.startsWith("/") ? "" : "/"}${imageUrl}`;
   }
 
   return {
@@ -110,11 +110,11 @@ export default async function ProgrammePage({
 
   // Generate Breadcrumb Schema
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://chartersbusiness.com" },
-    { name: "Programmes", url: "https://chartersbusiness.com/#programmes" },
+    { name: "Home", url: "https://chartersunion.com" },
+    { name: "Programmes", url: "https://chartersunion.com/#programmes" },
     {
       name: programme.card.title,
-      url: `https://chartersbusiness.com/${programme.slug}`,
+      url: `https://chartersunion.com/${programme.slug}`,
     },
   ]);
 

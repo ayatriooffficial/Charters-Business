@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description:
     "Privacy policy for Charters' Union (A unit of Shanti Informatics). Learn how we collect, use, and protect your personal information.",
   alternates: {
-    canonical: "https://chartersbusiness.com/privacy-policy",
+    canonical: "https://chartersunion.com/privacy-policy",
   },
   openGraph: {
     title: "Privacy Policy | Charters' Union",
     description:
       "Privacy policy for Charters' Union (A unit of Shanti Informatics). Learn how we collect, use, and protect your personal information.",
-    url: "https://chartersbusiness.com/privacy-policy",
+    url: "https://chartersunion.com/privacy-policy",
     siteName: "Charters' Union",
     type: "website",
     images: [
@@ -40,10 +40,10 @@ export const metadata: Metadata = {
 export default function PrivacyPolicyPage() {
   // Generate breadcrumb schema
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://chartersbusiness.com" },
+    { name: "Home", url: "https://chartersunion.com" },
     {
       name: "Privacy Policy",
-      url: "https://chartersbusiness.com/privacy-policy",
+      url: "https://chartersunion.com/privacy-policy",
     },
   ]);
 

@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "Charters' Union: Job-Ready Training Institute Kolkata | AI Curriculum | 100% Paid Internship 7 Countries | BCom BSc BBA BA Freshers",
     description:
       "Kolkata's AI-first 100% Job Guarantee training institute. 3 programs: Certified Business Accountant, Digital Growth & Marketing, Technology & Business Management. AICPA/ACCA/HBS/Google aligned. 4–6 month paid internship in 7 countries. Corporate English. AI interview coaching. Placement support. Book free democlass.",
-    url: "https://chartersbusiness.com",
+    url: "https://chartersunion.com",
     type: "website",
     images: [
       {
@@ -55,27 +55,27 @@ export default function Home() {
   const siteNavigationSchema = generateSiteNavigationSchema([
     {
       name: "Home",
-      url: "https://chartersbusiness.com/",
+      url: "https://chartersunion.com/",
       description: "Kolkata's AI-first job-ready training institute. 3 programs: Certified Business Accountant, Digital Growth & Marketing, Technology & Business Management. AICPA/ACCA/HBS/Google aligned. 4–6 month paid internship in 7 countries. Corporate English. AI interview coaching. Placement support. Book free democlass.",
     },
     {
       name: "Programmes",
-      url: "https://chartersbusiness.com/#programmes",
+      url: "https://chartersunion.com/#programmes",
       description: "Explore our professional programmes",
     },
     {
       name: "Faculties",
-      url: "https://chartersbusiness.com/faculties",
+      url: "https://chartersunion.com/faculties",
       description: "Meet our expert faculty members",
     },
     {
       name: "Careers",
-      url: "https://chartersbusiness.com/careers",
+      url: "https://chartersunion.com/careers",
       description: "Career opportunities at Charters' Union",
     },
     {
       name: "About",
-      url: "https://chartersbusiness.com/#about",
+      url: "https://chartersunion.com/#about",
       description: "Learn more about Charters' Union",
     },
   ]);

@@ -27,12 +27,12 @@ export default function TermsAndConditionsContent() {
           <p className="text-sm text-gray-600">
             Welcome to{" "}
             <a
-              href="https://www.chartersbusiness.com"
+              href="https://www.chartersunion.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#B30437] hover:text-[#8B0329] underline font-medium"
             >
-              www.chartersbusiness.com
+              www.chartersunion.com
             </a>
           </p>
         </div>
@@ -44,17 +44,17 @@ export default function TermsAndConditionsContent() {
               These terms and conditions outline the rules and regulations for
               the use of Charters Business&apos;s website, located at{" "}
               <a
-                href="https://www.chartersbusiness.com"
+                href="https://www.chartersunion.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#B30437] hover:text-[#8B0329] underline font-medium"
               >
-                www.chartersbusiness.com
+                www.chartersunion.com
               </a>
             </p>
             <p className="text-[#5f6368] leading-relaxed text-base mt-4">
               By accessing this website we assume you accept these terms and
-              conditions. Do not continue to use www.chartersbusiness.com if you
+              conditions. Do not continue to use www.chartersunion.com if you
               do not agree to take all of the terms and conditions stated on
               this page.
             </p>
@@ -131,7 +131,7 @@ export default function TermsAndConditionsContent() {
             </h2>
             <p className="text-[#5f6368] leading-relaxed text-base">
               We employ the use of cookies. By accessing
-              www.chartersbusiness.com, you agreed to use cookies in agreement
+              www.chartersunion.com, you agreed to use cookies in agreement
               with the Charters Business&apos;s Privacy Policy.
             </p>
             <p className="text-[#5f6368] leading-relaxed text-base mt-4">
@@ -153,8 +153,8 @@ export default function TermsAndConditionsContent() {
             <p className="text-[#5f6368] leading-relaxed text-base mb-4">
               Unless otherwise stated, Charters Business and/or its licensors
               own the intellectual property rights for all material on
-              www.chartersbusiness.com. All intellectual property rights are
-              reserved. You may access this from www.chartersbusiness.com for
+              www.chartersunion.com. All intellectual property rights are
+              reserved. You may access this from www.chartersunion.com for
               your own personal use subjected to restrictions set in these terms
               and conditions.
             </p>
@@ -165,27 +165,27 @@ export default function TermsAndConditionsContent() {
               <div className="flex items-start gap-2">
                 <span className="text-[#B30437] text-lg">★</span>
                 <p className="text-[#5f6368] text-base">
-                  Republish material from www.chartersbusiness.com
+                  Republish material from www.chartersunion.com
                 </p>
               </div>
               <div className="flex items-start gap-2">
                 <span className="text-[#B30437] text-lg">★</span>
                 <p className="text-[#5f6368] text-base">
                   Sell, rent or sub-license material from
-                  www.chartersbusiness.com
+                  www.chartersunion.com
                 </p>
               </div>
               <div className="flex items-start gap-2">
                 <span className="text-[#B30437] text-lg">★</span>
                 <p className="text-[#5f6368] text-base">
                   Reproduce, duplicate or copy material from
-                  www.chartersbusiness.com
+                  www.chartersunion.com
                 </p>
               </div>
               <div className="flex items-start gap-2">
                 <span className="text-[#B30437] text-lg">★</span>
                 <p className="text-[#5f6368] text-base">
-                  Redistribute content from www.chartersbusiness.com
+                  Redistribute content from www.chartersunion.com
                 </p>
               </div>
             </div>

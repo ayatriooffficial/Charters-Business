@@ -593,9 +593,9 @@ export default function CareersPage({
   }, []);
 
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://chartersbusiness.com" },
-    { name: "Careers", url: "https://chartersbusiness.com/careers" },
-    { name: isJob ? "Jobs" : "Internships", url: `https://chartersbusiness.com/careers/${pageType}` },
+    { name: "Home", url: "https://chartersunion.com" },
+    { name: "Careers", url: "https://chartersunion.com/careers" },
+    { name: isJob ? "Jobs" : "Internships", url: `https://chartersunion.com/careers/${pageType}` },
   ]);
 
   const collectionSchema = {
@@ -604,10 +604,10 @@ export default function CareersPage({
     description: isJob
       ? "Browse all available job positions at Charters' Union"
       : "Explore internship opportunities at Charters' Union",
-    url: `https://chartersbusiness.com/careers/${pageType}`,
+    url: `https://chartersunion.com/careers/${pageType}`,
     provider: {
       "@type": "EducationalOrganization",
-      "@id": "https://chartersbusiness.com/#organization",
+      "@id": "https://chartersunion.com/#organization",
       name: "Charters' Union",
     },
   };
@@ -621,12 +621,12 @@ export default function CareersPage({
       position: index + 1,
       item: {
         "@type": "JobPosting",
-        "@id": `https://chartersbusiness.com/careers/${pageType}/${item._id}#job`,
+        "@id": `https://chartersunion.com/careers/${pageType}/${item._id}#job`,
         title: item.title,
         description: item.description ? item.description.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().substring(0, 150) + "..." : "",
         hiringOrganization: {
           "@type": "EducationalOrganization",
-          "@id": "https://chartersbusiness.com/#organization",
+          "@id": "https://chartersunion.com/#organization",
           name: "Charters' Union",
         },
         jobLocation: {

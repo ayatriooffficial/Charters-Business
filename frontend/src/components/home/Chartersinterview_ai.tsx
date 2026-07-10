@@ -235,7 +235,7 @@ export default function ChartersInterviewAi() {
         setError('');
         const isCurrentAdmin = loginPhone.replace(/\D/g, '').endsWith('1234567890');
         const nameToSubmit = isCurrentAdmin ? (signupName.trim() || 'System Admin') : signupName;
-        const emailToSubmit = isCurrentAdmin ? (signupEmail.trim() || 'admin@chartersbusiness.com') : signupEmail;
+        const emailToSubmit = isCurrentAdmin ? (signupEmail.trim() || 'admin@chartersunion.com') : signupEmail;
         const programToSubmit = isCurrentAdmin ? (signupProgram || COURSE_OPTIONS[0] || 'General') : signupProgram;
 
         if (!nameToSubmit.trim() || !emailToSubmit.trim() || !signupPassword || !programToSubmit) {

@@ -278,7 +278,7 @@ export default function PhoneOtpLogin({
         setError('');
         const isCurrentAdmin = phoneNumber.replace(/\D/g, '').endsWith('1234567890');
         const nameToSubmit = isCurrentAdmin ? (name.trim() || 'System Admin') : name;
-        const emailToSubmit = isCurrentAdmin ? (email.trim() || 'admin@chartersbusiness.com') : email;
+        const emailToSubmit = isCurrentAdmin ? (email.trim() || 'admin@chartersunion.com') : email;
         const programToSubmit = isCurrentAdmin ? (program || COURSE_OPTIONS[0] || 'General') : program;
 
         if (!nameToSubmit.trim() || !emailToSubmit.trim() || !password || !programToSubmit) {

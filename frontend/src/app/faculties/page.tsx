@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description:
     "Meet our world-class faculty of industry leaders, CEOs, and experts who bring real-world experience to the classroom at Charters' Union.",
   alternates: {
-    canonical: "https://chartersbusiness.com/faculties",
+    canonical: "https://chartersunion.com/faculties",
   },
   openGraph: {
     title: "Our Faculty | Charters' Union",
     description:
       "Meet our world-class faculty of industry leaders, CEOs, and experts who bring real-world experience to the classroom at Charters' Union.",
-    url: "https://chartersbusiness.com/faculties",
+    url: "https://chartersunion.com/faculties",
     siteName: "Charters' Union",
     type: "website",
     images: [
@@ -69,40 +69,40 @@ export default function FacultiesPage() {
 
   // Generate breadcrumb schema
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://chartersbusiness.com" },
-    { name: "Faculties", url: "https://chartersbusiness.com/faculties" },
+    { name: "Home", url: "https://chartersunion.com" },
+    { name: "Faculties", url: "https://chartersunion.com/faculties" },
   ]);
   const facultiesSchemaGraph = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": "https://chartersbusiness.com/faculties#webpage",
-        url: "https://chartersbusiness.com/faculties",
+        "@id": "https://chartersunion.com/faculties#webpage",
+        url: "https://chartersunion.com/faculties",
         name: "Our Faculty | Charters' Union",
         description:
           "Meet our world-class faculty of industry leaders, CEOs, and experts who bring real-world experience to business education.",
         isPartOf: {
-          "@id": "https://chartersbusiness.com/#website",
+          "@id": "https://chartersunion.com/#website",
         },
         about: {
-          "@id": "https://chartersbusiness.com/#organization",
+          "@id": "https://chartersunion.com/#organization",
         },
         breadcrumb: {
-          "@id": "https://chartersbusiness.com/faculties#breadcrumb",
+          "@id": "https://chartersunion.com/faculties#breadcrumb",
         },
         mainEntity: {
-          "@id": "https://chartersbusiness.com/faculties#faculty-list",
+          "@id": "https://chartersunion.com/faculties#faculty-list",
         },
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://chartersbusiness.com/faculties#breadcrumb",
+        "@id": "https://chartersunion.com/faculties#breadcrumb",
         itemListElement: breadcrumbSchema.itemListElement,
       },
       {
         "@type": "ItemList",
-        "@id": "https://chartersbusiness.com/faculties#faculty-list",
+        "@id": "https://chartersunion.com/faculties#faculty-list",
         name: "Faculty Members",
         itemListOrder: "https://schema.org/ItemListUnordered",
         numberOfItems: normalizedFacultyPeople.length,
@@ -118,7 +118,7 @@ export default function FacultiesPage() {
               name: person.worksFor,
             },
             alumniOf: {
-              "@id": "https://chartersbusiness.com/#organization",
+              "@id": "https://chartersunion.com/#organization",
             },
           },
         })),

@@ -38,12 +38,12 @@ export default function PrivacyPolicyContent() {
               of Shanti Informatics) policy to respect your privacy regarding
               any information we may collect from you across our website{" "}
               <a
-                href="https://www.chartersbusiness.com"
+                href="https://www.chartersunion.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#B30437] hover:text-[#8B0329] underline font-medium"
               >
-                www.chartersbusiness.com
+                www.chartersunion.com
               </a>
               , and other sites we own and operate.
             </p>

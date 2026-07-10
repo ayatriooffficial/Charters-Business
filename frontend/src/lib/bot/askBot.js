@@ -32,7 +32,7 @@ Our admission experts can help you choose the right path.
 
  [📞 WhatsApp](https://wa.me/91XXXXXXXXXX)
  
- [Apply Now](https://chartersbusiness.com/apply)
+ [Apply Now](https://chartersunion.com/apply)
 `;
 }
 

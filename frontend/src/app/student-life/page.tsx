@@ -11,13 +11,13 @@ export const metadata: Metadata = {
   description:
     "Discover student life at Charters' Union. Join a vibrant community, participate in events, and build your professional network.",
   alternates: {
-    canonical: "https://chartersbusiness.com/student-life",
+    canonical: "https://chartersunion.com/student-life",
   },
   openGraph: {
     title: "Student Life | Charters' Union",
     description:
       "Discover student life at Charters' Union. Join a vibrant community, participate in events, and build your professional network.",
-    url: "https://chartersbusiness.com/student-life",
+    url: "https://chartersunion.com/student-life",
     siteName: "Charters' Union",
     type: "website",
     images: [
@@ -43,23 +43,23 @@ export const metadata: Metadata = {
 
 export default function ApplyPage() {
     const breadcrumbSchema = generateBreadcrumbSchema([
-        { name: "Home", url: "https://chartersbusiness.com" },
-        { name: "Student Life", url: "https://chartersbusiness.com/student-life" },
+        { name: "Home", url: "https://chartersunion.com" },
+        { name: "Student Life", url: "https://chartersunion.com/student-life" },
     ]);
 
     // Define WebPage schema
     const studentLifePageSchema = {
       "@type": "WebPage",
-      "@id": "https://chartersbusiness.com/student-life#webpage",
-      url: "https://chartersbusiness.com/student-life",
+      "@id": "https://chartersunion.com/student-life#webpage",
+      url: "https://chartersunion.com/student-life",
       name: "Student Life | Charters' Union",
       description: "Discover student life at Charters' Union. Join a vibrant community, participate in events, and build your professional network.",
       inLanguage: "en-IN",
       isPartOf: {
-        "@id": "https://chartersbusiness.com/#website",
+        "@id": "https://chartersunion.com/#website",
       },
       about: {
-        "@id": "https://chartersbusiness.com/#organization",
+        "@id": "https://chartersunion.com/#organization",
       },
     };
 

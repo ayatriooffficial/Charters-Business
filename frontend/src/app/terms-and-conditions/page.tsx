@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description:
     "Terms and conditions for using Charters' Union website. Learn about our policies, user agreements, and legal information.",
   alternates: {
-    canonical: "https://chartersbusiness.com/terms-and-conditions",
+    canonical: "https://chartersunion.com/terms-and-conditions",
   },
   openGraph: {
     title: "Terms and Conditions | Charters' Union",
     description:
       "Terms and conditions for using Charters' Union website. Learn about our policies, user agreements, and legal information.",
-    url: "https://chartersbusiness.com/terms-and-conditions",
+    url: "https://chartersunion.com/terms-and-conditions",
     siteName: "Charters' Union",
     type: "website",
     images: [
@@ -40,10 +40,10 @@ export const metadata: Metadata = {
 export default function TermsAndConditionsPage() {
   // Generate breadcrumb schema
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://chartersbusiness.com" },
+    { name: "Home", url: "https://chartersunion.com" },
     {
       name: "Terms and Conditions",
-      url: "https://chartersbusiness.com/terms-and-conditions",
+      url: "https://chartersunion.com/terms-and-conditions",
     },
   ]);
 
