@@ -4,7 +4,7 @@ export default {
   jwtSecret: process.env.JWT_SECRET,
   jwtExpire: process.env.JWT_EXPIRE || '30d',
   corsOrigin: process.env.CORS_ORIGIN 
-    ? process.env.CORS_ORIGIN.split(',').map(o => o.trim()) 
+    ? process.env.CORS_ORIGIN.split(',').map(o => o.trim().replace(/\/$/, '')) 
     : [
         'http://localhost:3000', 
         'https://charters-business.vercel.app',
