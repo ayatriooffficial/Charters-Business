@@ -184,7 +184,7 @@ const nextConfig: NextConfig = {
       {
         source: "/apply",
         destination: "/signup",
-        permanent: false,
+        permanent: true,
       },
     ];
   },

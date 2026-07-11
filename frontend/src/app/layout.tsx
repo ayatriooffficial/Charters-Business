@@ -60,6 +60,18 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  keywords: [
+    "accounting course",
+    "job-ready accounting",
+    "placement guaranteed",
+    "Charter's Union",
+    "USCMA",
+    "ACCA",
+    "certified business accountant",
+    "finance course",
+    "accounting training",
+    "Kolkata",
+  ],
   robots: {
     index: true,
     follow: true,
@@ -70,6 +82,32 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
+  },
+  openGraph: {
+    title: "Job-ready Accounting Course | 92% Placement Rate | Charter's Union",
+    description:
+      "Get placed in 7 months with practical accounting skills, internship experience, and placement support.",
+    url: "https://chartersunion.com",
+    siteName: "Charter's Union",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp",
+        width: 1200,
+        height: 630,
+        alt: "Charter's Union — Job-ready Accounting Courses",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Job-ready Accounting Course | 92% Placement Rate | Charter's Union",
+    description:
+      "Get placed in 7 months with practical accounting skills, internship experience, and placement support.",
+    images: [
+      "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp",
+    ],
   },
 };
 
@@ -91,6 +129,12 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
         <link rel="preconnect" href="https://cdn.jsdelivr.net" />
         <meta name="theme-color" content="#B30437" />
+        {process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION && (
+          <meta
+            name="google-site-verification"
+            content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION}
+          />
+        )}
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />

@@ -3,6 +3,7 @@ import { MetadataRoute } from "next";
 import { buildSiteUrl } from "@/lib/schema";
 import { getAllProgrammeSlugs } from "@/lib/server/programmes";
 import { STATIC_BLOGS, slugify } from "@/data/staticBlogs";
+import { API_BASE_URL } from "@/lib/server/api";
 
 const STATIC_ROUTES = [
   { path: "", changeFrequency: "weekly", priority: 1 },
@@ -19,7 +20,7 @@ const STATIC_ROUTES = [
   { path: "/terms-and-conditions", changeFrequency: "yearly", priority: 0.2 },
 ] as const;
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date();
 
   const staticEntries: MetadataRoute.Sitemap = STATIC_ROUTES.map((route) => ({
@@ -33,7 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     (slug) => ({
       url: buildSiteUrl(`/${slug.replace(/&/g, "%26")}`),
       lastModified,
-      changeFrequency: "weekly",
+      changeFrequency: "weekly" as const,
       priority: 0.9,
     }),
   );
@@ -41,9 +42,43 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const blogEntries: MetadataRoute.Sitemap = STATIC_BLOGS.map((blog) => ({
     url: buildSiteUrl(`/blogs/${slugify(blog.title)}`),
     lastModified,
-    changeFrequency: "monthly",
+    changeFrequency: "monthly" as const,
     priority: 0.6,
   }));
 
-  return [...staticEntries, ...programmeEntries, ...blogEntries];
+  let jobEntries: MetadataRoute.Sitemap = [];
+  try {
+    const res = await fetch(`${API_BASE_URL}/jobs`);
+    if (res.ok) {
+      const { data } = await res.json();
+      const jobs = data?.jobPostings || data || [];
+      if (Array.isArray(jobs)) {
+        jobEntries = jobs.map((job: any) => ({
+          url: buildSiteUrl(`/careers/jobs/${job._id}`),
+          lastModified: job.updatedAt ? new Date(job.updatedAt) : lastModified,
+          changeFrequency: "daily" as const,
+          priority: 0.7,
+        }));
+      }
+    }
+  } catch {}
+
+  let internshipEntries: MetadataRoute.Sitemap = [];
+  try {
+    const res = await fetch(`${API_BASE_URL}/internships`);
+    if (res.ok) {
+      const { data } = await res.json();
+      const internships = data?.internshipPostings || data || [];
+      if (Array.isArray(internships)) {
+        internshipEntries = internships.map((i: any) => ({
+          url: buildSiteUrl(`/careers/internships/${i._id}`),
+          lastModified: i.updatedAt ? new Date(i.updatedAt) : lastModified,
+          changeFrequency: "daily" as const,
+          priority: 0.7,
+        }));
+      }
+    }
+  } catch {}
+
+  return [...staticEntries, ...programmeEntries, ...blogEntries, ...jobEntries, ...internshipEntries];
 }
