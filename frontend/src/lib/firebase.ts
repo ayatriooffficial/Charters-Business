@@ -21,24 +21,12 @@ const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
 
 export const auth = getAuth(app);
 
-/**
- * In LOCAL DEVELOPMENT, Firebase's reCAPTCHA token gets rejected with
- * auth/invalid-app-credential when the Google Cloud API key has HTTP referrer
- * restrictions that exclude localhost.
- *
- * Setting appVerificationDisabledForTesting = true tells Firebase to skip
- * reCAPTCHA verification entirely on this client.
- *
- * ⚠️  REQUIREMENT: You MUST use a Firebase test phone number when this is enabled.
- *     Add one at: Firebase Console → Authentication → Sign-in method → Phone numbers for testing
- *     Example: Phone +919999999999 / Code 123456
- *
- * This flag is only set when hostname is localhost — production is unaffected.
- */
-if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
-  auth.settings.appVerificationDisabledForTesting = true;
-  console.log('[Firebase] ⚠️  appVerificationDisabledForTesting = true (localhost dev mode). Use a Firebase test phone number.');
-}
+// ReCAPTCHA bypass — Firebase section commented out per admin decision.
+// When re-enabling, remove this flag and restore the conditional hostname check.
+// if (typeof window !== 'undefined') {
+//   auth.settings.appVerificationDisabledForTesting = true;
+//   console.log('[Firebase] ⚠️  appVerificationDisabledForTesting = true. reCAPTCHA disabled for all environments.');
+// }
 
 
 /**
