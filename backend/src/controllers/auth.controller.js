@@ -364,19 +364,27 @@ export const logout = asyncHandler(async (req, res) => {
 
 // Firebase OTP Login
 export const firebaseLogin = asyncHandler(async (req, res) => {
-  const { idToken } = req.body;
+  const { idToken, phoneNumber } = req.body;
 
-  if (!idToken) {
-    throw new ApiError(400, "Please provide Firebase ID token");
+  if (!idToken && !phoneNumber) {
+    throw new ApiError(400, "Please provide Firebase ID token or phone number");
   }
 
   try {
-    // Verify Firebase ID token
-    const decodedToken = await admin.auth().verifyIdToken(idToken);
-    const { phone_number } = decodedToken;
+    // Verify Firebase ID token - Commented out for bypass
+    // const decodedToken = await admin.auth().verifyIdToken(idToken);
+    // const { phone_number } = decodedToken;
+    let phone_number = phoneNumber;
+    if (!phone_number && idToken) {
+      if (idToken.startsWith("bypass-token-")) {
+        phone_number = idToken.replace("bypass-token-", "");
+      } else {
+        phone_number = idToken; // Direct phone check fallback
+      }
+    }
 
     if (!phone_number) {
-      throw new ApiError(400, "Phone number not found in token");
+      throw new ApiError(400, "Phone number not found in token/request");
     }
 
     // Find user by phone number
@@ -448,28 +456,36 @@ export const firebaseLogin = asyncHandler(async (req, res) => {
   } catch (error) {
     console.error("Firebase token verification error:", error);
     if (error instanceof ApiError) throw error;
-    throw new ApiError(401, "Invalid or expired Firebase token");
+    throw new ApiError(error.status || 500, error.message || "Invalid or expired Firebase token");
   }
 });
 
 // Firebase OTP Signup
 export const firebaseSignup = asyncHandler(async (req, res) => {
-  const { idToken, name, email, program, password } = req.body;
+  const { idToken, name, email, program, password, phoneNumber } = req.body;
 
-  if (!idToken || !name || !email || !program || !password) {
+  if ((!idToken && !phoneNumber) || !name || !email || !program || !password) {
     throw new ApiError(
       400,
-      "Please provide ID token, name, email, password, and course selection",
+      "Please provide phone number, name, email, password, and course selection",
     );
   }
 
   try {
-    // Verify Firebase ID token
-    const decodedToken = await admin.auth().verifyIdToken(idToken);
-    const { phone_number, uid } = decodedToken;
+    // Verify Firebase ID token - Commented out for bypass
+    // const decodedToken = await admin.auth().verifyIdToken(idToken);
+    // const { phone_number, uid } = decodedToken;
+    let phone_number = phoneNumber;
+    if (!phone_number && idToken) {
+      if (idToken.startsWith("bypass-token-")) {
+        phone_number = idToken.replace("bypass-token-", "");
+      } else {
+        phone_number = idToken; // Direct phone check fallback
+      }
+    }
 
     if (!phone_number) {
-      throw new ApiError(400, "Phone number not found in token");
+      throw new ApiError(400, "Phone number not found in token/request");
     }
 
     // Check if user already exists
@@ -522,7 +538,7 @@ export const firebaseSignup = asyncHandler(async (req, res) => {
   } catch (error) {
     console.error("Firebase signup error:", error);
     if (error instanceof ApiError) throw error;
-    throw new ApiError(401, "Invalid or expired Firebase token");
+    throw new ApiError(error.status || 500, error.message || "Invalid or expired Firebase token");
   }
 });
 

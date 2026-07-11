@@ -67,8 +67,8 @@ export default function PhoneOtpLogin({
     }, [resendTimer]);
 
     // Setup RecaptchaVerifier ONLY ONCE after component mounts.
-    // DO NOT call .render() here — Firebase calls it automatically inside signInWithPhoneNumber.
-    // The container is created dynamically on document.body by setupRecaptcha — outside React's tree.
+    // Commented out per OTP bypass design
+    /*
     useEffect(() => {
         if (!recaptchaVerifierRef.current) {
             console.log('[PhoneOtpLogin] Initializing RecaptchaVerifier...');
@@ -96,6 +96,7 @@ export default function PhoneOtpLogin({
             }
         };
     }, []);
+    */
 
     const handleSendOtp = async () => {
         console.log("[PhoneOtpLogin] handleSendOtp hit! Current user:", user ? user.email : "GUEST");
@@ -108,7 +109,7 @@ export default function PhoneOtpLogin({
 
         const cleaned = phoneNumber.replace(/\D/g, '');
         if (cleaned.length < 7 || cleaned.length > 15) {
-            setError('Please enter a valid phone number');
+            setError('Please enter a valid phone number (7 to 15 digits)');
             return;
         }
 
@@ -116,23 +117,7 @@ export default function PhoneOtpLogin({
 
         try {
             const fullNumber = `${countryCode}${cleaned}`;
-            console.log("[PhoneOtpLogin] Initiating OTP send flow for phone:", fullNumber);
-
-            // Log Firebase initialization & configuration details for debugging
-            console.log("[PhoneOtpLogin] Firebase Client Auth Configuration:", {
-                apiKey: auth.config?.apiKey ? "LOADED" : "MISSING (check .env)",
-                authDomain: auth.config?.authDomain ? "LOADED" : "MISSING (check .env)",
-                projectId: (auth.config as any)?.projectId ? "LOADED" : "MISSING (check .env)",
-                appId: (auth.config as any)?.appId ? "LOADED" : "MISSING (check .env)",
-            });
-
-            // Verify RecaptchaVerifier initialized successfully
-            if (!recaptchaVerifierRef.current) {
-                console.error('[PhoneOtpLogin] RecaptchaVerifier is null. Cannot send OTP.');
-                setError('Authentication service not ready. Please refresh the page and try again.');
-                setIsLoading(false);
-                return;
-            }
+            console.log("[PhoneOtpLogin] Checking user existence for phone:", fullNumber);
 
             // Check if user exists
             const API_V1 = (process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") || "/api/backend") + "/api/v1";
@@ -152,6 +137,24 @@ export default function PhoneOtpLogin({
                 return;
             }
 
+            // --- Commented out Firebase OTP sending logic for bypass ---
+            /*
+            // Log Firebase initialization & configuration details for debugging
+            console.log("[PhoneOtpLogin] Firebase Client Auth Configuration:", {
+                apiKey: auth.config?.apiKey ? "LOADED" : "MISSING (check .env)",
+                authDomain: auth.config?.authDomain ? "LOADED" : "MISSING (check .env)",
+                projectId: (auth.config as any)?.projectId ? "LOADED" : "MISSING (check .env)",
+                appId: (auth.config as any)?.appId ? "LOADED" : "MISSING (check .env)",
+            });
+
+            // Verify RecaptchaVerifier initialized successfully
+            if (!recaptchaVerifierRef.current) {
+                console.error('[PhoneOtpLogin] RecaptchaVerifier is null. Cannot send OTP.');
+                setError('Authentication service not ready. Please refresh the page and try again.');
+                setIsLoading(false);
+                return;
+            }
+
             // Call signInWithPhoneNumber with the verified RecaptchaVerifier
             console.log("[PhoneOtpLogin] Sending signInWithPhoneNumber request to Firebase...");
             const result = await signInWithPhoneNumber(auth, fullNumber, recaptchaVerifierRef.current);
@@ -160,23 +163,21 @@ export default function PhoneOtpLogin({
             setConfirmationResult(result);
             setStep('otp');
             setResendTimer(30);
+            */
+            // -----------------------------------------------------------
+
+            // Directly proceed to registration details step (bypass OTP)
+            console.log("[PhoneOtpLogin] New user. Proceeding directly to signup details step (bypass OTP).");
+            setIdToken(`bypass-token-${fullNumber}`);
+            setStep('details');
         } catch (err: unknown) {
             const authError = getAuthError(err);
-            console.error("[PhoneOtpLogin] Firebase OTP delivery failed. Full error details:", {
+            console.error("[PhoneOtpLogin] User check failed. Full error details:", {
                 code: authError.code,
                 message: authError.message,
                 stack: authError.stack,
             });
-
-            if (authError.code === 'auth/too-many-requests') {
-                setError('Too many attempts. Please try again later.');
-            } else if (authError.code === 'auth/invalid-phone-number') {
-                setError('Invalid phone number. Please check and try again.');
-            } else if (authError.code === 'auth/invalid-app-credential') {
-                setError('App verification failed (auth/invalid-app-credential). Please verify your Firebase authorized domains list contains localhost.');
-            } else {
-                setError(`Failed to send OTP: ${authError.message || 'Unknown Firebase error.'}`);
-            }
+            setError(`Failed to proceed: ${authError.message || 'Unknown network error.'}`);
         } finally {
             setIsLoading(false);
         }
@@ -286,6 +287,11 @@ export default function PhoneOtpLogin({
             return;
         }
 
+        if (password.length < 8) {
+            setError('Password must be at least 8 characters long');
+            return;
+        }
+
         if (!idToken) {
             setError('Session expired. Please try logging in again.');
             setStep('phone');
@@ -388,6 +394,9 @@ export default function PhoneOtpLogin({
                                 placeholder="Enter phone number"
                                 className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#B30437] focus:border-transparent"
                                 autoComplete="tel"
+                                required
+                                pattern="[0-9]{7,15}"
+                                title="Please enter a valid phone number (7 to 15 digits)"
                             />
                         </div>
                     </div>
@@ -558,9 +567,10 @@ export default function PhoneOtpLogin({
                             id="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            placeholder={phoneNumber.replace(/\D/g, '').endsWith('1234567890') ? 'Create admin password' : 'Create a password'}
+                            placeholder={phoneNumber.replace(/\D/g, '').endsWith('1234567890') ? 'Create admin password (min 8 chars)' : 'Create a password (min 8 chars)'}
                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#B30437] focus:border-transparent"
                             required
+                            minLength={8}
                         />
                     </div>
 

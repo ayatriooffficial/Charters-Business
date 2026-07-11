@@ -74,8 +74,8 @@ export default function ChartersInterviewAi() {
     }, [resendTimer]);
 
     // Setup RecaptchaVerifier ONLY ONCE after component mounts.
-    // DO NOT call .render() here — Firebase calls it automatically inside signInWithPhoneNumber.
-    // The container is created dynamically on document.body by setupRecaptcha — outside React's tree.
+    // Commented out per OTP bypass design
+    /*
     useEffect(() => {
         if (!recaptchaVerifierRef.current) {
             console.log('[ChartersInterviewAi] Initializing RecaptchaVerifier...');
@@ -102,23 +102,18 @@ export default function ChartersInterviewAi() {
             }
         };
     }, []);
+    */
 
     const handleSendOtp = async () => {
         setError('');
         const cleaned = loginPhone.replace(/\D/g, '');
-        if (!cleaned || cleaned.length < 7) { setError('Please enter a valid phone number.'); return; }
-
-        // Guard: verify RecaptchaVerifier is initialized before proceeding
-        if (!recaptchaVerifierRef.current) {
-            console.error('[ChartersInterviewAi] RecaptchaVerifier is null. Cannot send OTP.');
-            setError('Authentication service not ready. Please refresh the page and try again.');
-            return;
-        }
+        // Validate as 10-digit phone number for India (+91)
+        if (!cleaned || cleaned.length !== 10) { setError('Please enter a valid 10-digit phone number.'); return; }
 
         setIsLoading(true);
         try {
             const fullNumber = `+91${cleaned}`;
-            console.log('[ChartersInterviewAi] Sending OTP to:', fullNumber);
+            console.log('[ChartersInterviewAi] Checking user existence for phone:', fullNumber);
 
             // 1. Check if user exists
             const API_V1 = (process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") || "/api/backend") + "/api/v1";
@@ -136,34 +131,29 @@ export default function ChartersInterviewAi() {
                 return;
             }
 
-            // 2. New user — send Firebase OTP using the already-initialized verifier
+            // 2. New user — Commented out Firebase OTP sending logic for bypass
+            /*
             console.log('[ChartersInterviewAi] New user. Calling signInWithPhoneNumber...');
             const result = await signInWithPhoneNumber(auth, fullNumber, recaptchaVerifierRef.current);
             console.log('[ChartersInterviewAi] OTP sent successfully.');
             setConfirmationResult(result);
             setAuthStep('otp');
             setResendTimer(30);
+            */
+
+            // Directly proceed to registration details step (bypass OTP)
+            console.log('[ChartersInterviewAi] New user. Proceeding directly to signup details step (bypass OTP).');
+            setIdToken(`bypass-token-${fullNumber}`);
+            setAuthStep('details');
         } catch (err) {
             const e = getAuthError(err);
-            // Log full error object so we can diagnose the exact Firebase error code
-            console.error('[ChartersInterviewAi] OTP send failed — FULL ERROR:', {
+            console.error('[ChartersInterviewAi] User check failed:', {
                 code: e.code,
                 message: e.message,
                 name: e.name,
                 rawError: err,
             });
-            // Show the exact Firebase error code on screen for debugging
-            if (e.code === 'auth/too-many-requests') {
-                setError('❌ auth/too-many-requests — Firebase has rate-limited this phone number. Add a test phone number in Firebase Console (Authentication → Sign-in method → Phone numbers for testing).');
-            } else if (e.code === 'auth/invalid-phone-number') {
-                setError('❌ auth/invalid-phone-number — Phone number format is invalid.');
-            } else if (e.code === 'auth/invalid-app-credential') {
-                setError('❌ auth/invalid-app-credential — reCAPTCHA token rejected. Check Firebase authorized domains.');
-            } else if (e.code === 'auth/captcha-check-failed') {
-                setError('❌ auth/captcha-check-failed — reCAPTCHA verification failed on Firebase server.');
-            } else {
-                setError(`❌ ${e.code || 'UNKNOWN'}: ${e.message || 'Failed to send OTP.'}`);
-            }
+            setError(`Failed to proceed: ${e.message || 'Unknown network error.'}`);
         } finally {
             setIsLoading(false);
         }
@@ -240,6 +230,10 @@ export default function ChartersInterviewAi() {
 
         if (!nameToSubmit.trim() || !emailToSubmit.trim() || !signupPassword || !programToSubmit) {
             setError('Please fill in all fields.');
+            return;
+        }
+        if (signupPassword.length < 8) {
+            setError('Password must be at least 8 characters long.');
             return;
         }
         if (!idToken) { setError('Session expired. Please start again.'); setAuthStep('phone'); return; }
@@ -356,13 +350,16 @@ export default function ChartersInterviewAi() {
                                             value={loginPhone}
                                             onChange={(e) => setLoginPhone(e.target.value)}
                                             onKeyDown={(e) => e.key === 'Enter' && handleSendOtp()}
+                                            required
+                                            pattern="[0-9]{10}"
+                                            title="Please enter a valid 10-digit phone number"
                                         />
                                     </div>
                                 </div>
                                 {error && <p className="text-sm text-[#B30437]">{error}</p>}
                                 <button
                                     onClick={handleSendOtp}
-                                    disabled={isLoading || loginPhone.replace(/\D/g, '').length < 7}
+                                    disabled={isLoading || loginPhone.replace(/\D/g, '').length !== 10}
                                     className="w-full bg-[#6D6DCE] hover:bg-[#5252B0] text-white font-bold text-sm sm:text-base tracking-widest py-3 sm:py-3.5 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     {isLoading ? 'VERIFYING...' : 'CONTINUE →'}
@@ -502,10 +499,12 @@ export default function ChartersInterviewAi() {
                                     <label className="block text-sm font-medium text-black mb-1.5">Create Password*</label>
                                     <input
                                         className="bg-white w-full border border-gray-300 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-[#5f6368] placeholder-gray-400 focus:outline-none focus:border-[#6D6DCE] transition-colors"
-                                        placeholder="Min 6 characters"
+                                        placeholder="Min 8 characters"
                                         type="password"
                                         value={signupPassword}
                                         onChange={(e) => setSignupPassword(e.target.value)}
+                                        required
+                                        minLength={8}
                                     />
                                 </div>
                                 {!loginPhone.replace(/\D/g, '').endsWith('1234567890') && (

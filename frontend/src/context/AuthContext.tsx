@@ -393,11 +393,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const loginWithPhone = useCallback(
     async (idToken: string) => {
+      let phoneNumber = "";
+      if (idToken && idToken.startsWith("bypass-token-")) {
+        phoneNumber = idToken.replace("bypass-token-", "");
+      }
       const response = await fetch(`${API_V1}/auth/firebase-login`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ idToken }),
+        body: JSON.stringify({ idToken, phoneNumber }),
       });
 
       const data = await readJsonSafely<LoginPayload & { message?: string }>(
@@ -430,11 +434,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       password: string,
       program?: string
     ) => {
+      let phoneNumber = "";
+      if (idToken && idToken.startsWith("bypass-token-")) {
+        phoneNumber = idToken.replace("bypass-token-", "");
+      }
       const response = await fetch(`${API_V1}/auth/firebase-signup`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ idToken, name, email, password, program }),
+        body: JSON.stringify({ idToken, name, email, password, program, phoneNumber }),
       });
 
       const data = await readJsonSafely<LoginPayload & { message?: string }>(
