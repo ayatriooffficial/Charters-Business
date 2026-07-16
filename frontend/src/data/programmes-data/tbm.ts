@@ -58,8 +58,6 @@ export const tbm: Programme = {
       stats: [
         { label: "98% Retention", value: "98%" },
         { label: "Executive Projects", value: "50+" },
-        { label: "Senior Mentors", value: "1:1" },
-        { label: "CXO Network", value: "100+" },
       ],
       alumniCompanies: [
         { name: "McKinsey", logo: "/images/companies/mckinsey.png" },

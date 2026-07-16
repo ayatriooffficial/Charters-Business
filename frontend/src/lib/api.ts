@@ -1053,9 +1053,22 @@ export interface Blog {
   updatedAt: string;
 }
 
+export const getClientOrServerBaseUrl = (): string => {
+  if (typeof window === "undefined") {
+    // Server-side
+    const rawUrl =
+      process.env.API_URL ||
+      process.env.NEXT_PUBLIC_API_URL ||
+      "http://localhost:5002";
+    return rawUrl.replace(/\/api\/v1\/?$/, "").replace(/\/$/, "") + "/api/v1";
+  }
+  // Client-side
+  return "/api/backend/api/v1";
+};
+
 export const getApprovedBlogs = async (): Promise<ApiResponse<Blog[]>> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/blogs`);
+    const response = await fetch(`${getClientOrServerBaseUrl()}/blogs`);
     const data = await response.json();
 
     if (!response.ok) {
@@ -1071,7 +1084,7 @@ export const getApprovedBlogs = async (): Promise<ApiResponse<Blog[]>> => {
 
 export const getBlogById = async (id: string): Promise<ApiResponse<Blog>> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/blogs/${id}`);
+    const response = await fetch(`${getClientOrServerBaseUrl()}/blogs/${id}`);
     const data = await response.json();
 
     if (!response.ok) {

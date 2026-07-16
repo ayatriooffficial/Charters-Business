@@ -5,6 +5,12 @@ const RAW =
 const NORMALIZED_BASE = RAW.replace(/\/api\/v1\/?$/, "").replace(/\/$/, "");
 export const API_BASE_URL = `${NORMALIZED_BASE}/api/v1`;
 
+const ADMIN_RAW =
+  process.env.ADMIN_API_URL ||
+  process.env.NEXT_PUBLIC_ADMIN_API_URL ||
+  "http://localhost:5001/api/internal/admin";
+export const ADMIN_API_BASE = ADMIN_RAW.replace(/\/$/, "");
+
 // TYPES
 
 export interface CounselingFormData {
@@ -334,7 +340,7 @@ export const getAllJobs = async (params?: {
     if (params?.limit) queryParams.append("limit", params.limit.toString());
 
     const response = await fetch(
-      `${API_BASE_URL}/jobs?${queryParams.toString()}`,
+      `${ADMIN_API_BASE}/jobs?${queryParams.toString()}`,
     );
     const data = await response.json();
 
@@ -353,7 +359,7 @@ export const getJobById = async (
   id: string,
 ): Promise<ApiResponse<JobPosting>> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/jobs/${id}`);
+    const response = await fetch(`${ADMIN_API_BASE}/jobs/${id}`);
     const data = await response.json();
 
     if (!response.ok) {
@@ -403,7 +409,7 @@ export const getAllInternships = async (params?: {
     if (params?.limit) queryParams.append("limit", params.limit.toString());
 
     const response = await fetch(
-      `${API_BASE_URL}/internships?${queryParams.toString()}`,
+      `${ADMIN_API_BASE}/internships?${queryParams.toString()}`,
     );
     const data = await response.json();
 
@@ -422,7 +428,7 @@ export const getInternshipById = async (
   id: string,
 ): Promise<ApiResponse<InternshipPosting>> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/internships/${id}`);
+    const response = await fetch(`${ADMIN_API_BASE}/internships/${id}`);
     const data = await response.json();
 
     if (!response.ok) {

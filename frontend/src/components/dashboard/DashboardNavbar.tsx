@@ -82,16 +82,16 @@ export default function DashboardNavbar({
           WebkitBackdropFilter: "blur(10px)",
         }}
       >
-        <div className="flex items-center justify-between px-4 sm:px-6 lg:px-8 h-30">
+        <div className="flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
           {/* Left: Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <Image priority src="/Chaters_Union.avif"
-              alt="Charters Business Logo"
-              width={120}
-              height={40}
-              className="h-8 w-auto"
-              
-            />
+              <Image priority src="/Chaters_Union.avif"
+                alt="Charters Business Logo"
+                width={120}
+                height={40}
+                className="h-8 w-auto"
+                style={{ width: 'auto' }}
+              />
           </Link>
 
           {/*toggle + search */}

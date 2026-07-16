@@ -1,4 +1,5 @@
 import ComprehensivePage from "@/components/faculties/ComprehensivePage";
+import Script from "next/script";
 
 import { generateBreadcrumbSchema } from "@/lib/schema";
 import { Metadata } from "next";

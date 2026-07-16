@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getBlogById } from "@/lib/api";
@@ -8,15 +8,21 @@ import { STATIC_BLOGS, slugify } from "@/data/staticBlogs";
 import type { DisplayBlog } from "@/data/staticBlogs";
 
 export default function BlogDetailPage({
-  params,
+  id,
+  initialBlog,
 }: {
-  params: Promise<{ id: string }>;
+  id: string;
+  initialBlog: DisplayBlog | null;
 }) {
-  const { id } = use(params);
-  const [blog, setBlog] = useState<DisplayBlog | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [blog, setBlog] = useState<DisplayBlog | null>(initialBlog);
+  const [isLoading, setIsLoading] = useState(!initialBlog);
 
   useEffect(() => {
+    if (initialBlog) {
+      setIsLoading(false);
+      return;
+    }
+
     const fetchBlog = async () => {
       setIsLoading(true);
 
@@ -60,7 +66,7 @@ export default function BlogDetailPage({
     };
 
     fetchBlog();
-  }, [id]);
+  }, [id, initialBlog]);
 
   if (isLoading) {
     return (
@@ -221,7 +227,7 @@ export default function BlogDetailPage({
             </span>
 
             {formattedDate && (
-              <span className="flex items-center gap-2">
+              <span className="flex items-center gap-2" suppressHydrationWarning>
                 <svg
                   className="w-5 h-5 text-[#80868b]"
                   fill="none"

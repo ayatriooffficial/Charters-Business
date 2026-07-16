@@ -91,24 +91,69 @@ body {
   animation: logoScroll 12s linear infinite;
 }
 
-/* ─── HighlightText animation (CSS-only, no JS timers → zero TBT) ─ */
+/* ─── HighlightText (CSS-driven — zero inline styles, zero JS styles) ─── */
+
+.hl-wrap {
+  position: relative;
+  display: inline-block;
+  padding: 2px 7px;
+  z-index: 0;
+}
+
+.hl-wrap.hl-px-0 { padding-left: 0; padding-right: 0; }
+
 .hl-bg {
+  position: absolute;
+  inset: 0;
+  background: #56BAB3;
   transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: -1;
 }
+
 .hl-text {
-  color: var(--hl-color, #000000);
+  position: relative;
+  z-index: 1;
+  color: #000;
+  transition: color 0.15s ease 0.45s;
 }
+
 .hl-dot {
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  border-radius: 5px;
+  background: #56BAB3;
   opacity: 0;
+  transition: opacity 0.2s ease 0.75s;
+  z-index: 2;
 }
-.hl-wrap.hl-active .hl-bg {
-  transform: scaleX(1);
+
+.hl-dot-tl {
+  top: -11px;
+  left: -11px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 0;
 }
-.hl-wrap.hl-active .hl-text {
-  color: var(--hl-active-color, #000000);
+
+.hl-dot-br {
+  bottom: -11px;
+  right: -11px;
+  border-top-left-radius: 0;
 }
-.hl-wrap.hl-active .hl-dot {
-  opacity: 1;
-}
+
+/* ─── Active state (when element enters viewport) ─── */
+.hl-wrap.hl-active .hl-bg   { transform: scaleX(1); }
+.hl-wrap.hl-active .hl-text { color: #000; }
+.hl-wrap.hl-active .hl-dot  { opacity: 1; }
+
+/* ─── Theme variants (add to hl-wrap to change color scheme) ─── */
+.hl-wrap.hl-red .hl-bg,
+.hl-wrap.hl-red .hl-dot { background: #B30437; }
+
+.hl-wrap.hl-red.hl-active .hl-text { color: #B30437; }
 
 /* ─── off-screen section optimization removed — was breaking LazyMount + IntersectionObserver inside the section ─ */

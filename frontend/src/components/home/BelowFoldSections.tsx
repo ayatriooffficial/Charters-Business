@@ -59,6 +59,7 @@ const HomeBottomCardsCarousel = dynamic(
 );
 
 import SectionWrapper from "@/components/shared/SectionWrapper";
+import LayoutBanner from "@/components/shared/LayoutBanner";
 
 export default function BelowFoldSections() {
   return (
@@ -74,6 +75,7 @@ export default function BelowFoldSections() {
           <OurProgrammesSection />
         </SectionWrapper>
       </LazyMount>
+
 
       <LazyMount fallback={<SectionSkeleton />}>
         <SectionWrapper corners={{ br: { variant: "icon" } }} hideCorners={["tr", "bl"]} borderBottom={false}>
@@ -116,6 +118,13 @@ export default function BelowFoldSections() {
       <LazyMount fallback={<SectionSkeleton height="h-80" />}>
         <SectionWrapper hideCorners={"all"}>
           <NewsSliderComponent />
+        </SectionWrapper>
+      </LazyMount>
+
+      {/* Banner 2: Brochure */}
+      <LazyMount fallback={<SectionSkeleton height="h-32" />}>
+        <SectionWrapper hideCorners={"all"}>
+          <LayoutBanner type="brochure" />
         </SectionWrapper>
       </LazyMount>
 

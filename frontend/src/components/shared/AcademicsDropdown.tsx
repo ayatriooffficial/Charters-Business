@@ -92,7 +92,7 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
   `}
     >
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-[25px]">
-        <div className="py-6 lg:py-8">
+        <div className="py-2 lg:py-2">
           {/* Main Layout */}
           <div className="flex flex-col lg:flex-row gap-2 lg:gap-2">
 

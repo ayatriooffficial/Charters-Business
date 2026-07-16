@@ -26,6 +26,16 @@ export function getCloudinaryUrl(
     effect?: string;
   } = {},
 ): string {
+  // If the path is a local image asset, an external URL, or has a file extension, return it as is
+  if (
+    publicId.startsWith("/") ||
+    publicId.startsWith("http://") ||
+    publicId.startsWith("https://") ||
+    /\.(jpg|jpeg|png|gif|webp|avif|svg|ico|JPG|JPEG|PNG|GIF|WEBP|AVIF|SVG|ICO)$/i.test(publicId)
+  ) {
+    return publicId;
+  }
+
   if (!CLOUDINARY_CLOUD_NAME) {
     // Fallback to local images if Cloudinary is not configured
     return publicId.startsWith("/") ? publicId : `/${publicId}`;

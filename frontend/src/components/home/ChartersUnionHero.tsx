@@ -16,16 +16,7 @@ const heroData = {
     [828, 1080, 1280, 1366, 1536],
     { quality: "auto:eco" },
   ),
-  mobileBackgroundImage: getCloudinaryUrl("charters-business/Background-M", {
-    width: 640,
-    quality: "auto:eco",
-    format: "auto",
-  }),
-  mobileBackgroundImageSrcSet: getCloudinarySrcSet(
-    "charters-business/Background-M",
-    [320, 390, 412, 515, 640],
-    { quality: "auto:eco" },
-  ),
+  mobileBackgroundImage: "/backgroundm.jpg",
   cta: {
     buttonText: "Placement Report",
     buttonAriaLabel: "2025 Placement Report",
@@ -54,7 +45,6 @@ function ChartersUnionHero() {
             />
             <img
               src={heroData.mobileBackgroundImage}
-              srcSet={heroData.mobileBackgroundImageSrcSet}
               sizes="100vw"
               alt="From Fresher to Global Career: AI in Every Class, Faculty-Guided Paid Internships, Job-Ready Training Built for top MNCs"
               fetchPriority="high"

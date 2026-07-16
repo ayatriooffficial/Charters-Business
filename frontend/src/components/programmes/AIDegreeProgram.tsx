@@ -44,7 +44,7 @@ const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data, assets }) => 
             className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]"
           >
             {data.title.prefix}{" "}
-            <HighlightText className="font-bold !px-0 !py-0">
+            <HighlightText className="font-bold hl-px-0">
               {data.title.highlight}
             </HighlightText>{" "}
             {data.title.suffix}
@@ -131,41 +131,33 @@ const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data, assets }) => 
                 {/* Academic Partners */}
 
                 <div>
-                  <h3 className="text-black font-semibold mb-4 sm:mb-6 text-sm sm:text-base">
+                  <h3 className="text-black font-semibold mb-2 sm:mb-2 text-sm sm:text-base">
                     Academic Partners
                   </h3>
-                  <div className="flex flex-wrap items-center gap-4 sm:gap-6">
-                    {data.academicPartners.map((partner, index) => (
-                      <div key={index} className="flex items-center gap-2">
-                        {partner.logo ? (
-                          <div className="w-10 h-10 sm:w-12 sm:h-12 border-2 border-gray-300 rounded flex items-center justify-center">
-                            <span className="text-black font-bold text-xs">
-                              {partner.logo}
-                            </span>
-                          </div>
-                        ) : null}
-                        <div className="text-black text-xs sm:text-sm">
-                          <div className="font-medium">{partner.name}</div>
-                        </div>
-                      </div>
-                    ))}
+                  <div className="relative w-full h-[40px] object-contain overflow-hidden">
+                    <Image
+                      src="/charter-partner/charter-academic-partner.avif"
+                      alt="charter academic partner"
+                      fill
+                      sizes="80px"
+                      className="object-contain object-left"
+                    />
                   </div>
                 </div>
 
                 {/* Immersions */}
                 <div>
-                  <h3 className="text-black font-semibold mb-4 sm:mb-6 text-sm sm:text-base">
-                    Immersions
+                  <h3 className="text-black font-semibold mb-2 sm:mb-2 text-sm sm:text-base">
+                    Internship Partners
                   </h3>
-                  <div className="flex flex-wrap items-center gap-4 sm:gap-6">
-                    {data.immersions.map((immersion, index) => (
-                      <div
-                        key={index}
-                        className="text-black font-bold text-lg sm:text-xl"
-                      >
-                        {immersion.name}
-                      </div>
-                    ))}
+                  <div className="relative object-contain w-full h-[40px] overflow-hidden">
+                    <Image
+                      src="/charter-partner/charter-intrenshiph-company-around-the-world.avif"
+                      alt="Charter intrenshiph company around the world"
+                      fill
+                      sizes="80px"
+                      className="object-contain object-left"
+                    />
                   </div>
                 </div>
               </div>

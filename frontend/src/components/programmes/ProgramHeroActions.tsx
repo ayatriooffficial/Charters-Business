@@ -51,11 +51,11 @@ const ProgramHeroActions = () => {
 
       {showInterviewAI && (
         <div className="fixed inset-0 flex items-center mt-14 justify-center z-[9999] bg-[#202124]/20">
-          <div className="w-[80%] h-[90%] relative">
+          <div className="w-[60%] h-[90%] relative">
             <button
               onClick={handleClose}
               aria-label="Close interview AI"
-              className="absolute -top-3 -right-3 z-40 bg-white rounded-full w-7 h-7 flex items-center justify-center shadow-md text-gray-600 hover:text-red-500 transition-colors"
+              className="absolute top-3 right-3 z-40 bg-white rounded-full w-7 h-7 flex items-center justify-center shadow-md text-gray-600 hover:text-red-500 transition-colors"
             >
               ✕
             </button>

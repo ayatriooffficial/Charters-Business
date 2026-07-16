@@ -1,4 +1,4 @@
-const  programs  = require("../data/programs.json");
+import programs from "../data/programs.json";
 
 function findProgram(question) {
   const q = question.toLowerCase();
@@ -12,4 +12,4 @@ function findProgram(question) {
   );
 }
 
-module.exports = findProgram;
+export default findProgram;

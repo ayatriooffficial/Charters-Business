@@ -74,7 +74,9 @@ export default function ChartersInterviewAi() {
     }, [resendTimer]);
 
     // Setup RecaptchaVerifier ONLY ONCE after component mounts.
-    // Commented out per OTP bypass design
+    // DO NOT call .render() here — Firebase calls it automatically inside signInWithPhoneNumber.
+    // The container is created dynamically on document.body by setupRecaptcha — outside React's tree.
+    // Setup RecaptchaVerifier - Commented out per OTP bypass design
     /*
     useEffect(() => {
         if (!recaptchaVerifierRef.current) {
@@ -130,16 +132,6 @@ export default function ChartersInterviewAi() {
                 setIsLoading(false);
                 return;
             }
-
-            // 2. New user — Commented out Firebase OTP sending logic for bypass
-            /*
-            console.log('[ChartersInterviewAi] New user. Calling signInWithPhoneNumber...');
-            const result = await signInWithPhoneNumber(auth, fullNumber, recaptchaVerifierRef.current);
-            console.log('[ChartersInterviewAi] OTP sent successfully.');
-            setConfirmationResult(result);
-            setAuthStep('otp');
-            setResendTimer(30);
-            */
 
             // Directly proceed to registration details step (bypass OTP)
             console.log('[ChartersInterviewAi] New user. Proceeding directly to signup details step (bypass OTP).');
@@ -287,20 +279,19 @@ export default function ChartersInterviewAi() {
 
     return (
         <div
-            className="w-full h-full flex items-center justify-center"
-            style={{ background: 'rgba(255,255,255,0.8)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)' }}
+            className="w-full h-full bg-white flex items-center justify-center"
         >
             {/* reCAPTCHA container is managed dynamically on document.body by setupRecaptcha() */}
 
             <div className="w-full h-full flex flex-col sm:flex-row overflow-hidden">
 
                 {/* LEFT image */}
-                <div className="w-full h-[40%] sm:w-1/2 sm:h-full relative">
-                    <Image src="/home/ai_interview_leftPic.jpeg" alt="AI Interview" fill className="object-cover" sizes="50vw" />
+                <div className="w-full h-[50%] sm:w-1/2 sm:h-full relative">
+                    <Image src="/home/ai-reday marketing and accounting course login.avif" alt="AI Interview" fill className="object-cover" sizes="50vw" />
                 </div>
 
                 {/* RIGHT panel */}
-                <div className="w-full h-[60%] sm:w-1/2 sm:h-full flex flex-col justify-center overflow-y-auto px-4 sm:px-6 lg:px-12">
+                <div className="w-full h-[50%] sm:w-1/2 sm:h-full flex flex-col justify-center overflow-y-auto px-4 sm:px-6 lg:px-12">
 
                     {isQuickLoggingIn ? (
                         /* ── QUICK LOGIN IN PROGRESS ── */
@@ -324,22 +315,16 @@ export default function ChartersInterviewAi() {
                     ) : authStep === 'phone' ? (
                         /* ── STEP 1: PHONE ── */
                         <>
-                            <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-full bg-[#6D6DCE] flex items-center justify-center mb-4 sm:mb-5 lg:mb-6 mx-auto">
-                                <img src="/Charters-icon/profile.svg" alt="profile" className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 invert" />
+                            <div className="flex items-center justify-center mb-2 sm:mb-2 lg:mb-2 mx-auto">
+                                <h2 className="text-2xl sm:text-2xl font-bold text-black text-center px-10">Take your career to the next level now!</h2>
                             </div>
-                            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black leading-tight mb-1.5 text-center">
-                                Login / Sign Up
-                            </h2>
-                            <p className="text-[#5f6368] text-sm sm:text-base mb-6 text-center">
-                                Enter your phone number to continue
-                            </p>
                             <div className="space-y-4">
                                 <div>
                                     <label className="block text-sm sm:text-base font-medium text-black mb-1.5">
                                         Phone Number*
                                     </label>
                                     <div className="flex">
-                                        <div className="bg-white border border-gray-300 px-3 sm:px-4 py-2.5 sm:py-3 flex items-center gap-1.5 text-sm sm:text-base text-gray-600 shrink-0 border-r-0">
+                                        <div className="bg-white border border-gray-300 px-3 sm:px-4 py-2 sm:py-2 flex items-center gap-1.5 text-sm sm:text-base text-gray-600 shrink-0 border-r-0">
                                             <span>+91</span>
                                             <img src="/Charters-icon/uparrow.svg" alt="arrow" width={14} height={14} className="opacity-55" />
                                         </div>
@@ -355,12 +340,15 @@ export default function ChartersInterviewAi() {
                                             title="Please enter a valid 10-digit phone number"
                                         />
                                     </div>
+                                    <p className="text-[#5f6368] text-[12px] sm:text-[12px] mb-2 text-left">
+                                        Whatsapp linked phone number only
+                                    </p>
                                 </div>
                                 {error && <p className="text-sm text-[#B30437]">{error}</p>}
                                 <button
                                     onClick={handleSendOtp}
                                     disabled={isLoading || loginPhone.replace(/\D/g, '').length !== 10}
-                                    className="w-full bg-[#6D6DCE] hover:bg-[#5252B0] text-white font-bold text-sm sm:text-base tracking-widest py-3 sm:py-3.5 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                                    className="w-full bg-[#222222] hover:bg-[#000000] cursor-pointer text-white font-bold text-sm sm:text-base tracking-widest py-2 sm:py-3 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     {isLoading ? 'VERIFYING...' : 'CONTINUE →'}
                                 </button>
@@ -394,7 +382,7 @@ export default function ChartersInterviewAi() {
                                 <button
                                     onClick={handlePasswordLogin}
                                     disabled={isLoading || !loginPassword}
-                                    className="w-full bg-[#6D6DCE] hover:bg-[#5252B0] text-white font-bold text-sm sm:text-base tracking-widest py-3 sm:py-3.5 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                                    className="w-full bg-[#222222] hover:bg-[#000000] text-white font-bold text-sm sm:text-base tracking-widest py-3 sm:py-3.5 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     {isLoading ? 'LOGGING IN...' : 'LOGIN →'}
                                 </button>
@@ -445,7 +433,7 @@ export default function ChartersInterviewAi() {
                                 <button
                                     onClick={handleVerifyOtp}
                                     disabled={isLoading || otp.join('').length !== 6}
-                                    className="w-full bg-[#6D6DCE] hover:bg-[#5252B0] text-white font-bold text-sm sm:text-base tracking-widest py-3 sm:py-3.5 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                                    className="w-full bg-[#222222] hover:bg-[#000000] text-white font-bold text-sm sm:text-base tracking-widest py-3 sm:py-3.5 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     {isLoading ? 'VERIFYING...' : 'VERIFY & CONTINUE →'}
                                 </button>
@@ -531,7 +519,7 @@ export default function ChartersInterviewAi() {
                                 <button
                                     onClick={handleSignup}
                                     disabled={isLoading || !signupPassword || (!loginPhone.replace(/\D/g, '').endsWith('1234567890') && (!signupName.trim() || !signupEmail.trim() || !signupProgram))}
-                                    className="w-full bg-[#6D6DCE] hover:bg-[#5252B0] text-white font-bold text-sm sm:text-base tracking-widest py-3 sm:py-3.5 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                                    className="w-full bg-[#222222] hover:bg-[#000000] text-white font-bold text-sm sm:text-base tracking-widest py-3 sm:py-3.5 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     {isLoading ? 'CREATING ACCOUNT...' : 'COMPLETE SIGNUP →'}
                                 </button>

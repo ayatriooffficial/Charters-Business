@@ -229,8 +229,8 @@ function HealthGridCard({ card }: HealthGridCardProps) {
         {/* Right image column */}
         <div className="hidden lg:block lg:col-span-6 relative">
           <Image
-            src="/home/ima11.avif"
-            alt="Learner portrait"
+            src="/home/CBA-Stududent-achivement.avif"
+            alt="CBA Stududent Achivement"
             fill
             quality={40}
             sizes={CARD_DESKTOP_IMAGE_SIZES}
@@ -264,7 +264,7 @@ function FlagshipCard({ card }: FlagshipCardProps) {
     <section className="flex flex-col w-full bg-[#E6F4EA] overflow-hidden h-full max-h-[90vh]">
       <div className="relative block aspect-square w-full flex-shrink-0 overflow-hidden lg:hidden">
         <Image
-          src="/home/ima11.avif"
+          src="/home/chartersunion-careerpathx.avif"
           alt={`${card.title} visual`}
           fill
           className="w-full h-full object-contain"
@@ -342,7 +342,7 @@ function FlagshipCard({ card }: FlagshipCardProps) {
         {/* Right image column */}
         <div className="lg:col-span-6 hidden lg:block relative">
           <Image
-            src="/home/ima11.avif"
+            src="/home/chartersunion-careerpathx.avif"
             alt="Learner portrait"
             fill
             quality={40}

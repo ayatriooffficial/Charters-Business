@@ -65,11 +65,11 @@ export default function Subnav({ offsetTop = 0 }: Props) {
   return (
     <section
       aria-label="Careers sub-navigation"
-      className="sticky top-[var(--navbar-height,86px)] z-10 flex flex-col justify-center items-center w-full border-b border-gray-200 bg-white"
+      className="sticky top-[var(--navbar-height,86px)] z-10 flex flex-col justify-center items-center w-full border-b border-gray-200 bg-white rounded-t-xl"
       style={{ top: 'var(--navbar-height,86px)' }}
     >
-      <nav aria-label="Section navigation" className="md:w-[90%] max-w-[85rem] border-x border-gray-200">
-        <div className="mx-auto max-w-7xl px-4 sm:px-5">
+      <nav aria-label="Section navigation" className="w-full">
+        <div className="mx-auto w-full px-4 sm:px-5">
           <ul className="flex items-center gap-4 sm:gap-6 md:gap-8 overflow-x-auto py-1 sm:py-2 scrollbar-hide">
             {CAREERS_NAV_ITEMS.map((item) => {
               const isActive = active === item.id;

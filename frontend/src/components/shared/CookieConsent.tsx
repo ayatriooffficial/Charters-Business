@@ -36,13 +36,13 @@ export default function CookieConsent() {
       role="dialog"
       aria-modal="true"
       aria-labelledby="cookie-title"
-      className="fixed z-[9999] left-8 bottom-8 w-[360px] sm:w-[400px] bg-white border border-black/10 shadow-[0_20px_60px_rgba(0,0,0,0.12)] rounded-sm p-6"
+      className="fixed z-[9999] left-8 bottom-8 w-[360px] sm:w-[400px] bg-white border border-black/10 shadow-[0_20px_60px_rgba(0,0,0,0.12)] p-6"
     >
       <button
         type="button"
         onClick={closeBanner}
         aria-label="Close cookie banner"
-        className="absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-full text-lg leading-none text-[#5f6368] transition hover:bg-gray-100 hover:text-gray-800"
+        className="absolute right-4 top-4  cursor-pointer inline-flex h-8 w-8 items-center justify-center rounded-full text-lg leading-none text-[#5f6368] transition hover:bg-gray-100 hover:text-gray-800"
       >
         x
       </button>
@@ -65,7 +65,7 @@ export default function CookieConsent() {
         <button
           type="button"
           onClick={acceptAll}
-          className="w-full bg-[#222222] text-white px-5 py-2.5 text-[13.5px] font-medium rounded-sm hover:bg-[#022fcc] transition"
+          className="w-full bg-[#222222] text-white px-5 py-2.5 text-[13.5px] font-medium hover:bg-[#000000] transition"
         >
           Accept all cookies
         </button>
@@ -73,7 +73,7 @@ export default function CookieConsent() {
         <button
           type="button"
           onClick={onlyNecessary}
-          className="w-full border border-gray-300 px-4 py-2.5 text-[13px] font-medium rounded-sm hover:bg-gray-50 transition"
+          className="w-full border cursor-pointer border-gray-300 px-4 py-2.5 text-[13px] font-medium hover:bg-gray-50 transition"
         >
           Only necessary
         </button>

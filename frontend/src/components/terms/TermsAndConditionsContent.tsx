@@ -2,16 +2,11 @@ import Link from 'next/link';
 
 export default function TermsAndConditionsContent() {
   return (
-    <section className="relative z-[5] pt-12 pb-12 bg-white">
+    <section className="relative z-[5] pt-22 pb-12 bg-white">
       <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-12 text-center">
-          <div
-            className="inline-flex items-center bg-[#B30437] text-white px-4 py-2 rounded-full text-xs font-medium mb-4"
-            role="status"
-          >
-            <span>Legal Document</span>
-          </div>
+
           <p
             className="text-xs font-semibold text-[#B30437] tracking-wider mb-2"
             role="text"
@@ -42,7 +37,7 @@ export default function TermsAndConditionsContent() {
           <section>
             <p className="text-[#5f6368] leading-relaxed text-base">
               These terms and conditions outline the rules and regulations for
-              the use of Charters Business&apos;s website, located at{" "}
+              the use of Charters'Union&apos;s website, located at{" "}
               <a
                 href="https://www.chartersunion.com"
                 target="_blank"
@@ -116,7 +111,7 @@ export default function TermsAndConditionsContent() {
                   subject to the jurisdiction of the Gurgaon District Court.
                   Parties involved in legal proceedings related to Charters
                   Business must file their cases exclusively in the Gurgaon
-                    District Court and not in any other city&apos;s court.
+                  District Court and not in any other city&apos;s court.
                 </p>
               </div>
             </div>
@@ -132,7 +127,7 @@ export default function TermsAndConditionsContent() {
             <p className="text-[#5f6368] leading-relaxed text-base">
               We employ the use of cookies. By accessing
               www.chartersunion.com, you agreed to use cookies in agreement
-              with the Charters Business&apos;s Privacy Policy.
+              with the Charters' Union&apos;s Privacy Policy.
             </p>
             <p className="text-[#5f6368] leading-relaxed text-base mt-4">
               Most interactive websites use cookies to let us retrieve the
@@ -151,7 +146,7 @@ export default function TermsAndConditionsContent() {
               Intellectual property rights
             </h2>
             <p className="text-[#5f6368] leading-relaxed text-base mb-4">
-              Unless otherwise stated, Charters Business and/or its licensors
+              Unless otherwise stated, Charters' Union and/or its licensors
               own the intellectual property rights for all material on
               www.chartersunion.com. All intellectual property rights are
               reserved. You may access this from www.chartersunion.com for
@@ -204,21 +199,21 @@ export default function TermsAndConditionsContent() {
             <p className="text-[#5f6368] leading-relaxed text-base mb-4">
               Parts of this website offer an opportunity for users to post and
               exchange opinions and information in certain areas of the website.
-              Charters Business does not filter, edit, publish or review
+              Charters' Union does not filter, edit, publish or review
               comments prior to their presence on the website. Comments do not
-              reflect the views and opinions of Charters Business, its agents
+              reflect the views and opinions of Charters' Union, its agents
               and/or affiliates. Comments reflect the views and opinions of the
               person who post their views and opinions.
             </p>
             <p className="text-[#5f6368] leading-relaxed text-base mb-4">
-              To the extent permitted by applicable laws, Charters Business
+              To the extent permitted by applicable laws, Charters' Union
               shall not be liable for the comments or for any liability, damages
               or expenses caused and/or suffered as a result of any use of
               and/or posting of and/or appearance of the comments on this
               website.
             </p>
             <p className="text-[#5f6368] leading-relaxed text-base mb-4">
-              Charters Business reserves the right to monitor all comments and
+              Charters' Union reserves the right to monitor all comments and
               to remove any comments which can be considered inappropriate,
               offensive or causes breach of these Terms and Conditions.
             </p>
@@ -356,7 +351,7 @@ export default function TermsAndConditionsContent() {
               </div>
             </div>
             <p className="text-[#5f6368] leading-relaxed text-base">
-              No use of Charters Business&apos;s logo or other artwork will be
+              No use of Charters' Union&apos;s logo or other artwork will be
               allowed for linking absent a trademark license agreement.
             </p>
           </section>

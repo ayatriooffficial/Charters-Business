@@ -6,18 +6,18 @@ import { STATIC_BLOGS, slugify } from "@/data/staticBlogs";
 import { API_BASE_URL } from "@/lib/server/api";
 
 const STATIC_ROUTES = [
-  { path: "", changeFrequency: "weekly", priority: 1 },
-  { path: "/about", changeFrequency: "monthly", priority: 0.8 },
-  { path: "/careers", changeFrequency: "daily", priority: 0.8 },
-  { path: "/careers/jobs", changeFrequency: "daily", priority: 0.7 },
-  { path: "/careers/internships", changeFrequency: "daily", priority: 0.7 },
-  { path: "/blogs", changeFrequency: "weekly", priority: 0.7 },
-  { path: "/career-path", changeFrequency: "weekly", priority: 0.8 },
-  { path: "/community", changeFrequency: "weekly", priority: 0.7 },
-  { path: "/faculties", changeFrequency: "monthly", priority: 0.7 },
-  { path: "/student-life", changeFrequency: "weekly", priority: 0.7 },
-  { path: "/privacy-policy", changeFrequency: "yearly", priority: 0.2 },
-  { path: "/terms-and-conditions", changeFrequency: "yearly", priority: 0.2 },
+  { path: "", changeFrequency: "weekly" as const, priority: 1 },
+  { path: "/about", changeFrequency: "monthly" as const, priority: 0.8 },
+  { path: "/careers", changeFrequency: "daily" as const, priority: 0.8 },
+  { path: "/careers/jobs", changeFrequency: "daily" as const, priority: 0.7 },
+  { path: "/careers/internships", changeFrequency: "daily" as const, priority: 0.7 },
+  { path: "/blogs", changeFrequency: "weekly" as const, priority: 0.7 },
+  { path: "/career-path", changeFrequency: "weekly" as const, priority: 0.8 },
+  { path: "/community", changeFrequency: "weekly" as const, priority: 0.7 },
+  { path: "/faculties", changeFrequency: "monthly" as const, priority: 0.7 },
+  { path: "/student-life", changeFrequency: "weekly" as const, priority: 0.7 },
+  { path: "/privacy-policy", changeFrequency: "yearly" as const, priority: 0.2 },
+  { path: "/terms-and-conditions", changeFrequency: "yearly" as const, priority: 0.2 },
 ] as const;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -34,7 +34,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     (slug) => ({
       url: buildSiteUrl(`/${slug.replace(/&/g, "%26")}`),
       lastModified,
-      changeFrequency: "weekly" as const,
+      changeFrequency: "weekly",
       priority: 0.9,
     }),
   );
@@ -42,43 +42,58 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blogEntries: MetadataRoute.Sitemap = STATIC_BLOGS.map((blog) => ({
     url: buildSiteUrl(`/blogs/${slugify(blog.title)}`),
     lastModified,
-    changeFrequency: "monthly" as const,
+    changeFrequency: "monthly",
     priority: 0.6,
   }));
 
   let jobEntries: MetadataRoute.Sitemap = [];
   try {
-    const res = await fetch(`${API_BASE_URL}/jobs`);
+    const res = await fetch(`${API_BASE_URL}/careers?type=job&status=active`, {
+      signal: AbortSignal.timeout(5000),
+    });
     if (res.ok) {
-      const { data } = await res.json();
-      const jobs = data?.jobPostings || data || [];
-      if (Array.isArray(jobs)) {
-        jobEntries = jobs.map((job: any) => ({
+      const jobs = await res.json();
+      jobEntries = (Array.isArray(jobs) ? jobs : []).map(
+        (job: { _id?: string; updatedAt?: string }) => ({
           url: buildSiteUrl(`/careers/jobs/${job._id}`),
           lastModified: job.updatedAt ? new Date(job.updatedAt) : lastModified,
           changeFrequency: "daily" as const,
           priority: 0.7,
-        }));
-      }
+        }),
+      );
     }
-  } catch {}
+  } catch {
+    // Backend unreachable — skip job entries
+  }
 
   let internshipEntries: MetadataRoute.Sitemap = [];
   try {
-    const res = await fetch(`${API_BASE_URL}/internships`);
+    const res = await fetch(
+      `${API_BASE_URL}/careers?type=internship&status=active`,
+      { signal: AbortSignal.timeout(5000) },
+    );
     if (res.ok) {
-      const { data } = await res.json();
-      const internships = data?.internshipPostings || data || [];
-      if (Array.isArray(internships)) {
-        internshipEntries = internships.map((i: any) => ({
-          url: buildSiteUrl(`/careers/internships/${i._id}`),
-          lastModified: i.updatedAt ? new Date(i.updatedAt) : lastModified,
+      const internships = await res.json();
+      internshipEntries = (Array.isArray(internships) ? internships : []).map(
+        (internship: { _id?: string; updatedAt?: string }) => ({
+          url: buildSiteUrl(`/careers/internships/${internship._id}`),
+          lastModified: internship.updatedAt
+            ? new Date(internship.updatedAt)
+            : lastModified,
           changeFrequency: "daily" as const,
           priority: 0.7,
-        }));
-      }
+        }),
+      );
     }
-  } catch {}
+  } catch {
+    // Backend unreachable — skip internship entries
+  }
 
-  return [...staticEntries, ...programmeEntries, ...blogEntries, ...jobEntries, ...internshipEntries];
+  return [
+    ...staticEntries,
+    ...programmeEntries,
+    ...blogEntries,
+    ...jobEntries,
+    ...internshipEntries,
+  ];
 }

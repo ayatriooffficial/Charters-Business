@@ -54,24 +54,50 @@ export const metadata: Metadata = {
   },
   description:
     "Get placed in 7 months with practical accounting skills, internship experience, and placement support. 90% placement rate. ₹3.5 LPA average salary. Free counseling call.",
+  keywords: [
+    "accounting course",
+    "job-ready accounting",
+    "chartered accounting program",
+    "finance certification",
+    "accounting internship",
+    "placement guarantee course",
+    "accounting career",
+    "professional accounting training",
+    "accounting certification online",
+    "finance career path",
+  ],
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "https://chartersunion.com"
   ),
   alternates: {
     canonical: "/",
   },
-  keywords: [
-    "accounting course",
-    "job-ready accounting",
-    "placement guaranteed",
-    "Charter's Union",
-    "USCMA",
-    "ACCA",
-    "certified business accountant",
-    "finance course",
-    "accounting training",
-    "Kolkata",
-  ],
+  openGraph: {
+    title: "Job-ready Accounting Course | 92% Placement Rate | 7 Months | Charter's Union",
+    description:
+      "Get placed in 7 months with practical accounting skills, internship experience, and placement support. 90% placement rate. ₹3.5 LPA average salary.",
+    url: "/",
+    siteName: "Charter's Union",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1744989695/og-image_e73ple.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Charter's Union — Job-ready Accounting Course",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Job-ready Accounting Course | 92% Placement Rate | 7 Months | Charter's Union",
+    description:
+      "Get placed in 7 months with practical accounting skills, internship experience, and placement support. 90% placement rate. ₹3.5 LPA average salary.",
+    images: [
+      "https://res.cloudinary.com/ducgcl4dg/image/upload/v1744989695/og-image_e73ple.jpg",
+    ],
+  },
   robots: {
     index: true,
     follow: true,
@@ -82,32 +108,6 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-  },
-  openGraph: {
-    title: "Job-ready Accounting Course | 92% Placement Rate | Charter's Union",
-    description:
-      "Get placed in 7 months with practical accounting skills, internship experience, and placement support.",
-    url: "https://chartersunion.com",
-    siteName: "Charter's Union",
-    locale: "en_US",
-    type: "website",
-    images: [
-      {
-        url: "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp",
-        width: 1200,
-        height: 630,
-        alt: "Charter's Union — Job-ready Accounting Courses",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Job-ready Accounting Course | 92% Placement Rate | Charter's Union",
-    description:
-      "Get placed in 7 months with practical accounting skills, internship experience, and placement support.",
-    images: [
-      "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp",
-    ],
   },
 };
 

@@ -3,8 +3,9 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef, useCallback, memo } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
+import { getCountdownData, type CountdownData } from "@/lib/utils/timer";
 import UserDropdown from "@/components/dashboard/UserDropdown";
 const AcademicsDropdown = dynamic(() => import("./AcademicsDropdown"), { ssr: false });
 import { createPortal } from "react-dom";
@@ -21,15 +22,10 @@ function Navbar() {
   const [dropdownTop, setDropdownTop] = useState(0);
   const [showInterviewAI, setShowInterviewAI] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const pathname = usePathname();
+  const [countdown, setCountdown] = useState<CountdownData | null>(null);
 
-  const messages = [
-    "Talk to us at 08045579576 or Request Callback",
-    "Round 2 Phase 1 Deadline: 1st May 2026",
-    "Request for 1:1 Placement Guidance",
-  ];
 
-  const [currentMsgIndex, setCurrentMsgIndex] = useState(0);
-  const [msgVisible, setMsgVisible] = useState(true);
 
   const { user, navigateToRemoteDashboard } = useAuth();
 
@@ -76,16 +72,29 @@ function Navbar() {
 
   useEffect(() => {
     setIsMounted(true);
-    const interval = setInterval(() => {
-      setMsgVisible(false);
-      setTimeout(() => {
-        setCurrentMsgIndex((prev) => (prev + 1) % messages.length);
-        setMsgVisible(true);
-      }, 400);
-    }, 5000);
-
-    return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+
+    const getActiveSlug = (path: string) => {
+      const decoded = decodeURIComponent(path);
+      if (decoded.includes("certified-business-accountant")) return "certified-business-accountant";
+      if (decoded.includes("digital-growth-&-marketing")) return "digital-growth-&-marketing";
+      if (decoded.includes("technology-&-business-management")) return "technology-&-business-management";
+      return "certified-business-accountant"; // default
+    };
+
+    const activeSlug = getActiveSlug(pathname);
+
+    const updateNavbarTimer = () => {
+      setCountdown(getCountdownData(activeSlug));
+    };
+
+    updateNavbarTimer();
+    const interval = setInterval(updateNavbarTimer, 1000);
+    return () => clearInterval(interval);
+  }, [pathname, isMounted]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -232,7 +241,6 @@ function Navbar() {
               <nav aria-label="Secondary navigation">
                 <ul className="flex text-[13px] text-[#0F1419] font-semibold items-center space-x-3 sm:space-x-4 lg:space-x-6">
                   <li>
-
                     <Link href="/for-companies"
                       className={`cursor-pointer hover:text-[#B30437] transition-colors ${selectedSecondaryTab === "for-companies"
                         ? "border-b-3 border-[#B30437] text-[#B30437]"
@@ -254,20 +262,42 @@ function Navbar() {
                 }}
                 className="absolute left-1/2 -translate-x-1/2 flex text-[13px] text-[#0F1419] font-semibold items-center whitespace-nowrap cursor-pointer"
               >
-                <p className="{msgVisible ? 'msg-visible' : 'msg-hidden'} m-0">
-                  {messages[currentMsgIndex]}
-                </p>
-                <Image src="/Charters-icon/top_arrow-black.svg"
-                  alt="Format icon"
-                  width={15}
-                  height={15}
-                  className="ml-[6px] w-[10px] h-[10px] object-contain"
-                />
+                {countdown ? (
+                  <div className="flex items-center gap-1">
+                    <span>Final Deadline:</span>
+                    <span>{countdown.dateStr}</span>
+                    <span className="font-medium text-black ml-1">Ends In:</span>
+                    <div className="flex items-center gap-0.5 font-bold">
+                      <span className="text-[#ff3b30] font-medium text-[14px]">{countdown.days}</span>
+                      <span className="text-black text-[13px] font-medium mr-0.5">D</span>
+                      <span className="text-black font-light text-[11px]">:</span>
+                      <span className="text-[#ff3b30] font-medium text-[14px]">{countdown.hours}</span>
+                      <span className="text-black text-[13px] font-medium mr-0.5">H</span>
+                      <span className="text-black font-light text-[11px]">:</span>
+                      <span className="text-[#ff3b30] font-medium text-[14px]">{countdown.minutes}</span>
+                      <span className="text-black text-[13px] font-medium mr-0.5">M</span>
+                      <span className="text-black font-light text-[11px]">:</span>
+                      <span className="text-[#ff3b30] font-medium text-[14px]">{countdown.seconds}</span>
+                      <span className="text-black text-[13px] font-medium">S</span>
+                    </div>
+                    <span className="mx-1.5 text-black text-[13px] font-medium">|</span>
+                    <span>Talk to Us:</span>
+                    <a
+                      href="tel:+919836465083"
+                      className="text-gray-900 hover:text-[#ff3b30] transition-colors font-bold"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      +91 9836465083
+                    </a>
+                  </div>
+                ) : (
+                  <p className="m-0">Loading Deadline...</p>
+                )}
               </div>
 
               {/* Right nav */}
               <nav aria-label="Quick links" className="ml-auto">
-                <ul className="flex text-[13px] font-semibold text-[#000] items-center space-x-3 sm:space-x-4 lg:space-x-6">
+                <ul className="flex text-[13px] font-semibold text-[#000] items-center space-x-1 sm:space-x-2 lg:space-x-2">
                   <li>
                     <a
                       href="/careers/internships"
@@ -282,7 +312,7 @@ function Navbar() {
                       Find Internship
                     </a>
                   </li>
-
+                  <li className="flex items-center"><span className="mx-1.5 text-black font-normal text-[13px]">|</span></li>
                   <li>
                     <a
                       href="/careers/jobs"
@@ -297,11 +327,11 @@ function Navbar() {
                       Find Jobs
                     </a>
                   </li>
+                  <li className="flex items-center"><span className="mx-1.5 font-normal text-black text-[13px]">|</span></li>
                   {user ? (
                     <li><UserDropdown /></li>
                   ) : (
                     <li>
-
                       <button
                         onClick={() => {
                           setShowInterviewAI(true);
@@ -672,7 +702,7 @@ function Navbar() {
                 setShowInterviewAI(false);
                 document.body.style.overflow = '';
               }}
-              className="absolute -top-3 -right-3 z-40 bg-white rounded-full w-7 h-7 flex items-center justify-center shadow-md text-gray-600 hover:text-red-500 transition-colors"
+              className="absolute cursor-pointer top-2 right-2 z-40 rounded-full w-7 h-7 flex hover:text-black "
             >
               ✕
             </button>

@@ -286,7 +286,7 @@ function TrustedCompanies() {
         </div>
       )}
 
-      <div className="flex justify-center pt-4 pb-2">
+      <div className="flex justify-center pt-8 pb-2">
         <button
           className="text-sm text-black cursor-pointer opacity-50 transition-opacity duration-300 group-hover/main:opacity-100"
           onClick={() => {

@@ -504,8 +504,8 @@ export default function CareersPage({
           : await getAllInternships(queryParams);
 
         const allItems: ListItem[] = isJob
-          ? response.data.jobPostings
-          : response.data.internshipPostings;
+          ? response.data.jobs || response.data.jobPostings || []
+          : response.data.internships || response.data.internshipPostings || [];
 
         if (cancelled) return;
 

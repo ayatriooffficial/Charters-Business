@@ -79,7 +79,7 @@ const ScholarshipsSection: React.FC<ScholarshipsSectionProps> = ({
             className="font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-black leading-tight mb-3 sm:mb-4"
           >
             Empowering Dreams Through{" "}
-            <HighlightText className="font-bold !px-0 !py-0">
+            <HighlightText className="font-bold hl-px-0">
               Scholarships
             </HighlightText>
           </h2>

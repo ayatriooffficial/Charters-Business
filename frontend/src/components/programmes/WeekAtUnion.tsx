@@ -17,7 +17,7 @@ interface WeekAtTetrProps {
 
 const WeekAtTetr = ({ data, assets }: WeekAtTetrProps) => {
   const config = assets || {
-    timetableImage: "charters-business/images/weekattetr/ug-timetable",
+    timetableImage: "/images/week-at-chartersunion/CBA-week-at-chartersunion.avif",
   };
   const timetableImage =
     data?.imageSrc || config.timetableImage;
@@ -60,7 +60,7 @@ const WeekAtTetr = ({ data, assets }: WeekAtTetrProps) => {
               {headingParts.length === 2 ? (
                 <>
                   {headingParts[0]}
-                  <HighlightText className="font-bold !px-0 !py-0">
+                  <HighlightText className="font-bold hl-px-0">
                     {highlightWord}
                   </HighlightText>
                   {headingParts[1]}

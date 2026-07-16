@@ -2,9 +2,11 @@ import Image from 'next/image';
 import { HeroData } from '@/data/programmes';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import ProgramHeroActions from "./ProgramHeroActions";
+import CourseTimer from "./CourseTimer";
 import { type ReactNode } from "react";
 interface ProgramHeroProps {
   data: HeroData;
+  slug: string;
 }
 
 interface FloatingCardProps {
@@ -18,7 +20,16 @@ const FloatingCard = ({ className, children }: FloatingCardProps) => (
   </div>
 );
 
-const ProgramHero = ({ data }: ProgramHeroProps) => {
+const PILL_THEMES = [
+  { bg: "bg-emerald-50", border: "border-emerald-200", text: "text-emerald-700" },
+  { bg: "bg-blue-50", border: "border-blue-200", text: "text-blue-700" },
+  { bg: "bg-purple-50", border: "border-purple-200", text: "text-purple-700" },
+  { bg: "bg-amber-50", border: "border-amber-200", text: "text-amber-700" },
+  { bg: "bg-rose-50", border: "border-rose-200", text: "text-rose-700" },
+  { bg: "bg-teal-50", border: "border-teal-200", text: "text-teal-700" },
+];
+
+const ProgramHero = ({ data, slug }: ProgramHeroProps) => {
 
   return (
     <div
@@ -29,15 +40,30 @@ const ProgramHero = ({ data }: ProgramHeroProps) => {
       <div className="max-w-[85rem] w-full mx-auto">
         <div className="flex flex-col-reverse  xl:flex-row gap-2 lg:gap-4 items-center">
           {/* Left Content Section */}
-          <div className="flex-1 space-y-4 w-full">
+          <div className="flex-1 space-y-2 w-full">
 
             <div className="hidden xl:block">
               <Breadcrumbs compact />
             </div>
 
+            <div className="flex flex-wrap pt-[10px] items-center gap-2.5 sm:gap-3">
+              {data.stats.map((stat, index) => {
+                const theme = PILL_THEMES[index % PILL_THEMES.length];
+                return (
+                  <div
+                    key={index}
+                    className={`flex items-center ${theme.bg} border ${theme.border} rounded-full px-4 py-1 text-xs sm:text-sm ${theme.text} font-semibold`}
+                  >
+                    <span className="sr-only">{stat.label}:</span>
+                    <span>{stat.label}</span>
+                  </div>
+                );
+              })}
+            </div>
+
             <h1
               id="programme-heading"
-              className="text-3xl pt-[20px] sm:text-3xl lg:text-4xl xl:text-4xl font-semibold text-black leading-tight"
+              className="text-3xl sm:text-3xl lg:text-4xl xl:text-4xl font-semibold text-black leading-tight"
             >
               {data.title.main}
             </h1>
@@ -46,17 +72,10 @@ const ProgramHero = ({ data }: ProgramHeroProps) => {
               {data.description}
             </p>
 
-            <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs sm:text-sm text-black">
-              {data.stats.map((stat, index) => (
-                <div key={index} className="flex items-center gap-2">
-                  <span className="sr-only">{stat.label}:</span>
-                  <span className="font-semibold">{stat.label}</span>
-                </div>
-              ))}
-            </div>
+
 
             <div className="space-y-3 pt-3">
-              <div className="text-xs sm:text-sm text-black">Find our faculty at -</div>
+              <div className="text-xs sm:text-sm text-black">Find our student at -</div>
               <div className="flex flex-wrap items-center gap-4 sm:gap-6">
                 <div className="relative object-contain w-full h-[40px] overflow-hidden">
                   <Image
@@ -90,6 +109,9 @@ const ProgramHero = ({ data }: ProgramHeroProps) => {
 
             {/* CTA Buttons */}
             <ProgramHeroActions />
+
+            {/* Countdown Timer */}
+            <CourseTimer slug={slug} />
           </div>
 
           {/* Right Image Section - UPDATED */}
@@ -146,7 +168,7 @@ const ProgramHero = ({ data }: ProgramHeroProps) => {
           </div>
         </div>
       </div>
-     
+
     </div>
   );
 };

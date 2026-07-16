@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import BlogDetailPageClient from "./BlogDetailClient";
-import { STATIC_BLOGS, slugify } from "@/data/staticBlogs";
+import { STATIC_BLOGS, slugify, DisplayBlog } from "@/data/staticBlogs";
 import { getBlogById } from "@/lib/api";
 import { generateBreadcrumbSchema, combineSchemas } from "@/lib/schema";
 
@@ -10,50 +10,39 @@ interface Props {
 
 const SCHEMA_IMAGE = "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp";
 
-interface BlogData {
-  title: string;
-  author: string;
-  description: string;
-  datePublished?: string;
-  image?: string;
-}
-
-async function getBlogData(id: string): Promise<BlogData | null> {
+async function fetchFullBlog(id: string): Promise<DisplayBlog | null> {
   // 1. Check static
   const matchedStatic = STATIC_BLOGS.find((sb) => slugify(sb.title) === id);
   if (matchedStatic) {
-    return {
-      title: matchedStatic.title,
-      author: matchedStatic.author || "Charters' Union",
-      description: matchedStatic.content.substring(0, 155).replace(/[\r\n\t]+/g, " ").trim() + "...",
-      datePublished: matchedStatic.releasedAt || undefined,
-      image: SCHEMA_IMAGE,
-    };
+    return matchedStatic;
   }
   // 2. Fetch from DB
   try {
     const response = await getBlogById(id);
     if (response && response.success && response.data) {
       return {
+        _id: response.data._id,
         title: response.data.title,
         author: response.data.author || "Charters' Union",
-        description: response.data.content.substring(0, 155).replace(/[\r\n\t]+/g, " ").trim() + "...",
-        datePublished: response.data.releasedAt || response.data.createdAt,
-        image: SCHEMA_IMAGE,
+        readTime: response.data.readTime || "5 min read",
+        category: response.data.category || "Education",
+        content: response.data.content,
+        tags: response.data.tags || [],
+        releasedAt: response.data.releasedAt ? String(response.data.releasedAt) : response.data.createdAt,
       };
     }
   } catch (error) {
-    console.error("Error getting blog data:", error);
+    console.error("Error getting full blog data:", error);
   }
   return null;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
-  const blog = await getBlogData(id);
+  const blog = await fetchFullBlog(id);
 
   const title = blog ? `${blog.title} | Charters' Union Blog` : "Blog Article | Charters' Union Blog";
-  const description = blog ? blog.description : "Read the latest insights and updates from Charters' Union.";
+  const description = blog ? blog.content.substring(0, 155).replace(/[\r\n\t]+/g, " ").trim() + "..." : "Read the latest insights and updates from Charters' Union.";
   const canonicalUrl = `https://chartersunion.com/blogs/${id}`;
   const imageUrl = "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp";
 
@@ -90,7 +79,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BlogDetailPage({ params }: Props) {
   const { id } = await params;
-  const blog = await getBlogData(id);
+  const blog = await fetchFullBlog(id);
 
   // Generate breadcrumb schema
   const breadcrumbSchema = generateBreadcrumbSchema([
@@ -104,10 +93,10 @@ export default async function BlogDetailPage({ params }: Props) {
     ? ({
         "@type": "BlogPosting",
         "headline": blog.title,
-        "description": blog.description,
+        "description": blog.content.substring(0, 155).replace(/[\r\n\t]+/g, " ").trim() + "...",
         "url": `https://chartersunion.com/blogs/${id}`,
-        "image": blog.image,
-        "datePublished": blog.datePublished,
+        "image": SCHEMA_IMAGE,
+        "datePublished": blog.releasedAt,
         "author": {
           "@type": "Person",
           "name": blog.author,
@@ -131,7 +120,7 @@ export default async function BlogDetailPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(consolidatedSchema) }}
       />
 
-      <BlogDetailPageClient params={params} />
+      <BlogDetailPageClient id={id} initialBlog={blog} />
     </>
   );
 }

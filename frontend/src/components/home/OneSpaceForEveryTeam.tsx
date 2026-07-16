@@ -220,7 +220,7 @@ const OneSpaceForEveryTeam = () => {
               Company Testimonials
             </h2>
             <div className="flex overflow-x-auto scrollbar-none sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-0 sm:gap-3 divide-x divide-gray-200 sm:divide-x-0 mx-auto snap-x snap-mandatory pb-2">
-              {filteredTestimonials.slice(0, 6).map((testimonial, index) => (
+              {filteredTestimonials.slice(0, 3).map((testimonial, index) => (
                 <button
                   key={testimonial.id}
                   onClick={() => setActiveTestimonial(testimonial.id)}
@@ -232,8 +232,12 @@ const OneSpaceForEveryTeam = () => {
                   aria-pressed={activeTestimonial === testimonial.id}
                   aria-label={`Select ${testimonial.company} testimonial`}
                 >
-                  <div className="font-semibold text-black text-sm">
-                    {testimonial.logo}
+                  <div className="font-semibold text-black text-sm flex items-center h-8">
+                    {testimonial.logo.startsWith('/') || testimonial.logo.startsWith('http') ? (
+                      <img src={testimonial.logo} alt={`${testimonial.company} logo`} className="h-6 object-contain" />
+                    ) : (
+                      testimonial.logo
+                    )}
                   </div>
                   <p className="text-xs text-gray-600 leading-relaxed">
                     {index === 0 &&

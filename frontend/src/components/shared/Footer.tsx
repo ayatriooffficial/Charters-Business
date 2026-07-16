@@ -22,10 +22,8 @@ const Footer = () => {
       links: [
         "For Companies",
         "Jobs",
-        "Become A Master",
         "Events",
         "Blog",
-        "Policies and Resources",
       ],
     },
   ];

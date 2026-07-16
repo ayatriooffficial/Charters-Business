@@ -151,7 +151,7 @@ const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
           aria-labelledby="download-section-heading"
         >
           <div className="mx-auto flex flex-col md:flex-row items-center justify-between py-4">
-            <div className="w-full md:w-3/4 text-center md:text-left flex flex-col text-gray-800">
+            {/* <div className="w-full md:w-3/4 text-center md:text-left flex flex-col text-gray-800">
               <h3 id="download-section-heading" className="leading-snug">
                 Proven track record of outcomes{" "}
                 {verification.verified && (
@@ -173,6 +173,33 @@ const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
                 Source: *(a)¹Charter Career Center and Past outcomes are not
                 indicative of future placements for subsequent cohorts.
               </p>
+            </div> */}
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6 flex-grow text-center md:text-left min-w-0">
+              {/* Logo */}
+              <div className="w-14 sm:w-14 h-20 relative shrink-0">
+                <Image
+                  src="/career-report.avif"
+                  alt="Charters Union Career Report 2025"
+                  fill
+                  sizes="70px"
+                  className="object-contain object-left"
+                  priority
+                />
+              </div>
+
+              {/* Texts */}
+              <div className="flex-grow min-w-0">
+
+                <>
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-900 leading-snug truncate">
+                    <strong> 97%&apos;</strong> of students secured full time job offer by their <strong>4</strong>th month of Internship, with <br></br> the highest CTC being <strong> ₹12.3</strong>lakhs/month.
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-600 font-medium mt-1">
+                    100% Internship Rate • Average Salary Jump 2.35x • Proven track record audited by analystGK
+                  </p>
+                </>
+
+              </div>
             </div>
             <div className="w-full md:w-1/4 mt-6 md:mt-0 flex justify-center md:justify-end">
               <button

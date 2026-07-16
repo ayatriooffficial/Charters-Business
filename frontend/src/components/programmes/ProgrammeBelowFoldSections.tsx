@@ -22,12 +22,21 @@ const ScholarshipsSection = dynamic(() => import("@/components/programmes/Schola
 const FAQ = dynamic(() => import("@/components/programmes/FAQ"), { ssr: false, loading: () => <SectionSkeleton /> });
 const MicaDigitalMarketingCertificate = dynamic(() => import("@/components/programmes/MicaDigitalMarketingCertificate"), { ssr: false, loading: () => <SectionSkeleton /> });
 
+import LayoutBanner from "@/components/shared/LayoutBanner";
+
 export default function ProgrammeBelowFoldSections({ programme }: { programme: Programme }) {
   return (
     <div className="md:border-x border-gray-200 max-w-[85rem] w-full md:w-[90%] mx-auto overflow-x-clip">
       <LazyMount fallback={<SectionSkeleton />}>
         <SectionWrapper hideCorners={"all"}>
           <TrackRecord data={programme.trackRecord} assets={programme.assets} />
+        </SectionWrapper>
+      </LazyMount>
+
+      {/* Banner 1: Placement Report */}
+      <LazyMount fallback={<SectionSkeleton height="h-32" />}>
+        <SectionWrapper hideCorners={"all"}>
+          <LayoutBanner type="placement" />
         </SectionWrapper>
       </LazyMount>
 
@@ -73,6 +82,13 @@ export default function ProgrammeBelowFoldSections({ programme }: { programme: P
         </SectionWrapper>
       </LazyMount>
 
+      {/* Banner 2: Brochure */}
+      <LazyMount fallback={<SectionSkeleton height="h-32" />}>
+        <SectionWrapper hideCorners={"all"}>
+          <LayoutBanner type="brochure" />
+        </SectionWrapper>
+      </LazyMount>
+
       <LazyMount fallback={<SectionSkeleton />}>
         <SectionWrapper hideCorners={"all"}>
           <PricingTabs data={programme.pricing} assets={programme.assets} />
@@ -86,16 +102,18 @@ export default function ProgrammeBelowFoldSections({ programme }: { programme: P
       </LazyMount>
 
       <LazyMount fallback={<SectionSkeleton />}>
-        <SectionWrapper hideCorners={"all"}>
+        <SectionWrapper hideCorners={"all"} borderBottom={false}>
           <FAQ data={programme.faq} />
         </SectionWrapper>
       </LazyMount>
 
       <LazyMount fallback={<SectionSkeleton />}>
-        <SectionWrapper hideCorners={"all"} borderBottom={false}>
+        <SectionWrapper hideCorners={"all"}>
           <MicaDigitalMarketingCertificate />
         </SectionWrapper>
       </LazyMount>
+
+      
     </div>
   );
 }

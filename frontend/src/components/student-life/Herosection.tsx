@@ -143,7 +143,7 @@ export default function Hersection() {
                 </h2>
             </section>
 
-            <div className="w-full border-gray-200 md:mx-auto flex flex-col items-center justify-center border-b">
+            <div className="w-full border-gray-200 md:mx-auto flex flex-col items-center justify-center">
 
                 <div
                     className="md:border-x pt-2 pb-8 border-gray-200 md:w-[90%] max-w-[85rem]"

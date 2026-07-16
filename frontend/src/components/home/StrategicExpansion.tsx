@@ -546,61 +546,6 @@ const contentData: Record<string, ContentData> = {
 };
 
 
-// Icons for the feature items
-const DocumentIcon = () => (
-    <img src="/Charters-icon/Cancel.svg" alt="document" width={16} height={16} className="w-4 h-4" />
-);
-
-const SearchIcon = () => (
-    <img src="/Charters-icon/Cancel.svg" alt="search" width={16} height={16} className="w-4 h-4" />
-);
-
-const UserGroupIcon = () => (
-    <img src="/Charters-icon/Cancel.svg" alt="users" width={16} height={16} className="w-4 h-4" />
-);
-
-const BriefcaseIcon = () => (
-    <img src="/Charters-icon/Cancel.svg" alt="briefcase" width={16} height={16} className="w-4 h-4" />
-);
-
-const LightningIcon = () => (
-    <img src="/Charters-icon/Cancel.svg" alt="lightning" width={16} height={16} className="w-4 h-4" />
-);
-
-const WrenchIcon = () => (
-    <img src="/Charters-icon/Cancel.svg" alt="wrench" width={16} height={16} className="w-4 h-4" />
-);
-
-const DatabaseIcon = () => (
-    <img src="/Charters-icon/Cancel.svg" alt="database" width={16} height={16} className="w-4 h-4" />
-);
-
-const CheckCircleIcon = () => (
-    <img src="/Charters-icon/Cancel.svg" alt="check" width={16} height={16} className="w-4 h-4" />
-);
-
-const getIcon = (iconName: string) => {
-    switch (iconName) {
-        case "document":
-            return <DocumentIcon />;
-        case "search":
-            return <SearchIcon />;
-        case "users":
-            return <UserGroupIcon />;
-        case "briefcase":
-            return <BriefcaseIcon />;
-        case "lightning":
-            return <LightningIcon />;
-        case "wrench":
-            return <WrenchIcon />;
-        case "database":
-            return <DatabaseIcon />;
-        case "check":
-            return <CheckCircleIcon />;
-        default:
-            return <DocumentIcon />;
-    }
-};
 const StrategicExpansion: React.FC = () => {
     const sectionRef = useRef<HTMLDivElement | null>(null);
     const isVisible = useInViewPlay(sectionRef, "200px", 0.1);
@@ -747,17 +692,11 @@ const StrategicExpansion: React.FC = () => {
                                                     {[0, 1, 2].map((rowIndex) => (
                                                         <React.Fragment key={rowIndex}>
                                                             {/* Left item */}
-                                                            <div className="border-b border-r border-[#D5D0CA] p-3 sm:p-4 flex items-center gap-2">
-                                                                <div className="shrink-0">
-                                                                    {getIcon(card.features[rowIndex]?.icon || "document")}
-                                                                </div>
+                                                            <div className="border-b border-r border-[#D5D0CA] p-3 sm:p-4 flex items-center">
                                                                 <span className="text-xs text-[#5f6368]">{card.features[rowIndex]?.label}</span>
                                                             </div>
                                                             {/* Right item */}
-                                                            <div className="border-b border-[#D5D0CA] p-3 sm:p-4 flex items-center gap-2">
-                                                                <div className="shrink-0">
-                                                                    {getIcon(card.features[rowIndex + 3]?.icon || "document")}
-                                                                </div>
+                                                            <div className="border-b border-[#D5D0CA] p-3 sm:p-4 flex items-center">
                                                                 <span className="text-xs text-[#5f6368]">{card.features[rowIndex + 3]?.label}</span>
                                                             </div>
                                                         </React.Fragment>
@@ -768,11 +707,8 @@ const StrategicExpansion: React.FC = () => {
                                                     {card.features.map((feature, featureIndex) => (
                                                         <div
                                                             key={featureIndex}
-                                                            className="border-b border-[#D5D0CA] p-3 sm:p-4 flex items-center gap-2"
+                                                            className="border-b border-[#D5D0CA] p-3 sm:p-4 flex items-center"
                                                         >
-                                                            <div className="shrink-0 px-2">
-                                                                {getIcon(feature.icon)}
-                                                            </div>
                                                             <span className="text-xs text-[#5f6368]">{feature.label}</span>
                                                         </div>
                                                     ))}
@@ -821,9 +757,8 @@ const StrategicExpansion: React.FC = () => {
                                 {currentContent.footer.features.map((feature, idx) => (
                                     <button
                                         key={idx}
-                                        className="flex items-center justify-center gap-2 px-2 md:px-4 py-3 border border-[#D5D0CA] transition-colors hover:bg-gray-50"
+                                        className="flex items-center justify-center px-2 md:px-4 py-3 border border-[#D5D0CA] transition-colors hover:bg-gray-50"
                                     >
-                                        {getIcon(feature.icon)}
                                         <span className="text-xs md:text-sm font-medium whitespace-nowrap">
                                             {feature.label}
                                         </span>
@@ -907,10 +842,10 @@ const StrategicExpansion: React.FC = () => {
 
                             {showInterviewAI && createPortal(
                                 <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[#202124]/20">
-                                    <div className="w-[80%] h-[90%] relative">
+                                    <div className="w-[60%] h-[90%] relative">
                                         <button
                                             onClick={() => setShowInterviewAI(false)}
-                                            className="absolute -top-3 -right-3 z-40 bg-white rounded-full w-7 h-7 flex items-center justify-center shadow-md text-gray-600 hover:text-red-500 transition-colors"
+                                            className="absolute top-3 right-3 z-40 bg-white rounded-full w-7 h-7 flex items-center justify-center shadow-md text-gray-600 hover:text-red-500 transition-colors"
                                         >
                                             ✕
                                         </button>

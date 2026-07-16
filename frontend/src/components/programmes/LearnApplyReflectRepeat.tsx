@@ -98,7 +98,7 @@ const LearnApplyReflectRepeat: React.FC<LearnApplyReflectRepeatProps> = ({
               className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight text-center px-2"
             >
               Learn. Apply. Reflect.{" "}
-              <HighlightText className="font-bold !px-0 !py-0">
+              <HighlightText className="font-bold hl-px-0">
                 Repeat.
               </HighlightText>
             </h2>

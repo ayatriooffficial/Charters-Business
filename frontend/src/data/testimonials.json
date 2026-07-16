@@ -1,8 +1,8 @@
 [
   {
     "id": "Arabian Access",
-    "company": "Arabian Access",
-    "logo": "Arabian Access",
+    "company": "TCS",
+    "logo": "/logos/student-at-tcs.avif",
     "quote": "There's power in a single platform where you can do all your work. Notion is that single place.",
     "author": "Student Participant",
     "role": "Student Participant",
@@ -11,8 +11,8 @@
   },
   {
     "id": "ramp",
-    "company": "ramp",
-    "logo": "/logos/student-at-arabian-access.avif",
+    "company": "Reliance",
+    "logo": "/logos/student-at-reliance.avif",
     "quote": "With Notion, every person at Ramp has an AI assistant.",
     "author": "Engineering Team Lead",
     "role": "Engineering Team Lead",
@@ -21,8 +21,8 @@
   },
   {
     "id": "vercel",
-    "company": "/logos/student-at-arabian-access.avif",
-    "logo": "▲Vercel",
+    "company": "Genpact",
+    "logo": "/logos/student-at-genpact.avif",
     "quote": "Notion understands that you can solve a lot of problems with one tool.",
     "author": "Operations Manager",
     "role": "Operations Manager",
@@ -32,7 +32,7 @@
   {
     "id": "matchgroup",
     "company": "MatchGroup",
-    "logo": "MatchGroup",
+    "logo": "https://logo.clearbit.com/mtch.com",
     "quote": "Notion has been the most powerful and impactful way to streamline our workflow.",
     "author": "HR Director",
     "role": "HR Director",
@@ -42,7 +42,7 @@
   {
     "id": "deel",
     "company": "deel.",
-    "logo": "deel.",
+    "logo": "https://logo.clearbit.com/deel.com",
     "quote": "Someone could join Deel and onboard themselves without ever speaking to anybody.",
     "author": "Tech Lead",
     "role": "Tech Lead",
@@ -52,7 +52,7 @@
   {
     "id": "planful",
     "company": "planful",
-    "logo": "P planful",
+    "logo": "https://logo.clearbit.com/planful.com",
     "quote": "From six apps to one: Scaling faster with all teams running on Notion AI.",
     "author": "Product Manager",
     "role": "Product Manager",
@@ -61,8 +61,8 @@
   },
   {
     "id": "openai-product",
-    "company": "OpenAI",
-    "logo": "OpenAI",
+    "company": "TCS",
+    "logo": "/logos/student-at-tcs.avif",
     "quote": "There's power in a single platform where you can do all your work. Notion is that single place.",
     "author": "Product Manager",
     "role": "Product Manager",
@@ -71,8 +71,8 @@
   },
   {
     "id": "ramp-product",
-    "company": "ramp",
-    "logo": "ramp ↗",
+    "company": "Reliance",
+    "logo": "/logos/student-at-reliance.avif",
     "quote": "With Notion, every person at Ramp has an AI assistant.",
     "author": "Product Lead",
     "role": "Product Lead",
@@ -81,8 +81,8 @@
   },
   {
     "id": "vercel-product",
-    "company": "▲Vercel",
-    "logo": "▲Vercel",
+    "company": "Genpact",
+    "logo": "/logos/student-at-genpact.avif",
     "quote": "Notion understands that you can solve a lot of problems with one tool.",
     "author": "Product Director",
     "role": "Product Director",
@@ -92,7 +92,7 @@
   {
     "id": "matchgroup-product",
     "company": "MatchGroup",
-    "logo": "MatchGroup",
+    "logo": "https://logo.clearbit.com/mtch.com",
     "quote": "Notion has been the most powerful and impactful way to streamline our workflow.",
     "author": "Product Owner",
     "role": "Product Owner",
@@ -102,7 +102,7 @@
   {
     "id": "deel-product",
     "company": "deel.",
-    "logo": "deel.",
+    "logo": "https://logo.clearbit.com/deel.com",
     "quote": "Someone could join Deel and onboard themselves without ever speaking to anybody.",
     "author": "Product Strategist",
     "role": "Product Strategist",
@@ -112,7 +112,7 @@
   {
     "id": "planful-product",
     "company": "planful",
-    "logo": "P planful",
+    "logo": "https://logo.clearbit.com/planful.com",
     "quote": "From six apps to one: Scaling faster with all teams running on Notion AI.",
     "author": "Product Manager",
     "role": "Product Manager",
@@ -121,8 +121,8 @@
   },
   {
     "id": "openai-design",
-    "company": "OpenAI",
-    "logo": "OpenAI",
+    "company": "TCS",
+    "logo": "/logos/student-at-tcs.avif",
     "quote": "There's power in a single platform where you can do all your work. Notion is that single place.",
     "author": "Design Lead",
     "role": "Design Lead",
@@ -131,8 +131,8 @@
   },
   {
     "id": "ramp-design",
-    "company": "ramp",
-    "logo": "ramp ↗",
+    "company": "Reliance",
+    "logo": "/logos/student-at-reliance.avif",
     "quote": "With Notion, every person at Ramp has an AI assistant.",
     "author": "UX Designer",
     "role": "UX Designer",
@@ -141,8 +141,8 @@
   },
   {
     "id": "vercel-design",
-    "company": "▲Vercel",
-    "logo": "▲Vercel",
+    "company": "Genpact",
+    "logo": "/logos/student-at-genpact.avif",
     "quote": "Notion understands that you can solve a lot of problems with one tool.",
     "author": "Creative Director",
     "role": "Creative Director",
@@ -152,7 +152,7 @@
   {
     "id": "matchgroup-design",
     "company": "MatchGroup",
-    "logo": "MatchGroup",
+    "logo": "https://logo.clearbit.com/mtch.com",
     "quote": "Notion has been the most powerful and impactful way to streamline our workflow.",
     "author": "UI Designer",
     "role": "UI Designer",
@@ -162,7 +162,7 @@
   {
     "id": "deel-design",
     "company": "deel.",
-    "logo": "deel.",
+    "logo": "https://logo.clearbit.com/deel.com",
     "quote": "Someone could join Deel and onboard themselves without ever speaking to anybody.",
     "author": "Design Manager",
     "role": "Design Manager",
@@ -172,7 +172,7 @@
   {
     "id": "planful-design",
     "company": "planful",
-    "logo": "P planful",
+    "logo": "https://logo.clearbit.com/planful.com",
     "quote": "From six apps to one: Scaling faster with all teams running on Notion AI.",
     "author": "Visual Designer",
     "role": "Visual Designer",
@@ -181,8 +181,8 @@
   },
   {
     "id": "openai-it",
-    "company": "OpenAI",
-    "logo": "OpenAI",
+    "company": "TCS",
+    "logo": "/logos/student-at-tcs.avif",
     "quote": "There's power in a single platform where you can do all your work. Notion is that single place.",
     "author": "IT Director",
     "role": "IT Director",
@@ -191,8 +191,8 @@
   },
   {
     "id": "ramp-it",
-    "company": "ramp",
-    "logo": "ramp ↗",
+    "company": "Reliance",
+    "logo": "/logos/student-at-reliance.avif",
     "quote": "With Notion, every person at Ramp has an AI assistant.",
     "author": "Systems Administrator",
     "role": "Systems Administrator",
@@ -201,8 +201,8 @@
   },
   {
     "id": "vercel-it",
-    "company": "▲Vercel",
-    "logo": "▲Vercel",
+    "company": "Genpact",
+    "logo": "/logos/student-at-genpact.avif",
     "quote": "Notion understands that you can solve a lot of problems with one tool.",
     "author": "DevOps Engineer",
     "role": "DevOps Engineer",
@@ -212,7 +212,7 @@
   {
     "id": "matchgroup-it",
     "company": "MatchGroup",
-    "logo": "MatchGroup",
+    "logo": "https://logo.clearbit.com/mtch.com",
     "quote": "Notion has been the most powerful and impactful way to streamline our workflow.",
     "author": "IT Specialist",
     "role": "IT Specialist",
@@ -222,7 +222,7 @@
   {
     "id": "deel-it",
     "company": "deel.",
-    "logo": "deel.",
+    "logo": "https://logo.clearbit.com/deel.com",
     "quote": "Someone could join Deel and onboard themselves without ever speaking to anybody.",
     "author": "Infrastructure Lead",
     "role": "Infrastructure Lead",
@@ -232,7 +232,7 @@
   {
     "id": "planful-it",
     "company": "planful",
-    "logo": "P planful",
+    "logo": "https://logo.clearbit.com/planful.com",
     "quote": "From six apps to one: Scaling faster with all teams running on Notion AI.",
     "author": "Cloud Engineer",
     "role": "Cloud Engineer",
@@ -241,8 +241,8 @@
   },
   {
     "id": "openai-marketing",
-    "company": "OpenAI",
-    "logo": "OpenAI",
+    "company": "TCS",
+    "logo": "/logos/student-at-tcs.avif",
     "quote": "There's power in a single platform where you can do all your work. Notion is that single place.",
     "author": "Marketing Director",
     "role": "Marketing Director",
@@ -251,8 +251,8 @@
   },
   {
     "id": "ramp-marketing",
-    "company": "ramp",
-    "logo": "ramp ↗",
+    "company": "Reliance",
+    "logo": "/logos/student-at-reliance.avif",
     "quote": "With Notion, every person at Ramp has an AI assistant.",
     "author": "Growth Manager",
     "role": "Growth Manager",
@@ -261,8 +261,8 @@
   },
   {
     "id": "vercel-marketing",
-    "company": "▲Vercel",
-    "logo": "▲Vercel",
+    "company": "Genpact",
+    "logo": "/logos/student-at-genpact.avif",
     "quote": "Notion understands that you can solve a lot of problems with one tool.",
     "author": "Content Manager",
     "role": "Content Manager",
@@ -272,7 +272,7 @@
   {
     "id": "matchgroup-marketing",
     "company": "MatchGroup",
-    "logo": "MatchGroup",
+    "logo": "https://logo.clearbit.com/mtch.com",
     "quote": "Notion has been the most powerful and impactful way to streamline our workflow.",
     "author": "Digital Marketing Lead",
     "role": "Digital Marketing Lead",
@@ -282,7 +282,7 @@
   {
     "id": "deel-marketing",
     "company": "deel.",
-    "logo": "deel.",
+    "logo": "https://logo.clearbit.com/deel.com",
     "quote": "Someone could join Deel and onboard themselves without ever speaking to anybody.",
     "author": "Marketing Strategist",
     "role": "Marketing Strategist",
@@ -292,7 +292,7 @@
   {
     "id": "planful-marketing",
     "company": "planful",
-    "logo": "P planful",
+    "logo": "https://logo.clearbit.com/planful.com",
     "quote": "From six apps to one: Scaling faster with all teams running on Notion AI.",
     "author": "Brand Manager",
     "role": "Brand Manager",
@@ -301,8 +301,8 @@
   },
   {
     "id": "openai-startups",
-    "company": "OpenAI",
-    "logo": "OpenAI",
+    "company": "TCS",
+    "logo": "/logos/student-at-tcs.avif",
     "quote": "There's power in a single platform where you can do all your work. Notion is that single place.",
     "author": "Founder",
     "role": "Founder",
@@ -311,8 +311,8 @@
   },
   {
     "id": "ramp-startups",
-    "company": "ramp",
-    "logo": "ramp ↗",
+    "company": "Reliance",
+    "logo": "/logos/student-at-reliance.avif",
     "quote": "With Notion, every person at Ramp has an AI assistant.",
     "author": "Co-Founder",
     "role": "Co-Founder",
@@ -321,8 +321,8 @@
   },
   {
     "id": "vercel-startups",
-    "company": "▲Vercel",
-    "logo": "▲Vercel",
+    "company": "Genpact",
+    "logo": "/logos/student-at-genpact.avif",
     "quote": "Notion understands that you can solve a lot of problems with one tool.",
     "author": "Startup Founder",
     "role": "Startup Founder",
@@ -332,7 +332,7 @@
   {
     "id": "matchgroup-startups",
     "company": "MatchGroup",
-    "logo": "MatchGroup",
+    "logo": "https://logo.clearbit.com/mtch.com",
     "quote": "Notion has been the most powerful and impactful way to streamline our workflow.",
     "author": "Entrepreneur",
     "role": "Entrepreneur",
@@ -342,7 +342,7 @@
   {
     "id": "deel-startups",
     "company": "deel.",
-    "logo": "deel.",
+    "logo": "https://logo.clearbit.com/deel.com",
     "quote": "Someone could join Deel and onboard themselves without ever speaking to anybody.",
     "author": "Startup CEO",
     "role": "Startup CEO",
@@ -352,7 +352,7 @@
   {
     "id": "planful-startups",
     "company": "planful",
-    "logo": "P planful",
+    "logo": "https://logo.clearbit.com/planful.com",
     "quote": "From six apps to one: Scaling faster with all teams running on Notion AI.",
     "author": "Tech Entrepreneur",
     "role": "Tech Entrepreneur",

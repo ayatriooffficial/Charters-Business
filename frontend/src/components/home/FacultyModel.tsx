@@ -10,339 +10,7 @@ const randomLogos = [
   "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/google.svg",
   "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/amazon.svg",
 ];
-interface Faculty {
-  name: string;
-  title: string;
-  company: string;
-  subtitle?: string;
-  experience?: string;
-  teaching?: string;
-  imageSrc: string;
-  linkedinUrl?: string;
-  category: string;
-  logos?: string[];
-}
-
-interface FacultyCategory {
-  id: string;
-  name: string;
-}
-
-const facultyCategories: FacultyCategory[] = [
-  { id: "leadership", name: "Leadership" },
-  { id: "entrepreneurship", name: "Entrepreneurship" },
-  { id: "finance", name: "Finance" },
-  { id: "technology", name: "Technology" },
-  { id: "consulting", name: "Consulting" },
-];
-
-const facultyMembers: Faculty[] = [
-  // Leadership Category
-  {
-    name: "Mr. Rajat Mathur",
-    title: "Managing Director",
-    company: "MorganStanley",
-    subtitle: "MD, India at Morgan Stanley",
-    experience: "Ex Managing Director at Goldman Sachs",
-    teaching: "Corporate strategy and financial markets",
-    imageSrc: "/images/faculty/home.jpeg",
-    linkedinUrl: "#",
-    category: "leadership",
-    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
-  },
-  {
-    name: "Mr. Leadership Expert 2",
-    title: "CEO",
-    company: "LeaderCorp",
-    subtitle: "Chief Executive Officer",
-    experience: "25+ years in leadership",
-    teaching: "Executive leadership",
-    imageSrc: "/images/faculty/home.jpeg",
-    linkedinUrl: "#",
-    category: "leadership",
-    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
-  },
-  {
-    name: "Mr. Leadership Expert 3",
-    title: "Managing Partner",
-    company: "PartnerCo",
-    subtitle: "Managing Partner",
-    experience: "20+ years in management",
-    teaching: "Leadership development",
-    imageSrc: "/images/faculty/home.jpeg",
-    linkedinUrl: "#",
-    category: "leadership",
-    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
-  },
-  {
-    name: "Dr. Ananya Sen",
-    title: "Professor of Strategy",
-    company: "Harvard",
-    subtitle: "Visiting Professor of Leadership",
-    experience: "Ex Senior Consultant at McKinsey & Company",
-    teaching: "Global business strategy and leadership analytics",
-    imageSrc: "/images/faculty/home.jpeg",
-    linkedinUrl: "#",
-    category: "leadership",
-    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
-  },
-  {
-    name: "Dr. Leadership Expert 5",
-    title: "Chief Strategy Officer",
-    company: "StrategyCorp",
-    subtitle: "CSO & VP",
-    experience: "15+ years in corporate strategy and transformation",
-    teaching: "Strategic management and growth scaling",
-    imageSrc: "/images/faculty/home.jpeg",
-    linkedinUrl: "#",
-    category: "leadership",
-    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
-  },
-  // Entrepreneurship Category
-  {
-    name: "Mr. Naveen Munjal",
-    title: "Managing Director",
-    company: "HEROELECTRIC",
-    subtitle: "Founder & MD at Hero Electric",
-    experience: "Ex VP at Hero MotoCorp",
-    teaching: "EV industry and startup scaling",
-    imageSrc: "/images/faculty/home.jpeg",
-    linkedinUrl: "#",
-    category: "entrepreneurship",
-    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
-  },
-  {
-    name: "Mr. Arjun Vaidya",
-    title: "Founder",
-    company: "DR. VAIDYA's",
-    subtitle: "Founder & CMD at Dr. Vaidya's",
-    experience: "Built Ayurveda brand from scratch",
-    teaching: "Founding a health-tech venture",
-    imageSrc: "/images/faculty/home.jpeg",
-    linkedinUrl: "#",
-    category: "entrepreneurship",
-    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
-  },
-  {
-    name: "Mr. Entrepreneur Expert 3",
-    title: "Serial Entrepreneur",
-    company: "StartupCo",
-    subtitle: "Founder of multiple startups",
-    experience: "Built 5+ successful ventures",
-    teaching: "Startup fundamentals",
-    imageSrc: "/images/faculty/home.jpeg",
-    linkedinUrl: "#",
-    category: "entrepreneurship",
-    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
-  },
-  {
-    name: "Ms. Shikha Gupta",
-    title: "Co-Founder",
-    company: "StartHub",
-    subtitle: "Co-Founder at StartHub Ventures",
-    experience: "Built and scaled 3 SaaS platforms globally",
-    teaching: "Product-market fit and growth marketing",
-    imageSrc: "/images/faculty/home.jpeg",
-    linkedinUrl: "#",
-    category: "entrepreneurship",
-    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
-  },
-  {
-    name: "Ms. Entrepreneur Expert 5",
-    title: "Venture Partner",
-    company: "CapitalVentures",
-    subtitle: "Venture Partner",
-    experience: "Helped scale 15+ unicorn startups",
-    teaching: "Growth hacking and early stage funding",
-    imageSrc: "/images/faculty/home.jpeg",
-    linkedinUrl: "#",
-    category: "entrepreneurship",
-    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
-  },
-  // Finance Category
-  {
-    name: "Mr. Finance Expert 1",
-    title: "CFO",
-    company: "FinanceCo",
-    subtitle: "Chief Financial Officer",
-    experience: "22+ years in finance",
-    teaching: "Financial management",
-    imageSrc: "/images/faculty/home.jpeg",
-    linkedinUrl: "#",
-    category: "finance",
-    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
-  },
-  {
-    name: "Mr. Finance Expert 2",
-    title: "Investment Banker",
-    company: "InvestBank",
-    subtitle: "Senior Investment Banker",
-    experience: "18+ years in banking",
-    teaching: "Investment banking",
-    imageSrc: "/images/faculty/home.jpeg",
-    linkedinUrl: "#",
-    category: "finance",
-    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
-  },
-  {
-    name: "Mr. Finance Expert 3",
-    title: "Fund Manager",
-    company: "FundCorp",
-    subtitle: "Portfolio Manager",
-    experience: "15+ years in fund management",
-    teaching: "Portfolio management",
-    imageSrc: "/images/faculty/home.jpeg",
-    linkedinUrl: "#",
-    category: "finance",
-    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
-  },
-  {
-    name: "Mr. Devendra Shah",
-    title: "Chief Investment Officer",
-    company: "ApexFunds",
-    subtitle: "CIO at Apex Wealth Managers",
-    experience: "Ex Director of Portfolio Strategy at BlackRock",
-    teaching: "Advanced wealth management and hedge funds",
-    imageSrc: "/images/faculty/home.jpeg",
-    linkedinUrl: "#",
-    category: "finance",
-    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
-  },
-  {
-    name: "Ms. Finance Expert 4",
-    title: "Risk Analyst",
-    company: "GlobalFinance",
-    subtitle: "Senior Risk Analyst",
-    experience: "15+ years in international risk management",
-    teaching: "Financial risk modeling and mitigation",
-    imageSrc: "/images/faculty/home.jpeg",
-    linkedinUrl: "#",
-    category: "finance",
-    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
-  },
-  // Technology Category
-  {
-    name: "Mr. Manoj Kohli",
-    title: "Former Country Head",
-    company: "SoftBank",
-    subtitle: "Former Country Head at SoftBank India",
-    experience: "Ex MD at Bharti Airtel",
-    teaching: "Tech investments and growth strategy",
-    imageSrc: "/images/faculty/home.jpeg",
-    linkedinUrl: "#",
-    category: "technology",
-    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
-  },
-  {
-    name: "Mr. Tech Expert 2",
-    title: "CTO",
-    company: "TechGiant",
-    subtitle: "Chief Technology Officer",
-    experience: "20+ years in technology",
-    teaching: "Technology strategy",
-    imageSrc: "/images/faculty/home.jpeg",
-    linkedinUrl: "#",
-    category: "technology",
-    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
-  },
-  {
-    name: "Mr. Tech Expert 3",
-    title: "VP Engineering",
-    company: "SoftwareCorp",
-    subtitle: "VP of Engineering",
-    experience: "17+ years in software",
-    teaching: "Software architecture",
-    imageSrc: "/images/faculty/home.jpeg",
-    linkedinUrl: "#",
-    category: "technology",
-    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
-  },
-  {
-    name: "Dr. Vikram Aditya",
-    title: "Director of AI",
-    company: "Google",
-    subtitle: "Lead Scientist at Google DeepMind",
-    experience: "Ph.D. in Computer Science from MIT",
-    teaching: "Artificial intelligence and neural network systems",
-    imageSrc: "/images/faculty/home.jpeg",
-    linkedinUrl: "#",
-    category: "technology",
-    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
-  },
-  {
-    name: "Dr. Tech Expert 4",
-    title: "Director of Analytics",
-    company: "DataSystems",
-    subtitle: "Lead Data Scientist",
-    experience: "12+ years in large scale machine learning systems",
-    teaching: "Big data engineering and artificial intelligence",
-    imageSrc: "/images/faculty/home.jpeg",
-    linkedinUrl: "#",
-    category: "technology",
-    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
-  },
-  // Consulting Category
-  {
-    name: "Captain Raghu Raman",
-    title: "Former President",
-    company: "Reliance",
-    subtitle: "Former President, Strategy at Reliance",
-    experience: "Led energy & infrastructure divisions",
-    teaching: "Corporate leadership and operations",
-    imageSrc: "/images/faculty/home.jpeg",
-    linkedinUrl: "#",
-    category: "consulting",
-    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
-  },
-  {
-    name: "Mr. Consulting Expert 2",
-    title: "Senior Partner",
-    company: "ConsultCo",
-    subtitle: "Senior Partner",
-    experience: "22+ years in consulting",
-    teaching: "Management consulting",
-    imageSrc: "/images/faculty/home.jpeg",
-    linkedinUrl: "#",
-    category: "consulting",
-    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
-  },
-  {
-    name: "Mr. Consulting Expert 3",
-    title: "Strategy Consultant",
-    company: "StrategyCo",
-    subtitle: "Principal Consultant",
-    experience: "18+ years in strategy",
-    teaching: "Strategic consulting",
-    imageSrc: "/images/faculty/home.jpeg",
-    linkedinUrl: "#",
-    category: "consulting",
-    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
-  },
-  {
-    name: "Ms. Shalini Iyer",
-    title: "Partner",
-    company: "BCG",
-    subtitle: "Managing Director & Partner at BCG India",
-    experience: "15+ years advising Fortune 500 corporations",
-    teaching: "Corporate transformation and organizational growth",
-    imageSrc: "/images/faculty/home.jpeg",
-    linkedinUrl: "#",
-    category: "consulting",
-    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
-  },
-  {
-    name: "Ms. Consulting Expert 4",
-    title: "Principal Advisor",
-    company: "StrategyGroup",
-    subtitle: "Principal Consultant",
-    experience: "16+ years advising Fortune 100 on digital strategy",
-    teaching: "Digital transformation and corporate change",
-    imageSrc: "/images/faculty/home.jpeg",
-    linkedinUrl: "#",
-    category: "consulting",
-    logos: randomLogos.sort(() => 0.5 - Math.random()).slice(0, 3),
-  },
-];
+import { Faculty, FacultyCategory, facultyCategories, facultyMembers } from "@/data/faculty";
 
 interface FacultyModelProps {
   data?: {
@@ -404,7 +72,7 @@ function FacultyModel({ data }: FacultyModelProps) {
               className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]"
             >
               Meet your{" "}
-              <HighlightText className="mx-1 sm:mx-2 font-bold !px-0 !py-0">
+              <HighlightText className="mx-1 sm:mx-2 font-bold hl-px-0">
                 Faculty
               </HighlightText>
             </h2>
@@ -453,13 +121,13 @@ function FacultyModel({ data }: FacultyModelProps) {
                   className="flex-shrink-0 w-[85vw] sm:w-auto hover:bg-[#F4F2EE] border-r border-b border-gray-300 flex flex-col"
                 >
                   {/* Image */}
-                  <div className="w-full h-[230px]">
+                  <div className="relative w-full aspect-square overflow-hidden bg-[#F4F2EE]">
                     <Image
                       src={faculty.imageSrc}
                       alt={faculty.name}
-                      width={400}
-                      height={400}
-                      className="w-full h-full object-contain"
+                      fill
+                      sizes="(max-width: 640px) 85vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                      className="object-cover"
                     />
                   </div>
 
@@ -487,15 +155,17 @@ function FacultyModel({ data }: FacultyModelProps) {
                       {faculty.teaching}
                     </p>
 
-                    {/* Logos */}
-                    <div className="flex gap-3 mt-2">
-                      {faculty.logos?.map((logo, i) => (
-                        <img
-                          key={i}
-                          src={logo}
-                          className="h-8 w-auto object-contain bg-white rounded-md px-2 py-1"
+                    {/* Logo */}
+                    <div className="mt-2 h-10 flex items-center justify-start">
+                      {faculty.logoSrc ? (
+                        <Image
+                          src={faculty.logoSrc}
+                          alt={faculty.name}
+                          width={100}
+                          height={30}
+                          className="h-8 w-auto max-w-full object-contain bg-white rounded-md px-2 py-1"
                         />
-                      ))}
+                      ) : null}
                     </div>
                   </div>
                 </article>

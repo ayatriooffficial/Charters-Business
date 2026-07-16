@@ -170,7 +170,7 @@ const TrackRecord: React.FC<TrackRecordProps> = ({ data, assets }) => {
               className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]"
             >
               A Proven{" "}
-              <HighlightText className="font-bold !px-0 !py-0">Track Record</HighlightText>
+              <HighlightText className="font-bold hl-px-0">Track Record</HighlightText>
             </h2>
             <h3 className="text-base px-[20px] md:px-[50px] lg:px-[70px] sm:text-lg text-[#5f6368]">
               Our placement reports are audited by <strong>AnalystPK</strong>, auditor for IIM and follow the IPRS Revision 2.2 framework for

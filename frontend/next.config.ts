@@ -6,6 +6,10 @@ const bundleAnalyzer = withBundleAnalyzer({
 });
 
 const nextConfig: NextConfig = {
+  // Generate unique build ID each build so old cached chunks are never reused
+  generateBuildId: async () => {
+    return `build-${Date.now()}`;
+  },
   // Disable TypeScript errors during build
   typescript: {
     ignoreBuildErrors: true,
@@ -23,8 +27,9 @@ const nextConfig: NextConfig = {
   },
 
   images: {
+    qualities: [50, 60, 75],
     formats: ["image/avif", "image/webp"],
-    minimumCacheTTL: 31536000,
+    minimumCacheTTL: 60, // 60 seconds — dev-friendly, revalidates fast
     deviceSizes: [390, 640, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
     remotePatterns: [
@@ -137,12 +142,32 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        // Aggressively cache static assets (images, fonts, icons)
-        source: "/:all*(svg|jpg|jpeg|png|webp|avif|ico|woff2)",
+        // Only fonts/icons get immutable long cache (they truly never change)
+        source: "/:all*(woff2|ico)",
         headers: [
           {
             key: "Cache-Control",
             value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        // Content images: short cache, MUST revalidate on reload
+        source: "/:all*(svg|jpg|jpeg|png|webp|avif)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=3600, must-revalidate",
+          },
+        ],
+      },
+      {
+        // Next.js optimized images: always revalidate
+        source: "/_next/image",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=3600, must-revalidate",
           },
         ],
       },

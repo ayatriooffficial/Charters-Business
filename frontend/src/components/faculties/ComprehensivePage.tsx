@@ -2,12 +2,18 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
-import { Play } from 'lucide-react';
+import { Play, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useSectionObserver } from '@/hooks/Usementorshipscroll';
 import SectionWrapper from '@/components/shared/SectionWrapper';
 import HighlightText from '../shared/HighlightObserver';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
+import LazyMount from '@/components/shared/LazyMount';
+import { facultyMembers } from '@/data/faculty';
+
+const SectionSkeleton = () => (
+  <div className="h-96 w-full animate-pulse bg-gray-50 rounded" />
+);
 
 export default function ComprehensivePage() {
   // State for LearnFromFinest section
@@ -68,95 +74,15 @@ export default function ComprehensivePage() {
     }, 800);
   }, [cardRefs]);
 
-  // Faculty data for LearnFromFinest section
-  const facultyMembers = [
-    {
-      id: 1,
-      name: 'Dr. Zal Phiroz',
-      title: 'Adjunct Professor',
-      company: 'HARVARD UNIVERSITY',
-      image: 'https://i.pravatar.cc/400?img=11',
-      category: 'Academicians'
-    },
-    {
-      id: 2,
-      name: 'Mr. Rajat Mathur',
-      title: 'Managing Director',
-      company: 'MorganStanley',
-      image: 'https://i.pravatar.cc/400?img=12',
-      category: 'Industry Experts'
-    },
-    {
-      id: 3,
-      name: 'Dr. Shad Morris',
-      title: 'Adjunct Professor',
-      company: 'MITSLOAN',
-      image: 'https://i.pravatar.cc/400?img=13',
-      category: 'Academicians'
-    },
-    {
-      id: 4,
-      name: 'Dr. Lan Mo',
-      title: 'Adjunct Professor',
-      company: 'NYU SHANGHAI',
-      image: 'https://i.pravatar.cc/400?img=14',
-      category: 'Academicians'
-    },
-    {
-      id: 5,
-      name: 'Mr. Naveen Munjal',
-      title: 'Managing Director',
-      company: 'HEROELECTRIC',
-      image: 'https://i.pravatar.cc/400?img=15',
-      category: 'Industry Experts'
-    },
-  ];
-
-  // Business leaders data for LessonsFromBest section
-  const businessLeaders = [
-    {
-      id: 1,
-      name: 'Mr. Mohammad Arshad',
-      title: 'Director, Advisory Services',
-      company: 'Business Review',
-      image: 'https://i.pravatar.cc/400?img=1'
-    },
-    {
-      id: 2,
-      name: 'Mr. Vaibhav Shashwat',
-      title: 'Policy & Public Affairs',
-      company: 'CCTV',
-      image: 'https://i.pravatar.cc/400?img=2'
-    },
-    {
-      id: 3,
-      name: 'Mr. Sameer Ranjan',
-      title: 'Chief Technology Officer and',
-      company: 'Director, Citemate',
-      image: 'https://i.pravatar.cc/400?img=3'
-    },
-    {
-      id: 4,
-      name: 'Ms. Archana Sinha',
-      title: 'Former Senior Director',
-      company: 'Salesforce',
-      image: 'https://i.pravatar.cc/400?img=4'
-    },
-    {
-      id: 5,
-      name: 'Mr. Raja Sekhar Thota',
-      title: 'CTO & Co-Founder',
-      company: 'AutoNinja GmbH',
-      image: 'https://i.pravatar.cc/400?img=5'
-    },
-
-
-  ];
+  // Use Accountancy (leadership) faculty for LessonsFromBest section
+  const businessLeaders = facultyMembers.filter(member => member.category === 'leadership');
 
   const filteredFaculty =
     activeFilter === 'All'
-      ? facultyMembers
-      : facultyMembers.filter((member) => member.category === activeFilter);
+      ? facultyMembers.filter(m => m.category === 'leadership').slice(0, 5)
+      : activeFilter === 'Academicians'
+      ? facultyMembers.filter((m) => m.title.toLowerCase().includes('professor') || m.company.toLowerCase().includes('university') || m.company.toLowerCase().includes('harvard'))
+      : facultyMembers.filter(m => m.category === 'finance');
 
   // Typewriter animation function for RealSection
   const startTypewriterAnimation = () => {
@@ -188,6 +114,15 @@ export default function ComprehensivePage() {
     };
 
     setTimeout(typeNextChar, 200);
+  };
+
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/home/Capdsdsfture.JPG";
+    link.download = "placement-report.JPG";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -233,8 +168,8 @@ export default function ComprehensivePage() {
         </div>
       </section>
 
-      {/* Faculty Section */}
-      <section className="mx-[0%] border-b border-gray-200 bg-white text-black relative z-[5]">
+      {/* Faculty Section - matches home page PlacementReport outer section */}
+      <section className="mx-[0%] border-gray-300 bg-white text-black relative">
         <div className="max-w-[85rem] mx-auto pt-22">
           <div className="text-center">
             <p className="text-xs sm:text-sm font-semibold text-[#B30437] tracking-wider mb-2 sm:mb-3" role="text">
@@ -251,22 +186,42 @@ export default function ComprehensivePage() {
             </p>
           </div>
         </div>
-        <div className="border-x md:mx-[5%] border-gray-200 h-13 hidden md:block" />
-      </section>
-      <div className="bordered-container border-x md:mx-[5%] border-gray-200 w-full md:w-[90%] mx-auto">
+
+        {/* Home-page-style rounded border top strip */}
+        <div className="flex flex-row">
+        <div className="flex-1 bg-gray-200 h-13 hidden md:block">
+          <div className="flex-1 bg-white rounded-br-xl h-13 hidden md:block" />
+        </div>
+        <div className="hidden md:block md:w-[90%] max-w-[85rem] h-13 bg-gray-200 relative">
+          <div className="absolute left-0 top-0 h-full w-[1px] bg-gradient-to-b from-gray-50 to-gray-200" />
+          <div className="absolute right-0 top-0 h-full w-[1px] bg-gradient-to-b from-gray-50 to-gray-200" />
+          <div className="flex-1 bg-white rounded-bl-xl rounded-br-xl h-13 hidden md:block" />
+        </div>
+        <div className="flex-1 bg-gray-200 h-13 hidden md:block">
+          <div className="flex-1 bg-white rounded-bl-xl h-13 hidden md:block" />
+        </div>
+      </div>
+
+      {/* Home-page-style rounded border content area */}
+      <div className="flex flex-row w-full">
+        <div className="flex-1 bg-gray-200 hidden md:block">
+          <div className="relative bg-white w-full h-full rounded-tr-xl">
+            <div className="absolute top-0 -right-[4px] w-[calc(100%+4px)] h-[1px] bg-gradient-to-r from-gray-50 to-gray-200 rounded-tr-xl" />
+          </div>
+        </div>
+        <div className="md:w-[90%] max-w-[85rem] w-full">
+          <div className="w-full border-t border-gray-200" />
+          <div className="md:border-x border-gray-200 w-full">
+            <div className="bg-gray-200 w-full">
+              <div className="w-full bg-white rounded-t-xl">
 
         {/* Component 2 */}
-        <SectionWrapper
-          corners={{
-            tl: { variant: "icon", src: "/sparkle-icon.svg" },
-            tr: { variant: "icon", src: "/sparkle-icon.svg" },
-          }}
-          hideCorners={["bl", "br"]}
-        >
-          <section className="relative z-[5] bg-white">
+        <LazyMount fallback={<SectionSkeleton />}>
+        <SectionWrapper hideCorners={"all"}>
+          <section className="relative z-[5] bg-white rounded-t-xl">
             <div className="w-full mx-auto">
               <div
-                className="sticky z-10 bg-white"
+                className="sticky z-10 bg-white rounded-t-xl"
                 style={{ top: 'var(--navbar-height, 86px)' }}
               >
                 <div className='flex overflow-x-auto scrollbar-hide px-4 sm:px-0'>
@@ -274,7 +229,7 @@ export default function ComprehensivePage() {
                     <button
                       key={filter}
                       onClick={() => setActiveFilter(filter)}
-                      className={`whitespace-nowrap px-3 sm:px-6 py-3 text-xs sm:text-sm font-medium transition-all duration-300 flex-shrink-0 ${activeTab === index
+                      className={`whitespace-nowrap px-3 sm:px-6 py-3 text-xs sm:text-sm font-medium transition-all duration-300 flex-shrink-0 ${activeFilter === filter
                         ? 'text-gray-900 border-b-2 border-gray-900'
                         : 'text-[#5f6368] hover:text-[#5f6368]'
                         }`}
@@ -285,28 +240,120 @@ export default function ComprehensivePage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-                {filteredFaculty.slice(0, 25).map((faculty) => (
-                  <div key={faculty.id} className="group pb-3 border-r border-gray-300">
-                    <div className="relative bg-gray-800 overflow-hidden aspect-[3/4] mb-3">
-                      <Image src={faculty.image} alt={`${faculty.name}`} fill className="object-cover grayscale" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 border-l border-gray-300">
+                {filteredFaculty.map((faculty, idx) => (
+                  <article
+                    key={faculty.name + idx}
+                    className="flex-shrink-0 w-full sm:w-auto hover:bg-[#F4F2EE] border-r border-b border-gray-300 flex flex-col"
+                  >
+                    {/* Image */}
+                    <div className="relative w-full aspect-square overflow-hidden bg-[#F4F2EE]">
+                      <Image
+                        src={faculty.imageSrc}
+                        alt={faculty.name}
+                        fill
+                        sizes="(max-width: 640px) 85vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                        className="object-cover"
+                      />
                     </div>
-                    <div className="text-left p-2 sm:p-3">
-                      <h3 className="font-medium text-gray-900 text-xs mb-1 leading-tight">{faculty.name}</h3>
-                      <p className="text-xs text-gray-600 leading-tight">{faculty.title}</p>
-                      <p className="text-xs text-gray-600 leading-tight">{faculty.company}</p>
+
+                    {/* Content */}
+                    <div className="p-5">
+                      <h2 className="text-[16px] font-semibold text-black">
+                        {faculty.title}
+                      </h2>
+
+                      <p className="text-[#5f6368] text-[12px] font-semibold mt-1">
+                        by {faculty.name}
+                      </p>
+
+                      <div className="h-px bg-gray-400 my-3" />
+
+                      <p className="text-sm text-[#5f6368] mb-4">
+                        {faculty.experience}
+                      </p>
+
+                      <p className="text-[14px] font-semibold mb-2">
+                        Research Publications
+                      </p>
+
+                      <p className="text-[12px] font-semibold-gray-700 mb-4">
+                        {faculty.teaching}
+                      </p>
+
+                      {/* Logo */}
+                      <div className="mt-2 h-10 flex items-center justify-start">
+                        {faculty.logoSrc ? (
+                          <Image
+                            src={faculty.logoSrc}
+                            alt={faculty.name}
+                            width={100}
+                            height={30}
+                            className="h-8 w-auto max-w-full object-contain bg-white rounded-md px-2 py-1"
+                          />
+                        ) : null}
+                      </div>
                     </div>
-                  </div>
+                  </article>
                 ))}
               </div>
+
+              {/* Pagination removed */}
             </div>
           </section>
         </SectionWrapper>
+        </LazyMount>
+
+        {/* Placement Report Banner */}
+        <div
+          className="px-4 sm:px-6 lg:px-8 text-center border-b border-t border-gray-200"
+          role="region"
+          aria-labelledby="download-section-heading"
+        >
+          <div className="mx-auto flex flex-col md:flex-row items-center justify-between py-4">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6 flex-grow text-center md:text-left min-w-0">
+              {/* Logo */}
+              <div className="w-14 sm:w-14 h-20 relative shrink-0">
+                <Image
+                  src="/career-report.avif"
+                  alt="Charters Union Career Report 2025"
+                  fill
+                  sizes="70px"
+                  className="object-contain object-left"
+                  priority
+                />
+              </div>
+
+              {/* Texts */}
+              <div className="flex-grow min-w-0">
+                <>
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-900 leading-snug truncate">
+                    <strong> 97%&apos;</strong> of students secured full time job offer by their <strong>4</strong>th month of Internship, with <br></br> the highest CTC being <strong> ₹12.3</strong>lakhs/month.
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-600 font-medium mt-1">
+                    100% Internship Rate • Average Salary Jump 2.35x • Proven track record audited by analystGK
+                  </p>
+                </>
+              </div>
+            </div>
+            <div className="w-full md:w-1/4 mt-6 md:mt-0 flex justify-center md:justify-end">
+              <button
+                onClick={handleDownload}
+                className="bg-[#222222] cursor-pointer text-sm text-white px-8 py-2.5 font-semibold flex items-center gap-2 hover:bg-[#202124] transition-colors"
+                aria-label="Download the complete placement report PDF"
+              >
+                Placement Report
+                <img src="/Charters-icon/download.svg" alt="icon" width={12} height={12} className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        </div>
 
         {/* ===== MENTORSHIP TYPES SECTION ===== */}
 
+        <LazyMount fallback={<SectionSkeleton />}>
         <SectionWrapper hideCorners={"all"}>
-          <section className="relative z-[5] pt-22 sm:pt-22 bg-white">
+          <section className="relative z-[5] bg-white">
             <div className="w-full mx-auto">
 
               {/* Tabs — sticky + updated click handler */}
@@ -338,24 +385,15 @@ export default function ComprehensivePage() {
               >
                 {/* Image block */}
                 <div className="w-full md:w-1/2 relative h-56 sm:h-72 md:h-auto md:min-h-[380px]">
-                  <div className="grid grid-cols-3 h-full">
-                    {[31, 32, 33].map((imgNum, idx) => (
-                      <div key={imgNum} className="relative">
-                        <Image
-                          src={`https://i.pravatar.cc/300?img=${imgNum}`}
-                          alt={`Career Mentor ${idx + 1}`}
-                          fill
-                          className="object-cover"
-                        />
-                        {(idx === 0 || idx === 2) && (
-                          <div
-                            className={`absolute ${idx === 0 ? 'top-3 left-3' : 'bottom-3 right-3'
-                              } w-5 h-5 bg-[#B30437] rounded`}
-                          />
-                        )}
-                      </div>
-                    ))}
-                  </div>
+                  <Image
+                    src="/faculties/1st_faculty.avif"
+                    alt="Career Coach"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                  <div className="absolute top-3 left-3 w-5 h-5 bg-[#B30437] rounded" />
+                  <div className="absolute bottom-3 right-3 w-5 h-5 bg-[#B30437] rounded" />
                 </div>
 
                 {/* Text block */}
@@ -382,24 +420,15 @@ export default function ComprehensivePage() {
                 className="flex flex-col md:flex-row bg-white  overflow-hidden border-t border-gray-100"
               >
                 <div className="w-full md:w-1/2 relative h-56 sm:h-72 md:h-auto md:min-h-[380px]">
-                  <div className="grid grid-cols-3 h-full">
-                    {[34, 35, 36].map((imgNum, idx) => (
-                      <div key={imgNum} className="relative">
-                        <Image
-                          src={`https://i.pravatar.cc/300?img=${imgNum}`}
-                          alt={`Domain Mentor ${idx + 1}`}
-                          fill
-                          className="object-cover"
-                        />
-                        {(idx === 0 || idx === 2) && (
-                          <div
-                            className={`absolute ${idx === 0 ? 'top-3 left-3' : 'bottom-3 right-3'
-                              } w-5 h-5 bg-[#B30437] rounded`}
-                          />
-                        )}
-                      </div>
-                    ))}
-                  </div>
+                  <Image
+                    src="/faculties/2nd_faculty.avif"
+                    alt="Domain Mentor"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                  <div className="absolute top-3 left-3 w-5 h-5 bg-[#B30437] rounded" />
+                  <div className="absolute bottom-3 right-3 w-5 h-5 bg-[#B30437] rounded" />
                 </div>
 
                 <div className="w-full md:w-1/2 bg-white text-black p-4 sm:p-6 md:p-8 flex flex-col justify-center">
@@ -425,24 +454,15 @@ export default function ComprehensivePage() {
                 className="flex flex-col md:flex-row bg-white  overflow-hidden border-t border-gray-100"
               >
                 <div className="w-full md:w-1/2 relative h-56 sm:h-72 md:h-auto md:min-h-[380px]">
-                  <div className="grid grid-cols-3 h-full">
-                    {[37, 38, 39].map((imgNum, idx) => (
-                      <div key={imgNum} className="relative">
-                        <Image
-                          src={`https://i.pravatar.cc/300?img=${imgNum}`}
-                          alt={`Startup Mentor ${idx + 1}`}
-                          fill
-                          className="object-cover"
-                        />
-                        {(idx === 0 || idx === 2) && (
-                          <div
-                            className={`absolute ${idx === 0 ? 'top-3 left-3' : 'bottom-3 right-3'
-                              } w-5 h-5 bg-[#B30437] rounded`}
-                          />
-                        )}
-                      </div>
-                    ))}
-                  </div>
+                  <Image
+                    src="/faculties/3rd_faculty.avif"
+                    alt="Startup Coach"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                  <div className="absolute top-3 left-3 w-5 h-5 bg-[#B30437] rounded" />
+                  <div className="absolute bottom-3 right-3 w-5 h-5 bg-[#B30437] rounded" />
                 </div>
 
                 <div className="w-full md:w-1/2 bg-white text-black p-4 sm:p-6 md:p-8 flex flex-col justify-center">
@@ -464,8 +484,10 @@ export default function ComprehensivePage() {
             </div>
           </section>
         </SectionWrapper>
+        </LazyMount>
 
         {/* Business Leaders Section */}
+        <LazyMount fallback={<SectionSkeleton />}>
         <SectionWrapper hideCorners={"all"}>
           <section className="relative z-[5] pt-22 sm:pt-22 bg-white">
             <div className="w-full mx-auto">
@@ -482,25 +504,78 @@ export default function ComprehensivePage() {
                 </h2>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 ">
-                {businessLeaders.map((leader) => (
-                  <div key={leader.id} className="group pb-3 sm:pb-3 border-r border-gray-300">
-                    <div className="relative bg-gray-800 overflow-hidden aspect-[3/4] mb-3">
-                      <Image src={leader.image} alt={`${leader.name}`} fill className="object-cover grayscale" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 border-l border-gray-300">
+                {businessLeaders.map((leader, idx) => (
+                  <article
+                    key={leader.name + idx}
+                    className="flex-shrink-0 w-full sm:w-auto hover:bg-[#F4F2EE] border-r border-b border-gray-300 flex flex-col"
+                  >
+                    {/* Image */}
+                    <div className="relative w-full aspect-square overflow-hidden bg-[#F4F2EE]">
+                      <Image
+                        src={leader.imageSrc}
+                        alt={leader.name}
+                        fill
+                        sizes="(max-width: 640px) 85vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                        className="object-cover"
+                      />
                     </div>
 
-                    <div className="text-left p-3">
-                      <h3 className="font-medium text-gray-900 text-xs mb-1 leading-tight">{leader.name}</h3>
-                      <p className="text-xs text-gray-600 leading-tight">{leader.title}</p>
-                      <p className="text-xs text-gray-600 leading-tight">{leader.company}</p>
+                    {/* Content */}
+                    <div className="p-5">
+                      <h2 className="text-[16px] font-semibold text-black">
+                        {leader.title}
+                      </h2>
+
+                      <p className="text-[#5f6368] text-[12px] font-semibold mt-1">
+                        by {leader.name}
+                      </p>
+
+                      <div className="h-px bg-gray-400 my-3" />
+
+                      <p className="text-sm text-[#5f6368] mb-4">
+                        {leader.experience}
+                      </p>
+
+                      <p className="text-[14px] font-semibold mb-2">
+                        Research Publications
+                      </p>
+
+                      <p className="text-[12px] font-semibold-gray-700 mb-4">
+                        {leader.teaching}
+                      </p>
+
+                      {/* Logo */}
+                      <div className="mt-2 h-10 flex items-center justify-start">
+                        {leader.logoSrc ? (
+                          <Image
+                            src={leader.logoSrc}
+                            alt={leader.name}
+                            width={100}
+                            height={30}
+                            className="h-8 w-auto max-w-full object-contain bg-white rounded-md px-2 py-1"
+                          />
+                        ) : null}
+                      </div>
                     </div>
-                  </div>
+                  </article>
                 ))}
               </div>
             </div>
           </section>
         </SectionWrapper>
+        </LazyMount>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="flex-1 bg-gray-200 hidden md:block">
+          <div className="relative bg-white w-full h-full rounded-tl-xl">
+            <div className="absolute top-0 -left-[4px] w-[calc(100%+4px)] h-[1px] bg-gradient-to-l from-gray-50 to-gray-200 rounded-tr-xl" />
+          </div>
+        </div>
       </div>
-    </div>
-  );
+    </section>
+  </div>
+);
 }

@@ -17,6 +17,7 @@ import PlacementReport from "@/components/home/PlacementReport";
 // Client Component that owns all ssr:false dynamic() calls
 // (ssr:false is not permitted inside Server Components)
 import BelowFoldSections from "@/components/home/BelowFoldSections";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: {
@@ -104,7 +105,7 @@ export default function Home() {
   return (
     <>
       {/* SEO - JSON-LD Structured Data (combined into single script) */}
-      <script
+      <Script
         id="all-schemas"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(consolidatedSchema) }}

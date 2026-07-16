@@ -217,31 +217,38 @@ ${context}
 `;
 
     const res = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+      "https://api.groq.com/openai/v1/chat/completions",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${process.env.GROQ_API_KEY || ""}`,
         },
         body: JSON.stringify({
-          contents: [
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            {
+              role: "system",
+              content: systemPrompt
+            },
             {
               role: "user",
-              parts: [{ text: question }]
+              content: question
             }
           ],
-          systemInstruction: {
-            parts: [{ text: systemPrompt }]
-          },
-          generationConfig: {
-            temperature: 0.2
-          }
+          temperature: 0.2
         }),
       }
     );
 
     const data = await res.json();
-    const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || 
+    
+    if (data?.error) {
+      console.error("Groq API Error:", data.error.message);
+      return "I can help with programs, fees, placements, or admissions." + admissionFooter();
+    }
+
+    const reply = data?.choices?.[0]?.message?.content || 
                   "I can help with programs, fees, placements, or admissions.";
 
     return reply + admissionFooter();

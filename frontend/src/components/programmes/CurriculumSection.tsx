@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Plus, Sun } from "lucide-react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import HighlightText from "../shared/HighlightObserver";
 import {
   ProgrammeAssetConfig,
@@ -58,6 +59,7 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
     config.curriculumCityscapes.dubai,
   );
   const [mounted, setMounted] = useState(false);
+  const pathname = usePathname() ?? "";
 
   // Handle client-side hydration
   useEffect(() => {
@@ -80,7 +82,6 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
 
   const curriculumItems = data.items;
 
-  const pathname = typeof window !== "undefined" ? window.location.pathname : "";
   const isCbaOrDgm =
     slug === "certified-business-accountant" ||
     slug === "digital-growth-&-marketing" ||
@@ -144,7 +145,7 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
             id="curriculum-heading"
             className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]"
           >
-            <HighlightText className="font-bold !px-0 !py-0">
+            <HighlightText className="font-bold hl-px-0">
               {data.titleHighlight}
             </HighlightText>{" "}
             {data.titleRest}

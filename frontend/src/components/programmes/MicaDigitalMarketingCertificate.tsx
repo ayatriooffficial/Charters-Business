@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 const programHighlights = [
-  'Globally recognized certificate from MICA',
+  'Globally recognized certificate from ChartersUnion',
   'Learn 70+ digital marketing tools',
   'Real brand case studies and live campaign practice',
   'Career mentorship with 1:1 guidance',
@@ -50,7 +50,7 @@ const programBenefits = [
   },
   {
     label: 'Expert Faculty and Mentors',
-    text: 'Learn from MICA faculty and industry leaders with deep experience in digital, branding, and communication.',
+    text: 'Learn from ChartersUnion faculty and industry leaders with deep experience in digital, branding, and communication.',
   },
   {
     label: 'Flexible Learning Support',
@@ -62,13 +62,13 @@ const programBenefits = [
   },
   {
     label: 'Recognized Certification',
-    text: 'Earn a prestigious certificate from MICA that strengthens your resume and professional credibility.',
+    text: 'Earn a prestigious certificate from ChartersUnion that strengthens your resume and professional credibility.',
   },
 ];
 
 const youWillReceive = [
   {
-    label: 'Certificate of Completion from MICA and upGrad',
+    label: 'Certificate of Completion from ChartersUnion and upGrad',
     text: 'A globally recognized certificate that adds strong value to your resume.',
   },
   {
@@ -76,7 +76,7 @@ const youWillReceive = [
     text: 'Guidance for job applications, interview preparation, and skill improvement.',
   },
   {
-    label: 'Executive Alumni Status from MICA',
+    label: 'Executive Alumni Status from ChartersUnion',
     text: 'Connect with a wide network of marketing professionals and industry leaders.',
   },
 ];
@@ -152,29 +152,28 @@ const topCompanies = [
   'Ogilvy',
 ];
 
-function MicaDigitalMarketingCertificate() {
+function ChartersUnionDigitalMarketingCertificate() {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <section className="bg-white py-10 sm:py-14" aria-labelledby="mica-certificate-heading">
-      <div className="w-full px-4 sm:px-6">
-        <div className="relative rounded-lg border border-gray-200 shadow-sm bg-white p-5 sm:p-8">
+    <section className="bg-white py-10 sm:py-14" aria-labelledby="ChartersUnion-certificate-heading">
+      <div className="w-full">
+        <div className="relative bg-white p-5 sm:p-8">
           <div
-            className={`relative overflow-hidden transition-[max-height] duration-500 ${
-              expanded ? 'max-h-none' : 'max-h-[640px]'
-            }`}
+            className={`relative overflow-hidden transition-[max-height] duration-500 ${expanded ? 'max-h-none' : 'max-h-[640px]'
+              }`}
           >
             <h2
-              id="mica-certificate-heading"
+              id="ChartersUnion-certificate-heading"
               className="text-lg sm:text-xl font-bold text-black mb-3 leading-snug"
             >
               What is the Advanced Certificate in AI-Powered Digital Marketing
-              &amp; Communication from MICA?
+              &amp; Communication from ChartersUnion?
             </h2>
 
             <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">
               The Advanced Certificate in AI-Powered Digital Marketing &amp;
-              Communication from MICA is a 4-month program created to help
+              Communication from ChartersUnion is a 4-month program created to help
               learners gain strong digital marketing skills through practical
               and industry-focused training.
             </p>
@@ -229,7 +228,7 @@ function MicaDigitalMarketingCertificate() {
             </h2>
             <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">
               The Advanced Certificate in AI-Powered Digital Marketing &amp;
-              Communication course from MICA gives you a complete
+              Communication course from ChartersUnion gives you a complete
               understanding of modern marketing, digital strategy, and
               real-world campaign execution. You will learn how to plan,
               manage, and optimize marketing activities across all major
@@ -246,10 +245,10 @@ function MicaDigitalMarketingCertificate() {
 
             <h2 className="text-lg sm:text-xl font-bold text-black mt-8 mb-3">
               Why Choose the Advanced Certificate in AI-Powered Digital
-              Marketing &amp; Communication from MICA?
+              Marketing &amp; Communication from ChartersUnion?
             </h2>
             <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">
-              The program is powered by MICA, one of India&apos;s top
+              The program is powered by ChartersUnion, one of India&apos;s top
               institutions for marketing and communication. The curriculum
               blends strategic thinking with hands-on digital skills so that
               you graduate job-ready with a strong portfolio.
@@ -271,7 +270,7 @@ function MicaDigitalMarketingCertificate() {
             </h2>
             <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">
               When you complete the Advanced Certificate in AI-Powered
-              Digital Marketing &amp; Communication from MICA, you earn a
+              Digital Marketing &amp; Communication from ChartersUnion, you earn a
               respected qualification that highlights your understanding of
               digital marketing strategies, tools, and real-world
               applications.
@@ -314,11 +313,11 @@ function MicaDigitalMarketingCertificate() {
 
             <h2 className="text-lg sm:text-xl font-bold text-black mt-8 mb-3">
               Top Career Opportunities After the Advanced Certificate in
-              AI-Powered Digital Marketing &amp; Communication from MICA
+              AI-Powered Digital Marketing &amp; Communication from ChartersUnion
             </h2>
             <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">
               Completing the Advanced Certificate in AI-Powered Digital
-              Marketing &amp; Communication from MICA prepares you for
+              Marketing &amp; Communication from ChartersUnion prepares you for
               high-impact roles across industries. You learn to plan,
               execute, and optimize digital campaigns that drive business
               growth, making you job-ready on day one.
@@ -378,9 +377,14 @@ function MicaDigitalMarketingCertificate() {
             <p className="text-sm sm:text-base font-semibold text-black mb-2">
               Companies hiring certified marketers include:
             </p>
-            <ul className="list-disc pl-5 space-y-1 text-sm sm:text-base text-gray-700 mb-2">
+            <ul className="flex flex-nowrap items-center gap-3 overflow-x-auto text-sm sm:text-base text-gray-700 mb-2 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               {topCompanies.map((company) => (
-                <li key={company}>{company}</li>
+                <li
+                  key={company}
+                  className="shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full border border-gray-300 bg-gray-50 font-medium"
+                >
+                  {company}
+                </li>
               ))}
             </ul>
 
@@ -404,4 +408,4 @@ function MicaDigitalMarketingCertificate() {
   );
 }
 
-export default MicaDigitalMarketingCertificate;
+export default ChartersUnionDigitalMarketingCertificate;

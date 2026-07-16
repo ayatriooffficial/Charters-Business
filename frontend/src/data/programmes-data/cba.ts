@@ -1,6 +1,7 @@
 import type { Programme } from "./types";
 import { defaultCurriculumSection } from "./curriculum-default";
-
+import { facultyMembers } from "@/data/faculty";
+import { studentMembers } from "@/data/students";
 const cbaCurriculumSection = structuredClone(defaultCurriculumSection);
 cbaCurriculumSection.tabOrder = ["courses", "cultural", "business"];
 cbaCurriculumSection.tabLabels = { cultural: "Tools & Technology" };
@@ -185,8 +186,6 @@ export const cba: Programme = {
     stats: [
       { label: "93% Avg Placement", value: "93%" },
       { label: "100% Paid Internship", value: "150+" },
-      { label: "753 Hiring Partners", value: "752+" },
-      { label: "1:1 Mentorship", value: "1:1" },
     ],
     alumniCompanies: [
       { name: "Google", logo: "/images/companies/google.png" },
@@ -202,7 +201,7 @@ export const cba: Programme = {
     floatingCards: {
       topRight: {
         name: "Sanskar Jaiswal",
-        students: "2,500+",
+        students: "3 Internship offser",
         rating: 4.8,
       },
       bottomLeft: {
@@ -376,10 +375,11 @@ export const cba: Programme = {
     ],
     immersions: [{ name: "Singapore Business Immersion" }],
     campusImage: {
-      src: "/images/programmes/indus.webp",
-      alt: "Charter's Business College - Modern Campus with State-of-the-Art Facilities",
+      src: "/charter-partner/certified_business_accountant_internship_partner.avif",
+      alt: "ChartersUnion - Modern Campus with State-of-the-Art Facilities",
     },
   },
+
   // Curriculum
   curriculum: {
     categories: [
@@ -1190,68 +1190,9 @@ export const cba: Programme = {
     ],
 
     students: [
-      {
-        name: "Riya Kapoor",
-        batch: "APR 2026",
-        city: "Kolkata",
-        company: "Jio",
-        role: "Growth Engineer",
-        timeToPlace: "10 Months later",
-        previousCollege: "Techno India",
-        background: "2nd Year MCA Fresher",
-        internship:
-          "Jio Platforms — Growth engineering and analytics",
-        researchPaper:
-          "AI-based customer engagement strategies in telecom industry",
-        caseStudies:
-          "How Jio scaled digital adoption across India...",
-        imageSrc:
-          "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081839/21_bnm51l.jpg",
-        linkedinUrl: "#",
-        category: "apr",
-      },
-
-      {
-        name: "Sneha Dutta",
-        batch: "DEC 2025",
-        city: "Kolkata",
-        company: "WishCare",
-        role: "Digital Marketing",
-        timeToPlace: "Just in 9 months",
-        previousCollege: "Loreto College",
-        background: "2025 Pass Out Fresher",
-        internship:
-          "WishCare — Brand marketing and influencer campaigns",
-        researchPaper:
-          "Social media growth strategies for D2C brands",
-        caseStudies:
-          "How WishCare built a beauty-first digital audience...",
-        imageSrc:
-          "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081840/23_obnfxo.jpg",
-        linkedinUrl: "#",
-        category: "jan",
-      },
-
-      {
-        name: "Arjun Malhotra",
-        batch: "JUL 2025",
-        city: "Bangalore",
-        company: "Google",
-        role: "SEO Growth Associate",
-        timeToPlace: "Just in 8 months",
-        previousCollege: "Christ University",
-        background: "BBA Marketing Fresher",
-        internship:
-          "Google India — Search and content optimization",
-        researchPaper:
-          "Consumer retention through AI recommendation systems",
-        caseStudies:
-          "How Swiggy increased retention using growth loops...",
-        imageSrc:
-          "https://res.cloudinary.com/ducgcl4dg/image/upload/v1777886817/bytg0uyh5ebkd2zwuzm0_yalhuk.avif",
-        linkedinUrl: "#",
-        category: "jul",
-      },
+      ...studentMembers.filter(m => m.category === 'jul').map(m => ({...m, category: 'jul'})),
+      ...studentMembers.filter(m => m.category === 'apr').map(m => ({...m, category: 'apr'})),
+      ...studentMembers.filter(m => m.category === 'jan').map(m => ({...m, category: 'jan'})),
     ],
   },
   faculty: {
@@ -1262,198 +1203,12 @@ export const cba: Programme = {
     ],
 
     faculty: [
-      // ===========================
-      // GST Taxation (5 Faculty)
-      // ===========================
-
-      {
-        name: "Mr. Manoj Kohli",
-        title: "Former Country Head",
-        company: "SoftBank",
-        subtitle: "Former Country Head at SoftBank India",
-        experience: "Ex MD at Bharti Airtel",
-        teaching: "Tech investments and growth strategy",
-        imageSrc: "/images/faculty/home.jpeg",
-        linkedinUrl: "#",
-        category: "technology",
-      },
-
-      {
-        name: "Mr. Rajat Mathur",
-        title: "Director - Corporate Tax",
-        company: "Morgan Stanley",
-        subtitle: "Director, Corporate Tax Advisory",
-        experience: "Ex Managing Director at Goldman Sachs",
-        teaching: "Corporate taxation and GST compliance",
-        imageSrc: "/images/faculty/home.jpeg",
-        linkedinUrl: "#",
-        category: "technology",
-      },
-
-      {
-        name: "Mr. Naveen Munjal",
-        title: "Indirect Tax Consultant",
-        company: "Hero Electric",
-        subtitle: "Industry Tax & Compliance Advisor",
-        experience: "Ex VP at Hero MotoCorp",
-        teaching: "GST implementation for manufacturing businesses",
-        imageSrc: "/images/faculty/home.jpeg",
-        linkedinUrl: "#",
-        category: "technology",
-      },
-
-      {
-        name: "Ms. Shalini Iyer",
-        title: "GST Advisory Partner",
-        company: "BCG",
-        subtitle: "Partner - Tax Strategy",
-        experience: "15+ years in indirect taxation",
-        teaching: "GST strategy and business taxation",
-        imageSrc: "/images/faculty/home.jpeg",
-        linkedinUrl: "#",
-        category: "technology",
-      },
-
-      {
-        name: "Mr. Devendra Shah",
-        title: "Senior Tax Advisor",
-        company: "Apex Financial",
-        subtitle: "Head of Tax Advisory",
-        experience: "Former Director of Corporate Finance",
-        teaching: "Advanced GST planning and compliance",
-        imageSrc: "/images/faculty/home.jpeg",
-        linkedinUrl: "#",
-        category: "technology",
-      },
-
-      // ===========================
-      // Accounting (Starts Here)
-      // ===========================
-      {
-        name: "Mr. Naveen Munjal",
-        title: "Managing Director",
-        company: "Hero Electric",
-        subtitle: "Founder & MD at Hero Electric",
-        experience: "Ex VP at Hero MotoCorp",
-        teaching: "Corporate accounting and business finance",
-        imageSrc: "/images/faculty/home.jpeg",
-        linkedinUrl: "#",
-        category: "entrepreneurship",
-      },
-
-      {
-        name: "Mr. Rajat Mathur",
-        title: "Managing Director",
-        company: "Morgan Stanley",
-        subtitle: "MD, India at Morgan Stanley",
-        experience: "Ex Managing Director at Goldman Sachs",
-        teaching: "Financial reporting and corporate accounting",
-        imageSrc: "/images/faculty/home.jpeg",
-        linkedinUrl: "#",
-        category: "entrepreneurship",
-      },
-
-      {
-        name: "Mr. Manoj Kohli",
-        title: "Corporate Finance Advisor",
-        company: "SoftBank",
-        subtitle: "Former Country Head at SoftBank India",
-        experience: "Ex MD at Bharti Airtel",
-        teaching: "Business accounting and financial planning",
-        imageSrc: "/images/faculty/home.jpeg",
-        linkedinUrl: "#",
-        category: "entrepreneurship",
-      },
-
-      {
-        name: "Ms. Shalini Iyer",
-        title: "Financial Accounting Partner",
-        company: "BCG",
-        subtitle: "Partner - Corporate Finance",
-        experience: "15+ years in finance consulting",
-        teaching: "Financial statement analysis and accounting standards",
-        imageSrc: "/images/faculty/home.jpeg",
-        linkedinUrl: "#",
-        category: "entrepreneurship",
-      },
-
-      {
-        name: "Mr. Devendra Shah",
-        title: "Chief Financial Officer",
-        company: "Apex Financial",
-        subtitle: "CFO & Corporate Finance Leader",
-        experience: "Former Director of Portfolio Strategy",
-        teaching: "Management accounting and corporate finance",
-        imageSrc: "/images/faculty/home.jpeg",
-        linkedinUrl: "#",
-        category: "entrepreneurship",
-      },
-
-      // ===========================
-      // Auditing (Starts Here)
-      // ===========================
-      {
-        name: "Mr. Rajat Mathur",
-        title: "Managing Director",
-        company: "Morgan Stanley",
-        subtitle: "MD, India at Morgan Stanley",
-        experience: "Ex Managing Director at Goldman Sachs",
-        teaching: "Corporate strategy and financial markets",
-        imageSrc: "/images/faculty/home.jpeg",
-        linkedinUrl: "#",
-        category: "auditing",
-      },
-
-      {
-        name: "Mr. Manoj Kohli",
-        title: "Corporate Audit Advisor",
-        company: "SoftBank",
-        subtitle: "Former Country Head at SoftBank India",
-        experience: "Ex MD at Bharti Airtel",
-        teaching: "Internal audit and corporate governance",
-        imageSrc: "/images/faculty/home.jpeg",
-        linkedinUrl: "#",
-        category: "auditing",
-      },
-
-      {
-        name: "Mr. Naveen Munjal",
-        title: "Audit & Compliance Director",
-        company: "Hero Electric",
-        subtitle: "Founder & MD at Hero Electric",
-        experience: "Ex VP at Hero MotoCorp",
-        teaching: "Operational auditing and compliance frameworks",
-        imageSrc: "/images/faculty/home.jpeg",
-        linkedinUrl: "#",
-        category: "auditing",
-      },
-
-      {
-        name: "Ms. Shalini Iyer",
-        title: "Risk & Audit Partner",
-        company: "BCG",
-        subtitle: "Partner - Governance & Risk Advisory",
-        experience: "15+ years in audit and consulting",
-        teaching: "Risk assessment and corporate governance",
-        imageSrc: "/images/faculty/home.jpeg",
-        linkedinUrl: "#",
-        category: "auditing",
-      },
-
-      {
-        name: "Mr. Devendra Shah",
-        title: "Chief Audit Executive",
-        company: "Apex Financial",
-        subtitle: "Head of Internal Audit",
-        experience: "Former Director of Corporate Finance",
-        teaching: "Internal controls and financial auditing",
-        imageSrc: "/images/faculty/home.jpeg",
-        linkedinUrl: "#",
-        category: "auditing",
-      },
+      ...facultyMembers.filter(m => m.category === 'technology').map(m => ({...m, category: 'technology'})),
+      ...facultyMembers.filter(m => m.category === 'leadership').map(m => ({...m, category: 'entrepreneurship'})),
+      ...facultyMembers.filter(m => m.category === 'finance').map(m => ({...m, category: 'auditing'})),
     ],
   },
-  
+
   // =========================================================================
   // CERTIFIED BUSINESS ACCOUNTANT (CBA) LAYOUT ASSETS CONFIGURATION
   // Renders on: /certified-business-accountant
@@ -1461,25 +1216,25 @@ export const cba: Programme = {
   assets: {
     // Renders as the main student hero cover image in ProgramHero
     heroImage: "/images/certified-business-accountant-student-sunitha-raj-got-jobs.png",
-    
+
     // Renders under "Find our faculty at -" banner in ProgramHero
     internshipPartnerLogo: "/charter-partner/certified_business_accountant_internship_partner.avif",
-    
+
     // Renders as the industrial faculty partnership logo badge in ProgramHero
     industrialFacultyLogo: "/images/programmes/industrial_faculty.avif",
-    
+
     // Renders as the list of placement partner logos in TrackRecord
     hiredCompaniesBanner: "/images/program-placements/CBA_Hired_Company.avif",
-    
+
     // Renders on the right side of AIDegreeProgram
     campusImage: "/images/programmes/certificate.JPG",
-    
+
     // Renders at the bottom of the accreditation details in AIDegreeProgram
     disclaimerText: "Every CBA™ (Certified Business Accountant) completed students who fulfil the minimum requirements will be eligible to apply for a US-CMA exam, Visa, Residence permit, allowing them to search for employment at Top 4.",
-    
+
     // Renders as the weekly timetable schedule image in WeekAtUnion
-    timetableImage: "charters-business/images/weekattetr/ug-timetable",
-    
+    timetableImage: "/images/week-at-chartersunion/CBA-week-at-chartersunion.avif",
+
     // Renders cityscapes in CurriculumSection
     curriculumCityscapes: {
       dubai: "/images/dgm-tools/Charters-classroom.avif",
@@ -1491,13 +1246,13 @@ export const cba: Programme = {
       europe: "/images/dgm-tools/Charters-classroom.avif",
       internship: "/images/dgm-tools/Charters-classroom.avif",
     },
-    
+
     // Renders as ChartCard headers in TrackRecord
     chartTitles: {
       card1: "Paid Internship in 557+ Companies Across 7 Countries",
       card2: "87% student got full time jobs offer before end intrashiph"
     },
-    
+
     // Renders the EMI value, payment months, and career tracks inside PricingTabs
     pricing: {
       emiAmount: "₹5,499",

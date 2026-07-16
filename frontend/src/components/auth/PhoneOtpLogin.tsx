@@ -66,8 +66,7 @@ export default function PhoneOtpLogin({
         return () => clearInterval(interval);
     }, [resendTimer]);
 
-    // Setup RecaptchaVerifier ONLY ONCE after component mounts.
-    // Commented out per OTP bypass design
+    // Setup RecaptchaVerifier - Commented out per OTP bypass design
     /*
     useEffect(() => {
         if (!recaptchaVerifierRef.current) {
@@ -136,35 +135,6 @@ export default function PhoneOtpLogin({
                 setIsLoading(false);
                 return;
             }
-
-            // --- Commented out Firebase OTP sending logic for bypass ---
-            /*
-            // Log Firebase initialization & configuration details for debugging
-            console.log("[PhoneOtpLogin] Firebase Client Auth Configuration:", {
-                apiKey: auth.config?.apiKey ? "LOADED" : "MISSING (check .env)",
-                authDomain: auth.config?.authDomain ? "LOADED" : "MISSING (check .env)",
-                projectId: (auth.config as any)?.projectId ? "LOADED" : "MISSING (check .env)",
-                appId: (auth.config as any)?.appId ? "LOADED" : "MISSING (check .env)",
-            });
-
-            // Verify RecaptchaVerifier initialized successfully
-            if (!recaptchaVerifierRef.current) {
-                console.error('[PhoneOtpLogin] RecaptchaVerifier is null. Cannot send OTP.');
-                setError('Authentication service not ready. Please refresh the page and try again.');
-                setIsLoading(false);
-                return;
-            }
-
-            // Call signInWithPhoneNumber with the verified RecaptchaVerifier
-            console.log("[PhoneOtpLogin] Sending signInWithPhoneNumber request to Firebase...");
-            const result = await signInWithPhoneNumber(auth, fullNumber, recaptchaVerifierRef.current);
-            console.log("[PhoneOtpLogin] signInWithPhoneNumber success! confirmationResult received successfully.");
-
-            setConfirmationResult(result);
-            setStep('otp');
-            setResendTimer(30);
-            */
-            // -----------------------------------------------------------
 
             // Directly proceed to registration details step (bypass OTP)
             console.log("[PhoneOtpLogin] New user. Proceeding directly to signup details step (bypass OTP).");
