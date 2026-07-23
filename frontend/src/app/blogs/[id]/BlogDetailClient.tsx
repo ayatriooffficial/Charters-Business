@@ -83,16 +83,60 @@ export default function BlogDetailPage({
     notFound();
   }
 
+  const BlogPromoSection = ({ data }: { data: NonNullable<typeof blog.promoData> }) => (
+    <div className="my-10">
+      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 mt-10">Program Highlights</h3>
+      <ul className="list-disc pl-6 space-y-3 text-[#5f6368] text-base sm:text-lg mb-10">
+        {data.highlights.map((highlight, idx) => (
+          <li key={idx}>{highlight}</li>
+        ))}
+      </ul>
+
+      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Top Job Roles You Can Pursue:</h3>
+      <div className="overflow-x-auto mb-2">
+        <table className="w-full text-left border-collapse border border-gray-200 rounded-lg overflow-hidden">
+          <thead>
+            <tr className="bg-gray-50 border-b border-gray-200">
+              <th className="py-4 px-6 font-bold text-gray-900 border-r border-gray-200">Job Role</th>
+              <th className="py-4 px-6 font-bold text-gray-900">Average Annual Salary in India</th>
+            </tr>
+          </thead>
+          <tbody className="text-[#5f6368]">
+            {data.jobs.map((job, idx) => (
+              <tr key={idx} className="border-b border-gray-200 hover:bg-gray-50">
+                <td className="py-3 px-6 border-r border-gray-200">{job.role}</td>
+                <td className="py-3 px-6">{job.salary}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="text-sm italic text-gray-500 mb-10">Sourced By: Ambitionbox</p>
+    </div>
+  );
+
   // Simple parser to render basic markdown paragraphs and bolding
   const renderBlogContent = (markdownText: string) => {
     if (!markdownText) return null;
-    return markdownText.split("\n").map((paragraph, index) => {
-      const trimmed = paragraph.trim();
-      if (!trimmed) return <div key={index} className="h-4" />;
+    const lines = markdownText.split("\n");
+    
+    // Find a good place to insert the promo section (roughly in the middle, preferably at an empty line or before a header)
+    const middleIndex = Math.floor(lines.length / 2);
+    let insertIndex = middleIndex;
+    for (let i = middleIndex; i < lines.length; i++) {
+      if (lines[i].trim() === "" || lines[i].trim().startsWith("##")) {
+        insertIndex = i;
+        break;
+      }
+    }
 
-      // Header 2 (##)
-      if (trimmed.startsWith("## ")) {
-        return (
+    return lines.map((paragraph, index) => {
+      const trimmed = paragraph.trim();
+      let contentElement = null;
+
+      if (!trimmed) contentElement = <div key={index} className="h-4" />;
+      else if (trimmed.startsWith("## ")) {
+        contentElement = (
           <h2
             key={index}
             className="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-8 mb-4 border-b border-gray-100 pb-3"
@@ -100,11 +144,8 @@ export default function BlogDetailPage({
             {trimmed.replace("## ", "")}
           </h2>
         );
-      }
-
-      // Header 3 (###)
-      if (trimmed.startsWith("### ")) {
-        return (
+      } else if (trimmed.startsWith("### ")) {
+        contentElement = (
           <h3
             key={index}
             className="text-xl sm:text-2xl font-bold text-gray-900 mt-6 mb-3"
@@ -112,11 +153,8 @@ export default function BlogDetailPage({
             {trimmed.replace("### ", "")}
           </h3>
         );
-      }
-
-      // Bullet points (* or -)
-      if (trimmed.startsWith("* ") || trimmed.startsWith("- ")) {
-        return (
+      } else if (trimmed.startsWith("* ") || trimmed.startsWith("- ")) {
+        contentElement = (
           <li
             key={index}
             className="text-[#5f6368] text-base sm:text-lg leading-relaxed ml-6 list-disc mb-3"
@@ -124,16 +162,27 @@ export default function BlogDetailPage({
             {parseBoldText(trimmed.substring(2))}
           </li>
         );
+      } else {
+        contentElement = (
+          <p
+            key={index}
+            className="text-[#5f6368] text-base sm:text-lg leading-relaxed mb-4"
+          >
+            {parseBoldText(trimmed)}
+          </p>
+        );
       }
 
-      return (
-        <p
-          key={index}
-          className="text-[#5f6368] text-base sm:text-lg leading-relaxed mb-4"
-        >
-          {parseBoldText(trimmed)}
-        </p>
-      );
+      if (index === insertIndex && blog.promoData) {
+        return (
+          <div key={`group-${index}`}>
+            {contentElement}
+            <BlogPromoSection data={blog.promoData} />
+          </div>
+        );
+      }
+
+      return contentElement;
     });
   };
 
@@ -183,7 +232,7 @@ export default function BlogDetailPage({
         </Link>
 
         {/* Header Section */}
-        <header className="mb-10 pb-8 border-b border-gray-100">
+        <div className="mb-10 pb-8 border-b border-gray-100">
           <span className="inline-block bg-[#B30437]/10 text-[#B30437] text-xs sm:text-sm font-bold uppercase tracking-wider px-3 py-1.5 rounded-md mb-4">
             {blog.category}
           </span>
@@ -245,22 +294,14 @@ export default function BlogDetailPage({
               </span>
             )}
           </div>
-        </header>
+        </div>
 
         {/* Article Content */}
         <section className="prose max-w-none text-left">
           {renderBlogContent(blog.content)}
         </section>
 
-        {/* Footer actions */}
-        <div className="mt-12 pt-8 border-t border-gray-100 flex justify-between items-center">
-          <Link
-            href="/"
-            className="px-6 py-3 bg-gray-900 hover:bg-gray-800 text-white rounded-lg font-semibold text-sm transition-colors shadow-sm"
-          >
-            Done Reading
-          </Link>
-        </div>
+
       </div>
     </article>
   );

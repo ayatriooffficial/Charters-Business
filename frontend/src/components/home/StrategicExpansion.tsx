@@ -9,6 +9,7 @@ const ChartersInterviewAi = dynamic(
     { ssr: false, loading: () => <div /> }
 );
 import HighlightText from "../shared/HighlightObserver";
+import ModalBackdrop from "@/components/shared/ModalBackdrop";
 
 interface CardData {
     id: string;
@@ -137,7 +138,7 @@ const contentData: Record<string, ContentData> = {
         },
         buttonText: "Charter Carrer AI Engine",
         buttonColor: "bg-none text-[#B30437]",
-        imageSrc: "/home/placement-service.avif",
+        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784539837/placement-service_itn06c.avif",
         imageAlt: "Students in leadership mentorship program with executives",
         serviceCards: [
             {
@@ -841,8 +842,9 @@ const StrategicExpansion: React.FC = () => {
                             </div>
 
                             {showInterviewAI && createPortal(
-                                <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[#202124]/20">
-                                    <div className="w-[60%] h-[90%] relative">
+                                <div className="fixed inset-0 flex items-center justify-center z-[9999]">
+                                    <ModalBackdrop onClick={() => setShowInterviewAI(false)} />
+                                    <div className="w-[60%] h-[90%] relative z-[99999]">
                                         <button
                                             onClick={() => setShowInterviewAI(false)}
                                             className="absolute top-3 right-3 z-40 bg-white rounded-full w-7 h-7 flex items-center justify-center shadow-md text-gray-600 hover:text-red-500 transition-colors"

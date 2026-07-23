@@ -1,6 +1,7 @@
 # Charters Business
 
 > Education and admissions platform offering programmes, career-focused learning, applications, placement insights, and student onboarding experiences.
+> [llms-full.txt](https://chartersunion.com/llms-full.txt)
 
 - [Home](https://chartersunion.com/)
 - [About](https://chartersunion.com/about)
@@ -14,7 +15,7 @@
 ## Information
 
 - **Language**: en
-- **Last Updated**: 2026-07-07
+- **Last Updated**: 2026-07-20
 - **Canonical URL**: https://chartersunion.com
 - **Contact**: support@chartersunion.com
 - **Sitemap**: [sitemap.xml](https://chartersunion.com/sitemap.xml)
@@ -34,6 +35,8 @@ Private student data, admin dashboards, internal APIs, application submissions, 
 - `/careers`
 - `/careers/jobs`
 - `/careers/internships`
+- `/careers/jobs/*` (individual job postings)
+- `/careers/internships/*` (individual internship postings)
 - `/community`
 - `/faculties`
 - `/certified-business-accountant`

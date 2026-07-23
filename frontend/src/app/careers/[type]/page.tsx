@@ -1,5 +1,4 @@
 "use client";
-import { createPortal } from "react-dom";
 import { use, useState, useEffect, useCallback } from "react";
 import { notFound, useRouter } from "next/navigation";
 import Link from "next/link";
@@ -14,9 +13,6 @@ import { useAuth } from "@/context/AuthContext";
 import DashboardNavbar from "@/components/dashboard/DashboardNavbar";
 import MultiSelectDropdown from "@/components/careers/Type_FilterDropdown";
 import ChipMultiSelect from "@/components/careers/ChipMultiSelect";
-import ChartersInterviewAi from "@/components/home/Chartersinterview_ai";
-import { generateBreadcrumbSchema, combineSchemas } from "@/lib/schema";
-
 type PageType = "jobs" | "internships";
 
 interface ListItem {
@@ -115,7 +111,6 @@ function ApplySection({
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [showInterviewAI, setShowInterviewAI] = useState(false);
 
   useEffect(() => {
     setResumeFile(null);
@@ -193,8 +188,8 @@ function ApplySection({
             </p>
             <button
               onClick={() => {
-                setShowInterviewAI(true);
-                document.body.style.overflow = 'hidden';
+                sessionStorage.setItem("redirectAfterLogin", window.location.pathname);
+                router.push("/login");
               }}
               className="rounded-lg px-6 py-2.5 text-sm font-semibold text-white transition-all hover:scale-105"
               style={{ backgroundColor: "#B30437" }}
@@ -384,26 +379,6 @@ function ApplySection({
         )}
       </div>
 
-      {showInterviewAI && createPortal(
-        <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[#202124]/60">
-          <div className="w-[85vw] max-w-4xl h-[85vh] relative">
-            <button
-              onClick={() => {
-                setShowInterviewAI(false);
-                document.body.style.overflow = '';
-              }}
-              className="absolute -top-3 -right-3 z-40 bg-white rounded-full w-8 h-8 flex items-center justify-center shadow-md text-gray-600 hover:text-red-500 transition-colors text-sm"
-            >
-              ✕
-            </button>
-            <div className="w-full h-full overflow-hidden rounded-xl shadow-2xl">
-              <ChartersInterviewAi />
-            </div>
-          </div>
-        </div>,
-        document.body
-      )}
-
       {showSuccessModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#202124] bg-opacity-50 p-4">
           <div className="w-full max-w-md rounded-xl bg-white p-8 shadow-2xl">
@@ -592,64 +567,8 @@ export default function CareersPage({
     setSelectedItem(null);
   }, []);
 
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://chartersunion.com" },
-    { name: "Careers", url: "https://chartersunion.com/careers" },
-    { name: isJob ? "Jobs" : "Internships", url: `https://chartersunion.com/careers/${pageType}` },
-  ]);
-
-  const collectionSchema = {
-    "@type": "CollectionPage",
-    name: isJob ? "Job Openings at Charters' Union" : "Internship Opportunities at Charters' Union",
-    description: isJob
-      ? "Browse all available job positions at Charters' Union"
-      : "Explore internship opportunities at Charters' Union",
-    url: `https://chartersunion.com/careers/${pageType}`,
-    provider: {
-      "@type": "EducationalOrganization",
-      "@id": "https://chartersunion.com/#organization",
-      name: "Charters' Union",
-    },
-  };
-
-  const itemListSchema = list.length > 0 ? {
-    "@type": "ItemList",
-    name: isJob ? "Job Openings at Charters' Union" : "Internship Opportunities at Charters' Union",
-    numberOfItems: list.length,
-    itemListElement: list.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      item: {
-        "@type": "JobPosting",
-        "@id": `https://chartersunion.com/careers/${pageType}/${item._id}#job`,
-        title: item.title,
-        description: item.description ? item.description.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().substring(0, 150) + "..." : "",
-        hiringOrganization: {
-          "@type": "EducationalOrganization",
-          "@id": "https://chartersunion.com/#organization",
-          name: "Charters' Union",
-        },
-        jobLocation: {
-          "@type": "Place",
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: item.location,
-            addressCountry: "IN",
-          },
-        },
-        employmentType: isJob ? "FULL_TIME" : "INTERNSHIP",
-      },
-    })),
-  } : null;
-
-  const consolidatedSchema = combineSchemas(breadcrumbSchema, collectionSchema, itemListSchema);
-
   return (
-    <main className="h-screen flex flex-col overflow-hidden bg-[#F4F2EE]">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(consolidatedSchema) }}
-      />
+    <div className="h-screen flex flex-col overflow-hidden bg-[#F4F2EE]">
       <style>{`
         .custom-scroll::-webkit-scrollbar { width: 4px; }
         .custom-scroll::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 10px; }
@@ -859,6 +778,6 @@ export default function CareersPage({
           )}
         </section>
       </div>
-    </main>
+    </div>
   );
 }

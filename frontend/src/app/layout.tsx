@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import dynamic from "next/dynamic";
+import Script from "next/script";
 import { PreloadResources } from "./preload-resources";
 const CookieConsent = dynamic(
   () => import("@/components/shared/CookieConsent"),
@@ -10,6 +11,11 @@ const CookieConsent = dynamic(
 
 const GoogleTagManager = dynamic(
   () => import("@/components/shared/GoogleTagManager"),
+  { ssr: true }
+);
+
+const GoogleAnalytics = dynamic(
+  () => import("@/components/shared/GoogleAnalytics"),
   { ssr: true }
 );
 
@@ -139,25 +145,13 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta httpEquiv="Cache-Control" content="no-store" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: [
-              "(function(){",
-              "history.scrollRestoration='manual';",
-              "window.addEventListener('beforeunload',function(){});",
-              "var s=function(){window.scrollTo(0,0);document.documentElement.scrollTop=0};",
-              "if(document.readyState==='complete')s();",
-              "else window.addEventListener('load',s);",
-              "window.addEventListener('pageshow',function(e){if(e.persisted)window.location.reload()});",
-              "})();",
-            ].join(""),
-          }}
-        />
+
       </head>
 
       <body className={`${inter.className} font-sans antialiased`}>
         <Providers>
           <GoogleTagManager />
+          <GoogleAnalytics />
           <ClientOnlyComponents />
 
           <div className="flex flex-col min-h-screen px-2 sm:px-4 md:px-0">

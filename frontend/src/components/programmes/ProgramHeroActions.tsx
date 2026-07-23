@@ -3,6 +3,7 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import { useAuth } from "@/context/AuthContext";
+import ModalBackdrop from "@/components/shared/ModalBackdrop";
 
 const ChartersInterviewAi = dynamic(
   () => import("../home/Chartersinterview_ai"),
@@ -11,7 +12,14 @@ const ChartersInterviewAi = dynamic(
   }
 );
 
-const ProgramHeroActions = () => {
+interface ProgramHeroActionsProps {
+  actions?: {
+    primaryText: string;
+    secondaryText: string;
+  };
+}
+
+const ProgramHeroActions = ({ actions }: ProgramHeroActionsProps) => {
   const { user, navigateToRemoteDashboard } = useAuth();
 
   const [showInterviewAI, setShowInterviewAI] = useState(false);
@@ -38,20 +46,21 @@ const ProgramHeroActions = () => {
           onClick={handleAction}
           className="flex items-center justify-center gap-2 bg-white border border-black hover:bg-[#F4F2EE] text-black px-4 sm:px-6 py-2 text-sm font-semibold transition-all duration-300 transform hover:scale-105 flex-shrink-0"
         >
-          Download Brochure
+          {actions?.secondaryText}
         </button>
 
         <button
           onClick={handleAction}
           className="flex items-center justify-center gap-2 bg-[#222222] hover:bg-[#000000] text-white px-4 sm:px-6 py-2 text-sm font-semibold transition-all duration-300 transform hover:scale-105 flex-shrink-0"
         >
-          Apply Now
+          {actions?.primaryText}
         </button>
       </div>
 
       {showInterviewAI && (
-        <div className="fixed inset-0 flex items-center mt-14 justify-center z-[9999] bg-[#202124]/20">
-          <div className="w-[60%] h-[90%] relative">
+        <div className="fixed inset-0 flex items-center mt-14 justify-center z-[9999]">
+          <ModalBackdrop onClick={handleClose} />
+          <div className="w-[60%] h-[90%] relative z-[99999]">
             <button
               onClick={handleClose}
               aria-label="Close interview AI"

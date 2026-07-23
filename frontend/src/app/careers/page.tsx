@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   title: "Careers & Placements | Charters' Union",
   description:
     "Benefit from Charters' Union's exceptional track record of graduates' success with measurable outcomes and expert career guidance.",
+  keywords: [
+    "careers at Charters Union",
+    "placement support",
+    "career outcomes",
+    "job placements Kolkata",
+    "graduate career success",
+    "CareerPathx",
+  ],
   alternates: {
     canonical: "https://chartersunion.com/careers",
   },
@@ -22,7 +30,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://images.mastersunion.link/uploads/26122024/mahakgroup.webp",
+        url: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784325608/Young_Charters_are_at_top_company_gncn4o_q7ifkq.avif",
         width: 1200,
         height: 630,
         alt: "Careers & Placements | Charters' Union",
@@ -35,27 +43,24 @@ export const metadata: Metadata = {
     title: "Careers & Placements | Charters' Union",
     description:
       "Benefit from Charters' Union's exceptional track record of graduates' success with measurable outcomes and expert career guidance.",
-    images: ["https://images.mastersunion.link/uploads/26122024/mahakgroup.webp"],
+    images: ["https://res.cloudinary.com/ducgcl4dg/image/upload/v1784325608/Young_Charters_are_at_top_company_gncn4o_q7ifkq.avif"],
   },
 };
 
 type Stat = { value: string; label: string; detail: string; gradient?: string };
 
-const HERO_HEADING = "Accelerate Your Career Growth";
-const HERO_TAGLINE =
-  "Benefit from an exceptional track record of our graduates' success";
 
 const HERO_STATS: Stat[] = [
   {
-    value: "79",
-    label: "Startups",
-    detail: "formed as part of Masters' Union Venture Initiation Program",
+    value: "1279",
+    label: "Top MNC & Startups",
+    detail: "formed as part of Charters' Union CareerPathx Initiation Program",
     gradient: "bg-[#B30437]",
   },
   {
-    value: "₹ 3.3 Cr",
-    label: "Combined revenue",
-    detail: "of all Dropshipping teams in Term 1 (Cohort 2024)",
+    value: "₹ 1.1 Cr",
+    label: "Combined CTC",
+    detail: "of all Accountant & Makerting teams in Term 1-2 (Cohort 2024-25)",
     gradient: "bg-[#B30437]",
   },
 ];
@@ -65,7 +70,7 @@ const HERO_CTA = {
   href: "#download-report",
 };
 const HERO_IMAGE = {
-  src: "https://images.mastersunion.link/uploads/26122024/mahakgroup.webp",
+  src: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784325608/Young_Charters_are_at_top_company_gncn4o_q7ifkq.avif",
   alt: "Fireside chat about career growth",
 };
 
@@ -121,21 +126,24 @@ export default function CareersPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(careersSchemaGraph) }}
       />
       {/* Hero Banner */}
-      <div role="banner" className="w-full mt-10">
+      <div className="w-full mt-10">
         <div className="mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 md:py-8">
           <section className="flex flex-col gap-6 sm:gap-10 md:flex-row md:items-center">
 
             {/* Left: Text content */}
             <section className="flex flex-1 flex-col justify-center">
+              <p className="text-xs sm:text-sm font-semibold text-[#B30437] tracking-wider mb-1 sm:mb-1" role="text">
+                1st Week to 1st Job
+              </p>
               <h1
                 id="careers-hero-title"
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight"
+                className="text-3xl sm:text-3xl lg:text-4xl xl:text-4xl font-bold text-black leading-tight"
               >
-                {HERO_HEADING}
+                CareerPathx™ - Accelerate Your Career Growth
               </h1>
 
               <p className="mt-3 sm:mt-4 max-w-2xl text-xs sm:text-sm text-gray-600 md:text-base">
-                {HERO_TAGLINE}
+                Exceptional track record of our <strong>AI-Powerd Career-Operating System</strong> that transforms enrolled students in <strong>accounting, digital marketing,</strong> into <strong>100% JOB Guarantee</strong> — through <strong>7 sequential stages in 7 months</strong>.
               </p>
 
               {/* Stats */}
@@ -191,36 +199,27 @@ export default function CareersPage() {
               <div className="mt-6 sm:mt-10">
                 <Link
                   href={HERO_CTA.href}
-                  className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-gray-900 shadow-sm hover:border-gray-400 transition-colors"
+                  className="inline-flex items-center bg-black px-6 sm:px-8 py-3 sm:py-3 text-xs sm:text-sm font-semibold text-white hover:border-gray-400 transition-colors"
                 >
                   {HERO_CTA.label}
-                  <svg
-                    className="ml-2 h-4 w-4 shrink-0"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10.293 3.293a1 1 0 011.414 0l5 5a1 1 0 010 1.414l-5 5a1 1 0 11-1.414-1.414L13.586 11H4a1 1 0 110-2h9.586l-3.293-3.293a1 1 0 010-1.414z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
+
                 </Link>
               </div>
             </section>
 
             {/* Right: Image */}
             <section className="w-full md:flex-1">
-              <div className="relative aspect-video w-full overflow-hidden border border-gray-200 bg-gray-100">
+              <div className="relative  w-full ">
                 <Image
                   src={HERO_IMAGE.src}
                   alt={HERO_IMAGE.alt}
-                  fill
-                  className="object-cover"
+                  width={600}
+                  height={400}
+                  className="object-cover w-full"
                   sizes="(max-width: 768px) 100vw, 50vw"
                   priority
                 />
+
               </div>
             </section>
 
@@ -229,7 +228,7 @@ export default function CareersPage() {
       </div>
 
       <section id="next" className="sr-only" aria-hidden="true" />
-      
+
       <section className="mx-[0%] border-gray-300 bg-white text-black relative">
         {/* Top Strip */}
         <div className="flex flex-row">
@@ -261,7 +260,7 @@ export default function CareersPage() {
             <div className="md:border-x border-gray-200 w-full">
               <div className="bg-gray-200 w-full">
                 <div className="w-full bg-white rounded-t-xl relative z-[5]">
-                  
+
                   <Subnav />
                   <CareersBelowFoldSections />
 

@@ -1,5 +1,6 @@
 'use client';
 
+/*
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -64,7 +65,7 @@ const menuItems = [
   },
 ];
 
-export default function DashboardSidebar() {
+export function OriginalDashboardSidebar() {
   const pathname = usePathname();
   const { logout } = useAuth();
 
@@ -109,4 +110,9 @@ export default function DashboardSidebar() {
       </nav>
     </aside>
   );
+}
+*/
+
+export default function DashboardSidebar() {
+  return null;
 }

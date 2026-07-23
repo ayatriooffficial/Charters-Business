@@ -2,20 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { programmes } from "@/data/programmes";
 
-const partnerLogosMap: Record<string, { partners: string; internships: string }> = {
-  "digital-growth-engineer": {
-    partners: "/charter-partner/charter-certified-busniess-accountant-partners.avif",
-    internships: "/charter-partner/certified_business_accountant_internship_partner.avif",
-  },
-  "post-graduate-diploma-in-management": {
-    partners: "/charter-partner/charter-digital-growth-marketing-partners.avif",
-    internships: "/charter-partner/digital_growth_marketing_internship_partner.avif",
-  },
-  "product-growth-engineering": {
-    partners: "/charter-partner/business_technology_curriculum_partner.avif",
-    internships: "/charter-partner/business_technology_internship_partner.avif",
-  },
-};
 
 export default function OurProgrammesSection() {
   return (
@@ -53,7 +39,7 @@ export default function OurProgrammesSection() {
         <h3 className="sr-only">Available Academic Programmes</h3>
 
         <div className="relative overflow-x-auto overflow-y-hidden scrollbar-hide">
-          <div className="flex border-y border-[#D5D0CA] divide-x divide-[#D5D0CA]">
+          <div className="flex border-[#D5D0CA] divide-x divide-[#D5D0CA]">
             {programmes.map((programme, index) => (
               <article
                 key={programme.id}
@@ -68,8 +54,8 @@ export default function OurProgrammesSection() {
                     fill
                     className="object-cover"
                     sizes="(max-width: 639px) 85vw, (max-width: 1023px) 450px, 525px"
-                    
-                    
+
+
                     loading={index === 0 ? "eager" : "lazy"}
                   />
                 </figure>
@@ -169,7 +155,7 @@ export default function OurProgrammesSection() {
                         </div>
                         <div className="flex-1 min-w-0">
                           <p className="text-xs text-[#5f6368] font-medium">
-                            2.12 Cr (Time&apos;s News)
+                            {programme.card.jobOpenings} (Time&apos;s News)
                             <sup className="text-xs text-[#5f6368]">**</sup>
                           </p>
                         </div>
@@ -177,7 +163,7 @@ export default function OurProgrammesSection() {
                       <div className="flex flex-col gap-2">
                         <div className="flex md:flex-row items-center flex-shrink-0 relative">
                           <img src="/Charters-icon/vision.svg"
-                            alt="Job openings icon"
+                            alt="Expected CTC icon"
                             width={15}
                             height={15}
                             className=" w-5 h-5 object-contain"
@@ -191,7 +177,7 @@ export default function OurProgrammesSection() {
                             <div className="flex bg-[#E1B2A8] text-[#382D29] px-2 py-[3px] rounded-r-[1.5px] font-semibold">
                               Traditional
                               <span className="ml-[7px] font-bold text-gray-900 flex-shrink-0">
-                                2.8L
+                                {programme.card.expectedCtc?.traditional}
                               </span>
                             </div>
                           </div>
@@ -199,7 +185,7 @@ export default function OurProgrammesSection() {
                             <div className="flex-1 bg-[#B30437] text-white px-2 py-[3px] rounded-r-[1.5px] font-semibold">
                               CMP
                               <span className="ml-[7px] font-bold flex-shrink-0">
-                                7.3L
+                                {programme.card.expectedCtc?.cmp}
                                 <sup className="text-[0.5rem] ml-0.5">
                                   **
                                 </sup>
@@ -264,16 +250,18 @@ export default function OurProgrammesSection() {
                         </div>
 
                         <div className="flex items-center gap-1 items-center flex-wrap">
-                          <div className="relative h-10 w-[280px] flex flex-shrink-0">
-                            <Image
-                              src={partnerLogosMap[programme.slug]?.partners || "/charter-partner/charter-certified-busniess-accountant-partners.avif"}
-                              alt="Partner 1"
-                              fill
-                              sizes="240px"
-                              className="object-contain"
-                              loading="lazy"
-                            />
-                          </div>
+                          {programme.card.partnerLogos?.partners && (
+                            <div className="relative h-10 w-[280px] flex flex-shrink-0">
+                              <Image
+                                src={programme.card.partnerLogos.partners}
+                                alt="Partner 1"
+                                fill
+                                sizes="240px"
+                                className="object-contain"
+                                loading="lazy"
+                              />
+                            </div>
+                          )}
                         </div>
                       </div>
 
@@ -293,9 +281,10 @@ export default function OurProgrammesSection() {
                           </h3>
                         </div>
                         <div className="flex items-center gap-1 items-center flex-wrap">
+                          {programme.card.partnerLogos?.internships && (
                           <div className="relative h-8 w-[272px] flex flex-shrink-0">
                             <Image
-                              src={partnerLogosMap[programme.slug]?.internships || "/charter-partner/certified_business_accountant_internship_partner.avif"}
+                              src={programme.card.partnerLogos.internships}
                               alt="Partner 1"
                               fill
                               sizes="240px"
@@ -303,6 +292,7 @@ export default function OurProgrammesSection() {
                               loading="lazy"
                             />
                           </div>
+                          )}
                         </div>
                       </div>
                     </div>

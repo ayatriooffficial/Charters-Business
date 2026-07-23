@@ -137,7 +137,7 @@ export default async function ProgrammePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(consolidatedSchema) }}
       />
       {/* Hero Section */}
-      <ProgramHero data={programme.hero} slug={programme.slug} />
+      <ProgramHero data={programme.hero} assets={programme.assets} slug={programme.slug} />
 
       {/* Other Sections */}
       <ProgramInfo data={programme.programInfo} />

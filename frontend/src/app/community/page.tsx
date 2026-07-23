@@ -71,9 +71,9 @@ export default function CommunityPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(consolidatedSchema) }}
       />
 
-      <main role="main" className="space-y-0">
+      <div className="space-y-0">
         <CommunitySection />
-      </main>
+      </div>
     </>
   );
 }

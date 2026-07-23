@@ -18,7 +18,6 @@ const LearnApplyReflectRepeat = dynamic(() => import("@/components/programmes/Le
 const StudentModel = dynamic(() => import("@/components/home/StudentModel"), { ssr: false, loading: () => <SectionSkeleton height="h-80" /> });
 const LearningOutcomes = dynamic(() => import("@/components/home/LearningOutcomes"), { ssr: false, loading: () => <SectionSkeleton /> });
 const PricingTabs = dynamic(() => import("@/components/programmes/PricingTabs"), { ssr: false, loading: () => <SectionSkeleton /> });
-const ScholarshipsSection = dynamic(() => import("@/components/programmes/ScholarshipsSection"), { ssr: false, loading: () => <SectionSkeleton /> });
 const FAQ = dynamic(() => import("@/components/programmes/FAQ"), { ssr: false, loading: () => <SectionSkeleton /> });
 const MicaDigitalMarketingCertificate = dynamic(() => import("@/components/programmes/MicaDigitalMarketingCertificate"), { ssr: false, loading: () => <SectionSkeleton /> });
 
@@ -91,13 +90,19 @@ export default function ProgrammeBelowFoldSections({ programme }: { programme: P
 
       <LazyMount fallback={<SectionSkeleton />}>
         <SectionWrapper hideCorners={"all"}>
-          <PricingTabs data={programme.pricing} assets={programme.assets} />
+          <PricingTabs 
+            data={programme.pricing} 
+            assets={programme.assets} 
+            scholarships={programme.scholarships}
+            scholarshipConfig={programme.scholarshipConfig}
+          />
         </SectionWrapper>
       </LazyMount>
 
-      <LazyMount fallback={<SectionSkeleton />}>
+      {/* Banner 3: Advisor */}
+      <LazyMount fallback={<SectionSkeleton height="h-32" />}>
         <SectionWrapper hideCorners={"all"}>
-          <ScholarshipsSection scholarships={programme.scholarships} />
+          <LayoutBanner type="advisor" />
         </SectionWrapper>
       </LazyMount>
 
@@ -107,11 +112,15 @@ export default function ProgrammeBelowFoldSections({ programme }: { programme: P
         </SectionWrapper>
       </LazyMount>
 
-      <LazyMount fallback={<SectionSkeleton />}>
-        <SectionWrapper hideCorners={"all"}>
-          <MicaDigitalMarketingCertificate />
-        </SectionWrapper>
-      </LazyMount>
+      {programme.slug === 'digital-growth-&-marketing' && (
+        <LazyMount fallback={<SectionSkeleton />}>
+          <SectionWrapper hideCorners={"all"}>
+            <MicaDigitalMarketingCertificate />
+          </SectionWrapper>
+        </LazyMount>
+      )}
+
+
 
       
     </div>

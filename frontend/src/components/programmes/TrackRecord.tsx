@@ -173,9 +173,14 @@ const TrackRecord: React.FC<TrackRecordProps> = ({ data, assets }) => {
               <HighlightText className="font-bold hl-px-0">Track Record</HighlightText>
             </h2>
             <h3 className="text-base px-[20px] md:px-[50px] lg:px-[70px] sm:text-lg text-[#5f6368]">
-              Our placement reports are audited by <strong>AnalystPK</strong>, auditor for IIM and follow the IPRS Revision 2.2 framework for
-              transparent and consistent compensation data.
-
+              {data.auditorText ? (
+                <span dangerouslySetInnerHTML={{ __html: data.auditorText }} />
+              ) : (
+                <>
+                  Our placement reports are audited by <strong>AnalystPK</strong>, auditor for IIM and follow the IPRS Revision 2.2 framework for
+                  transparent and consistent compensation data.
+                </>
+              )}
             </h3>
           </div>
 
@@ -278,12 +283,14 @@ const TrackRecord: React.FC<TrackRecordProps> = ({ data, assets }) => {
           <div className="flex flex-wrap gap-3 sm:gap-5 md:gap-6 lg:gap-8 justify-center items-center">
 
             <div className="flex items-center justify-center w-full h-full">
-              <img
-                src={config.hiredCompaniesBanner}
-                alt=""
-                className="w-full sm:h-[50px] md:h-[70px] lg:h-[120px] object-contain"
-                loading="lazy"
-              />
+              {config.hiredCompaniesBanner && (
+                <img
+                  src={config.hiredCompaniesBanner}
+                  alt=""
+                  className="w-full sm:h-[50px] md:h-[70px] lg:h-[120px] object-contain"
+                  loading="lazy"
+                />
+              )}
             </div>
 
           </div>

@@ -272,9 +272,9 @@ export default function ChartersUnionDistinctive() {
         <div className="relative w-full overflow-hidden">
           {/*  Header */}
           <div className="relative lg:absolute top-0 left-0 z-10 mb-8 lg:mb-0 max-w-full pr-4">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black leading-tight max-w-xs sm:max-w-md lg:max-w-3xl break-words">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black leading-tight max-w-xs sm:max-w-md lg:max-w-3xl break-words">
               What make Charter&apos;s Union of business distinctive
-            </h1>
+            </h2>
           </div>
 
           {/* Three Column  */}

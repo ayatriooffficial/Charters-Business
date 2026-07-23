@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
 
 /* ─────────────────────────────────────────────
    FINAL FORMULA (site se verified):
@@ -70,6 +69,7 @@ function ResultRow({ label, value, orange = false }: ResultRowProps) {
         className={`whitespace-nowrap text-[19px] font-bold ${
           orange ? "text-[#F5921E]" : "text-[#0F2547]"
         }`}
+        suppressHydrationWarning
       >
         {value}
       </span>
@@ -151,7 +151,7 @@ export default function EarningsCalculator() {
               <span className="text-[13.5px] font-bold text-[#0F2547]">
                 Current monthly income
               </span>
-              <span className="text-[13.5px] font-bold text-[#0F2547]">
+              <span className="text-[13.5px] font-bold text-[#0F2547]" suppressHydrationWarning>
                 {inr(income)}
               </span>
             </div>
@@ -185,10 +185,7 @@ export default function EarningsCalculator() {
                   </option>
                 ))}
               </select>
-              <ChevronDown
-                size={18}
-                className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-[#0F2547]"
-              />
+              <img src="/Charters-icon/Dropdown.svg" alt="" width={18} height={18} className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2" />
             </div>
           </div>
 

@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import DashboardNavbar from '@/components/dashboard/DashboardNavbar';
-import DashboardSidebar from '@/components/dashboard/DashboardSidebar';
 import FirstLoginPasswordChange from '@/components/auth/FirstLoginPasswordChange';
 
 export default function DashboardLayout({
@@ -12,7 +11,7 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { user, isLoading, updateUser } = useAuth();
+  const { user, isLoading, updateUser, navigateToRemoteDashboard } = useAuth();
   const router = useRouter();
   const [showPasswordChange, setShowPasswordChange] = useState(false);
 
@@ -27,7 +26,7 @@ export default function DashboardLayout({
 
     // Redirect admin/recruiter to their dashboard
     if (user.role === 'admin' || user.role === 'recruiter') {
-      router.push('/admin/dashboard');
+      navigateToRemoteDashboard('/admin/dashboard');
       return;
     }
 
@@ -35,7 +34,7 @@ export default function DashboardLayout({
     if (user.isFirstLogin) {
       setShowPasswordChange(true);
     }
-  }, [user, isLoading, router]);
+  }, [user, isLoading, router, navigateToRemoteDashboard]);
 
   const handlePasswordChangeSuccess = () => {
     updateUser({ isFirstLogin: false });
@@ -70,12 +69,10 @@ export default function DashboardLayout({
         <DashboardNavbar />
 
         <div className="flex pt-16">
-          <DashboardSidebar />
-
           {/* Main Content */}
-          <main className="flex-1 lg:ml-64 p-4 sm:p-6 lg:p-8">
+          <div className="flex-1 p-4 sm:p-6 lg:p-8">
             <div className="mx-auto">{children}</div>
-          </main>
+          </div>
         </div>
       </div>
     </>

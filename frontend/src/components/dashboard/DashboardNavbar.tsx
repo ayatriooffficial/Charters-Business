@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useAuth } from "@/context/AuthContext";
 import ChartersInterviewAi from "@/components/home/Chartersinterview_ai";
+import ModalBackdrop from "@/components/shared/ModalBackdrop";
 
 interface DashboardNavbarProps {
   pageType?: "jobs" | "internships";
@@ -25,7 +26,12 @@ export default function DashboardNavbar({
   const { user, logout } = useAuth();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showLoginPopup, setShowLoginPopup] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Determine dashboard URL based on role
   const dashboardUrl =
@@ -162,7 +168,7 @@ export default function DashboardNavbar({
               >
                 {/* Avatar */}
                 <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-[#B30437] to-[#8B0329] text-white font-semibold text-sm overflow-hidden">
-                  {user ? (
+                  {isMounted && user ? (
                     user.avatar ? (
                       <Image
                         src={user.avatar}
@@ -187,9 +193,9 @@ export default function DashboardNavbar({
                 {/* Name (hidden on mobile) */}
                 <div className="hidden sm:flex flex-col items-start">
                   <span className="text-sm font-semibold text-gray-900">
-                    {user?.name}
+                    {isMounted ? user?.name : ""}
                   </span>
-                  <span className="text-xs text-[#5f6368]">{user?.email}</span>
+                  <span className="text-xs text-[#5f6368]">{isMounted ? user?.email : ""}</span>
                 </div>
 
                 {/* Dropdown Icon */}
@@ -429,8 +435,12 @@ export default function DashboardNavbar({
       </nav>
 
       {showLoginPopup && createPortal(
-        <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[#202124]/60">
-          <div className="w-[85vw] max-w-4xl h-[85vh] relative">
+        <div className="fixed inset-0 flex items-center justify-center z-[9999]">
+          <ModalBackdrop onClick={() => {
+            setShowLoginPopup(false);
+            document.body.style.overflow = '';
+          }} />
+          <div className="w-[85vw] max-w-4xl h-[85vh] relative z-[99999]">
             <button
               onClick={() => {
                 setShowLoginPopup(false);

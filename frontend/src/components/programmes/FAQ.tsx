@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ChevronDown, ChevronUp } from 'lucide-react';
 import { FAQData } from '@/data/programmes';
 
 interface FAQProps {
@@ -43,10 +42,10 @@ const FAQ: React.FC<FAQProps> = ({ data }) => {
     <section className="bg-white" aria-labelledby="faq-heading">
       <div className="max-w-[85rem] pt-12 sm:pt-16 md:pt-18">
         {/* Header */}
-        <header className="text-center mb-6 sm:mb-8 border-b border-gray-200">
-          <p className="text-xs sm:text-sm font-semibold text-[#5f6368] tracking-wider mb-2 sm:mb-3">FAQS</p>
+        <div className="text-center border-b border-gray-200">
+          <p className="text-xs sm:text-sm font-semibold text-[#5f6368] tracking-wider mb-2 sm:mb-3">{data.subtitle}</p>
           <h2 id="faq-heading" className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-black mb-4 sm:mb-6">
-            Have more Questions?
+            {data.title}
           </h2>
 
           {/* Tab Navigation */}
@@ -76,7 +75,7 @@ const FAQ: React.FC<FAQProps> = ({ data }) => {
               </button>
             ))}
           </nav>
-        </header>
+        </div>
 
         {/* FAQ Content */}
         <div className="space-y-4">
@@ -98,9 +97,9 @@ const FAQ: React.FC<FAQProps> = ({ data }) => {
                   <span className="text-base sm:text-lg font-medium text-gray-900 pr-4">{faq.question}</span>
                   <div className="flex-shrink-0">
                     {openQuestions.has(faq.id) ? (
-                      <ChevronUp className="w-5 h-5 text-[#5f6368]" />
+                      <img src="/Charters-icon/uparrow.svg" alt="" width={20} height={20} className="w-5 h-5" />
                     ) : (
-                      <ChevronDown className="w-5 h-5 text-[#5f6368]" />
+                      <img src="/Charters-icon/Dropdown.svg" alt="" width={20} height={20} className="w-5 h-5" />
                     )}
                   </div>
                 </button>

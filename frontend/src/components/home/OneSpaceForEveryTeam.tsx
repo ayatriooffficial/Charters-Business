@@ -57,7 +57,6 @@ const OneSpaceForEveryTeam = () => {
     <section
       className="mx-[0%] bg-white pt-22 relative z-[5]"
       aria-labelledby="team-collaboration-heading"
-      role="main"
     >
       <div className="max-w-[85rem] mx-auto">
         {/* Header Section */}
@@ -105,7 +104,7 @@ const OneSpaceForEveryTeam = () => {
 
         {/* Main Content */}
         <div className="bg-[#F4F2EE] p-4 sm:p-6 lg:p-8 flex flex-col lg:flex-col">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-8 lg:mb-10 py-5">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-2 lg:mb-4 py-5">
             {/* Quote and Company Info */}
             <article
               className="space-y-6 lg:space-y-8 order-2 lg:order-none"
@@ -122,11 +121,11 @@ const OneSpaceForEveryTeam = () => {
                 <p className="text-xl sm:text-2xl lg:text-3xl   text-black leading-relaxed font-light">
                   &ldquo;{currentTestimonial.quote}&rdquo;
                 </p>
-                <footer>
+                <div>
                   <cite className="text-xs sm:text-sm text-gray-600">
                     {currentTestimonial.role}
                   </cite>
-                </footer>
+                </div>
               </blockquote>
 
               {/* Participant Avatars */}
@@ -260,7 +259,7 @@ const OneSpaceForEveryTeam = () => {
         </div>
 
         {/* Statistics Footer */}
-        <footer className="pt-1 relative overflow-hidden">
+        <div className="pt-1 relative overflow-hidden">
           {/* Fade overlays */}
           <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
           <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
@@ -539,7 +538,7 @@ const OneSpaceForEveryTeam = () => {
               animation-play-state: paused;
             }
           `}</style>
-        </footer>
+        </div>
       </div>
     </section>
   );

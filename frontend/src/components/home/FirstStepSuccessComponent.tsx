@@ -485,6 +485,16 @@ export default function FirstStepSuccessComponent() {
     );
   };
 
+  const extractDescription = (content?: string) => {
+    if (!content) return "";
+    const lines = content.split('\n');
+    const paragraph = lines.find(line => {
+      const trimmed = line.trim();
+      return trimmed.length > 0 && !trimmed.startsWith('#') && !trimmed.startsWith('*') && !trimmed.startsWith('-');
+    });
+    return paragraph ? paragraph.replace(/\*\*/g, '').replace(/\*/g, '').trim() : "";
+  };
+
   return (
     <section className="relative z-[5] bg-white text-black pt-22 pb-0">
       <div className="max-w-[85rem] w-full mx-auto px-4">
@@ -521,9 +531,14 @@ export default function FirstStepSuccessComponent() {
                 <span className="text-xs font-semibold text-[#B30437] uppercase tracking-wider mb-2 block">
                   {blog.category}
                 </span>
-                <h3 className="text-xl font-bold leading-snug text-black mb-6 line-clamp-2">
+                <h3 className="text-xl font-bold leading-snug text-black mb-2 line-clamp-2">
                   {blog.title}
                 </h3>
+                {(blog.description || extractDescription(blog.content)) && (
+                  <p className="text-sm text-[#5f6368] line-clamp-2 mb-4">
+                    {blog.description || extractDescription(blog.content)}
+                  </p>
+                )}
               </div>
 
               <div className="border-t border-gray-200 pt-4 flex items-center justify-between text-sm text-gray-600 w-full">

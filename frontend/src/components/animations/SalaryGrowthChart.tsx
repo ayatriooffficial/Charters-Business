@@ -118,7 +118,7 @@ export default function SalaryGrowthChart({
 
   const keyPoints = useMemo(
     () => [
-      { x: xFor(0.44), y: yFor(2.0), value: "2.0x", label: "CMP Peak" },
+      { x: xFor(0.44), y: yFor(2.0), value: "2.0x", label: "CBA™/DGM™ Peak" },
       { x: xFor(0.66), y: yFor(1.92), value: "1.92x", label: "Transition" },
       { x: xFor(0.88), y: yFor(3.0), value: "3.0x", label: "Growth" },
       {
@@ -231,7 +231,7 @@ export default function SalaryGrowthChart({
       {/* Heading */}
       <div className="mb-4 flex-shrink-0">
         <h4 className="flex flex-row">
-          <p className="text-3xl font-bold">+{value.toFixed(2)}x</p> <span className="text-[10px] pl-[5px] pt-[15px]">| Growth 39% </span>
+          <p className="text-3xl font-bold">~{value.toFixed(2)}x</p> <span className="text-[10px] pl-[5px] pt-[15px]">| Growth 39% </span>
         </h4>
         <p className="text-sm text-gray-600">1:3 Internship Global Offer&apos;s</p>
       </div>

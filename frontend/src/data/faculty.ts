@@ -89,64 +89,64 @@ export const facultyMembers: Faculty[] = [
 
   // Entrepreneurship Category
   {
-    name: "Mr. Naveen Munjal",
+    name: "Subhasis Das",
     title: "Managing Director",
     company: "HEROELECTRIC",
     subtitle: "Founder & MD at Hero Electric",
     experience: "Ex VP at Hero MotoCorp",
     teaching: "EV industry and startup scaling",
-    imageSrc: "/images/faculty/home.jpeg",
+    imageSrc: "/images/faculty/Subhasis Das.avif",
     linkedinUrl: "#",
     category: "entrepreneurship",
-    logoSrc: "/logos/CA Sudip work at p&g-tcs-hsbc.avif",
+    logoSrc: "",
   },
   {
-    name: "Mr. Arjun Vaidya",
+    name: "Sayan Das",
     title: "Founder",
     company: "DR. VAIDYA's",
     subtitle: "Founder & CMD at Dr. Vaidya's",
     experience: "Built Ayurveda brand from scratch",
     teaching: "Founding a health-tech venture",
-    imageSrc: "/images/faculty/home.jpeg",
+    imageSrc: "/images/faculty/Sayan Das.avif",
     linkedinUrl: "#",
     category: "entrepreneurship",
-    logoSrc: "/logos/CA Sudip work at p&g-tcs-hsbc.avif",
+    logoSrc: "",
   },
   {
-    name: "Mr. Entrepreneur Expert 3",
+    name: "Harsh Agarwal",
     title: "Serial Entrepreneur",
     company: "StartupCo",
     subtitle: "Founder of multiple startups",
     experience: "Built 5+ successful ventures",
     teaching: "Startup fundamentals",
-    imageSrc: "/images/faculty/home.jpeg",
+    imageSrc: "/images/faculty/Harsh Agarwal.avif",
     linkedinUrl: "#",
     category: "entrepreneurship",
-    logoSrc: "/logos/CA Sudip work at p&g-tcs-hsbc.avif",
+    logoSrc: "",
   },
   {
-    name: "Ms. Shikha Gupta",
+    name: "Moumita Roy",
     title: "Co-Founder",
     company: "StartHub",
     subtitle: "Co-Founder at StartHub Ventures",
     experience: "Built and scaled 3 SaaS platforms globally",
     teaching: "Product-market fit and growth marketing",
-    imageSrc: "/images/faculty/home.jpeg",
+    imageSrc: "/images/faculty/Moumita Roy.avif",
     linkedinUrl: "#",
     category: "entrepreneurship",
-    logoSrc: "/logos/CA Sudip work at p&g-tcs-hsbc.avif",
+    logoSrc: "",
   },
   {
-    name: "Ms. Entrepreneur Expert 5",
+    name: "Abhishek Mishra",
     title: "Venture Partner",
     company: "CapitalVentures",
     subtitle: "Venture Partner",
     experience: "Helped scale 15+ unicorn startups",
     teaching: "Growth hacking and early stage funding",
-    imageSrc: "/images/faculty/home.jpeg",
+    imageSrc: "/images/faculty/Abhishek Mishra.avif",
     linkedinUrl: "#",
     category: "entrepreneurship",
-    logoSrc: "/logos/CA Sudip work at p&g-tcs-hsbc.avif",
+    logoSrc: "",
   },
   // Finance Category
   {
@@ -159,9 +159,8 @@ export const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/Manish Gupta.avif",
     linkedinUrl: "#",
     category: "finance",
-    logoSrc: "/logos/CA Sudip work at p&g-tcs-hsbc.avif",
+    logoSrc: "",
   },
-
   {
     name: "CFA Priya Sharma",
     title: "Risk Analyst",
@@ -172,11 +171,8 @@ export const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/Priya Sharma.avif",
     linkedinUrl: "#",
     category: "finance",
-    logoSrc: "/logos/CA Sudip work at p&g-tcs-hsbc.avif",
+    logoSrc: "",
   },
-
-
-
   {
     name: "CFA Nikhil Jain",
     title: "Financial Accounting",
@@ -187,7 +183,7 @@ export const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/Nikhil Jain.avif",
     linkedinUrl: "#",
     category: "finance",
-    logoSrc: "/logos/CA Sudip work at p&g-tcs-hsbc.avif",
+    logoSrc: "",
   },
   {
     name: "Sayan Das",
@@ -199,7 +195,7 @@ export const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/Sayan Das.avif",
     linkedinUrl: "#",
     category: "finance",
-    logoSrc: "/logos/CA Sudip work at p&g-tcs-hsbc.avif",
+    logoSrc: "",
   },
   {
     name: "Rajat Gupta",
@@ -211,7 +207,7 @@ export const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/Rajat Gupta.avif",
     linkedinUrl: "#",
     category: "finance",
-    logoSrc: "/logos/CA Sudip work at p&g-tcs-hsbc.avif",
+    logoSrc: "",
   },
 
   // Technology Category
@@ -225,7 +221,7 @@ export const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/Subhasis Das.avif",
     linkedinUrl: "#",
     category: "technology",
-    logoSrc: "/logos/CA Sudip work at p&g-tcs-hsbc.avif",
+    logoSrc: "",
   },
   {
     name: "Harsh Agarwal",
@@ -237,7 +233,7 @@ export const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/Harsh Agarwal.avif",
     linkedinUrl: "#",
     category: "technology",
-    logoSrc: "/logos/CA Sudip work at p&g-tcs-hsbc.avif",
+    logoSrc: "",
   },
   {
     name: "Moumita Roy",
@@ -249,7 +245,7 @@ export const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/Moumita Roy.avif",
     linkedinUrl: "#",
     category: "technology",
-    logoSrc: "/logos/CA Sudip work at p&g-tcs-hsbc.avif",
+    logoSrc: "",
   },
 
   {
@@ -262,7 +258,7 @@ export const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/Akhil Bharti.avif",
     linkedinUrl: "#",
     category: "technology",
-    logoSrc: "/logos/CA Sudip work at p&g-tcs-hsbc.avif",
+    logoSrc: "",
   },
   {
     name: "Mehadi Hassan",
@@ -274,7 +270,7 @@ export const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/Mehadi Hassan.avif",
     linkedinUrl: "#",
     category: "technology",
-    logoSrc: "/logos/CA Sudip work at p&g-tcs-hsbc.avif",
+    logoSrc: "",
   },
   // Consulting Category
   {
@@ -287,7 +283,7 @@ export const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/Subhajit Roy.avif",
     linkedinUrl: "#",
     category: "consulting",
-    logoSrc: "/logos/CA Sudip work at p&g-tcs-hsbc.avif",
+    logoSrc: "",
   },
   {
     name: "Akash Yadav",
@@ -299,7 +295,7 @@ export const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/Akash Yadav.avif",
     linkedinUrl: "#",
     category: "consulting",
-    logoSrc: "/logos/CA Sudip work at p&g-tcs-hsbc.avif",
+    logoSrc: "",
   },
 
   {
@@ -312,7 +308,7 @@ export const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/Arindam Chakraborty.avif",
     linkedinUrl: "#",
     category: "consulting",
-    logoSrc: "/logos/CA Sudip work at p&g-tcs-hsbc.avif",
+    logoSrc: "",
   },
 
   {
@@ -325,19 +321,7 @@ export const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/Abhishek Mishra.avif",
     linkedinUrl: "#",
     category: "consulting",
-    logoSrc: "/logos/CA Sudip work at p&g-tcs-hsbc.avif",
-  },
-  {
-    name: "Mr. Consulting Expert 3",
-    title: "Strategy Consultant",
-    company: "StrategyCo",
-    subtitle: "Principal Consultant",
-    experience: "18+ years in strategy",
-    teaching: "Strategic consulting",
-    imageSrc: "/images/faculty/home.jpeg",
-    linkedinUrl: "#",
-    category: "consulting",
-    logoSrc: "/logos/CA Sudip work at p&g-tcs-hsbc.avif",
+    logoSrc: "",
   },
   {
     name: "Rahul Sharma",
@@ -349,6 +333,6 @@ export const facultyMembers: Faculty[] = [
     imageSrc: "/images/faculty/Rahul Sharma.avif",
     linkedinUrl: "#",
     category: "consulting",
-    logoSrc: "/logos/CA Sudip work at p&g-tcs-hsbc.avif",
+    logoSrc: "",
   },
 ];

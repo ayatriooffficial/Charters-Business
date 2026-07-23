@@ -15,15 +15,15 @@ export default function PageLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <>
-      <div className={hideNavFooter ? "hidden" : ""}>
-        <Navbar />
-      </div>
-      <main className={hideNavFooter ? "" : "flex-grow"}>
-        {children}
-      </main>
-      <div className={hideNavFooter ? "hidden" : ""}>
-        <Footer />
-      </div>
+      {!hideNavFooter && <Navbar />}
+      {hideNavFooter ? (
+        children
+      ) : (
+        <main className="flex-grow">
+          {children}
+        </main>
+      )}
+      {!hideNavFooter && <Footer />}
     </>
   );
 }

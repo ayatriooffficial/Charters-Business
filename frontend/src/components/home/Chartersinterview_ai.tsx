@@ -287,7 +287,7 @@ export default function ChartersInterviewAi() {
 
                 {/* LEFT image */}
                 <div className="w-full h-[50%] sm:w-1/2 sm:h-full relative">
-                    <Image src="/home/ai-reday marketing and accounting course login.avif" alt="AI Interview" fill className="object-cover" sizes="50vw" />
+                    <Image src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784539837/ai-reday_marketing_and_accounting_course_login_djkluu.avif" alt="AI Interview" fill className="object-cover" sizes="50vw" />
                 </div>
 
                 {/* RIGHT panel */}

@@ -20,35 +20,36 @@ const NewsSliderComponent: React.FC<NewsSliderComponentProps> = ({
   const [, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const slidesContainerRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const defaultNews: NewsItem[] = [
     {
       id: 1,
-      image: "/images/newsslider/Placement-Achievement-accross-the-7-countris.avif",
-      mobileImage: "/images/newsslider/Placement-Achievement-accross-the-7-countris.avif",
+      image: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784538727/Placement-Achievement-accross-the-7-countris_cubbyv.avif",
+      mobileImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784538727/Placement-Achievement-accross-the-7-countris_cubbyv.avif",
       title: "Kolkata 1st marketing and accounting tranning institution with 100% Placement Achievement in 2025 accross the 7countris",
       description: "Kolkata 1st marketing and accounting tranning institution with 100% Placement Achievement in 2025 accross the 7countris",
       link: "#",
     },
     {
       id: 2,
-      image: "/images/newsslider/Kolkata-1st-marketing-and-accounting-tranning-institution.avif",
-      mobileImage: "/images/newsslider/Kolkata-1st-marketing-and-accounting-tranning-institution.avif",
+      image: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784538726/Kolkata-1st-marketing-and-accounting-tranning-institution_adfb6s.avif",
+      mobileImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784538726/Kolkata-1st-marketing-and-accounting-tranning-institution_adfb6s.avif",
       title: "Kolkata-1st-marketing-and-accounting-tranning-institution-with-100%-Placement-Achievement-in-2025-accross-the-7-countris-",
       description: "Check out what's new in our organization",
       link: "#",
     },
     {
       id: 3,
-      image: "/images/newsslider/global-business-accounting-meets-Gulf-ecosystem.avif",
-      mobileImage: "/images/newsslider/global-business-accounting-meets-Gulf-ecosystem.avif",
+      image: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784538726/Kolkata-1st-marketing-and-accounting-tranning-institution_adfb6s.avif",
+      mobileImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784538726/Kolkata-1st-marketing-and-accounting-tranning-institution_adfb6s.avif",
       title: "indian global business accounting holder meets Gulf ecosystem by industry internship initiative program",
       description: "Stay updated with recent developments",
       link: "#",
     },
     {
       id: 4,
-      image: "/images/newsslider/AI-Powered-Job-Ready-Global-Certified-Business-Accountant.avif",
-      mobileImage: "/images/newsslider/AI-Powered-Job-Ready-Global-Certified-Business-Accountant.avif",
+      image: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784538727/AI-Powered-Job-Ready-Global-Certified-Business-Accountant_aollm1.avif",
+      mobileImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784538727/AI-Powered-Job-Ready-Global-Certified-Business-Accountant_aollm1.avif",
       title: "Kolkata-1st-AIPowered-Job-Ready-Global-Certified-Business-Accountant-Program-Launched-by-ChartersUnion",
       description: "Kolkata 1st AI-Powered Job-Ready Global Certified Business Accountant Programn Launched by ChartersUnion",
       link: "#",
@@ -82,7 +83,7 @@ const NewsSliderComponent: React.FC<NewsSliderComponentProps> = ({
   const moveSlide = (direction: number): void => {
     if (isAnimating) return;
 
-    const scrollContainer = slidesContainerRef.current?.parentElement;
+    const scrollContainer = scrollContainerRef.current;
     if (!scrollContainer) return;
 
     setIsAnimating(true);
@@ -112,7 +113,7 @@ const NewsSliderComponent: React.FC<NewsSliderComponentProps> = ({
   };
 
   useEffect(() => {
-    const scrollContainer = slidesContainerRef.current?.parentElement;
+    const scrollContainer = scrollContainerRef.current;
     if (!scrollContainer) return;
 
     let ticking = false;
@@ -160,7 +161,7 @@ const NewsSliderComponent: React.FC<NewsSliderComponentProps> = ({
       {/* Wrapper for slider and buttons */}
       <div className="relative w-full h-100 md:h-90 sm:h-90 m-0">
         {/* Scrolling Container */}
-        <div className="w-full h-full overflow-x-auto scrollbar-hide overflow-y-hidden rounded-lg scroll-smooth">
+        <div ref={scrollContainerRef} className="w-full h-full overflow-x-auto scrollbar-hide overflow-y-hidden rounded-lg scroll-smooth">
           {/* Slides Container */}
           <div
             className="flex w-full h-full snap-x snap-mandatory"

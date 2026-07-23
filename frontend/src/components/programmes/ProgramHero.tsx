@@ -1,12 +1,15 @@
 import Image from 'next/image';
 import { HeroData } from '@/data/programmes';
+import { ProgrammeAssetConfig } from '@/data/programmes-data/types';
 import Breadcrumbs from '@/components/shared/Breadcrumbs';
 import ProgramHeroActions from "./ProgramHeroActions";
 import CourseTimer from "./CourseTimer";
+import AiSkillsBadge from "./AiSkillsBadge";
 import { type ReactNode } from "react";
 interface ProgramHeroProps {
   data: HeroData;
   slug: string;
+  assets?: ProgrammeAssetConfig;
 }
 
 interface FloatingCardProps {
@@ -29,7 +32,7 @@ const PILL_THEMES = [
   { bg: "bg-teal-50", border: "border-teal-200", text: "text-teal-700" },
 ];
 
-const ProgramHero = ({ data, slug }: ProgramHeroProps) => {
+const ProgramHero = ({ data, slug, assets }: ProgramHeroProps) => {
 
   return (
     <div
@@ -74,44 +77,66 @@ const ProgramHero = ({ data, slug }: ProgramHeroProps) => {
 
 
 
-            <div className="space-y-3 pt-3">
-              <div className="text-xs sm:text-sm text-black">Find our student at -</div>
-              <div className="flex flex-wrap items-center gap-4 sm:gap-6">
-                <div className="relative object-contain w-full h-[40px] overflow-hidden">
-                  <Image
-                    src="/charter-partner/certified_business_accountant_internship_partner.avif"
-                    alt="Charter intrenshiph company around the world"
-                    fill
-                    className="object-contain object-left"
-                  />
+            {(data.alumniLabel || assets?.internshipPartnerLogo) && (
+              <div className="space-y-3 pt-3">
+                {data.alumniLabel && (
+                  <div className="text-xs sm:text-sm text-black">{data.alumniLabel}</div>
+                )}
+                <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+                  <div className="relative object-contain w-full h-[40px] overflow-hidden">
+                    {assets?.internshipPartnerLogo && (
+                      <Image
+                        src={assets.internshipPartnerLogo}
+                        alt={`${data.title.main} internship partners`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 400px"
+                        className="object-contain object-left"
+                      />
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
 
             <div className="space-y-3">
               <div className="flex items-center gap-3">
 
-                <div className="relative w-[110px] mt-[10px] h-[45px]">
-                  <Image
-                    src="/images/programmes/industrial_faculty.avif"
-                    alt="Charter intrenshiph company around the world"
-                    fill
-                    className="h-[50px] w-[110px] object-contain object-left"
-                  />
+                <div className="relative w-[100px] mt-[10px] h-[40px]">
+                  {assets?.industrialFacultyLogo && (
+                    <Image
+                      src={assets.industrialFacultyLogo}
+                      alt={`${data.instructors.badge} ${data.instructors.title}`}
+                      fill
+                      sizes="110px"
+                      className="h-[40px] w-[100px] object-contain object-left"
+                    />
+                  )}
                 </div>
 
                 <div>
-                  <p className="text-xs sm:text-sm font-semibold text-black">{data.instructors.badge}</p>
-                  <p className="text-xs sm:text-sm text-[#B30437] font-medium">{data.instructors.title}</p>
+                  <div className="flex items-center gap-2">
+                    <p className="text-xs sm:text-sm font-semibold text-black">{data.instructors.badge}</p>
+                    {data.instructors.aiSkills && (
+                      <AiSkillsBadge data={data.instructors.aiSkills} />
+                    )}
+                  </div>
+                  <p className="text-xs sm:text-sm text-[#000000] font-medium">{data.instructors.title}</p>
                 </div>
               </div>
             </div>
 
             {/* CTA Buttons */}
-            <ProgramHeroActions />
+            <ProgramHeroActions actions={data.actions} />
 
-            {/* Countdown Timer */}
-            <CourseTimer slug={slug} />
+            {/* Enrolled Count & Timer */}
+            <div className="flex flex-col gap-1 pt-2">
+              {data.enrolledCount && (
+                <div className="text-xs sm:text-[14px] text-gray-800">
+                  <span className="font-bold text-black">{data.enrolledCount}</span> already enrolled
+                </div>
+              )}
+              <CourseTimer slug={slug} />
+            </div>
           </div>
 
           {/* Right Image Section - UPDATED */}
@@ -124,44 +149,16 @@ const ProgramHero = ({ data, slug }: ProgramHeroProps) => {
                   <Breadcrumbs compact />
                 </div>
 
-                <Image
-                  src="/images/certified-business-accountant-student-sunitha-raj-got-jobs.png"
-                  alt={`${data.title.main} programme`}
-                  width={600}
-                  height={400}
-                  className="object-cover w-full"
-                  priority
-                />
-
-                {/* Floating Card - Top Right */}
-                <FloatingCard className="top-36 -right-1 sm:-right-2 md:-right-2">
-                  <div className="space-y-[1px] sm:space-y-1 md:space-y-2">
-                    <div className="flex items-center gap-[2px] sm:gap-1">
-                      <span className="text-[6px] sm:text-[9px] md:text-xs font-medium text-black line-clamp-1">{data.floatingCards.topRight.name}</span>
-                    </div>
-                    <div className="text-[9px] sm:text-sm md:text-base font-bold text-black leading-tight">{data.floatingCards.topRight.students}</div>
-                    <div className="text-[5px] sm:text-[8px] md:text-[10px] text-black line-clamp-1">Sanskar Jaiswal</div>
-                    <div className="flex items-center gap-[2px]">
-                      <div className="flex text-yellow-400 text-[5px] sm:text-[8px] md:text-[10px]">★★★★★</div>
-                      <span className="text-[5px] sm:text-[8px] md:text-[10px] text-black">{data.floatingCards.topRight.rating}/5</span>
-                    </div>
-                  </div>
-                </FloatingCard>
-
-                {/* Floating Card - Bottom Left */}
-                <FloatingCard className="-bottom-1 sm:-bottom-2 md:-bottom-6 -left-1 sm:-left-2 md:-left-4">
-                  <div className="space-y-0 sm:space-y-1 md:space-y-2">
-                    <div className="flex items-center gap-[2px] sm:gap-1">
-                      <span className="text-[6px] sm:text-[9px] md:text-xs font-medium text-black line-clamp-1">{data.floatingCards.bottomLeft.label}</span>
-                    </div>
-                    <div className="text-[9px] sm:text-base md:text-xl font-bold text-[#B30437] leading-tight">{data.floatingCards.bottomLeft.percentage}</div>
-                    <div className="text-[5px] sm:text-[8px] md:text-[10px] text-black line-clamp-1">{data.floatingCards.bottomLeft.subLabel}</div>
-                    <div className="bg-red-100 text-[#B30437] px-[2px] sm:px-1.5 py-[1px] sm:py-0.5 rounded text-[5px] sm:text-[8px] md:text-[10px] font-medium inline-block">
-                      {data.floatingCards.bottomLeft.ctcIncrease}
-                    </div>
-                  </div>
-                </FloatingCard>
-
+                {data.heroImage && (
+                  <Image
+                    src={data.heroImage.startsWith("http") || data.heroImage.startsWith("/") ? data.heroImage : `/${data.heroImage}`}
+                    alt={`${data.title.main} programme`}
+                    width={600}
+                    height={400}
+                    className="object-cover w-full"
+                    priority
+                  />
+                )}
 
               </div>
             </div>

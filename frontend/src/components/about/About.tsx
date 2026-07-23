@@ -2,7 +2,6 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
 
 const TetrLandingPage = () => {
   const [activeSection, setActiveSection] = useState<
@@ -246,7 +245,7 @@ const TetrLandingPage = () => {
                 professors & practitioners.
               </p>
               <button className="bg-white text-[#B30437] px-4 py-2 rounded-lg hover:bg-gray-100 transition font-medium flex items-center gap-2 text-sm">
-                OUR PEDAGOGY <ArrowRight className="w-3 h-3" />
+                OUR PEDAGOGY <img src="/Charters-icon/rightarrow.svg" alt="" width={12} height={12} className="w-3 h-3" />
               </button>
             </div>
           </div>
@@ -294,7 +293,7 @@ const TetrLandingPage = () => {
                 professors & practitioners.
               </p>
               <button className="bg-white text-[#B30437] px-4 py-2 rounded-lg hover:bg-gray-100 transition font-medium flex items-center gap-2 text-sm">
-                OUR PEDAGOGY <ArrowRight className="w-3 h-3" />
+                OUR PEDAGOGY <img src="/Charters-icon/rightarrow.svg" alt="" width={12} height={12} className="w-3 h-3" />
               </button>
             </div>
           </div>
@@ -846,7 +845,7 @@ const TetrLandingPage = () => {
               <div className="space-y-4">
                 <div className="bg-[#0f2922] text-white p-6 md:p-8 relative h-28 md:h-36">
                   <div className="absolute top-4 right-4">
-                    <ArrowRight className="w-4 h-4" />
+                    <img src="/Charters-icon/rightarrow.svg" alt="" width={16} height={16} className="w-4 h-4" />
                   </div>
                   <div className="flex flex-col justify-center h-full">
                     <p className="text-sm mb-1">Write to Us</p>
@@ -856,7 +855,7 @@ const TetrLandingPage = () => {
 
                 <div className="bg-[#B30437] text-white p-6 md:p-8 relative h-28 md:h-36">
                   <div className="absolute top-4 right-4">
-                    <ArrowRight className="w-4 h-4" />
+                    <img src="/Charters-icon/rightarrow.svg" alt="" width={16} height={16} className="w-4 h-4" />
                   </div>
                   <div className="flex flex-col justify-center h-full">
                     <p className="text-base font-bold leading-tight">

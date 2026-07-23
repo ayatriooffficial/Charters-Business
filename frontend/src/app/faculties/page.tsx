@@ -62,9 +62,9 @@ export default function FacultiesPage() {
   ];
   const normalizedFacultyPeople = facultyPeople
     .map((person) => ({
-      name: person.name?.trim() || "Faculty Member",
-      jobTitle: person.jobTitle?.trim() || "Faculty",
-      worksFor: person.worksFor?.trim() || "Charters' Union",
+      name: person.name?.trim(),
+      jobTitle: person.jobTitle?.trim(),
+      worksFor: person.worksFor?.trim(),
     }))
     .filter((person) => person.name.length > 0);
 

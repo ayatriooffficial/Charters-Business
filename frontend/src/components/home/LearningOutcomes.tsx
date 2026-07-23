@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, memo } from 'react';
+import { useState, useRef, memo } from 'react';
 import Image from 'next/image';
 import HighlightText from '../shared/HighlightObserver';
 
@@ -25,6 +25,7 @@ interface LearningOutcomesProps {
 function LearningOutcomes({ data }: LearningOutcomesProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const staticContentData: LearningOutcomeData[] = [
 
@@ -237,9 +238,9 @@ function LearningOutcomes({ data }: LearningOutcomesProps) {
       ],
     },
   ];
-  const contentData: LearningOutcomeData[] = Array.isArray(data)
-    ? data
-    : staticContentData;
+  const contentData: LearningOutcomeData[] = data?.items && Array.isArray(data.items)
+    ? data.items
+    : (Array.isArray(data) ? data : staticContentData);
 
   const handleMenuClick = (index: number) => {
     if (index === activeIndex) return;
@@ -249,30 +250,82 @@ function LearningOutcomes({ data }: LearningOutcomesProps) {
       setActiveIndex(index);
       setIsTransitioning(false);
     }, 300);
+
+    try {
+      if (scrollContainerRef?.current) {
+        const el = scrollContainerRef.current;
+        const target = el.children[activeIndex] as HTMLElement | undefined;
+        el.scrollTo({
+          top: target ? target.offsetTop : index * 120,
+          behavior: 'smooth',
+        });
+      }
+    } catch {
+      // scrollContainerRef may be absent in some bundles; ignore silently
+    }
+
+    setTimeout(() => setIsTransitioning(false), 500);
   };
 
-  const outcomeData = contentData[activeIndex];
+  const activeContent = contentData[activeIndex];
 
   return (
     <section className="bg-white text-black pt-16 isolate">
-      <div className=" max-w-7xl mx-auto">
+      <div className="w-full">
         {/* Header Section */}
         <div className="text-center mb-13 sm:mb-14">
+          {data?.comparisonTable && (
+            <div className="mb-16 mt-8">
+              <p className="text-sm font-semibold text-gray-500 tracking-wider mb-2 uppercase text-center">{data.comparisonTable.subtitle}</p>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">{data.comparisonTable.title}</h2>
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse border-y border-gray-200">
+                  <thead>
+                    <tr>
+                      {data.comparisonTable.headers.map((header: string, i: number) => (
+                        <th 
+                          key={i} 
+                          className={`p-2 sm:p-3 md:p-4 border-b border-gray-200 font-semibold text-[10px] sm:text-xs md:text-sm ${i === 3 ? 'bg-[#B30437] text-white' : 'bg-gray-50 text-gray-700'}`}
+                        >
+                          {i === 0 ? <span className="hidden md:inline">{header}</span> : header}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data.comparisonTable.rows.map((row: any, i: number) => (
+                      <tr key={i} className="border-b border-gray-200 last:border-0 hover:bg-gray-50 transition-colors">
+                        <td className="p-2 sm:p-3 md:p-4 text-gray-700 font-medium text-[10px] sm:text-xs md:text-sm w-10 md:w-auto">
+                          <div className="flex items-center justify-center md:justify-start gap-3">
+                            <Image src={row.icon} alt={row.parameter} width={20} height={20} className="w-4 h-4 md:w-5 md:h-5 flex-shrink-0" />
+                            <span className="hidden md:inline whitespace-nowrap">{row.parameter}</span>
+                          </div>
+                        </td>
+                        <td className="p-2 sm:p-3 md:p-4 text-gray-600 text-[10px] sm:text-xs md:text-sm">{row.column1}</td>
+                        <td className="p-2 sm:p-3 md:p-4 text-gray-600 text-[10px] sm:text-xs md:text-sm">{row.column2}</td>
+                        <td className="p-2 sm:p-3 md:p-4 font-medium bg-red-50 text-[#B30437] border-l border-red-100 text-[10px] sm:text-xs md:text-sm">{row.column3}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
           <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-4 sm:mb-6">
             WHAT YOU&apos;LL MASTER
           </p>
           <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
-            The{" "}
+            {data?.title?.prefix}{" "}
             <HighlightText className="font-bold">
-              7
+              {data?.title?.highlight}
             </HighlightText>{" "}
-            learning outcomes
+            {data?.title?.suffix}
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-black max-w-3xl mx-auto leading-relaxed">
-            We interviewed 100+ founders, CEO, CXOs,COO with one question: What makes someone genuinely useful in a Top Company globally within 5–7 months?
-
-            Their answers became 7 core outcomes that now shape every Charter course, project and pathway.
-          </p>
+          {data?.description && (
+            <p className="text-sm sm:text-base md:text-lg text-black max-w-3xl mx-auto leading-relaxed whitespace-pre-line">
+              {data.description}
+            </p>
+          )}
         </div>
 
         {/* Main Content  */}
@@ -333,18 +386,18 @@ function LearningOutcomes({ data }: LearningOutcomesProps) {
                 {/* Description */}
                 <div className="mb-6 sm:mb-8 px-2 sm:px-6 pt-2 sm:pt-6">
                   <p className="text-sm sm:text-base md:text-lg text-[#5f6368] leading-relaxed mb-4 sm:mb-6">
-                    {outcomeData.description.split(outcomeData.highlight)[0]}
-                    <span className="text-[#B30437] font-medium">{outcomeData.highlight}</span>
-                    {outcomeData.description.split(outcomeData.highlight)[1]}
+                    {activeContent?.description?.split(activeContent?.highlight)[0]}
+                    <span className="text-[#B30437] font-medium">{activeContent?.highlight}</span>
+                    {activeContent?.description?.split(activeContent?.highlight)[1]}
                   </p>
 
                   <h4 className="text-sm sm:text-base font-medium text-gray-600 mb-4 sm:mb-6">
-                    {outcomeData.subtitle}
+                    {activeContent?.subtitle}
                   </h4>
 
                   {/* Learning Objectives */}
                   <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
-                    {outcomeData.outcomes.map((outcome: string, idx: number) => (
+                    {activeContent?.outcomes?.map((outcome: string, idx: number) => (
                       <li key={idx} className="flex items-start space-x-2 sm:space-x-3">
                         <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#B30437] rounded-full mt-1.5 sm:mt-2 flex-shrink-0" />
                         <span className="text-[#5f6368] leading-relaxed text-xs sm:text-sm md:text-base">{outcome}</span>
@@ -353,24 +406,27 @@ function LearningOutcomes({ data }: LearningOutcomesProps) {
                   </ul>
                 </div>
 
-                {/* Images */}
+                {/* Images 
                 <div className="flex flex-row">
-                  {outcomeData.images.slice(0, 3).map((image: ImageData, idx: number) => (
-                    <div key={idx} className="flex-1 space-y-2 sm:space-y-3 border-r border-gray-200 border-t last:border-r-0">
+                  {activeContent?.images?.slice(0, 3).map((image: ImageData, idx: number) => (
+                    <div key={idx} className="flex-1 space-y-2 sm:space-y-3 border-r border-gray-200 border-t last:border-r-0 p-2 sm:p-4 hover:bg-gray-50 transition-colors group">
                       <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
-                        <Image
-                          src={image.src}
-                          alt={image.caption}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 640px) 100vw, 33vw"
-                          loading="lazy"
-                        />
+                        {image.src && (
+                          <Image
+                            src={image.src}
+                            alt={image.caption}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 640px) 100vw, 33vw"
+                            loading="lazy"
+                          />
+                        )}
                       </div>
                       <p className="text-[9px] sm:text-xs text-gray-800 font-medium leading-tight pb-1 sm:pb-3 px-1 sm:px-1">{image.caption}</p>
                     </div>
                   ))}
                 </div>
+                */}
               </div>
             </div>
           </div>

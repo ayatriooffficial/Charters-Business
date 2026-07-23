@@ -59,9 +59,9 @@ export default function PrivacyPolicyPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(consolidatedSchema) }}
       />
 
-      <main role="main" className="space-y-0 mt-2">
+      <div className="space-y-0 mt-2">
         <PrivacyPolicyContent />
-      </main>
+      </div>
     </>
   );
 }

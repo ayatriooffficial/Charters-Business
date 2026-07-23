@@ -91,6 +91,22 @@ body {
   animation: logoScroll 12s linear infinite;
 }
 
+/* ─── Samsung Ripple Animation for Chat Icon ───────────────────────── */
+@keyframes samsungRipple {
+  0% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(1.38);
+    opacity: 0;
+  }
+}
+
+.animate-samsung-ripple {
+  animation: samsungRipple 1.6s ease-out infinite;
+}
+
 /* ─── HighlightText (CSS-driven — zero inline styles, zero JS styles) ─── */
 
 .hl-wrap {
@@ -157,3 +173,92 @@ body {
 .hl-wrap.hl-red.hl-active .hl-text { color: #B30437; }
 
 /* ─── off-screen section optimization removed — was breaking LazyMount + IntersectionObserver inside the section ─ */
+
+/* ─── Modal animations (shared across all modal components) ───── */
+@keyframes modalBackdropFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes modalContentScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes modalBackdropFadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes modalContentScaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+}
+
+.animate-modal-backdrop-in {
+  animation: modalBackdropFadeIn 0.2s ease-out forwards;
+}
+
+.animate-modal-content-in {
+  animation: modalContentScaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-modal-backdrop-out {
+  animation: modalBackdropFadeOut 0.2s ease-in forwards;
+}
+
+.animate-modal-content-out {
+  animation: modalContentScaleOut 0.15s ease-in forwards;
+}
+
+/* Generic fadeIn — used by multiple components */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* ─── 13.3" Mac laptop fix ─────────────────────────────────────────
+   MacBook Air/Pro 13" default scaling ≈ 1440×900 CSS viewport.
+   After browser chrome the visible height is ~780–830px.
+   On these screens the slider left columns end up shorter than the
+   card height, leaving a gap at the bottom.
+   Target: laptop width (≥1024px) + short height (≤860px) + Retina.
+   ──────────────────────────────────────────────────────────────── */
+@media (min-width: 1024px) and (max-height: 860px) and (-webkit-min-device-pixel-ratio: 2) {
+  .handson-slider-left-col {
+    justify-content: center;
+  }
+
+  /* Tighten vertical spacing so content fills the shorter viewport */
+  .handson-slider-left-col h2 {
+    margin-bottom: 0.25rem;
+  }
+
+  .handson-slider-left-col p {
+    margin-bottom: 0.75rem;
+  }
+
+  .handson-slider-left-col .mb-6 {
+    margin-bottom: 0.75rem;
+  }
+
+  .handson-slider-left-col .mb-2 {
+    margin-bottom: 0.25rem;
+  }
+}

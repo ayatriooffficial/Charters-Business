@@ -1,0 +1,61 @@
+# Charters Union — Full LLM Context
+
+## About Charters Union
+
+Charters Union (A unit of Shanti Informatics) is a Kolkata-based, AI-first job-ready training institute. We offer career-focused business education with paid internships and global placement support.
+
+**Core Promise:** From Fresher to Global Career — AI in Every Class, Faculty-Guided Paid Internships, Job-Ready Training Built for Top MNCs.
+
+**Placement Stats:** 92% placement rate, ₹3.5 LPA average salary, 7-month programs, 4–6 month paid internships across 7 countries.
+
+---
+
+## Programmes
+
+### Certified Business Accountant
+A comprehensive accounting certification program aligned with AICPA and ACCA standards. Covers practical accounting, taxation, auditing, financial reporting, and ERP systems. Includes a paid internship and placement support.
+
+### Digital Growth & Marketing
+A digital marketing program covering SEO, SEM, social media marketing, content marketing, email marketing, analytics, and growth hacking. Aligned with Google and HubSpot certifications.
+
+### Technology & Business Management
+An interdisciplinary program bridging technology and management. Covers business analytics, IT project management, ERP, digital transformation, and emerging technologies. Aligned with Harvard Business School Online frameworks.
+
+---
+
+## Key Pages
+
+- **Home** (`/`) — Hero, programs overview, faculty highlights, student success stories, placement data
+- **About** (`/about`) — Mission, vision, team, history, partnerships
+- **Student Life** (`/student-life`) — Campus life, events, student stories, facilities
+- **Career Path** (`/career-path`) — AI-powered career assessment and personalized report
+- **Careers** (`/careers`) — Placement statistics, career outcomes
+- **Careers / Jobs** (`/careers/jobs`) — Active job listings
+- **Careers / Internships** (`/careers/internships`) — Active internship listings
+- **Community** (`/community`) — Student and alumni community, events, networking
+- **Faculties** (`/faculties`) — Faculty profiles, visiting professors, industry mentors
+- **Blogs** (`/blogs`) — Educational content, industry insights, career advice
+- **Privacy Policy** (`/privacy-policy`)
+- **Terms and Conditions** (`/terms-and-conditions`)
+
+---
+
+## Core Features
+
+- AI-powered career path assessment
+- Hands-on learning with real business use cases
+- 7 student-run businesses for practical experience
+- Corporate English and soft skills training
+- AI interview coaching with mock interviews
+- LinkedIn personal branding program
+- 4–6 month paid internships in 7 countries
+- Direct placement support with 200+ partner companies
+
+---
+
+## Contact
+
+- **Email:** support@chartersunion.com
+- **Phone:** +91 9836465083
+- **Location:** Kolkata, India
+- **Website:** https://chartersunion.com

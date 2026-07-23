@@ -17,20 +17,18 @@ interface WeekAtTetrProps {
 
 const WeekAtTetr = ({ data, assets }: WeekAtTetrProps) => {
   const config = assets || {
-    timetableImage: "/images/week-at-chartersunion/CBA-week-at-chartersunion.avif",
+    timetableImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784606398/day_to_day_at_charters-digital_marketing_f4kdtc.avif",
   };
   const timetableImage =
     data?.imageSrc || config.timetableImage;
 
-  const heading = data?.title || "What's a Week at Charters' Union Like?";
+  const heading = data?.title;
 
-  const subtitle =
-    data?.subtitle ||
-    "Start your day with ambition and end it with impact. At Charters' Union, every week pushes boundaries.";
+  const subtitle = data?.subtitle;
 
   // Highlight only "Charters' Union" within the heading, rest stays plain text
   const highlightWord = "Charters' Union";
-  const headingParts = heading.split(highlightWord);
+  const headingParts = heading?.split(highlightWord) ?? [];
 
   return (
     <>
@@ -42,9 +40,8 @@ const WeekAtTetr = ({ data, assets }: WeekAtTetrProps) => {
         Skip to weekly schedule content
       </a>
 
-      <main
+      <div
         className="pt-[4rem] sm:pt-14 bg-white"
-        role="main"
         aria-labelledby="week-heading"
       >
         <div className="max-w-[85rem] pt-2 sm:pt-3 md:pt-4 section-header-block">
@@ -85,22 +82,24 @@ const WeekAtTetr = ({ data, assets }: WeekAtTetrProps) => {
             </h2>
             <div className="min-w-[350vw] sm:min-w-full">
               <figure className="relative w-[350vw] sm:w-full">
-                <Image
-                  src={getCloudinaryUrl(
-                    timetableImage,
-                    {
-                      width: 1200,
-                      quality: "auto",
-                      format: "auto",
-                    }
-                  )}
-                  alt="Weekly timetable showing daily activities at Charters' Union including morning sessions, afternoon workshops, evening projects, and weekend activities"
-                  width={1200}
-                  height={800}
-                  className="w-full h-auto shadow-lg border border-gray-200"
-                  priority
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
-                />
+                {timetableImage && (
+                  <Image
+                    src={getCloudinaryUrl(
+                      timetableImage,
+                      {
+                        width: 1200,
+                        quality: "auto",
+                        format: "auto",
+                      }
+                    )}
+                    alt="Weekly timetable showing daily activities at Charters' Union including morning sessions, afternoon workshops, evening projects, and weekend activities"
+                    width={1200}
+                    height={800}
+                    className="w-full h-auto shadow-lg border border-gray-200"
+                    priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                  />
+                )}
                 <figcaption className="sr-only">
                   Comprehensive weekly schedule displaying structured learning
                   activities, practical workshops, and collaborative projects
@@ -110,7 +109,7 @@ const WeekAtTetr = ({ data, assets }: WeekAtTetrProps) => {
             </div>
           </section>
         </div>
-      </main>
+      </div>
     </>
   );
 };

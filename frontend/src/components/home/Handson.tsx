@@ -19,8 +19,8 @@ const cardsData = [
     subtitle: "Corporate foundation",
     description:
       "",
-    mediaSrc: "/images/world-map-illistarter.avif",
-    logos: ["ieseg", "babson", "bocconi", "harvard"],
+    mediaSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784538676/world-map-illistarter_syq1gl.avif",
+    logos: ["Charters hiring partner around the word"],
   },
   {
     id: "ai-health",
@@ -89,7 +89,7 @@ function EditorialCard({ card }: EditorialCardProps) {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 flex-1">
-        <div className="lg:col-span-6 flex flex-col justify-start md:justify-center px-3 sm:px-6 lg:px-7 py-2 sm:py-0">
+        <div className="lg:col-span-6 flex flex-col justify-start md:justify-center px-3 sm:px-6 lg:px-7 py-2 sm:py-0 handson-slider-left-col">
           <span className="inline-flex w-fit items-center py-2 sm:py-[15px] text-black text-[10px] sm:text-[12px] font-bold tracking-wide">
             {card.badge}
           </span>
@@ -166,7 +166,7 @@ function HealthGridCard({ card }: HealthGridCardProps) {
       {/* Mobile banner image */}
       <div className="relative block aspect-square w-full flex-shrink-0 overflow-hidden lg:hidden">
         <Image
-          src="/home/ima11.avif"
+          src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784539837/CBA-Stududent-achivement_vlf1cp.avif"
           alt={`${card.title} visual`}
           fill
           className="w-full h-full object-contain"
@@ -179,7 +179,7 @@ function HealthGridCard({ card }: HealthGridCardProps) {
       {/* Main grid — min-h capped at 65vh so it never causes scroll on small laptops */}
       <div className="grid grid-cols-1 lg:grid-cols-12 h-full">
         {/* Left content column */}
-        <div className="lg:col-span-6 flex flex-col px-3 sm:px-6 lg:px-7 py-2">
+        <div className="lg:col-span-6 flex flex-col px-3 sm:px-6 lg:px-7 py-2 handson-slider-left-col">
           <span className="inline-flex w-fit items-center mt-3 sm:mt-[30px] pb-1 sm:pb-[10px] text-gray-600 text-[10px] sm:text-[11px] font-medium tracking-wide">
             Paid internship in 7 countries, 1,257+ companies
           </span>
@@ -229,10 +229,10 @@ function HealthGridCard({ card }: HealthGridCardProps) {
         {/* Right image column */}
         <div className="hidden lg:block lg:col-span-6 relative">
           <Image
-            src="/home/CBA-Stududent-achivement.avif"
+            src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784539837/CBA-Stududent-achivement_vlf1cp.avif"
             alt="CBA Stududent Achivement"
             fill
-            quality={40}
+            quality={60}
             sizes={CARD_DESKTOP_IMAGE_SIZES}
             className="object-fill object-center"
           />
@@ -264,7 +264,7 @@ function FlagshipCard({ card }: FlagshipCardProps) {
     <section className="flex flex-col w-full bg-[#E6F4EA] overflow-hidden h-full max-h-[90vh]">
       <div className="relative block aspect-square w-full flex-shrink-0 overflow-hidden lg:hidden">
         <Image
-          src="/home/chartersunion-careerpathx.avif"
+          src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784539837/chartersunion-careerpathx_n8ntnl.avif"
           alt={`${card.title} visual`}
           fill
           className="w-full h-full object-contain"
@@ -277,7 +277,7 @@ function FlagshipCard({ card }: FlagshipCardProps) {
       <div
         className="grid grid-cols-1 lg:grid-cols-12 gap-x-0 h-full"
       >
-        <div className="lg:col-span-6 flex flex-col pt-3 sm:pt-[30px] px-3 sm:px-6 lg:px-8 pb-2 sm:pb-4 lg:pb-6">
+        <div className="lg:col-span-6 flex flex-col pt-3 sm:pt-[30px] px-3 sm:px-6 lg:px-8 pb-2 sm:pb-4 lg:pb-6 handson-slider-left-col">
           <div className="flex items-center mb-2 sm:mb-3">
             <div className="flex -space-x-2">
               {[
@@ -326,9 +326,9 @@ function FlagshipCard({ card }: FlagshipCardProps) {
             </div>
 
             <div className="-mx-3 sm:mx-0">
-              <div ref={sliderRef} className="flex overflow-x-auto scrollbar-hide h-[160px] sm:h-[180px] items-stretch scroll-smooth divide-x divide-white border-y border-white">
+              <div ref={sliderRef} className="flex overflow-x-auto scrollbar-hide h-[160px] sm:h-[180px] items-stretch scroll-smooth divide-x divide-[#016833] border-[#016833]">
                 {card.programs?.map((p: { name: string; duration: string }) => (
-                  <div key={p.name} className="w-[85vw] sm:w-[220px] flex-shrink-0 h-full bg-[#A2C1B9] px-4 sm:px-5 py-4 sm:py-5 flex flex-col justify-between">
+                  <div key={p.name} className="w-[150px] sm:w-[150px] flex-shrink-0 h-full bg-[#A2C1B9] px-4 sm:px-5 py-4 sm:py-5 flex flex-col justify-between">
                     <span className="text-[10px] bg-[#202124] text-white px-2 py-[2px] w-fit">PROGRAM</span>
                     <h3 className="mt-3 text-[15px] sm:text-[14px] font-semibold text-black leading-snug">{p.name}</h3>
                     <p className="text-[12px] text-gray-700">{p.duration}</p>
@@ -342,10 +342,10 @@ function FlagshipCard({ card }: FlagshipCardProps) {
         {/* Right image column */}
         <div className="lg:col-span-6 hidden lg:block relative">
           <Image
-            src="/home/chartersunion-careerpathx.avif"
+            src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784539837/chartersunion-careerpathx_n8ntnl.avif"
             alt="Learner portrait"
             fill
-            quality={40}
+            quality={60}
             sizes={CARD_DESKTOP_IMAGE_SIZES}
             className="object-fill object-center"
           />

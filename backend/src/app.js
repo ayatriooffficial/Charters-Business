@@ -14,14 +14,14 @@ import requestLog from "./middlewares/requestLog.middleware.js";
 
 import authRoutes from "./routes/auth.routes.js";
 //import applicationRoutes from "./routes/application.routes.js";
-import counselingRoutes from "./routes/counseling.routes.js";
+//import counselingRoutes from "./routes/counseling.routes.js";
 import userRoutes from "./routes/user.routes.js";
 
 //import jobPostingRoutes from "./routes/jobPosting.routes.js";
 //import internshipPostingRoutes from "./routes/internshipPosting.routes.js";
-import jobApplicationRoutes from "./routes/jobApplication.routes.js";
-import meetingRoutes from "./routes/meeting.routes.js";
-import internalAdminRoutes from "./routes/internalAdmin.routes.js";
+//import jobApplicationRoutes from "./routes/jobApplication.routes.js";
+//import meetingRoutes from "./routes/meeting.routes.js";
+//import internalAdminRoutes from "./routes/internalAdmin.routes.js";
 import blogRoutes from "./routes/blog.routes.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -145,17 +145,17 @@ const heartbeatRateLimiter = rateLimit({
 
 app.use("/api/v1/auth", authRateLimiter, authRoutes);
 //app.use("/api/v1/applications", submissionRateLimiter, applicationRoutes);
-app.use("/api/v1/counseling", submissionRateLimiter, counselingRoutes);
+//app.use("/api/v1/counseling", submissionRateLimiter, counselingRoutes);
 app.use("/api/v1/users", heartbeatRateLimiter, userRoutes);
 
 //app.use("/api/v1/jobs", jobPostingRoutes);
 //app.use("/api/v1/internships", internshipPostingRoutes);
-app.use("/api/v1/job-applications", jobApplicationRoutes);
-app.use("/api/v1/meetings", meetingRoutes);
+//app.use("/api/v1/job-applications", jobApplicationRoutes);
+//app.use("/api/v1/meetings", meetingRoutes);
 app.use("/api/v1/blogs", blogRoutes);
 
 // Internal server-to-server admin surface.
-app.use("/api/internal/admin", requestLog, internalAdminRoutes);
+// app.use("/api/internal/admin", requestLog, internalAdminRoutes);
 
 /* 404 HANDLER */
 

@@ -6,6 +6,14 @@ export const metadata: Metadata = {
   title: "AI Career Path Assessment & Report | Charters' Union",
   description:
     "Take our AI career path assessment to discover your strengths, explore customized program alignments, and receive a tailored growth plan.",
+  keywords: [
+    "AI career assessment",
+    "career path test",
+    "career guidance",
+    "career planning Charters Union",
+    "AI career report",
+    "which career is right for me",
+  ],
   alternates: {
     canonical: "https://chartersunion.com/career-path",
   },

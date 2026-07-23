@@ -52,6 +52,14 @@ export interface ProgrammeCardData {
   };
   careerOutcomes: string[];
   jobOpenings: string;
+  expectedCtc?: {
+    traditional: string;
+    cmp: string;
+  };
+  partnerLogos?: {
+    partners: string;
+    internships: string;
+  };
 }
 
 // HERO DATA
@@ -69,13 +77,24 @@ export interface HeroData {
     label: string;
     value: string;
   }[];
+  alumniLabel?: string;
   alumniCompanies: {
     name: string;
     logo: string;
   }[];
+  enrolledCount?: string;
+  actions?: {
+    primaryText: string;
+    secondaryText: string;
+  };
   instructors: {
     badge: string;
     title: string;
+    aiSkills?: {
+      title: string;
+      description: string;
+      skills: string[];
+    };
   };
   heroImage: string;
   floatingCards: {
@@ -84,6 +103,7 @@ export interface HeroData {
       badge?: string;
       students: string;
       rating: number;
+      stars?: string;
     };
     bottomLeft: {
       label: string;
@@ -109,6 +129,7 @@ export interface ProgramInfoData {
 // TRACK RECORD DATA
 
 export interface TrackRecordData {
+  auditorText?: string;
   stats: {
     value: string;
     unit: string;
@@ -136,18 +157,21 @@ export interface TrackRecordData {
 
 // AI DEGREE PROGRAM DATA
 
+export interface DegreeAccordionItem {
+  id: string;
+  title: string;
+  items: string[];
+}
+
 export interface DegreeProgramData {
   badge: string;
   title: {
     prefix: string;
     highlight: string;
-    suffix: string;
+    suffix?: string;
   };
-  accordions: {
-    id: string;
-    title: string;
-    items: string[];
-  }[];
+  auditorText?: string;
+  accordions: DegreeAccordionItem[];
   academicPartners: {
     name: string;
     logo?: string;
@@ -223,6 +247,19 @@ export interface CurriculumTerm {
   internship?: { paragraphs: string[]; options: string[] };
 }
 
+export interface CurriculumSkillsData {
+  previewSkills: string[];
+  modalTitle: string;
+  modalSkillsGain: {
+    title: string;
+    skills: string[];
+  };
+  modalToolsLearn: {
+    title: string;
+    tools: string[];
+  };
+}
+
 export interface CurriculumSectionData {
   eyebrow: string;
   titleHighlight: string;
@@ -231,13 +268,60 @@ export interface CurriculumSectionData {
   items: CurriculumTerm[];
   tabOrder?: CurriculumTabKey[];
   tabLabels?: Partial<Record<CurriculumTabKey, string>>;
+  skillsData?: CurriculumSkillsData;
 }
 
 // LEARN APPLY REFLECT DATA
 
 export interface LearnApplyData {
+  title?: {
+    prefix: string;
+    highlight: string;
+    suffix?: string;
+  };
+  subtitle?: string;
   categories: CurriculumCategory[];
   courseData: Record<string, CourseSet[]>;
+}
+
+export interface LearningOutcomeItem {
+  title: string;
+  description: string;
+  highlight: string;
+  subtitle: string;
+  outcomes: string[];
+  images: { src: string; caption: string }[];
+}
+
+export interface ComparisonTableRow {
+  icon: string;
+  parameter: string;
+  column1: string;
+  column2: string;
+  column3: string;
+}
+
+export interface ComparisonTableData {
+  title: string;
+  subtitle: string;
+  headers: [string, string, string, string];
+  rows: ComparisonTableRow[];
+}
+
+export interface LearningOutcomesData {
+  title?: {
+    prefix: string;
+    highlight: string;
+    suffix: string;
+  };
+  comparisonTable?: ComparisonTableData;
+  description?: string;
+  items: LearningOutcomeItem[];
+}
+
+export interface WeekAtUnionData {
+  title: string;
+  subtitle: string;
 }
 
 // SCHOLARSHIPS DATA
@@ -247,8 +331,6 @@ export interface ScholarshipData {
   title: string;
   description: string;
   eligibility: string;
-  image: string;
-  alt: string;
 }
 
 // FAQ DATA
@@ -266,7 +348,42 @@ export interface FAQCategory {
 }
 
 export interface FAQData {
+  subtitle?: string;
+  title?: string;
   categories: FAQCategory[];
+}
+
+export interface LayoutBannerConfig {
+  placement: {
+    imageSrc: string;
+    imageAlt: string;
+    heading: {
+      highlight1: string;
+      text1: string;
+      highlight2: string;
+      text2: string;
+      highlight3: string;
+      text3: string;
+    };
+    subtext: string;
+    buttonText: string;
+    downloadUrl: string;
+    downloadFilename: string;
+  };
+  brochure: {
+    imageSrc: string;
+    imageAlt: string;
+    programName: string;
+    subtext: string;
+    buttonText: string;
+    downloadUrl: string;
+    downloadFilename: string;
+  };
+  advisor: {
+    heading: string;
+    buttonText: string;
+    phoneNumber: string;
+  };
 }
 
 // MAIN PROGRAMME INTERFACE
@@ -282,15 +399,21 @@ export interface Programme {
   degreeProgram: DegreeProgramData;
   curriculum: CurriculumData;
   learnApply: LearnApplyData;
+  scholarshipConfig?: {
+    subtitle?: string;
+    title: { prefix: string; highlight: string; };
+    description: string;
+  };
   scholarships: ScholarshipData[];
   faq: FAQData;
   students?: any;
-  learningOutcomes?: any;
-  weekAtUnion?: any;
+  learningOutcomes?: LearningOutcomesData;
+  weekAtUnion?: WeekAtUnionData;
   pricing?: any;
   faculty?: any;
   curriculumSection?: CurriculumSectionData;
   assets?: ProgrammeAssetConfig;
+  layoutBanner?: LayoutBannerConfig;
 }
 
 export interface ProgrammeAssetConfig {
@@ -300,6 +423,8 @@ export interface ProgrammeAssetConfig {
   hiredCompaniesBanner: string;
   campusImage: string;
   disclaimerText: string;
+  academicPartnerLogo?: string;
+  degreeInternshipPartnerLogo?: string;
   timetableImage: string;
   curriculumCityscapes: {
     dubai: string;
@@ -323,5 +448,49 @@ export interface ProgrammeAssetConfig {
       badge?: string;
       badgeDate?: string;
     }[];
+    title?: string;
+    features?: {
+      fundamentals?: string;
+      classes?: string;
+      trainers?: string;
+      opportunities?: string;
+    };
+    placementSupport?: {
+      title?: string;
+      items?: string[];
+    };
+    benefits?: {
+      text: string;
+      isDisclaimer?: boolean;
+    }[];
+    cardFeatures?: {
+      freeTrial?: { title: string; subtitle: string; };
+      scholarships?: { title: string; subtitle: string; };
+    };
+    scholarshipBanner?: {
+      subtitle: string;
+      title: string;
+      linkText: string;
+    };
+    emiLabel?: string;
+    primaryButton?: {
+      text: string;
+    };
+    secondaryButton?: {
+      text: string;
+    };
+    seatsLeft?: {
+      prefix: string;
+      suffix: string;
+    };
+    emiPlans?: {
+      tenure: string | number;
+      type: string;
+      loanAmount: string | number;
+      rate: string | number;
+      emi: string | number;
+      totalLoanAmount: string | number;
+    }[];
+    scholarshipBannerIcon?: string;
   };
 }

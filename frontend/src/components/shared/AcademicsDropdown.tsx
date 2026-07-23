@@ -62,9 +62,9 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
 
   // Program menu items - only show programs that have data
   const allProgramMenuItems: { key: ProgramKey; label: string }[] = [
-    { key: 'certified-business-accountant', label: 'CBA®' },
-    { key: 'digital-growth-&-marketing', label: 'DGM™' },
-    { key: 'technology-&-business-management', label: 'TBM™' },
+    { key: 'certified-business-accountant', label: 'Accounting' },
+    { key: 'digital-growth-&-marketing', label: 'Marketing' },
+    { key: 'technology-&-business-management', label: 'Bsusiness' },
 
   ];
 
@@ -187,7 +187,7 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
 
                   {/* Text Content */}
                   <div className="flex-1 flex flex-col justify-start min-w-0">
-                    <header>
+                    <div>
                       <h2 className="text-xl lg:text-2xl font-bold mb-2 text-gray-900 leading-tight">
                         {currentProgramData.card.title}
                       </h2>
@@ -195,7 +195,7 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
                       <p className="text-[#B30437] text-sm font-semibold mb-4">
                         {currentProgramData.card.duration.type}
                       </p>
-                    </header>
+                    </div>
 
                     <p className="text-gray-600 text-sm leading-relaxed mb-6">
                       {currentProgramData.card.description}

@@ -1,7 +1,15 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import dynamic from "next/dynamic";
 import { ProgrammeAssetConfig } from "@/data/programmes";
+import Modal from "@/components/shared/Modal";
+import ScholarshipsSection from "./ScholarshipsSection";
+
+const ChartersInterviewAi = dynamic(
+    () => import("@/components/home/Chartersinterview_ai"),
+    { ssr: false }
+);
 
 // Custom SVG Icons
 const BookOpenIcon = ({ className }: { className?: string }) => (
@@ -124,12 +132,19 @@ interface PricingTabsProps {
     nextBatchDate?: string;
     data?: Record<string, unknown>;
     assets?: ProgrammeAssetConfig;
+    scholarships?: any[];
+    scholarshipConfig?: any;
 }
 
 const PricingTabs: React.FC<PricingTabsProps> = ({
     nextBatchDate = "3",
     assets,
+    scholarships = [],
+    scholarshipConfig
 }) => {
+    const [showLoginModal, setShowLoginModal] = useState(false);
+    const [showEmiModal, setShowEmiModal] = useState(false);
+
     const config = assets || {
         pricing: {
             emiAmount: "₹5,499",
@@ -149,14 +164,16 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
         return <MonitorIcon className="w-5 h-5" />;
     };
 
-    const jobTracks: JobTrack[] = config.pricing.jobTracks.map((track, index) => ({
+    const pricing = config.pricing as any;
+
+    const jobTracks: JobTrack[] = (pricing.jobTracks || []).map((track: any, index: number) => ({
         name: track.name,
         icon: getIcon(index),
         badge: track.badge,
         badgeDate: track.badgeDate,
     }));
 
-    const placementSupport = [
+    const placementSupport: string[] = pricing.placementSupport?.items || [
         "Aptitude Training",
         "Soft Skills Training",
         "Resume Preparation",
@@ -169,7 +186,25 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
         "Negotiation with companies for higher salaries",
     ];
 
-    const benefits = [
+    const getBenefitIcon = (index: number) => {
+        if (index === 0) return <MessageQuestionIcon className="w-5 h-5" />;
+        if (index === 1) return <FolderIcon className="w-5 h-5" />;
+        if (index === 2) return <LaptopIcon className="w-5 h-5" />;
+        return <RocketIcon className="w-5 h-5" />;
+    };
+
+    const emiLabel = pricing.emiLabel || "Starting at";
+    const primaryButtonText = pricing.primaryButton?.text || "Book a Free Demo";
+    const secondaryButtonText = pricing.secondaryButton?.text || "Book Your Seat for 1000/-";
+    const seatsPrefix = pricing.seatsLeft?.prefix;
+    const seatsSuffix = pricing.seatsLeft?.suffix;
+    const bannerIcon = pricing.scholarshipBannerIcon;
+
+    const benefits = pricing.benefits ? pricing.benefits.map((b: any, i: number) => ({
+        icon: getBenefitIcon(i),
+        text: b.text,
+        isDisclaimer: b.isDisclaimer
+    })) : [
         {
             icon: <MessageQuestionIcon className="w-5 h-5" />,
             text: "9AM - 9PM Doubt Clarification. 1500+ Mentors to help you.",
@@ -190,13 +225,13 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
     ];
 
     return (
-        <section className="bg-white py-4 sm:py-6 md:py-8 ">
+        <section className="bg-white pt-4 sm:pt-6 md:pt-8">
             <div className="max-w-[85rem] mx-auto">
                 <>
                     {/* What's Included Section - Postpaid */}
                     <div className="mb-8 sm:mb-12 px-4 sm:px-6 lg:px-8">
                         <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-6 sm:mb-8">
-                            What&apos;s included ?
+                            {pricing.title}
                         </h2>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
@@ -208,7 +243,7 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
                                         <BookOpenIcon className="w-5 h-5 text-[#B30437]" />
                                     </div>
                                     <span className="text-gray-900 font-medium pt-2">
-                                        Fundamentals
+                                        {pricing.features?.fundamentals}
                                     </span>
                                 </div>
 
@@ -254,7 +289,7 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
                                         <ClockIcon className="w-5 h-5 text-[#B30437]" />
                                     </div>
                                     <span className="text-gray-900 font-medium pt-2">
-                                        3 Hours classes and 3 Hours Labs Everyday
+                                        {pricing.features?.classes}
                                     </span>
                                 </div>
 
@@ -264,7 +299,7 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
                                         <UsersIcon className="w-5 h-5 text-[#B30437]" />
                                     </div>
                                     <span className="text-gray-900 font-medium pt-2">
-                                        Trainers: IIT alumni & Top MNCs like Amazon, Microsoft
+                                        {pricing.features?.trainers}
                                     </span>
                                 </div>
                             </div>
@@ -276,7 +311,7 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
                                         <BuildingIcon className="w-5 h-5 text-[#B30437]" />
                                     </div>
                                     <span className="text-gray-900 font-medium pt-2">
-                                        Unlimited opportunities from a pool of 3000+ companies
+                                        {pricing.features?.opportunities}
                                     </span>
                                 </div>
 
@@ -286,10 +321,10 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
                                     </div>
                                     <div>
                                         <span className="text-gray-900 font-medium">
-                                            Placement Support
+                                            {pricing.placementSupport?.title}
                                         </span>
                                         <ul className="mt-3 space-y-2 text-sm text-[#5f6368]">
-                                            {placementSupport.map((item, index) => (
+                                            {(pricing.placementSupport?.items || placementSupport).map((item: any, index: number) => (
                                                 <li key={index} className="flex items-start gap-2">
                                                     <span className="text-[#80868b] mt-1">•</span>
                                                     {item}
@@ -302,7 +337,7 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
 
                             {/* Right Column - Benefits */}
                             <div className="space-y-5">
-                                {benefits.map((benefit, index) => (
+                                {(pricing.benefits?.length ? pricing.benefits.map((b: any, i: number) => ({ ...b, icon: benefits[i]?.icon || benefits[0].icon })) : benefits).map((benefit: any, index: number) => (
                                     <div
                                         key={index}
                                         className={`flex items-start gap-3 ${benefit.isDisclaimer ? "opacity-70" : ""
@@ -340,21 +375,21 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
                     </div>
 
                     {/* Pricing Section - Postpaid */}
-                    <div className="px-4 sm:px-6 lg:px-8 border-t border-gray-200 pt-6 sm:pt-8">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start">
+                    <div className="border-t border-gray-200">
+                        <div className="grid grid-cols-1 lg:grid-cols-2">
                             {/* Left - EMI Info */}
-                            <div className="space-y-4 sm:space-y-6">
-                                <div className="inline-block bg-red-50 text-[#B30437] px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium">
-                                    EMI AS LOW AS
+                            <div className="space-y-4 sm:space-y-2 py-6 sm:py-8 pl-4 sm:pl-6 lg:pl-8 pr-4 sm:pr-6 lg:pr-8">
+                                <div className="inline-block text-[#000000] text-[20px] sm:text-[20px] font-medium">
+                                    {emiLabel}
                                 </div>
 
                                 <div className="flex items-baseline gap-2 sm:gap-4 flex-wrap">
                                     <div>
                                         <span className="text-3xl sm:text-4xl font-bold text-gray-900">
-                                            {config.pricing.emiAmount}
+                                            {pricing.emiAmount}
                                         </span>
                                         <span className="text-gray-600 text-sm sm:text-base">/month</span>
-                                        <div className="text-xs sm:text-sm text-[#5f6368]">(For {config.pricing.emiMonths})</div>
+                                        <div className="text-xs sm:text-sm text-[#5f6368]">(For {pricing.emiMonths}*)</div>
                                     </div>
                                 </div>
 
@@ -363,66 +398,128 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
                                         <CheckCircleIcon className="w-5 h-5 text-green-500" />
                                         <div>
                                             <span className="font-semibold text-gray-900">
-                                                A Free Trial Session
+                                                {pricing.cardFeatures?.freeTrial?.title}
                                             </span>
-                                            <div className="text-sm text-[#5f6368]">No Fee Required</div>
+                                            <div className="text-sm text-[#5f6368]">{pricing.cardFeatures?.freeTrial?.subtitle}</div>
                                         </div>
                                     </div>
                                     <div className="flex items-center gap-3">
                                         <CheckCircleIcon className="w-5 h-5 text-green-500" />
                                         <div>
                                             <span className="font-semibold text-gray-900">
-                                                Assured Scholarships
+                                                {pricing.cardFeatures?.scholarships?.title}
                                             </span>
-                                            <div className="text-sm text-[#5f6368]">After Free Trial</div>
+                                            <div className="text-sm text-[#5f6368]">{pricing.cardFeatures?.scholarships?.subtitle}</div>
                                         </div>
+                                    </div>
+                                </div>
+
+                                {/* Next Batch + CTA */}
+                                <div className="mt-6 sm:mt-8 pt-4 sm:pt-6">
+                                    <div className="flex flex-col sm:flex-row items-center w-full sm:w-auto gap-3">
+                                        <button
+                                            onClick={() => setShowLoginModal(true)}
+                                            className="w-full sm:w-auto px-6 sm:px-6 py-2 sm:py-2 bg-[#1E8E3E] hover:bg-[#9a0330] text-white text-sm sm:text-base font-semibold transition-colors duration-200 cursor-pointer">
+                                            {primaryButtonText}
+                                        </button>
+                                        <button
+                                            onClick={() => setShowEmiModal(true)}
+                                            className="w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 border-1 border-black text-[#5f6368] text-sm sm:text-base font-semibold transition-colors duration-200 cursor-pointer">
+                                            {secondaryButtonText}
+                                        </button>
                                     </div>
                                 </div>
                             </div>
 
-                            {/* Right - Scholarship Banner */}
-                            <div className="bg-[#E3DFD2] p-4 sm:p-6 text-black relative overflow-hidden">
-                                <div className="relative z-10">
-                                    <div className="text-xs sm:text-sm font-medium mb-2">
-                                        Additional Scholarships Up To
-                                    </div>
-                                    <div className="text-3xl sm:text-4xl font-bold mb-2">100% Fees  </div>
-                                    <a
-                                        href="#"
-                                        className="text-xs sm:text-sm underline hover:no-underline flex items-center gap-1"
-                                    >
-                                        Book a Free Demo to know more.
-                                    </a>
-                                </div>
-                                {/* Decorative Image/Icon placeholder */}
-                                <div className="absolute right-4 bottom-4 opacity-90 hidden sm:block">
-                                    <div className="w-16 sm:w-20 h-16 sm:h-20 bg-yellow-400 rounded-full flex items-center justify-center">
-                                        <span className="text-2xl sm:text-3xl">🎓</span>
-                                    </div>
-                                </div>
+                            {/* Right - Dynamic Scholarship Content */}
+                            <div className="w-full lg:border-l lg:border-gray-300 py-6 sm:py-8">
+                                {scholarships && scholarships.length > 0 && (
+                                    <ScholarshipsSection 
+                                        scholarships={scholarships} 
+                                        config={scholarshipConfig} 
+                                    />
+                                )}
                             </div>
                         </div>
                     </div>
                 </>
+            </div>
 
-
-                {/* Next Batch + CTA */}
-                <div className="px-4 sm:px-6 lg:px-8 mt-6 sm:mt-8 pt-4 sm:pt-6">
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                        <div className="flex flex-col xs:flex-row w-full sm:w-auto gap-3">
-                            <button className="w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 bg-[#B30437] hover:bg-[#9a0330] text-white text-sm sm:text-base font-semibold rounded-lg transition-colors duration-200">
-                                Book a Free Demo
-                            </button>
-                            <button className="w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 border-2 border-gray-300 hover:border-gray-400 text-[#5f6368] text-sm sm:text-base font-semibold rounded-lg transition-colors duration-200">
-                                Book Your Seat for 1000/-
-                            </button>
-                            <span className="text-sm sm:text-base text-gray-900">
-                                Only <strong>{nextBatchDate}</strong> Seats left
-                            </span>
+            {/* Login Modal for Advisory */}
+            {showLoginModal && (
+                <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[#202124]/40 backdrop-blur-sm">
+                    <div className="w-[90%] md:w-[65%] h-[85vh] md:h-[90%] relative bg-white rounded-xl shadow-2xl overflow-hidden animate-scale-up">
+                        <button
+                            onClick={() => {
+                                setShowLoginModal(false);
+                                document.body.style.overflow = "";
+                            }}
+                            aria-label="Close login modal"
+                            className="absolute top-3 right-3 z-50 bg-white/80 hover:bg-white rounded-full w-8 h-8 flex items-center justify-center shadow-md text-gray-600 hover:text-black transition-all border border-gray-100 cursor-pointer"
+                        >
+                            ✕
+                        </button>
+                        <div className="w-full h-full">
+                            <ChartersInterviewAi />
                         </div>
                     </div>
                 </div>
-            </div>
+            )}
+
+            {/* EMI Modal */}
+            <Modal isOpen={showEmiModal} onClose={() => setShowEmiModal(false)} className="!max-w-5xl overflow-y-auto">
+                <button
+                    onClick={() => {
+                        setShowEmiModal(false);
+                        document.body.style.overflow = "";
+                    }}
+                    className="absolute top-4 right-4 z-50 bg-white hover:bg-gray-100 rounded-full w-8 h-8 flex items-center justify-center shadow-sm text-gray-600 transition-all border border-gray-200 cursor-pointer"
+                >
+                    ✕
+                </button>
+                <div className="p-6 sm:p-8">
+                    <div className="flex items-center gap-2 mb-6">
+                        <h2 className="text-2xl font-bold tracking-tight text-[#B30437]">CHARTERS <span className="text-gray-900">BUSINESS</span></h2>
+                    </div>
+                    <div className="mb-6">
+                        <h3 className="text-xl font-bold text-gray-900 mb-2">EMI Plans and Choices</h3>
+                        <p className="text-gray-600 text-sm">Pick a tenure and EMI that fits your budget - no surprises, just clarity</p>
+                    </div>
+                    <div className="overflow-x-auto rounded-lg border border-gray-200">
+                        <table className="w-full text-sm text-left">
+                            <thead className="bg-[#B30437] text-white text-xs uppercase font-medium">
+                                <tr>
+                                    <th className="px-6 py-4 text-center whitespace-nowrap">Tenure</th>
+                                    <th className="px-6 py-4 text-center whitespace-nowrap">Type</th>
+                                    <th className="px-6 py-4 text-center whitespace-nowrap">Loan Amount</th>
+                                    <th className="px-6 py-4 text-center whitespace-nowrap">Rate</th>
+                                    <th className="px-6 py-4 text-center whitespace-nowrap">EMI</th>
+                                    <th className="px-6 py-4 text-center whitespace-nowrap">Total Loan Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody className="divide-y divide-gray-200 bg-white text-gray-700">
+                                {(pricing.emiPlans || []).map((plan: any, idx: number) => (
+                                    <tr key={idx} className="hover:bg-gray-50 transition-colors">
+                                        <td className="px-6 py-4 text-center font-medium whitespace-nowrap">{plan.tenure}</td>
+                                        <td className="px-6 py-4 text-center whitespace-nowrap">{plan.type}</td>
+                                        <td className="px-6 py-4 text-center whitespace-nowrap">{plan.loanAmount}</td>
+                                        <td className="px-6 py-4 text-center whitespace-nowrap">{plan.rate}</td>
+                                        <td className="px-6 py-4 text-center whitespace-nowrap">{plan.emi}</td>
+                                        <td className="px-6 py-4 text-center whitespace-nowrap">{plan.totalLoanAmount}</td>
+                                    </tr>
+                                ))}
+                                {!(pricing.emiPlans && pricing.emiPlans.length > 0) && (
+                                    <tr>
+                                        <td colSpan={6} className="px-6 py-8 text-center text-gray-500">
+                                            No EMI plans configured for this course.
+                                        </td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </Modal>
         </section>
     );
 };

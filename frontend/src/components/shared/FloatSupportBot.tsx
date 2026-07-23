@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import { Send, X } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 
 interface ChatMessage {
@@ -111,7 +110,7 @@ export default function FloatSupportBot() {
                 className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-gray-100 border border-gray-300 flex items-center justify-center shadow-sm hover:bg-gray-200 transition opacity-0 group-hover:opacity-100"
                 aria-label="Dismiss query pill"
               >
-                <X size={10} className="text-gray-600" />
+                <img src="/Charters-icon/Cancel.svg" alt="" width={10} height={10} />
               </button>
 
               <button
@@ -128,24 +127,27 @@ export default function FloatSupportBot() {
           )}
 
           <button
+            type="button"
             onClick={() => {
               setShowQueryPill(false);
               setOpen(true);
             }}
-            className="group"
+            className="relative flex items-center justify-center p-2 focus:outline-none transition-transform duration-300 hover:scale-105"
             aria-label="Open support chat"
           >
-            <div className="rounded-full bg-[#cccccc] p-[1px] shadow-xl transition-all duration-300 group-hover:scale-110">
-              <div className="rounded-full bg-white p-1 shadow-[0_0_10px_rgba(255,255,255, 0.3)]">
-                <Image
-                  src="/charters-customer-service.avif"
-                  alt="Chat"
-                  width={48}
-                  height={48}
-                  sizes="48px"
-                  className="h-12 w-12 rounded-full object-cover"
-                />
-              </div>
+            {/* 1 Single Expanding & Fading Wave */}
+            <span aria-hidden="true" className="absolute inset-1 rounded-full bg-[#00c853]/45 animate-samsung-ripple"></span>
+
+            {/* Avatar with Green Line Border */}
+            <div className="relative z-10 rounded-full border-[2.5px] border-[#00c853] bg-white shadow-sm overflow-hidden">
+              <Image
+                src="/charters-customer-service.avif"
+                alt="Support representative"
+                width={52}
+                height={52}
+                sizes="52px"
+                className="h-[52px] w-[52px] rounded-full object-cover"
+              />
             </div>
           </button>
         </div>
@@ -179,7 +181,7 @@ export default function FloatSupportBot() {
               className="text-black cursor-pointer transition hover:text-[#5f6368]"
               aria-label="Close support chat"
             >
-              <X className="h-6 w-6" size={18} />
+              <img src="/Charters-icon/Cancel.svg" alt="" width={18} height={18} className="h-6 w-6" />
             </button>
           </div>
 
@@ -339,7 +341,7 @@ export default function FloatSupportBot() {
                   className="flex h-auto w-10 items-center justify-center rounded-full bg-[#202124] text-white"
                   aria-label="Send message"
                 >
-                  <Send size={16} />
+                  <img src="/Charters-icon/ic_shareicon.svg" alt="" width={16} height={16} />
                 </button>
               )}
             </div>

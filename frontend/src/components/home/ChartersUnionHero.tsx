@@ -1,22 +1,23 @@
 
-import { getCloudinarySrcSet, getCloudinaryUrl } from "@/lib/cloudinary";
+"use client";
+
 import Link from "next/link";
+
+const triggerDownload = (url: string, filename: string) => {
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
 const heroData = {
   availableBadge: "Available Now",
   title: "From Fresher to Global Career: AI in Every Class, Faculty-Guided Paid Internships, Job-Ready Training Built for top MNCs",
   description:
     "Kolkata's AI-first Job Ready training institute. 3 programs: Certified Business Accountant, Digital Growth & Marketing, Technology & Business Management. AICPA/ACCA/HBS/Google aligned. 4–6 month paid internship in 7 countries. Corporate English. AI interview coaching. Placement support. Book free democlass.",
-  backgroundImage: getCloudinaryUrl("charters-business/background", {
-    width: 1080,
-    quality: "auto:eco",
-    format: "auto",
-  }),
-  backgroundImageSrcSet: getCloudinarySrcSet(
-    "charters-business/background",
-    [828, 1080, 1280, 1366, 1536],
-    { quality: "auto:eco" },
-  ),
-  mobileBackgroundImage: "/backgroundm.jpg",
+  desktopBackgroundImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784546558/chartersUnion-mantor-placed-students_hwtwko.avif",
+  mobileBackgroundImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784549510/chartersUnion-mantor-placed-students-m_homu0z.avif",
   cta: {
     buttonText: "Placement Report",
     buttonAriaLabel: "2025 Placement Report",
@@ -29,7 +30,6 @@ function ChartersUnionHero() {
       <div className="h-[44px] md:h-[80px]" />
       <section
         className="relative w-full h-[calc(100vh-106px)] min-h-[545px] overflow-hidden"
-        role="banner"
         aria-labelledby="hero-heading"
       >
         <h1 id="hero-heading" className="sr-only">
@@ -40,8 +40,7 @@ function ChartersUnionHero() {
           <picture>
             <source
               media="(min-width: 768px)"
-              srcSet={`${heroData.backgroundImage} 1080w, ${heroData.backgroundImageSrcSet}`}
-              sizes="100vw"
+              srcSet={heroData.desktopBackgroundImage}
             />
             <img
               src={heroData.mobileBackgroundImage}
@@ -98,14 +97,15 @@ function ChartersUnionHero() {
             {/* JOIN WEBINAR BUTTON */}
             <button
               aria-label={heroData.cta.buttonAriaLabel}
-              className="bg-[#B30437] hover:bg-[#B30437] text-white  py-2 px-10 text-sm font-medium transition-all duration-300 hover:scale-105"    >
+              onClick={() => triggerDownload("/home/Capdsdsfture.JPG", "charters-placement-report-2025.jpg")}
+              className="bg-[#B30437] hover:bg-[#B30437] text-white cursor-pointer  py-2 px-10 text-sm font-medium transition-all duration-300 hover:scale-105"    >
               {heroData.cta.buttonText}
             </button>
 
             {/* TRACK CAREER BUTTON */}
             <Link href="/career-path">
               <button
-                className="bg-white hover:bg-[#efefef] text-black py-2 px-8 border border-black text-sm font-medium transition-all duration-300 hover:scale-105"      >
+                className="bg-white hover:bg-[#efefef] cursor-pointer text-black py-2 px-8 border border-black text-sm font-medium transition-all duration-300 hover:scale-105"      >
                 Track Your Career Path
               </button>
             </Link>

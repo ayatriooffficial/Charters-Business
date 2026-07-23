@@ -97,7 +97,7 @@ const RecruiterProgressBars: React.FC<RecruiterProgressBarsProps> = ({
   return (
     <div
       ref={containerRef}
-      className="flex-1 flex flex-col justify-between h-full w-full bg-white px-1 sm:px-2"
+      className="flex-1 flex flex-col justify-between h-full w-full bg-white"
     >
       {/* Heading */}
       <div className="mb-4 flex-shrink-0">

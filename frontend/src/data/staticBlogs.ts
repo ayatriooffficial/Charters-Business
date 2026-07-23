@@ -7,6 +7,11 @@ export interface DisplayBlog {
   content: string;
   tags?: string[];
   releasedAt?: string;
+  description?: string;
+  promoData?: {
+    jobs: { role: string; salary: string }[];
+    highlights: string[];
+  };
 }
 
 export const slugify = (text: string) => {
@@ -141,6 +146,25 @@ export const STATIC_BLOGS: DisplayBlog[] = [
     readTime: "20 min read",
     category: "Technology",
     content: STATIC_BLOG_CONTENTS["AI Agent Frameworks: What It Is & How It Works"],
+    description: "In 2026, the discussion around Artificial Intelligence has shifted from simple chatbots to autonomous agents. Unlike traditional AI applications that respond to single prompts, AI Agent Frameworks allow systems to plan, execute multi-step workflows, handle tools, and self-correct their outputs.",
+    promoData: {
+      jobs: [
+        { role: "Digital Marketing Executive", salary: "INR 3.2L" },
+        { role: "SEO Specialist", salary: "INR 5.1L" },
+        { role: "Social Media Strategist", salary: "INR 4.7L" },
+        { role: "Performance Marketing Manager", salary: "INR 15.3L" },
+        { role: "Brand Manager", salary: "INR 19.3L" },
+      ],
+      highlights: [
+        "Globally recognized certificate from ChartersUnion",
+        "Learn 70+ digital marketing tools",
+        "Real brand case studies and live campaign practice",
+        "Career mentorship with 1:1 guidance",
+        "Choose from 5 in-demand specializations across key marketing domains",
+        "Access to live sessions and doubt-clearing support",
+        "Learn through flexible online classes designed for working professionals",
+      ],
+    },
   },
   {
     title: "Will AI Replace Software Engineers? Truth, Opinions and Career Impact",
@@ -148,6 +172,25 @@ export const STATIC_BLOGS: DisplayBlog[] = [
     readTime: "14 min read",
     category: "Career Roadmaps",
     content: STATIC_BLOG_CONTENTS["Will AI Replace Software Engineers? Truth, Opinions and Career Impact"],
+    description: "As generative AI models become increasingly proficient at writing, debugging, and refactoring code, many aspiring developers are asking a critical question: Will AI replace software engineers?",
+    promoData: {
+      jobs: [
+        { role: "Digital Marketing Executive", salary: "INR 3.2L" },
+        { role: "SEO Specialist", salary: "INR 5.1L" },
+        { role: "Social Media Strategist", salary: "INR 4.7L" },
+        { role: "Performance Marketing Manager", salary: "INR 15.3L" },
+        { role: "Brand Manager", salary: "INR 19.3L" },
+      ],
+      highlights: [
+        "Globally recognized certificate from ChartersUnion",
+        "Learn 70+ digital marketing tools",
+        "Real brand case studies and live campaign practice",
+        "Career mentorship with 1:1 guidance",
+        "Choose from 5 in-demand specializations across key marketing domains",
+        "Access to live sessions and doubt-clearing support",
+        "Learn through flexible online classes designed for working professionals",
+      ],
+    },
   },
   {
     title: "SQL Roadmap 2026: Learning Paths, Career Roles and Tools",
@@ -155,19 +198,76 @@ export const STATIC_BLOGS: DisplayBlog[] = [
     readTime: "18 min read",
     category: "Career Roadmaps",
     content: STATIC_BLOG_CONTENTS["SQL Roadmap 2026: Learning Paths, Career Roles and Tools"],
+    description: "Despite the proliferation of NoSQL, vector databases, and AI-driven data extraction tools, Structured Query Language (SQL) remains the absolute foundation of data handling. Whether you are building a backend application, performing data analytics, or training machine learning models, SQL is an indispensable skill.",
+    promoData: {
+      jobs: [
+        { role: "Digital Marketing Executive", salary: "INR 3.2L" },
+        { role: "SEO Specialist", salary: "INR 5.1L" },
+        { role: "Social Media Strategist", salary: "INR 4.7L" },
+        { role: "Performance Marketing Manager", salary: "INR 15.3L" },
+        { role: "Brand Manager", salary: "INR 19.3L" },
+      ],
+      highlights: [
+        "Globally recognized certificate from ChartersUnion",
+        "Learn 70+ digital marketing tools",
+        "Real brand case studies and live campaign practice",
+        "Career mentorship with 1:1 guidance",
+        "Choose from 5 in-demand specializations across key marketing domains",
+        "Access to live sessions and doubt-clearing support",
+        "Learn through flexible online classes designed for working professionals",
+      ],
+    },
   },
   {
     title: "Top AI Skills Every Student Should Learn in 2026",
-    author: "Charters Team",
-    readTime: "12 min read",
-    category: "Professional Skills",
+    author: "Kritika Sharma",
+    readTime: "15 min read",
+    category: "Technology",
     content: STATIC_BLOG_CONTENTS["Top AI Skills Every Student Should Learn in 2026"],
+    description: "Being \"computer literate\" is no longer enough. In 2026, employers expect a level of AI literacy across almost all business and technology domains. For students preparing to enter the job market, mastering these skills is key to securing competitive positions.",
+    promoData: {
+      jobs: [
+        { role: "Digital Marketing Executive", salary: "INR 3.2L" },
+        { role: "SEO Specialist", salary: "INR 5.1L" },
+        { role: "Social Media Strategist", salary: "INR 4.7L" },
+        { role: "Performance Marketing Manager", salary: "INR 15.3L" },
+        { role: "Brand Manager", salary: "INR 19.3L" },
+      ],
+      highlights: [
+        "Globally recognized certificate from ChartersUnion",
+        "Learn 70+ digital marketing tools",
+        "Real brand case studies and live campaign practice",
+        "Career mentorship with 1:1 guidance",
+        "Choose from 5 in-demand specializations across key marketing domains",
+        "Access to live sessions and doubt-clearing support",
+        "Learn through flexible online classes designed for working professionals",
+      ],
+    },
   },
   {
     title: "How to Build a Career in Data Analytics from Scratch",
-    author: "Career Desk",
-    readTime: "16 min read",
+    author: "Pooja V",
+    readTime: "25 min read",
     category: "Career Roadmaps",
     content: STATIC_BLOG_CONTENTS["How to Build a Career in Data Analytics from Scratch"],
+    description: "Data is often called the new oil, and companies are searching for professionals who can extract actionable insights from raw data. If you have no background in programming, entering Data Analytics is one of the most accessible routes into technology.",
+    promoData: {
+      jobs: [
+        { role: "Digital Marketing Executive", salary: "INR 3.2L" },
+        { role: "SEO Specialist", salary: "INR 5.1L" },
+        { role: "Social Media Strategist", salary: "INR 4.7L" },
+        { role: "Performance Marketing Manager", salary: "INR 15.3L" },
+        { role: "Brand Manager", salary: "INR 19.3L" },
+      ],
+      highlights: [
+        "Globally recognized certificate from ChartersUnion",
+        "Learn 70+ digital marketing tools",
+        "Real brand case studies and live campaign practice",
+        "Career mentorship with 1:1 guidance",
+        "Choose from 5 in-demand specializations across key marketing domains",
+        "Access to live sessions and doubt-clearing support",
+        "Learn through flexible online classes designed for working professionals",
+      ],
+    },
   },
 ];

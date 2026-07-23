@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 
 export default function CommunitySection() {
@@ -65,6 +64,7 @@ export default function CommunitySection() {
     }
   ];
 
+  /*
   useEffect(() => {
     const handleScroll = () => {
       if (!scrollerRef.current) return;
@@ -117,55 +117,51 @@ export default function CommunitySection() {
 
     return () => clearInterval(interval);
   }, [communityCards.length]);
+  */
 
   return (
     <>
-      {/* Spacer to create scroll height */}
+      {/* ORIGINAL SCROLLING SECTION - COMMENTED OUT FOR FUTURE USE
       <div
         ref={scrollerRef}
         className="relative w-full mt-8 md:mt-4"
         style={{ height: `${(communityCards.length - 1) * 100 + 100}vh` }}
       >
-        {/* Sticky container - accounts for navbar height */}
         <div className="sticky top-[var(--navbar-height,86px)] h-[calc(100vh-var(--navbar-height,86px))] overflow-hidden ">
           <div className="relative h-full flex items-start sm:items-center py-4 sm:py-8 lg:py-16">
             <section className="bg-white py-4 sm:py-6 lg:py-8 px-4 sm:px-6 lg:px-8 w-full" role="region" aria-labelledby="community-heading">
               <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16 items-center">
-                  {/* Left Content */}
                   <div className="space-y-4 sm:space-y-6 md:space-y-8">
-                    {/* Header */}
-                    <header>
+                    <div>
                       <p className="text-xs sm:text-sm font-semibold text-[#B30437] tracking-wider mb-2 sm:mb-3" role="text">CHARTERS UNION COMMUNITY</p>
-                      <h2 id="community-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-black leading-tight mb-4 sm:mb-6 md:mb-8">
+                      <h1 id="community-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-black leading-tight mb-4 sm:mb-6 md:mb-8">
                         A ready-made<br />
                         <span className="italic font-serif text-[#B30437]">community</span> for life.
-                      </h2>
+                      </h1>
                       <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-black leading-relaxed max-w-3xl mb-6 sm:mb-8 md:mb-10">
                         We&apos;re a 1000+ bunch of ambitious go-getters from all walks of life. Here&apos;s a slice of what it&apos;s like within.
                       </p>
-                    </header>
+                    </div>
 
-                    {/* Action Links */}
                     <nav className="space-y-3 sm:space-y-4" role="navigation" aria-label="Community links">
                       <a href="#" className="flex items-center gap-2 sm:gap-3 text-[#B30437] font-medium hover:text-black transition-colors group" aria-label="Visit Charters Union on Instagram">
                         <span className="text-sm sm:text-base md:text-lg uppercase tracking-wide">@CHARTERS UNION ON INSTAGRAM</span>
-                        <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                        <img src="/Charters-icon/rightarrow.svg" alt="" width={16} height={16} className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                       </a>
 
                       <a href="#" className="flex items-center gap-2 sm:gap-3 text-[#B30437] font-medium hover:text-black transition-colors group" aria-label="Read Community Stories">
                         <span className="text-sm sm:text-base md:text-lg uppercase tracking-wide">COMMUNITY DIGEST</span>
-                        <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                        <img src="/Charters-icon/rightarrow.svg" alt="" width={16} height={16} className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                       </a>
 
                       <a href="#" className="flex items-center gap-2 sm:gap-3 text-[#B30437] font-medium hover:text-black transition-colors group" aria-label="Join the program">
                         <span className="text-sm sm:text-base md:text-lg uppercase tracking-wide">JOIN THE PROGRAM</span>
-                        <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                        <img src="/Charters-icon/rightarrow.svg" alt="" width={16} height={16} className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                       </a>
                     </nav>
                   </div>
 
-                  {/* Right Content - Community Showcase */}
                   <div className="relative">
                     <div className="relative w-full h-[280px] sm:h-[350px] md:h-[400px] lg:h-[480px] xl:h-[550px] overflow-hidden">
                       <Image
@@ -177,10 +173,8 @@ export default function CommunitySection() {
                         priority
                       />
 
-                      {/* Gradient overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 
-                      {/* Content overlay */}
                       <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 text-white">
                         <div className="flex items-center gap-2 mb-1 sm:mb-2">
                           <div className="w-2 h-2 bg-[#B30437] rounded-full"></div>
@@ -212,6 +206,63 @@ export default function CommunitySection() {
           </div>
         </div>
       </div>
+      */}
+
+      {/* NEW STATIC SINGLE IMAGE SECTION */}
+      <div className="relative w-full mt-8 md:mt-4">
+        <div className="relative h-full flex items-start sm:items-center py-4 sm:py-8 lg:py-16">
+          <section className="bg-white py-4 sm:py-6 lg:py-8 px-4 sm:px-6 lg:px-8 w-full" role="region" aria-labelledby="community-heading">
+            <div className="max-w-7xl mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16 items-center">
+                {/* Left Content */}
+                <div className="space-y-4 sm:space-y-6 md:space-y-8">
+                  <div>
+                    <p className="text-xs sm:text-sm font-semibold text-[#B30437] tracking-wider mb-2 sm:mb-3" role="text">CHARTERS UNION COMMUNITY</p>
+                    <h1 id="community-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-black leading-tight mb-4 sm:mb-6 md:mb-8">
+                      A ready-made<br />
+                      <span className="italic font-serif text-[#B30437]">community</span> for life.
+                    </h1>
+                    <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-black leading-relaxed max-w-3xl mb-6 sm:mb-8 md:mb-10">
+                      We&apos;re a 1000+ bunch of ambitious go-getters from all walks of life. Here&apos;s a slice of what it&apos;s like within.
+                    </p>
+                  </div>
+
+                  <nav className="space-y-3 sm:space-y-4" role="navigation" aria-label="Community links">
+                    <a href="#" className="flex items-center gap-2 sm:gap-3 text-[#B30437] font-medium hover:text-black transition-colors group" aria-label="Visit Charters Union on Instagram">
+                      <span className="text-sm sm:text-base md:text-lg uppercase tracking-wide">@CHARTERS UNION ON INSTAGRAM</span>
+                      <img src="/Charters-icon/rightarrow.svg" alt="" width={16} height={16} className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                    </a>
+
+                    <a href="#" className="flex items-center gap-2 sm:gap-3 text-[#B30437] font-medium hover:text-black transition-colors group" aria-label="Read Community Stories">
+                      <span className="text-sm sm:text-base md:text-lg uppercase tracking-wide">COMMUNITY DIGEST</span>
+                      <img src="/Charters-icon/rightarrow.svg" alt="" width={16} height={16} className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                    </a>
+
+                    <a href="#" className="flex items-center gap-2 sm:gap-3 text-[#B30437] font-medium hover:text-black transition-colors group" aria-label="Join the program">
+                      <span className="text-sm sm:text-base md:text-lg uppercase tracking-wide">JOIN THE PROGRAM</span>
+                      <img src="/Charters-icon/rightarrow.svg" alt="" width={16} height={16} className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                    </a>
+                  </nav>
+                </div>
+
+                {/* Right Content - Static Image */}
+                <div className="relative">
+                  <div className="relative w-full h-[280px] sm:h-[350px] md:h-[400px] lg:h-[480px] xl:h-[550px] overflow-hidden">
+                    <Image
+                      src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif"
+                      alt="Charters Union Classroom"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      priority
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
 
       {/* Separate CTA Section */}
       <div className="relative mx-2 sm:mx-4 mb-4 sm:mb-6 md:mb-10 mt-6 sm:mt-10 md:mt-16">
@@ -229,12 +280,12 @@ export default function CommunitySection() {
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
               <a href="#" className="inline-flex items-center gap-2 sm:gap-3 bg-white text-[#B30437] font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-sm hover:bg-gray-100 transition-colors group" aria-label="Learn about the program">
                 <span className="text-sm sm:text-base md:text-lg uppercase tracking-wide">ABOUT THE PROGRAM</span>
-                <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                <img src="/Charters-icon/rightarrow.svg" alt="" width={16} height={16} className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
               </a>
 
               <a href="#" className="inline-flex items-center gap-2 sm:gap-3 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-sm hover:bg-white hover:text-[#B30437] transition-colors group" aria-label="Apply now">
                 <span className="text-sm sm:text-base md:text-lg uppercase tracking-wide">APPLY NOW</span>
-                <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                <img src="/Charters-icon/rightarrow.svg" alt="" width={16} height={16} className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
               </a>
             </div>
           </div>

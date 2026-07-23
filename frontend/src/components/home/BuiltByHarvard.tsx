@@ -6,7 +6,7 @@ import HighlightText from "@/components/shared/HighlightObserver";
 function BuiltByHarvard() {
   return (
     <section
-      className="relative text-black py-8 sm:py-10 mt-[70px] md:py-16 mb-16"
+      className="relative text-black py-8 sm:py-10 px-10 mt-[70px] md:py-16 mb-16"
       role="region"
       aria-labelledby="trusted-companies-heading"
     >
@@ -52,7 +52,7 @@ function BuiltByHarvard() {
 
             <div className="w-full h-32 sm:h-38 border-r border-[#D5D0CA] relative group">
               <Image
-                src="/home/charters alumni from.avif"
+                src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784539837/charters_alumni_from_stfaaa.avif"
                 alt="Built by alumni"
                 fill
                 className="object-contain"
@@ -68,7 +68,7 @@ function BuiltByHarvard() {
 
             <div className="w-full h-32 sm:h-38 relative group">
               <Image
-                src="/home/curriculum design base on.avif"
+                src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784539836/curriculum_design_base_on_r3bltb.avif"
                 alt="companies"
                 fill
                 className="object-contain"

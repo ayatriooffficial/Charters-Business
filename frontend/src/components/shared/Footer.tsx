@@ -50,15 +50,12 @@ const Footer = () => {
               <Image
                 src="/Chaters_Union.avif"
                 alt="Chaters' Union - Business Education Excellence"
-                width={96}
-                height={48}
+                width={120}
+                height={58}
                 quality={50}
                 sizes="(max-width: 640px) 80px, 96px"
                 className="w-auto h-auto"
               />
-              {/* https://res.cloudinary.com/ducgcl4dg/image/upload/charters-business/Chaters_Union.png
-                  https://res.cloudinary.com/ducgcl4dg/image/upload/Chaters_Union
-              */}
             </div>
             <p className="text-sm text-[#222222] leading-relaxed max-w-xs">
               Shantiniketan Building, 8 Camac St, Elgin, {" "} Kolkata, West Bengal 700017.
@@ -69,15 +66,14 @@ const Footer = () => {
               </h3>
               <div className="flex flex-wrap items-center pt-[10px] gap-4 sm:gap-6 lg:gap-8">
                 {/* EFMD Logo */}
-                <div className="flex items-center">
+                <div className="relative w-[270px] max-w-full h-[60px]">
                   <Image
                     src="/charters-partners.avif"
                     alt=" Global - Educational accreditation and quality assurance partner"
-                    width={270}
-                    height={60}
-                    quality={60}
+                    fill
                     sizes="270px"
-                    className="w-auto h-auto max-w-full"
+                    quality={60}
+                    className="object-contain"
                   />
                 </div>
 

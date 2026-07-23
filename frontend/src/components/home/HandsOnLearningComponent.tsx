@@ -133,7 +133,7 @@ const ContentCard = memo<{
         }}
       >
         <div
-          className={`w-full max-w-5xl bg-white overflow-hidden mx-2 sm:mx-auto ${styles.handsOnCardScale} flex flex-col sm:flex-row`}
+          className={`w-full max-w-5xl bg-white overflow-hidden mx-2 sm:mx-auto ${styles.handsOnCardScale} flex flex-col sm:flex-row ${isNextCard ? 'shadow-[0_-10px_10px_-10px_rgba(0,0,0,0.05)]' : ''}`}
           style={{
             transform: `scale(${scale})`,
             height: "calc(100dvh - 2rem)",
@@ -145,7 +145,7 @@ const ContentCard = memo<{
             <Image
               src={
                 contentData[category]?.image ||
-                "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop"
+                ""
               }
               alt={`Visual representation of ${contentData[category]?.title || category
                 } program`}
@@ -170,10 +170,9 @@ const ContentCard = memo<{
                       require("../shared/InsideHeading").default;
                     return (
                       <InsideHeading
-                        title={contentData[category]?.title || "Coming Soon"}
+                        title={contentData[category]?.title}
                         description={
-                          contentData[category]?.description ||
-                          "Program details will be available soon."
+                          contentData[category]?.description
                         }
                       />
                     );
@@ -181,11 +180,10 @@ const ContentCard = memo<{
                     return (
                       <>
                         <h3 className="text-base sm:text-xl md:text-2xl font-bold text-black mb-1">
-                          {contentData[category]?.title || "Coming Soon"}
+                          {contentData[category]?.title}
                         </h3>
                         <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed">
-                          {contentData[category]?.description ||
-                            "Program details will be available soon."}
+                          {contentData[category]?.description}
                         </p>
                       </>
                     );
@@ -286,108 +284,108 @@ const ContentCard = memo<{
                 )}
 
                 {contentData[category]?.specializations && contentData[category] && (
-                    <section className="flex flex-col gap-3  ">
-                      {/* ===== BADGE ===== */}
-                      <div className="inline-flex items-center gap-1.5 bg-purple-50 text-purple-700 px-2 py-1 rounded text-[10px] font-medium w-fit ">
-                        Students choose one of the following specialization
-                        tracks
-                      </div>
+                  <section className="flex flex-col gap-3  ">
+                    {/* ===== BADGE ===== */}
+                    <div className="inline-flex items-center gap-1.5 bg-purple-50 text-purple-700 px-2 py-1 rounded text-[10px] font-medium w-fit ">
+                      Students choose one of the following specialization
+                      tracks
+                    </div>
 
-                      {/* ===== SPECIALIZATION TABS ===== */}
-                      <div className="flex overflow-x-auto gap-1.5 pb-1 scrollbar-hide">
-                        {specializations.map((spec) => {
-                          const isActive = spec === activeSpec;
+                    {/* ===== SPECIALIZATION TABS ===== */}
+                    <div className="flex overflow-x-auto gap-1.5 pb-1 scrollbar-hide">
+                      {specializations.map((spec) => {
+                        const isActive = spec === activeSpec;
 
-                          return (
-                            <button
-                              key={spec}
-                              onClick={() => setActiveSpec(spec)}
-                              className={`flex-shrink-0 px-2 py-1 max-w-[160px] border-b-2 transition-all duration-300 hover:-translate-y-1 cursor-pointer
+                        return (
+                          <button
+                            key={spec}
+                            onClick={() => setActiveSpec(spec)}
+                            className={`flex-shrink-0 px-2 py-1 max-w-[160px] border-b-2 transition-all duration-300 hover:-translate-y-1 cursor-pointer
                                 ${isActive
-                                  ? "border-b-gray-500 bg-white"
-                                  : "border-b-transparent bg-gray-50 hover:border-b-gray-300"
-                                }`}
-                            >
-                              <p className="text-[10px] text-[#5f6368] leading-snug line-clamp-2 text-left">
-                                {spec}
-                              </p>
-                            </button>
-                          );
-                        })}
-                      </div>
+                                ? "border-b-gray-500 bg-white"
+                                : "border-b-transparent bg-gray-50 hover:border-b-gray-300"
+                              }`}
+                          >
+                            <p className="text-[10px] text-[#5f6368] leading-snug line-clamp-2 text-left">
+                              {spec}
+                            </p>
+                          </button>
+                        );
+                      })}
+                    </div>
 
-                      {/* ===== TOOLS (DYNAMIC, CORRECT) ===== */}
-                      <div className="flex flex-wrap gap-1.5 mt-3">
-                        {getToolsForSpecialization(activeSpec).map((tool) => {
-                          return (
-                            <div
-                              key={tool.name}
-                              className="bg-[#01212c] text-white px-2 py-1 rounded-full text-[13px] flex items-center gap-1 transition-all duration-300 hover:-translate-y-1 hover:shadow-sm"
-                            >
-                              <Image src={tool.icon} alt={tool.name} width={12} height={12} className="w-4 h-4" />
-                              <span>{tool.name}</span>
-                            </div>
-                          );
-                        })}
-                      </div>
+                    {/* ===== TOOLS (DYNAMIC, CORRECT) ===== */}
+                    <div className="flex flex-wrap gap-1.5 mt-3">
+                      {getToolsForSpecialization(activeSpec).map((tool) => {
+                        return (
+                          <div
+                            key={tool.name}
+                            className="bg-[#01212c] text-white px-2 py-1 rounded-full text-[13px] flex items-center gap-1 transition-all duration-300 hover:-translate-y-1 hover:shadow-sm"
+                          >
+                            <Image src={tool.icon} alt={tool.name} width={12} height={12} className="w-4 h-4" />
+                            <span>{tool.name}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
 
-                      {/* ===== TECHNIQUES ===== */}
-                      <div>
-                        <h4 className="text-[11px] font-semibold text-black mb-1">
-                          Techniques
-                        </h4>
+                    {/* ===== TECHNIQUES ===== */}
+                    <div>
+                      <h4 className="text-[11px] font-semibold text-black mb-1">
+                        Techniques
+                      </h4>
 
-                        <div className="grid grid-cols-4 gap-1.5">
-                          {getTechniquesForSpecialization(activeSpec).map(
-                            (tech) => {
-                              return (
-                                <div
-                                  key={tech.name}
-                                  className="border border-gray-200 rounded-md p-1.5 text-center"
-                                >
-                                  <div className="mb-0.5 flex justify-center">
-                                    <Image src={tech.icon} alt={tech.name} width={12} height={12} className="w-5 h-5 text-[#5f6368]" />
-                                  </div>
-                                  <p className="text-[10px] text-[#5f6368] leading-tight">
-                                    {tech.name}
-                                  </p>
-                                </div>
-                              );
-                            },
-                          )}
-                        </div>
-                      </div>
-
-                      {/* ===== PROJECTS ===== */}
-
-                      <div>
-                        {/* Header */}
-                        <div className="flex items-center gap-1.5 mb-2 text-green-700 text-[11px] font-semibold">
-                          <span>✅</span>
-                          <span>High-impact projects</span>
-                        </div>
-
-                        {/* Horizontal Cards */}
-                        <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
-                          {contentData[category]?.projects?.map((project) => (
-                            <div key={project.name} className="flex-shrink-0 w-[180px]">
-                              <h5 className="text-[10px] font-semibold text-gray-900 h-[28px] leading-tight mb-1 line-clamp-2">
-                                {project.name}
-                              </h5>
+                      <div className="grid grid-cols-4 gap-1.5">
+                        {getTechniquesForSpecialization(activeSpec).map(
+                          (tech) => {
+                            return (
                               <div
-                                className={`${project.color} h-[96px] rounded-lg flex items-center justify-center`}
+                                key={tech.name}
+                                className="border border-gray-200 rounded-md p-1.5 text-center"
                               >
-                                <span className="text-3xl">{project.icon}</span>
+                                <div className="mb-0.5 flex justify-center">
+                                  <Image src={tech.icon} alt={tech.name} width={12} height={12} className="w-5 h-5 text-[#5f6368]" />
+                                </div>
+                                <p className="text-[10px] text-[#5f6368] leading-tight">
+                                  {tech.name}
+                                </p>
                               </div>
-                              <p className="text-[9px]">
-                                {project.description}
-                              </p>
-                            </div>
-                          ))}
-                        </div>
+                            );
+                          },
+                        )}
                       </div>
-                    </section>
-                  )}
+                    </div>
+
+                    {/* ===== PROJECTS ===== */}
+
+                    <div>
+                      {/* Header */}
+                      <div className="flex items-center gap-1.5 mb-2 text-green-700 text-[11px] font-semibold">
+                        <span>✅</span>
+                        <span>High-impact projects</span>
+                      </div>
+
+                      {/* Horizontal Cards */}
+                      <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+                        {contentData[category]?.projects?.map((project) => (
+                          <div key={project.name} className="flex-shrink-0 w-[180px]">
+                            <h5 className="text-[10px] font-semibold text-gray-900 h-[28px] leading-tight mb-1 line-clamp-2">
+                              {project.name}
+                            </h5>
+                            <div
+                              className={`${project.color} h-[96px] rounded-lg flex items-center justify-center`}
+                            >
+                              <span className="text-3xl">{project.icon}</span>
+                            </div>
+                            <p className="text-[9px]">
+                              {project.description}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </section>
+                )}
 
                 {/* Call-to-Action Button */}
                 {!contentData[category]?.specializations &&
@@ -424,7 +422,7 @@ const ContentCard = memo<{
             <Image
               src={
                 contentData[category]?.image ||
-                "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop"
+                ""
               }
               alt={`Visual representation of ${contentData[category]?.title || category
                 } program`}
@@ -639,7 +637,7 @@ function HandsOnLearningComponent() {
                     </h3> */}
                     <div className="mb-3">
                       <Image
-                        src="/home/charters-faculty-member.avif"
+                        src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784539836/charters-faculty-member_tlvkib.avif"
                         alt="Charters Faculty Member"
                         width={300}
                         height={104}

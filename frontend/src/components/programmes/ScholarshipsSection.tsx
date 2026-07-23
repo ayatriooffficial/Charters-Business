@@ -2,58 +2,36 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { Plus, Minus } from "lucide-react";
 import { ScholarshipData } from "@/data/programmes";
 import HighlightText from "../shared/HighlightObserver";
 
 interface ScholarshipsSectionProps {
   scholarships: ScholarshipData[];
+  config?: {
+    subtitle?: string;
+    title: { prefix: string; highlight: string; };
+    description: string;
+  };
 }
 
 const ScholarshipsSection: React.FC<ScholarshipsSectionProps> = ({
   scholarships = [],
+  config
 }) => {
   const [expandedItem, setExpandedItem] = useState<string | null>(
-    scholarships[0].id,
+    scholarships[0]?.id || null,
   );
-  const [imageLoading, setImageLoading] = useState(false);
-  const [currentImageSrc, setCurrentImageSrc] = useState("");
 
   // Initialize on mount
   useEffect(() => {
     if (scholarships && scholarships.length > 0) {
       setExpandedItem(scholarships[0].id);
-      setCurrentImageSrc(scholarships[0].image);
     }
   }, []);
 
   const toggleExpanded = (id: string) => {
     const newExpandedItem = expandedItem === id ? null : id;
-
-    if (
-      newExpandedItem !== expandedItem &&
-      scholarships &&
-      scholarships.length > 0
-    ) {
-      setImageLoading(true);
-      const newScholarship = scholarships.find((s) => s.id === newExpandedItem);
-
-      if (newScholarship) {
-        const img = new window.Image();
-        img.onload = () => {
-          setCurrentImageSrc(newScholarship.image);
-          setTimeout(() => setImageLoading(false), 100);
-        };
-        img.onerror = () => setImageLoading(false);
-        img.src = newScholarship.image;
-      }
-    }
     setExpandedItem(newExpandedItem);
-  };
-
-  const getCurrentScholarship = () => {
-    if (!scholarships || scholarships.length === 0) return null;
-    return scholarships.find((s) => s.id === expandedItem) || scholarships[0];
   };
 
   // Early return if no scholarships
@@ -61,107 +39,78 @@ const ScholarshipsSection: React.FC<ScholarshipsSectionProps> = ({
     return null;
   }
 
-  const currentScholarship = getCurrentScholarship();
-  if (!currentScholarship) return null;
-
   return (
     <section
-      className="bg-white"
+      className="bg-white w-full"
       aria-labelledby="scholarships-heading"
     >
-      <div className="max-w-[85rem] pt-12 sm:pt-16 md:pt-18">
-        <header className="text-center mb-13 sm:mb-14">
-          <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-4 sm:mb-6">
-            Financial Aid
+      <div className="w-full">
+        <div className="mb-6 sm:mb-8 text-left lg:pl-8 pr-4 sm:pr-6 lg:pr-8">
+          <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-2">
+            {config?.subtitle}
           </p>
           <h2
             id="scholarships-heading"
-            className="font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-black leading-tight mb-3 sm:mb-4"
+            className="font-bold text-2xl sm:text-3xl text-black leading-tight mb-3"
           >
-            Empowering Dreams Through{" "}
-            <HighlightText className="font-bold hl-px-0">
-              Scholarships
+            {config?.title.prefix}{" "}
+            <HighlightText className="font-bold">
+              {config?.title.highlight}
             </HighlightText>
           </h2>
-          <p className="text-lg text-black leading-relaxed">
-            We never let financial hardships stand in the way of quality
-            education. Scholarships cover up to 100% of the tuition.
+          <p className="text-sm sm:text-base text-black leading-relaxed">
+            {config?.description}
           </p>
-        </header>
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-start">
-          {/* Left Content */}
-          <div className="">
-            {scholarships.map((scholarship) => (
-              <div
-                key={scholarship.id}
-                className="border-b border-r border-gray-200 first:border-t last:border-b-0"
+        </div>
+        
+        <div className="w-full border-t border-gray-200">
+          {scholarships.map((scholarship, index) => (
+            <div
+              key={scholarship.id}
+              className={`border-gray-200 ${
+                index !== scholarships.length - 1 ? "border-b" : ""
+              }`}
+            >
+              <button
+                onClick={() => toggleExpanded(scholarship.id)}
+                className="w-full flex items-center justify-between text-left group cursor-pointer hover:bg-gray-50 transition-colors duration-200 py-4 pl-2 sm:pl-4 lg:pl-8 pr-4 sm:pr-6 lg:pr-8 rounded-sm"
+                type="button"
+                aria-expanded={expandedItem === scholarship.id}
               >
-                <button
-                  onClick={() => toggleExpanded(scholarship.id)}
-                  className="w-full flex items-center justify-between text-left group cursor-pointer hover:bg-gray-50 transition-colors duration-200 py-4 px-2 rounded-sm"
-                  type="button"
-                  aria-expanded={expandedItem === scholarship.id}
-                >
-                  <h3 className="text-lg font-medium text-black">
-                    {scholarship.title}
-                  </h3>
-                  <div className="ml-4 flex-shrink-0">
-                    {expandedItem === scholarship.id ? (
-                      <Minus className="w-5 h-5 text-[#B30437]" />
-                    ) : (
-                      <Plus className="w-5 h-5 text-[#B30437]" />
-                    )}
-                  </div>
-                </button>
+                <h3 className="text-base sm:text-lg font-medium text-black pr-4">
+                  {scholarship.title}
+                </h3>
+                <div className="flex-shrink-0">
+                  {expandedItem === scholarship.id ? (
+                    <img src="/Charters-icon/dot-icon.svg" alt="collapse" width={20} height={20} className="w-5 h-5" />
+                  ) : (
+                    <img src="/Charters-icon/joint-icon.svg" alt="expand" width={20} height={20} className="w-5 h-5" />
+                  )}
+                </div>
+              </button>
 
-                {expandedItem === scholarship.id && (
-                  <div className="mt-4 space-y-3 px-4 sm:px-6">
-                    <p className="text-black leading-relaxed">
-                      {scholarship.description}
-                    </p>
-                    <div className="flex items-start gap-2">
-                      <span className="text-sm font-medium text-[#B30437] mt-0.5">
-                        📋
+              {expandedItem === scholarship.id && (
+                <div className="mt-2 mb-4 space-y-3 px-2 sm:px-4 lg:pl-8 pr-4 sm:pr-6 lg:pr-8">
+                  <p className="text-sm sm:text-base text-black leading-relaxed">
+                    {scholarship.description}
+                  </p>
+                  <div className="flex items-start gap-2 bg-red-50 p-3 rounded">
+                    <span className="text-sm font-medium text-[#B30437] mt-0.5">
+                      📋
+                    </span>
+                    <div>
+                      <span className="text-sm font-semibold text-black">
+                        Eligibility Criteria:{" "}
                       </span>
-                      <div>
-                        <span className="text-sm font-medium text-black">
-                          Eligibility Criteria:{" "}
-                        </span>
-                        <span className="text-sm text-black">
-                          {scholarship.eligibility}
-                        </span>
-                      </div>
+                      <span className="text-sm text-black">
+                        {scholarship.eligibility}
+                      </span>
                     </div>
                   </div>
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* Right Image */}
-          <aside className="relative">
-            <div className="aspect-[4/3] overflow-hidden relative">
-              {imageLoading && (
-                <div className="absolute inset-0 bg-gray-200 animate-pulse z-10 flex items-center justify-center">
-                  <div className="w-8 h-8 border-2 border-gray-400 border-t-transparent rounded-full animate-spin"></div>
                 </div>
               )}
-              {currentImageSrc && (
-                <Image
-                  src={currentImageSrc}
-                  alt={currentScholarship.alt}
-                  fill
-                  className={`object-cover transition-all duration-700 ease-in-out ${imageLoading
-                    ? "opacity-0 scale-105"
-                    : "opacity-100 scale-100"
-                    }`}
-                  onLoad={() => setImageLoading(false)}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              )}
             </div>
-            <div className="absolute top-0 right-0 w-2 h-16 bg-[#B30437]"></div>
-          </aside>
+          ))}
         </div>
       </div>
     </section>

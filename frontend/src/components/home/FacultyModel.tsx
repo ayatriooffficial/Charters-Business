@@ -14,6 +14,7 @@ import { Faculty, FacultyCategory, facultyCategories, facultyMembers } from "@/d
 
 interface FacultyModelProps {
   data?: {
+    subtitle?: string;
     faculty?: Faculty[];
     categories?: FacultyCategory[];
   };
@@ -78,8 +79,7 @@ function FacultyModel({ data }: FacultyModelProps) {
             </h2>
 
             <p className="text-black px-[20px] md:px-[50px] lg:px-[70px] text-sm sm:text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
-              Learn from industry leaders, academic experts, and seasoned
-              practitioners who bring real-world experience to your education.
+              {data?.subtitle || "Learn from industry leaders, academic experts, and seasoned practitioners who bring real-world experience to your education."}
             </p>
           </div>
 

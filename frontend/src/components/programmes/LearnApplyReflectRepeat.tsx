@@ -87,27 +87,29 @@ const LearnApplyReflectRepeat: React.FC<LearnApplyReflectRepeatProps> = ({
       <section
         id="main-content"
         className="bg-white text-black pt-4 sm:pt-6 md:pt-8"
-        role="main"
         aria-labelledby="main-heading"
       >
         <div className="max-w-[85rem] mx-auto pt-[4rem] sm:pt-14">
           {/* Header Section */}
-          <header className="mb-4 sm:mb-6 md:mb-8">
+          <div className="mb-4 sm:mb-6 md:mb-8">
             <h2
               id="main-heading"
               className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight text-center px-2"
             >
-              Learn. Apply. Reflect.{" "}
+              {data.title?.prefix}{" "}
               <HighlightText className="font-bold hl-px-0">
-                Repeat.
+                {data.title?.highlight}
               </HighlightText>
+              {data.title?.suffix ? ` ${data.title.suffix}` : ""}
             </h2>
-            <p className="text-black text-base sm:text-lg md:text-xl leading-relaxed text-center px-4">
-              Hands-on courses and workshops designed to build real businesses—
-              <br className="hidden sm:block" />
-              because real learning comes from real applications.
-            </p>
-          </header>
+            {data.subtitle && (
+              <p className="text-black text-base sm:text-lg md:text-xl leading-relaxed text-center px-4"
+                dangerouslySetInnerHTML={{
+                  __html: data.subtitle
+                }}
+              />
+            )}
+          </div>
 
           {/* Subject Categories Navigation */}
           <nav
@@ -237,7 +239,7 @@ const LearnApplyReflectRepeat: React.FC<LearnApplyReflectRepeatProps> = ({
                     aria-labelledby={`course-set-${activeCategory}-${index}-heading`}
                   >
                     {/* Course Set Header */}
-                    <header className="border-b border-gray-200 pb-2 sm:pb-3">
+                    <div className="border-b border-gray-200 pb-2 sm:pb-3">
                       <div className="flex items-center gap-2 mb-1">
                         <div
                           className="w-2 h-2 bg-[#B30437] rounded-full"
@@ -253,7 +255,7 @@ const LearnApplyReflectRepeat: React.FC<LearnApplyReflectRepeatProps> = ({
                       >
                         {courseSet.location}
                       </h3>
-                    </header>
+                    </div>
 
                     {/* Course List */}
                     <div className="flex-1">

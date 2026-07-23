@@ -1,15 +1,37 @@
 import type { Programme } from "./types";
 import { defaultCurriculumSection } from "./curriculum-default";
 import { facultyMembers } from "@/data/faculty";
-import { studentMembers } from "@/data/students";
 // DGM reorders its term tabs: Cultural Immersions appears before Business Immersions
 const dgmCurriculumSection = structuredClone(defaultCurriculumSection);
+
+// ── "AI-Ready: Hands-on Learning" Section ──
+// You can customize the subtitle text and the "Skills you'll learn" bubbles specifically for the DGM course here.
+// Any edits made here will NOT affect the CBA or TBM pages.
+dgmCurriculumSection.subtitle = "We trained to contribute in real business environments—earning recognition from managers";
 dgmCurriculumSection.tabOrder = [
   "courses",
   "collaboration",
   "cultural",
   "business",
 ];
+dgmCurriculumSection.skillsData = {
+  previewSkills: ["Client Services", "Marketing", "Data Storytelling", "Social Media Strategy", "Spreadsheet Software", "Campaign Management", "Paid media", "Email Marketing", "Online Advertising", "Social Media Marketing", "Web Presence"],
+  modalTitle: "Skills and tools you'll learn",
+  modalSkillsGain: {
+    title: "Skills you'll gain",
+    skills: [
+      "Client Services", "Marketing", "Data Storytelling", "Social Media Strategy",
+      "Spreadsheet Software", "Campaign Management", "Paid media", "Email Marketing",
+      "Online Advertising", "Social Media Marketing", "Web Presence", "Interviewing Skills",
+      "Social Media Management", "Order Fulfillment", "Search Engine Optimization",
+      "Media Planning", "Loyalty Programs", "Performance Measurement", "E-Commerce"
+    ]
+  },
+  modalToolsLearn: {
+    title: "Tools you'll learn",
+    tools: ["Google Ads", "Google Analytics", "Canva"]
+  }
+};
 dgmCurriculumSection.tabLabels = { cultural: "Tools & Technology" };
 
 // ── DUBAI (Term 1 / Month 1) overrides ──
@@ -22,7 +44,7 @@ dubai.badges = [
 ];
 dubai.outcome = "Understanding AI impact on Marketing & Customer persona, Build a website + write SEO content, Google ranking best practices";
 dubai.project = undefined;
-dubai.termImage = "/images/dgm-tools/Charters-classroom.avif";
+dubai.termImage = "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif";
 dubai.courses = {
   initial: [
     { code: "MAST 101", title: "Digital Marketing orientation, sales funnel & 4Ps/7Ps" },
@@ -34,9 +56,9 @@ dubai.courses = {
   more: [
     { code: "SAMA 101", title: "Website plugins - Ai-chatbot, lead form, WhatsApp button" },
     { code: "SAMA 201", title: "Introduction of SEO, AEO & GEO difference with ranking factors" },
-    { code: "SAMA 301", title: "On-Page SEO — titles, meta, headings, internal links" },
-    { code: "SAMA 401", title: "Keyword research & search-intent mapping, Google trands analysis" },
-    { code: "FIFI 101", title: "AI-Powerd compititor Analysis & google (E-E-A-T) model" },
+    { code: "SAMA 301", title: "On-Page SEO — Titles, Meta, Topic Clusters, internal links" },
+    { code: "SAMA 401", title: "Keyword research & Search-intent mapping, Google trands analysis" },
+    { code: "FIFI 101", title: "AI-Powerd compititor Analysis, google (E-E-A-T) model & google penalizetion" },
     { code: "PRTC 101", title: "Corporate english specking" },
     { code: "COMM 101", title: "Profesonal personal branding" },
     { code: "COMM 201", title: "Profesonal digital Networking" },
@@ -240,25 +262,33 @@ export const dgm: Programme = {
       { value: "92%", label: "SUCCESS RATE" },
     ],
     link: "/post-graduate-diploma-in-management",
-    imageUrl: "/images/programmes/DSC09198.webp",
+    imageUrl: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784310639/class-of-DGM_Digital_Growth_Marketing_kilwdn.avif",
   },
 
   // Card Data
   card: {
-    image: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081780/bytdizxcq2cy5hzcb1xv_qpykcw.avif",
+    image: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784310639/class-of-DGM_Digital_Growth_Marketing_kilwdn.avif",
     hasVideo: false,
     rating: { score: 4.7, reviews: 1876 },
     title: "DGM™(Digital Growth & Marketing)",
     level: "Certified",
     certificateType: "Corporate Certificate",
     description:
-      "Gain real-world corporate accounting through Harvard/Columbia case study, IIMK, US-CMA&CPA/CFA/ACCA integrated AI-led curriculum under top 1% industry faculty.",
+      "Master AI-driven performance marketing, SEO, social media, e-commerce growth, brand strategy, and media planning with top industry mentors.",
     format: { type: "On Campus" },
     eligibility: { type: "12 Pass-out & Early under graduates." },
     duration: { type: "3 Months theory + 4 Months in-class intranship" },
     deadline: { type: "Round 1: 30th Oct '25" },
     careerOutcomes: ["Management Trainee", "Project Manager"],
-    jobOpenings: "9,87,654",
+    jobOpenings: "2.12 Cr",
+    expectedCtc: {
+      traditional: "2.8L",
+      cmp: "7.3L",
+    },
+    partnerLogos: {
+      partners: "/charter-partner/charter-digital-growth-marketing-partners.avif",
+      internships: "/charter-partner/digital_growth_marketing_internship_partner.avif",
+    },
   },
   // Hero Data
   hero: {
@@ -272,24 +302,43 @@ export const dgm: Programme = {
     description:
       "POST GRADUATE DIPLOMA IN",
     stats: [
-      { label: "92% Success Rate", value: "92%" },
-      { label: "Live Projects", value: "200+" },
+      { label: "Average CTC", value: "7.5 LPA" },
+      { label: "Placement Rate", value: "95%" },
     ],
+    alumniLabel: "Find our student at -",
     alumniCompanies: [
       { name: "KPMG", logo: "/images/companies/kpmg.png" },
       { name: "TCS", logo: "/images/companies/tcs.png" },
       { name: "Infosys", logo: "/images/companies/infosys.png" },
     ],
-    instructors: {
-      badge: "Industry Experts",
-      title: "Senior Management Professionals",
+    actions: {
+      primaryText: "Apply Now",
+      secondaryText: "Download Brochure",
     },
-    heroImage: "/images/programmes/DSC09198.webp",
+    enrolledCount: "1,127",
+    instructors: {
+      badge: "India's top 1%",
+      title: "CMO/Sr Ads Specialist/Growth Hacker Industry Leaders",
+      aiSkills: {
+        title: "New AI skills",
+        description: "This Professional Certificate includes new videos on how to use AI in digital marketing & e-commerce.",
+        skills: [
+          "Boost your digital marketing skills with AI",
+          "Use AI to help you understand your audience",
+          "Kickstart marketing strategy ideas with AI",
+          "Use AI to compare two campaign proposals",
+          "Improve your email marketing using AI",
+          "Brainstorm website copy ideas with AI"
+        ]
+      }
+    },
+    heroImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784641527/DGM_sashank-_dabjani-place-top-company_h8okn7.avif",
     floatingCards: {
       topRight: {
         badge: "Live Sessions",
         students: "1,800+",
         rating: 4.7,
+        stars: "★★★★★",
       },
       bottomLeft: {
         label: "Placement Rate",
@@ -383,12 +432,13 @@ export const dgm: Programme = {
   },
 
   degreeProgram: {
-    badge: "DIPLOMA & ACCREDITATION",
+    badge: "CERTIFICATION & ACCREDITATION",
     title: {
-      prefix: "Graduate with industry-recognized",
-      highlight: "Post Graduate Diploma in Management",
-      suffix: "from Charter's Business College",
+      prefix: "Global Recognized",
+      highlight: "DGM™",
+      suffix: "Certification",
     },
+    auditorText: "Our placement reports are audited by <strong>AnalystPK</strong>, auditor for IIM and follow the IPRS Revision 2.2 framework for transparent and consistent compensation data.",
     accordions: [
       {
         id: "placement",
@@ -493,8 +543,13 @@ export const dgm: Programme = {
 
   // Learn Apply
   learnApply: {
+    title: {
+      prefix: "Learn. Apply. Reflect.",
+      highlight: "Repeat.",
+    },
+    subtitle: `Hands-on courses and workshops designed to build real businesses—<br class="hidden sm:block" />because real learning comes from real applications.`,
     categories: [
-      { id: "practical", label: "PRAC", title: "Practical Management" },
+      { id: "growth", label: "GRW", title: "Growth Marketing" },
       { id: "leadership", label: "LEAD", title: "Leadership Skills" },
     ],
     courseData: {
@@ -523,6 +578,11 @@ export const dgm: Programme = {
   },
 
   // Scholarships
+  scholarshipConfig: {
+    subtitle: "Financial Aid",
+    title: { prefix: "Empowering Dreams Through ", highlight: "Scholarships" },
+    description: "We never let financial hardships stand in the way of quality education. Scholarships cover up to 100% of the tuition."
+  },
   scholarships: [
     {
       id: "merit",
@@ -530,9 +590,6 @@ export const dgm: Programme = {
       description:
         "For outstanding academic achievers with exceptional entrance exam scores and strong academic records.",
       eligibility: "High entrance exam scores",
-      image:
-        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80",
-      alt: "Merit scholarship recipient",
     },
     {
       id: "diversity",
@@ -540,9 +597,6 @@ export const dgm: Programme = {
       description:
         "Supporting diverse backgrounds and perspectives in management education.",
       eligibility: "Underrepresented backgrounds",
-      image:
-        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80",
-      alt: "Diverse students",
     },
     {
       id: "women",
@@ -550,13 +604,12 @@ export const dgm: Programme = {
       description:
         "Empowering women to take leadership roles in business and management.",
       eligibility: "Women candidates with leadership potential",
-      image:
-        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80",
-      alt: "Women leaders",
     },
   ],
   // FAQ
   faq: {
+    subtitle: "FAQS",
+    title: "Have more Questions?",
     categories: [
       {
         id: "program",
@@ -642,14 +695,206 @@ export const dgm: Programme = {
     categories: [
       { id: "jan", name: "January" },
       { id: "apr", name: "April" },
+      { id: "jul", name: "July" },
     ],
 
     students: [
-      ...studentMembers.filter(m => m.category === 'jan').map(m => ({...m, category: 'jan'})),
-      ...studentMembers.filter(m => m.category === 'apr').map(m => ({...m, category: 'apr'})),
+      {
+        name: "Sunita Das",
+        batch: "AUG 2025",
+        city: "Kolkata",
+        company: "TATA",
+        role: "Executive Finance",
+        timeToPlace: "Just in 7 months",
+        previousCollege: "Goenka College",
+        background: "2nd Year BCOM Fresher",
+        internship: "Kripton PVT Ltd / Horyzen PVT Ltd — Quarter Taxation, 2025 income tax, strategy on price section",
+        researchPaper: "How AI impacts on taxation automation at global countries",
+        caseStudies: "Why Amule SAP automation failed 100 million revenue at 2...",
+        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784619361/Varsha_Nadia_cpaagy.avif",
+        linkedinUrl: "#",
+        category: "jan",
+      },
+      {
+        name: "Rahul Sharma",
+        batch: "JAN 2025",
+        city: "Mumbai",
+        company: "TATA",
+        role: "Finance Analyst",
+        timeToPlace: "Just in 7 months",
+        previousCollege: "Mumbai University",
+        background: "3rd Year BCOM Fresher",
+        internship: "Deloitte India — Tax advisory and financial reporting",
+        researchPaper: "Impact of GST on SME growth in India",
+        caseStudies: "How Infosys restructured its finance division post-2020...",
+        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784619359/Somnath_jha_zdztpx.avif",
+        linkedinUrl: "#",
+        category: "jan",
+      },
+      {
+        name: "Priya Mehta",
+        batch: "JAN 2025",
+        city: "Delhi",
+        company: "TATA",
+        role: "Operations Executive",
+        timeToPlace: "Just in 6 months",
+        previousCollege: "Delhi University",
+        background: "Graduate Fresher",
+        internship: "PwC India — Business process optimization",
+        researchPaper: "Digital transformation in Indian banking sector",
+        caseStudies: "Why Jet Airways failed despite strong brand equity...",
+        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784619360/susmita_roy_umrfar.avif",
+        linkedinUrl: "#",
+        category: "jan",
+      },
+      {
+        name: "Sneha Dutta",
+        batch: "DEC 2025",
+        city: "Kolkata",
+        company: "WishCare",
+        role: "Digital Marketing",
+        timeToPlace: "Just in 9 months",
+        previousCollege: "Loreto College",
+        background: "2025 Pass Out Fresher",
+        internship: "WishCare — Brand marketing and influencer campaigns",
+        researchPaper: "Social media growth strategies for D2C brands",
+        caseStudies: "How WishCare built a beauty-first digital audience...",
+        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784619358/sneha_shing_kymmxk.avif",
+        linkedinUrl: "#",
+        category: "jan",
+      },
+      {
+        name: "Amit Kumar",
+        batch: "APR 2025",
+        city: "Bangalore",
+        company: "TATA",
+        role: "Business Analyst",
+        timeToPlace: "Just in 7 months",
+        previousCollege: "Christ University",
+        background: "BBA Graduate Fresher",
+        internship: "KPMG — Market research and data analysis",
+        researchPaper: "Role of fintech in financial inclusion in rural India",
+        caseStudies: "How Byju's lost market cap despite rapid expansion...",
+        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784619356/sankar_g4btwe.avif",
+        linkedinUrl: "#",
+        category: "apr",
+      },
+      {
+        name: "Neha Singh",
+        batch: "APR 2025",
+        city: "Pune",
+        company: "TATA",
+        role: "HR Executive",
+        timeToPlace: "Just in 7 months",
+        previousCollege: "Symbiosis College",
+        background: "BBA HR Fresher",
+        internship: "Wipro HR — Talent acquisition and onboarding",
+        researchPaper: "Employee retention strategies in post-pandemic era",
+        caseStudies: "How Zomato scaled its workforce from 500 to 5000...",
+        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784619355/Nishita_varma_ttxyb9.avif",
+        linkedinUrl: "#",
+        category: "apr",
+      },
+      {
+        name: "Riya Kapoor",
+        batch: "APR 2026",
+        city: "Kolkata",
+        company: "Jio",
+        role: "Growth Engineer",
+        timeToPlace: "10 Months later",
+        previousCollege: "Techno India",
+        background: "2nd Year MCA Fresher",
+        internship: "Jio Platforms — Growth engineering and analytics",
+        researchPaper: "AI-based customer engagement strategies in telecom industry",
+        caseStudies: "How Jio scaled digital adoption across India...",
+        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784619354/i5nqr8hxd3j1gbbyxtdu_mfkng1.avif",
+        linkedinUrl: "#",
+        category: "apr",
+      },
+      {
+        name: "Sarah Jenkins",
+        batch: "APR 2026",
+        city: "Chennai",
+        company: "Infosys",
+        role: "Financial Auditor",
+        timeToPlace: "Just in 6 months",
+        previousCollege: "Madras University",
+        background: "BCOM Fresher",
+        internship: "Infosys — Corporate Finance",
+        researchPaper: "Impact of AI on modern auditing",
+        caseStudies: "Infosys financial restructuring...",
+        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784619348/Govinth_mrrqka.avif",
+        linkedinUrl: "#",
+        category: "apr",
+      },
+      {
+        name: "Ravi Patel",
+        batch: "JUL 2025",
+        city: "Ahmedabad",
+        company: "TATA",
+        role: "Marketing Executive",
+        timeToPlace: "Just in 7 months",
+        previousCollege: "Gujarat University",
+        background: "BCOM Graduate Fresher",
+        internship: "Ogilvy India — Digital marketing campaigns",
+        researchPaper: "Social media influence on consumer buying behavior",
+        caseStudies: "How Amul maintained brand dominance for 70+ years...",
+        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784619353/gpfdgbkgv6dxnksnqhpq_kbxbod.avif",
+        linkedinUrl: "#",
+        category: "jul",
+      },
+      {
+        name: "John Doe",
+        batch: "JUL 2025",
+        city: "Delhi",
+        company: "Amazon",
+        role: "Financial Analyst",
+        timeToPlace: "Just in 5 months",
+        previousCollege: "Delhi University",
+        background: "BCOM Fresher",
+        internship: "Amazon India — Financial Planning",
+        researchPaper: "E-commerce profitability metrics",
+        caseStudies: "Amazon's inventory management...",
+        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784619348/Govinth_mrrqka.avif",
+        linkedinUrl: "#",
+        category: "jul",
+      },
+      {
+        name: "Jane Smith",
+        batch: "JUL 2025",
+        city: "Mumbai",
+        company: "Google",
+        role: "Marketing Manager",
+        timeToPlace: "Just in 6 months",
+        previousCollege: "Mumbai University",
+        background: "BBA Fresher",
+        internship: "Google India — Ad campaigns",
+        researchPaper: "Search engine marketing trends",
+        caseStudies: "Google Ads optimization...",
+        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784619347/ca6lpkxc1aeaqngb0wwg_ttqr7a.avif",
+        linkedinUrl: "#",
+        category: "jul",
+      },
+      {
+        name: "Alex Kumar",
+        batch: "JUL 2025",
+        city: "Bangalore",
+        company: "Microsoft",
+        role: "Business Consultant",
+        timeToPlace: "Just in 8 months",
+        previousCollege: "Christ University",
+        background: "MBA Fresher",
+        internship: "Microsoft India — Strategy",
+        researchPaper: "Cloud adoption strategies",
+        caseStudies: "Microsoft Azure growth...",
+        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784619346/anupom_banarjee_ax0gnc.avif",
+        linkedinUrl: "#",
+        category: "jul",
+      },
     ],
   },
   faculty: {
+    subtitle: "Learn from industry leaders, academic experts, and seasoned practitioners who bring real-world experience to your education.",
     categories: [
       { id: "leadership", name: "Leadership" },
       { id: "finance", name: "Finance" },
@@ -657,13 +902,13 @@ export const dgm: Programme = {
     ],
     faculty: [
       // Map 'technology' (Digital Marketing) to the 'leadership' tab
-      ...facultyMembers.filter(m => m.category === 'technology').map(m => ({...m, category: 'leadership'})),
-      
+      ...facultyMembers.filter(m => m.category === 'technology').map(m => ({ ...m, category: 'leadership' })),
+
       // Map 'consulting' (Digital Growth Engineer) to the 'finance' tab
-      ...facultyMembers.filter(m => m.category === 'consulting').map(m => ({...m, category: 'finance'})),
-      
+      ...facultyMembers.filter(m => m.category === 'consulting').map(m => ({ ...m, category: 'finance' })),
+
       // Map 'leadership' (Accountancy) to the 'consulting' tab (since consulting data is missing)
-      ...facultyMembers.filter(m => m.category === 'leadership').map(m => ({...m, category: 'consulting'})),
+      ...facultyMembers.filter(m => m.category === 'leadership').map(m => ({ ...m, category: 'consulting' })),
     ],
   },
 
@@ -682,16 +927,12 @@ export const dgm: Programme = {
     industrialFacultyLogo: "/images/programmes/industrial_faculty.avif",
 
     // Renders as the list of placement partner logos in TrackRecord
-    hiredCompaniesBanner: "/images/program-placements/CBA_Hired_Company.avif",
-
-    // Renders on the right side of AIDegreeProgram
+    hiredCompaniesBanner: "/images/program-placements/DGM_Hired_Company.png",
     campusImage: "/images/programmes/certificate.JPG",
-
-    // Renders at the bottom of the accreditation details in AIDegreeProgram
+    academicPartnerLogo: "/charter-partner/charter-academic-partner.avif",
+    degreeInternshipPartnerLogo: "/charter-partner/charter-intrenshiph-company-around-the-world.avif",
     disclaimerText: "Every DGM™ (Digital Growth & Marketing) completed student who fulfils the minimum requirements will be eligible to apply for professional certifications, international marketing credentials, and global job placement opportunities.",
-
-    // Renders as the weekly timetable schedule image in WeekAtUnion
-    timetableImage: "/images/week-at-chartersunion/DGM-week-at-chartersunion.avif",
+    timetableImage: "/images/week-at-chartersunion/dgm-week-at-charters-union.png",
 
     // Renders cityscapes in CurriculumSection
     curriculumCityscapes: {
@@ -713,14 +954,312 @@ export const dgm: Programme = {
 
     // Renders the EMI value, payment months, and career tracks inside PricingTabs
     pricing: {
-      emiAmount: "₹6,999",
-      emiMonths: "6 months",
+      emiAmount: "₹6430",
+      emiMonths: "total ₹45000",
+      secondaryButton: { text: "VIEW EMI" },
+      emiPlans: [
+        { tenure: 12, type: "No Cost", loanAmount: 379000, rate: "0%", emi: 31583, totalLoanAmount: 379000 },
+        { tenure: 18, type: "No Cost", loanAmount: 379000, rate: "0%", emi: 21056, totalLoanAmount: 379000 },
+        { tenure: 24, type: "Low Cost", loanAmount: 379000, rate: "4%", emi: 16423, totalLoanAmount: 394160 },
+        { tenure: 36, type: "Flat 11%", loanAmount: 379000, rate: "11%", emi: 14002, totalLoanAmount: 504070 },
+        { tenure: 48, type: "Flat 11%", loanAmount: 379000, rate: "11%", emi: 11370, totalLoanAmount: 545760 },
+        { tenure: 60, type: "Flat 11%", loanAmount: 379000, rate: "11%", emi: 9791, totalLoanAmount: 587450 },
+      ],
       jobTracks: [
         { name: "SEO & Growth Marketing" },
         { name: "Brand & Product Management" },
-        { name: "Google/Meta Performance Ads", badge: "Seats filled. Next batch starts on", badgeDate: "01 Jul 2026" },
         { name: "Marketing Analytics & Automation", badge: "Seats filled. Next batch starts on", badgeDate: "01 Jul 2026" }
+      ],
+      title: "What's included ?",
+      features: {
+        fundamentals: "Fundamentals",
+        classes: "3 Hours classes and 3 Hours Labs Everyday",
+        trainers: "Trainers: IIT alumni and Ex-FAANG"
+      },
+      placementSupport: {
+        title: "100% Placement Support",
+        items: [
+          "Aptitude Training",
+          "Soft Skills Training",
+          "Resume Preparation",
+          "AI-Powered Mock Interviews",
+          "Mock Interviews by Tech and HR Panels",
+          "300+ Senior Interview Experiences",
+          "Scheduling Interviews",
+          "Access to Placement Portal",
+          "Mega Offline Placement Drives",
+          "Negotiation with companies for higher salaries"
+        ]
+      },
+      benefits: [
+        { text: "9AM - 9PM Doubt Clarification. 1500+ Mentors to help you." },
+        { text: "10+ Real-time Projects for strong resume" },
+        { text: "24/7 Online Lab Access" },
+        { text: "Charters' 100% Job Ready Program.", isDisclaimer: true }
+      ],
+      cardFeatures: {
+        freeTrial: { title: "A Free Trial Session", subtitle: "No Fee Required" },
+        scholarships: { title: "Assured Scholarships", subtitle: "After Free Trial" }
+      }
+    }
+  },
+  weekAtUnion: {
+    title: "What's a Week at Charters' Union Like?",
+    subtitle: "Start your day with ambition and end it with impact. At Charters' Union, every week pushes boundaries.",
+  },
+  learningOutcomes: {
+    comparisonTable: {
+      title: "How DGM is fundamentally different",
+      subtitle: "DGM VS TRADITIONAL EDUCATION",
+      headers: ["Parameter", "Engineering", "Business", "Charter's Business (DGM)"],
+      rows: [
+        { icon: "/Charters-icon/fundamental.svg", parameter: "Core focus", column1: "✕ Theoretical CS", column2: "✕ Theoretical management", column3: "✓ Computer Science + AI + Applied business" },
+        { icon: "/Charters-icon/study.svg", parameter: "How students learn", column1: "✕ Lectures & exams", column2: "✕ Case studies", column3: "✓ Build real tech products from day one" },
+        { icon: "/Charters-icon/real world project.svg", parameter: "Entrepreneurship", column1: "✕ Optional club", column2: "✕ Competitions", column3: "✓ Learn by building a tech startup" },
+        { icon: "/Charters-icon/profile.svg", parameter: "Who teaches", column1: "✕ Academics", column2: "✕ Limited tech exposure", column3: "✓ Meta, Google, OpenAI founders" },
+        { icon: "/Charters-icon/careerroadmap.svg", parameter: "Career outcomes", column1: "✕ Junior SDE", column2: "✕ Analyst roles", column3: "✓ Forward Deployed Eng, Product Eng, AI PMs" },
+        { icon: "/Charters-icon/jobs.svg", parameter: "Risk & safety net", column1: "✕ Limited flexibility", column2: "✕ No tech skills", column3: "✓ Placements + deferred support" }
       ]
+    },
+    title: {
+      prefix: "The",
+      highlight: "7",
+      suffix: "learning outcomes"
+    },
+    description: "We interviewed 100+ founders, CEO, CXOs,COO with one question: What makes someone genuinely useful in a Top Company globally within 5–7 months?\n\nTheir answers became 7 core outcomes that now shape every Charter course, project and pathway.",
+    items: [
+      {
+        title: 'Data-driven decision making',
+        description: "In today's digital age, data and the digital footprint it leaves are everywhere. The ability to use it effectively for evidence-backed decisions can truly set you apart.",
+        highlight: 'The ability to use it effectively for evidence-backed decisions can truly set you apart.',
+        subtitle: 'At Charters, by the end of the program, you will:',
+        outcomes: [
+          'Identify relevant data to solve problems, extract and analyze datasets, and generate actionable insights',
+          'Effectively communicate insights through clear visualizations and a compelling narrative',
+          'Align business decisions, experiments, or hypotheses with data-driven insights for impactful outcomes.',
+        ],
+        images: [
+          {
+            src: '',
+            caption: 'Learn tools like Excel, Powerquery, SQL, Python and PowerBI',
+          },
+          {
+            src: '',
+            caption: 'Work on 25+ real-world startup datasets and get your hands dirty',
+          },
+          {
+            src: '',
+            caption: 'Get regular 1:1 mentorship, support and practice',
+          },
+        ],
+      },
+      {
+        title: 'Customer Obsession',
+        description: "One of Amazon's key leadership principles is deeply understanding your customer—their pain points, motivations, and alternatives—as the foundation for building effective solutions.",
+        highlight: 'deeply understanding your customer',
+        subtitle: 'At Charters, by the end of the program, you will:',
+        outcomes: [
+          'Define and communicate clear customer personas for a product or service',
+          'Conduct thorough user research, interpret insights, and understand customer messaging',
+          'Use frameworks like JTBD (Job-To-Be-Done), User Stories, and User Quotes to define user requirements',
+        ],
+        images: [
+          {
+            src: '',
+            caption: 'Learn marketing and user research from top professors',
+          },
+          {
+            src: '',
+            caption: 'Interact with real customers while building a business',
+          },
+          {
+            src: '',
+            caption: 'Conduct customer discovery with early-stage startups',
+          },
+        ],
+      },
+      {
+        title: 'Effective Communication',
+        description: 'Effective communication with team members, senior leadership, and external stakeholders is the most important predictor of career growth—especially as automation increases.',
+        highlight: 'most important predictor of career growth',
+        subtitle: 'At Charters, by the end of the program, you will:',
+        outcomes: [
+          'Confidently represent yourself and your ideas with clear and concise articulation',
+          'Write compelling, brief and purpose driven documents',
+          'Influence without authority at the workplace',
+        ],
+        images: [
+          {
+            src: '',
+            caption: 'Learn the art of business storytelling, negotiations and presentations',
+          },
+          {
+            src: '',
+            caption: 'Gain 50+ public speaking opportunities and present ideas to top startup leaders',
+          },
+          {
+            src: '',
+            caption: 'Receive 1:1 coaching on executive presence and crafting your elevator pitch',
+          },
+        ],
+      },
+      {
+        title: 'First Principles Problem Solving',
+        description: 'As Elon Musk says, this is "the only thing worth mastering." Understanding problems at their core and building solutions is vital in startups\' ambiguous environments.',
+        highlight: 'the only thing worth mastering',
+        subtitle: 'At Charters, by the end of the program, you will:',
+        outcomes: [
+          'Deeply understand and communicate core problems',
+          'Break down problems using frameworks like MECE and 80/20',
+          'Identify key problem-solving levers and prioritize efforts on identified issues',
+        ],
+        images: [
+          {
+            src: '',
+            caption: 'Analyze & break 100+ real startup business cases',
+          },
+          {
+            src: '',
+            caption: 'Access 50+ hours of workshops on structured problem-solving with examples',
+          },
+          {
+            src: '',
+            caption: 'Join bi-monthly moderated group discussions on trending business topics',
+          },
+        ],
+      },
+      {
+        title: 'Business Acumen',
+        description: '"What will it really take for this business to be successful?" is a nuanced question that lies at the intersection of core business domains like marketing, finance, operations, and strategy.',
+        highlight: 'What will it really take for this business to be successful?',
+        subtitle: 'At Charters, by the end of the program, you will:',
+        outcomes: [
+          'Grasp and apply essential business frameworks and concepts',
+          'Understand core business models, metrics, and flywheels',
+          'Analyze revenue, cost, LTV, CAC and other levers that move the needle',
+        ],
+        images: [
+          {
+            src: '',
+            caption: 'Attend 500+ hours of lectures by top B-school professors',
+          },
+          {
+            src: '',
+            caption: 'Work on live startup projects with leadership on real-world business challenges',
+          },
+          {
+            src: '',
+            caption: 'Solve 100+ renowned business cases in teams of 3-4',
+          },
+        ],
+      },
+      {
+        title: 'Agile Product Thinking',
+        description: 'To succeed in high-growth startups, the key is to launch fast, fail fast; listen to customers, and continuously iterate on your product. This agile approach is fundamental to startup success.',
+        highlight: 'launch fast, fail fast',
+        subtitle: 'At Charters, by the end of the program, you will:',
+        outcomes: [
+          'Define hypotheses, launch experiments, and build solutions based on customer needs',
+          'Develop a Minimum Viable Product and craft a GTM strategy to secure your first 100 customers',
+          'Create clear success metrics, track them and iterate solutions based on feedback',
+        ],
+        images: [
+          {
+            src: '',
+            caption: 'Attend 40+ hours of Product Management coursework',
+          },
+          {
+            src: '',
+            caption: 'Launch real products and go to market with Charters Startup Lab',
+          },
+          {
+            src: '',
+            caption: 'Gain an Agile scrum certification',
+          },
+        ],
+      },
+      {
+        title: 'Sales',
+        description: 'The ability to effectively sell products or services is crucial for any business success. Understanding customer psychology, building relationships, and closing deals are essential startup skills.',
+        highlight: 'crucial for any business success',
+        subtitle: 'At Charters, by the end of the program, you will:',
+        outcomes: [
+          'Understand the process of selling in both B2C & B2B contexts',
+          'Work backwards from an audience and product to create an efficient sales funnel',
+          'Create a sales strategy for acquiring the first 100 customers for any product/service',
+        ],
+        images: [
+          {
+            src: '',
+            caption: 'Undergo 40+ hours of sales coursework',
+          },
+          {
+            src: '',
+            caption: 'Get real exposure to selling via 1-day sales challenges with popular brands',
+          },
+          {
+            src: '',
+            caption: 'Make upwards of 5L in revenue via the dropshipping challenge in Term 1',
+          },
+        ],
+      },
+      {
+        title: 'Process Thinking',
+        description: 'The ability to plan, execute and monitor a process is often overlooked. It is a key muscle to build if you want to be indispensable at the workplace and deliver end outcomes.',
+        highlight: 'indispensable at the workplace',
+        subtitle: 'At Charters, our goal is that by the end of the program every student will be able to:',
+        outcomes: [
+          'Understand what goes behind setting up business processes from scratch',
+          'Deconstruct a customer journey funnel, conversion metrics and interventions required at every stage',
+          'Build comprehensive trackers, define micro success metrics and create task distributions',
+        ],
+        images: [
+          {
+            src: '',
+            caption: '25+ hours of workshops on program managing processes',
+          },
+          {
+            src: '',
+            caption: 'Internships at startups where you get to own a process end-to-end',
+          },
+          {
+            src: '',
+            caption: 'Manage business processes for your small business in term 1',
+          },
+        ],
+      },
+    ]
+  },
+  layoutBanner: {
+    placement: {
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784656491/charters-placement-report_yj1uj9.avif",
+      imageAlt: "Charters Union Career Report 2025",
+      heading: {
+        highlight1: " 97%'",
+        text1: " of students secured full time job offer by their ",
+        highlight2: "4",
+        text2: "th month of Internship, with \nthe highest CTC being ",
+        highlight3: " ₹12",
+        text3: "lakhs/month."
+      },
+      subtext: "100% Internship Rate • Average Salary Jump 2.35x • Proven track record verified by MarketQuation.",
+      buttonText: "Placement Report",
+      downloadUrl: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784656491/charters-placement-report_yj1uj9.avif",
+      downloadFilename: "charters-placement-report-2025.jpg"
+    },
+    brochure: {
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784611644/charters-placement-report-2026_gyuu4p.avif",
+      imageAlt: "Charters Union Brochure",
+      programName: "Digital Growth & Marketing (DGM™)",
+      subtext: "AI-First Curriculums • 4-6 Month Paid Internships • Global Placements",
+      buttonText: "Download Brochure",
+      downloadUrl: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784611644/charters-placement-report-2026_gyuu4p.avif",
+      downloadFilename: "charters-dgm-brochure.avif"
+    },
+    advisor: {
+      heading: "Want to learn more about ventures and collaborations?",
+      buttonText: "Talk to an advisor",
+      phoneNumber: "+919836465083"
     }
   }
 };

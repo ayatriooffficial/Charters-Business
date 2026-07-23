@@ -4,6 +4,7 @@ import React, { useRef, useState, useEffect, memo } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import useInViewPlay from "@/components/micro/useInViewPlay";
+import BannerBlock from "../shared/BannerBlock";
 import Placement_TrustedCompanies from "./Placement_TrustedCompanies";
 
 const SalaryGrowthChart = dynamic(
@@ -146,62 +147,20 @@ const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
 
         <Placement_TrustedCompanies />
         <div
-          className="px-4 sm:px-6 lg:px-8 text-center border-b border-gray-200"
+          className="max-w-[85rem] mx-auto bg-white px-4 sm:px-6 lg:px-8 text-center border-b border-gray-200"
           role="region"
           aria-labelledby="download-section-heading"
         >
-          <div className="mx-auto flex flex-col md:flex-row items-center justify-between py-4">
-            {/* <div className="w-full md:w-3/4 text-center md:text-left flex flex-col text-gray-800">
-              <h3 id="download-section-heading" className="leading-snug">
-                Proven track record of outcomes{" "}
-                {verification.verified && (
-                  <span className="inline-flex items-center gap-1">
-                    verified by
-                    <Image
-                      src="/home/charters-adit-partners.avif"
-                      alt="Verification logo"
-                      width={104}
-                      height={24}
-                      sizes="(min-width: 768px) 104px, 87px"
-                      className="w-auto h-7 md:h-7 inline-block object-contain"
-                    />
-                  </span>
-                )}{" "}
-                through our programs
-              </h3>
-              <p className="text-[10px] md:text-[11px] text-gray-600 mt-1 px-2 md:px-0">
-                Source: *(a)¹Charter Career Center and Past outcomes are not
-                indicative of future placements for subsequent cohorts.
-              </p>
-            </div> */}
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6 flex-grow text-center md:text-left min-w-0">
-              {/* Logo */}
-              <div className="w-14 sm:w-14 h-20 relative shrink-0">
-                <Image
-                  src="/career-report.avif"
-                  alt="Charters Union Career Report 2025"
-                  fill
-                  sizes="70px"
-                  className="object-contain object-left"
-                  priority
-                />
-              </div>
-
-              {/* Texts */}
-              <div className="flex-grow min-w-0">
-
-                <>
-                  <h3 className="text-base sm:text-lg font-semibold text-gray-900 leading-snug truncate">
-                    <strong> 97%&apos;</strong> of students secured full time job offer by their <strong>4</strong>th month of Internship, with <br></br> the highest CTC being <strong> ₹12.3</strong>lakhs/month.
-                  </h3>
-                  <p className="text-xs sm:text-sm text-gray-600 font-medium mt-1">
-                    100% Internship Rate • Average Salary Jump 2.35x • Proven track record audited by analystGK
-                  </p>
-                </>
-
-              </div>
-            </div>
-            <div className="w-full md:w-1/4 mt-6 md:mt-0 flex justify-center md:justify-end">
+          <BannerBlock
+            imageSrc="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784656491/charters-placement-report_yj1uj9.avif"
+            imageAlt="Charters Union Career Report 2025"
+            title={
+              <>
+                <strong> 97%&apos;</strong> of students secured full time job offer by their <strong>4</strong>th month of Internship, with <br></br> the highest CTC being <strong> ₹12.3</strong>lakhs/month.
+              </>
+            }
+            subtitle="100% Internship Rate • Average Salary Jump 2.35x • Proven track record audited by Zivanta Analytics"
+            actionButton={
               <button
                 onClick={handleDownload}
                 className="bg-[#222222] cursor-pointer text-sm text-white px-8 py-2.5 font-semibold flex items-center gap-2 hover:bg-[#202124] transition-colors"
@@ -210,8 +169,8 @@ const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
                 Placement Report
                 <img src="/Charters-icon/download.svg" alt="icon" width={12} height={12} className="w-5 h-5" />
               </button>
-            </div>
-          </div>
+            }
+          />
         </div>
       </div>
     </>

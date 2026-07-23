@@ -291,12 +291,17 @@ const MeetingModal = ({ isOpen, onClose, defaultTab = 'instant' }: MeetingModalP
         <div className="fixed inset-0 z-[99999] flex items-start justify-center pt-16">
             {/* Backdrop */}
             <div
-                className="absolute inset-0 bg-[#202124]/60 backdrop-blur-sm z-[99998]"
+                className="fixed inset-0 z-[99998]"
+                style={{ 
+                  backgroundColor: "rgba(255, 255, 255, 0.5)",
+                  opacity: 1,
+                  transition: "opacity 225ms ease-out"
+                }}
                 onClick={handleClose}
             />
 
             {/* Modal */}
-            <div className="relative z-[99999] bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4 max-h-[90vh] flex flex-col overflow-hidden animate-fadeIn">
+            <div className="relative z-[99999] bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4 max-h-[90vh] flex flex-col overflow-hidden animate-modal-content-in">
                 {/* Header */}
                 <div className="bg-gradient-to-r from-[#B30437] to-[#8B0329] p-6 text-white">
                     <div className="flex justify-between items-center">

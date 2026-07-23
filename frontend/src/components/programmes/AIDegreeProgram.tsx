@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { Plus, Minus } from "lucide-react";
 import Image from "next/image";
 import { DegreeProgramData, ProgrammeAssetConfig } from "@/data/programmes";
 import HighlightText from "../shared/HighlightObserver";
@@ -15,6 +14,8 @@ const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data, assets }) => 
   const config = assets || {
     campusImage: "/images/programmes/certificate.JPG",
     disclaimerText: "Every CBA™ (Certified Business Accountant) completed students who fulfil the minimum requirements will be eligible to apply for a US-CMA exam, Visa, Residence permit, allowing them to search for employment at Top 4.",
+    academicPartnerLogo: "/charter-partner/charter-academic-partner.avif",
+    degreeInternshipPartnerLogo: "/charter-partner/charter-intrenshiph-company-around-the-world.avif",
   };
   const [openAccordion, setOpenAccordion] = useState<string | null>(
     data.accordions[0]?.id || null,
@@ -49,25 +50,31 @@ const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data, assets }) => 
             </HighlightText>{" "}
             {data.title.suffix}
           </h2>
-          <h3 className="text-base px-[20px] md:px-[50px] lg:px-[70px] sm:text-lg text-[#5f6368]">
-            Our placement reports are audited by <strong>AnalystPK</strong>, auditor for IIM and follow the IPRS Revision 2.2 framework for
-            transparent and consistent compensation data.
-
-          </h3>
-
-        </div>
+            {data.auditorText && (
+              <h3 
+                className="text-base px-[20px] md:px-[50px] lg:px-[70px] sm:text-lg text-[#5f6368]"
+                dangerouslySetInnerHTML={{
+                  __html: data.auditorText
+                }}
+              />
+            )}
+          </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 items-start w-full border-t border-gray-200">
           {/* Campus Image - Shows first on mobile, second on desktop */}
           <aside className="order-1 lg:order-2">
             <div className="relative p-[50px] md:p-[50px] lg:p-[50px] bg-[#B30437] overflow-hidden ">
-              <Image
-                src={config.campusImage}
-                alt={data.campusImage?.alt || "Degree certificate details"}
-                width={600}
-                height={500}
-                className="w-full h-[300px] sm:h-[400px] lg:h-[500px] object-cover"
-              />
+              {config.campusImage && data.campusImage?.src && (
+                <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px]">
+                  <Image
+                    src={config.campusImage}
+                    alt={data.campusImage?.alt}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                </div>
+              )}
             </div>
           </aside>
 
@@ -89,9 +96,9 @@ const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data, assets }) => 
                   </span>
                   <div className="flex-shrink-0">
                     {openAccordion === accordion.id ? (
-                      <Minus className="w-5 h-5 sm:w-6 sm:h-6 text-[#B30437]" />
+                      <img src="/Charters-icon/dot-icon.svg" alt="" width={24} height={24} className="w-5 h-5 sm:w-6 sm:h-6" />
                     ) : (
-                      <Plus className="w-5 h-5 sm:w-6 sm:h-6 text-[#B30437]" />
+                      <img src="/Charters-icon/joint-icon.svg" alt="" width={24} height={24} className="w-5 h-5 sm:w-6 sm:h-6" />
                     )}
                   </div>
                 </button>
@@ -135,13 +142,15 @@ const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data, assets }) => 
                     Academic Partners
                   </h3>
                   <div className="relative w-full h-[40px] object-contain overflow-hidden">
-                    <Image
-                      src="/charter-partner/charter-academic-partner.avif"
-                      alt="charter academic partner"
-                      fill
-                      sizes="80px"
-                      className="object-contain object-left"
-                    />
+                    {config.academicPartnerLogo && (
+                      <Image
+                        src={config.academicPartnerLogo}
+                        alt="charter academic partner"
+                        fill
+                        sizes="80px"
+                        className="object-contain object-left"
+                      />
+                    )}
                   </div>
                 </div>
 
@@ -151,13 +160,15 @@ const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data, assets }) => 
                     Internship Partners
                   </h3>
                   <div className="relative object-contain w-full h-[40px] overflow-hidden">
-                    <Image
-                      src="/charter-partner/charter-intrenshiph-company-around-the-world.avif"
-                      alt="Charter intrenshiph company around the world"
-                      fill
-                      sizes="80px"
-                      className="object-contain object-left"
-                    />
+                    {config.degreeInternshipPartnerLogo && (
+                      <Image
+                        src={config.degreeInternshipPartnerLogo}
+                        alt="Charter intrenshiph company around the world"
+                        fill
+                        sizes="80px"
+                        className="object-contain object-left"
+                      />
+                    )}
                   </div>
                 </div>
               </div>

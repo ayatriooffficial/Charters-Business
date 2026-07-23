@@ -7,73 +7,68 @@ import Link from "next/link";
 const SECTION_HEADING = {
   eyebrow: "CAREER OUTCOMES",
   title: "Our Placement Statistics",
-  starIcon: "https://files.mastersunion.link/resources/svg/star.svg",
+  starIcon: "",
 };
 
 const KPI_METRICS = [
   {
-    label: "Salary jump from Pre MBA level",
-    value: "3.03",
+    label: "Full time offer jump from Pre CBA™/DGM™ level",
+    value: "2.7",
     suffix: "x",
-    icon: "https://images.mastersunion.link/uploads/21012025/v1/ArrowUp.svg",
+    icon: "",
   },
   {
     label: "Total Recruiters",
-    value: "145",
+    value: "345",
     suffix: "+",
-    icon: "https://images.mastersunion.link/uploads/21012025/v1/ArrowUp.svg",
+    icon: "",
   },
 ];
 
 const PLACEMENT_GRAPHS = [
   {
-    src: "https://images.mastersunion.link/uploads/28012025/v1/ylcgraphf.webp",
-    alt: "PGP TBM YLC Placement Statistics",
+    src: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784603823/student-internship_offer_wgy0lj.avif",
+    alt: "DGM Internship offer Statistics",
   },
   {
-    src: "https://images.mastersunion.link/uploads/23012025/v1/pgpTbmNewPlacement.webp",
-    alt: "PGP TBM Placement Statistics",
+    src: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784603823/student-job_offer.avif_baeqhf.avif",
+    alt: "DGM Placement Statistics",
   },
 ];
 
 const COHORT_HIGHLIGHT = {
-  numbers: ["₹29.12L", "₹33.10L", "₹34.07L"],
+  numbers: ["₹12.3L", "₹11.7L", "₹10.5L"],
   description:
-    "First, Second & Third cohorts' average CTC surpassed that of Top B Schools, making us the most valued graduates in India.",
+    "First, Second & Third cohorts' average CTC surpassed that of Top Job-Ready Institute, making us the most valued graduates in India.",
 };
 
 const REPORTS = [
+
   {
-    href: "https://cdn.mastersunion.org/assets/img/newmu/placementreporet2021.pdf",
-    label: "Cohort 2021",
-    img: "https://files.mastersunion.link/resources/img/report.webp",
-    arrow: "https://files.mastersunion.link/resources/svg/gradientArow.svg",
-  },
-  {
-    href: "https://cdn.mastersunion.org/assets/img/newmu/placementreport2022.pdf",
-    label: "Cohort 2022",
-    img: "https://files.mastersunion.link/resources/img/report.webp",
-    arrow: "https://files.mastersunion.link/resources/svg/gradientArow.svg",
-  },
-  {
-    href: "https://cdn.mastersunion.org/assets/imgV2/Masters_Union_Placement_Report_Cohort_Of_2023.pdf",
+    href: "",
     label: "Cohort 2023",
-    img: "https://files.mastersunion.link/resources/img/report.webp",
-    arrow: "https://files.mastersunion.link/resources/svg/gradientArow.svg",
+    img: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784329251/placement-report-2025_msxrtq.avif",
+
   },
   {
-    href: "https://new.mastersunion.link/brochures/CharterUnion_Placement_Report_2024.pdf",
+    href: "",
     label: "Cohort 2024",
-    img: "https://files.mastersunion.link/resources/img/report.webp",
-    arrow: "https://files.mastersunion.link/resources/svg/gradientArow.svg",
+    img: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784329251/placement-report-2025_msxrtq.avif",
+
+  },
+  {
+    href: "",
+    label: "Cohort 2025",
+    img: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784329251/placement-report-2025_msxrtq.avif",
+
   },
 ];
 
 const VERIFICATION_TEXT =
-  "These placement reports have been verified & audited by Brickworks Analytics, an auditor for IIM Ahmedabad's placement report.";
+  "These placement reports have been verified & audited by Zivanta Analytics, an auditor for IIM placement report.";
 
 const ECONOMICS_ARTICLE = {
-  href: "https://economictimes.indiatimes.com/jobs/hr-policies-trends/masters-union-mba-cohort-2024-reports-rs-28-52-lakh-average-salary-top-offers-reach-rs-61-8-lakh/articleshow/115755571.cms?from=mdr",
+  href: "#",
   label: "Read The Economics Times article here",
 };
 
@@ -112,25 +107,25 @@ const RECRUITER_TABS = [
 
 const PGP_TBM_TABLE = [
   {
-    cohort: "Cohort '24",
-    avg: "28.52 L",
-    median: "27.77 L",
-    highest: "61.80 L",
-    top25: "43.79 L",
-    bottom25: "19.30 L",
-    middle80: "27.05 L",
+    cohort: "Cohort '25",
+    avg: "8.7 L",
+    median: "7.77 L",
+    highest: "12.3 L",
+    top10: "10 L",
+    bottom10: "7.7 L",
+    middle80: "8.1 L",
   },
   {
-    cohort: "Cohort '23",
-    avg: "34.07 L",
+    cohort: "Cohort '24",
+    avg: "10.8 L",
     median: "32.19 L",
-    highest: "57.08 L",
+    highest: "11 L",
     top25: "44.67 L",
     bottom25: "22.35 L",
     middle80: "34.09 L",
   },
   {
-    cohort: "Cohort '22",
+    cohort: "Cohort '23",
     avg: "33.1 L",
     median: "30.92 L",
     highest: "64.15 L",
@@ -138,22 +133,13 @@ const PGP_TBM_TABLE = [
     bottom25: "20.02 L",
     middle80: "33.73 L",
   },
-  {
-    cohort: "Cohort '21",
-    avg: "29.12 L",
-    median: "29.5 L",
-    highest: "45 L",
-    top25: "41.14 L",
-    bottom25: "19.38 L",
-    middle80: "28.76 L",
-  },
+
 ];
 
 const PGP_YLC_TABLE = [
-  { cohort: "Cohort '24", avg: "23.59 L", median: "22.69 L", highest: "36 L" },
-  { cohort: "Cohort '23", avg: "27.76 L", median: "26 L", highest: "38 L" },
-  { cohort: "Cohort '22", avg: "27.17 L", median: "25 L", highest: "42 L" },
-  { cohort: "Cohort '21", avg: "23.57 L", median: "24 L", highest: "30 L" },
+  { cohort: "Cohort '25", avg: "23.59 L", median: "22.69 L", highest: "36 L" },
+  { cohort: "Cohort '24", avg: "27.76 L", median: "26 L", highest: "38 L" },
+  { cohort: "Cohort '23", avg: "27.17 L", median: "25 L", highest: "42 L" },
 ];
 
 const SALARY_COMPONENTS = {
@@ -219,17 +205,11 @@ export default function StatsSection() {
                     <span className="text-xs sm:text-sm text-gray-600 leading-snug">
                       {kpi.label}
                     </span>
-                    <Image
-                      src={kpi.icon}
-                      alt=""
-                      width={14}
-                      height={14}
-                      className="flex-shrink-0 sm:w-4 sm:h-4"
-                    />
+
                   </div>
                   <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 leading-none">
                     {kpi.value}
-                    <span style={{ color: "#B30437" }}>{kpi.suffix}</span>
+                    <span style={{ color: "#222222" }}>{kpi.suffix}</span>
                   </div>
                 </div>
               ))}
@@ -260,7 +240,7 @@ export default function StatsSection() {
               <span key={i}>
                 <span style={{ color: "#B30437" }}>{num}</span>
                 {i < COHORT_HIGHLIGHT.numbers.length - 1 && (
-                  <span className="text-[#B30437] text-3xl sm:text-4xl md:text-5xl">
+                  <span className="text-[#B30437] text-2xl sm:text-3xl md:text-4xl">
                     {i === COHORT_HIGHLIGHT.numbers.length - 2 ? " & " : ", "}
                   </span>
                 )}
@@ -269,7 +249,7 @@ export default function StatsSection() {
           </h3>
 
           {/* Row 2: Description below title */}
-          <p className="text-sm sm:text-base md:text-lg text-black mb-8 sm:mb-12 leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg pr-[30px] text-black mb-8 sm:mb-12 leading-relaxed">
             {COHORT_HIGHLIGHT.description}
           </p>
 
@@ -294,18 +274,13 @@ export default function StatsSection() {
                     className={`w-full h-auto object-cover border-l border-t border-b border-gray-700 group-hover:border-gray-400 transition-all ${i === REPORTS.length - 1 ? "border-r" : ""
                       }`}
                   />
-                  <div className="flex items-center justify-center gap-1">
+                  <div className="flex grid-cols-2 items-center justify-center gap-1">
                     <p className="text-xs sm:text-sm font-semibold text-black underline underline-offset-2 leading-tight">
                       {rep.label}
                     </p>
-                    <Image
-                      src={rep.arrow}
-                      alt=""
-                      width={12}
-                      height={12}
-                      className="flex-shrink-0 opacity-70 group-hover:opacity-100 transition-opacity invert"
-                    />
+                    <p className="text-[8px] sm:text-[8px] text-black">Placement Report</p>
                   </div>
+
                 </Link>
               ))}
             </div>
@@ -322,13 +297,6 @@ export default function StatsSection() {
                 className="inline-flex items-center rounded-full border border-gray-300 bg-white px-4 sm:px-6 py-1 sm:py-4 text-xs sm:text-sm font-semibold text-gray-900 shadow-sm hover:border-gray-400 transition-colors w-fit"
               >
                 {ECONOMICS_ARTICLE.label}
-                <Image
-                  src={REPORTS[0]?.arrow}
-                  alt=""
-                  width={12}
-                  height={12}
-                  className="invert"
-                />
               </Link>
             </div>
 
@@ -405,7 +373,7 @@ export default function StatsSection() {
               </span>
             </div>
             <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-gray-900">
-              PGP TBM
+              CBA™/DGM™
             </h3>
           </div>
 

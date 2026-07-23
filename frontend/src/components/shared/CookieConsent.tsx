@@ -65,7 +65,7 @@ export default function CookieConsent() {
         <button
           type="button"
           onClick={acceptAll}
-          className="w-full bg-[#222222] text-white px-5 py-2.5 text-[13.5px] font-medium hover:bg-[#000000] transition"
+          className="w-full cursor-pointer bg-[#222222] text-white px-5 py-2.5 text-[13.5px] font-medium hover:bg-[#000000] transition"
         >
           Accept all cookies
         </button>

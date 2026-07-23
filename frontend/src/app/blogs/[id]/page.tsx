@@ -23,9 +23,9 @@ async function fetchFullBlog(id: string): Promise<DisplayBlog | null> {
       return {
         _id: response.data._id,
         title: response.data.title,
-        author: response.data.author || "Charters' Union",
-        readTime: response.data.readTime || "5 min read",
-        category: response.data.category || "Education",
+        author: response.data.author,
+        readTime: response.data.readTime,
+        category: response.data.category,
         content: response.data.content,
         tags: response.data.tags || [],
         releasedAt: response.data.releasedAt ? String(response.data.releasedAt) : response.data.createdAt,

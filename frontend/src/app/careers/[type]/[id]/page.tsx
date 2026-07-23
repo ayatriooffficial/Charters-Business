@@ -41,11 +41,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const description = `Apply for the ${item?.title || 'role'} ${isJobs ? 'job' : 'internship'} at Charters' Union. ${cleanDescription}`;
   const canonicalUrl = `https://chartersunion.com/careers/${type}/${id}`;
-  const imageUrl = `https://chartersunion.com/og-${type}.jpg`;
+  const imageUrl =
+    "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784325608/Young_Charters_are_at_top_company_gncn4o_q7ifkq.avif";
+
+  const keywords = item
+    ? [
+        `${item.title}`,
+        isJobs ? "job at Charters Union" : "internship at Charters Union",
+        item.location,
+        item.category,
+      ]
+    : isJobs
+      ? ["jobs at Charters Union", "career opportunities"]
+      : ["internships at Charters Union", "internship opportunities"];
 
   return {
     title,
     description,
+    keywords,
     alternates: {
       canonical: canonicalUrl,
     },

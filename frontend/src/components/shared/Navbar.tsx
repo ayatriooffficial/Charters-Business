@@ -10,6 +10,7 @@ import UserDropdown from "@/components/dashboard/UserDropdown";
 const AcademicsDropdown = dynamic(() => import("./AcademicsDropdown"), { ssr: false });
 import { createPortal } from "react-dom";
 const ChartersInterviewAi = dynamic(() => import("../home/Chartersinterview_ai"), { ssr: false });
+import ModalBackdrop from "@/components/shared/ModalBackdrop";
 import styles from "./Navbar.module.css";
 
 
@@ -46,6 +47,26 @@ function Navbar() {
     user?.role === "admin" || user?.role === "recruiter"
       ? "Admin Dashboard"
       : "Dashboard";
+
+  const programmeSlugs = new Set([
+    "certified-business-accountant",
+    "digital-growth-&-marketing",
+    "technology-&-business-management",
+  ]);
+
+  const isAcademicsActive = isMounted && pathname ? programmeSlugs.has(pathname.split("/")[1]) : false;
+
+  const isNavActive = (href: string) => {
+    if (!pathname) return false;
+    if (href === "/careers") return pathname.startsWith("/careers");
+    return pathname === href || pathname.startsWith(href + "/");
+  };
+
+  const linkClass = (href: string) =>
+    [
+      "gap-2 hover:underline decoration-black hover:text-[#B30437] transition-colors duration-300 cursor-pointer",
+      (isMounted && isNavActive(href)) ? "underline decoration-black" : "",
+    ].join(" ");
 
   const handleCourseClick = useCallback(
     (sectionId: string) => {
@@ -216,12 +237,11 @@ function Navbar() {
   }, [isAcademicsOpen, calculateDropdownPosition]);
 
   return (
-    <div
+    <header
       ref={headerRef}
       className={`fixed left-0 right-0 z-[100] text-gray-900 w-full font-sans ${styles.navbarTransition} ${isNavbarVisible ? "translate-y-0" : "-translate-y-full"
         }`}
       style={{ top: 0 }}
-      role="banner"
     >
       <div className="flex flex-col w-full">
         {/* Secondary Navigation */}
@@ -312,7 +332,7 @@ function Navbar() {
                       Find Internship
                     </a>
                   </li>
-                  <li className="flex items-center"><span className="mx-1.5 text-black font-normal text-[13px]">|</span></li>
+                  <li className="flex items-center"><span className="mx-1.5 text-black opacity-[0.5] font-normal text-[13px]">|</span></li>
                   <li>
                     <a
                       href="/careers/jobs"
@@ -328,7 +348,7 @@ function Navbar() {
                     </a>
                   </li>
                   <li className="flex items-center"><span className="mx-1.5 font-normal text-black text-[13px]">|</span></li>
-                  {user ? (
+                  {isMounted && user ? (
                     <li><UserDropdown /></li>
                   ) : (
                     <li>
@@ -371,7 +391,7 @@ function Navbar() {
           <div className="mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
             <div className="flex items-center justify-between py-2 sm:py-2 w-full">
               <div
-                className="w-28 sm:w-36 md:w-40 h-6 sm:h-7 md:h-8 relative cursor-pointer hover:opacity-80 transition-opacity duration-200 shrink-0"
+                className="w-28 sm:w-36 md:w-40 h-6 sm:h-7 md:h-8 relative cursor-pointer transition-opacity duration-200 shrink-0"
                 onClick={handleLogoClick}
                 role="button"
                 tabIndex={0}
@@ -392,7 +412,7 @@ function Navbar() {
                 <li className="relative">
                   <button
                     ref={academicsButtonRef}
-                    className="flex items-center justify-start gap-2 hover:underline decoration-black hover:text-[#B30437] transition-colors duration-300 cursor-pointer bg-transparent border-none"
+                    className={`flex items-center justify-start gap-2 hover:underline decoration-black hover:text-[#B30437] transition-colors duration-300 cursor-pointer bg-transparent border-none ${isAcademicsActive ? "underline decoration-black" : ""}`}
                     aria-expanded={isAcademicsOpen}
                     aria-haspopup="true"
                     onClick={() => setIsAcademicsOpen(!isAcademicsOpen)}
@@ -412,7 +432,7 @@ function Navbar() {
                 <li>
                   <Link
                     href="/faculties"
-                    className="gap-2 hover:underline decoration-black hover:text-[#B30437] transition-colors duration-300 cursor-pointer"
+                    className={linkClass("/faculties")}
                   >
                     <span>FACULTY + RESEARCH</span>
                   </Link>
@@ -420,7 +440,7 @@ function Navbar() {
                 <li>
                   <Link
                     href="/student-life"
-                    className="gap-2 hover:underline decoration-black hover:text-[#B30437] transition-colors duration-300 cursor-pointer"
+                    className={linkClass("/student-life")}
                   >
                     <span>STUDENT LIFE</span>
                   </Link>
@@ -428,7 +448,7 @@ function Navbar() {
                 <li>
                   <Link
                     href="/careers"
-                    className="gap-2 hover:underline decoration-black hover:text-[#B30437] transition-colors duration-300 cursor-pointer"
+                    className={linkClass("/careers")}
                   >
                     <span>PLACEMENTS++</span>
                   </Link>
@@ -436,7 +456,7 @@ function Navbar() {
                 <li>
                   <Link
                     href="/community"
-                    className="gap-2 hover:underline decoration-black hover:text-[#B30437] transition-colors duration-300 cursor-pointer"
+                    className={linkClass("/community")}
                   >
                     <span>COMMUNITY</span>
                   </Link>
@@ -510,7 +530,7 @@ function Navbar() {
                 <li>
                   <button
                     ref={mobileAcademicsButtonRef}
-                    className="w-full flex items-center justify-between py-3 text-sm font-medium text-gray-900 hover:text-[#B30437] transition-colors"
+                    className={`w-full flex items-center justify-between py-3 text-sm font-medium ${isAcademicsActive ? "underline" : "text-gray-900"} hover:text-[#B30437] transition-colors`}
                     aria-expanded={isAcademicsOpen}
                     aria-haspopup="true"
                     onClick={() => {
@@ -531,7 +551,7 @@ function Navbar() {
                 <li>
                   <Link
                     href="/faculties"
-                    className="block py-3 text-sm font-medium text-gray-900 hover:text-[#B30437] transition-colors"
+                    className={`block py-3 text-sm font-medium text-gray-900 hover:text-[#B30437] transition-colors ${isNavActive("/faculties") ? "underline" : ""}`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     FACULTY + RESEARCH
@@ -540,7 +560,7 @@ function Navbar() {
                 <li>
                   <Link
                     href="/student-life"
-                    className="block py-3 text-sm font-medium text-gray-900 hover:text-[#B30437] transition-colors"
+                    className={`block py-3 text-sm font-medium text-gray-900 hover:text-[#B30437] transition-colors ${isNavActive("/student-life") ? "underline" : ""}`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     STUDENT LIFE
@@ -549,7 +569,7 @@ function Navbar() {
                 <li>
                   <Link
                     href="/careers"
-                    className="block py-3 text-sm font-medium text-gray-900 hover:text-[#B30437] transition-colors"
+                    className={`block py-3 text-sm font-medium text-gray-900 hover:text-[#B30437] transition-colors ${isNavActive("/careers") ? "underline" : ""}`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     PLACEMENTS++
@@ -558,7 +578,7 @@ function Navbar() {
                 <li>
                   <Link
                     href="/community"
-                    className="block py-3 text-sm font-medium text-gray-900 hover:text-[#B30437] transition-colors"
+                    className={`block py-3 text-sm font-medium text-gray-900 hover:text-[#B30437] transition-colors ${isNavActive("/community") ? "underline" : ""}`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     COMMUNITY
@@ -644,7 +664,7 @@ function Navbar() {
                     </Link>
                   </li>
 
-                  {user ? (
+                  {isMounted && user ? (
                     <>
                       <li>
                         <button
@@ -695,8 +715,12 @@ function Navbar() {
         </div>
       </div>
       {isMounted && showInterviewAI && createPortal(
-        <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[#202124]/20">
-          <div className="w-[80%] h-[90%] relative">
+        <div className="fixed inset-0 flex items-center justify-center z-[9999]">
+          <ModalBackdrop onClick={() => {
+            setShowInterviewAI(false);
+            document.body.style.overflow = '';
+          }} />
+          <div className="w-[80%] h-[90%] relative z-[99999]">
             <button
               onClick={() => {
                 setShowInterviewAI(false);
@@ -713,7 +737,7 @@ function Navbar() {
         </div>,
         document.body
       )}
-    </div>
+    </header>
   );
 }
 

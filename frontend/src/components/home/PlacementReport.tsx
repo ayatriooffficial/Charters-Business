@@ -1,7 +1,7 @@
 import React from "react";
 import PlacementReportClient from "./PlacementReportClient";
 
-const placementReportData = {
+export const placementReportData = {
   title: "Charter's Career Transition '25'",
   description:
     "100% internship rate | Avg students earned +3 offers | +34% global internships/jobs",

@@ -4,20 +4,18 @@ import { scholarshipBanner } from "@/data/applyPageData";
 import Breadcrumbs from "../shared/Breadcrumbs";
 import HighlightText from "../shared/HighlightObserver";
 type Stat = { value: string; label: string; detail: string; gradient?: string };
-const HERO_HEADING = "CareerPathx™ gives 100% Career Growth";
-const HERO_TAGLINE =
-    "Benefit from an exceptional track record of our students success";
+
 
 const HERO_STATS: Stat[] = [
     {
-        value: "579",
-        label: "Startups",
-        detail: "formed as part of Charters' Union internship Initiation Program",
+        value: "12",
+        label: "Job-Ready Clubs",
+        detail: "formed as part of Charters' 100% Job-Guarantee Initiation Program",
         gradient: "bg-[#222222}",
     },
     {
-        value: "₹ 1.3 Cr",
-        label: "Combined placement packege 25/26",
+        value: "25",
+        label: "Top Resources",
         detail: "of all Accountant & Digital maketing in Term 1 to Term 4 (Cohort 2025/26)",
         gradient: "bg-[#222222]",
     },
@@ -28,14 +26,14 @@ const HERO_CTA = {
     href: "#download-report",
 };
 const HERO_IMAGE = {
-    src: "https://images.mastersunion.link/uploads/26122024/mahakgroup.webp",
-    alt: "Fireside chat about career growth",
+    src: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784458521/student-life-at-chartersUnion_yglfog.avif",
+    alt: "Young Charters are at top company",
 };
 
 export default function Hersection() {
     return (
         <>
-            <div role="banner" className="w-full mt-10">
+            <div className="w-full mt-10">
                 <div className="mx-auto px-4 sm:px-6 lg:px-8 pt-2 pb-4 sm:pb-6 md:pb-8">
                     <Breadcrumbs compact />
 
@@ -43,17 +41,19 @@ export default function Hersection() {
 
                         {/* Left*/}
                         <section className="flex flex-1 flex-col justify-center">
+                            <p className="text-xs sm:text-sm font-semibold text-[#B30437] tracking-wider mb-1 sm:mb-1" role="text">
+                                Activities, Student Clubs & Associations
+                            </p>
                             <h1
                                 id="careers-hero-title"
-                                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight"
+                                className="text-3xl sm:text-3xl lg:text-4xl xl:text-4xl font-bold text-black leading-tight"
                             >
-                                {HERO_HEADING}
+                                At Charters' Where we Create Fresher to Industry-Ready
                             </h1>
 
                             <p className="mt-3 sm:mt-4 max-w-2xl text-xs sm:text-sm text-gray-600 md:text-base">
-                                {HERO_TAGLINE}
+                                Chartersunion’s innovation with <strong>hands-on, networking, and industry internship</strong> ethos extends across our campus — and beyond. On the <strong>stage or field</strong>, Chartersunion is where <strong>brilliant, committed, creative people</strong> come together to <strong>learn, work, live, and play</strong>.
                             </p>
-
                             {/* Stats */}
                             <div
                                 role="list"
@@ -117,12 +117,13 @@ export default function Hersection() {
 
                         {/* Right: Image */}
                         <section className="w-full md:flex-1">
-                            <div className="relative aspect-video w-full overflow-hidden border border-gray-200 bg-gray-100">
+                            <div className="relative w-full overflow-hidden">
                                 <Image
                                     src={HERO_IMAGE.src}
                                     alt={HERO_IMAGE.alt}
-                                    fill
-                                    className="object-cover"
+                                    width={600}
+                                    height={500}
+                                    className="object-cover w-full"
                                     sizes="(max-width: 768px) 100vw, 50vw"
                                     priority
                                 />

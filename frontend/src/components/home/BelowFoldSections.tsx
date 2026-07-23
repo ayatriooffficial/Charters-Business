@@ -124,7 +124,7 @@ export default function BelowFoldSections() {
       {/* Banner 2: Brochure */}
       <LazyMount fallback={<SectionSkeleton height="h-32" />}>
         <SectionWrapper hideCorners={"all"}>
-          <LayoutBanner type="brochure" />
+          <LayoutBanner type="advisor" />
         </SectionWrapper>
       </LazyMount>
 

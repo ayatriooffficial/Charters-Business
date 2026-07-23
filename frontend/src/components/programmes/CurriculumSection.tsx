@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Plus, Sun } from "lucide-react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import HighlightText from "../shared/HighlightObserver";
+import CurriculumSkills from "./CurriculumSkills";
 import {
   ProgrammeAssetConfig,
   CurriculumSectionData,
@@ -72,7 +72,7 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
       const timer = setTimeout(() => {
         setExpandedItems((prev) => ({ ...prev, dubai: true }));
         const first = curriculumItems[0];
-        setCurrentImage(first?.termImage || config.curriculumCityscapes.dubai);
+        setCurrentImage(first?.termImage || "");
       }, 100);
       return () => clearTimeout(timer);
     }
@@ -102,8 +102,8 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
         const item = curriculumItems.find((x: CurriculumTerm) => x.id === id);
         if (item?.termImage) {
           setCurrentImage(item.termImage);
-        } else if (imageMapping[id as keyof typeof imageMapping]) {
-          setCurrentImage(imageMapping[id as keyof typeof imageMapping]);
+        } else {
+          setCurrentImage("");
         }
       }
       return { ...prev, [id]: next };
@@ -155,6 +155,7 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
               {data.subtitle}
             </p>
           </div>
+          {data.skillsData && <CurriculumSkills data={data.skillsData} />}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 items-start border-t border-gray-200">
@@ -164,15 +165,17 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
             aria-label="Curriculum location cityscape"
           >
             {mounted ? (
-              <Image
-                src={currentImage}
-                alt="Curriculum location skyline"
-                width={800}
-                height={600}
-                className="w-full h-64 sm:h-80 lg:h-auto object-cover transition-all duration-500 ease-in-out"
-                priority
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              />
+              currentImage && (
+                <Image
+                  src={currentImage}
+                  alt="Curriculum location skyline"
+                  width={800}
+                  height={600}
+                  className="w-full h-64 sm:h-80 lg:h-auto object-cover transition-all duration-500 ease-in-out"
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              )
             ) : (
               <div className="w-full h-64 sm:h-80 lg:h-[600px] bg-gray-200 animate-pulse" />
             )}
@@ -198,7 +201,7 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                     {/* Main curriculum item */}
                     <article className="border-b border-l border-gray-200 text-gray-600 hover:text-black hover:bg-gray-50">
                       <div className="p-2 sm:p-4">
-                        <header
+                        <div
                           className="flex items-center justify-between cursor-pointer"
                           onClick={() => toggleExpand(item.id)}
                           role="button"
@@ -262,11 +265,11 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                               )}
                             </div>
                           </div>
-                          <Plus
-                            className={`w-4 h-4 sm:w-5 sm:h-5 text-black transition-transform duration-200 flex-shrink-0 ${expandedItems[item.id] ? "rotate-45" : ""}`}
+                          <img src="/Charters-icon/joint-icon.svg" alt="" width={20} height={20}
+                            className={`w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200 flex-shrink-0 ${expandedItems[item.id] ? "rotate-45" : ""}`}
                             aria-hidden="true"
                           />
-                        </header>
+                        </div>
 
                         {/* Expanded content with smooth transition */}
                         <div
@@ -282,18 +285,10 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                             aria-label={`${item.title} curriculum details`}
                           >
                             {/* Mobile-only image at top of card */}
-                            {(item.termImage ||
-                              imageMapping[
-                                item.id as keyof typeof imageMapping
-                              ]) && (
+                            {item.termImage && (
                                 <div className="lg:hidden mb-4 mt-4">
                                   <Image
-                                    src={
-                                      item.termImage ||
-                                      imageMapping[
-                                        item.id as keyof typeof imageMapping
-                                      ]
-                                    }
+                                    src={item.termImage}
                                     alt={`${item.title} skyline`}
                                     width={800}
                                     height={400}
@@ -601,8 +596,8 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                         className="flex items-center gap-3 py-4 px-4 mt-3 bg-blue-50 border border-blue-100 rounded-lg"
                         role="complementary"
                       >
-                        <Sun
-                          className="w-5 h-5 text-orange-500 flex-shrink-0"
+                        <img src="/Charters-icon/star full black.svg" alt="" width={20} height={20}
+                          className="w-5 h-5 flex-shrink-0"
                           aria-hidden="true"
                         />
                         <span
