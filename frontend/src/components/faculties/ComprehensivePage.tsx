@@ -168,7 +168,7 @@ export default function ComprehensivePage() {
 
               <p className="text-base sm:text-lg mb-4 sm:mb-4  max-w-lg">
                 From <strong>CA, CMA(USA), CPA(USA), CMOs, CEOs,</strong> and <strong>MDs,</strong> of leading industry, They
-                brings knowledge that blends <strong>AI-Poweard Job-Ready Foundation</strong> with real-world impact.
+                brings knowledge that blends <strong>AI-Powered Job-Ready Foundation</strong> with real-world impact.
               </p>
 
               <div

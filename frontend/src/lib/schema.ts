@@ -158,6 +158,10 @@ export const organizationSchema = {
   ],
   address: {
     "@type": "PostalAddress",
+    streetAddress: "Shantiniketan Building, 8 Camac St, Elgin",
+    addressLocality: "Kolkata",
+    addressRegion: "West Bengal",
+    postalCode: "700017",
     addressCountry: "IN",
   },
   contactPoint: [
@@ -169,6 +173,12 @@ export const organizationSchema = {
       areaServed: "IN",
       availableLanguage: ["en", "hi", "bn"],
     },
+  ],
+  sameAs: [
+    "https://www.linkedin.com/company/chartersunion",
+    "https://www.instagram.com/chartersunion",
+    "https://twitter.com/chartersunion",
+    "https://www.youtube.com/@chartersunion",
   ],
 };
 

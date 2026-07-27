@@ -30,7 +30,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const programmeEntries: MetadataRoute.Sitemap = getAllProgrammeSlugs().map(
     (slug) => ({
-      url: buildSiteUrl(`/${slug.replace(/&/g, "%26")}`),
+      url: buildSiteUrl(`/${slug}`),
       lastModified,
       changeFrequency: "weekly",
       priority: 0.9,

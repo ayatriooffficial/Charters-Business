@@ -34,7 +34,7 @@ function BuiltByHarvard() {
         </h2>
 
         <p className="text-[#5f6368] text-sm sm:text-base md:text-lg max-w-4xl mx-auto leading-relaxed px-4">
-          Global leaders partner with Hardvard to drive workforce transformation
+          Global leaders partner with Harvard to drive workforce transformation
           and unlock their organization&apos;s full potential through cutting-edge
           tech skills.
         </p>

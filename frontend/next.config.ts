@@ -210,6 +210,16 @@ const nextConfig: NextConfig = {
         destination: "/signup",
         permanent: true,
       },
+      {
+        source: "/digital-growth-&-marketing",
+        destination: "/digital-growth-marketing",
+        permanent: true,
+      },
+      {
+        source: "/technology-&-business-management",
+        destination: "/technology-business-management",
+        permanent: true,
+      },
     ];
   },
 };

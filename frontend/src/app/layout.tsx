@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     template: "%s | Charters' Union",
   },
   description:
-    "Get placed in 7 months with practical accounting skills, internship experience, and placement support. 90% placement rate. ₹3.5 LPA average salary. Free counseling call.",
+    "Get placed in 7 months with practical accounting skills, internship experience, and placement support. 92% placement rate. ₹3.5 LPA average salary. Free counseling call.",
   keywords: [
     "accounting course",
     "job-ready accounting",

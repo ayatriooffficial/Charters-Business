@@ -56,8 +56,8 @@ export default function LayoutBanner({ type }: LayoutBannerProps) {
 
   let programKey: ProgramKey | null = null;
   if (isCba) programKey = "certified-business-accountant";
-  else if (isDgm) programKey = "digital-growth-&-marketing";
-  else if (isTbm) programKey = "technology-&-business-management";
+  else if (isDgm) programKey = "digital-growth-marketing";
+  else if (isTbm) programKey = "technology-business-management";
 
   const programmeData = programKey ? getProgrammeBySlug(programKey) : null;
   const bannerConfig = programmeData?.layoutBanner;

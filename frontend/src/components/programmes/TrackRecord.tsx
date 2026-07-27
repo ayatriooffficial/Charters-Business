@@ -72,7 +72,8 @@ function VerticalBar({ item, index, maxValue, inView, duration = 600, textSize =
   return (
     <div className="flex flex-col items-center justify-end flex-1 h-full min-w-0">
       <div className={`${textClass} font-semibold text-black mb-1 sm:mb-2`}>
-        {count}{suffix}
+        <span aria-hidden="true">{count}{suffix}</span>
+        <span className="sr-only">{item.percentage}</span>
       </div>
       <div
         className="w-full bg-[#56BAB3]"
@@ -280,7 +281,7 @@ const TrackRecord: React.FC<TrackRecordProps> = ({ data, assets }) => {
               {config?.hiredCompaniesBanner && (
                 <img
                   src={config.hiredCompaniesBanner}
-                  alt=""
+                  alt="Companies that have hired Charters' Union graduates"
                   className="w-full sm:h-[50px] md:h-[70px] lg:h-[120px] object-contain"
                   loading="lazy"
                 />

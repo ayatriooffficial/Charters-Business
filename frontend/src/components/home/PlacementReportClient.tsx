@@ -163,7 +163,7 @@ const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
             imageAlt="Charters Union Career Report 2025"
             title={
               <>
-                <strong> 97%&apos;</strong> of students secured full time job offer by their <strong>4</strong>th month of Internship, with <br></br> the highest CTC being <strong> ₹12.3</strong>lakhs/month.
+                <strong> 97%</strong> of students secured full time job offer by their <strong>4</strong>th month of Internship, with <br></br> the highest CTC being <strong> ₹12.3</strong>lakhs/month.
               </>
             }
             subtitle="100% Internship Rate • Average Salary Jump 2.35x • Proven track record audited by Zivanta Analytics"

@@ -3,8 +3,8 @@
 
 export type ProgramKey =
   | "certified-business-accountant"
-  | "digital-growth-&-marketing"
-  | "technology-&-business-management"
+  | "digital-growth-marketing"
+  | "technology-business-management"
 
 // BASE INTERFACES
 

@@ -129,12 +129,12 @@ function EditorialCard({ card }: EditorialCardProps) {
 
           <div className="mb-2">
             <p className="text-[11px] font-semibold text-[#80868b] pt-2 mb-2 uppercase tracking-wider">
-              100% AI-integratede curriculum
+              100% AI-integrated curriculum
             </p>
             <div className="relative object-contain w-full h-[55px] overflow-hidden">
               <Image
                 src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784554663/young_charters_work_on_AI-agents_around_accounting___marketing_hjok0u.avif"
-                alt="100% AI-integratede curriculum around accounting & marketing"
+                alt="100% AI-integrated curriculum around accounting and marketing"
                 fill
                 sizes={PARTNER_LOGO_SIZES}
                 className="object-contain object-left"

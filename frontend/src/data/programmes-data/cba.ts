@@ -81,9 +81,9 @@ const cbaCurriculumSection: CurriculumSectionData = {
           { code: "SAMA 101", title: "Budgeting and Forecasting" },
           { code: "SAMA 201", title: "Corporate Finance" },
           { code: "SAMA 301", title: "Performance Management" },
-          { code: "SAMA 401", title: "Corporate english specking" },
-          { code: "FIFI 101", title: "Profesonal personal branding" },
-          { code: "FIFI 102", title: "Profesonal digital Networking" },
+          { code: "SAMA 401", title: "Corporate English Speaking" },
+          { code: "FIFI 101", title: "Professional Personal Branding" },
+          { code: "FIFI 102", title: "Professional Digital Networking" },
         ],
       },
       business: [
@@ -176,7 +176,7 @@ const cbaCurriculumSection: CurriculumSectionData = {
           { code: "SAMA 402", title: "LinkedIn for personal branding & B2B" },
           { code: "FIFI 201", title: "Structure thinking" },
           { code: "FIFI 202", title: "Personal Video creator studio" },
-          { code: "PRTC 102", title: "Body lunguage tranning" },
+          { code: "PRTC 102", title: "Body Language Training" },
         ],
       },
       collaboration: [
@@ -268,7 +268,7 @@ const cbaCurriculumSection: CurriculumSectionData = {
         more: [
           {
             code: "FIFI 303",
-            title: "Personal Video grwoth strategy creator studio",
+            title: "Personal Video Growth Strategy Creator Studio",
           },
         ],
       },
@@ -550,7 +550,7 @@ const cbaCurriculumSection: CurriculumSectionData = {
       badges: [
         { text: "PRO", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
       ],
-      outcome: "Pai-Lam help to build won digital company",
+      outcome: "Build your own digital company with hands-on guidance",
       project: undefined,
       courses: {
         initial: [],
@@ -585,12 +585,12 @@ export const cba: Programme = {
   dropdown: {
     title: "CBA™ (Certified Business Accountant)",
     description:
-      "Comprehensive MBA program designed for future business leaders Comprehensive MBA program designed for. Combines theoretical knowledge with practical application through real-world case studies and industry partnerships.",
+      "7-month job-ready Certified Business Accountant program. AI-powered curriculum aligned with US-CMA, CPA, ACCA, and ICAI frameworks. Includes 4-month paid internship in 7 countries, corporate English, and placement support.",
     duration: "7 Month",
     stats: [
-      { value: "24", label: "MONTHS" },
+      { value: "7", label: "MONTHS" },
       { value: "150+", label: "COMPANIES" },
-      { value: "95%", label: "PLACEMENT RATE" },
+      { value: "92%", label: "PLACEMENT RATE" },
     ],
     link: "/CBA™ (Certified Business Accountant)",
     imageUrl: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784310544/class-of-CBA_Certified_Business_Accountant_v6p16o.avif",
@@ -605,13 +605,13 @@ export const cba: Programme = {
     level: "Certified",
     certificateType: "Corporate Certificate",
     description:
-      "Gain real-world corporate accounting through Harvard/Columbia case study, IIMK, US-CMA&CPA/CFA/ACCA integrated AI-led curriculum under top 1% industry faculty.",
+      "Gain real-world corporate accounting skills through Harvard-style case studies and US-CMA, CPA, ACCA integrated AI-led curriculum under top 1% industry faculty.",
     format: { type: "On Campus" },
     eligibility: { type: "12 Pass-out & Early under graduates." },
     duration: { type: "3 Months theory + 4 Months in-class intranship" },
     deadline: { type: "Round 1: 30th Oct '25" },
     careerOutcomes: [
-      "Foundations in Industry-led learning base on Hardvard casestudy with US-CMA/CPA, Indian CA and ACCA specialisation carruculam.",
+      "Foundations in Industry-led learning based on Harvard Case Study with US-CMA/CPA, Indian CA and ACCA specialization curriculum.",
       "In-class live projects intranship under faculty with top Startup & MNC from India, USA, CANADA, SAUDI, QATAR and Singapore.",
       "AI-powered corporate accountant, finance, FP&A, fintech & GCC-ready roles.",
       "Personal devlopment prep with communication, bodylangusge and placement cell.",
@@ -628,11 +628,11 @@ export const cba: Programme = {
     badge: "",
     categoryLabel: "",
     title: {
-      main: "India's #1 Job-Ready AI-Poweard Global Business Accounting",
+      main: "India's #1 Job-Ready AI-Powered Global Business Accounting",
 
     },
     description:
-      "AI-Ready curriculum build on USCMA, ACCA, ICAI, and Hardvard Case Study based Corporate Accounting. 1:1 mentorship.  Paid internship in 7 countries.",
+      "AI-Ready curriculum built on USCMA, ACCA, ICAI, and Harvard Case Study based Corporate Accounting. 1:1 mentorship. Paid internship in 7 countries.",
     stats: [
       { label: "97.7% Avg Placement", value: "93%" },
       { label: "100% Paid Internship", value: "150+" },
@@ -745,20 +745,11 @@ export const cba: Programme = {
       { name: "Google", logo: "https://logo.clearbit.com/google.com" },
       { name: "Amazon", logo: "https://logo.clearbit.com/amazon.com" },
       { name: "Deloitte", logo: "https://logo.clearbit.com/deloitte.com" },
-      { name: "McKinsey", logo: "https://logo.clearbit.com/mckinsey.com" },
-      {
-        name: "Goldman Sachs",
-        logo: "https://logo.clearbit.com/goldmansachs.com",
-      },
-      { name: "BCG", logo: "https://logo.clearbit.com/bcg.com" },
-      { name: "Bain", logo: "https://logo.clearbit.com/bain.com" },
-      { name: "Microsoft", logo: "https://logo.clearbit.com/microsoft.com" },
-      { name: "Apple", logo: "https://logo.clearbit.com/apple.com" },
-      { name: "JP Morgan", logo: "https://logo.clearbit.com/jpmorgan.com" },
-      { name: "Accenture", logo: "https://logo.clearbit.com/accenture.com" },
-      { name: "EY", logo: "https://logo.clearbit.com/ey.com" },
-      { name: "PwC", logo: "https://logo.clearbit.com/pwc.com" },
       { name: "KPMG", logo: "https://logo.clearbit.com/kpmg.com" },
+      { name: "PwC", logo: "https://logo.clearbit.com/pwc.com" },
+      { name: "EY", logo: "https://logo.clearbit.com/ey.com" },
+      { name: "Microsoft", logo: "https://logo.clearbit.com/microsoft.com" },
+      { name: "Accenture", logo: "https://logo.clearbit.com/accenture.com" },
       { name: "Flipkart", logo: "https://logo.clearbit.com/flipkart.com" },
       { name: "Paytm", logo: "https://logo.clearbit.com/paytm.com" },
     ],
@@ -772,16 +763,16 @@ export const cba: Programme = {
       highlight: "CBA™",
       suffix: "Certification",
     },
-    auditorText: "Our placement reports are audited by <strong>Zivanta Analytics</strong>, auditor for IIM and follow the IPRS Revision 2.2 framework for transparent and consistent compensation data.",
+    auditorText: "Our placement reports are audited by <strong>Zivanta Analytics</strong> and follow the IPRS Revision 2.2 framework for transparent and consistent compensation data.",
     accordions: [
       {
         id: "placement",
         title: "Outstanding Placement Record and Career Support",
         items: [
-          "**95% placement** rate with top companies across consulting, finance, and technology sectors",
-          "**3.05x average salary** jump post-MBA with CTC ranging from 16-42 LPA",
-          "Alumni at **Google, Amazon, Deloitte, McKinsey, Goldman Sachs** in leadership positions",
-          "**300+ recruiting partners** including Fortune 500 companies and unicorn startups",
+          "**92% placement** rate with top companies across accounting, finance, and technology sectors",
+          "**2.35x average salary** jump with CTC ranging from 4-12 LPA",
+          "Graduates placed at **KPMG, Deloitte, EY, PwC, Accenture, Flipkart, Google** across India and globally",
+          "**150+ recruiting partners** including leading MNCs and fast-growing startups",
           "Dedicated **career services team** with resume workshops, mock interviews, and 1:1 coaching",
         ],
       },
@@ -789,51 +780,51 @@ export const cba: Programme = {
         id: "curriculum",
         title: "World-Class Curriculum and Learning Experience",
         items: [
-          "**150+ live projects** with real companies providing hands-on business experience",
-          "**200+ case studies** from Harvard, INSEAD, and Stanford covering global business scenarios",
+          "**Live projects** with real companies providing hands-on business experience",
+          "**Harvard-style case studies** covering real-world accounting and finance scenarios",
           "**Industry-designed curriculum** updated annually based on market trends and employer feedback",
-          "Learn from **top 1% faculty** - professors with PhDs from IIMs/ISB and industry veterans from McKinsey, Google",
-          "**Specializations available** in Finance, Marketing, Strategy, Operations, Entrepreneurship, Analytics",
+          "Learn from **top 1% industry faculty** including CAs, CPAs, CMAs, and CMOs with decades of corporate experience",
+          "**Specialized tracks** in Corporate Accounting, FP&A, Taxation, and FinTech",
         ],
       },
       {
         id: "global",
-        title: "Global Exposure and International Immersions",
+        title: "Global Exposure and International Internships",
         items: [
-          "**International immersion** in Singapore, Dubai, or Europe during final year",
-          "Visit **global business schools** and Fortune 500 headquarters for cross-cultural learning",
-          "**Exchange programs** with partner universities in 5+ countries",
-          "Global case competitions and **international conferences** exposure",
-          "Build **worldwide network** with students and alumni across continents",
+          "**4-month paid internship** in 7 countries: India, USA, Canada, Saudi Arabia, Qatar, Singapore, and Ghana",
+          "Work with **global companies** for cross-cultural business experience",
+          "**International networking** opportunities with students and alumni across continents",
+          "Exposure to **global accounting standards** — US GAAP, IFRS, Ind AS",
+          "Build **worldwide professional network** during your program",
         ],
       },
       {
         id: "accreditation",
-        title: "Prestigious Accreditation and Recognition",
+        title: "Industry-Aligned Certification",
         items: [
-          "**UGC approved** and **AICTE recognized** MBA degree from Charter's Business College",
-          "**AACSB accreditation** - top 5% business schools globally hold this credential",
-          "**NIRF ranked** among India's leading business schools",
-          "Degree **globally recognized** and accepted for higher education and employment worldwide",
-          "**Industry partnerships** with 50+ multinational corporations for curriculum and placements",
+          "Curriculum aligned with **US-CMA, CPA, ACCA, and ICAI** frameworks",
+          "AI-integrated learning across all modules for future-ready skills",
+          "Certificate recognized by **Charters' Union's 150+ corporate partners**",
+          "**Industry partnerships** with leading accounting and finance organizations",
+          "Continuous curriculum updates based on **employer feedback and market trends**",
         ],
       },
       {
         id: "facilities",
-        title: "State-of-the-Art Campus and Learning Facilities",
+        title: "Modern Learning Environment",
         items: [
-          "**Smart classrooms** with latest teaching technology and hybrid learning capabilities",
-          "**Bloomberg terminals** and financial databases for real-time market analysis",
-          "**Business incubation center** for aspiring entrepreneurs with seed funding opportunities",
-          "**World-class library** with 50,000+ business books, journals, and digital resources",
-          "**Industry-grade software** access - Tableau, SPSS, SAP, Salesforce, and more",
+          "**AI-enabled classrooms** with latest teaching technology",
+          "**Real-time business data** for hands-on financial analysis",
+          "**Student-run businesses** for practical entrepreneurial experience",
+          "Access to **industry-standard software** — Tally, QuickBooks, Excel, Power BI, and ERP systems",
+          "**Corporate-style campus** designed to simulate professional work environments",
         ],
       },
     ],
     academicPartners: [
       {
-        name: "Charter's Business College",
-        description: "UGC Approved & AICTE Recognized",
+        name: "Charters' Union Learning Support Centre",
+        description: "AI-Powered Job-Ready Training",
       },
       {
         name: "Harvard Business School",
@@ -859,9 +850,9 @@ export const cba: Programme = {
           term: "TERM 1",
           location: "India",
           courses: [
-            { code: "MBA 101", title: "Strategic Management" },
-            { code: "MBA 102", title: "Financial Accounting" },
-            { code: "MBA 103", title: "Marketing Management" },
+            { code: "CBA 101", title: "Financial Accounting Fundamentals" },
+            { code: "CBA 102", title: "Management Accounting" },
+            { code: "CBA 103", title: "Business Taxation" },
           ],
         },
       ],
@@ -870,8 +861,8 @@ export const cba: Programme = {
           term: "TERM 3",
           location: "Singapore",
           courses: [
-            { code: "MBA 301", title: "Digital Marketing Strategy" },
-            { code: "MBA 302", title: "Investment Banking" },
+            { code: "CBA 301", title: "Corporate Finance & FP&A" },
+            { code: "CBA 302", title: "Audit & Assurance" },
           ],
         },
       ],
@@ -1394,52 +1385,52 @@ export const cba: Programme = {
         name: "Program",
         faqs: [
           {
-            id: "what-is-mba",
-            question: "What is the MBA program about?",
+            id: "what-is-cba",
+            question: "What is the Certified Business Accountant (CBA) program?",
             answer:
-              "Our MBA program is a comprehensive 2-year full-time course designed to develop business leaders through rigorous academics, practical experience, and industry exposure. The curriculum covers core business disciplines including finance, marketing, operations, strategy, and leadership. Students engage in real-world case studies, live projects, and internships with leading companies.",
+              "The CBA program is a 7-month job-ready certification course designed to prepare you for corporate accounting and finance roles. The curriculum is aligned with US-CMA, CPA, ACCA, and ICAI frameworks, with AI-integrated learning across all modules. It includes 3 months of classroom theory and a 4-month faculty-guided paid internship in 7 countries.",
           },
           {
             id: "who-is-eligible",
-            question: "Who is eligible for the MBA program?",
+            question: "Who is eligible for the CBA program?",
             answer:
-              "Candidates must have a Bachelor's degree with minimum 50% marks from a recognized university. Work experience is preferred but not mandatory. We welcome candidates from diverse backgrounds including engineering, commerce, arts, and sciences. Prior business knowledge is helpful but not required as we provide foundational courses.",
+              "The program is open to 12th pass-outs and early undergraduates from any stream — Commerce, Science, or Arts. No prior accounting knowledge is required. We provide foundational courses to help you build skills from the ground up.",
           },
           {
             id: "can-join-as-fresher",
-            question: "Can I join as a fresher without work experience?",
+            question: "Can I join as a fresher?",
             answer:
-              "Yes, freshers can join the MBA program! We have specific tracks designed for recent graduates. Our curriculum includes foundational business courses, soft skills development, and extensive internship opportunities to help you build practical experience and transition smoothly into corporate roles.",
+              "Absolutely! The CBA program is specifically designed for freshers. You'll learn practical accounting, taxation, auditing, and ERP systems from scratch through hands-on training, live projects, and a guided internship.",
           },
           {
             id: "when-are-classes",
             question: "When are the live classes held?",
             answer:
-              "Classes are conducted from Monday to Friday, typically between 9 AM to 5 PM. The schedule is designed as a full-time residential program with a mix of lectures, case discussions, group projects, and workshops. Weekend activities include guest lectures, industrial visits, and networking events with alumni and industry leaders.",
+              "Classes are conducted Monday to Friday on campus in Kolkata. The schedule alternates between theory sessions, practical lab work, and project-based learning to ensure a well-rounded experience.",
           },
           {
             id: "what-if-miss-lecture",
             question: "What if I miss a lecture?",
             answer:
-              "If you miss a live lecture due to genuine reasons, recordings are available on our learning management system. However, since our program emphasizes interactive learning through case discussions and group activities, regular attendance is strongly recommended. Our faculty and teaching assistants are available for doubt clarification during office hours.",
+              "If you miss a session, class recordings and materials are available through our learning platform. However, our program emphasizes hands-on, interactive learning, so regular attendance is strongly encouraged. Faculty and teaching assistants are available for additional support.",
           },
           {
             id: "program-duration",
             question: "What is the program duration?",
             answer:
-              "The MBA program is a 2-year full-time course divided into 6 terms. Each term is approximately 3-4 months long with breaks between terms. The program includes classroom learning, summer internships, live projects, and an international immersion experience in the final year.",
+              "The CBA program is 7 months total: 3 months of intensive classroom theory followed by a 4-month paid internship. The internship provides real-world corporate accounting experience with partner companies across 7 countries.",
           },
           {
             id: "does-give-certificates",
             question: "Does the program provide certification?",
             answer:
-              "Yes, upon successful completion of the program, you will receive a Master of Business Administration (MBA) degree from Charter's Business College. This degree is recognized globally and demonstrates your proficiency in business management, strategic thinking, and leadership skills.",
+              "Yes, upon successful completion, you receive the CBA™ (Certified Business Accountant) corporate certificate from Charters' Union. The certification is recognized by our 150+ corporate hiring partners and demonstrates your proficiency in practical accounting, taxation, and financial reporting.",
           },
           {
             id: "is-certification-worth-it",
-            question: "Is the MBA degree worth it?",
+            question: "Is the CBA certification worth it?",
             answer:
-              "Absolutely! Our MBA program has a proven track record with 95% placement rate and an average salary jump of 3.05x. Graduates work at top companies like Google, Amazon, Deloitte, and McKinsey. The degree, combined with practical skills, industry exposure, and strong alumni network, significantly enhances your career prospects and opens doors to leadership positions.",
+              "Yes! CBA graduates are placed at companies like KPMG, Deloitte, EY, and PwC with starting salaries averaging ₹3.5 LPA. The 4-month paid internship gives you real experience that employers value. The program has a 92% placement rate and opens doors to careers in corporate accounting, FP&A, taxation, and fintech.",
           },
         ],
       },
@@ -1451,31 +1442,31 @@ export const cba: Programme = {
             id: "curriculum-structure",
             question: "How is the curriculum structured?",
             answer:
-              "The MBA curriculum is divided into three main components: Core Courses (60%), Elective Specializations (25%), and Practical Learning (15%). Core courses cover fundamental business subjects like finance, marketing, operations, and strategy. Electives allow you to specialize in areas like Digital Marketing, Investment Banking, or Entrepreneurship. Practical learning includes case studies, simulations, live projects, and internships.",
+              "The CBA curriculum has two phases: 3 months of classroom theory (accounting fundamentals, taxation, auditing, ERP systems) and a 4-month faculty-guided paid internship. The entire curriculum is AI-integrated, with hands-on training using industry tools like Tally, QuickBooks, Excel, and Power BI.",
           },
           {
             id: "specializations",
-            question: "What specializations are available?",
+            question: "What topics are covered?",
             answer:
-              "We offer multiple specializations including Marketing, Finance, Operations, Human Resources, Strategy & Consulting, Entrepreneurship, Digital Business, and Business Analytics. Students can choose dual specializations to enhance their skill set and career options.",
+              "You'll learn financial accounting, management accounting, corporate taxation, auditing & assurance, financial reporting (IFRS/Ind AS), ERP systems, and business communication. The program also covers AI tools for accounting, corporate English, and professional branding.",
           },
           {
             id: "curriculum-updates",
             question: "How often is the curriculum updated?",
             answer:
-              "Our curriculum is reviewed and updated annually based on industry trends, feedback from corporate partners, and emerging business practices. We regularly invite industry experts to co-design courses and ensure our students learn the most relevant and current business concepts and tools.",
+              "Our curriculum is reviewed every 6 months based on feedback from our 150+ corporate hiring partners. Industry experts co-design course modules to ensure you learn the tools and practices that employers currently demand.",
           },
           {
             id: "international-exposure",
             question: "Is there international exposure?",
             answer:
-              "Yes! The program includes an international immersion experience where students visit a global business school and leading companies abroad. Past immersions have been to institutions in Singapore, Dubai, and Europe. This provides exposure to global business practices and cross-cultural management.",
+              "Yes! The 4-month paid internship includes placements across 7 countries: India, USA, Canada, Saudi Arabia, Qatar, Singapore, and Ghana. You'll gain cross-cultural business experience working with global teams and learn international accounting standards.",
           },
           {
             id: "case-studies",
-            question: "How many case studies will we analyze?",
+            question: "Do you use case studies?",
             answer:
-              "Throughout the 2-year program, students analyze over 200 case studies from Harvard Business School, INSEAD, and other top institutions. These cases cover real business scenarios from companies like Amazon, Netflix, Tesla, and Indian conglomerates, helping develop analytical and decision-making skills.",
+              "Yes, we use Harvard-style case studies throughout the program. You'll analyze real business scenarios from companies across accounting, finance, and commerce, helping you develop analytical and decision-making skills valued by top employers.",
           },
         ],
       },
@@ -1487,25 +1478,25 @@ export const cba: Programme = {
             id: "teaching-methodology",
             question: "What is the teaching methodology?",
             answer:
-              "We use a blend of teaching methodologies including interactive lectures, case method discussions, simulations, role plays, group projects, and experiential learning. The focus is on practical application rather than rote learning. Classes are discussion-based with active student participation, encouraging critical thinking and problem-solving.",
+              "We use a practical, hands-on approach. Classes blend interactive lectures, case discussions, live project work, and lab sessions using real accounting software. You'll apply what you learn immediately through student-run businesses and industry projects.",
           },
           {
             id: "instructor-quality",
-            question: "What is the quality of instructors?",
+            question: "Who are the instructors?",
             answer:
-              "Our faculty comprises experienced academics with PhDs from top institutions and industry practitioners from leading companies. Many professors have worked at Google, McKinsey, Goldman Sachs, and other Fortune 500 companies. They bring both theoretical knowledge and real-world business insights to the classroom.",
+              "Our faculty includes practicing CAs, CPAs (USA), CMAs (USA), CMOs, and industry practitioners with decades of corporate experience. They bring real-world insights from leading accounting firms and multinational corporations directly to the classroom.",
           },
           {
             id: "guest-lectures",
             question: "Are there guest lectures?",
             answer:
-              "Yes, we regularly host guest lectures by CEOs, entrepreneurs, industry leaders, and alumni. Past speakers include founders of unicorn startups, senior executives from Google and Amazon, and successful entrepreneurs. These sessions provide invaluable insights into industry trends and career paths.",
+              "Yes, we regularly host guest sessions by CFOs, finance directors, audit partners, and entrepreneurs. These sessions provide invaluable insights into industry practices, career paths, and emerging trends in accounting and finance.",
           },
           {
             id: "class-size",
             question: "What is the class size?",
             answer:
-              "Each MBA batch has approximately 60-80 students, ensuring personalized attention and meaningful peer interaction. Classes are conducted in sections of 30-40 students for core courses and smaller groups for electives and workshops.",
+              "Each CBA batch has 25-40 students, ensuring personalized attention and hands-on mentorship. Small class sizes mean you get more one-on-one time with faculty and better guidance during practical exercises and projects.",
           },
         ],
       },
@@ -1517,19 +1508,19 @@ export const cba: Programme = {
             id: "mentor-allocation",
             question: "How are mentors allocated?",
             answer:
-              "Each student is assigned a faculty mentor and an industry mentor within the first month. Faculty mentors guide academic progress and career planning, while industry mentors provide real-world insights and networking opportunities. Mentors are allocated based on student interests and career goals.",
+              "Each student is paired with a faculty mentor and an industry mentor within the first month. Faculty mentors guide your learning and career planning, while industry mentors — practicing accountants and finance professionals — provide real-world guidance and networking opportunities.",
           },
           {
             id: "mentor-sessions",
             question: "How frequent are mentor sessions?",
             answer:
-              "Regular one-on-one mentor sessions are conducted bi-weekly throughout the program. Additional sessions are available as needed for career guidance, project discussions, and personal development. Mentors also help with resume building, interview preparation, and job search strategies.",
+              "Regular one-on-one sessions are held weekly throughout the program. Mentors also help with resume building, interview preparation, LinkedIn branding, and job search strategies tailored to accounting and finance roles.",
           },
           {
             id: "industry-mentors",
             question: "Who are the industry mentors?",
             answer:
-              "Our industry mentors include senior executives from top companies, successful entrepreneurs, and accomplished alumni. They provide guidance on career transitions, industry insights, networking strategies, and help students navigate the corporate world.",
+              "Our industry mentors include senior accountants, audit managers, FP&A leads, tax consultants, and finance directors from companies like KPMG, Deloitte, EY, PwC, and leading startups. They provide practical career guidance and industry connections.",
           },
         ],
       },
@@ -1539,21 +1530,21 @@ export const cba: Programme = {
         faqs: [
           {
             id: "internship-opportunities",
-            question: "Are internship opportunities provided?",
+            question: "Is the internship paid?",
             answer:
-              "Yes, summer internships are a mandatory part of the MBA program. Students complete 8-10 week internships between first and second year with leading companies. Our placement cell facilitates internships with over 150 partner companies across industries including consulting, finance, technology, FMCG, and startups.",
+              "Yes! The 4-month internship is paid — you earn while you learn. Placements are available with 150+ partner companies across 7 countries in accounting, taxation, audit, and FP&A roles. The internship is faculty-guided, ensuring you have support throughout.",
           },
           {
             id: "internship-stipend",
-            question: "Do internships offer stipends?",
+            question: "What is the internship stipend?",
             answer:
-              "Yes, most summer internships offer stipends ranging from ₹30,000 to ₹1,00,000 per month depending on the company and role. Top consulting and finance firms offer higher stipends. Many internships convert to Pre-Placement Offers (PPOs) based on performance.",
+              "Internship stipends vary by company and role, typically ranging from ₹5,000 to ₹25,000 per month for domestic placements and higher for international roles. Many students receive full-time job offers from their internship companies before the program ends.",
           },
           {
             id: "international-internships",
-            question: "Can I do international internships?",
+            question: "Can I do an international internship?",
             answer:
-              "Yes, students can apply for international internships with our global partner companies. We have partnerships with firms in Singapore, Dubai, UK, and USA. However, international internships are competitive and require strong academic performance and relevant skills.",
+              "Yes! We offer international internship placements in the USA, Canada, Saudi Arabia, Qatar, Singapore, and Ghana. These are competitive and based on performance, English proficiency, and relevant skills demonstrated during the theory phase.",
           },
         ],
       },
@@ -1565,25 +1556,25 @@ export const cba: Programme = {
             id: "placement-assistance",
             question: "What kind of placement assistance is provided?",
             answer:
-              "We provide comprehensive placement support including resume workshops, mock interviews, group discussions, case interview preparation, and soft skills training. Our placement cell maintains relationships with 300+ recruiting companies and facilitates on-campus interviews, pre-placement talks, and networking sessions throughout the year.",
+              "We provide comprehensive placement support: resume workshops, AI-powered mock interviews, LinkedIn profile optimization, soft skills training, and direct access to our 150+ hiring partners. The placement cell actively connects you with companies hiring for accounting and finance roles.",
           },
           {
             id: "placement-record",
             question: "What is the placement record?",
             answer:
-              "95% of our MBA graduates receive job offers within 3 months of graduation. The average CTC is ₹26.5 LPA with an average salary jump of 3.05x. Highest package in recent years reached ₹61.8 LPA. Our graduates work at top companies including Google, Amazon, Deloitte, McKinsey, KPMG, and leading startups.",
+              "92% of CBA graduates receive job offers within the program duration. The average starting salary is ₹3.5 LPA, with top performers reaching ₹7.3 LPA. Graduates work at KPMG, Deloitte, EY, PwC, Accenture, Flipkart, and leading startups across India.",
           },
           {
             id: "placement-guarantee",
             question: "Do you guarantee placements?",
             answer:
-              "While we cannot guarantee placements, our track record shows that 95% of students receive job offers with significant salary improvements. We provide extensive support and opportunities, but final placement depends on individual performance, skills, and market conditions. Students must actively participate in the placement process and maintain good academic standing.",
+              "While no ethical institution can guarantee placement, our track record shows 92% of students receive job offers. We provide extensive support including AI interview coaching, professional branding, and direct company connections. Your placement depends on your performance, skills, and active participation in the process.",
           },
           {
             id: "career-services",
-            question: "Do you offer lifetime career services?",
+            question: "Do you offer ongoing career support?",
             answer:
-              "Yes! Alumni have lifetime access to our career services including job postings, networking events, skill development workshops, and career counseling. Many alumni return for mid-career transitions and entrepreneurship support.",
+              "Yes! Alumni have access to our career services including job postings, networking events, skill development workshops, and career counseling. Our alumni network stays connected and supports each other's career growth.",
           },
         ],
       },
@@ -1595,25 +1586,25 @@ export const cba: Programme = {
             id: "fee-structure",
             question: "What is the fee structure?",
             answer:
-              "The total program fee for the 2-year MBA is competitive with other top business schools. The fee includes tuition, study materials, library access, computer lab facilities, and placement services. Hostel and mess charges are separate. Contact our admissions team for detailed fee structure and payment plans.",
+              "The 7-month CBA program fee is structured to be accessible. The fee includes tuition, study materials, software access, and placement services. Contact our admissions team at admissions@chartersunion.com or call 9836465083 for the detailed fee structure and current offers.",
           },
           {
             id: "payment-options",
             question: "What payment options are available?",
             answer:
-              "We offer multiple payment options including one-time payment with discount, semester-wise installments, EMI options through partner banks, and education loans with major banks. Scholarships and financial aid are available for meritorious and deserving students.",
+              "We offer flexible payment options: one-time payment with discount, monthly installments, and 0% interest EMI plans for 12 or 18 months through our partner banks. Scholarship and financial aid options are also available.",
           },
           {
             id: "scholarships",
             question: "Are scholarships available?",
             answer:
-              "Yes, we offer merit-based and need-based scholarships covering up to 100% of tuition fees. Scholarships are awarded based on entrance exam scores, academic performance, work experience, diversity criteria, and financial need. Women candidates and students from underrepresented backgrounds receive special consideration.",
+              "Yes, we offer merit-based scholarships covering up to 100% of tuition fees. Scholarships are awarded based on academic performance, entrance assessment scores, and financial need. Contact admissions to learn about current scholarship opportunities.",
           },
           {
             id: "education-loan",
-            question: "Can I get education loans?",
+            question: "Can I get an education loan?",
             answer:
-              "Yes, we have tie-ups with major banks including SBI, HDFC, ICICI, and Axis Bank for education loans. The college assists students in the loan application process. Most students secure loans covering 80-100% of the program fee with flexible repayment options starting after course completion.",
+              "Yes, we have partnerships with leading banks for education loans. Our team assists students with the loan application process. Most students can secure loans with flexible repayment options starting after program completion and job placement.",
           },
         ],
       },
@@ -1902,7 +1893,7 @@ export const cba: Programme = {
     // Renders as ChartCard headers in TrackRecord
     chartTitles: {
       card1: "Paid Internship in 557+ Companies Across 7 Countries",
-      card2: "87% student got full time jobs offer before end intrashiph"
+      card2: "87% of students got full time job offers before end of internship"
     },
 
     // Renders the EMI value, payment months, and career tracks inside PricingTabs

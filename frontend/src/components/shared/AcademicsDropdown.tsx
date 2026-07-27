@@ -29,8 +29,8 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
   // State for handling image errors
   const [imageErrors, setImageErrors] = useState<Record<ProgramKey, boolean>>({
     "certified-business-accountant": false,
-    "digital-growth-&-marketing": false,
-    "technology-&-business-management": false,
+    "digital-growth-marketing": false,
+    "technology-business-management": false,
   });
 
   const handleImageError = (programKey: ProgramKey) => {
@@ -63,8 +63,8 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
   // Program menu items - only show programs that have data
   const allProgramMenuItems: { key: ProgramKey; label: string }[] = [
     { key: 'certified-business-accountant', label: 'Accounting' },
-    { key: 'digital-growth-&-marketing', label: 'Marketing' },
-    { key: 'technology-&-business-management', label: 'Bsusiness' },
+    { key: 'digital-growth-marketing', label: 'Marketing' },
+    { key: 'technology-business-management', label: 'Business' },
 
   ];
 

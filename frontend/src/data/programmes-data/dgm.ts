@@ -55,10 +55,10 @@ const dgmCurriculumSection: CurriculumSectionData = {
           { code: "SAMA 201", title: "Introduction of SEO, AEO & GEO difference with ranking factors" },
           { code: "SAMA 301", title: "On-Page SEO — Titles, Meta, Topic Clusters, internal links" },
           { code: "SAMA 401", title: "Keyword research & Search-intent mapping, Google trands analysis" },
-          { code: "FIFI 101", title: "AI-Powerd compititor Analysis, google (E-E-A-T) model & google penalizetion" },
-          { code: "PRTC 101", title: "Corporate english specking" },
-          { code: "COMM 101", title: "Profesonal personal branding" },
-          { code: "COMM 201", title: "Profesonal digital Networking" },
+          { code: "FIFI 101", title: "AI-Powered Competitor Analysis, Google (E-E-A-T) Model & Google Penalization" },
+          { code: "PRTC 101", title: "Corporate English Speaking" },
+          { code: "COMM 101", title: "Professional Personal Branding" },
+          { code: "COMM 201", title: "Professional Digital Networking" },
         ],
       },
       business: [
@@ -101,7 +101,7 @@ const dgmCurriculumSection: CurriculumSectionData = {
       courses: {
         initial: [
           { code: "MAST 102", title: "Technical SEO, SERP, Keywords, On-Page SEO, Crawl engineering, Rendering,  Schema markup site speed, Core Web Vitals, sitemaps" },
-          { code: "MAST 202", title: "Off-Page SEO, SEO Analytics & Reporting, SEO-Led Growth, Knowledge graph, EEAT engineering, Topical maps, Compititor web analysis with AI" },
+          { code: "MAST 202", title: "Off-Page SEO, SEO Analytics & Reporting, SEO-Led Growth, Knowledge graph, EEAT engineering, Topical maps, Competitor Web Analysis with AI" },
           { code: "MAST 302", title: "Google Search Console & Tag Manager setup" },
           { code: "MAST 402", title: "Backlink building: white hat strategies" },
           { code: "MAST 502", title: "Locazation architecture & GBP domination" },
@@ -113,7 +113,7 @@ const dgmCurriculumSection: CurriculumSectionData = {
           { code: "SAMA 402", title: "LinkedIn for personal branding & B2B" },
           { code: "FIFI 102", title: "Structure thinking" },
           { code: "PRTC 102", title: "Personal Video creator studio" },
-          { code: "COMM 102", title: "Body lunguage tranning" },
+          { code: "COMM 102", title: "Body Language Training" },
         ],
       },
       collaboration: [
@@ -140,7 +140,7 @@ const dgmCurriculumSection: CurriculumSectionData = {
     {
       id: "singapore",
       term: "Month 03",
-      title: "AI-Poweard Marketing Analytics with Excel & Power BI",
+      title: "AI-Powered Marketing Analytics with Excel & Power BI",
       termImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
       badges: [
         { text: "Intermediate", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
@@ -160,9 +160,9 @@ const dgmCurriculumSection: CurriculumSectionData = {
           { code: "SAMA 303", title: "Marketing funnel mapping (TOFU/MOFU/BOFU)" },
           { code: "SAMA 403", title: "Google Data Studio dashboards & reporting" },
           { code: "FIFI 103", title: "Mobile Marketing" },
-          { code: "PRTC 103", title: "Viral Grwoth hack Gtrategy" },
-          { code: "COMM 103", title: "Leadershiph social impact tranning" },
-          { code: "COMM 203", title: "Personal Video grwoth strategy creator studio" },
+          { code: "PRTC 103", title: "Viral Growth Hack Strategy" },
+          { code: "COMM 103", title: "Leadership Social Impact Training" },
+          { code: "COMM 203", title: "Personal Video Growth Strategy Creator Studio" },
         ],
       },
       moreCoursesGray: true,
@@ -327,7 +327,7 @@ const dgmCurriculumSection: CurriculumSectionData = {
       badges: [
         { text: "PRO", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
       ],
-      outcome: "Pai-Lam help to build won digital company",
+      outcome: "Build your own digital company with hands-on guidance",
       project: undefined,
       courses: {
         initial: [],
@@ -358,7 +358,7 @@ const dgmCurriculumSection: CurriculumSectionData = {
 // DGM — Digital Growth & Marketing course data
 export const dgm: Programme = {
   id: "2",
-  slug: "digital-growth-&-marketing",
+  slug: "digital-growth-marketing",
   // Dropdown Data
   dropdown: {
     title: "DGM™ (Digital Growth & Marketing)",
@@ -392,7 +392,7 @@ export const dgm: Programme = {
     careerOutcomes: [
       "Fundamentals of AI-Reday Digital Marketing, Data-Draven Marketing and Growth Engineer Framework of Goggle Digital/Meta blueprint/Hubspot/Growth School",
       "Foundation of SEO/AEO/GEO - Gen AI and Agentic AI; Marketing Autonomous  with (ChatGPT, Claude & Gemini).",
-      "AI-Poweard Marketing Analytics(GA, Pixel) with Excel & Power BI.",
+      "AI-Powered Marketing Analytics(GA, Pixel) with Excel & Power BI.",
       "Google/Meta Ads - Architecture, Plan, Validate, Auction, Bidding, Scale & Measure ROI.",
       "In-class faculty guided intranship with top Startup & MNC from India, USA, CANADA, SAUDI, QATAR and Singapore.",
       "Personal devlopment prep with English communication, Personal Branding, Corporate Bodylangusge and Placement cell.",
@@ -552,50 +552,50 @@ export const dgm: Programme = {
       highlight: "DGM™",
       suffix: "Certification",
     },
-    auditorText: "Our placement reports are audited by <strong>Zivanta Analytics</strong>, auditor for IIM and follow the IPRS Revision 2.2 framework for transparent and consistent compensation data.",
+    auditorText: "Our placement reports are audited by <strong>Zivanta Analytics</strong> and follow the IPRS Revision 2.2 framework for transparent and consistent compensation data.",
     accordions: [
       {
         id: "placement",
         title: "Outstanding Placement Record and Career Support",
         items: [
           "**92% placement** rate with top companies across diverse industries",
-          "**2.5x average salary** jump post-PGDM with CTC ranging from 15-40 LPA",
-          "Alumni at **KPMG, TCS, Infosys, Wipro, HCL, Accenture** in managerial roles",
-          "**250+ recruiting partners** including IT giants, consulting firms, and FMCG companies",
+          "**2.35x average salary** jump with CTC ranging from 3-10 LPA",
+          "Graduates placed at top digital agencies, e-commerce companies, and marketing teams",
+          "**150+ recruiting partners** including digital agencies, tech companies, and startups",
           "**100% placement assistance** with dedicated support until job placement",
         ],
       },
       {
         id: "practical",
-        title: "Industry-Focused Practical Learning Approach",
+        title: "Hands-On Practical Learning Approach",
         items: [
-          "**200+ live projects** with real companies providing practical management experience",
-          "**Mandatory summer internship** with stipend at leading companies",
-          "**Industry mentorship program** - learn from practicing managers and business leaders",
-          "**Guest lectures** by 50+ CEOs, entrepreneurs, and senior executives annually",
-          "**Simulation exercises** for supply chain, finance, marketing, and operations management",
+          "**Live projects** with real brands providing practical marketing experience",
+          "**4-month paid internship** with stipend at leading companies across 7 countries",
+          "**Industry mentorship program** — learn from practicing CMOs, growth marketers, and SEO experts",
+          "**Guest lectures** by digital marketing leaders, entrepreneurs, and agency founders",
+          "**Real campaign execution** — build, run, and measure actual marketing campaigns",
         ],
       },
       {
         id: "curriculum",
-        title: "Flexible and Industry-Relevant Curriculum",
+        title: "Industry-Relevant, AI-Integrated Curriculum",
         items: [
-          "**Autonomous curriculum** - updated every 6 months based on industry requirements",
-          "**Specialization tracks** in Marketing, Finance, HR, Operations, Business Analytics",
-          "**Skill development modules** in Excel, PowerBI, SQL, Python, and business tools",
-          "**Soft skills training** - communication, leadership, negotiation, presentation skills",
-          "**Capstone project** in final term solving real business problems",
+          "**Curriculum updated every 6 months** based on Google, Meta, and HubSpot framework changes",
+          "**Specialization tracks** in SEO, SEM, Social Media, Content Marketing, Analytics, Growth Hacking",
+          "**AI-powered tools** integrated across every module — ChatGPT, Claude, Gemini, GA4",
+          "**Soft skills training** — corporate English, professional branding, and communication",
+          "**Capstone project** — build and execute a complete digital marketing strategy for a real brand",
         ],
       },
       {
         id: "recognition",
-        title: "PGDM Recognition and Career Advantages",
+        title: "DGM Certification and Career Advantages",
         items: [
-          "**AICTE approved** Post Graduate Diploma in Management",
-          "**Equivalent to MBA** as per AICTE and accepted by all employers",
-          "**Industry preferred** due to practical focus and updated curriculum",
-          "**Fast career growth** - PGDM graduates reach managerial positions 20% faster",
-          "**Higher education ready** - eligible for PhD and executive programs",
+          "Curriculum aligned with **Google Digital Garage, Meta Blueprint, and HubSpot Academy** frameworks",
+          "**Industry-recognized** DGM™ certification valued by digital marketing employers",
+          "**Practical focus** — learn by doing real campaigns, not just theory",
+          "Build a **professional portfolio** of live campaigns to showcase to employers",
+          "**Career-ready skills** — graduate with in-demand SEO, SEM, analytics, and growth marketing expertise",
         ],
       },
     ],
@@ -621,22 +621,22 @@ export const dgm: Programme = {
           term: "TERM 1",
           location: "India",
           courses: [
-            { code: "PGDM 101", title: "Principles of Management" },
-            { code: "PGDM 102", title: "Business Economics" },
-            { code: "PGDM 103", title: "Accounting for Managers" },
-            { code: "PGDM 104", title: "Marketing Fundamentals" },
-            { code: "PGDM 105", title: "Organizational Behavior" },
+            { code: "DGM 101", title: "Digital Marketing Fundamentals" },
+            { code: "DGM 102", title: "SEO & Search Engine Marketing" },
+            { code: "DGM 103", title: "Social Media Marketing" },
+            { code: "DGM 104", title: "Content Marketing Strategy" },
+            { code: "DGM 105", title: "Marketing Analytics" },
           ],
         },
         {
           term: "TERM 2",
           location: "India",
           courses: [
-            { code: "PGDM 201", title: "Financial Management" },
-            { code: "PGDM 202", title: "Operations & Supply Chain" },
-            { code: "PGDM 203", title: "Business Analytics" },
-            { code: "PGDM 204", title: "Human Resource Management" },
-            { code: "PGDM 205", title: "Strategic Management" },
+            { code: "DGM 201", title: "Paid Advertising (Google & Meta Ads)" },
+            { code: "DGM 202", title: "Email Marketing & Automation" },
+            { code: "DGM 203", title: "Growth Hacking & CRO" },
+            { code: "DGM 204", title: "Brand Management" },
+            { code: "DGM 205", title: "Marketing Data & Power BI" },
           ],
         },
       ],
@@ -730,28 +730,28 @@ export const dgm: Programme = {
         name: "Program",
         faqs: [
           {
-            id: "what-is-pgdm",
-            question: "What is PGDM?",
+            id: "what-is-dgm",
+            question: "What is the DGM program?",
             answer:
-              "Post Graduate Diploma in Management (PGDM) is a 2-year industry-focused management program that emphasizes practical learning, live projects, and real-world business challenges. Unlike MBA, PGDM is offered by autonomous institutes and has more flexibility in curriculum design based on industry needs.",
+              "The Digital Growth & Marketing (DGM) program is a 7-month job-ready certification course that teaches modern digital marketing. The curriculum is aligned with Google Digital Garage, Meta Blueprint, and HubSpot Academy frameworks. It includes 3 months of theory and a 4-month paid internship across 7 countries.",
           },
           {
-            id: "pgdm-vs-mba",
-            question: "What is the difference between PGDM and MBA?",
+            id: "dgm-vs-other",
+            question: "How is DGM different from other marketing courses?",
             answer:
-              "PGDM is a diploma program offered by autonomous business schools with industry-focused curriculum, while MBA is a degree offered by universities. PGDM programs are often more flexible and updated frequently based on industry trends. Both are equally valued by employers and offer similar career opportunities.",
+              "DGM is a hands-on, AI-integrated program where you actually run real campaigns, not just study theory. You'll work on live brand projects, get a paid internship, and graduate with a portfolio of real marketing work to show employers. Plus, corporate English and AI interview coaching are built in.",
           },
           {
             id: "eligibility",
             question: "What are the eligibility criteria?",
             answer:
-              "Candidates must have a Bachelor's degree in any discipline from a recognized university. Work experience is preferred but not mandatory. We welcome candidates from diverse backgrounds including engineering, commerce, arts, and sciences.",
+              "The program is open to 12th pass-outs and early undergraduates from any stream — Commerce, Science, or Arts. No prior marketing knowledge is required. We teach everything from the fundamentals.",
           },
           {
             id: "practical-learning",
             question: "How much practical learning is included?",
             answer:
-              "Our PGDM program emphasizes 60% practical learning through 200+ live projects, case studies, industry visits, and internships. Students work on real business challenges with guidance from industry mentors and faculty.",
+              "The DGM program is built around hands-on learning. You'll run real SEO campaigns, manage actual social media accounts, create content calendars, set up Google and Meta ads, and analyze real campaign data. The 4-month internship puts you in a real marketing role with a company.",
           },
         ],
       },
@@ -761,15 +761,15 @@ export const dgm: Programme = {
         faqs: [
           {
             id: "how-to-apply",
-            question: "How do I apply for PGDM?",
+            question: "How do I apply for DGM?",
             answer:
-              "Applications can be submitted online through our admission portal. The process includes entrance exam scores, group discussion, and personal interview. We accept scores from CAT, XAT, GMAT, and CMAT.",
+              "Applications can be submitted online through our website or by visiting our Kolkata campus. The process includes a simple assessment and a counseling call. No entrance exam scores are required.",
           },
           {
             id: "entrance-exams",
-            question: "Which entrance exams are accepted?",
+            question: "Are there any entrance exams?",
             answer:
-              "We accept CAT, XAT, GMAT, and CMAT scores. Candidates must have valid scores from current or previous year.",
+              "No entrance exams are required for DGM. We look for enthusiasm, basic communication skills, and a willingness to learn. You can book a free demo class to experience the program before enrolling.",
           },
         ],
       },
@@ -781,7 +781,7 @@ export const dgm: Programme = {
             id: "placement-record",
             question: "What is the placement record?",
             answer:
-              "92% of our PGDM graduates receive job offers with an average CTC of ₹24.5 LPA and average salary jump of 2.5x. Top recruiters include KPMG, TCS, Infosys, and leading startups.",
+              "92% of our DGM graduates receive job offers with an average starting salary of ₹3.5 LPA. Top performers reach ₹7.3 LPA. Graduates work at digital agencies, e-commerce companies, and in-house marketing teams.",
           },
           {
             id: "internships",
@@ -1000,7 +1000,7 @@ export const dgm: Programme = {
         role: "Business Consultant",
         timeToPlace: "Just in 8 months",
         previousCollege: "Christ University",
-        background: "MBA Fresher",
+        background: "BBA Fresher",
         internship: "Microsoft India — Strategy",
         researchPaper: "Cloud adoption strategies",
         caseStudies: "Microsoft Azure growth...",
@@ -1033,7 +1033,7 @@ export const dgm: Programme = {
 
   // =========================================================================
   // DIGITAL GROWTH & MARKETING (DGM) LAYOUT ASSETS CONFIGURATION
-  // Renders on: /digital-growth-&-marketing
+  // Renders on: /digital-growth-marketing
   // =========================================================================
   assets: {
     // Renders as the main student hero cover image in ProgramHero
@@ -1067,7 +1067,7 @@ export const dgm: Programme = {
     // Renders as ChartCard headers in TrackRecord
     chartTitles: {
       card1: "Paid Internship in 557+ Companies Across 7 Countries",
-      card2: "87% student got full time jobs offer before end intrashiph"
+      card2: "87% of students got full time job offers before end of internship"
     },
 
     // Renders the EMI value, payment months, and career tracks inside PricingTabs

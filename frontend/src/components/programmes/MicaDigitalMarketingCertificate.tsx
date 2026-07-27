@@ -179,7 +179,7 @@ function ChartersUnionDigitalMarketingCertificate({ data }: Props) {
               Today, brands use search engines, social media, paid advertising, email marketing, and content marketing to reach the right audience and drive business growth. Digital Marketing has changed the way businesses operate.
             </p>
             <p className="text-sm sm:text-base text-gray-900 leading-relaxed mb-4">
-              The Job-Ready AI-Poward Certificate in  DGM™ (Digital Growth & Marketing) at the Chartersunion Learning Support Centre helps learners build Job-ready skills through instructor-led digital marketing classes, Hardvard Level Case Study, Live projects, in-class faculty Guided internship and CareerPathx™ AI-Poward English Communication, Personal Branding, Corporate Bodylangusge and AI-poward Mock-interview, AI-ready Profile Base Jobs Search Engine.
+              The Job-Ready AI-Powered Certificate in DGM™ (Digital Growth & Marketing) at the Chartersunion Learning Support Centre helps learners build Job-ready skills through instructor-led digital marketing classes, Harvard Level Case Study, Live projects, in-class faculty Guided internship and CareerPathx™ AI-Powered English Communication, Personal Branding, Corporate Body Language and AI-Powered Mock Interview, AI-ready Profile Based Jobs Search Engine.
             </p>
 
             <p className="text-sm sm:text-base text-gray-900 leading-relaxed mb-4">

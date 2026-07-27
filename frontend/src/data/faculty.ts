@@ -31,7 +31,7 @@ export const facultyMembers: Faculty[] = [
     title: "Audit & Taxation",
     company: "MorganStanley",
     subtitle: "MD, India at Morgan Stanley",
-    experience: "Ex Managing Director at Goldman Sachs",
+    experience: "Ex Vice President at Morgan Stanley",
     teaching: "Corporate strategy and financial markets",
     imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840623/Sudip_Banarjee_wygpoh.avif",
     linkedinUrl: "#",

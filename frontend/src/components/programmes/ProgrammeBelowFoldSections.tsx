@@ -104,7 +104,7 @@ export default function ProgrammeBelowFoldSections({ programme }: { programme: P
         </SectionWrapper>
       </LazyMount>
 
-      {programme.slug === 'digital-growth-&-marketing' && programme.micaCertificateData && (
+      {programme.slug === 'digital-growth-marketing' && programme.micaCertificateData && (
         <LazyMount fallback={<SectionSkeleton />}>
           <SectionWrapper hideCorners={"all"}>
             <MicaDigitalMarketingCertificate data={programme.micaCertificateData} />

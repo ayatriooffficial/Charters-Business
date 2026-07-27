@@ -50,8 +50,8 @@ function Navbar() {
 
   const programmeSlugs = new Set([
     "certified-business-accountant",
-    "digital-growth-&-marketing",
-    "technology-&-business-management",
+    "digital-growth-marketing",
+    "technology-business-management",
   ]);
 
   const isAcademicsActive = isMounted && pathname ? programmeSlugs.has(pathname.split("/")[1]) : false;
@@ -101,8 +101,8 @@ function Navbar() {
     const getActiveSlug = (path: string) => {
       const decoded = decodeURIComponent(path);
       if (decoded.includes("certified-business-accountant")) return "certified-business-accountant";
-      if (decoded.includes("digital-growth-&-marketing")) return "digital-growth-&-marketing";
-      if (decoded.includes("technology-&-business-management")) return "technology-&-business-management";
+      if (decoded.includes("digital-growth-marketing")) return "digital-growth-marketing";
+      if (decoded.includes("technology-business-management")) return "technology-business-management";
       return "certified-business-accountant"; // default
     };
 

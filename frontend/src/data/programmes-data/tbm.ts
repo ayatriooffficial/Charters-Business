@@ -769,7 +769,7 @@ const tbmCurriculumSection: CurriculumSectionData = {
 
 export const tbm: Programme = {
   id: "3",
-  slug: "technology-&-business-management",
+  slug: "technology-business-management",
   // Dropdown Data
   dropdown: {
     title: "TBM™(Technology & Business Management)",
@@ -802,7 +802,7 @@ export const tbm: Programme = {
     duration: { type: "6 Months theory + 6 Months in-class intranship" },
     deadline: { type: "Round 1: 30th Oct '25" },
     careerOutcomes: [
-      "Foundations in Industry-led learning base on Hardvard casestudy with US-CMA/CPA, Indian CA and ACCA specialisation carruculam.",
+      "Foundations in Industry-led learning based on Harvard Case Study with US-CMA/CPA, Indian CA and ACCA specialization curriculum.",
       "In-class live projects intranship under faculty with top Startup & MNC from India, USA, CANADA, SAUDI, QATAR and Singapore.",
       "AI-powered corporate accountant, finance, FP&A, fintech & GCC-ready roles.",
       "Personal devlopment prep with communication, bodylangusge and placement cell.",
@@ -830,9 +830,9 @@ export const tbm: Programme = {
     ],
     alumniLabel: "Find our student at -",
     alumniCompanies: [
-      { name: "McKinsey", logo: "/images/companies/mckinsey.png" },
-      { name: "BCG", logo: "/images/companies/bcg.png" },
       { name: "Accenture", logo: "/images/companies/accenture.png" },
+      { name: "Deloitte", logo: "/images/companies/deloitte.png" },
+      { name: "KPMG", logo: "/images/companies/kpmg.png" },
     ],
     actions: {
       primaryText: "Apply Now",
@@ -929,19 +929,16 @@ export const tbm: Programme = {
       },
     ],
     companyLogos: [
-      { name: "McKinsey", logo: "https://logo.clearbit.com/mckinsey.com" },
-      { name: "BCG", logo: "https://logo.clearbit.com/bcg.com" },
-      { name: "Bain", logo: "https://logo.clearbit.com/bain.com" },
       { name: "Accenture", logo: "https://logo.clearbit.com/accenture.com" },
       { name: "Deloitte", logo: "https://logo.clearbit.com/deloitte.com" },
       { name: "EY", logo: "https://logo.clearbit.com/ey.com" },
       { name: "PwC", logo: "https://logo.clearbit.com/pwc.com" },
       { name: "KPMG", logo: "https://logo.clearbit.com/kpmg.com" },
-      {
-        name: "Goldman Sachs",
-        logo: "https://logo.clearbit.com/goldmansachs.com",
-      },
-      { name: "JP Morgan", logo: "https://logo.clearbit.com/jpmorgan.com" },
+      { name: "Google", logo: "https://logo.clearbit.com/google.com" },
+      { name: "Microsoft", logo: "https://logo.clearbit.com/microsoft.com" },
+      { name: "Amazon", logo: "https://logo.clearbit.com/amazon.com" },
+      { name: "Flipkart", logo: "https://logo.clearbit.com/flipkart.com" },
+      { name: "TCS", logo: "https://logo.clearbit.com/tcs.com" },
       {
         name: "Morgan Stanley",
         logo: "https://logo.clearbit.com/morganstanley.com",
@@ -962,65 +959,65 @@ export const tbm: Programme = {
       highlight: "TBM™",
       suffix: "Certification",
     },
-    auditorText: "Our placement reports are audited by <strong>Zivanta Analytics</strong>, auditor for IIM and follow the IPRS Revision 2.2 framework for transparent and consistent compensation data.",
+    auditorText: "Our placement reports are audited by <strong>Zivanta Analytics</strong> and follow the IPRS Revision 2.2 framework for transparent and consistent compensation data.",
     accordions: [
       {
         id: "leadership",
-        title: "Executive Leadership and C-Suite Preparation",
+        title: "Business Leadership and Management Preparation",
         items: [
-          "**100% career advancement** to senior roles - Director, VP, or C-suite within 2 years",
-          "**1.8x average salary** increase with total CTC ranging from 28-65 LPA",
-          "Alumni in **CXO positions** at Fortune 500 companies and unicorn startups",
-          "**Senior role transitions** - 85% participants promoted within program duration",
-          "**Strategic leadership training** by CEOs and board members",
+          "**92% career placement** to roles in business operations, product management, and business analysis",
+          "**2.35x average salary** increase with CTC ranging from 3-10 LPA",
+          "Graduates placed at **Accenture, Deloitte, KPMG, EY, Google, Microsoft, Amazon** across India and globally",
+          "**150+ recruiting partners** including leading MNCs and fast-growing tech companies",
+          "**Leadership training** by experienced CEOs, CMOs, and business veterans",
         ],
       },
       {
         id: "network",
-        title: "Exclusive Executive Network and Peer Learning",
+        title: "Professional Network and Peer Learning",
         items: [
-          "**100+ CXO network** for mentorship, guidance, and career opportunities",
-          "Executive **peer learning cohort** - average 8 years experience per participant",
-          "Access to **CEO roundtables** and exclusive industry conclaves",
-          "**Alumni network** of 500+ senior executives across industries",
-          "**Board membership opportunities** through executive connections",
+          "**100+ industry network** for mentorship, guidance, and career opportunities",
+          "Collaborative **peer learning cohort** with students from diverse backgrounds",
+          "Access to **industry conclaves** and networking events",
+          "**Alumni network** across accounting, marketing, and technology management",
+          "**Mentorship opportunities** through industry connections",
         ],
       },
       {
         id: "flexibility",
-        title: "Work-Friendly Flexible Learning Format",
+        title: "Structured Learning with Global Exposure",
         items: [
-          "**Weekend classes** (Saturday-Sunday) allowing you to continue your job",
-          "**Online modules** for weekday learning at your own pace",
-          "**18-month duration** - shorter than traditional MBA while maintaining quality",
-          "**Residential modules** - 4 intensive weeks spread across program",
-          "**No career break needed** - designed for working professionals",
+          "**On-campus classes** (Monday-Friday) at our Kolkata learning centre",
+          "**AI-integrated modules** for cutting-edge technology and business learning",
+          "**12-month duration** — 6 months theory + 6 months in-class internship",
+          "**Global internship** opportunities across 7 countries",
+          "**No prior experience needed** — designed for 12th pass-outs and early undergraduates",
         ],
       },
       {
         id: "curriculum",
-        title: "Strategic and Executive-Level Curriculum",
+        title: "Industry-Relevant, AI-Integrated Curriculum",
         items: [
-          "**C-suite focused content** - board governance, M&A, corporate strategy",
-          "**Executive projects** with real strategic business challenges",
-          "**CEO as faculty** - learn directly from business leaders",
-          "**Global business perspective** through international immersion",
-          "**Digital transformation** modules on AI, blockchain, and emerging tech",
+          "**Business-technology focused content** — ERP, business analytics, IT project management",
+          "**Live projects** with real strategic business challenges",
+          "**Industry faculty** — learn directly from business leaders, CTOs, and tech executives",
+          "**Global business perspective** through international internship exposure",
+          "**Digital transformation** modules on AI, data analytics, and emerging tech",
         ],
       },
       {
         id: "recognition",
-        title: "Elite Recognition and Global Acceptance",
+        title: "Industry Recognition and Career Value",
         items: [
-          "**UGC approved Executive MBA** from Charter's Executive Business School",
-          "**Globally recognized** degree accepted for international careers",
-          "**Association with global B-schools** for exchange and learning",
-          "**Executive credential** valued higher than regular MBA by recruiters",
-          "**Lifetime access** to executive education programs and workshops",
+          "Curriculum aligned with **Harvard Business School Online and IIMA executive frameworks**",
+          "**Globally recognized** TBM™ certification valued by technology and business employers",
+          "**Practical skill focus** — graduate with real project experience, not just theory",
+          "**Industry partnerships** with leading technology and business organizations",
+          "**Lifetime access** to alumni network and career support",
         ],
       },
     ],
-    academicPartners: [{ name: "Charter's Executive Business School" }],
+    academicPartners: [{ name: "Charters' Union Learning Support Centre" }],
     immersions: [{ name: "Silicon Valley Immersion" }],
     campusImage: {
       src: "/images/programmes/indus.webp",
@@ -1159,28 +1156,28 @@ export const tbm: Programme = {
         name: "Program",
         faqs: [
           {
-            id: "what-is-emba",
-            question: "What is Executive MBA?",
+            id: "what-is-tbm",
+            question: "What is the TBM program?",
             answer:
-              "Executive MBA (EMBA) is designed for working professionals with significant management experience. The program focuses on executive leadership, strategic thinking, and C-suite preparation while allowing you to continue your job. Classes are held on weekends and some modules are online.",
+              "The Technology & Business Management (TBM) program is a 12-month job-ready certification course that bridges technology and business. The curriculum is aligned with Harvard Business School Online and IIMA executive frameworks. It includes 6 months of classroom theory and a 6-month paid internship across 7 countries.",
           },
           {
             id: "work-continue",
-            question: "Can I continue working while doing EMBA?",
+            question: "Can I join as a fresher?",
             answer:
-              "Yes! The Executive MBA is specifically designed for working professionals. Classes are scheduled on weekends (Saturday-Sunday) and some modules are online, allowing you to continue your current job while pursuing the degree.",
+              "Yes! The TBM program is designed for 12th pass-outs and early undergraduates. You don't need prior work experience. We teach everything from business fundamentals to technology management, preparing you for roles in business analysis, product management, and tech consulting.",
           },
           {
             id: "experience-required",
-            question: "How much work experience is required?",
+            question: "What background is required?",
             answer:
-              "We require minimum 3 years of full-time work experience after graduation. The average work experience of our EMBA cohort is 7-10 years, with many participants in senior management positions.",
+              "TBM is open to students from any stream — Commerce, Science, or Arts. No prior business or technology background is required. We provide foundational courses in both areas, plus AI-integrated learning across all modules.",
           },
           {
             id: "time-commitment",
             question: "What is the time commitment?",
             answer:
-              "The program requires 18 months with weekend classes (Saturday-Sunday), online modules during weekdays, and occasional residential modules. Expect to dedicate 15-20 hours per week including classes, assignments, and projects.",
+              "The TBM program runs for 12 months: 6 months of on-campus classroom learning (Monday-Friday) followed by a 6-month paid internship. The internship provides real-world experience with partner companies across 7 countries.",
           },
         ],
       },
@@ -1190,15 +1187,15 @@ export const tbm: Programme = {
         faqs: [
           {
             id: "how-to-apply",
-            question: "How do I apply for Executive MBA?",
+            question: "How do I apply for TBM?",
             answer:
-              "Application process includes online application, work experience validation, GMAT/GRE waiver for experienced professionals, personal interview, and employer recommendation (optional). Focus is on leadership experience and career achievements.",
+              "Applications can be submitted online through our website or by visiting our Kolkata campus. The process includes a simple assessment and a counseling call. No entrance exam scores are required. You can book a free demo class to experience the program before enrolling.",
           },
           {
             id: "entrance-exam",
-            question: "Is GMAT/CAT required?",
+            question: "Are there any entrance exams?",
             answer:
-              "GMAT/GRE can be waived for candidates with substantial work experience (7+ years) and strong professional track record. However, good scores can strengthen your application.",
+              "No entrance exams are required for TBM. We look for enthusiasm, basic communication skills, and a willingness to learn both technology and business concepts.",
           },
         ],
       },
@@ -1210,13 +1207,13 @@ export const tbm: Programme = {
             id: "career-impact",
             question: "What is the career impact?",
             answer:
-              "98% of our EMBA graduates report significant career advancement within 2 years - promotions to Director, VP, or C-suite positions. Average salary increase is 1.8x with many transitioning to strategic leadership roles.",
+              "92% of our TBM graduates receive job offers with an average starting salary of ₹3.5 LPA. Graduates work at Accenture, Deloitte, KPMG, Google, Microsoft, and leading startups in roles like business analyst, product manager, and technology consultant.",
           },
           {
             id: "network",
             question: "What about networking opportunities?",
             answer:
-              "Executive MBA provides exclusive access to CXO network, CEO roundtables, and executive peer learning. Build relationships with 100+ senior leaders, entrepreneurs, and industry veterans.",
+              "TBM provides access to our industry network of 150+ partner companies. Build relationships with business leaders, technology executives, and fellow alumni through networking events, mentor sessions, and industry conclaves.",
           },
         ],
       },
@@ -1228,7 +1225,7 @@ export const tbm: Programme = {
             id: "fee-structure",
             question: "What is the fee structure?",
             answer:
-              "Executive MBA fees are higher than regular MBA reflecting the program's premium nature, experienced faculty, and executive facilities. Payment plans and corporate sponsorship options available. Many participants get employer sponsorship.",
+              "The 12-month TBM program fee is designed to be accessible. The fee includes tuition, study materials, software access, and placement services. Contact our admissions team at admissions@chartersunion.com or call 9836465083 for the detailed fee structure.",
           },
         ],
       },
@@ -1300,7 +1297,7 @@ export const tbm: Programme = {
         role: "Business Consultant",
         timeToPlace: "Just in 8 months",
         previousCollege: "Christ University",
-        background: "MBA Fresher",
+        background: "BBA Fresher",
         internship: "Microsoft India — Strategy",
         researchPaper: "Cloud adoption strategies",
         caseStudies: "Microsoft Azure growth...",
@@ -1486,7 +1483,7 @@ export const tbm: Programme = {
 
   // =========================================================================
   // TECHNOLOGY & BUSINESS MANAGEMENT (TBM) LAYOUT ASSETS CONFIGURATION
-  // Renders on: /technology-&-business-management
+  // Renders on: /technology-business-management
   // =========================================================================
   assets: {
     // Renders as the main student hero cover image in ProgramHero

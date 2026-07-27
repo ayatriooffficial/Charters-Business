@@ -22,7 +22,7 @@ export function getCountdownData(slug: string): CountdownData {
 
   let phase = 1;
   const decodedSlug = decodeURIComponent(slug);
-  if (decodedSlug === "digital-growth-&-marketing") {
+  if (decodedSlug === "digital-growth-marketing") {
     phase = ((loopWeek + 1) % 4) + 1;
   } else {
     phase = loopWeek + 1;

@@ -72,9 +72,9 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
 
   const isCbaOrDgm =
     slug === "certified-business-accountant" ||
-    slug === "digital-growth-&-marketing" ||
+    slug === "digital-growth-marketing" ||
     pathname.includes("certified-business-accountant") ||
-    pathname.includes("digital-growth-&-marketing") ||
+    pathname.includes("digital-growth-marketing") ||
     (data?.items?.[0]?.title !== "Dubai");
 
   const tabOrder = data.tabOrder ?? DEFAULT_TAB_ORDER;

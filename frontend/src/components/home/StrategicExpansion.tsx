@@ -126,7 +126,7 @@ const contentData: Record<string, ContentData> = {
                 },
                 {
                     value: "3.2×",
-                    label: "higher LinkedIn profesonal profile completion",
+                    label: "higher LinkedIn professional profile completion",
                     bgColor: "",
                 },
                 {
@@ -163,7 +163,7 @@ const contentData: Record<string, ContentData> = {
                     { icon: "wrench", label: "Personal narrative framework" },
                     { icon: "users", label: "Digital footprint audit" },
                     { icon: "database", label: "AI Resource Library" },
-                    { icon: "check", label: "Personal Brnad Success Tracking" },
+                    { icon: "check", label: "Personal Brand Success Tracking" },
                 ],
             },
             {
@@ -322,7 +322,7 @@ const contentData: Record<string, ContentData> = {
                 iconColor: "text-[#8B5CF6]",
                 accentColor: "from-[#8B5CF6] to-[#8B5CF6]/50",
                 features: [
-                    { icon: "document", label: "English Specking  (daily 15-min sessions)" },
+                    { icon: "document", label: "English Speaking (daily 15-min sessions)" },
                     { icon: "search", label: "Real-time fluency correction" },
                     { icon: "users", label: "Industry vocabulary immersion (domain-specific)" },
                 ],
