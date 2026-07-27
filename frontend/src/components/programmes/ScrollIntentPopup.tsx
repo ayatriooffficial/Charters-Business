@@ -76,9 +76,9 @@ export default function ScrollIntentPopup() {
   if (!showPopup) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[rgba(0,0,0,0.2)]">
+    <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[rgba(0,0,0,0.2)] overflow-y-auto">
       <ModalBackdrop onClick={handleClose} />
-      <div className="w-[80%] max-w-[1200px] h-[80%] max-h-[900px] relative z-[99999]">
+      <div className="w-[90%] max-w-[1200px] h-[80vh] max-h-[780px] min-h-[500px] relative z-[99999] my-auto">
         <button
           onClick={handleClose}
           aria-label="Close popup"

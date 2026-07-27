@@ -279,19 +279,19 @@ export default function ChartersInterviewAi() {
 
     return (
         <div
-            className="w-full h-full bg-white flex items-center justify-center"
+            className="w-full h-full bg-white flex flex-col"
         >
             {/* reCAPTCHA container is managed dynamically on document.body by setupRecaptcha() */}
 
-            <div className="w-full h-full flex flex-col sm:flex-row overflow-hidden">
+            <div className="w-full flex-1 flex flex-col sm:flex-row overflow-hidden min-h-0">
 
                 {/* LEFT image */}
-                <div className="w-full h-[50%] sm:w-1/2 sm:h-full relative">
+                <div className="hidden sm:block sm:w-1/2 h-full relative">
                     <Image src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784539837/ai-reday_marketing_and_accounting_course_login_djkluu.avif" alt="AI Interview" fill className="object-cover" sizes="50vw" />
                 </div>
 
                 {/* RIGHT panel */}
-                <div className="w-full h-[50%] sm:w-1/2 sm:h-full flex flex-col overflow-y-auto px-4 sm:px-6 lg:px-12 py-8">
+                <div className="w-full sm:w-1/2 h-full flex flex-col overflow-y-auto px-4 sm:px-6 lg:px-12 py-6 sm:py-8">
                     <div className="m-auto w-full max-w-[450px]">
 
                     {isQuickLoggingIn ? (

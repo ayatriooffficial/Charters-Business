@@ -235,8 +235,8 @@ export default function LayoutBanner({ type }: LayoutBannerProps) {
 
       {/* Login Modal for Brochure Download */}
       {showLoginModal && (
-        <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[rgba(0,0,0,0.2)]">
-          <div className="w-[80%] max-w-[1200px] h-[80%] max-h-[900px] relative bg-white rounded-xl shadow-2xl overflow-hidden animate-scale-up">
+        <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[rgba(0,0,0,0.2)] overflow-y-auto">
+          <div className="w-[90%] max-w-[1200px] h-[80vh] max-h-[780px] min-h-[500px] relative bg-white rounded-xl shadow-2xl overflow-hidden animate-scale-up my-auto">
             <button
               onClick={() => {
                 setShowLoginModal(false);
