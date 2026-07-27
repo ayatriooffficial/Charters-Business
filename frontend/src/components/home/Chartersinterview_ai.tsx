@@ -286,8 +286,8 @@ export default function ChartersInterviewAi() {
             <div className="w-full flex-1 flex flex-col sm:flex-row overflow-hidden min-h-0">
 
                 {/* LEFT image */}
-                <div className="hidden sm:block sm:w-1/2 h-full relative">
-                    <Image src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784539837/ai-reday_marketing_and_accounting_course_login_djkluu.avif" alt="AI Interview" fill className="object-cover" sizes="50vw" />
+                <div className="hidden sm:block sm:w-1/2 h-full relative bg-gradient-to-b from-[#00142B] to-[#6F7BD6]">
+                    <Image src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784539837/ai-reday_marketing_and_accounting_course_login_djkluu.avif" alt="AI Interview" fill className="object-contain" sizes="50vw" />
                 </div>
 
                 {/* RIGHT panel */}
