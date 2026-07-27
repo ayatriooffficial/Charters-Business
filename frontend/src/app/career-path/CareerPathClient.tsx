@@ -686,7 +686,7 @@ function ReportPage({ score, answers }: { score: number; answers: Record<string,
       {showLogin &&
         createPortal(
           <div className="fixed inset-0 flex items-center justify-center z-[999999] bg-[rgba(0,0,0,0.2)] overflow-y-auto">
-            <div className="w-[80%] 2xl:w-[70%] max-w-[1200px] h-[80vh] max-h-[900px] min-h-[500px] relative my-auto">
+            <div className="w-[90%] lg:w-[70%] min-[1400px]:w-[80%] max-w-[1200px] h-[80vh] max-h-[900px] min-h-[500px] relative my-auto">
               <button
                 onClick={() => { setShowLogin(false); document.body.style.overflow = ""; }}
                 className="absolute -top-3 -right-3 z-40 bg-white rounded-full w-8 h-8 flex items-center justify-center shadow-md text-gray-600 hover:text-red-500"
