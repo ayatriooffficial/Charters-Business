@@ -406,7 +406,7 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
             {/* Login Modal for Advisory */}
             {showLoginModal && (
                 <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[rgba(0,0,0,0.2)] overflow-y-auto">
-                    <div className="w-[90%] max-w-[1200px] h-[80vh] max-h-[780px] min-h-[500px] relative bg-white rounded-xl shadow-2xl overflow-hidden animate-scale-up my-auto">
+                    <div className="w-[80%] 2xl:w-[70%] max-w-[1200px] h-[80vh] max-h-[900px] min-h-[500px] relative bg-white rounded-xl shadow-2xl overflow-hidden animate-scale-up my-auto">
                         <button
                             onClick={() => {
                                 setShowLoginModal(false);
