@@ -715,22 +715,22 @@ function Navbar() {
         </div>
       </div>
       {isMounted && showInterviewAI && createPortal(
-        <div className="fixed inset-0 flex items-center justify-center z-[9999]">
+        <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[#202124]/40 backdrop-blur-sm">
           <ModalBackdrop onClick={() => {
             setShowInterviewAI(false);
             document.body.style.overflow = '';
           }} />
-          <div className="w-[80%] h-[90%] relative z-[99999]">
+          <div className="w-[80%] h-[80%] relative z-[99999]">
             <button
               onClick={() => {
                 setShowInterviewAI(false);
                 document.body.style.overflow = '';
               }}
-              className="absolute cursor-pointer top-2 right-2 z-40 rounded-full w-7 h-7 flex hover:text-black "
+              className="absolute cursor-pointer top-3 right-3 z-50 bg-white/80 hover:bg-white rounded-full w-8 h-8 flex items-center justify-center shadow-md transition-all border border-gray-100"
             >
-              ✕
+              <Image src="/Charters-icon/Cancel.svg" alt="Close" width={24} height={24} className="opacity-70 hover:opacity-100 transition-opacity" />
             </button>
-            <div className="w-full h-full overflow-hidden rounded-xl shadow-2xl">
+            <div className="w-full h-full overflow-hidden rounded-xl shadow-2xl bg-white">
               <ChartersInterviewAi />
             </div>
           </div>

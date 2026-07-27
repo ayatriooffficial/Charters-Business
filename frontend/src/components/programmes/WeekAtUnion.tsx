@@ -16,11 +16,7 @@ interface WeekAtTetrProps {
 }
 
 const WeekAtTetr = ({ data, assets }: WeekAtTetrProps) => {
-  const config = assets || {
-    timetableImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784606398/day_to_day_at_charters-digital_marketing_f4kdtc.avif",
-  };
-  const timetableImage =
-    data?.imageSrc || config.timetableImage;
+  const timetableImage = data?.imageSrc || assets?.timetableImage;
 
   const heading = data?.title;
 

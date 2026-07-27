@@ -56,10 +56,6 @@ export interface ProgrammeCardData {
     traditional: string;
     cmp: string;
   };
-  partnerLogos?: {
-    partners: string;
-    internships: string;
-  };
 }
 
 // HERO DATA
@@ -291,6 +287,16 @@ export interface LearningOutcomeItem {
   subtitle: string;
   outcomes: string[];
   images: { src: string; caption: string }[];
+  salaryTable?: {
+    headers: string[];
+    rows: {
+      role: string;
+      entry: string;
+      mid: string;
+      senior: string;
+    }[];
+  };
+  mainImage?: string;
 }
 
 export interface ComparisonTableRow {
@@ -298,17 +304,19 @@ export interface ComparisonTableRow {
   parameter: string;
   column1: string;
   column2: string;
-  column3: string;
 }
 
 export interface ComparisonTableData {
   title: string;
   subtitle: string;
-  headers: [string, string, string, string];
+  headers: [string, string, string];
   rows: ComparisonTableRow[];
 }
 
 export interface LearningOutcomesData {
+  eyebrow?: string;
+  sidebarTitle?: string;
+  sidebarSubtitle?: string;
   title?: {
     prefix: string;
     highlight: string;
@@ -414,6 +422,15 @@ export interface Programme {
   curriculumSection?: CurriculumSectionData;
   assets?: ProgrammeAssetConfig;
   layoutBanner?: LayoutBannerConfig;
+  micaCertificateData?: MicaCertificateData;
+}
+
+export interface MicaCertificateData {
+  table1: { role: string; salary: string; }[];
+  table2: { role: string; salary: string; }[];
+  table3: { role: string; salary: string; }[];
+  table4: { role: string; salary: string; }[];
+  table5: { role: string; salary: string; }[];
 }
 
 export interface ProgrammeAssetConfig {
@@ -424,7 +441,6 @@ export interface ProgrammeAssetConfig {
   campusImage: string;
   disclaimerText: string;
   academicPartnerLogo?: string;
-  degreeInternshipPartnerLogo?: string;
   timetableImage: string;
   curriculumCityscapes: {
     dubai: string;

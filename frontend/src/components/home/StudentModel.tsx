@@ -4,18 +4,18 @@ import { memo, useState, useEffect } from "react";
 import Image from "next/image";
 import HighlightText from "../shared/HighlightObserver";
 
-import { Student, StudentCategory, studentCategories, studentMembers } from "@/data/students";
+import { Student, StudentCategory } from "@/data/students";
 
 interface StudentModelProps {
-  data?: {
-    students?: Student[];
-    categories?: StudentCategory[];
-  };
+  data?: any;
 }
 
 function StudentModel({ data }: StudentModelProps) {
-  const dynamicCategories = data?.categories || studentCategories;
-  const studentsData = data?.students || studentMembers;
+  const dynamicCategories = data?.categories || [];
+  const studentsData = data?.students || [];
+  const eyebrowText = data?.eyebrow;
+  const titleData = data?.title;
+  const subtitleText = data?.subtitle;
   
   // Set initial category dynamically to the first available category
   const initialCategory = dynamicCategories.length > 0 ? dynamicCategories[0].id : "jul";
@@ -53,19 +53,24 @@ function StudentModel({ data }: StudentModelProps) {
         <div className="max-w-[85rem] w-full mx-auto">
           {/* Header */}
           <div className="relative text-center pb-[3.25rem]">
-            <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-4 sm:mb-6">
-              OUR STUDENTS
-            </p>
+            {eyebrowText && (
+              <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-4 sm:mb-6">
+                {eyebrowText}
+              </p>
+            )}
             <h2
               id="students-heading"
               className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]"
             >
-              Meet our{" "}
-              <HighlightText className="font-bold hl-px-0">Achievers</HighlightText>
+              {titleData?.prefix}{" "}
+              <HighlightText className="font-bold hl-px-0">{titleData?.highlight}</HighlightText>
+              {titleData?.suffix ? " " + titleData.suffix : ""}
             </h2>
-            <p className="text-black px-[20px] md:px-[50px] lg:px-[70px] text-sm sm:text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
-              Real students. Real placements. See where our graduates are working today.
-            </p>
+            {subtitleText && (
+              <p className="text-black px-[20px] md:px-[50px] lg:px-[70px] text-sm sm:text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
+                {subtitleText}
+              </p>
+            )}
           </div>
 
           {/* Tabs */}

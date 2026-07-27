@@ -29,14 +29,14 @@ function ChartersUnionHero() {
     <>
       <div className="h-[44px] md:h-[80px]" />
       <section
-        className="relative w-full h-[calc(100vh-106px)] min-h-[545px] overflow-hidden"
+        className="relative w-full h-[calc(100vh-106px)] min-h-[545px] md:h-auto overflow-hidden"
         aria-labelledby="hero-heading"
       >
         <h1 id="hero-heading" className="sr-only">
           {heroData.title}
         </h1>
 
-        <div className="relative w-full h-full">
+        <div className="relative w-full h-full md:h-auto">
           <picture>
             <source
               media="(min-width: 768px)"
@@ -48,7 +48,7 @@ function ChartersUnionHero() {
               alt="From Fresher to Global Career: AI in Every Class, Faculty-Guided Paid Internships, Job-Ready Training Built for top MNCs"
               fetchPriority="high"
               decoding="sync"
-              className="absolute inset-0 h-full w-full object-cover object-center"
+              className="absolute inset-0 h-full w-full object-cover object-center md:relative md:h-auto md:w-full md:object-contain"
             />
           </picture>
         </div>
@@ -91,7 +91,7 @@ function ChartersUnionHero() {
         </div>
 
         {/* Desktop Buttons */}
-        <div className="hidden md:flex absolute inset-0 items-end justify-center pb-[18vh]">
+        <div className="hidden md:flex absolute bottom-[22%] left-0 right-0 justify-center">
           <div className="flex flex-row gap-4 items-center">
 
             {/* JOIN WEBINAR BUTTON */}

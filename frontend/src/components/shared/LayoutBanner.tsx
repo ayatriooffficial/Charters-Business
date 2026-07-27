@@ -221,18 +221,18 @@ export default function LayoutBanner({ type }: LayoutBannerProps) {
       {/* Login Modal for Brochure Download */}
       {showLoginModal && (
         <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[#202124]/40 backdrop-blur-sm">
-          <div className="w-[90%] md:w-[65%] h-[85vh] md:h-[90%] relative bg-white rounded-xl shadow-2xl overflow-hidden animate-scale-up">
+          <div className="w-[80%] h-[80%] relative bg-white rounded-xl shadow-2xl overflow-hidden animate-scale-up">
             <button
               onClick={() => {
                 setShowLoginModal(false);
                 document.body.style.overflow = "";
               }}
               aria-label="Close login modal"
-              className="absolute top-3 right-3 z-50 bg-white/80 hover:bg-white rounded-full w-8 h-8 flex items-center justify-center shadow-md text-gray-600 hover:text-black transition-all border border-gray-100 cursor-pointer"
+              className="absolute cursor-pointer top-3 right-3 z-50 bg-white/80 hover:bg-white rounded-full w-8 h-8 flex items-center justify-center shadow-md transition-all border border-gray-100"
             >
-              ✕
+              <Image src="/Charters-icon/Cancel.svg" alt="Close" width={24} height={24} className="opacity-70 hover:opacity-100 transition-opacity" />
             </button>
-            <div className="w-full h-full">
+            <div className="w-full h-full bg-white">
               <ChartersInterviewAi />
             </div>
           </div>

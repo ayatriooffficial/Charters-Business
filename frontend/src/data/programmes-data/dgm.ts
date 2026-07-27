@@ -1,249 +1,359 @@
-import type { Programme } from "./types";
-import { defaultCurriculumSection } from "./curriculum-default";
+import type { Programme, CurriculumSectionData } from "./types";
 import { facultyMembers } from "@/data/faculty";
-// DGM reorders its term tabs: Cultural Immersions appears before Business Immersions
-const dgmCurriculumSection = structuredClone(defaultCurriculumSection);
 
-// ── "AI-Ready: Hands-on Learning" Section ──
-// You can customize the subtitle text and the "Skills you'll learn" bubbles specifically for the DGM course here.
-// Any edits made here will NOT affect the CBA or TBM pages.
-dgmCurriculumSection.subtitle = "We trained to contribute in real business environments—earning recognition from managers";
-dgmCurriculumSection.tabOrder = [
-  "courses",
-  "collaboration",
-  "cultural",
-  "business",
-];
-dgmCurriculumSection.skillsData = {
-  previewSkills: ["Client Services", "Marketing", "Data Storytelling", "Social Media Strategy", "Spreadsheet Software", "Campaign Management", "Paid media", "Email Marketing", "Online Advertising", "Social Media Marketing", "Web Presence"],
-  modalTitle: "Skills and tools you'll learn",
-  modalSkillsGain: {
-    title: "Skills you'll gain",
-    skills: [
-      "Client Services", "Marketing", "Data Storytelling", "Social Media Strategy",
-      "Spreadsheet Software", "Campaign Management", "Paid media", "Email Marketing",
-      "Online Advertising", "Social Media Marketing", "Web Presence", "Interviewing Skills",
-      "Social Media Management", "Order Fulfillment", "Search Engine Optimization",
-      "Media Planning", "Loyalty Programs", "Performance Measurement", "E-Commerce"
-    ]
+const dgmCurriculumSection: CurriculumSectionData = {
+  eyebrow: "WORLD-CLASS EDUCATION",
+  titleHighlight: "AI-Ready:",
+  titleRest: "Hands-on Learning",
+  subtitle: "We trained to contribute in real business environments—earning recognition from managers",
+  tabOrder: [
+    "courses",
+    "collaboration",
+    "cultural",
+    "business",
+  ],
+  skillsData: {
+    previewSkills: ["Client Services", "Marketing", "Data Storytelling", "Social Media Strategy", "Spreadsheet Software", "Campaign Management", "Paid media", "Email Marketing", "Online Advertising", "Social Media Marketing", "Web Presence"],
+    modalTitle: "Skills and tools you'll learn",
+    modalSkillsGain: {
+      title: "Skills you'll gain",
+      skills: [
+        "Client Services", "Marketing", "Data Storytelling", "Social Media Strategy",
+        "Spreadsheet Software", "Campaign Management", "Paid media", "Email Marketing",
+        "Online Advertising", "Social Media Marketing", "Web Presence", "Interviewing Skills",
+        "Social Media Management", "Order Fulfillment", "Search Engine Optimization",
+        "Media Planning", "Loyalty Programs", "Performance Measurement", "E-Commerce"
+      ]
+    },
+    modalToolsLearn: {
+      title: "Tools you'll learn",
+      tools: ["Google Ads", "Google Analytics", "Canva"]
+    }
   },
-  modalToolsLearn: {
-    title: "Tools you'll learn",
-    tools: ["Google Ads", "Google Analytics", "Canva"]
-  }
+  tabLabels: { cultural: "Tools & Technology" },
+  items: [
+    {
+      id: "dubai",
+      term: "Month 01",
+      title: "Digital Marketing Foundation",
+      termImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
+      badges: [
+        { text: "Beginner", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
+      ],
+      outcome: "Understanding AI impact on Marketing & Customer persona, Build a website + write SEO content, Google ranking best practices",
+      project: undefined,
+      courses: {
+        initial: [
+          { code: "MAST 101", title: "Digital Marketing orientation, sales funnel & 4Ps/7Ps" },
+          { code: "MAST 201", title: "Understanding AI - Gen AI and Agentic AI; Assistive and Autonomous Marketing (ChatGPT, Claude and Priplexity)" },
+          { code: "MAST 301", title: "Introduction of ai-driven customer understanding & journey mapping" },
+          { code: "MAST 401", title: "Website UX Principles + Tools, domains, hosting, DNS, browsers - Designing Landing Pages that Convert" },
+          { code: "MAST 501", title: "AI-Powerd Graphic design for websites & social media calender (Canva, adobe)" },
+        ],
+        more: [
+          { code: "SAMA 101", title: "Website plugins - Ai-chatbot, lead form, WhatsApp button" },
+          { code: "SAMA 201", title: "Introduction of SEO, AEO & GEO difference with ranking factors" },
+          { code: "SAMA 301", title: "On-Page SEO — Titles, Meta, Topic Clusters, internal links" },
+          { code: "SAMA 401", title: "Keyword research & Search-intent mapping, Google trands analysis" },
+          { code: "FIFI 101", title: "AI-Powerd compititor Analysis, google (E-E-A-T) model & google penalizetion" },
+          { code: "PRTC 101", title: "Corporate english specking" },
+          { code: "COMM 101", title: "Profesonal personal branding" },
+          { code: "COMM 201", title: "Profesonal digital Networking" },
+        ],
+      },
+      business: [
+        { title: "Discuss sustainable solutions, renewable energy, green technology with world leaders, businesses, and investors.", subtitle: "The World Green Economy Summit" },
+        { title: "Delve into the private luxury aviation market and understand the ins and outs of a $100B exclusive industry.", subtitle: "Middle East Business Aviation Summit" },
+        { title: "Explore the niche laboratory and instrumentation industry and see how high-tech industries work.", subtitle: "ArabLAB Expo" },
+        { title: "Get a taste of the global sweet, confectionery, bakery, and snack food industry.", subtitle: "Yummex Food Exhibition, Middle East" },
+        { title: "Visit YallaMarket, which is redefining the grocery shopping experience, & Huspy, which is transforming the real estate landscape." },
+        { title: "Learn about the Emirates airline's operations, logistics, and customer service strategies.", subtitle: "Emirates Airline Headquarters" },
+      ],
+      cultural: [
+        { title: "Take a thrilling desert safari through the Dubai Desert & live the traditional Arabic life.", subtitle: "Dubai Inner Desert" },
+        { title: "Cruise in a traditional wooden boat and witness the historical landmarks.", subtitle: "Dhow Cruise" },
+        { title: "Soak in the history of Dubai from its beginnings as a fishing village to its modern metropolis.", subtitle: "Dubai Museum, Al Fahidi Fort" },
+        { title: "Bargain for gold jewelry, learn about goldsmithing at the largest gold market in the world.", subtitle: "Dubai Gold Souk" },
+        { title: "Get the inside hook on how the world's tallest building was planned, & constructed.", subtitle: "Burj Khalifa" },
+      ],
+      culturalVariant: "orange",
+      culturalImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784830095/chartersunion-digital-marketing-standard-tools_w8pezj.avif",
+    },
+    {
+      id: "india",
+      term: "Month 02",
+      title: "AI-Powered SEO, GEO & AEO and ASO",
+      termImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
+      badges: [
+        {
+          text: "Tetr Base Camp",
+          className:
+            "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold",
+        },
+        {
+          text: "FITT-IIT",
+          className:
+            "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold ml-2",
+        },
+      ],
+      outcome: "Rank content on Google, grow organic social following",
+      project: undefined,
+      courses: {
+        initial: [
+          { code: "MAST 102", title: "Technical SEO, SERP, Keywords, On-Page SEO, Crawl engineering, Rendering,  Schema markup site speed, Core Web Vitals, sitemaps" },
+          { code: "MAST 202", title: "Off-Page SEO, SEO Analytics & Reporting, SEO-Led Growth, Knowledge graph, EEAT engineering, Topical maps, Compititor web analysis with AI" },
+          { code: "MAST 302", title: "Google Search Console & Tag Manager setup" },
+          { code: "MAST 402", title: "Backlink building: white hat strategies" },
+          { code: "MAST 502", title: "Locazation architecture & GBP domination" },
+        ],
+        more: [
+          { code: "SAMA 102", title: "Instagram Marketing - Reels, hashtags, algorithm" },
+          { code: "SAMA 202", title: "Facebook Page & Group marketing" },
+          { code: "SAMA 302", title: "YouTube channel setup & video SEO" },
+          { code: "SAMA 402", title: "LinkedIn for personal branding & B2B" },
+          { code: "FIFI 102", title: "Structure thinking" },
+          { code: "PRTC 102", title: "Personal Video creator studio" },
+          { code: "COMM 102", title: "Body lunguage tranning" },
+        ],
+      },
+      collaboration: [
+        { title: "Data-driven decision making" },
+        { title: "Genetic engineering" },
+      ],
+      business: [
+        { title: "See what makes Indian Unicorns truly special.", subtitle: "StartUp Grind New Delhi" },
+        { title: "See how street vendors of India make more money than Silicon Valley startUps.", subtitle: "Gurgaon's Banjara Market" },
+        { title: "Explore fashion & business at one of the largest leather fairs in Asia.", subtitle: "The Indian Leather Fair (May)" },
+        { title: "Discover global F&B trends at India's largest food ingredients & flavoring fairs.", subtitle: "The Flagship AAHAR 204" },
+        { title: "Visit Zomato, which is redefining the Food Delivery market, & PayTM, which is bringing electronic banking to 1B+ Indians" },
+        { title: "Get up close with the management and see how the largest Indian conglomerates actually work.", subtitle: "Reliance & Tata HQs." },
+      ],
+      cultural: [
+        { title: "Witness the spectacular military parade and cultural pageantry on India's Republic Day.", subtitle: "Republic Day Parade (New Delhi, Jan 26)" },
+        { title: "Immerse in the vibrant Holi festivities, a celebration of spring with colorful powders, music, and dance.", subtitle: "Holi Festival of Colors (Pan-India)" },
+        { title: "Travel through India's villages to uncover grassroot innovations.", subtitle: "'Shodh Yatra'" },
+        { title: "Witness the majestic elephants participating in processions at this unique festival.", subtitle: "Elephant Festival, Jaipur" },
+        { title: "Visit the landmark literature festival featuring talks, and readings by global authors.", subtitle: "Jaipur Literature Festival" },
+      ],
+      culturalImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784830095/chartersunion-digital-marketing-ai-tools_vexjae.avif",
+    },
+    {
+      id: "singapore",
+      term: "Month 03",
+      title: "AI-Poweard Marketing Analytics with Excel & Power BI",
+      termImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
+      badges: [
+        { text: "Intermediate", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
+      ],
+      project: undefined,
+      courses: {
+        initial: [
+          { code: "MAST 103", title: "Developing a Content with Flywheel Strategy, Goals, User Personas, Content Types, Channel Selection & Distributing and Promoting Content" },
+          { code: "MAST 203", title: "Content Calendar creation & Optimization, Content Performance analysis Post, Email, WhatsApp(30-day plan)" },
+          { code: "MAST 303", title: "Google Tag Manager and Google Analytics 4 — setup, events, goals" },
+          { code: "MAST 403", title: "Whatsapp growth marketing & automation— list building, segmentation" },
+          { code: "MAST 503", title: "Bulk Email marketing strategy, automation, analysis" },
+        ],
+        more: [
+          { code: "SAMA 103", title: "ABM strategy + Campaign Content Calendar creation — subject lines, CTAs, design" },
+          { code: "SAMA 203", title: "Conversion Rate Optimisation (CRO) & heatmaps" },
+          { code: "SAMA 303", title: "Marketing funnel mapping (TOFU/MOFU/BOFU)" },
+          { code: "SAMA 403", title: "Google Data Studio dashboards & reporting" },
+          { code: "FIFI 103", title: "Mobile Marketing" },
+          { code: "PRTC 103", title: "Viral Grwoth hack Gtrategy" },
+          { code: "COMM 103", title: "Leadershiph social impact tranning" },
+          { code: "COMM 203", title: "Personal Video grwoth strategy creator studio" },
+        ],
+      },
+      moreCoursesGray: true,
+      collaboration: [{ title: "Angel investing & alternate investments" }],
+      business: [
+        { title: "See how innovation meets inspiration in Singapore.", subtitle: "Singapore MetaExpo 2025." },
+        { title: "Visit the world's leading Fintech company and step into the future of Finance.", subtitle: "Paypal Innovation Lab." },
+        { title: "Unravel Financial Insights at IRAS Singapore.", subtitle: "Inland Revenue Authority of Singapore." },
+        { title: "Discover Vertical Farming where Innovation meets Sustainability and experience the future of food.", subtitle: "Sky Greens Farm Tour." },
+        { title: "Explore tomorrow's technology where ideas become reality.", subtitle: "Microsoft Technology Centre." },
+      ],
+      cultural: [
+        { title: "Witness grand parades on Singapore National Day.", subtitle: "Singapore National Day (August 9)" },
+        { title: "Immerse yourself in the history and heritage of Singapore.", subtitle: "Singapore National Museum." },
+        { title: "Discover Asia's cultural mosaic at the", subtitle: "Asian Civilisations Museum." },
+        { title: "Visit Singapore's cultural heartbeat where tradition meets modernity.", subtitle: "Chinatown Singapore." },
+        { title: "Discover Singapore's military legacy.", subtitle: "Fort Siloso" },
+      ],
+      culturalImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784830095/chartersunion-digital-marketing-ai-tools_vexjae.avif",
+    },
+    {
+      id: "ghana",
+      term: "Month 04",
+      title: "Google/Meta Ads - Architecture, Plan, Validate, Auction, Bidding, Scale & Measure ROI ",
+      termImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
+      badges: [
+        { text: "Advanced", className: "bg-black text-white text-xs px-3 py-1 font-semibold" },
+      ],
+      highlight: "Faculty Guided Internship Program ",
+      outcome: "Set up & manage paid campaigns with real budgets",
+      project: undefined,
+      courses: {
+        initial: [
+          { code: "MAST 104", title: "Introduction to PPC: how ad auctions work" },
+          { code: "MAST 204", title: "Google Search Ads: structure, match types, extensions, Account architecture for automation" },
+          { code: "MAST 304", title: "Auction mechanics, Quality Score deep dive, Smart Bidding (tCPA, tROAS, MaxConv, MaxConvValue)" },
+          { code: "MAST 404", title: "Portfolio strategies, Bid strategy testing, Budget pacing, Conversion value rules" },
+          { code: "MAST 504", title: "Advanced Search (RSA pinning, AI Max, negatives, search themes)" },
+        ],
+        more: [
+          { code: "SAMA 104", title: "Shopping feed engineering, custom labels, PMax asset groups" },
+          { code: "SAMA 204", title: "Audience signals, Brand exclusions, PMax + Standard Shopping hybrid, Scripts for placement & search-term mining" },
+          { code: "SAMA 304", title: "YouTube ABCDs creative framework, Video Reach, Video Action, Demand Gen campaigns, Display & Discovery" },
+          { code: "SAMA 404", title: "Customer match + lookalikes, App Campaigns (ACi/ACe), Brand Lift & Search Lift studies, Full-funnel attribution" },
+          { code: "FIFI 104", title: "Meta Ads Manager - Facebook & Instagram Account simplification" },
+          { code: "PRTC 104", title: "Meta auction dynamics, Advantage+ Shopping (ASC) vs BAU, Advantage+ App, CBO vs ABO, Ad set consolidation" },
+          { code: "COMM 104", title: "Learning phase exit, Cost cap vs bid cap vs lowest cost, ROAS-based scaling, Audience consolidation" },
+          { code: "COMM 204", title: "Creative concept vs iteration framework, UGC pipeline & hook libraries, Dynamic creative" },
+          { code: "COMM 304", title: "Frequency & CPMr management, CAPI + server-side GTM, Event Match Quality (EMQ)" },
+          { code: "COMM 404", title: "Aggregated Event Measurement, iOS 17/18 attribution, Geo holdout testing" },
+          { code: "COMM 504", title: "Custom audiences, lookalike, and retargeting, Ad copywriting - hook, body, CTA frameworks" },
+          { code: "COMM 604", title: "Google partner Display & YouTube Ads" },
+        ],
+      },
+      moreCoursesGray: true,
+      business: [
+        { title: "Understand how trade in Africa unfolds at a world record pace!", subtitle: "Ghana International Trade Fair" },
+        { title: "Witness Africa's cutting edge agricultural technology and unique innovations.", subtitle: "AgriTech Ghana" },
+        { title: "Meet early stage startups at MEST Accra, Meltwater Incubator & BlueSpace Ghana, pan-African incubators supporting tech startups" },
+        { title: "Learn how Ghana's cocoa & cashews industry is thriving.", subtitle: "Nestle HQs, Accra" },
+        { title: "Meet global investors bullish on Africa.", subtitle: "Ghana Investment Forum" },
+      ],
+      businessNote: "Summer: Teaching Fellowship or Internship",
+      cultural: [
+        { title: "Explore Ghana's vibrant second hand market.", subtitle: "Kantamanto Market, Accra" },
+        { title: "Walk the British colonial history of Ghana on an Independence Tour.", subtitle: "Accra, Ghana" },
+        { title: "See how small businesses become energy self-sufficient using BioGas plants.", subtitle: "Kumasi, Ghana" },
+      ],
+      culturalImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784830094/chartersunion-digital-marketing-analysis-tool_eucpz5.avif",
+    },
+    {
+      id: "usa",
+      term: "Month 05",
+      title: "CRM & Internship",
+      termImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
+      badges: [
+        { text: "In-Class Faculty-Guided Internship", className: "bg-black text-white text-xs px-2 py-1 font-semibold" },
+        { text: "PRO", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
+      ],
+      project: undefined,
+      courses: {
+        initial: [
+          { code: "MAST 105", title: "E-Commerce landscape in India — Amazon, Flipkart, Shopify" },
+          { code: "MAST 205", title: "Product listing optimization — titles, images, A+ content" },
+          { code: "MAST 305", title: "Performance marketing for e-commerce (Shopping Ads)" },
+          { code: "MAST 405", title: "Meta Catalog & dynamic product ads" },
+          { code: "MAST 505", title: "Influencer marketing & Pear Publishing — micro vs macro, ROI" },
+        ],
+        more: [
+          { code: "SAMA 105", title: "AI tools — ChatGPT, Canva AI, Jasper, Copy.ai" },
+          { code: "SAMA 205", title: "Video marketing & Reels strategy" },
+          { code: "SAMA 305", title: "Online Reputation Management (ORM)" },
+          { code: "SAMA 405", title: "App Marketing & ASO basics" },
+        ],
+      },
+      moreCoursesGray: true,
+      collaboration: [
+        { title: "AI driven entrepreneurship" },
+        { title: "Healthcare management" },
+      ],
+      business: [
+        { title: "Get a glimpse into new research and products at Google's HQ.", subtitle: "Googleplex" },
+        { title: "See how animated blockbusters come to life at VFX studio Pixar.", subtitle: "Pixar HQs" },
+        { title: "Get the BTS on Silicon Valley's top incubator behind Airbnb & Dropbox.", subtitle: "Y Combinator's Demo Day" },
+        { title: "Get an immersive insight into cutting-edge space technology.", subtitle: "Space X HQs" },
+        { title: "Delve into hackers' minds at the world's top hackers' conference.", subtitle: "Black Hat USA" },
+        { title: "Dive into the latest in the world of Robots, AI, Metaverse, & Green tech.", subtitle: "Consumer Electronics Show, Vegas" },
+      ],
+      cultural: [
+        { title: "Witness a live IPO at the", subtitle: "NASDAQ, New York" },
+        { title: "Experience the historic American power centers.", subtitle: "Pentagon, & Capitol" },
+        { title: "Experience the intersection of art and technology.", subtitle: "Berkeley Art Museum" },
+        { title: "Traverse the American colonial & civil war history across the eat coast.", subtitle: "Various Cities (east coast)" },
+        { title: "Volunteer at the world's largest music stage.", subtitle: "Ultra Music Festival" },
+      ],
+      culturalImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784830095/chnarterunion-automation-tool_tvwboh.avif",
+    },
+    {
+      id: "argentina",
+      term: "Month 06",
+      title: "Growth Engineer, PRO & Faculty guided internship",
+      termImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
+      badges: [
+        { text: "On Campus", className: "bg-black text-white text-xs px-2 py-1 font-semibold" },
+        { text: "PRO", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
+      ],
+      project: undefined,
+      courses: {
+        initial: [
+          { code: "MAST 106", title: "Full-funnel 360° campaign strategy" },
+          { code: "MAST 206", title: "Digital marketing for local businesses" },
+          { code: "MAST 306", title: "The Growth Engineer and growth hack" },
+          { code: "MAST 406", title: "Freelancing — platforms, pricing, proposals" },
+          { code: "MAST 506", title: "Portfolio building — case studies, personal brand" },
+        ],
+        more: [
+          { code: "SAMA 106", title: "Agency model — client management, retainers" },
+          { code: "SAMA 206", title: "Resume + LinkedIn optimization for DM jobs" },
+          { code: "SAMA 306", title: "Interview preparation — mock rounds" },
+          { code: "SAMA 406", title: "Emerging trends 2025 — AI, voice, short video" },
+          { code: "FIFI 106", title: "CAPSTONE: Full campaign presentation" },
+        ],
+      },
+      moreCoursesGray: true,
+      business: [
+        { title: "Learn how agribusiness is driving innovation at", subtitle: "Los Grobo Group's headquarters" },
+        { title: "Understand Argentina's renewable energy transition at", subtitle: "YPF Luz" },
+        { title: "Explore the entrepreneurial ecosystem of", subtitle: "Buenos Aires' Distrito Arcos and Palermo Soho." },
+      ],
+      cultural: [
+        { title: "Experience the traditions of the", subtitle: "Pampas region, Argentina's agricultural heartland." },
+        { title: "Immerse yourself in the passion of Argentine football at", subtitle: "La Bombonera Stadium." },
+        { title: "Discover the artistic and cultural vibrancy of", subtitle: "San Telmo and La Boca." },
+      ],
+      culturalImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784830095/chnarterunion-automation-tool_tvwboh.avif",
+    },
+    {
+      id: "europe",
+      term: "Month 07",
+      title: "Capstone: Build & Launch a Digital Marketing Agency",
+      termImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
+      badges: [
+        { text: "PRO", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
+      ],
+      outcome: "Pai-Lam help to build won digital company",
+      project: undefined,
+      courses: {
+        initial: [],
+        more: [],
+      },
+      moreCoursesGray: true,
+      collaboration: [
+        { title: "International trade & business" },
+        { title: "Business of chemicals & bio-technology" },
+      ],
+      collaborationTextBlack: true,
+      business: [
+        { title: "Learn how Spain is innovating in renewable energy and sustainability at a global leader in clean power.", subtitle: "Iberdrola Headquarters, Madrid" },
+        { title: "Immerse yourself in entrepreneurial creativity and emerging startups at Madrid's leading innovation hub.", subtitle: "La Nave Innovation Hub, Madrid" },
+        { title: "Explore cutting-edge retail innovation and operations at Spain's largest department store group.", subtitle: "El Corte Inglés Headquarters, Madrid" },
+      ],
+      cultural: [
+        { title: "Immerse yourself in Spain's rich artistic heritage at two of the world's most renowned museums.", subtitle: "Prado Museum and Reina Sofia Museum, Madrid, Spain" },
+        { title: "Discover Madrid's vibrant street art, bohemian culture, and countercultural energy.", subtitle: "Lavapiés and Malasaña Districts, Madrid" },
+        { title: "Step into royalty and explore Spain's rich history at the largest functioning palace in Europe.", subtitle: "Royal Palace of Madrid, Madrid" },
+      ],
+      culturalImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784830095/chnarterunion-automation-tool_tvwboh.avif",
+    },
+
+  ],
 };
-dgmCurriculumSection.tabLabels = { cultural: "Tools & Technology" };
-
-// ── DUBAI (Term 1 / Month 1) overrides ──
-const dubai = dgmCurriculumSection.items[0];
-dubai.term = "Month 01";
-dubai.title = "FOUNDATION";
-dubai.badges = [
-  { text: "On Campus", className: "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold" },
-  { text: "Beginner", className: "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold ml-2" },
-];
-dubai.outcome = "Understanding AI impact on Marketing & Customer persona, Build a website + write SEO content, Google ranking best practices";
-dubai.project = undefined;
-dubai.termImage = "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif";
-dubai.courses = {
-  initial: [
-    { code: "MAST 101", title: "Digital Marketing orientation, sales funnel & 4Ps/7Ps" },
-    { code: "MAST 201", title: "Understanding AI - Gen AI and Agentic AI; Assistive and Autonomous Marketing (ChatGPT, Claude and Priplexity)" },
-    { code: "MAST 301", title: "Introduction of ai-driven customer understanding & journey mapping" },
-    { code: "MAST 401", title: "Website UX Principles + Tools, domains, hosting, DNS, browsers - Designing Landing Pages that Convert" },
-    { code: "MAST 501", title: "AI-Powerd Graphic design for websites & social media calender (Canva, adobe)" },
-  ],
-  more: [
-    { code: "SAMA 101", title: "Website plugins - Ai-chatbot, lead form, WhatsApp button" },
-    { code: "SAMA 201", title: "Introduction of SEO, AEO & GEO difference with ranking factors" },
-    { code: "SAMA 301", title: "On-Page SEO — Titles, Meta, Topic Clusters, internal links" },
-    { code: "SAMA 401", title: "Keyword research & Search-intent mapping, Google trands analysis" },
-    { code: "FIFI 101", title: "AI-Powerd compititor Analysis, google (E-E-A-T) model & google penalizetion" },
-    { code: "PRTC 101", title: "Corporate english specking" },
-    { code: "COMM 101", title: "Profesonal personal branding" },
-    { code: "COMM 201", title: "Profesonal digital Networking" },
-  ],
-};
-
-// ── MONTH 02 ──
-const m2 = dgmCurriculumSection.items[1];
-m2.term = "Month 02";
-m2.title = "SEO & SOCIAL";
-m2.badges = [
-  { text: "On Campus", className: "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold" },
-];
-m2.outcome = "Rank content on Google, grow organic social following";
-m2.project = undefined;
-m2.termImage = "/images/dgm-tools/Charters-classroom.avif";
-m2.courses = {
-  initial: [
-    { code: "MAST 102", title: "Technical SEO: Crawl engineering, Rendering, Schema markup site speed, Core Web Vitals, sitemaps" },
-    { code: "MAST 202", title: "Entity SEO, Knowledge graph, EEAT engineering, Topical maps, Compititor web analysis with AI" },
-    { code: "MAST 302", title: "Google Search Console setup & analysis" },
-    { code: "MAST 402", title: "Backlink building: white hat strategies" },
-    { code: "MAST 502", title: "Locazation architecture & GBP domination" },
-  ],
-  more: [
-    { code: "SAMA 102", title: "Instagram Marketing - Reels, hashtags, algorithm" },
-    { code: "SAMA 202", title: "Facebook Page & Group marketing" },
-    { code: "SAMA 302", title: "YouTube channel setup & video SEO" },
-    { code: "SAMA 402", title: "LinkedIn for personal branding & B2B" },
-    { code: "FIFI 102", title: "Structure thinking" },
-    { code: "PRTC 102", title: "Personal Video creator studio" },
-    { code: "COMM 102", title: "Body lunguage tranning" },
-  ],
-};
-
-// ── MONTH 03 (Intermediate+) ──
-const m3 = dgmCurriculumSection.items[2];
-m3.term = "Month 03";
-m3.title = "AI-Powered Content Marketing & ANALYTICS";
-m3.badges = [
-  { text: "On Campus", className: "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold" },
-  { text: "Intermediate", className: "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold ml-2" },
-];
-m3.project = undefined;
-m3.termImage = "/images/dgm-tools/Charters-classroom.avif";
-m3.courses = {
-  initial: [
-    { code: "MAST 103", title: "Developing a Content with Flywheel Strategy, Goals, User Personas, Content Types, Channel Selection & Distributing and Promoting Content" },
-    { code: "MAST 203", title: "Content Calendar creation & Optimization, Content Performance analysis Post, Email, WhatsApp(30-day plan)" },
-    { code: "MAST 303", title: "Google Tag Manager and Google Analytics 4 — setup, events, goals" },
-    { code: "MAST 403", title: "Whatsapp growth marketing & automation— list building, segmentation" },
-    { code: "MAST 503", title: "Bulk Email marketing strategy, automation, analysis" },
-  ],
-  more: [
-    { code: "SAMA 103", title: "Campaign Content Calendar creation — subject lines, CTAs, design" },
-    { code: "SAMA 203", title: "Conversion Rate Optimisation (CRO) & heatmaps" },
-    { code: "SAMA 303", title: "Marketing funnel mapping (TOFU/MOFU/BOFU)" },
-    { code: "SAMA 403", title: "Google Data Studio dashboards & reporting" },
-    { code: "FIFI 103", title: "Mobile Marketing" },
-    { code: "PRTC 103", title: "Viral Grwoth hack Gtrategy" },
-    { code: "COMM 103", title: "Leadershiph social impact tranning" },
-    { code: "COMM 203", title: "Personal Video grwoth strategy creator studio" },
-  ],
-};
-
-// ── MONTH 04 ──
-const m4 = dgmCurriculumSection.items[3];
-m4.term = "Month 04";
-m4.title = "Google Ads - Architecture, Auction & Bidding Mastery";
-m4.badges = [
-  { text: "On Campus", className: "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold" },
-];
-m4.outcome = "Set up & manage paid campaigns with real budgets";
-m4.project = undefined;
-m4.termImage = "/images/dgm-tools/Charters-classroom.avif";
-m4.courses = {
-  initial: [
-    { code: "MAST 104", title: "Introduction to PPC: how ad auctions work" },
-    { code: "MAST 204", title: "Google Search Ads: structure, match types, extensions, Account architecture for automation" },
-    { code: "MAST 304", title: "Auction mechanics, Quality Score deep dive, Smart Bidding (tCPA, tROAS, MaxConv, MaxConvValue)" },
-    { code: "MAST 404", title: "Portfolio strategies, Bid strategy testing, Budget pacing, Conversion value rules" },
-    { code: "MAST 504", title: "Advanced Search (RSA pinning, AI Max, negatives, search themes)" },
-  ],
-  more: [
-    { code: "SAMA 104", title: "Shopping feed engineering, custom labels, PMax asset groups" },
-    { code: "SAMA 204", title: "Audience signals, Brand exclusions, PMax + Standard Shopping hybrid, Scripts for placement & search-term mining" },
-    { code: "SAMA 304", title: "YouTube ABCDs creative framework, Video Reach, Video Action, Demand Gen campaigns, Display & Discovery" },
-    { code: "SAMA 404", title: "Customer match + lookalikes, App Campaigns (ACi/ACe), Brand Lift & Search Lift studies, Full-funnel attribution" },
-    { code: "FIFI 104", title: "Meta Ads Manager - Facebook & Instagram Account simplification" },
-    { code: "PRTC 104", title: "Meta auction dynamics, Advantage+ Shopping (ASC) vs BAU, Advantage+ App, CBO vs ABO, Ad set consolidation" },
-    { code: "COMM 104", title: "Learning phase exit, Cost cap vs bid cap vs lowest cost, ROAS-based scaling, Audience consolidation" },
-    { code: "COMM 204", title: "Creative concept vs iteration framework, UGC pipeline & hook libraries, Dynamic creative" },
-    { code: "COMM 304", title: "Frequency & CPMr management, CAPI + server-side GTM, Event Match Quality (EMQ)" },
-    { code: "COMM 404", title: "Aggregated Event Measurement, iOS 17/18 attribution, Geo holdout testing" },
-    { code: "COMM 504", title: "Custom audiences, lookalike, and retargeting, Ad copywriting - hook, body, CTA frameworks" },
-    { code: "COMM 604", title: "Google partner Display & YouTube Ads" },
-  ],
-};
-
-// ── MONTH 05 (PRO) ──
-const m5 = dgmCurriculumSection.items[4];
-m5.term = "Month 05";
-m5.title = "PRO & Faculty guided internship";
-m5.badges = [
-  { text: "On Campus", className: "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold" },
-  { text: "PRO", className: "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold ml-2" },
-];
-m5.project = undefined;
-m5.termImage = "/images/dgm-tools/Charters-classroom.avif";
-m5.courses = {
-  initial: [
-    { code: "MAST 105", title: "E-Commerce landscape in India — Amazon, Flipkart, Shopify" },
-    { code: "MAST 205", title: "Product listing optimization — titles, images, A+ content" },
-    { code: "MAST 305", title: "Performance marketing for e-commerce (Shopping Ads)" },
-    { code: "MAST 405", title: "Meta Catalog & dynamic product ads" },
-    { code: "MAST 505", title: "Influencer marketing — micro vs macro, ROI" },
-  ],
-  more: [
-    { code: "SAMA 105", title: "AI tools — ChatGPT, Canva AI, Jasper, Copy.ai" },
-    { code: "SAMA 205", title: "Video marketing & Reels strategy" },
-    { code: "SAMA 305", title: "Online Reputation Management (ORM)" },
-    { code: "SAMA 405", title: "App Marketing & ASO basics" },
-  ],
-};
-
-// ── MONTH 06 (PRO) ──
-const m6 = dgmCurriculumSection.items[5];
-m6.term = "Month 06";
-m6.title = "Growth Engineer, PRO & Faculty guided internship";
-m6.badges = [
-  { text: "On Campus", className: "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold" },
-  { text: "PRO", className: "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold ml-2" },
-];
-m6.project = undefined;
-m6.termImage = "/images/dgm-tools/Charters-classroom.avif";
-m6.courses = {
-  initial: [
-    { code: "MAST 106", title: "Full-funnel 360° campaign strategy" },
-    { code: "MAST 206", title: "Digital marketing for local businesses" },
-    { code: "MAST 306", title: "The Growth Engineer and growth hack" },
-    { code: "MAST 406", title: "Freelancing — platforms, pricing, proposals" },
-    { code: "MAST 506", title: "Portfolio building — case studies, personal brand" },
-  ],
-  more: [
-    { code: "SAMA 106", title: "Agency model — client management, retainers" },
-    { code: "SAMA 206", title: "Resume + LinkedIn optimization for DM jobs" },
-    { code: "SAMA 306", title: "Interview preparation — mock rounds" },
-    { code: "SAMA 406", title: "Emerging trends 2025 — AI, voice, short video" },
-    { code: "FIFI 106", title: "CAPSTONE: Full campaign presentation" },
-  ],
-};
-
-// ── MONTH 07 (PRO) ──
-const m7 = dgmCurriculumSection.items[6];
-m7.term = "Month 07";
-m7.title = "Capstone: Build & Launch a Digital Marketing Agency";
-m7.badges = [
-  { text: "On Campus", className: "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold" },
-  { text: "PRO", className: "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold ml-2" },
-];
-m7.outcome = "Pai-Lam help to build won digital company";
-m7.project = undefined;
-m7.termImage = "/images/dgm-tools/Charters-classroom.avif";
-m7.courses = {
-  initial: [],
-  more: [],
-};
-
-// Each term (1-5) gets its own image; terms 6-7 reuse the first image
-dgmCurriculumSection.items[0].culturalImage = "/images/dgm-tools/1.jpg";
-dgmCurriculumSection.items[1].culturalImage = "/images/dgm-tools/2.avif";
-dgmCurriculumSection.items[2].culturalImage = "/images/dgm-tools/3.avif";
-dgmCurriculumSection.items[3].culturalImage = "/images/dgm-tools/4.avif";
-dgmCurriculumSection.items[4].culturalImage = "/images/dgm-tools/5.avif";
-dgmCurriculumSection.items[5].culturalImage = "/images/dgm-tools/1.jpg";
-dgmCurriculumSection.items[6].culturalImage = "/images/dgm-tools/1.jpg";
-
-// ── MONTH 08 ──
-const m8 = dgmCurriculumSection.items[7];
-m8.term = "Month 08";
-m8.title = "Internship";
-m8.badges = [
-  { text: "On Campus", className: "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold" },
-];
-m8.termImage = "/images/dgm-tools/Charters-classroom.avif";
 
 // DGM — Digital Growth & Marketing course data
 export const dgm: Programme = {
@@ -279,31 +389,35 @@ export const dgm: Programme = {
     eligibility: { type: "12 Pass-out & Early under graduates." },
     duration: { type: "3 Months theory + 4 Months in-class intranship" },
     deadline: { type: "Round 1: 30th Oct '25" },
-    careerOutcomes: ["Management Trainee", "Project Manager"],
-    jobOpenings: "2.12 Cr",
+    careerOutcomes: [
+      "Fundamentals of AI-Reday Digital Marketing, Data-Draven Marketing and Growth Engineer Framework of Goggle Digital/Meta blueprint/Hubspot/Growth School",
+      "Foundation of SEO/AEO/GEO - Gen AI and Agentic AI; Marketing Autonomous  with (ChatGPT, Claude & Gemini).",
+      "AI-Poweard Marketing Analytics(GA, Pixel) with Excel & Power BI.",
+      "Google/Meta Ads - Architecture, Plan, Validate, Auction, Bidding, Scale & Measure ROI.",
+      "In-class faculty guided intranship with top Startup & MNC from India, USA, CANADA, SAUDI, QATAR and Singapore.",
+      "Personal devlopment prep with English communication, Personal Branding, Corporate Bodylangusge and Placement cell.",
+
+    ],
+    jobOpenings: "175912 (kolkata)",
     expectedCtc: {
-      traditional: "2.8L",
+      traditional: "1.8L",
       cmp: "7.3L",
-    },
-    partnerLogos: {
-      partners: "/charter-partner/charter-digital-growth-marketing-partners.avif",
-      internships: "/charter-partner/digital_growth_marketing_internship_partner.avif",
     },
   },
   // Hero Data
   hero: {
-    badge: "Professional Course",
-    categoryLabel: "MANAGEMENT SPECIALIZATION",
+    badge: "100% job guarantee program",
+    categoryLabel: "Digital Marketing",
     title: {
-      main: "POST GRADUATE DIPLOMA IN",
+      main: "AI-Ready, Internship-Driven Training for Digital Marketing",
 
 
     },
     description:
-      "POST GRADUATE DIPLOMA IN",
+      "Learn AI-Ready SEO, Email Marketing, Data Driven Growth, Run a Live Paid Campaign for a Real Business + Google Digital | Meta Blueprint | HubSpot - Framework Aligned Curriculum + 4-Month Paid Internship.",
     stats: [
-      { label: "Average CTC", value: "7.5 LPA" },
-      { label: "Placement Rate", value: "95%" },
+      { label: "99.3% Avg Placement", value: "7.5 LPA" },
+      { label: "+3X Internship Offer Per Student", value: "95%" },
     ],
     alumniLabel: "Find our student at -",
     alumniCompanies: [
@@ -438,7 +552,7 @@ export const dgm: Programme = {
       highlight: "DGM™",
       suffix: "Certification",
     },
-    auditorText: "Our placement reports are audited by <strong>AnalystPK</strong>, auditor for IIM and follow the IPRS Revision 2.2 framework for transparent and consistent compensation data.",
+    auditorText: "Our placement reports are audited by <strong>Zivanta Analytics</strong>, auditor for IIM and follow the IPRS Revision 2.2 framework for transparent and consistent compensation data.",
     accordions: [
       {
         id: "placement",
@@ -488,8 +602,8 @@ export const dgm: Programme = {
     academicPartners: [{ name: "Charter's Business College" }],
     immersions: [{ name: "Industry Visits" }],
     campusImage: {
-      src: "/images/programmes/indus.webp",
-      alt: "Charter's Business College Campus",
+      src: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840455/Sanjana-recived-digital-growth-_-marketing-certification_z2hkzv.avif",
+      alt: "How weeks look like at Charters'Union",
     },
   },
   // Curriculum Section (per-programme, isolated copy)
@@ -692,6 +806,9 @@ export const dgm: Programme = {
     ],
   },
   students: {
+    eyebrow: "OUR STUDENTS",
+    title: { prefix: "Meet our", highlight: "Achievers" },
+    subtitle: "Real students. Real placements. See where our graduates are working today.",
     categories: [
       { id: "jan", name: "January" },
       { id: "apr", name: "April" },
@@ -894,6 +1011,8 @@ export const dgm: Programme = {
     ],
   },
   faculty: {
+    eyebrow: "LEARN FROM THE BEST",
+    title: { prefix: "Meet your", highlight: "Faculty" },
     subtitle: "Learn from industry leaders, academic experts, and seasoned practitioners who bring real-world experience to your education.",
     categories: [
       { id: "leadership", name: "Leadership" },
@@ -921,18 +1040,17 @@ export const dgm: Programme = {
     heroImage: "/images/certified-business-accountant-student-sunitha-raj-got-jobs.png",
 
     // Renders under "Find our faculty at -" banner in ProgramHero
-    internshipPartnerLogo: "/charter-partner/certified_business_accountant_internship_partner.avif",
+    internshipPartnerLogo: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784554664/digital_growth_marketing_internship_partner_dwus3s.avif",
 
     // Renders as the industrial faculty partnership logo badge in ProgramHero
-    industrialFacultyLogo: "/images/programmes/industrial_faculty.avif",
+    industrialFacultyLogo: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784539836/charters-faculty-member_tlvkib.avif",
 
     // Renders as the list of placement partner logos in TrackRecord
-    hiredCompaniesBanner: "/images/program-placements/DGM_Hired_Company.png",
-    campusImage: "/images/programmes/certificate.JPG",
-    academicPartnerLogo: "/charter-partner/charter-academic-partner.avif",
-    degreeInternshipPartnerLogo: "/charter-partner/charter-intrenshiph-company-around-the-world.avif",
+    hiredCompaniesBanner: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784891196/DGM_Hired_Company_me01cr.avif",
+    campusImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840455/Sanjana-recived-digital-growth-_-marketing-certification_z2hkzv.avif",
+    academicPartnerLogo: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784554663/digital_growth_marketing_curriculum_partner_x7c7y3.avif",
     disclaimerText: "Every DGM™ (Digital Growth & Marketing) completed student who fulfils the minimum requirements will be eligible to apply for professional certifications, international marketing credentials, and global job placement opportunities.",
-    timetableImage: "/images/week-at-chartersunion/dgm-week-at-charters-union.png",
+    timetableImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784606398/day_to_day_at_charters-digital_marketing_f4kdtc.avif",
 
     // Renders cityscapes in CurriculumSection
     curriculumCityscapes: {
@@ -954,6 +1072,8 @@ export const dgm: Programme = {
 
     // Renders the EMI value, payment months, and career tracks inside PricingTabs
     pricing: {
+      emiLabel: "Starting at",
+      primaryButton: { text: "Book a Free Demo" },
       emiAmount: "₹6430",
       emiMonths: "total ₹45000",
       secondaryButton: { text: "VIEW EMI" },
@@ -1008,17 +1128,23 @@ export const dgm: Programme = {
     subtitle: "Start your day with ambition and end it with impact. At Charters' Union, every week pushes boundaries.",
   },
   learningOutcomes: {
+    eyebrow: "WHAT YOU'LL MASTER",
+    sidebarTitle: "LEARNING OUTCOMES",
+    sidebarSubtitle: "Navigate through our mastery areas",
+
     comparisonTable: {
-      title: "How DGM is fundamentally different",
-      subtitle: "DGM VS TRADITIONAL EDUCATION",
-      headers: ["Parameter", "Engineering", "Business", "Charter's Business (DGM)"],
+      title: "What Makes This Program Stand Out?",
+      subtitle: "DGM™(Digital Growth & Marketing) VS TRADITIONAL EDUCATION",
+      headers: ["", "DGM™ (Digital Growth & Marketing)", "Other Digital Marketing Courses"],
       rows: [
-        { icon: "/Charters-icon/fundamental.svg", parameter: "Core focus", column1: "✕ Theoretical CS", column2: "✕ Theoretical management", column3: "✓ Computer Science + AI + Applied business" },
-        { icon: "/Charters-icon/study.svg", parameter: "How students learn", column1: "✕ Lectures & exams", column2: "✕ Case studies", column3: "✓ Build real tech products from day one" },
-        { icon: "/Charters-icon/real world project.svg", parameter: "Entrepreneurship", column1: "✕ Optional club", column2: "✕ Competitions", column3: "✓ Learn by building a tech startup" },
-        { icon: "/Charters-icon/profile.svg", parameter: "Who teaches", column1: "✕ Academics", column2: "✕ Limited tech exposure", column3: "✓ Meta, Google, OpenAI founders" },
-        { icon: "/Charters-icon/careerroadmap.svg", parameter: "Career outcomes", column1: "✕ Junior SDE", column2: "✕ Analyst roles", column3: "✓ Forward Deployed Eng, Product Eng, AI PMs" },
-        { icon: "/Charters-icon/jobs.svg", parameter: "Risk & safety net", column1: "✕ Limited flexibility", column2: "✕ No tech skills", column3: "✓ Placements + deferred support" }
+        { icon: "/Charters-icon/fundamental.svg", parameter: "Learning Focus", column1: "✓ End-to-end campaign execution with measurable ROI + AI", column2: "Theory-heavy modules" },
+        { icon: "/Charters-icon/study.svg", parameter: "Coverage", column1: "✓ SEO, Paid Ads, Social Media, Automation, Analytics, GenAI", column2: "Limited platform exposure" },
+        { icon: "/Charters-icon/institution-partner.svg", parameter: "Hands-on Depth", column1: "✓ 12+ live campaigns with Harvard case studies", column2: "Assignment-based learning" },
+        { icon: "/Charters-icon/libaberyicon.svg", parameter: "Tools Exposure", column1: "✓ 15+ industry tools including Google Ads, Meta & GA4", column2: "Basic tool walkthroughs" },
+        { icon: "/Charters-icon/careerroadmap.svg", parameter: "Industry Alignment", column1: "✓ Paid-Internship Aligned Curriculum ", column2: "Outdated or generic syllabus" },
+        { icon: "/Charters-icon/jobs.svg", parameter: "Internship & Live Experience", column1: "✓ Faculty Guided in-class internship with real campaign", column2: "Simulated projects only" },
+        { icon: "/Charters-icon/lifetime.svg", parameter: "Career Support", column1: "✓ 360° career support with 1:1 mock interviews & placement assistance", column2: "Limited placement guidance" },
+        { icon: "/Charters-icon/graduate.svg", parameter: "Outcome", column1: "✓ 100% Job-Ready Digital Marketing Professional", column2: "Concept familiarity" }
       ]
     },
     title: {
@@ -1052,6 +1178,15 @@ export const dgm: Programme = {
             caption: 'Get regular 1:1 mentorship, support and practice',
           },
         ],
+        salaryTable: {
+          headers: ["Job Role", "Entry-Level Salary", "Mid-Level Salary", "Senior / Lead Salary"],
+          rows: [
+            { role: "Digital Marketing Executive", entry: "~₹3 L – ₹6 L per year", mid: "~₹6 L – ₹12 L per year", senior: "₹12 L – ₹20 L+ per year" },
+            { role: "Performance Marketing Specialist", entry: "~₹4 L – ₹8 L per year", mid: "~₹8 L – ₹18 L per year", senior: "₹18 L – ₹30 L+ per year" },
+            { role: "SEO Specialist", entry: "~₹3 L – ₹7 L per year", mid: "~₹7 L – ₹15 L per year", senior: "₹15 L – ₹25 L+ per year" },
+            { role: "Social Media Manager", entry: "~₹3 L – ₹6 L per year", mid: "~₹6 L – ₹14 L per year", senior: "₹14 L – ₹25 L+ per year" }
+          ]
+        },
       },
       {
         title: 'Customer Obsession',
@@ -1077,6 +1212,7 @@ export const dgm: Programme = {
             caption: 'Conduct customer discovery with early-stage startups',
           },
         ],
+        mainImage: "/images/dgm-tools/1.jpg",
       },
       {
         title: 'Effective Communication',
@@ -1102,6 +1238,15 @@ export const dgm: Programme = {
             caption: 'Receive 1:1 coaching on executive presence and crafting your elevator pitch',
           },
         ],
+        salaryTable: {
+          headers: ["Job Role", "Entry-Level Salary", "Mid-Level Salary", "Senior / Lead Salary"],
+          rows: [
+            { role: "Digital Marketing Executive", entry: "~₹3 L – ₹6 L per year", mid: "~₹6 L – ₹12 L per year", senior: "₹12 L – ₹20 L+ per year" },
+            { role: "Performance Marketing Specialist", entry: "~₹4 L – ₹8 L per year", mid: "~₹8 L – ₹18 L per year", senior: "₹18 L – ₹30 L+ per year" },
+            { role: "SEO Specialist", entry: "~₹3 L – ₹7 L per year", mid: "~₹7 L – ₹15 L per year", senior: "₹15 L – ₹25 L+ per year" },
+            { role: "Social Media Manager", entry: "~₹3 L – ₹6 L per year", mid: "~₹6 L – ₹14 L per year", senior: "₹14 L – ₹25 L+ per year" }
+          ]
+        },
       },
       {
         title: 'First Principles Problem Solving',
@@ -1127,6 +1272,7 @@ export const dgm: Programme = {
             caption: 'Join bi-monthly moderated group discussions on trending business topics',
           },
         ],
+        mainImage: "/images/dgm-tools/1.jpg",
       },
       {
         title: 'Business Acumen',
@@ -1152,6 +1298,7 @@ export const dgm: Programme = {
             caption: 'Solve 100+ renowned business cases in teams of 3-4',
           },
         ],
+        mainImage: "/images/dgm-tools/1.jpg",
       },
       {
         title: 'Agile Product Thinking',
@@ -1177,6 +1324,7 @@ export const dgm: Programme = {
             caption: 'Gain an Agile scrum certification',
           },
         ],
+        mainImage: "/images/dgm-tools/1.jpg",
       },
       {
         title: 'Sales',
@@ -1202,6 +1350,7 @@ export const dgm: Programme = {
             caption: 'Make upwards of 5L in revenue via the dropshipping challenge in Term 1',
           },
         ],
+        mainImage: "/images/dgm-tools/1.jpg",
       },
       {
         title: 'Process Thinking',
@@ -1227,6 +1376,7 @@ export const dgm: Programme = {
             caption: 'Manage business processes for your small business in term 1',
           },
         ],
+        mainImage: "/images/dgm-tools/1.jpg",
       },
     ]
   },
@@ -1248,8 +1398,8 @@ export const dgm: Programme = {
       downloadFilename: "charters-placement-report-2025.jpg"
     },
     brochure: {
-      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784611644/charters-placement-report-2026_gyuu4p.avif",
-      imageAlt: "Charters Union Brochure",
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840455/digital-growth-_-marketing-brochure_egxnfk.avif",
+      imageAlt: "Charters'Union Brochure",
       programName: "Digital Growth & Marketing (DGM™)",
       subtext: "AI-First Curriculums • 4-6 Month Paid Internships • Global Placements",
       buttonText: "Download Brochure",
@@ -1261,5 +1411,42 @@ export const dgm: Programme = {
       buttonText: "Talk to an advisor",
       phoneNumber: "+919836465083"
     }
+  },
+  micaCertificateData: {
+    table1: [
+      { role: 'Digital Marketing Executive', salary: 'INR 3.2L' },
+      { role: 'SEO Specialist', salary: 'INR 5.1L' },
+      { role: 'Social Media Strategist', salary: 'INR 4.7L' },
+      { role: 'Performance Marketing Manager', salary: 'INR 15.3L' },
+      { role: 'Brand Manager', salary: 'INR 19.3L' },
+    ],
+    table2: [
+      { role: 'Digital Marketing Executive', salary: 'INR 3.2L' },
+      { role: 'SEO Specialist', salary: 'INR 5.1L' },
+      { role: 'Social Media Strategist', salary: 'INR 4.7L' },
+      { role: 'Performance Marketing Manager', salary: 'INR 15.3L' },
+      { role: 'Brand Manager', salary: 'INR 19.3L' },
+    ],
+    table3: [
+      { role: 'Digital Marketing Executive', salary: 'INR 3.2L' },
+      { role: 'SEO Specialist', salary: 'INR 5.1L' },
+      { role: 'Social Media Strategist', salary: 'INR 4.7L' },
+      { role: 'Performance Marketing Manager', salary: 'INR 15.3L' },
+      { role: 'Brand Manager', salary: 'INR 19.3L' },
+    ],
+    table4: [
+      { role: 'Digital Marketing Executive', salary: 'INR 3.2L' },
+      { role: 'SEO Specialist', salary: 'INR 5.1L' },
+      { role: 'Social Media Strategist', salary: 'INR 4.7L' },
+      { role: 'Performance Marketing Manager', salary: 'INR 15.3L' },
+      { role: 'Brand Manager', salary: 'INR 19.3L' },
+    ],
+    table5: [
+      { role: 'Digital Marketing Executive', salary: 'INR 3.2L' },
+      { role: 'SEO Specialist', salary: 'INR 5.1L' },
+      { role: 'Social Media Strategist', salary: 'INR 4.7L' },
+      { role: 'Performance Marketing Manager', salary: 'INR 15.3L' },
+      { role: 'Brand Manager', salary: 'INR 19.3L' },
+    ],
   }
 };

@@ -11,7 +11,7 @@ interface LazyMountProps {
 export default function LazyMount({
   children,
   fallback = null,
-  rootMargin = "200px", // Start loading slightly before it comes into view
+  rootMargin = "800px", // Start loading much earlier for slow networks
 }: LazyMountProps) {
   const [isMounted, setIsMounted] = useState(false);
   const ref = useRef<HTMLDivElement>(null);

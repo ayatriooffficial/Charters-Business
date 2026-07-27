@@ -2,7 +2,6 @@ import { MetadataRoute } from "next";
 
 import { buildSiteUrl } from "@/lib/schema";
 import { getAllProgrammeSlugs } from "@/lib/server/programmes";
-import { STATIC_BLOGS, slugify } from "@/data/staticBlogs";
 import { API_BASE_URL } from "@/lib/server/api";
 
 const STATIC_ROUTES = [
@@ -11,7 +10,6 @@ const STATIC_ROUTES = [
   { path: "/careers", changeFrequency: "daily" as const, priority: 0.8 },
   { path: "/careers/jobs", changeFrequency: "daily" as const, priority: 0.7 },
   { path: "/careers/internships", changeFrequency: "daily" as const, priority: 0.7 },
-  { path: "/blogs", changeFrequency: "weekly" as const, priority: 0.7 },
   { path: "/career-path", changeFrequency: "weekly" as const, priority: 0.8 },
   { path: "/community", changeFrequency: "weekly" as const, priority: 0.7 },
   { path: "/faculties", changeFrequency: "monthly" as const, priority: 0.7 },
@@ -38,13 +36,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     }),
   );
-
-  const blogEntries: MetadataRoute.Sitemap = STATIC_BLOGS.map((blog) => ({
-    url: buildSiteUrl(`/blogs/${slugify(blog.title)}`),
-    lastModified,
-    changeFrequency: "monthly",
-    priority: 0.6,
-  }));
 
   let jobEntries: MetadataRoute.Sitemap = [];
   try {
@@ -92,7 +83,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...staticEntries,
     ...programmeEntries,
-    ...blogEntries,
     ...jobEntries,
     ...internshipEntries,
   ];

@@ -14,7 +14,7 @@ const cardsData = [
   {
     id: "creator",
     variant: "editorial",
-    badge: "Globally Job-Ready Career Conversion",
+    badge: "100% Job-Ready Career Conversion",
     title: "AI-Powered Curriculum for",
     subtitle: "Corporate foundation",
     description:
@@ -81,7 +81,7 @@ function EditorialCard({ card }: EditorialCardProps) {
           src={card.mediaSrc!}
           alt={`${card.title} visual`}
           fill
-          className="w-full h-full object-contain scale-[0.90]"
+          className="w-full h-full object-cover object-left-bottom"
           loading="lazy"
           quality={45}
           sizes={CARD_MOBILE_BANNER_SIZES}
@@ -89,10 +89,17 @@ function EditorialCard({ card }: EditorialCardProps) {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 flex-1">
-        <div className="lg:col-span-6 flex flex-col justify-start md:justify-center px-3 sm:px-6 lg:px-7 py-2 sm:py-0 handson-slider-left-col">
-          <span className="inline-flex w-fit items-center py-2 sm:py-[15px] text-black text-[10px] sm:text-[12px] font-bold tracking-wide">
-            {card.badge}
-          </span>
+        <div className="lg:col-span-6 flex flex-col justify-start md:justify-center pt-[20px] sm:pt-[20px] md:pt-[30px] lg:pt-[50px] xl:pt-[50px] 2xl:pt-[50px] pb-[10px] sm:pb-[10px] md:pb-[15px] lg:pb-[20px] xl:pb-[20px] px-3 sm:px-6 lg:px-7 handson-slider-left-col">
+          <div className="flex items-center mb-2 sm:mb-3">
+            <div className="flex -space-x-2">
+
+              <div className="rounded-full border-1 border-black">
+                <p className="inline-fle items-center text-gray-600 text-[12px] sm:text-[12px] sm:text-[14px] lg:text-[14px] py-[3px] px-[20px] font-semibold text-black ">
+                  {card.badge}
+                </p></div></div></div>
+
+
+
 
           <h2 className="text-[22px] sm:text-[28px] lg:text-[36px] leading-[1.15] font-semibold text-black mb-1 sm:mb-2">
             {card.title}
@@ -111,7 +118,7 @@ function EditorialCard({ card }: EditorialCardProps) {
             </p>
             <div className="relative w-full h-[40px] object-contain overflow-hidden">
               <Image
-                src="/charter-partner/charter-academic-partner.avif"
+                src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784554663/charter-academic-partner_o8bib0.avif"
                 alt="charter academic partner"
                 fill
                 sizes={PARTNER_LOGO_SIZES}
@@ -126,7 +133,7 @@ function EditorialCard({ card }: EditorialCardProps) {
             </p>
             <div className="relative object-contain w-full h-[55px] overflow-hidden">
               <Image
-                src="/charter-partner/young_charters_work_on_AI-agents_around_accounting_&_marketing.avif"
+                src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784554663/young_charters_work_on_AI-agents_around_accounting___marketing_hjok0u.avif"
                 alt="100% AI-integratede curriculum around accounting & marketing"
                 fill
                 sizes={PARTNER_LOGO_SIZES}
@@ -162,7 +169,7 @@ interface HealthGridCardProps {
 
 function HealthGridCard({ card }: HealthGridCardProps) {
   return (
-    <section className="flex flex-col w-full bg-[#F4F2EE] overflow-hidden h-full max-h-[90vh]">
+    <section className="flex flex-col w-full bg-[#F4F2EE] overflow-hidden h-auto">
       {/* Mobile banner image */}
       <div className="relative block aspect-square w-full flex-shrink-0 overflow-hidden lg:hidden">
         <Image
@@ -179,10 +186,14 @@ function HealthGridCard({ card }: HealthGridCardProps) {
       {/* Main grid — min-h capped at 65vh so it never causes scroll on small laptops */}
       <div className="grid grid-cols-1 lg:grid-cols-12 h-full">
         {/* Left content column */}
-        <div className="lg:col-span-6 flex flex-col px-3 sm:px-6 lg:px-7 py-2 handson-slider-left-col">
-          <span className="inline-flex w-fit items-center mt-3 sm:mt-[30px] pb-1 sm:pb-[10px] text-gray-600 text-[10px] sm:text-[11px] font-medium tracking-wide">
-            Paid internship in 7 countries, 1,257+ companies
-          </span>
+        <div className="lg:col-span-6 flex flex-col pt-[20px] sm:pt-[20px] md:pt-[30px] lg:pt-[50px] xl:pt-[50px] 2xl:pt-[50px] pb-[10px] sm:pb-[10px] md:pb-[15px] lg:pb-[20px] xl:pb-[20px]  px-3 sm:px-6 lg:px-7 handson-slider-left-col">
+          <div className="flex items-center mb-2 sm:mb-3">
+            <div className="flex -space-x-2">
+
+              <div className="rounded-full border-1 border-[#B30437]">
+                <p className="inline-fle items-center text-gray-600 text-[12px] sm:text-[12px] sm:text-[14px] lg:text-[14px] px-[20px] py-[3px] font-semibold text-[#B30437] ">
+                  Faculty Guided Internship
+                </p></div></div></div>
 
           <h2 className="text-[22px] sm:text-[28px] lg:text-[36px] leading-[1.15] font-semibold text-black mb-1 sm:mb-2">
             In-class Paid Internship
@@ -201,7 +212,7 @@ function HealthGridCard({ card }: HealthGridCardProps) {
             </p>
             <div className="relative object-contain w-full h-[40px] overflow-hidden">
               <Image
-                src="/charter-partner/charter-intrenshiph-company-around-the-world.avif"
+                src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784554664/charter-intrenshiph-company-around-the-world_dxkfmo.avif"
                 alt="Charter intrenshiph company around the world"
                 fill
                 sizes={PARTNER_LOGO_SIZES}
@@ -216,7 +227,7 @@ function HealthGridCard({ card }: HealthGridCardProps) {
             </p>
             <div className="relative object-contain w-full h-[40px] overflow-hidden">
               <Image
-                src="/charter-partner/charter-hiring-company-from-7-countries.avif"
+                src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784554662/charter-hiring-company-from-7-countries_go0sp9.avif"
                 alt="Meet our creator alums"
                 fill
                 sizes={PARTNER_LOGO_SIZES}
@@ -261,7 +272,7 @@ function FlagshipCard({ card }: FlagshipCardProps) {
   };
 
   return (
-    <section className="flex flex-col w-full bg-[#E6F4EA] overflow-hidden h-full max-h-[90vh]">
+    <section className="flex flex-col w-full bg-[#C5E2CF] overflow-hidden h-auto">
       <div className="relative block aspect-square w-full flex-shrink-0 overflow-hidden lg:hidden">
         <Image
           src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784539837/chartersunion-careerpathx_n8ntnl.avif"
@@ -275,23 +286,19 @@ function FlagshipCard({ card }: FlagshipCardProps) {
       </div>
 
       <div
-        className="grid grid-cols-1 lg:grid-cols-12 gap-x-0 h-full"
+        className="grid grid-cols-1 lg:grid-cols-12 gap-x-0 h-auto"
       >
-        <div className="lg:col-span-6 flex flex-col pt-3 sm:pt-[30px] px-3 sm:px-6 lg:px-8 pb-2 sm:pb-4 lg:pb-6 handson-slider-left-col">
+        <div className="lg:col-span-6 flex flex-col pt-[20px] sm:pt-[20px] md:pt-[30px] lg:pt-[50px] xl:pt-[50px] 2xl:pt-[50px] pb-[10px] sm:pb-[10px] md:pb-[15px] lg:pb-[20px] xl:pb-[20px] px-3 sm:px-6 lg:px-8 handson-slider-left-col">
           <div className="flex items-center mb-2 sm:mb-3">
             <div className="flex -space-x-2">
-              {[
-                "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=80&h=80&fit=crop",
-                "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop",
-                "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=80&h=80&fit=crop",
-              ].map((src, idx) => (
-                <div key={idx} className="w-7 h-7 sm:w-9 sm:h-9 rounded-full overflow-hidden border-2 border-white">
-                  <Image src={src} alt="Creator" width={36} height={36} sizes="36px" className="w-full h-full object-cover" />
-                </div>
-              ))}
+              <div className="rounded-full border border-[#1E8E3E]">
+                <p className="inline-flex items-center text-[12px] sm:text-[12px] lg:text-[14px] py-[3px] px-[20px] font-semibold text-[#1E8E3E]">
+                  CareerPathx™ Career AI-Engine
+                </p>
+              </div>
             </div>
-          </div>
 
+          </div>
 
           <h2 className="text-[22px] sm:text-[28px] lg:text-[36px] leading-[1.15] font-semibold text-black mb-1 sm:mb-2">
             AI-Powered Career
@@ -309,26 +316,27 @@ function FlagshipCard({ card }: FlagshipCardProps) {
                 A 7-Month Career Identity Transformation
               </span>
               <div className="flex items-center gap-1">
-                <button onClick={scrollLeft} type="button" className="w-6 h-6 cursor-pointer flex items-center justify-center text-[#5f6368] bg-[#A2C1B9] transition" aria-label="Scroll left">
+                <button onClick={scrollLeft} type="button" className="w-6 h-6 cursor-pointer flex items-center justify-center text-[#5f6368] bg-[#78BA9E] transition" aria-label="Scroll left">
                   <img src="/Charters-icon/backarrow.svg"
                     alt="Format icon"
                     width={15}
                     height={15}
                     className=" w-[12px] h-[12px] object-contain"
                   /></button>
-                <button onClick={scrollRight} type="button" className="w-6 h-6 cursor-pointer flex items-center justify-center text-[#5f6368] bg-[#A2C1B9] transition" aria-label="Scroll right"> <img src="/Charters-icon/rightarrow.svg"
-                  alt="Format icon"
-                  width={15}
-                  height={15}
-                  className=" w-[12px] h-[12px] object-contain"
-                /></button>
+                <button onClick={scrollRight} type="button" className="w-6 h-6 cursor-pointer flex items-center justify-center text-[#5f6368] bg-[#78BA9E] transition" aria-label="Scroll right">
+                  <img src="/Charters-icon/rightarrow.svg"
+                    alt="Format icon"
+                    width={15}
+                    height={15}
+                    className=" w-[12px] h-[12px] object-contain"
+                  /></button>
               </div>
             </div>
 
             <div className="-mx-3 sm:mx-0">
               <div ref={sliderRef} className="flex overflow-x-auto scrollbar-hide h-[160px] sm:h-[180px] items-stretch scroll-smooth divide-x divide-[#016833] border-[#016833]">
                 {card.programs?.map((p: { name: string; duration: string }) => (
-                  <div key={p.name} className="w-[150px] sm:w-[150px] flex-shrink-0 h-full bg-[#A2C1B9] px-4 sm:px-5 py-4 sm:py-5 flex flex-col justify-between">
+                  <div key={p.name} className="w-[150px] sm:w-[150px] flex-shrink-0 h-full bg-[#78BA9E] px-4 sm:px-5 py-4 sm:py-5 flex flex-col justify-between">
                     <span className="text-[10px] bg-[#202124] text-white px-2 py-[2px] w-fit">PROGRAM</span>
                     <h3 className="mt-3 text-[15px] sm:text-[14px] font-semibold text-black leading-snug">{p.name}</h3>
                     <p className="text-[12px] text-gray-700">{p.duration}</p>
@@ -367,7 +375,7 @@ const CardComponent = memo(
     const currentCardIndex = Math.floor(activeIndex);
     const nextCardIndex = currentCardIndex + 1;
     const scrollProgress = activeIndex - currentCardIndex;
-    const slideDistance = 800;
+    const slideDistance = typeof window !== "undefined" ? (window.innerHeight < 900 ? 880 : 800) : 800;
 
     const fadeThreshold = 0.4;
     const zoomOutAmount = 0.1;
@@ -416,7 +424,7 @@ const CardComponent = memo(
 
     return (
       <article
-        className={`absolute left-0 right-0 bottom-2 sm:bottom-4 md:bottom-6 top-2 sm:top-4 md:top-8 lg:top-10 mx-1 sm:mx-2 md:mx-4 lg:mx-auto bg-white text-black overflow-hidden masters-union-card-transition max-w-[85rem] transition-all duration-200 ${isScaling
+        className={`absolute left-0 right-0 top-2 sm:top-4 md:top-8 lg:top-10 mx-1 sm:mx-2 md:mx-4 lg:mx-auto bg-white text-black overflow-hidden max-w-[85rem] ${isScaling
           ? "border border-gray-200"
           : "border-t border-gray-200"
           }`}
@@ -430,7 +438,7 @@ const CardComponent = memo(
         }}
         aria-labelledby={`card-title-${card.id}`}
       >
-        <div className="h-full overflow-hidden overflow-y-auto">
+        <div className="h-auto overflow-hidden">
           <CardLayout card={card} />
         </div>
       </article>
@@ -504,7 +512,7 @@ function Handson() {
         // 3. Map to active index (0 to totalCards - 1)
         const smooth = progress * (totalCards - 1);
 
-        if (Math.abs(smooth - lastProgress.current) > 0.02) {
+        if (Math.abs(smooth - lastProgress.current) > 0.001) {
           setActiveIndex(smooth);
           lastProgress.current = smooth;
         }
@@ -570,7 +578,7 @@ function Handson() {
               className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]"
             >
               AI-Ready{" "}
-              <HighlightText className="mx-2 font-bold">
+              <HighlightText className="mx-2 font-bold text-black">
                 &apos;Global Curriculum&apos;
               </HighlightText>
               {" "}along with{" "}

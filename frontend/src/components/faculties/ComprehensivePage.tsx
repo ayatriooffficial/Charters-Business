@@ -387,9 +387,10 @@ export default function ComprehensivePage() {
                   </LazyMount>
 
                   {/* Placement Report Banner */}
-                  <PlacementReportClient 
+                  <PlacementReportClient
                     stats={placementReportData.stats}
                     verification={placementReportData.verification}
+                    hideDetailedStats={true}
                   />
 
                   {/* ===== MENTORSHIP TYPES SECTION ===== */}
@@ -429,7 +430,7 @@ export default function ComprehensivePage() {
                             {/* Image block */}
                             <div className="w-full md:w-1/2 relative h-56 sm:h-72 md:h-auto md:min-h-[380px]">
                               <Image
-                                src="/faculties/1st_faculty.avif"
+                                src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784643124/charters_job_internship-team_woy8vb.avif"
                                 alt="Career Coach"
                                 fill
                                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -464,7 +465,7 @@ export default function ComprehensivePage() {
                           >
                             <div className="w-full md:w-1/2 relative h-56 sm:h-72 md:h-auto md:min-h-[380px]">
                               <Image
-                                src="/faculties/2nd_faculty.avif"
+                                src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784643124/personality_devlopemnt_team_tk5sir.avif"
                                 alt="Domain Mentor"
                                 fill
                                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -498,7 +499,7 @@ export default function ComprehensivePage() {
                           >
                             <div className="w-full md:w-1/2 relative h-56 sm:h-72 md:h-auto md:min-h-[380px]">
                               <Image
-                                src="/faculties/3rd_faculty.avif"
+                                src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784643124/company_to_student_devlopment_team_vh6huz.avif"
                                 alt="Startup Coach"
                                 fill
                                 sizes="(max-width: 768px) 100vw, 50vw"

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState, useCallback } from "react";
+import Image from "next/image";
 import { CONSENT_KEY, setConsentChoice } from "@/lib/Tracking";
 
 export default function CookieConsent() {
@@ -42,9 +43,9 @@ export default function CookieConsent() {
         type="button"
         onClick={closeBanner}
         aria-label="Close cookie banner"
-        className="absolute right-4 top-4  cursor-pointer inline-flex h-8 w-8 items-center justify-center rounded-full text-lg leading-none text-[#5f6368] transition hover:bg-gray-100 hover:text-gray-800"
+        className="absolute right-4 top-4 cursor-pointer inline-flex h-8 w-8 items-center justify-center rounded-full text-lg leading-none transition hover:bg-gray-100"
       >
-        x
+        <Image src="/Charters-icon/Cancel.svg" alt="Close" width={16} height={16} className="opacity-60 hover:opacity-100 transition-opacity" />
       </button>
 
       <h3 id="cookie-title" className="pr-10 text-[15px] font-semibold text-gray-900 tracking-tight">

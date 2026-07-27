@@ -23,14 +23,6 @@ const FloatingCard = ({ className, children }: FloatingCardProps) => (
   </div>
 );
 
-const PILL_THEMES = [
-  { bg: "bg-emerald-50", border: "border-emerald-200", text: "text-emerald-700" },
-  { bg: "bg-blue-50", border: "border-blue-200", text: "text-blue-700" },
-  { bg: "bg-purple-50", border: "border-purple-200", text: "text-purple-700" },
-  { bg: "bg-amber-50", border: "border-amber-200", text: "text-amber-700" },
-  { bg: "bg-rose-50", border: "border-rose-200", text: "text-rose-700" },
-  { bg: "bg-teal-50", border: "border-teal-200", text: "text-teal-700" },
-];
 
 const ProgramHero = ({ data, slug, assets }: ProgramHeroProps) => {
 
@@ -49,19 +41,19 @@ const ProgramHero = ({ data, slug, assets }: ProgramHeroProps) => {
               <Breadcrumbs compact />
             </div>
 
-            <div className="flex flex-wrap pt-[10px] items-center gap-2.5 sm:gap-3">
-              {data.stats.map((stat, index) => {
-                const theme = PILL_THEMES[index % PILL_THEMES.length];
-                return (
-                  <div
-                    key={index}
-                    className={`flex items-center ${theme.bg} border ${theme.border} rounded-full px-4 py-1 text-xs sm:text-sm ${theme.text} font-semibold`}
-                  >
-                    <span className="sr-only">{stat.label}:</span>
-                    <span>{stat.label}</span>
+            <div className="flex pt-[10px] w-full">
+              <div className="inline-flex flex-wrap items-center border border-gray-400 rounded-full px-2">
+                {data.stats.map((stat, index) => (
+                  <div key={index} className="flex items-center">
+                    <span className="px-2 py-1 text-[11px] sm:text-sm text-slate-800 font-bold whitespace-nowrap">
+                      {stat.label}
+                    </span>
+                    {index < data.stats.length - 1 && (
+                      <span className="h-3.5 w-[1.5px] bg-gray-400 mx-1"></span>
+                    )}
                   </div>
-                );
-              })}
+                ))}
+              </div>
             </div>
 
             <h1
@@ -78,7 +70,7 @@ const ProgramHero = ({ data, slug, assets }: ProgramHeroProps) => {
 
 
             {(data.alumniLabel || assets?.internshipPartnerLogo) && (
-              <div className="space-y-3 pt-3">
+              <div className="space-y-2 pt-4">
                 {data.alumniLabel && (
                   <div className="text-xs sm:text-sm text-black">{data.alumniLabel}</div>
                 )}
@@ -101,14 +93,14 @@ const ProgramHero = ({ data, slug, assets }: ProgramHeroProps) => {
             <div className="space-y-3">
               <div className="flex items-center gap-3">
 
-                <div className="relative w-[100px] mt-[10px] h-[40px]">
+                <div className="relative w-[125px] mt-[10px] h-[42px]">
                   {assets?.industrialFacultyLogo && (
                     <Image
                       src={assets.industrialFacultyLogo}
                       alt={`${data.instructors.badge} ${data.instructors.title}`}
                       fill
-                      sizes="110px"
-                      className="h-[40px] w-[100px] object-contain object-left"
+                      sizes="120px"
+                      className="h-[40px] w-[120px] object-contain object-left"
                     />
                   )}
                 </div>

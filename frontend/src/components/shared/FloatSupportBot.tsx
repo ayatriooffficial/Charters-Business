@@ -121,7 +121,8 @@ export default function FloatSupportBot() {
                 }}
                 className="text-sm text-gray-800 hover:text-[#B30437] transition"
               >
-                Got any questions? I&apos;m happy to help.
+                <span>Hey there.👋</span>
+                Got any questions? Schedule a personalized demo here.
               </button>
             </div>
           )}
@@ -141,7 +142,7 @@ export default function FloatSupportBot() {
             {/* Avatar with Green Line Border */}
             <div className="relative z-10 rounded-full border-[2.5px] border-[#00c853] bg-white shadow-sm overflow-hidden">
               <Image
-                src="/charters-customer-service.avif"
+                src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840455/charters-customer_care_nl06po.avif"
                 alt="Support representative"
                 width={52}
                 height={52}

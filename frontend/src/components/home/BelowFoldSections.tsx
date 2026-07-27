@@ -4,6 +4,9 @@ import dynamic from "next/dynamic";
 import LazyMount from "@/components/shared/LazyMount";
 
 // SectionSkeleton placeholder — mirrored from page.tsx
+import { facultyCategories, facultyMembers } from "@/data/faculty";
+import { studentCategories, studentMembers } from "@/data/students";
+
 const SectionSkeleton = ({ height = "h-96" }: { height?: string }) => (
   <div className={`${height} w-full animate-pulse bg-gray-50 rounded`} />
 );
@@ -91,7 +94,13 @@ export default function BelowFoldSections() {
 
       <LazyMount fallback={<SectionSkeleton height="h-80" />}>
         <SectionWrapper hideCorners={"all"}>
-          <FacultyModel />
+          <FacultyModel data={{
+            eyebrow: "LEARN FROM THE BEST",
+            title: { prefix: "Meet your", highlight: "Faculty" },
+            subtitle: "Learn from industry leaders, academic experts, and seasoned practitioners who bring real-world experience to your education.",
+            categories: facultyCategories,
+            faculty: facultyMembers
+          }} />
           <OneSpaceForEveryTeam />
         </SectionWrapper>
       </LazyMount>
@@ -104,7 +113,13 @@ export default function BelowFoldSections() {
 
       <LazyMount fallback={<SectionSkeleton height="h-80" />}>
         <SectionWrapper hideCorners={"all"}>
-          <StudentModel />
+          <StudentModel data={{
+            eyebrow: "MEET OUR ACHIEVERS",
+            title: { prefix: "Young Charters at", highlight: "Global Companys" },
+            subtitle: "From day one, our students are groomed to lead, innovate, and excel.",
+            categories: studentCategories,
+            students: studentMembers
+          }} />
           <StrategicExpansion />
         </SectionWrapper>
       </LazyMount>

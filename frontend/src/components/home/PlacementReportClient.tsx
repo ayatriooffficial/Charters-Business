@@ -30,6 +30,7 @@ interface PlacementReportClientProps {
     by: string;
     verified: boolean;
   };
+  hideDetailedStats?: boolean;
 }
 
 const SkeletonCard = () => (
@@ -43,6 +44,7 @@ const SkeletonCard = () => (
 const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
   stats,
   verification,
+  hideDetailedStats = false,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [shouldMount, setShouldMount] = useState(false);
@@ -66,88 +68,93 @@ const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
 
   return (
     <>
-      <div className="w-full border-t border-gray-200"></div>
+      {!hideDetailedStats && (
+        <div className="w-full border-t border-gray-200"></div>
+      )}
 
       <div className="md:border-x border-gray-200 max-w-[85rem] w-full">
-        <div
-          ref={sectionRef}
-          className="pb-4"
-          role="region"
-          aria-labelledby="statistics-heading"
-        >
-          <h3 id="statistics-heading" className="sr-only">
-            Placement Statistics Overview
-          </h3>
+        {!hideDetailedStats && (
+          <>
+            <div
+              ref={sectionRef}
+              className="pb-4"
+              role="region"
+              aria-labelledby="statistics-heading"
+            >
+              <h3 id="statistics-heading" className="sr-only">
+                Placement Statistics Overview
+              </h3>
 
-          {/* ── MOBILE: horizontal scroll ── */}
-          <div className="md:hidden w-full overflow-x-auto scrollbar-none pb-4">
-            <div className="flex border-y border-gray-200 divide-x divide-gray-200 bg-white" style={{ width: "max-content" }}>
+              {/* ── MOBILE: horizontal scroll ── */}
+              <div className="md:hidden w-full overflow-x-auto scrollbar-none pb-4">
+                <div className="flex border-y border-gray-200 divide-x divide-gray-200 bg-white" style={{ width: "max-content" }}>
 
-              {/* Card 1 */}
-              <article
-                className="p-4 flex flex-col"
-                style={{ width: "85vw", minHeight: "340px" }}
-              >
-                {shouldMount ? (
-                  <SalaryGrowthChart isHovered={isVisible} value={stats.salaryJump} />
-                ) : (
-                  <SkeletonCard />
-                )}
-              </article>
+                  {/* Card 1 */}
+                  <article
+                    className="p-4 flex flex-col"
+                    style={{ width: "85vw", minHeight: "340px" }}
+                  >
+                    {shouldMount ? (
+                      <SalaryGrowthChart isHovered={isVisible} value={stats.salaryJump} />
+                    ) : (
+                      <SkeletonCard />
+                    )}
+                  </article>
 
-              {/* Card 2 */}
-              <article
-                className="p-4 flex flex-col"
-                style={{ width: "85vw", minHeight: "340px" }}
-              >
-                {shouldMount ? (
-                  <SalaryBarsChart isHovered={isVisible} value={stats.highestSalary} />
-                ) : (
-                  <SkeletonCard />
-                )}
-              </article>
+                  {/* Card 2 */}
+                  <article
+                    className="p-4 flex flex-col"
+                    style={{ width: "85vw", minHeight: "340px" }}
+                  >
+                    {shouldMount ? (
+                      <SalaryBarsChart isHovered={isVisible} value={stats.highestSalary} />
+                    ) : (
+                      <SkeletonCard />
+                    )}
+                  </article>
 
-              {/* Card 3 — intentionally slightly cut off to hint scrollability */}
-              <article
-                className="p-4 flex flex-col"
-                style={{ width: "85vw", minHeight: "340px" }}
-              >
-                {shouldMount ? (
-                  <RecruiterProgressBars isHovered={isVisible} value={stats.recruiters} />
-                ) : (
-                  <SkeletonCard />
-                )}
-              </article>
+                  {/* Card 3 — intentionally slightly cut off to hint scrollability */}
+                  <article
+                    className="p-4 flex flex-col"
+                    style={{ width: "85vw", minHeight: "340px" }}
+                  >
+                    {shouldMount ? (
+                      <RecruiterProgressBars isHovered={isVisible} value={stats.recruiters} />
+                    ) : (
+                      <SkeletonCard />
+                    )}
+                  </article>
 
+                </div>
+              </div>
+
+              {/* ── DESKTOP: original grid ── */}
+              <div className="hidden md:block w-full">
+                <div className="w-full h-full border-b border-gray-200 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200 bg-gray-200">
+                  <article className="bg-white p-3 sm:p-4 flex flex-col min-h-[280px] sm:min-h-[320px] rounded-t-xl hover:shadow-sm transition-shadow">
+                    {shouldMount ? (
+                      <SalaryGrowthChart isHovered={isVisible} value={stats.salaryJump} />
+                    ) : <SkeletonCard />}
+                  </article>
+                  <article className="bg-white p-3 sm:p-4 flex flex-col min-h-[280px] sm:min-h-[320px] rounded-t-xl hover:shadow-sm transition-shadow">
+                    {shouldMount ? (
+                      <SalaryBarsChart isHovered={isVisible} value={stats.highestSalary} />
+                    ) : <SkeletonCard />}
+                  </article>
+                  <article className="bg-white p-3 sm:p-4 flex flex-col min-h-[280px] sm:min-h-[320px] rounded-t-xl hover:shadow-sm transition-shadow">
+                    {shouldMount ? (
+                      <RecruiterProgressBars isHovered={isVisible} value={stats.recruiters} />
+                    ) : <SkeletonCard />}
+                  </article>
+                </div>
+              </div>
             </div>
-          </div>
 
-          {/* ── DESKTOP: original grid ── */}
-          <div className="hidden md:block w-full">
-            <div className="w-full h-full border-b border-gray-200 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200 bg-gray-200">
-              <article className="bg-white p-3 sm:p-4 flex flex-col min-h-[280px] sm:min-h-[320px] rounded-t-xl hover:shadow-sm transition-shadow">
-                {shouldMount ? (
-                  <SalaryGrowthChart isHovered={isVisible} value={stats.salaryJump} />
-                ) : <SkeletonCard />}
-              </article>
-              <article className="bg-white p-3 sm:p-4 flex flex-col min-h-[280px] sm:min-h-[320px] rounded-t-xl hover:shadow-sm transition-shadow">
-                {shouldMount ? (
-                  <SalaryBarsChart isHovered={isVisible} value={stats.highestSalary} />
-                ) : <SkeletonCard />}
-              </article>
-              <article className="bg-white p-3 sm:p-4 flex flex-col min-h-[280px] sm:min-h-[320px] rounded-t-xl hover:shadow-sm transition-shadow">
-                {shouldMount ? (
-                  <RecruiterProgressBars isHovered={isVisible} value={stats.recruiters} />
-                ) : <SkeletonCard />}
-              </article>
-            </div>
-          </div>
-
-        </div>
-
-        <Placement_TrustedCompanies />
+            <Placement_TrustedCompanies />
+          </>
+        )}
         <div
-          className="max-w-[85rem] mx-auto bg-white px-4 sm:px-6 lg:px-8 text-center border-b border-gray-200"
+          className="max-w-[85rem] mx-auto bg-white p-4 sm:p-4 lg:p-4 text-center border-b border-gray-200"
           role="region"
           aria-labelledby="download-section-heading"
         >

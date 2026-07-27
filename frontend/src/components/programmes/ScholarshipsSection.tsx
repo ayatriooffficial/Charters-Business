@@ -46,30 +46,20 @@ const ScholarshipsSection: React.FC<ScholarshipsSectionProps> = ({
     >
       <div className="w-full">
         <div className="mb-6 sm:mb-8 text-left lg:pl-8 pr-4 sm:pr-6 lg:pr-8">
-          <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-2">
+          <h2 className="text-base sm:text-lg text-[#B30437] font-semibold tracking-wider mb-2">
             {config?.subtitle}
-          </p>
-          <h2
-            id="scholarships-heading"
-            className="font-bold text-2xl sm:text-3xl text-black leading-tight mb-3"
-          >
-            {config?.title.prefix}{" "}
-            <HighlightText className="font-bold">
-              {config?.title.highlight}
-            </HighlightText>
           </h2>
-          <p className="text-sm sm:text-base text-black leading-relaxed">
+          <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
             {config?.description}
           </p>
         </div>
-        
+
         <div className="w-full border-t border-gray-200">
           {scholarships.map((scholarship, index) => (
             <div
               key={scholarship.id}
-              className={`border-gray-200 ${
-                index !== scholarships.length - 1 ? "border-b" : ""
-              }`}
+              className={`border-gray-200 ${index !== scholarships.length - 1 ? "border-b" : ""
+                }`}
             >
               <button
                 onClick={() => toggleExpanded(scholarship.id)}

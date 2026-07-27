@@ -136,13 +136,7 @@ function ChartCard({ title, description, data, duration, textSize, inView }: Cha
 }
 
 const TrackRecord: React.FC<TrackRecordProps> = ({ data, assets }) => {
-  const config = assets || {
-    hiredCompaniesBanner: "/images/program-placements/CBA_Hired_Company.avif",
-    chartTitles: {
-      card1: "Paid Internship in 557+ Companies Across 7 Countries",
-      card2: "87% student got full time jobs offer before end intrashiph"
-    }
-  };
+  const config = assets;
   const chartRef = useRef<HTMLDivElement>(null);
   const inView = useInView(chartRef);
 
@@ -216,7 +210,7 @@ const TrackRecord: React.FC<TrackRecordProps> = ({ data, assets }) => {
             <div className="flex flex-nowrap overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 scrollbar-hide">
               <div className="w-[85vw] min-w-[85vw] flex-shrink-0 snap-start">
                 <ChartCard
-                  title={config.chartTitles.card1}
+                  title={config?.chartTitles?.card1 || ""}
                   description="Experience distribution chart"
                   data={data.experienceData}
                   duration={1000}
@@ -227,7 +221,7 @@ const TrackRecord: React.FC<TrackRecordProps> = ({ data, assets }) => {
 
               <div className="w-[85vw] min-w-[85vw] flex-shrink-0 snap-start">
                 <ChartCard
-                  title={config.chartTitles.card2}
+                  title={config?.chartTitles?.card2 || ""}
                   description="Background distribution chart"
                   data={data.backgroundData}
                   duration={600}
@@ -240,7 +234,7 @@ const TrackRecord: React.FC<TrackRecordProps> = ({ data, assets }) => {
 
           <div className="hidden lg:flex pt-[30px] lg:flex-row lg:divide-x lg:divide-gray-200 lg:items-stretch">
             <ChartCard
-              title={config.chartTitles.card1}
+              title={config?.chartTitles?.card1 || ""}
               description="Experience distribution chart"
               data={data.experienceData}
               duration={1000}
@@ -249,7 +243,7 @@ const TrackRecord: React.FC<TrackRecordProps> = ({ data, assets }) => {
             />
 
             <ChartCard
-              title={config.chartTitles.card2}
+              title={config?.chartTitles?.card2 || ""}
               description="Background distribution chart"
               data={data.backgroundData}
               duration={600}
@@ -283,7 +277,7 @@ const TrackRecord: React.FC<TrackRecordProps> = ({ data, assets }) => {
           <div className="flex flex-wrap gap-3 sm:gap-5 md:gap-6 lg:gap-8 justify-center items-center">
 
             <div className="flex items-center justify-center w-full h-full">
-              {config.hiredCompaniesBanner && (
+              {config?.hiredCompaniesBanner && (
                 <img
                   src={config.hiredCompaniesBanner}
                   alt=""

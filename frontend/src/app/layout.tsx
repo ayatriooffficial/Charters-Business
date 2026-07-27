@@ -56,7 +56,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: {
     default: "Job-ready Accounting Course | 92% Placement Rate | 7 Months | Charter's Union",
-    template: "%s",
+    template: "%s | Charters' Union",
   },
   description:
     "Get placed in 7 months with practical accounting skills, internship experience, and placement support. 90% placement rate. ₹3.5 LPA average salary. Free counseling call.",
@@ -144,8 +144,6 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta httpEquiv="Cache-Control" content="no-store" />
-
       </head>
 
       <body className={`${inter.className} font-sans antialiased`}>

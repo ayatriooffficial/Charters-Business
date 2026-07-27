@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import { ProgrammeAssetConfig } from "@/data/programmes";
 import Modal from "@/components/shared/Modal";
@@ -145,46 +146,21 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [showEmiModal, setShowEmiModal] = useState(false);
 
-    const config = assets || {
-        pricing: {
-            emiAmount: "₹5,499",
-            emiMonths: "8 months",
-            jobTracks: [
-                { name: "Corporate Finance & Accounting" },
-                { name: "Financial Planning & Analysis (FP&A)" },
-                { name: "US-CMA & ACCA Certifications", badge: "Seats filled. Next batch starts on", badgeDate: "01 Jul 2026" },
-                { name: "AI-led Business Valuation", badge: "Seats filled. Next batch starts on", badgeDate: "01 Jul 2026" }
-            ]
-        }
-    };
-
+    const pricing = assets?.pricing;
     const getIcon = (index: number) => {
         if (index === 2) return <BarChartIcon className="w-5 h-5" />;
         if (index === 3) return <TestTubeIcon className="w-5 h-5" />;
         return <MonitorIcon className="w-5 h-5" />;
     };
 
-    const pricing = config.pricing as any;
-
-    const jobTracks: JobTrack[] = (pricing.jobTracks || []).map((track: any, index: number) => ({
+    const jobTracks: JobTrack[] = (pricing?.jobTracks || []).map((track: any, index: number) => ({
         name: track.name,
         icon: getIcon(index),
         badge: track.badge,
         badgeDate: track.badgeDate,
     }));
 
-    const placementSupport: string[] = pricing.placementSupport?.items || [
-        "Aptitude Training",
-        "Soft Skills Training",
-        "Resume Preparation",
-        "AI-Powered Mock Interviews",
-        "Mock Interviews by Tech and HR Panels",
-        "300+ Senior Interview Experiences",
-        "Scheduling Interviews",
-        "Access to Placement Portal",
-        "Mega Offline Placement Drives",
-        "Negotiation with companies for higher salaries",
-    ];
+    const placementSupport: string[] = pricing?.placementSupport?.items || [];
 
     const getBenefitIcon = (index: number) => {
         if (index === 0) return <MessageQuestionIcon className="w-5 h-5" />;
@@ -193,36 +169,18 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
         return <RocketIcon className="w-5 h-5" />;
     };
 
-    const emiLabel = pricing.emiLabel || "Starting at";
-    const primaryButtonText = pricing.primaryButton?.text || "Book a Free Demo";
-    const secondaryButtonText = pricing.secondaryButton?.text || "Book Your Seat for 1000/-";
-    const seatsPrefix = pricing.seatsLeft?.prefix;
-    const seatsSuffix = pricing.seatsLeft?.suffix;
-    const bannerIcon = pricing.scholarshipBannerIcon;
+    const emiLabel = pricing?.emiLabel || "";
+    const primaryButtonText = pricing?.primaryButton?.text || "";
+    const secondaryButtonText = pricing?.secondaryButton?.text || "";
+    const seatsPrefix = pricing?.seatsLeft?.prefix;
+    const seatsSuffix = pricing?.seatsLeft?.suffix;
+    const bannerIcon = pricing?.scholarshipBannerIcon;
 
-    const benefits = pricing.benefits ? pricing.benefits.map((b: any, i: number) => ({
+    const benefits = pricing?.benefits ? pricing.benefits.map((b: any, i: number) => ({
         icon: getBenefitIcon(i),
         text: b.text,
         isDisclaimer: b.isDisclaimer
-    })) : [
-        {
-            icon: <MessageQuestionIcon className="w-5 h-5" />,
-            text: "9AM - 9PM Doubt Clarification. 1500+ Mentors to help you.",
-        },
-        {
-            icon: <FolderIcon className="w-5 h-5" />,
-            text: "10+ Real-time Projects for strong resume",
-        },
-        {
-            icon: <LaptopIcon className="w-5 h-5" />,
-            text: "24/7 Online Lab Access",
-        },
-        {
-            icon: <RocketIcon className="w-5 h-5" />,
-            text: "Charters' 100% Job Ready Program.",
-            isDisclaimer: true,
-        },
-    ];
+    })) : [];
 
     return (
         <section className="bg-white pt-4 sm:pt-6 md:pt-8">
@@ -424,7 +382,7 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
                                         </button>
                                         <button
                                             onClick={() => setShowEmiModal(true)}
-                                            className="w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 border-1 border-black text-[#5f6368] text-sm sm:text-base font-semibold transition-colors duration-200 cursor-pointer">
+                                            className="w-full sm:w-auto px-6 sm:px-8 py-2 sm:py-2 border-1 border-black text-[#5f6368] text-sm sm:text-base font-semibold transition-colors duration-200 cursor-pointer">
                                             {secondaryButtonText}
                                         </button>
                                     </div>
@@ -434,9 +392,9 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
                             {/* Right - Dynamic Scholarship Content */}
                             <div className="w-full lg:border-l lg:border-gray-300 py-6 sm:py-8">
                                 {scholarships && scholarships.length > 0 && (
-                                    <ScholarshipsSection 
-                                        scholarships={scholarships} 
-                                        config={scholarshipConfig} 
+                                    <ScholarshipsSection
+                                        scholarships={scholarships}
+                                        config={scholarshipConfig}
                                     />
                                 )}
                             </div>
@@ -448,18 +406,18 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
             {/* Login Modal for Advisory */}
             {showLoginModal && (
                 <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[#202124]/40 backdrop-blur-sm">
-                    <div className="w-[90%] md:w-[65%] h-[85vh] md:h-[90%] relative bg-white rounded-xl shadow-2xl overflow-hidden animate-scale-up">
+                    <div className="w-[80%] h-[80%] relative bg-white rounded-xl shadow-2xl overflow-hidden animate-scale-up">
                         <button
                             onClick={() => {
                                 setShowLoginModal(false);
                                 document.body.style.overflow = "";
                             }}
                             aria-label="Close login modal"
-                            className="absolute top-3 right-3 z-50 bg-white/80 hover:bg-white rounded-full w-8 h-8 flex items-center justify-center shadow-md text-gray-600 hover:text-black transition-all border border-gray-100 cursor-pointer"
+                            className="absolute cursor-pointer top-3 right-3 z-50 bg-white/80 hover:bg-white rounded-full w-8 h-8 flex items-center justify-center shadow-md transition-all border border-gray-100"
                         >
-                            ✕
+                            <Image src="/Charters-icon/Cancel.svg" alt="Close" width={24} height={24} className="opacity-70 hover:opacity-100 transition-opacity" />
                         </button>
-                        <div className="w-full h-full">
+                        <div className="w-full h-full bg-white">
                             <ChartersInterviewAi />
                         </div>
                     </div>

@@ -32,9 +32,8 @@ export default function CourseTimer({ slug }: CourseTimerProps) {
 
   if (!mounted) {
     return (
-      <div className="w-full max-w-[340px] mt-5 rounded bg-black border border-[#222] p-3 animate-pulse">
-        <div className="h-4 bg-gray-800 rounded w-2/3 mb-2"></div>
-        <div className="h-6 bg-gray-800 rounded w-1/2"></div>
+      <div className="w-full max-w-[350px]">
+        <div className="h-6 mt-1 bg-gray-200 rounded animate-pulse w-3/4"></div>
       </div>
     );
   }

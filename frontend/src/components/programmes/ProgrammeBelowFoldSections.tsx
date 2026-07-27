@@ -9,9 +9,9 @@ const SectionSkeleton = ({ height = "h-96" }: { height?: string }) => (
   <div className={`${height} w-full animate-pulse bg-gray-50 rounded`} />
 );
 
-const TrackRecord = dynamic(() => import("@/components/programmes/TrackRecord"), { ssr: false, loading: () => <SectionSkeleton /> });
-const CurriculumSection = dynamic(() => import("@/components/programmes/CurriculumSection"), { ssr: false, loading: () => <SectionSkeleton /> });
-const AIDegreeProgram = dynamic(() => import("@/components/programmes/AIDegreeProgram"), { ssr: false, loading: () => <SectionSkeleton /> });
+import TrackRecord from "@/components/programmes/TrackRecord";
+import CurriculumSection from "@/components/programmes/CurriculumSection";
+import AIDegreeProgram from "@/components/programmes/AIDegreeProgram";
 const WeekAtTetr = dynamic(() => import("@/components/programmes/WeekAtUnion"), { ssr: false, loading: () => <SectionSkeleton /> });
 const FacultyModel = dynamic(() => import("@/components/home/FacultyModel"), { ssr: false, loading: () => <SectionSkeleton height="h-80" /> });
 const LearnApplyReflectRepeat = dynamic(() => import("@/components/programmes/LearnApplyReflectRepeat"), { ssr: false, loading: () => <SectionSkeleton /> });
@@ -26,30 +26,22 @@ import LayoutBanner from "@/components/shared/LayoutBanner";
 export default function ProgrammeBelowFoldSections({ programme }: { programme: Programme }) {
   return (
     <div className="md:border-x border-gray-200 max-w-[85rem] w-full md:w-[90%] mx-auto overflow-x-clip">
-      <LazyMount fallback={<SectionSkeleton />}>
-        <SectionWrapper hideCorners={"all"}>
-          <TrackRecord data={programme.trackRecord} assets={programme.assets} />
-        </SectionWrapper>
-      </LazyMount>
+      <SectionWrapper hideCorners={"all"}>
+        <TrackRecord data={programme.trackRecord} assets={programme.assets} />
+      </SectionWrapper>
 
       {/* Banner 1: Placement Report */}
-      <LazyMount fallback={<SectionSkeleton height="h-32" />}>
-        <SectionWrapper hideCorners={"all"}>
-          <LayoutBanner type="placement" />
-        </SectionWrapper>
-      </LazyMount>
+      <SectionWrapper hideCorners={"all"}>
+        <LayoutBanner type="placement" />
+      </SectionWrapper>
 
-      <LazyMount fallback={<SectionSkeleton />}>
-        <SectionWrapper hideCorners={"all"}>
-          <CurriculumSection data={programme.curriculumSection} assets={programme.assets} slug={programme.slug} />
-        </SectionWrapper>
-      </LazyMount>
+      <SectionWrapper hideCorners={"all"}>
+        <CurriculumSection data={programme.curriculumSection} assets={programme.assets} slug={programme.slug} />
+      </SectionWrapper>
 
-      <LazyMount fallback={<SectionSkeleton />}>
-        <SectionWrapper hideCorners={"all"}>
-          <AIDegreeProgram data={programme.degreeProgram} assets={programme.assets} />
-        </SectionWrapper>
-      </LazyMount>
+      <SectionWrapper hideCorners={"all"}>
+        <AIDegreeProgram data={programme.degreeProgram} assets={programme.assets} />
+      </SectionWrapper>
 
       <LazyMount fallback={<SectionSkeleton />}>
         <SectionWrapper hideCorners={"all"}>
@@ -112,10 +104,10 @@ export default function ProgrammeBelowFoldSections({ programme }: { programme: P
         </SectionWrapper>
       </LazyMount>
 
-      {programme.slug === 'digital-growth-&-marketing' && (
+      {programme.slug === 'digital-growth-&-marketing' && programme.micaCertificateData && (
         <LazyMount fallback={<SectionSkeleton />}>
           <SectionWrapper hideCorners={"all"}>
-            <MicaDigitalMarketingCertificate />
+            <MicaDigitalMarketingCertificate data={programme.micaCertificateData} />
           </SectionWrapper>
         </LazyMount>
       )}

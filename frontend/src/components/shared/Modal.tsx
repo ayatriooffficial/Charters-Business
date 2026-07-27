@@ -17,14 +17,32 @@ export default function Modal({ isOpen, onClose, children, className = "" }: Mod
     setIsMounted(true);
   }, []);
 
-  // Lock body scroll when modal is open
+  // Lock body scroll when modal is open by intercepting events, so the scrollbar remains visible
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden";
+      // Prevent scrolling via mouse wheel or trackpad
+      const preventScroll = (e: Event) => e.preventDefault();
+      
+      // Prevent scrolling via keyboard
+      const preventKeyScroll = (e: KeyboardEvent) => {
+        const keys = ['ArrowUp', 'ArrowDown', 'Space', 'PageUp', 'PageDown'];
+        if (keys.includes(e.code)) {
+          e.preventDefault();
+        }
+      };
+
+      // Add listeners to block scrolling
+      window.addEventListener('wheel', preventScroll, { passive: false });
+      window.addEventListener('touchmove', preventScroll, { passive: false });
+      window.addEventListener('keydown', preventKeyScroll, { passive: false });
+
+      return () => {
+        // Clean up listeners when modal closes
+        window.removeEventListener('wheel', preventScroll);
+        window.removeEventListener('touchmove', preventScroll);
+        window.removeEventListener('keydown', preventKeyScroll);
+      };
     }
-    return () => {
-      document.body.style.overflow = "";
-    };
   }, [isOpen]);
 
   // Close on Escape key

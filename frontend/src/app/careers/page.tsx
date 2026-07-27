@@ -70,7 +70,7 @@ const HERO_CTA = {
   href: "#download-report",
 };
 const HERO_IMAGE = {
-  src: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784325608/Young_Charters_are_at_top_company_gncn4o_q7ifkq.avif",
+  src: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840455/chartersUnion-students-placement_ssvghc.avif",
   alt: "Fireside chat about career growth",
 };
 

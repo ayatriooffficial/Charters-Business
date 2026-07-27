@@ -128,7 +128,7 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
                             }`}
                           aria-hidden="true"
                         >
-                          →
+                          <img src="/Charters-icon/rightarrow.svg" alt="collapse" width={15} height={15} className="w-4 h-4" />
                         </span>
                       </div>
                     </button>
@@ -145,7 +145,7 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
 
               {/* Explore More Link */}
               <aside
-                className={`bg-[#F4F2EE] hover:bg-[#E3DFD2] flex flex-col items-center justify-center p-4 sm:p-6 border-r border-gray-200 cursor-pointer transition-colors duration-200
+                className={`bg-[#F4F2EE] hover:bg-[#E3DFD2] flex flex-col justify-between p-4 sm:p-6 border-r border-gray-200 cursor-pointer transition-colors duration-200
                           w-full lg:w-40 xl:w-48 2xl:w-56 
                           flex-shrink-0 group ${isTransitioning ? 'opacity-0' : 'opacity-100'
                   }`}
@@ -156,15 +156,15 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
                     e.preventDefault();
                     handleExploreMoreClick();
                   }}
-                  className="flex flex-col items-center text-center"
+                  className="flex flex-col h-full justify-between"
                   aria-label={`Explore more about ${currentProgramData.card.title}`}
                 >
                   <span className="text-xs text-[#5f6368] mb-4 tracking-wider font-medium">
-                    ACADEMIC PROGRAMS
+                    /100% Job-Ready Program
                   </span>
 
-                  <div className="mb-6">
-                    <div className="w-20 h-20 flex items-center justify-center transition-colors duration-200">
+                  <div className="mt-auto">
+                    <div className="w-20 h-20 flex transition-colors duration-200">
                       <Image src="/Charters-icon/top_arrow-black.svg"
                         alt="Format icon"
                         width={35}
@@ -172,16 +172,17 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
                         className="ml-[6px] w-[30px] h-[30px] object-contain"
                       />
                     </div>
-                  </div>
 
-                  <h3 className="text-gray-800 group-hover:text-gray-900 text-lg font-bold mb-2 text-center leading-tight transition-colors duration-200">
-                    EXPLORE<br />MORE
-                  </h3>
+
+                    <h3 className="text-gray-800 group-hover:text-gray-900 text-lg font-bold mb-2  leading-tight transition-colors duration-200">
+                      EXPLORE<br />MORE
+                    </h3>
+                  </div>
                 </a>
               </aside>
 
               {/* Program Details Content */}
-              <div className={`bg-white text-gray-800 flex-1 p-4 sm:p-6 lg:p-8 transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'
+              <div className={`bg-white text-gray-800 flex-1 px-4 sm:px-6 lg:px-8 transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'
                 }`}>
                 <div className="flex flex-col lg:flex-row gap-6">
 

@@ -36,18 +36,6 @@ const DEFAULT_TAB_ORDER: CurriculumTabKey[] = [
 ];
 
 const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
-  const config = assets || {
-    curriculumCityscapes: {
-      dubai: "/images/curriculumsection/dubaicurriculum.webp",
-      india: "/images/curriculumsection/indiacurriculum.webp",
-      singapore: "/images/curriculumsection/europe.webp",
-      ghana: "/images/curriculumsection/ghana.webp",
-      usa: "/images/curriculumsection/us.webp",
-      argentina: "/images/curriculumsection/argentina.webp",
-      europe: "/images/curriculumsection/europe.webp",
-      internship: "/images/curriculumsection/internship.webp",
-    },
-  };
   const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>(
     {},
   );
@@ -56,7 +44,7 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
     {},
   );
   const [currentImage, setCurrentImage] = useState(
-    config.curriculumCityscapes.dubai,
+    data?.items?.[0]?.termImage || ""
   );
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname() ?? "";
@@ -93,8 +81,6 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
 
   const tabLabels = { ...TAB_LABELS, ...data.tabLabels };
 
-  const imageMapping = config.curriculumCityscapes;
-
   const toggleExpand = (id: string) => {
     setExpandedItems((prev) => {
       const next = !prev[id];
@@ -114,7 +100,10 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
   const toggleMore = (id: string) =>
     setShowMore((prev) => ({ ...prev, [id]: !prev[id] }));
 
-  const activeTab = (id: string): CurriculumTabKey => activeTabs[id] || "courses";
+  const activeTab = (id: string, tabs: CurriculumTabKey[]): CurriculumTabKey => {
+    const current = activeTabs[id];
+    return current && tabs.includes(current) ? current : tabs[0];
+  };
   const setTab = (id: string, tab: CurriculumTabKey) => {
     setActiveTabs((prev) => ({ ...prev, [id]: tab }));
     setShowMore((prev) => ({ ...prev, [id]: false })); // Reset courses expansion when switching tabs
@@ -280,23 +269,23 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                         >
                           <div
                             id={`content-${item.id}`}
-                            className="px-4 sm:px-6 pb-4 sm:pb-5 text-black border-t border-gray-100"
+                            className="px-4 sm:px-6 pb-4 sm:pb-5 text-black"
                             role="region"
                             aria-label={`${item.title} curriculum details`}
                           >
                             {/* Mobile-only image at top of card */}
                             {item.termImage && (
-                                <div className="lg:hidden mb-4 mt-4">
-                                  <Image
-                                    src={item.termImage}
-                                    alt={`${item.title} skyline`}
-                                    width={800}
-                                    height={400}
-                                    className="w-full h-48 object-cover"
-                                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 800px"
-                                  />
-                                </div>
-                              )}
+                              <div className="lg:hidden mb-4 mt-4">
+                                <Image
+                                  src={item.termImage}
+                                  alt={`${item.title} skyline`}
+                                  width={800}
+                                  height={400}
+                                  className="w-full h-48 object-cover"
+                                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 800px"
+                                />
+                              </div>
+                            )}
 
                             {item.internship ? (
                               <div className="pt-4 space-y-4">
@@ -334,9 +323,6 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                                 {/* Term Project or Outcome */}
                                 {item.outcome ? (
                                   <div>
-                                    <h4 className="font-semibold text-gray-900 mb-2 text-sm">
-                                      Outcome:
-                                    </h4>
                                     <p className="text-[#5f6368] leading-relaxed text-sm">
                                       {item.outcome}
                                     </p>
@@ -380,8 +366,8 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                                       <button
                                         key={t}
                                         onClick={() => setTab(item.id, t)}
-                                        className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors  ${activeTab(item.id) === t
-                                          ? "border-orange-500 text-gray-900"
+                                        className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors  ${activeTab(item.id, tabs) === t
+                                          ? "border-[#B30437] text-gray-900"
                                           : "border-transparent text-[#5f6368] hover:text-[#5f6368]"
                                           }`}
                                         type="button"
@@ -395,7 +381,7 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                                 {/* Tab Content */}
                                 <div className="space-y-3">
                                   {/* Courses & Workshops */}
-                                  {activeTab(item.id) === "courses" &&
+                                  {activeTab(item.id, tabs) === "courses" &&
                                     item.courses && (
                                       <>
                                         {item.courses.initial.map(
@@ -454,26 +440,26 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
 
                                         {/* Toggle button */}
                                         {item.courses.more?.length > 0 && (
-                                        <div className="mt-4">
-                                          <button
-                                            onClick={() => toggleMore(item.id)}
-                                            className="text-xs text-black hover:text-[#B30437] font-medium flex items-center gap-2 transition-colors bg-white hover:bg-gray-50 px-3 py-2 rounded-md border border-gray-200"
-                                            type="button"
-                                          >
-                                            <span className="text-sm">
-                                              {isShowMore(item.id) ? "−" : "+"}
-                                            </span>
-                                            {isShowMore(item.id)
-                                              ? "VIEW LESS"
-                                              : "VIEW MORE"}
-                                          </button>
-                                        </div>
+                                          <div className="mt-4">
+                                            <button
+                                              onClick={() => toggleMore(item.id)}
+                                              className="text-xs text-black hover:text-[#B30437] font-medium flex items-center gap-2 transition-colors bg-white hover:bg-gray-50 px-3 py-2 rounded-md border border-gray-200"
+                                              type="button"
+                                            >
+                                              <span className="text-sm">
+                                                {isShowMore(item.id) ? "−" : "+"}
+                                              </span>
+                                              {isShowMore(item.id)
+                                                ? "VIEW LESS"
+                                                : "VIEW MORE"}
+                                            </button>
+                                          </div>
                                         )}
                                       </>
                                     )}
 
                                   {/* Collaboration */}
-                                  {activeTab(item.id) === "collaboration" &&
+                                  {activeTab(item.id, tabs) === "collaboration" &&
                                     item.collaboration && (
                                       <div className="space-y-4">
                                         {item.collaboration.map(
@@ -498,7 +484,7 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                                     )}
 
                                   {/* Business Immersions */}
-                                  {activeTab(item.id) === "business" &&
+                                  {activeTab(item.id, tabs) === "business" &&
                                     item.business && (
                                       <div className="space-y-4">
                                         {item.business.map(
@@ -539,7 +525,7 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                                     )}
 
                                   {/* Cultural Immersions / Tools & Technology */}
-                                  {activeTab(item.id) === "cultural" &&
+                                  {activeTab(item.id, tabs) === "cultural" &&
                                     item.cultural && (
                                       <div className="space-y-4">
                                         {item.culturalImage ? (
@@ -593,15 +579,15 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                     {/* Highlight section after specific items */}
                     {item.highlight && (
                       <div
-                        className="flex items-center gap-3 py-4 px-4 mt-3 bg-blue-50 border border-blue-100 rounded-lg"
+                        className="flex items-center gap-3 py-4 px-4 bg-red-50 border border-red-100"
                         role="complementary"
                       >
-                        <img src="/Charters-icon/star full black.svg" alt="" width={20} height={20}
+                        <img src="/Charters-icon/AI-icon.svg" alt="" width={20} height={20}
                           className="w-5 h-5 flex-shrink-0"
                           aria-hidden="true"
                         />
                         <span
-                          className="text-[#5f6368] font-medium text-xs"
+                          className="text-[#4F0118] font-medium text-xs"
                           role="text"
                         >
                           {item.highlight}

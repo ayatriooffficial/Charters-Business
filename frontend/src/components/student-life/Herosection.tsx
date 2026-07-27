@@ -48,7 +48,7 @@ export default function Hersection() {
                                 id="careers-hero-title"
                                 className="text-3xl sm:text-3xl lg:text-4xl xl:text-4xl font-bold text-black leading-tight"
                             >
-                                At Charters' Where we Create Fresher to Industry-Ready
+                                At Charters' We Create Fresher to Industry-Ready
                             </h1>
 
                             <p className="mt-3 sm:mt-4 max-w-2xl text-xs sm:text-sm text-gray-600 md:text-base">

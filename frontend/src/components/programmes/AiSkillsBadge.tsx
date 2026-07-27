@@ -18,9 +18,9 @@ export default function AiSkillsBadge({ data }: AiSkillsProps) {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="inline-flex items-center gap-1.5 px-2 py-[1px] bg-red-50 hover:bg-red-100 text-[#B30437] rounded-s transition-colors group"
+        className="inline-flex items-center cursor-pointer gap-1.5 px-3 py-[2px] bg-red-50 text-[#4F0118] transition-colors group"
       >
-        <Image src="/dot-icon.svg" alt="AI Icon" width={16} height={16} />
+        <Image src="/Charters-icon/AI-icon.svg" alt="AI Icon" width={16} height={16} />
         <span className="text-[12px] sm:text-[12px] font-semibold group-hover:underline underline-offset-4 decoration-2">New AI skills</span>
       </button>
 

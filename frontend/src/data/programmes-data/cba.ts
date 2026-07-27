@@ -1,158 +1,581 @@
-import type { Programme } from "./types";
-import { defaultCurriculumSection } from "./curriculum-default";
+import type { Programme, CurriculumSectionData } from "./types";
 import { facultyMembers } from "@/data/faculty";
-const cbaCurriculumSection = structuredClone(defaultCurriculumSection);
 
-// ── "AI-Ready: Hands-on Learning" Section ──
-// You can customize the subtitle text and the "Skills you'll learn" bubbles specifically for the CBA course here.
-// Any edits made here will NOT affect the DGM or TBM pages.
-cbaCurriculumSection.subtitle = "We trained to contribute in real business environments—earning recognition from managers";
-cbaCurriculumSection.tabOrder = ["courses", "cultural", "business"];
-cbaCurriculumSection.tabLabels = { cultural: "Tools & Technology" };
-cbaCurriculumSection.skillsData = {
-  previewSkills: ["Client Services", "Marketing", "Data Storytelling", "Social Media Strategy", "Spreadsheet Software", "Campaign Management", "Paid media", "Email Marketing", "Online Advertising", "Social Media Marketing", "Web Presence"],
-  modalTitle: "Skills and tools you'll learn",
-  modalSkillsGain: {
-    title: "Skills you'll gain",
-    skills: [
-      "Client Services", "Marketing", "Data Storytelling", "Social Media Strategy",
-      "Spreadsheet Software", "Campaign Management", "Paid media", "Email Marketing",
-      "Online Advertising", "Social Media Marketing", "Web Presence", "Interviewing Skills",
-      "Social Media Management", "Order Fulfillment", "Search Engine Optimization",
-      "Media Planning", "Loyalty Programs", "Performance Measurement", "E-Commerce"
-    ]
+const cbaCurriculumSection: CurriculumSectionData = {
+  eyebrow: "WORLD-CLASS EDUCATION",
+  titleHighlight: "AI-Ready:",
+  titleRest: "Hands-on Learning",
+  subtitle:
+    "We trained to contribute in real business environments—earning recognition from managers",
+  tabOrder: ["courses", "collaboration", "cultural", "business"],
+  tabLabels: { cultural: "Tools & Technology" },
+  skillsData: {
+    previewSkills: [
+      "Client Services",
+      "Marketing",
+      "Data Storytelling",
+      "Social Media Strategy",
+      "Spreadsheet Software",
+      "Campaign Management",
+      "Paid media",
+      "Email Marketing",
+      "Online Advertising",
+      "Social Media Marketing",
+      "Web Presence",
+    ],
+    modalTitle: "Skills and tools you'll learn",
+    modalSkillsGain: {
+      title: "Skills you'll gain",
+      skills: [
+        "Client Services",
+        "Marketing",
+        "Data Storytelling",
+        "Social Media Strategy",
+        "Spreadsheet Software",
+        "Campaign Management",
+        "Paid media",
+        "Email Marketing",
+        "Online Advertising",
+        "Social Media Marketing",
+        "Web Presence",
+        "Interviewing Skills",
+        "Social Media Management",
+        "Order Fulfillment",
+        "Search Engine Optimization",
+        "Media Planning",
+        "Loyalty Programs",
+        "Performance Measurement",
+        "E-Commerce",
+      ],
+    },
+    modalToolsLearn: {
+      title: "Tools you'll learn",
+      tools: ["Google Ads"],
+    },
   },
-  modalToolsLearn: {
-    title: "Tools you'll learn",
-    tools: ["Google Ads"]
-  }
+  items: [
+    {
+      id: "dubai",
+      term: "Month 01",
+      title: "Strategy, Planning & Performance",
+      termImage:
+        "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
+      badges: [
+        {
+          text: "On Campus",
+          className:
+            "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold",
+        },
+      ],
+      outcome:
+        "The competencies required to envision the future, lead the strategic planning process, guide decisions, manage risk, and monitor performance.",
+      courses: {
+        initial: [
+          { code: "MAST 101", title: "Strategic and Tactical Planning" },
+          { code: "MAST 201", title: "Decision Analysis" },
+          { code: "MAST 301", title: "Strategic Cost Management" },
+          { code: "MAST 401", title: "Capital Investment Decisions" },
+          { code: "MAST 501", title: "Enterprise Risk Management" },
+        ],
+        more: [
+          { code: "SAMA 101", title: "Budgeting and Forecasting" },
+          { code: "SAMA 201", title: "Corporate Finance" },
+          { code: "SAMA 301", title: "Performance Management" },
+          { code: "SAMA 401", title: "Corporate english specking" },
+          { code: "FIFI 101", title: "Profesonal personal branding" },
+          { code: "FIFI 102", title: "Profesonal digital Networking" },
+        ],
+      },
+      business: [
+        {
+          title:
+            "Discuss sustainable solutions, renewable energy, green technology with world leaders, businesses, and investors.",
+          subtitle: "The World Green Economy Summit",
+        },
+        {
+          title:
+            "Delve into the private luxury aviation market and understand the ins and outs of a $100B exclusive industry.",
+          subtitle: "Middle East Business Aviation Summit",
+        },
+        {
+          title:
+            "Explore the niche laboratory and instrumentation industry and see how high-tech industries work.",
+          subtitle: "ArabLAB Expo",
+        },
+        {
+          title:
+            "Get a taste of the global sweet, confectionery, bakery, and snack food industry.",
+          subtitle: "Yummex Food Exhibition, Middle East",
+        },
+        {
+          title:
+            "Visit YallaMarket, which is redefining the grocery shopping experience, & Huspy, which is transforming the real estate landscape.",
+        },
+        {
+          title:
+            "Learn about the Emirates airline's operations, logistics, and customer service strategies.",
+          subtitle: "Emirates Airline Headquarters",
+        },
+      ],
+      cultural: [
+        {
+          title:
+            "Take a thrilling desert safari through the Dubai Desert & live the traditional Arabic life.",
+          subtitle: "Dubai Inner Desert",
+        },
+        {
+          title:
+            "Cruise in a traditional wooden boat and witness the historical landmarks.",
+          subtitle: "Dhow Cruise",
+        },
+        {
+          title:
+            "Soak in the history of Dubai from its beginnings as a fishing village to its modern metropolis.",
+          subtitle: "Dubai Museum, Al Fahidi Fort",
+        },
+        {
+          title:
+            "Bargain for gold jewelry, learn about goldsmithing at the largest gold market in the world.",
+          subtitle: "Dubai Gold Souk",
+        },
+        {
+          title:
+            "Get the inside hook on how the world's tallest building was planned, & constructed.",
+          subtitle: "Burj Khalifa",
+        },
+      ],
+      culturalVariant: "orange",
+      culturalImage: "/images/dgm-tools/1.jpg",
+    },
+    {
+      id: "india",
+      term: "Month 02",
+      title: "Reporting & Control",
+      termImage:
+        "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
+      badges: [
+        {
+          text: "On Campus",
+          className:
+            "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold",
+        },
+      ],
+      outcome:
+        "The competencies required to measure and report an organization's performance in compliance with relevant standards and regulations.",
+      courses: {
+        initial: [
+          { code: "MAST 102", title: "Internal Control" },
+          { code: "MAST 202", title: "Financial Recordkeeping" },
+          { code: "MAST 302", title: "Cost Accounting" },
+          { code: "MAST 402", title: "Financial Statement Preparation" },
+          { code: "SAMA 102", title: "Financial Statement Analysis" },
+        ],
+        more: [
+          { code: "SAMA 202", title: "Tax Compliance and Planning" },
+          { code: "SAMA 302", title: "Integrated Reporting" },
+          { code: "SAMA 402", title: "LinkedIn for personal branding & B2B" },
+          { code: "FIFI 201", title: "Structure thinking" },
+          { code: "FIFI 202", title: "Personal Video creator studio" },
+          { code: "PRTC 102", title: "Body lunguage tranning" },
+        ],
+      },
+      collaboration: [
+        { title: "Data-driven decision making" },
+        { title: "Genetic engineering" },
+      ],
+      business: [
+        {
+          title: "See what makes Indian Unicorns truly special.",
+          subtitle: "StartUp Grind New Delhi",
+        },
+        {
+          title:
+            "See how street vendors of India make more money than Silicon Valley startUps.",
+          subtitle: "Gurgaon's Banjara Market",
+        },
+        {
+          title:
+            "Explore fashion & business at one of the largest leather fairs in Asia.",
+          subtitle: "The Indian Leather Fair (May)",
+        },
+        {
+          title:
+            "Discover global F&B trends at India's largest food ingredients & flavoring fairs.",
+          subtitle: "The Flagship AAHAR 204",
+        },
+        {
+          title:
+            "Visit Zomato, which is redefining the Food Delivery market, & PayTM, which is bringing electronic banking to 1B+ Indians",
+        },
+        {
+          title:
+            "Get up close with the management and see how the largest Indian conglomerates actually work.",
+          subtitle: "Reliance & Tata HQs.",
+        },
+      ],
+      cultural: [
+        {
+          title:
+            "Witness the spectacular military parade and cultural pageantry on India's Republic Day.",
+          subtitle: "Republic Day Parade (New Delhi, Jan 26)",
+        },
+        {
+          title:
+            "Immerse in the vibrant Holi festivities, a celebration of spring with colorful powders, music, and dance.",
+          subtitle: "Holi Festival of Colors (Pan-India)",
+        },
+        {
+          title:
+            "Travel through India's villages to uncover grassroot innovations.",
+          subtitle: "'Shodh Yatra'",
+        },
+        {
+          title:
+            "Witness the majestic elephants participating in processions at this unique festival.",
+          subtitle: "Elephant Festival, Jaipur",
+        },
+        {
+          title:
+            "Visit the landmark literature festival featuring talks, and readings by global authors.",
+          subtitle: "Jaipur Literature Festival",
+        },
+      ],
+      culturalImage: "/images/dgm-tools/2.avif",
+    },
+    {
+      id: "singapore",
+      term: "Month 03",
+      title: "Technology & Analytics",
+      termImage:
+        "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
+      badges: [
+        {
+          text: "On Campus",
+          className:
+            "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold",
+        },
+      ],
+      outcome:
+        "The competencies required to manage technology and analyze data to enhance organizational success.",
+      courses: {
+        initial: [
+          { code: "PRTC 203", title: "Information Systems" },
+          { code: "AIML 103", title: "Data Governance" },
+          { code: "FIFI 203", title: "Data Analytics" },
+          { code: "SAMA 303", title: "Data Visualization" },
+          { code: "COMM 103", title: "Leadershiph social impact tranning" },
+        ],
+        more: [
+          {
+            code: "FIFI 303",
+            title: "Personal Video grwoth strategy creator studio",
+          },
+        ],
+      },
+      moreCoursesGray: false,
+      collaboration: [{ title: "Angel investing & alternate investments" }],
+      business: [
+        {
+          title: "See how innovation meets inspiration in Singapore.",
+          subtitle: "Singapore MetaExpo 2025.",
+        },
+        {
+          title:
+            "Visit the world's leading Fintech company and step into the future of Finance.",
+          subtitle: "Paypal Innovation Lab.",
+        },
+        {
+          title: "Unravel Financial Insights at IRAS Singapore.",
+          subtitle: "Inland Revenue Authority of Singapore.",
+        },
+        {
+          title:
+            "Discover Vertical Farming where Innovation meets Sustainability and experience the future of food.",
+          subtitle: "Sky Greens Farm Tour.",
+        },
+        {
+          title: "Explore tomorrow's technology where ideas become reality.",
+          subtitle: "Microsoft Technology Centre.",
+        },
+      ],
+      cultural: [
+        {
+          title: "Witness grand parades on Singapore National Day.",
+          subtitle: "Singapore National Day (August 9)",
+        },
+        {
+          title: "Immerse yourself in the history and heritage of Singapore.",
+          subtitle: "Singapore National Museum.",
+        },
+        {
+          title: "Discover Asia's cultural mosaic at the",
+          subtitle: "Asian Civilisations Museum.",
+        },
+        {
+          title:
+            "Visit Singapore's cultural heartbeat where tradition meets modernity.",
+          subtitle: "Chinatown Singapore.",
+        },
+        {
+          title: "Discover Singapore's military legacy.",
+          subtitle: "Fort Siloso",
+        },
+      ],
+      culturalImage: "/images/dgm-tools/3.avif",
+    },
+    {
+      id: "ghana",
+      term: "Month 04",
+      title: "Business Acumen & Operations",
+      termImage:
+        "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
+      badges: [
+        {
+          text: "On Campus",
+          className:
+            "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold",
+        },
+      ],
+      highlight: "Faculty Guided Internship Program ",
+      outcome:
+        "The competencies required to contribute as a cross-functional business partner to transform company-wide operations.",
+      courses: {
+        initial: [
+          { code: "MAST 104", title: "Industry-Specific Knowledge" },
+          { code: "MAST 204", title: "Operational Knowledge" },
+          {
+            code: "MAST 304",
+            title: "Quality Management and Continuous Improvement",
+          },
+          { code: "MAST 404", title: "Project Management" },
+        ],
+        more: [],
+      },
+      moreCoursesGray: true,
+      business: [
+        {
+          title:
+            "Understand how trade in Africa unfolds at a world record pace!",
+          subtitle: "Ghana International Trade Fair",
+        },
+        {
+          title:
+            "Witness Africa's cutting edge agricultural technology and unique innovations.",
+          subtitle: "AgriTech Ghana",
+        },
+        {
+          title:
+            "Meet early stage startups at MEST Accra, Meltwater Incubator & BlueSpace Ghana, pan-African incubators supporting tech startups",
+        },
+        {
+          title: "Learn how Ghana's cocoa & cashews industry is thriving.",
+          subtitle: "Nestle HQs, Accra",
+        },
+        {
+          title: "Meet global investors bullish on Africa.",
+          subtitle: "Ghana Investment Forum",
+        },
+      ],
+      businessNote: "Summer: Teaching Fellowship or Internship",
+      cultural: [
+        {
+          title: "Explore Ghana's vibrant second hand market.",
+          subtitle: "Kantamanto Market, Accra",
+        },
+        {
+          title:
+            "Walk the British colonial history of Ghana on an Independence Tour.",
+          subtitle: "Accra, Ghana",
+        },
+        {
+          title:
+            "See how small businesses become energy self-sufficient using BioGas plants.",
+          subtitle: "Kumasi, Ghana",
+        },
+      ],
+      culturalImage: "/images/dgm-tools/4.avif",
+    },
+    {
+      id: "usa",
+      term: "Month 05",
+      title: "Leadership",
+      termImage:
+        "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
+      badges: [
+        {
+          text: "On Campus",
+          className:
+            "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold",
+        },
+      ],
+      outcome:
+        "The competencies required to collaborate with others and inspire teams to achieve organizational goals.",
+      courses: {
+        initial: [
+          { code: "MAST 105", title: "Communication Skills" },
+          { code: "MAST 205", title: "Motivating and Inspiring Others" },
+          {
+            code: "MAST 305",
+            title: "Collaboration, Teamwork, and Relationship",
+          },
+          { code: "SAMA 105", title: "Change Management" },
+          { code: "SAMA 205", title: "Conflict Management" },
+        ],
+        more: [
+          { code: "SAMA 305", title: "Negotiation" },
+          { code: "SAMA 405", title: "Talent Management" },
+        ],
+      },
+      moreCoursesGray: false,
+      collaboration: [
+        { title: "AI driven entrepreneurship" },
+        { title: "Healthcare management" },
+      ],
+      business: [
+        {
+          title:
+            "Get a glimpse into new research and products at Google's HQ.",
+          subtitle: "Googleplex",
+        },
+        {
+          title:
+            "See how animated blockbusters come to life at VFX studio Pixar.",
+          subtitle: "Pixar HQs",
+        },
+        {
+          title:
+            "Get the BTS on Silicon Valley's top incubator behind Airbnb & Dropbox.",
+          subtitle: "Y Combinator's Demo Day",
+        },
+        {
+          title:
+            "Get an immersive insight into cutting-edge space technology.",
+          subtitle: "Space X HQs",
+        },
+        {
+          title:
+            "Delve into hackers' minds at the world's top hackers' conference.",
+          subtitle: "Black Hat USA",
+        },
+        {
+          title:
+            "Dive into the latest in the world of Robots, AI, Metaverse, & Green tech.",
+          subtitle: "Consumer Electronics Show, Vegas",
+        },
+      ],
+      cultural: [
+        { title: "Witness a live IPO at the", subtitle: "NASDAQ, New York" },
+        {
+          title: "Experience the historic American power centers.",
+          subtitle: "Pentagon, & Capitol",
+        },
+        {
+          title: "Experience the intersection of art and technology.",
+          subtitle: "Berkeley Art Museum",
+        },
+        {
+          title:
+            "Traverse the American colonial & civil war history across the eat coast.",
+          subtitle: "Various Cities (east coast)",
+        },
+        {
+          title: "Volunteer at the world's largest music stage.",
+          subtitle: "Ultra Music Festival",
+        },
+      ],
+      culturalImage: "/images/dgm-tools/5.avif",
+    },
+    {
+      id: "argentina",
+      term: "Month 06",
+      title: "Professional Ethics & Values",
+      termImage:
+        "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
+      badges: [
+        {
+          text: "On Campus",
+          className:
+            "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold",
+        },
+      ],
+      outcome:
+        "The competencies required to demonstrate the professional values, ethical behavior, and legal compliance essential to a sustainable business model.",
+      courses: {
+        initial: [
+          { code: "MAST 106", title: "Professional Ethical Behavior" },
+          {
+            code: "MAST 206",
+            title: "Recognizing and Resolving Unethical Behavior",
+          },
+          { code: "MAST 306", title: "Legal and Regulatory Requirements." },
+        ],
+        more: [],
+      },
+      moreCoursesGray: true,
+      business: [
+        {
+          title: "Learn how agribusiness is driving innovation at",
+          subtitle: "Los Grobo Group's headquarters",
+        },
+        {
+          title: "Understand Argentina's renewable energy transition at",
+          subtitle: "YPF Luz",
+        },
+        {
+          title: "Explore the entrepreneurial ecosystem of",
+          subtitle: "Buenos Aires' Distrito Arcos and Palermo Soho.",
+        },
+      ],
+      cultural: [
+        {
+          title: "Experience the traditions of the",
+          subtitle: "Pampas region, Argentina's agricultural heartland.",
+        },
+        {
+          title: "Immerse yourself in the passion of Argentine football at",
+          subtitle: "La Bombonera Stadium.",
+        },
+        {
+          title: "Discover the artistic and cultural vibrancy of",
+          subtitle: "San Telmo and La Boca.",
+        },
+      ],
+      culturalImage: "/images/dgm-tools/1.jpg",
+    },
+    {
+      id: "europe",
+      term: "Month 07",
+      title: "Capstone: Build & Launch a Digital Marketing Agency",
+      termImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
+      badges: [
+        { text: "PRO", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
+      ],
+      outcome: "Pai-Lam help to build won digital company",
+      project: undefined,
+      courses: {
+        initial: [],
+        more: [],
+      },
+      moreCoursesGray: true,
+      collaboration: [
+        { title: "International trade & business" },
+        { title: "Business of chemicals & bio-technology" },
+      ],
+      collaborationTextBlack: true,
+      business: [
+        { title: "Learn how Spain is innovating in renewable energy and sustainability at a global leader in clean power.", subtitle: "Iberdrola Headquarters, Madrid" },
+        { title: "Immerse yourself in entrepreneurial creativity and emerging startups at Madrid's leading innovation hub.", subtitle: "La Nave Innovation Hub, Madrid" },
+        { title: "Explore cutting-edge retail innovation and operations at Spain's largest department store group.", subtitle: "El Corte Inglés Headquarters, Madrid" },
+      ],
+      cultural: [
+        { title: "Immerse yourself in Spain's rich artistic heritage at two of the world's most renowned museums.", subtitle: "Prado Museum and Reina Sofia Museum, Madrid, Spain" },
+        { title: "Discover Madrid's vibrant street art, bohemian culture, and countercultural energy.", subtitle: "Lavapiés and Malasaña Districts, Madrid" },
+        { title: "Step into royalty and explore Spain's rich history at the largest functioning palace in Europe.", subtitle: "Royal Palace of Madrid, Madrid" },
+      ],
+      culturalImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784830095/chnarterunion-automation-tool_tvwboh.avif",
+    },
+  ],
 };
-
-
-for (let i = 0; i < 8; i++) {
-  const term = cbaCurriculumSection.items[i];
-  term.term = `Month 0${i + 1}`;
-  term.badges = [{ text: "On Campus", className: "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold" }];
-  term.termImage = "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif";
-  term.project = undefined;
-}
-
-// ── Month 01: Strategy, Planning & Performance ──
-const m1 = cbaCurriculumSection.items[0];
-m1.title = "Strategy, Planning & Performance";
-m1.outcome = "The competencies required to envision the future, lead the strategic planning process, guide decisions, manage risk, and monitor performance.";
-m1.courses = {
-  initial: [
-    { code: "MAST 101", title: "Strategic and Tactical Planning" },
-    { code: "MAST 201", title: "Decision Analysis" },
-    { code: "MAST 301", title: "Strategic Cost Management" },
-    { code: "MAST 401", title: "Capital Investment Decisions" },
-    { code: "MAST 501", title: "Enterprise Risk Management" },
-  ],
-  more: [
-    { code: "SAMA 101", title: "Budgeting and Forecasting" },
-    { code: "SAMA 201", title: "Corporate Finance" },
-    { code: "SAMA 301", title: "Performance Management" },
-    { code: "SAMA 401", title: "Corporate english specking" },
-    { code: "FIFI 101", title: "Profesonal personal branding" },
-    { code: "FIFI 102", title: "Profesonal digital Networking" },
-  ],
-};
-
-// ── Month 02: Reporting & Control ──
-const m2 = cbaCurriculumSection.items[1];
-m2.title = "Reporting & Control";
-m2.outcome = "The competencies required to measure and report an organization's performance in compliance with relevant standards and regulations.";
-m2.courses = {
-  initial: [
-    { code: "MAST 102", title: "Internal Control" },
-    { code: "MAST 202", title: "Financial Recordkeeping" },
-    { code: "MAST 302", title: "Cost Accounting" },
-    { code: "MAST 402", title: "Financial Statement Preparation" },
-    { code: "SAMA 102", title: "Financial Statement Analysis" },
-  ],
-  more: [
-    { code: "SAMA 202", title: "Tax Compliance and Planning" },
-    { code: "SAMA 302", title: "Integrated Reporting" },
-    { code: "SAMA 402", title: "LinkedIn for personal branding & B2B" },
-    { code: "FIFI 201", title: "Structure thinking" },
-    { code: "FIFI 202", title: "Personal Video creator studio" },
-    { code: "PRTC 102", title: "Body lunguage tranning" },
-  ],
-};
-
-// ── Month 03: Technology & Analytics ──
-const m3 = cbaCurriculumSection.items[2];
-m3.title = "Technology & Analytics";
-m3.outcome = "The competencies required to manage technology and analyze data to enhance organizational success.";
-m3.courses = {
-  initial: [
-    { code: "PRTC 203", title: "Information Systems" },
-    { code: "AIML 103", title: "Data Governance" },
-    { code: "FIFI 203", title: "Data Analytics" },
-    { code: "SAMA 303", title: "Data Visualization" },
-    { code: "COMM 103", title: "Leadershiph social impact tranning" },
-  ],
-  more: [
-    { code: "FIFI 303", title: "Personal Video grwoth strategy creator studio" },
-  ],
-};
-m3.moreCoursesGray = false;
-
-// ── Month 04: Business Acumen & Operations ──
-const m4 = cbaCurriculumSection.items[3];
-m4.title = "Business Acumen & Operations";
-m4.outcome = "The competencies required to contribute as a cross-functional business partner to transform company-wide operations.";
-m4.courses = {
-  initial: [
-    { code: "MAST 104", title: "Industry-Specific Knowledge" },
-    { code: "MAST 204", title: "Operational Knowledge" },
-    { code: "MAST 304", title: "Quality Management and Continuous Improvement" },
-    { code: "MAST 404", title: "Project Management" },
-  ],
-  more: [],
-};
-
-// ── Month 05: Leadership ──
-const m5 = cbaCurriculumSection.items[4];
-m5.title = "Leadership";
-m5.outcome = "The competencies required to collaborate with others and inspire teams to achieve organizational goals.";
-m5.courses = {
-  initial: [
-    { code: "MAST 105", title: "Communication Skills" },
-    { code: "MAST 205", title: "Motivating and Inspiring Others" },
-    { code: "MAST 305", title: "Collaboration, Teamwork, and Relationship" },
-    { code: "SAMA 105", title: "Change Management" },
-    { code: "SAMA 205", title: "Conflict Management" },
-  ],
-  more: [
-    { code: "SAMA 305", title: "Negotiation" },
-    { code: "SAMA 405", title: "Talent Management" },
-  ],
-};
-m5.moreCoursesGray = false;
-
-// ── Month 06: Professional Ethics & Values ──
-const m6 = cbaCurriculumSection.items[5];
-m6.title = "Professional Ethics & Values";
-m6.outcome = "The competencies required to demonstrate the professional values, ethical behavior, and legal compliance essential to a sustainable business model.";
-m6.courses = {
-  initial: [
-    { code: "MAST 106", title: "Professional Ethical Behavior" },
-    { code: "MAST 206", title: "Recognizing and Resolving Unethical Behavior" },
-    { code: "MAST 306", title: "Legal and Regulatory Requirements." },
-  ],
-  more: [],
-};
-
-cbaCurriculumSection.items.splice(6, 1);
-
-cbaCurriculumSection.items[0].culturalImage = "/images/dgm-tools/1.jpg";
-cbaCurriculumSection.items[1].culturalImage = "/images/dgm-tools/2.avif";
-cbaCurriculumSection.items[2].culturalImage = "/images/dgm-tools/3.avif";
-cbaCurriculumSection.items[3].culturalImage = "/images/dgm-tools/4.avif";
-cbaCurriculumSection.items[4].culturalImage = "/images/dgm-tools/5.avif";
-cbaCurriculumSection.items[5].culturalImage = "/images/dgm-tools/1.jpg";
 
 // CBA — Certified Business Accountant course data
 export const cba: Programme = {
@@ -199,10 +622,6 @@ export const cba: Programme = {
       traditional: "2.8L",
       cmp: "7.3L",
     },
-    partnerLogos: {
-      partners: "/charter-partner/charter-certified-busniess-accountant-partners.avif",
-      internships: "/charter-partner/certified_business_accountant_internship_partner.avif",
-    },
   },
   // Hero Data
   hero: {
@@ -215,7 +634,7 @@ export const cba: Programme = {
     description:
       "AI-Ready curriculum build on USCMA, ACCA, ICAI, and Hardvard Case Study based Corporate Accounting. 1:1 mentorship.  Paid internship in 7 countries.",
     stats: [
-      { label: "93% Avg Placement", value: "93%" },
+      { label: "97.7% Avg Placement", value: "93%" },
       { label: "100% Paid Internship", value: "150+" },
     ],
     alumniLabel: "Find our student at -",
@@ -353,7 +772,7 @@ export const cba: Programme = {
       highlight: "CBA™",
       suffix: "Certification",
     },
-    auditorText: "Our placement reports are audited by <strong>AnalystPK</strong>, auditor for IIM and follow the IPRS Revision 2.2 framework for transparent and consistent compensation data.",
+    auditorText: "Our placement reports are audited by <strong>Zivanta Analytics</strong>, auditor for IIM and follow the IPRS Revision 2.2 framework for transparent and consistent compensation data.",
     accordions: [
       {
         id: "placement",
@@ -1225,6 +1644,9 @@ export const cba: Programme = {
     ],
   },
   students: {
+    eyebrow: "OUR STUDENTS",
+    title: { prefix: "Meet our", highlight: "Achievers" },
+    subtitle: "Real students. Real placements. See where our graduates are working today.",
     categories: [
       { id: "jul", name: "July" },
       { id: "apr", name: "April" },
@@ -1427,6 +1849,8 @@ export const cba: Programme = {
     ],
   },
   faculty: {
+    eyebrow: "LEARN FROM THE BEST",
+    title: { prefix: "Meet your", highlight: "Faculty" },
     subtitle: "Learn from industry leaders, academic experts, and seasoned practitioners who bring real-world experience to your education.",
     categories: [
       { id: "technology", name: "GST Taxation" },
@@ -1450,16 +1874,18 @@ export const cba: Programme = {
     heroImage: "/images/certified-business-accountant-student-sunitha-raj-got-jobs.png",
 
     // Renders under "Find our faculty at -" banner in ProgramHero
-    internshipPartnerLogo: "/charter-partner/certified_business_accountant_internship_partner.avif",
+    internshipPartnerLogo: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784554662/certified_business_accountant_internship_partner_smqygu.avif",
 
     // Renders as the industrial faculty partnership logo badge in ProgramHero
-    industrialFacultyLogo: "/images/programmes/industrial_faculty.avif",
-    hiredCompaniesBanner: "/images/program-placements/CBA_Hired_Company.avif",
-    campusImage: "/images/programmes/certificate.JPG",
-    academicPartnerLogo: "/charter-partner/charter-academic-partner.avif",
-    degreeInternshipPartnerLogo: "/charter-partner/charter-intrenshiph-company-around-the-world.avif",
+    industrialFacultyLogo: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784539836/charters-faculty-member_tlvkib.avif",
+    hiredCompaniesBanner: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784891907/CBA_Hired_Company_p22ehx.avif",
+    campusImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840456/Sujata_recived-certified-business-accountant-certification_vkgwh5.avif",
+    academicPartnerLogo: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784554664/certified_business_accountant_curriculum_partner_fmvkcd.avif",
     disclaimerText: "Every CBA™ (Certified Business Accountant) completed students who fulfil the minimum requirements will be eligible to apply for a US-CMA exam, Visa, Residence permit, allowing them to search for employment at Top 4.",
-    timetableImage: "/images/week-at-chartersunion/CBA-week-at-chartersunion.avif",
+    timetableImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784606398/day_to_day_at_charters-digital_marketing_f4kdtc.avif",
+
+
+
 
     // Renders cityscapes in CurriculumSection
     curriculumCityscapes: {
@@ -1481,6 +1907,8 @@ export const cba: Programme = {
 
     // Renders the EMI value, payment months, and career tracks inside PricingTabs
     pricing: {
+      emiLabel: "Starting at",
+      primaryButton: { text: "Book a Free Demo" },
       emiAmount: "₹6430",
       emiMonths: "total ₹45000",
       secondaryButton: { text: "VIEW EMI" },
@@ -1536,17 +1964,21 @@ export const cba: Programme = {
     subtitle: "Start your day with ambition and end it with impact. At Charters' Union, every week pushes boundaries.",
   },
   learningOutcomes: {
+    eyebrow: "WHAT YOU'LL MASTER",
+    sidebarTitle: "LEARNING OUTCOMES",
+    sidebarSubtitle: "Navigate through our mastery areas",
+
     comparisonTable: {
-      title: "How CBA is fundamentally different",
-      subtitle: "CBA VS TRADITIONAL EDUCATION",
-      headers: ["Parameter", "Engineering", "Business", "Charter's Business (CBA)"],
+      title: "How CBA™ is fundamentally different",
+      subtitle: "CBA™ (Certified Business Accountant) VS TRADITIONAL EDUCATION",
+      headers: ["Parameter", "CBA™ (Certified Business Accountant)", "Other Accounting Courses"],
       rows: [
-        { icon: "/Charters-icon/fundamental.svg", parameter: "Core focus", column1: "✕ Theoretical CS", column2: "✕ Theoretical management", column3: "✓ Computer Science + AI + Applied business" },
-        { icon: "/Charters-icon/study.svg", parameter: "How students learn", column1: "✕ Lectures & exams", column2: "✕ Case studies", column3: "✓ Build real tech products from day one" },
-        { icon: "/Charters-icon/real world project.svg", parameter: "Entrepreneurship", column1: "✕ Optional club", column2: "✕ Competitions", column3: "✓ Learn by building a tech startup" },
-        { icon: "/Charters-icon/profile.svg", parameter: "Who teaches", column1: "✕ Academics", column2: "✕ Limited tech exposure", column3: "✓ Meta, Google, OpenAI founders" },
-        { icon: "/Charters-icon/careerroadmap.svg", parameter: "Career outcomes", column1: "✕ Junior SDE", column2: "✕ Analyst roles", column3: "✓ Forward Deployed Eng, Product Eng, AI PMs" },
-        { icon: "/Charters-icon/jobs.svg", parameter: "Risk & safety net", column1: "✕ Limited flexibility", column2: "✕ No tech skills", column3: "✓ Placements + deferred support" }
+        { icon: "/Charters-icon/fundamental.svg", parameter: "Core focus", column1: "✓ Computer Science + AI + Applied business", column2: "✕ Theoretical CS" },
+        { icon: "/Charters-icon/study.svg", parameter: "How students learn", column1: "✓ Build real tech products from day one", column2: "✕ Lectures & exams" },
+        { icon: "/Charters-icon/real world project.svg", parameter: "Entrepreneurship", column1: "✓ Learn by building a tech startup", column2: "✕ Optional club" },
+        { icon: "/Charters-icon/profile.svg", parameter: "Who teaches", column1: "✓ Meta, Google, OpenAI founders", column2: "✕ Academics" },
+        { icon: "/Charters-icon/careerroadmap.svg", parameter: "Career outcomes", column1: "✓ Forward Deployed Eng, Product Eng, AI PMs", column2: "✕ Junior SDE" },
+        { icon: "/Charters-icon/jobs.svg", parameter: "Risk & safety net", column1: "✓ Placements + deferred support", column2: "✕ Limited flexibility" }
       ]
     },
     title: {
@@ -1580,6 +2012,15 @@ export const cba: Programme = {
             caption: 'Get regular 1:1 mentorship, support and practice',
           },
         ],
+        salaryTable: {
+          headers: ["Job Role", "Entry-Level Salary", "Mid-Level Salary", "Senior / Lead Salary"],
+          rows: [
+            { role: "Digital Marketing Executive", entry: "~₹3 L – ₹6 L per year", mid: "~₹6 L – ₹12 L per year", senior: "₹12 L – ₹20 L+ per year" },
+            { role: "Performance Marketing Specialist", entry: "~₹4 L – ₹8 L per year", mid: "~₹8 L – ₹18 L per year", senior: "₹18 L – ₹30 L+ per year" },
+            { role: "SEO Specialist", entry: "~₹3 L – ₹7 L per year", mid: "~₹7 L – ₹15 L per year", senior: "₹15 L – ₹25 L+ per year" },
+            { role: "Social Media Manager", entry: "~₹3 L – ₹6 L per year", mid: "~₹6 L – ₹14 L per year", senior: "₹14 L – ₹25 L+ per year" }
+          ]
+        },
       },
       {
         title: 'Customer Obsession',
@@ -1605,6 +2046,7 @@ export const cba: Programme = {
             caption: 'Conduct customer discovery with early-stage startups',
           },
         ],
+        mainImage: "/images/dgm-tools/1.jpg",
       },
       {
         title: 'Effective Communication',
@@ -1630,6 +2072,15 @@ export const cba: Programme = {
             caption: 'Receive 1:1 coaching on executive presence and crafting your elevator pitch',
           },
         ],
+        salaryTable: {
+          headers: ["Job Role", "Entry-Level Salary", "Mid-Level Salary", "Senior / Lead Salary"],
+          rows: [
+            { role: "Digital Marketing Executive", entry: "~₹3 L – ₹6 L per year", mid: "~₹6 L – ₹12 L per year", senior: "₹12 L – ₹20 L+ per year" },
+            { role: "Performance Marketing Specialist", entry: "~₹4 L – ₹8 L per year", mid: "~₹8 L – ₹18 L per year", senior: "₹18 L – ₹30 L+ per year" },
+            { role: "SEO Specialist", entry: "~₹3 L – ₹7 L per year", mid: "~₹7 L – ₹15 L per year", senior: "₹15 L – ₹25 L+ per year" },
+            { role: "Social Media Manager", entry: "~₹3 L – ₹6 L per year", mid: "~₹6 L – ₹14 L per year", senior: "₹14 L – ₹25 L+ per year" }
+          ]
+        },
       },
       {
         title: 'First Principles Problem Solving',
@@ -1655,6 +2106,7 @@ export const cba: Programme = {
             caption: 'Join bi-monthly moderated group discussions on trending business topics',
           },
         ],
+        mainImage: "/images/dgm-tools/1.jpg",
       },
       {
         title: 'Business Acumen',
@@ -1680,6 +2132,7 @@ export const cba: Programme = {
             caption: 'Solve 100+ renowned business cases in teams of 3-4',
           },
         ],
+        mainImage: "/images/dgm-tools/1.jpg",
       },
       {
         title: 'Agile Product Thinking',
@@ -1705,6 +2158,7 @@ export const cba: Programme = {
             caption: 'Gain an Agile scrum certification',
           },
         ],
+        mainImage: "/images/dgm-tools/1.jpg",
       },
       {
         title: 'Sales',
@@ -1730,6 +2184,7 @@ export const cba: Programme = {
             caption: '',
           },
         ],
+        mainImage: "/images/dgm-tools/1.jpg",
       },
       {
         title: 'Process Thinking',
@@ -1755,6 +2210,7 @@ export const cba: Programme = {
             caption: 'Manage business processes for your small business in term 1',
           },
         ],
+        mainImage: "/images/dgm-tools/1.jpg",
       },
     ]
   },
@@ -1776,7 +2232,7 @@ export const cba: Programme = {
       downloadFilename: "charters-placement-report-2025.jpg"
     },
     brochure: {
-      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784656491/charters-placement-report_yj1uj9.avif",
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840455/certified-business-accountant-brochure_r2gsyn.avif",
       imageAlt: "Charters Union Brochure",
       programName: "Certified Business Accountant (CBA™)",
       subtext: "AI-First Curriculums • 4-6 Month Paid Internships • Global Placements",

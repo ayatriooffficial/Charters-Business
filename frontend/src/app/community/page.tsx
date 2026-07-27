@@ -7,6 +7,15 @@ export const metadata: Metadata = {
   title: "Community | Charters' Union",
   description:
     "Join the vibrant Charters' Union community. Connect with students, alumni, and industry professionals who share your passion for business excellence.",
+  keywords: [
+    "Charters Union community",
+    "student community Kolkata",
+    "alumni network",
+    "business students community",
+    "professional networking",
+    "peer learning",
+    "career networking",
+  ],
   alternates: {
     canonical: "https://chartersunion.com/community",
   },

@@ -7,6 +7,16 @@ export const metadata: Metadata = {
   title: "About Us | Charters' Union",
   description:
     "Learn about Charters' Union and our mission to transform business education. Discover our world-class faculty, programs, and industry-ready leaders.",
+  keywords: [
+    "Charters Union",
+    "Kolkata training institute",
+    "AI-powered education",
+    "business education",
+    "job-ready training",
+    "accounting institute Kolkata",
+    "professional certification",
+    "industry-led training",
+  ],
   alternates: {
     canonical: "https://chartersunion.com/about",
   },

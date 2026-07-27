@@ -10,7 +10,7 @@ const randomLogos = [
   "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/google.svg",
   "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/amazon.svg",
 ];
-import { Faculty, FacultyCategory, facultyCategories, facultyMembers } from "@/data/faculty";
+import { Faculty, FacultyCategory } from "@/data/faculty";
 
 interface FacultyModelProps {
   data?: {
@@ -21,8 +21,11 @@ interface FacultyModelProps {
 }
 
 function FacultyModel({ data }: FacultyModelProps) {
-  const dynamicCategories = data?.categories || facultyCategories;
-  const facultyData = data?.faculty || facultyMembers;
+  const dynamicCategories = data?.categories || [];
+  const facultyData = data?.faculty || [];
+  const eyebrowText = data?.eyebrow;
+  const titleData = data?.title;
+  const subtitleText = data?.subtitle;
 
   const [activeCategory, setActiveCategory] = useState<string>(
     dynamicCategories[0]?.id || "leadership"
@@ -64,23 +67,28 @@ function FacultyModel({ data }: FacultyModelProps) {
 
           {/* Section Header */}
           <div className="relative text-center pb-[3.25rem] sm:pb-[3.25rem]">
-            <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-4 sm:mb-6">
-              LEARN FROM THE BEST
-            </p>
+            {eyebrowText && (
+              <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-4 sm:mb-6">
+                {eyebrowText}
+              </p>
+            )}
 
             <h2
               id="faculty-heading"
               className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]"
             >
-              Meet your{" "}
-              <HighlightText className="mx-1 sm:mx-2 font-bold hl-px-0">
-                Faculty
+              {titleData?.prefix}{" "}
+              <HighlightText className="font-bold hl-px-0">
+                {titleData?.highlight}
               </HighlightText>
+              {titleData?.suffix ? " " + titleData.suffix : ""}
             </h2>
 
-            <p className="text-black px-[20px] md:px-[50px] lg:px-[70px] text-sm sm:text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
-              {data?.subtitle || "Learn from industry leaders, academic experts, and seasoned practitioners who bring real-world experience to your education."}
-            </p>
+            {subtitleText && (
+              <p className="text-black px-[20px] md:px-[50px] lg:px-[70px] text-sm sm:text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
+                {subtitleText}
+              </p>
+            )}
           </div>
 
           {/* Category Tabs */}

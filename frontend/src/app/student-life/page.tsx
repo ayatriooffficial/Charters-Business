@@ -10,6 +10,15 @@ export const metadata: Metadata = {
   title: "Student Life | Charters' Union",
   description:
     "Discover student life at Charters' Union. Join a vibrant community, participate in events, and build your professional network.",
+  keywords: [
+    "Charters Union student life",
+    "campus life Kolkata",
+    "student events",
+    "student community",
+    "extracurricular activities",
+    "student experience",
+    "Kolkata institute campus",
+  ],
   alternates: {
     canonical: "https://chartersunion.com/student-life",
   },

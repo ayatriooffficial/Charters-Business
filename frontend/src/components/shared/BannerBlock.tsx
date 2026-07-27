@@ -17,7 +17,7 @@ const BannerBlock: React.FC<BannerBlockProps> = ({
   actionButton,
 }) => {
   return (
-    <div className="mx-auto flex flex-col md:flex-row items-center justify-between py-4">
+    <div className="mx-auto flex flex-col md:flex-row items-center justify-between">
       <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6 flex-grow text-center md:text-left min-w-0">
         {/* Logo */}
         {imageSrc && (

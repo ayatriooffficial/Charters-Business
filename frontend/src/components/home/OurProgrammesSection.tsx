@@ -103,7 +103,7 @@ export default function OurProgrammesSection() {
                       {/* Eligibility */}
                       <div className="flex flex-col gap-2">
                         <div className="flex md:flex-row items-center flex-shrink-0 relative">
-                          <img src="/Charters-icon/profile.svg"
+                          <img src="/Charters-icon/eligibility.svg"
                             alt="Eligibility icon"
                             width={15}
                             height={15}
@@ -250,10 +250,10 @@ export default function OurProgrammesSection() {
                         </div>
 
                         <div className="flex items-center gap-1 items-center flex-wrap">
-                          {programme.card.partnerLogos?.partners && (
+                          {programme.assets?.academicPartnerLogo && (
                             <div className="relative h-10 w-[280px] flex flex-shrink-0">
                               <Image
-                                src={programme.card.partnerLogos.partners}
+                                src={programme.assets.academicPartnerLogo}
                                 alt="Partner 1"
                                 fill
                                 sizes="240px"
@@ -281,17 +281,17 @@ export default function OurProgrammesSection() {
                           </h3>
                         </div>
                         <div className="flex items-center gap-1 items-center flex-wrap">
-                          {programme.card.partnerLogos?.internships && (
-                          <div className="relative h-8 w-[272px] flex flex-shrink-0">
-                            <Image
-                              src={programme.card.partnerLogos.internships}
-                              alt="Partner 1"
-                              fill
-                              sizes="240px"
-                              className="object-contain"
-                              loading="lazy"
-                            />
-                          </div>
+                          {programme.assets?.internshipPartnerLogo && (
+                            <div className="relative h-8 w-[272px] flex flex-shrink-0">
+                              <Image
+                                src={programme.assets.internshipPartnerLogo}
+                                alt="Partner 1"
+                                fill
+                                sizes="240px"
+                                className="object-contain"
+                                loading="lazy"
+                              />
+                            </div>
                           )}
                         </div>
                       </div>

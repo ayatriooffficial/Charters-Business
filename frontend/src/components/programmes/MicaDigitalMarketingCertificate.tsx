@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import type { MicaCertificateData } from '@/data/programmes-data/types';
 
 const programHighlights = [
   'Globally recognized certificate from ChartersUnion',
@@ -152,7 +153,11 @@ const topCompanies = [
   'Ogilvy',
 ];
 
-function ChartersUnionDigitalMarketingCertificate() {
+interface Props {
+  data: MicaCertificateData;
+}
+
+function ChartersUnionDigitalMarketingCertificate({ data }: Props) {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -167,53 +172,196 @@ function ChartersUnionDigitalMarketingCertificate() {
               id="ChartersUnion-certificate-heading"
               className="text-lg sm:text-xl font-bold text-black mb-3 leading-snug"
             >
-              What is the Advanced Certificate in AI-Powered Digital Marketing
-              &amp; Communication from ChartersUnion?
+              What is the DGM™ (Digital Growth & Marketing) from ChartersUnion?
             </h2>
 
-            <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">
-              The Advanced Certificate in AI-Powered Digital Marketing &amp;
-              Communication from ChartersUnion is a 4-month program created to help
-              learners gain strong digital marketing skills through practical
-              and industry-focused training.
+            <p className="text-sm sm:text-base text-gray-900 leading-relaxed mb-4">
+              Today, brands use search engines, social media, paid advertising, email marketing, and content marketing to reach the right audience and drive business growth. Digital Marketing has changed the way businesses operate.
+            </p>
+            <p className="text-sm sm:text-base text-gray-900 leading-relaxed mb-4">
+              The Job-Ready AI-Poward Certificate in  DGM™ (Digital Growth & Marketing) at the Chartersunion Learning Support Centre helps learners build Job-ready skills through instructor-led digital marketing classes, Hardvard Level Case Study, Live projects, in-class faculty Guided internship and CareerPathx™ AI-Poward English Communication, Personal Branding, Corporate Bodylangusge and AI-poward Mock-interview, AI-ready Profile Base Jobs Search Engine.
             </p>
 
-            <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">
-              Offered in collaboration with upGrad, this program teaches
-              modern marketing strategies using real brand projects,
-              marketing tools, and live campaign experience.
+            <p className="text-sm sm:text-base text-gray-900 leading-relaxed mb-4">
+              3-month theory foundation + 4-month inclass faculty guided internship program teaches modern ai-readay marketing strategies using real brand projects, marketing tools, and live campaign experience.. so that learners can confidently apply their knowledge in professional roles.
             </p>
 
-            <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">
-              You will learn essential topics like SEO, paid ads, social
-              media, branding, email marketing, and analytics. The program
-              also includes hands-on training with tools such as Google Ads,
-              Meta Business Suite, and automation platforms so you can build
-              job-ready expertise.
-            </p>
+            <div>
+              <h3>
+                Why Choose the Advanced Certificate in DGM™ (Digital Growth & Marketing)?
+              </h3>
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">
+                Right now, there is a huge demand for digital marketing professionals in the market. Those with the right skills can enter a dynamic marketing field. This program helps learners understand complete digital marketing skills while gaining practical experience with industry tools and live projects.
+              </p>
+              <div className="overflow-x-auto mb-1">
+                <table className="w-full text-sm sm:text-base border-collapse border border-gray-300 mb-2">
+                  <thead>
+                    <tr>
+                      <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-black bg-gray-50">
+                        Job Role
+                      </th>
+                      <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-black bg-gray-50">
+                        Average Annual Salary in India
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data.table1.map((row) => (
+                      <tr key={row.role}>
+                        <td className="border border-gray-300 px-3 py-2 text-gray-700">
+                          {row.role}
+                        </td>
+                        <td className="border border-gray-300 px-3 py-2 text-gray-700">
+                          {row.salary}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-3">
+                From building a strong foundation to running performance campaigns, every module combines theory with practical implementation. This curriculum combines the top digital marketing skills which the industry hires for.
+              </p>
+            </div>
+
+
+            <div>
+              <h3 className="text-base sm:text-lg font-semibold text-black mt-6 mb-2">
+                Online vs Offline Digital Marketing Course: Why Classroom Training Works
+              </h3>
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-3">
+                Although both offline learning and online learning carry their own advantages, they suit people differently. For learners who prefer practical training and immediate feedback, classroom sessions can make learning more engaging and effective.
+              </p>
+              <div className="overflow-x-auto mb-1">
+                <table className="w-full text-sm sm:text-base border-collapse border border-gray-300 mb-2">
+                  <thead>
+                    <tr>
+                      <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-black bg-gray-50">
+                        Job Role
+                      </th>
+                      <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-black bg-gray-50">
+                        Average Annual Salary in India
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data.table2.map((row) => (
+                      <tr key={row.role}>
+                        <td className="border border-gray-300 px-3 py-2 text-gray-700">
+                          {row.role}
+                        </td>
+                        <td className="border border-gray-300 px-3 py-2 text-gray-700">
+                          {row.salary}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-3">
+                From building a strong foundation to running performance campaigns, every module combines theory with practical implementation. This curriculum combines the top digital marketing skills which the industry hires for.
+              </p>
+            </div>
 
             <h3 className="text-base sm:text-lg font-semibold text-black mt-6 mb-2">
-              Program Highlights
+              Many learners prefer offline digital marketing classes because they offer:
             </h3>
             <ul className="list-disc pl-5 space-y-1 text-sm sm:text-base text-gray-700 mb-4">
               {programHighlights.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
+            <div>
+              <h3 className="text-base sm:text-lg font-semibold text-black mt-6 mb-2">
+                Syllabus & Curriculum of the DGM™ (Digital Growth & Marketing)
+              </h3>
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-3">
+                From building a strong foundation to running performance campaigns, every module combines theory with practical implementation. This curriculum combines the top digital marketing skills which the industry hires for.
+              </p>
+              <div className="overflow-x-auto mb-1">
+                <table className="w-full text-sm sm:text-base border-collapse border border-gray-300 mb-2">
+                  <thead>
+                    <tr>
+                      <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-black bg-gray-50">
+                        Job Role
+                      </th>
+                      <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-black bg-gray-50">
+                        Average Annual Salary in India
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data.table3.map((row) => (
+                      <tr key={row.role}>
+                        <td className="border border-gray-300 px-3 py-2 text-gray-700">
+                          {row.role}
+                        </td>
+                        <td className="border border-gray-300 px-3 py-2 text-gray-700">
+                          {row.salary}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-3">
+                From building a strong foundation to running performance campaigns, every module combines theory with practical implementation. This curriculum combines the top digital marketing skills which the industry hires for.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-base sm:text-lg font-semibold text-black mt-6 mb-2">
+                Skills You Will Learn in the DGM™ (Digital Growth & Marketing)
+              </h3>
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-3">
+                The program helps learners build both technical marketing skills and business skills that are useful across industries.
+              </p>
+              <div className="overflow-x-auto mb-1">
+                <table className="w-full text-sm sm:text-base border-collapse border border-gray-300 mb-2">
+                  <thead>
+                    <tr>
+                      <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-black bg-gray-50">
+                        Job Role
+                      </th>
+                      <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-black bg-gray-50">
+                        Average Annual Salary in India
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data.table4.map((row) => (
+                      <tr key={row.role}>
+                        <td className="border border-gray-300 px-3 py-2 text-gray-700">
+                          {row.role}
+                        </td>
+                        <td className="border border-gray-300 px-3 py-2 text-gray-700">
+                          {row.salary}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-3">
+                From building a strong foundation to running performance campaigns, every module combines theory with practical implementation. This curriculum combines the top digital marketing skills which the industry hires for.
+              </p>
+            </div>
+
+
 
             <h3 className="text-base sm:text-lg font-semibold text-black mt-6 mb-2">
-              Who Should Enroll
+              Career Opportunities After Completing the DGM™ (Digital Growth & Marketing)
             </h3>
             <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-3">
-              This program is suitable for learners who want to start or
-              advance their career in digital marketing. Whether you are a
-              beginner or a working professional, the curriculum and live
-              projects help you build practical skills that can be used in
-              real jobs.
+              Digital marketing has become one of the fastest-growing career fields in India. Today, every business wants to invest in their online presence to get leads.
+            </p>
+            <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-3">
+              As a result, skilled digital marketers are in demand all over India. You’ll find a huge number of opportunities in this vast field.
             </p>
             <p className="text-sm sm:text-base font-semibold text-black mb-2">
-              Ideal Learners:
+              Job Roles:
             </p>
+            <p>Digital Marketing in India is amongst the top skills you can master. Some popular career opportunities after completing this digital marketing course include:</p>
             <ul className="list-disc pl-5 space-y-1 text-sm sm:text-base text-gray-700 mb-4">
               {idealLearners.map((item) => (
                 <li key={item.label}>
@@ -223,47 +371,37 @@ function ChartersUnionDigitalMarketingCertificate() {
               ))}
             </ul>
 
-            <h2 className="text-lg sm:text-xl font-bold text-black mt-8 mb-3">
-              What Will You Learn?
-            </h2>
-            <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">
-              The Advanced Certificate in AI-Powered Digital Marketing &amp;
-              Communication course from ChartersUnion gives you a complete
-              understanding of modern marketing, digital strategy, and
-              real-world campaign execution. You will learn how to plan,
-              manage, and optimize marketing activities across all major
-              online platforms.
-            </p>
             <p className="text-sm sm:text-base font-semibold text-black mb-2">
-              Key Learning Outcomes:
+              Top Job Roles You Can Pursue:
             </p>
-            <ul className="list-disc pl-5 space-y-1 text-sm sm:text-base text-gray-700 mb-4">
-              {keyLearningOutcomes.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+            <div className="overflow-x-auto mb-1">
+              <table className="w-full text-sm sm:text-base border-collapse border border-gray-300 mb-2">
+                <thead>
+                  <tr>
+                    <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-black bg-gray-50">
+                      Job Role
+                    </th>
+                    <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-black bg-gray-50">
+                      Average Annual Salary in India
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.table5.map((row) => (
+                    <tr key={row.role}>
+                      <td className="border border-gray-300 px-3 py-2 text-gray-700">
+                        {row.role}
+                      </td>
+                      <td className="border border-gray-300 px-3 py-2 text-gray-700">
+                        {row.salary}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
 
-            <h2 className="text-lg sm:text-xl font-bold text-black mt-8 mb-3">
-              Why Choose the Advanced Certificate in AI-Powered Digital
-              Marketing &amp; Communication from ChartersUnion?
-            </h2>
-            <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">
-              The program is powered by ChartersUnion, one of India&apos;s top
-              institutions for marketing and communication. The curriculum
-              blends strategic thinking with hands-on digital skills so that
-              you graduate job-ready with a strong portfolio.
-            </p>
-            <p className="text-sm sm:text-base font-semibold text-black mb-2">
-              Program Benefits:
-            </p>
-            <ul className="list-disc pl-5 space-y-1 text-sm sm:text-base text-gray-700 mb-4">
-              {programBenefits.map((item) => (
-                <li key={item.label}>
-                  <span className="font-semibold text-black">{item.label}:</span>{' '}
-                  {item.text}
-                </li>
-              ))}
-            </ul>
+
 
             <h2 className="text-lg sm:text-xl font-bold text-black mt-8 mb-3">
               Certification and Recognition
@@ -311,46 +449,7 @@ function ChartersUnionDigitalMarketingCertificate() {
               ))}
             </ol>
 
-            <h2 className="text-lg sm:text-xl font-bold text-black mt-8 mb-3">
-              Top Career Opportunities After the Advanced Certificate in
-              AI-Powered Digital Marketing &amp; Communication from ChartersUnion
-            </h2>
-            <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">
-              Completing the Advanced Certificate in AI-Powered Digital
-              Marketing &amp; Communication from ChartersUnion prepares you for
-              high-impact roles across industries. You learn to plan,
-              execute, and optimize digital campaigns that drive business
-              growth, making you job-ready on day one.
-            </p>
-            <p className="text-sm sm:text-base font-semibold text-black mb-2">
-              Top Job Roles You Can Pursue:
-            </p>
-            <div className="overflow-x-auto mb-1">
-              <table className="w-full text-sm sm:text-base border-collapse border border-gray-300 mb-2">
-                <thead>
-                  <tr>
-                    <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-black bg-gray-50">
-                      Job Role
-                    </th>
-                    <th className="border border-gray-300 px-3 py-2 text-left font-semibold text-black bg-gray-50">
-                      Average Annual Salary in India
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {jobRoles.map((row) => (
-                    <tr key={row.role}>
-                      <td className="border border-gray-300 px-3 py-2 text-gray-700">
-                        {row.role}
-                      </td>
-                      <td className="border border-gray-300 px-3 py-2 text-gray-700">
-                        {row.salary}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+
             <p className="text-xs italic text-gray-500 mb-4">
               Sourced By: Ambitionbox
             </p>

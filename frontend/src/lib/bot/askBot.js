@@ -216,16 +216,16 @@ STRICT FORMAT RULES:
 ${context}
 `;
 
-    const res = await fetch(
-      "https://api.groq.com/openai/v1/chat/completions",
+    let res = await fetch(
+      "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${process.env.GROQ_API_KEY || ""}`,
+          "Authorization": `Bearer ${process.env.GEMINI_API || ""}`,
         },
         body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
+          model: "gemini-3.1-flash-lite",
           messages: [
             {
               role: "system",
@@ -241,10 +241,40 @@ ${context}
       }
     );
 
-    const data = await res.json();
+    let data = await res.json();
+    
+    // Fallback to gemini-2.5-flash-lite if the primary model fails
+    if (!res.ok || data?.error) {
+      console.warn("Primary model failed, falling back to gemini-2.5-flash-lite...");
+      res = await fetch(
+        "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${process.env.GEMINI_API || ""}`,
+          },
+          body: JSON.stringify({
+            model: "gemini-2.5-flash-lite",
+            messages: [
+              {
+                role: "system",
+                content: systemPrompt
+              },
+              {
+                role: "user",
+                content: question
+              }
+            ],
+            temperature: 0.2
+          }),
+        }
+      );
+      data = await res.json();
+    }
     
     if (data?.error) {
-      console.error("Groq API Error:", data.error.message);
+      console.error("Gemini API Error:", data.error.message);
       return "I can help with programs, fees, placements, or admissions." + admissionFooter();
     }
 
@@ -276,8 +306,10 @@ How can I assist you today?
 `;
   }
 
- if (q.includes("program") || q.includes("course") || q.includes("offer")) {
-  return `
+  const program = findProgram(q);
+
+  if (!program && (q.includes("program") || q.includes("course") || q.includes("offer")) && q.split(" ").length <= 6) {
+    return `
 ## 🎓 Available Programs
 
 - **CBA™ (Certified Business Accountant)**
@@ -286,9 +318,7 @@ How can I assist you today?
 
 Reply with a program name to get details.
 `;
-}
-
-  const program = findProgram(q);
+  }
 
   const factReply = getFactReply(q, program);
   if (factReply) return factReply;
@@ -305,3 +335,5 @@ Would you like details about one of these?
 
   return await getAIReply(question, program);
 }
+
+//What is the overall ROI of the CBA program compared to DGM?
