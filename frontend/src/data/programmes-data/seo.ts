@@ -26,8 +26,8 @@ export const courseSeoMetadata: Record<ProgramKey, CourseSeoData> = {
       "Charters' Union CBA",
     ],
   },
-  "digital-growth-marketing": {
-    title: "100% Job-Ready AI-Powered Digital Marketing Course Kolkata | HBS Google Meta Aligned | Paid Internship | BA/BBA/BCA/BCOM/Freshers",
+  "digital-growth-&-marketing": {
+    title: "100% Job-Ready AI-powerd Digital Marketing Course Kolkata | HBS Google Meta Aligned | Paid Internship | BA/BBA/BCA/BCOM/Freshers",
     description:
       "7-month Certified Digital Growth Marketing program in Kolkata. Built on HBS, Google, Meta Blueprint, HubSpot & GrowthHackers frameworks. AI-powered tools embedded across every module. 4-month paid internship in 7 countries. Corporate English training. Placement support for BA/BBA/BCA/BCom graduates.",
     keywords: [
@@ -40,7 +40,7 @@ export const courseSeoMetadata: Record<ProgramKey, CourseSeoData> = {
       "Charters' Union DGM",
     ],
   },
-  "technology-business-management": {
+  "technology-&-business-management": {
     title: "PGP in Technology & Business Management Kolkata | HBS IIMA Aligned | 6-Month Global Internship | AI-Integrated",
     description:
       "12-month PGP in Technology & Business Management in Kolkata. Built on HBS, IIMA & Masters Union benchmark curriculum with Harvard-style case studies. AI-integrated across all modules. 6-month paid global internship in 7 countries. Corporate leadership and communication training. For BA/BBA/BCom graduates targeting business and technology leadership careers.",

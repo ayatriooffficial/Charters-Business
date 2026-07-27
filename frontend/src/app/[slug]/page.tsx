@@ -5,6 +5,7 @@ import type { Viewport } from "next";
 import ProgramHero from "@/components/programmes/ProgramHero";
 import ProgramInfo from "@/components/programmes/ProgramInfo";
 import ProgrammeBelowFoldSections from "@/components/programmes/ProgrammeBelowFoldSections";
+import ScrollIntentPopup from "@/components/programmes/ScrollIntentPopup";
 
 import {
   generateCourseSchema,
@@ -142,6 +143,9 @@ export default async function ProgrammePage({
       {/* Other Sections */}
       <ProgramInfo data={programme.programInfo} />
       <ProgrammeBelowFoldSections programme={programme} />
+
+      {/* Exit-intent Scroll Popup */}
+      <ScrollIntentPopup />
     </>
   );
 }

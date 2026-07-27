@@ -143,7 +143,7 @@ export default function CareersPage() {
               </h1>
 
               <p className="mt-3 sm:mt-4 max-w-2xl text-xs sm:text-sm text-gray-600 md:text-base">
-                Exceptional track record of our <strong>AI-Powered Career-Operating System</strong> that transforms enrolled students in <strong>accounting, digital marketing,</strong> into <strong>100% JOB Guarantee</strong> — through <strong>7 sequential stages in 7 months</strong>.
+                Exceptional track record of our <strong>AI-Powerd Career-Operating System</strong> that transforms enrolled students in <strong>accounting, digital marketing,</strong> into <strong>100% JOB Guarantee</strong> — through <strong>7 sequential stages in 7 months</strong>.
               </p>
 
               {/* Stats */}

@@ -9,13 +9,13 @@
 - [Career Path](https://chartersunion.com/career-path)
 - [Careers](https://chartersunion.com/careers)
 - [Certified Business Accountant](https://chartersunion.com/certified-business-accountant)
-- [Digital Growth & Marketing](https://chartersunion.com/digital-growth-marketing)
-- [Technology & Business Management](https://chartersunion.com/technology-business-management)
+- [Digital Growth & Marketing](https://chartersunion.com/digital-growth-&-marketing)
+- [Technology & Business Management](https://chartersunion.com/technology-&-business-management)
 
 ## Information
 
 - **Language**: en
-- **Last Updated**: 2026-07-27
+- **Last Updated**: 2026-07-20
 - **Canonical URL**: https://chartersunion.com
 - **Contact**: support@chartersunion.com
 - **Sitemap**: [sitemap.xml](https://chartersunion.com/sitemap.xml)
@@ -40,8 +40,8 @@ Private student data, admin dashboards, internal APIs, application submissions, 
 - `/community`
 - `/faculties`
 - `/certified-business-accountant`
-- `/digital-growth-marketing`
-- `/technology-business-management`
+- `/digital-growth-&-marketing`
+- `/technology-&-business-management`
 - `/blogs/`
 - `/privacy-policy`
 - `/terms-and-conditions`

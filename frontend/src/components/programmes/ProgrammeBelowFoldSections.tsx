@@ -19,7 +19,7 @@ const StudentModel = dynamic(() => import("@/components/home/StudentModel"), { s
 const LearningOutcomes = dynamic(() => import("@/components/home/LearningOutcomes"), { ssr: false, loading: () => <SectionSkeleton /> });
 const PricingTabs = dynamic(() => import("@/components/programmes/PricingTabs"), { ssr: false, loading: () => <SectionSkeleton /> });
 const FAQ = dynamic(() => import("@/components/programmes/FAQ"), { ssr: false, loading: () => <SectionSkeleton /> });
-const MicaDigitalMarketingCertificate = dynamic(() => import("@/components/programmes/MicaDigitalMarketingCertificate"), { ssr: false, loading: () => <SectionSkeleton /> });
+const CertificateOverview = dynamic(() => import("@/components/programmes/CertificateOverview"), { ssr: false, loading: () => <SectionSkeleton /> });
 
 import LayoutBanner from "@/components/shared/LayoutBanner";
 
@@ -104,10 +104,10 @@ export default function ProgrammeBelowFoldSections({ programme }: { programme: P
         </SectionWrapper>
       </LazyMount>
 
-      {programme.slug === 'digital-growth-marketing' && programme.micaCertificateData && (
+      {programme.certificateOverviewData && (
         <LazyMount fallback={<SectionSkeleton />}>
           <SectionWrapper hideCorners={"all"}>
-            <MicaDigitalMarketingCertificate data={programme.micaCertificateData} />
+            <CertificateOverview data={programme.certificateOverviewData} />
           </SectionWrapper>
         </LazyMount>
       )}

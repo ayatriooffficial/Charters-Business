@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const SECTION_HEADING = {
   title: "Career Launches for PGP TBM YLC",
-  transitionsTitle: "Career Transitions For PGP TBM (Pre-Program to Post-Program)",
+  transitionsTitle: "Career Transitions For PGP TBM (Pre-MBA to Post-MBA)",
 };
 
 const ICON_BUILDING =
@@ -203,7 +203,7 @@ export default function CareerTransitions() {
             Career Transitions For PGP TBM
           </h2>
           <p className="text-base sm:text-lg text-[#5f6368] mb-6 sm:mb-8 md:mb-12">
-            (Pre-Program to Post-Program)
+            (Pre-MBA to Post-MBA)
           </p>
         </div>
 

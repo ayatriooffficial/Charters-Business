@@ -769,7 +769,7 @@ const tbmCurriculumSection: CurriculumSectionData = {
 
 export const tbm: Programme = {
   id: "3",
-  slug: "technology-business-management",
+  slug: "technology-&-business-management",
   // Dropdown Data
   dropdown: {
     title: "TBM™(Technology & Business Management)",
@@ -802,7 +802,7 @@ export const tbm: Programme = {
     duration: { type: "6 Months theory + 6 Months in-class intranship" },
     deadline: { type: "Round 1: 30th Oct '25" },
     careerOutcomes: [
-      "Foundations in Industry-led learning based on Harvard Case Study with US-CMA/CPA, Indian CA and ACCA specialization curriculum.",
+      "Foundations in Industry-led learning base on Hardvard casestudy with US-CMA/CPA, Indian CA and ACCA specialisation carruculam.",
       "In-class live projects intranship under faculty with top Startup & MNC from India, USA, CANADA, SAUDI, QATAR and Singapore.",
       "AI-powered corporate accountant, finance, FP&A, fintech & GCC-ready roles.",
       "Personal devlopment prep with communication, bodylangusge and placement cell.",
@@ -830,9 +830,9 @@ export const tbm: Programme = {
     ],
     alumniLabel: "Find our student at -",
     alumniCompanies: [
+      { name: "McKinsey", logo: "/images/companies/mckinsey.png" },
+      { name: "BCG", logo: "/images/companies/bcg.png" },
       { name: "Accenture", logo: "/images/companies/accenture.png" },
-      { name: "Deloitte", logo: "/images/companies/deloitte.png" },
-      { name: "KPMG", logo: "/images/companies/kpmg.png" },
     ],
     actions: {
       primaryText: "Apply Now",
@@ -929,16 +929,19 @@ export const tbm: Programme = {
       },
     ],
     companyLogos: [
+      { name: "McKinsey", logo: "https://logo.clearbit.com/mckinsey.com" },
+      { name: "BCG", logo: "https://logo.clearbit.com/bcg.com" },
+      { name: "Bain", logo: "https://logo.clearbit.com/bain.com" },
       { name: "Accenture", logo: "https://logo.clearbit.com/accenture.com" },
       { name: "Deloitte", logo: "https://logo.clearbit.com/deloitte.com" },
       { name: "EY", logo: "https://logo.clearbit.com/ey.com" },
       { name: "PwC", logo: "https://logo.clearbit.com/pwc.com" },
       { name: "KPMG", logo: "https://logo.clearbit.com/kpmg.com" },
-      { name: "Google", logo: "https://logo.clearbit.com/google.com" },
-      { name: "Microsoft", logo: "https://logo.clearbit.com/microsoft.com" },
-      { name: "Amazon", logo: "https://logo.clearbit.com/amazon.com" },
-      { name: "Flipkart", logo: "https://logo.clearbit.com/flipkart.com" },
-      { name: "TCS", logo: "https://logo.clearbit.com/tcs.com" },
+      {
+        name: "Goldman Sachs",
+        logo: "https://logo.clearbit.com/goldmansachs.com",
+      },
+      { name: "JP Morgan", logo: "https://logo.clearbit.com/jpmorgan.com" },
       {
         name: "Morgan Stanley",
         logo: "https://logo.clearbit.com/morganstanley.com",
@@ -959,65 +962,65 @@ export const tbm: Programme = {
       highlight: "TBM™",
       suffix: "Certification",
     },
-    auditorText: "Our placement reports are audited by <strong>Zivanta Analytics</strong> and follow the IPRS Revision 2.2 framework for transparent and consistent compensation data.",
+    auditorText: "Our placement reports are audited by <strong>Zivanta Analytics</strong>, auditor for IIM and follow the IPRS Revision 2.2 framework for transparent and consistent compensation data.",
     accordions: [
       {
         id: "leadership",
-        title: "Business Leadership and Management Preparation",
+        title: "Executive Leadership and C-Suite Preparation",
         items: [
-          "**92% career placement** to roles in business operations, product management, and business analysis",
-          "**2.35x average salary** increase with CTC ranging from 3-10 LPA",
-          "Graduates placed at **Accenture, Deloitte, KPMG, EY, Google, Microsoft, Amazon** across India and globally",
-          "**150+ recruiting partners** including leading MNCs and fast-growing tech companies",
-          "**Leadership training** by experienced CEOs, CMOs, and business veterans",
+          "**100% career advancement** to senior roles - Director, VP, or C-suite within 2 years",
+          "**1.8x average salary** increase with total CTC ranging from 28-65 LPA",
+          "Alumni in **CXO positions** at Fortune 500 companies and unicorn startups",
+          "**Senior role transitions** - 85% participants promoted within program duration",
+          "**Strategic leadership training** by CEOs and board members",
         ],
       },
       {
         id: "network",
-        title: "Professional Network and Peer Learning",
+        title: "Exclusive Executive Network and Peer Learning",
         items: [
-          "**100+ industry network** for mentorship, guidance, and career opportunities",
-          "Collaborative **peer learning cohort** with students from diverse backgrounds",
-          "Access to **industry conclaves** and networking events",
-          "**Alumni network** across accounting, marketing, and technology management",
-          "**Mentorship opportunities** through industry connections",
+          "**100+ CXO network** for mentorship, guidance, and career opportunities",
+          "Executive **peer learning cohort** - average 8 years experience per participant",
+          "Access to **CEO roundtables** and exclusive industry conclaves",
+          "**Alumni network** of 500+ senior executives across industries",
+          "**Board membership opportunities** through executive connections",
         ],
       },
       {
         id: "flexibility",
-        title: "Structured Learning with Global Exposure",
+        title: "Work-Friendly Flexible Learning Format",
         items: [
-          "**On-campus classes** (Monday-Friday) at our Kolkata learning centre",
-          "**AI-integrated modules** for cutting-edge technology and business learning",
-          "**12-month duration** — 6 months theory + 6 months in-class internship",
-          "**Global internship** opportunities across 7 countries",
-          "**No prior experience needed** — designed for 12th pass-outs and early undergraduates",
+          "**Weekend classes** (Saturday-Sunday) allowing you to continue your job",
+          "**Online modules** for weekday learning at your own pace",
+          "**18-month duration** - shorter than traditional MBA while maintaining quality",
+          "**Residential modules** - 4 intensive weeks spread across program",
+          "**No career break needed** - designed for working professionals",
         ],
       },
       {
         id: "curriculum",
-        title: "Industry-Relevant, AI-Integrated Curriculum",
+        title: "Strategic and Executive-Level Curriculum",
         items: [
-          "**Business-technology focused content** — ERP, business analytics, IT project management",
-          "**Live projects** with real strategic business challenges",
-          "**Industry faculty** — learn directly from business leaders, CTOs, and tech executives",
-          "**Global business perspective** through international internship exposure",
-          "**Digital transformation** modules on AI, data analytics, and emerging tech",
+          "**C-suite focused content** - board governance, M&A, corporate strategy",
+          "**Executive projects** with real strategic business challenges",
+          "**CEO as faculty** - learn directly from business leaders",
+          "**Global business perspective** through international immersion",
+          "**Digital transformation** modules on AI, blockchain, and emerging tech",
         ],
       },
       {
         id: "recognition",
-        title: "Industry Recognition and Career Value",
+        title: "Elite Recognition and Global Acceptance",
         items: [
-          "Curriculum aligned with **Harvard Business School Online and IIMA executive frameworks**",
-          "**Globally recognized** TBM™ certification valued by technology and business employers",
-          "**Practical skill focus** — graduate with real project experience, not just theory",
-          "**Industry partnerships** with leading technology and business organizations",
-          "**Lifetime access** to alumni network and career support",
+          "**UGC approved Executive MBA** from Charter's Executive Business School",
+          "**Globally recognized** degree accepted for international careers",
+          "**Association with global B-schools** for exchange and learning",
+          "**Executive credential** valued higher than regular MBA by recruiters",
+          "**Lifetime access** to executive education programs and workshops",
         ],
       },
     ],
-    academicPartners: [{ name: "Charters' Union Learning Support Centre" }],
+    academicPartners: [{ name: "Charter's Executive Business School" }],
     immersions: [{ name: "Silicon Valley Immersion" }],
     campusImage: {
       src: "/images/programmes/indus.webp",
@@ -1156,28 +1159,28 @@ export const tbm: Programme = {
         name: "Program",
         faqs: [
           {
-            id: "what-is-tbm",
-            question: "What is the TBM program?",
+            id: "what-is-emba",
+            question: "What is Executive MBA?",
             answer:
-              "The Technology & Business Management (TBM) program is a 12-month job-ready certification course that bridges technology and business. The curriculum is aligned with Harvard Business School Online and IIMA executive frameworks. It includes 6 months of classroom theory and a 6-month paid internship across 7 countries.",
+              "Executive MBA (EMBA) is designed for working professionals with significant management experience. The program focuses on executive leadership, strategic thinking, and C-suite preparation while allowing you to continue your job. Classes are held on weekends and some modules are online.",
           },
           {
             id: "work-continue",
-            question: "Can I join as a fresher?",
+            question: "Can I continue working while doing EMBA?",
             answer:
-              "Yes! The TBM program is designed for 12th pass-outs and early undergraduates. You don't need prior work experience. We teach everything from business fundamentals to technology management, preparing you for roles in business analysis, product management, and tech consulting.",
+              "Yes! The Executive MBA is specifically designed for working professionals. Classes are scheduled on weekends (Saturday-Sunday) and some modules are online, allowing you to continue your current job while pursuing the degree.",
           },
           {
             id: "experience-required",
-            question: "What background is required?",
+            question: "How much work experience is required?",
             answer:
-              "TBM is open to students from any stream — Commerce, Science, or Arts. No prior business or technology background is required. We provide foundational courses in both areas, plus AI-integrated learning across all modules.",
+              "We require minimum 3 years of full-time work experience after graduation. The average work experience of our EMBA cohort is 7-10 years, with many participants in senior management positions.",
           },
           {
             id: "time-commitment",
             question: "What is the time commitment?",
             answer:
-              "The TBM program runs for 12 months: 6 months of on-campus classroom learning (Monday-Friday) followed by a 6-month paid internship. The internship provides real-world experience with partner companies across 7 countries.",
+              "The program requires 18 months with weekend classes (Saturday-Sunday), online modules during weekdays, and occasional residential modules. Expect to dedicate 15-20 hours per week including classes, assignments, and projects.",
           },
         ],
       },
@@ -1187,15 +1190,15 @@ export const tbm: Programme = {
         faqs: [
           {
             id: "how-to-apply",
-            question: "How do I apply for TBM?",
+            question: "How do I apply for Executive MBA?",
             answer:
-              "Applications can be submitted online through our website or by visiting our Kolkata campus. The process includes a simple assessment and a counseling call. No entrance exam scores are required. You can book a free demo class to experience the program before enrolling.",
+              "Application process includes online application, work experience validation, GMAT/GRE waiver for experienced professionals, personal interview, and employer recommendation (optional). Focus is on leadership experience and career achievements.",
           },
           {
             id: "entrance-exam",
-            question: "Are there any entrance exams?",
+            question: "Is GMAT/CAT required?",
             answer:
-              "No entrance exams are required for TBM. We look for enthusiasm, basic communication skills, and a willingness to learn both technology and business concepts.",
+              "GMAT/GRE can be waived for candidates with substantial work experience (7+ years) and strong professional track record. However, good scores can strengthen your application.",
           },
         ],
       },
@@ -1207,13 +1210,13 @@ export const tbm: Programme = {
             id: "career-impact",
             question: "What is the career impact?",
             answer:
-              "92% of our TBM graduates receive job offers with an average starting salary of ₹3.5 LPA. Graduates work at Accenture, Deloitte, KPMG, Google, Microsoft, and leading startups in roles like business analyst, product manager, and technology consultant.",
+              "98% of our EMBA graduates report significant career advancement within 2 years - promotions to Director, VP, or C-suite positions. Average salary increase is 1.8x with many transitioning to strategic leadership roles.",
           },
           {
             id: "network",
             question: "What about networking opportunities?",
             answer:
-              "TBM provides access to our industry network of 150+ partner companies. Build relationships with business leaders, technology executives, and fellow alumni through networking events, mentor sessions, and industry conclaves.",
+              "Executive MBA provides exclusive access to CXO network, CEO roundtables, and executive peer learning. Build relationships with 100+ senior leaders, entrepreneurs, and industry veterans.",
           },
         ],
       },
@@ -1225,7 +1228,7 @@ export const tbm: Programme = {
             id: "fee-structure",
             question: "What is the fee structure?",
             answer:
-              "The 12-month TBM program fee is designed to be accessible. The fee includes tuition, study materials, software access, and placement services. Contact our admissions team at admissions@chartersunion.com or call 9836465083 for the detailed fee structure.",
+              "Executive MBA fees are higher than regular MBA reflecting the program's premium nature, experienced faculty, and executive facilities. Payment plans and corporate sponsorship options available. Many participants get employer sponsorship.",
           },
         ],
       },
@@ -1297,7 +1300,7 @@ export const tbm: Programme = {
         role: "Business Consultant",
         timeToPlace: "Just in 8 months",
         previousCollege: "Christ University",
-        background: "BBA Fresher",
+        background: "MBA Fresher",
         internship: "Microsoft India — Strategy",
         researchPaper: "Cloud adoption strategies",
         caseStudies: "Microsoft Azure growth...",
@@ -1483,7 +1486,7 @@ export const tbm: Programme = {
 
   // =========================================================================
   // TECHNOLOGY & BUSINESS MANAGEMENT (TBM) LAYOUT ASSETS CONFIGURATION
-  // Renders on: /technology-business-management
+  // Renders on: /technology-&-business-management
   // =========================================================================
   assets: {
     // Renders as the main student hero cover image in ProgramHero
@@ -1861,4 +1864,264 @@ export const tbm: Programme = {
       phoneNumber: "+919836465083"
     }
   }
+,  certificateOverviewData: {
+  title: "What is the TBM™ (Technology & Business Management) from ChartersUnion?",
+  descriptionParagraphs: [
+    "Today, brands use search engines, social media, paid advertising, email marketing, and content marketing to reach the right audience and drive business growth. Digital Marketing has changed the way businesses operate.",
+    "The Job-Ready AI-Poward Certificate in  DGM™ (Digital Growth & Marketing) at the Chartersunion Learning Support Centre helps learners build Job-ready skills through instructor-led digital marketing classes, Hardvard Level Case Study, Live projects, in-class faculty Guided internship and CareerPathx™ AI-Poward English Communication, Personal Branding, Corporate Bodylangusge and AI-poward Mock-interview, AI-ready Profile Base Jobs Search Engine.",
+    "3-month theory foundation + 4-month inclass faculty guided internship program teaches modern ai-readay marketing strategies using real brand projects, marketing tools, and live campaign experience.. so that learners can confidently apply their knowledge in professional roles."
+  ],
+  whyChooseTitle: "Why Choose the Advanced Certificate in TBM™ (Technology & Business Management)?",
+  whyChooseDescription: "Right now, there is a huge demand for digital marketing professionals in the market. Those with the right skills can enter a dynamic marketing field. This program helps learners understand complete digital marketing skills while gaining practical experience with industry tools and live projects.",
+  whyChoosePostTableDescription: "From building a strong foundation to running performance campaigns, every module combines theory with practical implementation. This curriculum combines the top digital marketing skills which the industry hires for.",
+  offlineVsOnlineTitle: "Online vs Offline Digital Marketing Course: Why Classroom Training Works",
+  offlineVsOnlineDescription: "Although both offline learning and online learning carry their own advantages, they suit people differently. For learners who prefer practical training and immediate feedback, classroom sessions can make learning more engaging and effective.",
+  offlineVsOnlinePostTableDescription: "From building a strong foundation to running performance campaigns, every module combines theory with practical implementation. This curriculum combines the top digital marketing skills which the industry hires for.",
+  offlineReasonsTitle: "Many learners prefer offline digital marketing classes because they offer:",
+  programHighlights: [
+    "Globally recognized certificate from ChartersUnion",
+    "Learn 70+ digital marketing tools",
+    "Real brand case studies and live campaign practice",
+    "Career mentorship with 1:1 guidance",
+    "Choose from 5 in-demand specializations across key marketing domains",
+    "Access to live sessions and doubt-clearing support",
+    "Learn through flexible online classes designed for working professionals"
+  ],
+  syllabusTitle: "Syllabus & Curriculum of the TBM™ (Technology & Business Management)",
+  syllabusDescription: "From building a strong foundation to running performance campaigns, every module combines theory with practical implementation. This curriculum combines the top digital marketing skills which the industry hires for.",
+  syllabusPostTableDescription: "From building a strong foundation to running performance campaigns, every module combines theory with practical implementation. This curriculum combines the top digital marketing skills which the industry hires for.",
+  skillsTitle: "Skills You Will Learn in the TBM™ (Technology & Business Management)",
+  skillsDescription: "The program helps learners build both technical marketing skills and business skills that are useful across industries.",
+  skillsPostTableDescription: "From building a strong foundation to running performance campaigns, every module combines theory with practical implementation. This curriculum combines the top digital marketing skills which the industry hires for.",
+  careerTitle: "Career Opportunities After Completing the TBM™ (Technology & Business Management)",
+  careerDescriptionParagraphs: [
+    "Digital marketing has become one of the fastest-growing career fields in India. Today, every business wants to invest in their online presence to get leads.",
+    "As a result, skilled digital marketers are in demand all over India. You’ll find a huge number of opportunities in this vast field."
+  ],
+  careerJobRolesTitle: "Job Roles:",
+  careerJobRolesDescription: "Digital Marketing in India is amongst the top skills you can master. Some popular career opportunities after completing this digital marketing course include:",
+  idealLearners: [
+    {
+      label: "Students and Fresh Graduates",
+      text: "Build strong foundations in digital marketing, branding, and analytics to start your career sooner."
+    },
+    {
+      label: "Marketing Professionals",
+      text: "Upgrade your skills with advanced training in SEO, paid ads, automation, and campaign strategy."
+    },
+    {
+      label: "Entrepreneurs and Business Owners",
+      text: "Learn how to grow your brand online, increase visibility, and run performance-driven campaigns."
+    },
+    {
+      label: "Freelancers",
+      text: "Expand your service portfolio with skills in content marketing, social media, and performance marketing."
+    },
+    {
+      label: "Career Changers",
+      text: "Shift into digital marketing roles with practical projects, exposure to real campaigns, and industry-recognized certification."
+    }
+  ],
+  careerTopJobRolesTitle: "Top Job Roles You Can Pursue:",
+  certificationTitle: "Certification and Recognition",
+  certificationDescription: "When you complete the Advanced Certificate in AI-Powered Digital Marketing & Communication from ChartersUnion, you earn a respected qualification that highlights your understanding of digital marketing strategies, tools, and real-world applications.",
+  youWillReceiveTitle: "You Will Receive:",
+  youWillReceive: [
+    {
+      label: "Certificate of Completion from ChartersUnion and upGrad",
+      text: "A globally recognized certificate that adds strong value to your resume."
+    },
+    {
+      label: "Access to Career Services",
+      text: "Guidance for job applications, interview preparation, and skill improvement."
+    },
+    {
+      label: "Executive Alumni Status from ChartersUnion",
+      text: "Connect with a wide network of marketing professionals and industry leaders."
+    }
+  ],
+  worthItTitle: "Is this Certification Worth It?",
+  worthItDescriptionParagraphs: [
+    "Many learners want to grow in digital marketing, and this certificate is one of the most trusted ways to build strong skills.",
+    "But is it truly worth investing in?",
+    "Here are the reasons why this program can be a valuable choice for your career:"
+  ],
+  worthItReasons: [
+    {
+      label: "Learn Key Digital Marketing Skills",
+      text: "You gain hands-on practice with SEO, social media, Google Ads, content strategy, analytics, and automation tools."
+    },
+    {
+      label: "Improved Job Opportunities",
+      text: "The certification helps you stand out during job applications and shows companies that you are trained in modern marketing methods."
+    },
+    {
+      label: "Career Growth Potential",
+      text: "Whether you are a fresher or a working professional, this course supports your move into digital marketing roles."
+    },
+    {
+      label: "Flexible Learning Experience",
+      text: "The online format allows you to learn at your own pace while managing work, studies, or personal commitments."
+    },
+    {
+      label: "Networking and Industry Exposure",
+      text: "The program offers access to expert mentors, professionals, and peers, helping you grow your network."
+    }
+  ],
+  sourcedBy: "Sourced By: Ambitionbox",
+  hiringIndustriesTitle: "Industries Hiring Digital Marketing Professionals",
+  hiringIndustries: [
+    {
+      label: "E-Commerce",
+      text: "Focus on paid ads, SEO, social commerce, and influencer-led growth."
+    },
+    {
+      label: "EdTech",
+      text: "Demand for lead generation, performance campaigns, and content-driven marketing."
+    },
+    {
+      label: "BFSI",
+      text: "Branding, digital acquisition, personal finance content, and analytics-led targeting."
+    },
+    {
+      label: "Healthcare",
+      text: "Awareness campaigns, reputation management, and customer education online."
+    },
+    {
+      label: "Media & Entertainment",
+      text: "Content planning, audience engagement, and community growth."
+    },
+    {
+      label: "Retail & D2C",
+      text: "Conversion-focused ads, product marketing, and customer retention."
+    }
+  ],
+  topCompaniesTitle: "Top Companies Hiring",
+  topCompaniesDescriptionParagraphs: [
+    "Graduates with strong digital skills are in demand across startups, agencies, and global tech giants."
+  ],
+  topCompaniesSubtitle: "Companies hiring certified marketers include:",
+  topCompanies: [
+    "Google",
+    "Meta",
+    "Amazon",
+    "Deloitte",
+    "Zomato",
+    "Nykaa",
+    "Adobe",
+    "Tata Digital",
+    "Accenture",
+    "Ogilvy"
+  ],
+  table1: [
+    {
+      role: "Role 1",
+      salary: "INR X.XL"
+    },
+    {
+      role: "Role 2",
+      salary: "INR X.XL"
+    },
+    {
+      role: "Role 3",
+      salary: "INR X.XL"
+    },
+    {
+      role: "Role 4",
+      salary: "INR X.XL"
+    },
+    {
+      role: "Role 5",
+      salary: "INR X.XL"
+    }
+  ],
+  table2: [
+    {
+      role: "Role 1",
+      salary: "INR X.XL"
+    },
+    {
+      role: "Role 2",
+      salary: "INR X.XL"
+    },
+    {
+      role: "Role 3",
+      salary: "INR X.XL"
+    },
+    {
+      role: "Role 4",
+      salary: "INR X.XL"
+    },
+    {
+      role: "Role 5",
+      salary: "INR X.XL"
+    }
+  ],
+  table3: [
+    {
+      role: "Role 1",
+      salary: "INR X.XL"
+    },
+    {
+      role: "Role 2",
+      salary: "INR X.XL"
+    },
+    {
+      role: "Role 3",
+      salary: "INR X.XL"
+    },
+    {
+      role: "Role 4",
+      salary: "INR X.XL"
+    },
+    {
+      role: "Role 5",
+      salary: "INR X.XL"
+    }
+  ],
+  table4: [
+    {
+      role: "Role 1",
+      salary: "INR X.XL"
+    },
+    {
+      role: "Role 2",
+      salary: "INR X.XL"
+    },
+    {
+      role: "Role 3",
+      salary: "INR X.XL"
+    },
+    {
+      role: "Role 4",
+      salary: "INR X.XL"
+    },
+    {
+      role: "Role 5",
+      salary: "INR X.XL"
+    }
+  ],
+  table5: [
+    {
+      role: "Role 1",
+      salary: "INR X.XL"
+    },
+    {
+      role: "Role 2",
+      salary: "INR X.XL"
+    },
+    {
+      role: "Role 3",
+      salary: "INR X.XL"
+    },
+    {
+      role: "Role 4",
+      salary: "INR X.XL"
+    },
+    {
+      role: "Role 5",
+      salary: "INR X.XL"
+    }
+  ]
+},
 };

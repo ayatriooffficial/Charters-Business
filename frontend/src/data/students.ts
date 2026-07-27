@@ -151,7 +151,7 @@ export const studentMembers: Student[] = [
     timeToPlace: "Just in 7 months",
     previousCollege: "BITS Pilani",
     background: "B.Tech Graduate Fresher",
-    internship: "KPMG — Strategy consulting",
+    internship: "McKinsey & Company — Strategy consulting",
     researchPaper: "AI disruption in traditional consulting models",
     caseStudies: "How TCS transformed its delivery model for Gen AI...",
     imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784619290/bikrom_tzbjim.avif",

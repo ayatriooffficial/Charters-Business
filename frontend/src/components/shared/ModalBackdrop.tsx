@@ -10,7 +10,7 @@ export default function ModalBackdrop({ onClick, className = "" }: ModalBackdrop
     <div 
       className={`fixed inset-0 z-[99998] ${className}`}
       style={{ 
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        backgroundColor: "rgba(0, 0, 0, 0.2)",
         opacity: 1,
         transition: "opacity 225ms ease-out"
       }}

@@ -435,7 +435,7 @@ export default function DashboardNavbar({
       </nav>
 
       {showLoginPopup && createPortal(
-        <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[#202124]/40 backdrop-blur-sm">
+        <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[rgba(0,0,0,0.2)]">
           <ModalBackdrop onClick={() => {
             setShowLoginPopup(false);
             document.body.style.overflow = '';

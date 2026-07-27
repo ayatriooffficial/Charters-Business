@@ -3,8 +3,8 @@
 
 export type ProgramKey =
   | "certified-business-accountant"
-  | "digital-growth-marketing"
-  | "technology-business-management"
+  | "digital-growth-&-marketing"
+  | "technology-&-business-management"
 
 // BASE INTERFACES
 
@@ -422,15 +422,63 @@ export interface Programme {
   curriculumSection?: CurriculumSectionData;
   assets?: ProgrammeAssetConfig;
   layoutBanner?: LayoutBannerConfig;
-  micaCertificateData?: MicaCertificateData;
+  certificateOverviewData?: CertificateOverviewData;
 }
 
-export interface MicaCertificateData {
+export interface CertificateOverviewData {
+  title: string;
+  descriptionParagraphs: string[];
+  
+  whyChooseTitle: string;
+  whyChooseDescription: string;
   table1: { role: string; salary: string; }[];
+  whyChoosePostTableDescription: string;
+
+  offlineVsOnlineTitle: string;
+  offlineVsOnlineDescription: string;
   table2: { role: string; salary: string; }[];
+  offlineVsOnlinePostTableDescription: string;
+
+  offlineReasonsTitle: string;
+  programHighlights: string[];
+
+  syllabusTitle: string;
+  syllabusDescription: string;
   table3: { role: string; salary: string; }[];
+  syllabusPostTableDescription: string;
+
+  skillsTitle: string;
+  skillsDescription: string;
   table4: { role: string; salary: string; }[];
+  skillsPostTableDescription: string;
+
+  careerTitle: string;
+  careerDescriptionParagraphs: string[];
+  careerJobRolesTitle: string;
+  careerJobRolesDescription: string;
+  idealLearners: { label: string; text: string; }[];
+  
+  careerTopJobRolesTitle: string;
   table5: { role: string; salary: string; }[];
+
+  certificationTitle: string;
+  certificationDescription: string;
+  youWillReceiveTitle: string;
+  youWillReceive: { label: string; text: string; }[];
+
+  worthItTitle: string;
+  worthItDescriptionParagraphs: string[];
+  worthItReasons: { label: string; text: string; }[];
+
+  sourcedBy: string;
+
+  hiringIndustriesTitle: string;
+  hiringIndustries: { label: string; text: string; }[];
+
+  topCompaniesTitle: string;
+  topCompaniesDescriptionParagraphs: string[];
+  topCompaniesSubtitle: string;
+  topCompanies: string[];
 }
 
 export interface ProgrammeAssetConfig {

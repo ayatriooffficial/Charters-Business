@@ -56,8 +56,8 @@ export default function LayoutBanner({ type }: LayoutBannerProps) {
 
   let programKey: ProgramKey | null = null;
   if (isCba) programKey = "certified-business-accountant";
-  else if (isDgm) programKey = "digital-growth-marketing";
-  else if (isTbm) programKey = "technology-business-management";
+  else if (isDgm) programKey = "digital-growth-&-marketing";
+  else if (isTbm) programKey = "technology-&-business-management";
 
   const programmeData = programKey ? getProgrammeBySlug(programKey) : null;
   const bannerConfig = programmeData?.layoutBanner;
@@ -220,7 +220,7 @@ export default function LayoutBanner({ type }: LayoutBannerProps) {
 
       {/* Login Modal for Brochure Download */}
       {showLoginModal && (
-        <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[#202124]/40 backdrop-blur-sm">
+        <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[rgba(0,0,0,0.2)]">
           <div className="w-[80%] h-[80%] relative bg-white rounded-xl shadow-2xl overflow-hidden animate-scale-up">
             <button
               onClick={() => {

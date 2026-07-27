@@ -405,7 +405,7 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
 
             {/* Login Modal for Advisory */}
             {showLoginModal && (
-                <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[#202124]/40 backdrop-blur-sm">
+                <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[rgba(0,0,0,0.2)]">
                     <div className="w-[80%] h-[80%] relative bg-white rounded-xl shadow-2xl overflow-hidden animate-scale-up">
                         <button
                             onClick={() => {

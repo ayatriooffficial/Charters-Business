@@ -685,7 +685,7 @@ function ReportPage({ score, answers }: { score: number; answers: Record<string,
       {/* Login Modal */}
       {showLogin &&
         createPortal(
-          <div className="fixed inset-0 flex items-start justify-center pt-16 z-[999999] bg-[#202124]/30">
+          <div className="fixed inset-0 flex items-start justify-center pt-16 z-[999999] bg-[rgba(0,0,0,0.2)]">
             <div className="w-[78%] h-[82vh] relative">
               <button
                 onClick={() => { setShowLogin(false); document.body.style.overflow = ""; }}

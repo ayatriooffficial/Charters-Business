@@ -291,7 +291,8 @@ export default function ChartersInterviewAi() {
                 </div>
 
                 {/* RIGHT panel */}
-                <div className="w-full h-[50%] sm:w-1/2 sm:h-full flex flex-col justify-center overflow-y-auto px-4 sm:px-6 lg:px-12">
+                <div className="w-full h-[50%] sm:w-1/2 sm:h-full flex flex-col overflow-y-auto px-4 sm:px-6 lg:px-12 py-8">
+                    <div className="m-auto w-full max-w-[450px]">
 
                     {isQuickLoggingIn ? (
                         /* ── QUICK LOGIN IN PROGRESS ── */
@@ -526,6 +527,7 @@ export default function ChartersInterviewAi() {
                             </div>
                         </>
                     )}
+                    </div>
                 </div>
             </div>
         </div>
