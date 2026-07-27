@@ -9,8 +9,11 @@ import ScrollIntentPopup from "@/components/programmes/ScrollIntentPopup";
 
 import {
   generateCourseSchema,
+  generateProgrammeWebPageSchema,
   generateBreadcrumbSchema,
   generateFAQSchema,
+  organizationReferenceSchema,
+  websiteReferenceSchema,
   combineSchemas,
 } from "@/lib/schema";
 
@@ -108,6 +111,7 @@ export default async function ProgrammePage({
 
   // Generate Structured Data for SEO
   const courseSchema = generateCourseSchema(programme);
+  const webPageSchema = generateProgrammeWebPageSchema(programme);
 
   // Generate Breadcrumb Schema
   const breadcrumbSchema = generateBreadcrumbSchema([
@@ -127,7 +131,14 @@ export default async function ProgrammePage({
   );
   const faqSchema = generateFAQSchema(allFaqs);
 
-  const consolidatedSchema = combineSchemas(courseSchema, breadcrumbSchema, faqSchema);
+  const consolidatedSchema = combineSchemas(
+    organizationReferenceSchema,
+    websiteReferenceSchema,
+    webPageSchema,
+    courseSchema,
+    breadcrumbSchema,
+    faqSchema,
+  );
 
   return (
     <>

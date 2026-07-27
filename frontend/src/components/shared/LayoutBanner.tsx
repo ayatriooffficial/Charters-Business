@@ -101,13 +101,28 @@ export default function LayoutBanner({ type }: LayoutBannerProps) {
       ? (bannerConfig?.advisor || fallbackAdvisor)
       : (bannerConfig?.brochure || fallbackBrochure);
 
-  const triggerDownload = (url: string, filename: string) => {
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const triggerDownload = async (url: string, filename: string) => {
+    try {
+      const response = await fetch(url);
+      const blob = await response.blob();
+      const blobUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = blobUrl;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(blobUrl);
+    } catch (error) {
+      console.error("Download failed:", error);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = filename;
+      link.target = "_blank";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
   };
 
   const triggerBrochureDownload = () => {
@@ -221,7 +236,7 @@ export default function LayoutBanner({ type }: LayoutBannerProps) {
       {/* Login Modal for Brochure Download */}
       {showLoginModal && (
         <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[rgba(0,0,0,0.2)]">
-          <div className="w-[80%] h-[80%] relative bg-white rounded-xl shadow-2xl overflow-hidden animate-scale-up">
+          <div className="w-[80%] max-w-[1200px] h-[80%] max-h-[900px] relative bg-white rounded-xl shadow-2xl overflow-hidden animate-scale-up">
             <button
               onClick={() => {
                 setShowLoginModal(false);

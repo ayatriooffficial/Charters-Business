@@ -30,11 +30,7 @@ const tbmCurriculumSection: CurriculumSectionData = {
       title: "Dubai",
       termImage: "/images/curriculumsection/dubaicurriculum.webp",
       badges: [
-        {
-          text: " Base Camp",
-          className:
-            "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold",
-        },
+        { text: "Beginner", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
       ],
       project: {
         description:
@@ -152,18 +148,7 @@ const tbmCurriculumSection: CurriculumSectionData = {
       term: "TERM 2",
       title: "India",
       termImage: "/images/curriculumsection/indiacurriculum.webp",
-      badges: [
-        {
-          text: "Tetr Base Camp",
-          className:
-            "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold",
-        },
-        {
-          text: "FITT-IIT",
-          className:
-            "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold ml-2",
-        },
-      ],
+      badges: [],
       project: {
         description:
           "Launch a Consumer brand in food, clothing, or accessories catering to the suburban audiences in India. Target 5 SKUs, $25,000 in revenue & a margin of 30%.",
@@ -270,11 +255,7 @@ const tbmCurriculumSection: CurriculumSectionData = {
       title: "Singapore & Malaysia",
       termImage: "/images/curriculumsection/europe.webp",
       badges: [
-        {
-          text: "Tetr Base Camp",
-          className:
-            "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold",
-        },
+        { text: "Intermediate", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
       ],
       project: {
         description:
@@ -374,11 +355,7 @@ const tbmCurriculumSection: CurriculumSectionData = {
       title: "Ghana",
       termImage: "/images/curriculumsection/ghana.webp",
       badges: [
-        {
-          text: "Tetr Base Camp",
-          className:
-            "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold",
-        },
+        { text: "Advanced", className: "bg-black text-white text-xs px-3 py-1 font-semibold" },
       ],
       highlight: "Faculty Guided Internship Program ",
       project: {
@@ -482,16 +459,8 @@ const tbmCurriculumSection: CurriculumSectionData = {
       title: "United States",
       termImage: "/images/curriculumsection/us.webp",
       badges: [
-        {
-          text: "Tetr Base Camp",
-          className:
-            "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold",
-        },
-        {
-          text: "Cornell University",
-          className:
-            "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold ml-2",
-        },
+        { text: "In-Class Faculty-Guided Internship", className: "bg-black text-white text-xs px-2 py-1 font-semibold" },
+        { text: "PRO", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
       ],
       project: {
         description:
@@ -596,11 +565,8 @@ const tbmCurriculumSection: CurriculumSectionData = {
       title: "Argentina",
       termImage: "/images/curriculumsection/argentina.webp",
       badges: [
-        {
-          text: " Base Camp",
-          className:
-            "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold",
-        },
+        { text: "On Campus", className: "bg-black text-white text-xs px-2 py-1 font-semibold" },
+        { text: "PRO", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
       ],
       project: {
         description:
@@ -673,16 +639,7 @@ const tbmCurriculumSection: CurriculumSectionData = {
       title: "Europe",
       termImage: "/images/curriculumsection/europe.webp",
       badges: [
-        {
-          text: "Tetr Base Camp",
-          className:
-            "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold",
-        },
-        {
-          text: "INSEAD",
-          className:
-            "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold ml-2",
-        },
+        { text: "PRO", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
       ],
       project: {
         description:
@@ -1850,12 +1807,12 @@ export const tbm: Programme = {
       downloadFilename: "charters-placement-report-2025.jpg"
     },
     brochure: {
-      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784611644/charters-placement-report-2026_gyuu4p.avif",
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840455/charters-union-brochure_z98wkq.avif",
       imageAlt: "Charters Union Brochure",
       programName: "Technology & Business Management (TBM™)",
       subtext: "AI-First Curriculums • 4-6 Month Paid Internships • Global Placements",
       buttonText: "Download Brochure",
-      downloadUrl: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784611644/charters-placement-report-2026_gyuu4p.avif",
+      downloadUrl: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840455/charters-union-brochure_z98wkq.avif",
       downloadFilename: "charters-tbm-brochure.avif"
     },
     advisor: {

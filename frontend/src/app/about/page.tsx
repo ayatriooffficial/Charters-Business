@@ -1,6 +1,6 @@
 import TetrLandingPage from "@/components/about/About";
 
-import { organizationReferenceSchema, generateBreadcrumbSchema, combineSchemas } from "@/lib/schema";
+import { generateStandardPageSchemas } from "@/lib/schema";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -47,30 +47,17 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  // Generate breadcrumb schema
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://chartersunion.com" },
-    { name: "About", url: "https://chartersunion.com/about" },
-  ]);
-
-  // Define AboutPage schema
-  const aboutPageSchema = {
-    "@type": "AboutPage",
-    "@id": "https://chartersunion.com/about#webpage",
-    url: "https://chartersunion.com/about",
+  const consolidatedSchema = generateStandardPageSchemas({
+    path: "/about",
     name: "About Us | Charters' Union",
-    description: "Learn about Charters' Union and our mission to transform business education. Discover our world-class faculty, programs, and industry-ready leaders.",
-    inLanguage: "en-IN",
-    isPartOf: {
-      "@id": "https://chartersunion.com/#website",
-    },
-    about: {
-      "@id": "https://chartersunion.com/#organization",
-    },
-  };
-
-  // Combine into a single lightweight graph schema
-  const consolidatedSchema = combineSchemas(organizationReferenceSchema, breadcrumbSchema, aboutPageSchema);
+    description:
+      "Learn about Charters' Union and our mission to transform business education. Discover our world-class faculty, programs, and industry-ready leaders.",
+    type: "AboutPage",
+    breadcrumbItems: [
+      { name: "Home", url: "https://chartersunion.com" },
+      { name: "About", url: "https://chartersunion.com/about" },
+    ],
+  });
 
   return (
     <>

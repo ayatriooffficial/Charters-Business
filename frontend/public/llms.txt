@@ -8,14 +8,19 @@
 - [Student Life](https://chartersunion.com/student-life)
 - [Career Path](https://chartersunion.com/career-path)
 - [Careers](https://chartersunion.com/careers)
+- [Community](https://chartersunion.com/community)
+- [Faculties](https://chartersunion.com/faculties)
+- [Blog](https://chartersunion.com/blogs/)
 - [Certified Business Accountant](https://chartersunion.com/certified-business-accountant)
 - [Digital Growth & Marketing](https://chartersunion.com/digital-growth-&-marketing)
 - [Technology & Business Management](https://chartersunion.com/technology-&-business-management)
+- [Privacy Policy](https://chartersunion.com/privacy-policy)
+- [Terms and Conditions](https://chartersunion.com/terms-and-conditions)
 
 ## Information
 
 - **Language**: en
-- **Last Updated**: 2026-07-20
+- **Last Updated**: 2026-07-27
 - **Canonical URL**: https://chartersunion.com
 - **Contact**: support@chartersunion.com
 - **Sitemap**: [sitemap.xml](https://chartersunion.com/sitemap.xml)
@@ -42,7 +47,7 @@ Private student data, admin dashboards, internal APIs, application submissions, 
 - `/certified-business-accountant`
 - `/digital-growth-&-marketing`
 - `/technology-&-business-management`
-- `/blogs/`
+- `/blogs/*` (individual blog pages)
 - `/privacy-policy`
 - `/terms-and-conditions`
 

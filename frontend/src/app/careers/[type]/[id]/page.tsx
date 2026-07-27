@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import CareerDetailPageClient from './CareerDetailClient';
 import { getJobById, getInternshipById } from '@/lib/server/api';
-import { generateBreadcrumbSchema, generateJobPostingSchema, combineSchemas } from '@/lib/schema';
+import { generateJobPostingSchema, generateStandardPageSchemas } from '@/lib/schema';
 
 interface Props {
   params: Promise<{ type: string; id: string }>;
@@ -100,15 +100,6 @@ export default async function CareerDetailPage({ params }: Props) {
     notFound();
   }
 
-  // Generate breadcrumb schema
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: 'Home', url: 'https://chartersunion.com' },
-    { name: 'Careers', url: 'https://chartersunion.com/careers' },
-    { name: type === 'jobs' ? 'Jobs' : 'Internships', url: `https://chartersunion.com/careers/${type}` },
-    { name: item.title, url: `https://chartersunion.com/careers/${type}/${id}` },
-  ]);
-
-  // Generate JobPosting schema
   const jobSchema = generateJobPostingSchema({
     title: item.title,
     description: item.description,
@@ -119,7 +110,20 @@ export default async function CareerDetailPage({ params }: Props) {
     educationRequirements: item.requirements || undefined,
   });
 
-  const consolidatedSchema = combineSchemas(breadcrumbSchema, jobSchema);
+  const consolidatedSchema = generateStandardPageSchemas({
+    path: `/careers/${type}/${id}`,
+    name: `${item.title} | ${type === 'jobs' ? 'Jobs' : 'Internships'} at Charters' Union`,
+    description:
+      item.description?.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().substring(0, 155) ||
+      `Apply for the ${item.title} ${type === 'jobs' ? 'job' : 'internship'} at Charters' Union.`,
+    breadcrumbItems: [
+      { name: 'Home', url: 'https://chartersunion.com' },
+      { name: 'Careers', url: 'https://chartersunion.com/careers' },
+      { name: type === 'jobs' ? 'Jobs' : 'Internships', url: `https://chartersunion.com/careers/${type}` },
+      { name: item.title, url: `https://chartersunion.com/careers/${type}/${id}` },
+    ],
+    additionalSchemas: [jobSchema],
+  });
 
   return (
     <>

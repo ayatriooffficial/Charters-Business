@@ -1,6 +1,6 @@
 import CommunitySection from "@/components/community/CommunitySection";
 
-import { organizationReferenceSchema, generateBreadcrumbSchema, combineSchemas } from "@/lib/schema";
+import { generateStandardPageSchemas } from "@/lib/schema";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -46,30 +46,16 @@ export const metadata: Metadata = {
 };
 
 export default function CommunityPage() {
-  // Generate breadcrumb schema
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://chartersunion.com" },
-    { name: "Community", url: "https://chartersunion.com/community" },
-  ]);
-
-  // Define WebPage schema
-  const communityPageSchema = {
-    "@type": "WebPage",
-    "@id": "https://chartersunion.com/community#webpage",
-    url: "https://chartersunion.com/community",
+  const consolidatedSchema = generateStandardPageSchemas({
+    path: "/community",
     name: "Community | Charters' Union",
-    description: "Join the vibrant Charters' Union community. Connect with students, alumni, and industry professionals who share your passion for business excellence.",
-    inLanguage: "en-IN",
-    isPartOf: {
-      "@id": "https://chartersunion.com/#website",
-    },
-    about: {
-      "@id": "https://chartersunion.com/#organization",
-    },
-  };
-
-  // Combine into a single lightweight graph schema
-  const consolidatedSchema = combineSchemas(organizationReferenceSchema, breadcrumbSchema, communityPageSchema);
+    description:
+      "Join the vibrant Charters' Union community. Connect with students, alumni, and industry professionals who share your passion for business excellence.",
+    breadcrumbItems: [
+      { name: "Home", url: "https://chartersunion.com" },
+      { name: "Community", url: "https://chartersunion.com/community" },
+    ],
+  });
 
   return (
     <>

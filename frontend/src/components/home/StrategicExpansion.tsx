@@ -844,7 +844,7 @@ const StrategicExpansion: React.FC = () => {
                             {showInterviewAI && createPortal(
                                 <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[rgba(0,0,0,0.2)]">
                                     <ModalBackdrop onClick={() => setShowInterviewAI(false)} />
-                                    <div className="w-[80%] h-[80%] relative z-[99999]">
+                                    <div className="w-[80%] max-w-[1200px] h-[80%] max-h-[900px] relative z-[99999]">
                                         <button
                                             onClick={() => setShowInterviewAI(false)}
                                             className="absolute cursor-pointer top-3 right-3 z-50 bg-white/80 hover:bg-white rounded-full w-8 h-8 flex items-center justify-center shadow-md transition-all border border-gray-100"

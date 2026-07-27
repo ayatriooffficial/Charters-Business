@@ -82,7 +82,7 @@ function EditorialCard({ card }: EditorialCardProps) {
           alt={`${card.title} visual`}
           fill
           className="w-full h-full object-cover object-left-bottom"
-          loading="lazy"
+          priority
           quality={45}
           sizes={CARD_MOBILE_BANNER_SIZES}
         />
@@ -148,6 +148,7 @@ function EditorialCard({ card }: EditorialCardProps) {
             src={card.mediaSrc!}
             alt={`${card.title} visual`}
             fill
+            priority
             quality={45}
             sizes="(min-width: 1024px) 493px, 100vw"
             className="object-center scale-[0.99] h-auto object-contain w-full relative!"
@@ -177,7 +178,7 @@ function HealthGridCard({ card }: HealthGridCardProps) {
           alt={`${card.title} visual`}
           fill
           className="w-full h-full object-contain"
-          loading="lazy"
+          priority
           quality={40}
           sizes={CARD_MOBILE_BANNER_SIZES}
         />
@@ -243,6 +244,7 @@ function HealthGridCard({ card }: HealthGridCardProps) {
             src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784539837/CBA-Stududent-achivement_vlf1cp.avif"
             alt="CBA Stududent Achivement"
             fill
+            priority
             quality={60}
             sizes={CARD_DESKTOP_IMAGE_SIZES}
             className="object-fill object-center"
@@ -279,7 +281,7 @@ function FlagshipCard({ card }: FlagshipCardProps) {
           alt={`${card.title} visual`}
           fill
           className="w-full h-full object-contain"
-          loading="lazy"
+          priority
           quality={40}
           sizes={CARD_MOBILE_BANNER_SIZES}
         />
@@ -353,6 +355,7 @@ function FlagshipCard({ card }: FlagshipCardProps) {
             src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784539837/chartersunion-careerpathx_n8ntnl.avif"
             alt="Learner portrait"
             fill
+            priority
             quality={60}
             sizes={CARD_DESKTOP_IMAGE_SIZES}
             className="object-fill object-center"
@@ -375,7 +378,7 @@ const CardComponent = memo(
     const currentCardIndex = Math.floor(activeIndex);
     const nextCardIndex = currentCardIndex + 1;
     const scrollProgress = activeIndex - currentCardIndex;
-    const slideDistance = typeof window !== "undefined" ? (window.innerHeight < 900 ? 880 : 800) : 800;
+    const slideDistance = typeof window !== "undefined" ? window.innerHeight : 800;
 
     const fadeThreshold = 0.4;
     const zoomOutAmount = 0.1;
@@ -454,62 +457,33 @@ function Handson() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [mounted, setMounted] = useState(false);
 
-  const [metrics, setMetrics] = useState({ offsetTop: 0, height: 0, headerHeight: 0 });
-
   const lastProgress = useRef(0);
   const rafId = useRef<number | null>(null);
   const totalCards = cardsData.length;
 
   useEffect(() => setMounted(true), []);
 
-  // BLOCK 1: MEASURE ONCE (and on resize via ResizeObserver)
+  // Scroll-driven scroll-jacking: live metrics, no stale closures
   useEffect(() => {
     if (!mounted) return;
 
-    const updateMetrics = () => {
-      if (!scrollerRef.current) return;
-      const rect = scrollerRef.current.getBoundingClientRect();
-      const absoluteTop = rect.top + window.scrollY;
-      setMetrics({
-        offsetTop: absoluteTop,
-        height: scrollerRef.current.offsetHeight,
-        headerHeight: headerRef.current?.offsetHeight ?? 0,
-      });
-    };
-
-    updateMetrics();
-
-    const resizeObserver = new ResizeObserver(() => {
-      updateMetrics();
-    });
-
-    if (scrollerRef.current) resizeObserver.observe(scrollerRef.current);
-    if (headerRef.current) resizeObserver.observe(headerRef.current);
-
-    return () => {
-      resizeObserver.disconnect();
-    };
-  }, [mounted]);
-
-  useEffect(() => {
-    if (!mounted || metrics.height === 0) return;
-
     const handleScroll = () => {
-      // Skip if RAF already pending — one frame is enough
       if (rafId.current !== null) return;
 
       rafId.current = requestAnimationFrame(() => {
+        const el = scrollerRef.current;
+        if (!el) { rafId.current = null; return; }
+
         const winH = window.innerHeight;
+        // Live measurement — never stale after bfcache restore
+        const rect = el.getBoundingClientRect();
+        const offsetTop = rect.top + window.scrollY;
+        const height = el.offsetHeight;
+        const hdrH = headerRef.current?.offsetHeight ?? 0;
 
-        // 1. Calculate how far we have scrolled into THIS section
-        const rectTop = metrics.offsetTop - window.scrollY;
-        const scrollTop = Math.max(0, -rectTop - metrics.headerHeight);
-        const maxScroll = Math.max(1, metrics.height - winH - metrics.headerHeight);
-
-        // 2. Calculate progress (0 to 1)
+        const scrollTop = Math.max(0, window.scrollY - offsetTop - hdrH);
+        const maxScroll = Math.max(1, height - winH - hdrH);
         const progress = Math.max(0, Math.min(1, scrollTop / maxScroll));
-
-        // 3. Map to active index (0 to totalCards - 1)
         const smooth = progress * (totalCards - 1);
 
         if (Math.abs(smooth - lastProgress.current) > 0.001) {
@@ -522,13 +496,18 @@ function Handson() {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Initialize position
+    // Also re-sync on visibility change (tab restore from bfcache)
+    const onVisible = () => { if (document.visibilityState === "visible") handleScroll(); };
+    document.addEventListener("visibilitychange", onVisible);
+
+    handleScroll();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("visibilitychange", onVisible);
       if (rafId.current !== null) cancelAnimationFrame(rafId.current);
     };
-  }, [mounted, metrics, totalCards]);
+  }, [mounted, totalCards]);
 
   if (!mounted) {
     return (

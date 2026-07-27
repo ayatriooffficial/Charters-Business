@@ -1,4 +1,4 @@
-import { generateBreadcrumbSchema, organizationReferenceSchema, combineSchemas } from "@/lib/schema";
+import { generateStandardPageSchemas } from "@/lib/schema";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import LifeAtCharters from "@/components/student-life/LifeAtCharters";
 import Diversity from "@/components/student-life/Diversity";
@@ -51,28 +51,16 @@ export const metadata: Metadata = {
 
 
 export default function ApplyPage() {
-    const breadcrumbSchema = generateBreadcrumbSchema([
+    const consolidatedSchema = generateStandardPageSchemas({
+      path: "/student-life",
+      name: "Student Life | Charters' Union",
+      description:
+        "Discover student life at Charters' Union. Join a vibrant community, participate in events, and build your professional network.",
+      breadcrumbItems: [
         { name: "Home", url: "https://chartersunion.com" },
         { name: "Student Life", url: "https://chartersunion.com/student-life" },
-    ]);
-
-    // Define WebPage schema
-    const studentLifePageSchema = {
-      "@type": "WebPage",
-      "@id": "https://chartersunion.com/student-life#webpage",
-      url: "https://chartersunion.com/student-life",
-      name: "Student Life | Charters' Union",
-      description: "Discover student life at Charters' Union. Join a vibrant community, participate in events, and build your professional network.",
-      inLanguage: "en-IN",
-      isPartOf: {
-        "@id": "https://chartersunion.com/#website",
-      },
-      about: {
-        "@id": "https://chartersunion.com/#organization",
-      },
-    };
-
-    const consolidatedSchema = combineSchemas(organizationReferenceSchema, breadcrumbSchema, studentLifePageSchema);
+      ],
+    });
 
     return (
         <>

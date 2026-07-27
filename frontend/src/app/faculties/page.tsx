@@ -1,8 +1,9 @@
 import ComprehensivePage from "@/components/faculties/ComprehensivePage";
 import Script from "next/script";
 
-import { generateBreadcrumbSchema } from "@/lib/schema";
+import { generateStandardPageSchemas } from "@/lib/schema";
 import { Metadata } from "next";
+import { facultyMembers } from "@/data/faculty";
 
 export const metadata: Metadata = {
   title: "Our Faculty | Charters' Union",
@@ -38,69 +39,27 @@ export const metadata: Metadata = {
 };
 
 export default function FacultiesPage() {
-  const facultyPeople = [
-    { name: "Dr. Zal Phiroz", jobTitle: "Adjunct Professor", worksFor: "HARVARD UNIVERSITY" },
-    { name: "Mr. Rajat Mathur", jobTitle: "Managing Director", worksFor: "MorganStanley" },
-    { name: "Dr. Shad Morris", jobTitle: "Adjunct Professor", worksFor: "MITSLOAN" },
-    { name: "Dr. Lan Mo", jobTitle: "Adjunct Professor", worksFor: "NYU SHANGHAI" },
-    { name: "Mr. Naveen Munjal", jobTitle: "Managing Director", worksFor: "HEROELECTRIC" },
-    { name: "Dr. Sarah Johnson", jobTitle: "Professor of Strategy", worksFor: "STANFORD BUSINESS" },
-    { name: "Mr. Michael Chen", jobTitle: "CEO", worksFor: "TECHCORP" },
-    { name: "Dr. Emily Rodriguez", jobTitle: "Associate Professor", worksFor: "WHARTON SCHOOL" },
-    { name: "Mr. David Kumar", jobTitle: "VP of Operations", worksFor: "GLOBAL SOLUTIONS" },
-    { name: "Dr. Lisa Wang", jobTitle: "Professor of Finance", worksFor: "KELLOGG SCHOOL" },
-    { name: "Mr. James Wilson", jobTitle: "Chief Strategy Officer", worksFor: "INNOVATION LABS" },
-    { name: "Dr. Maria Garcia", jobTitle: "Professor of Marketing", worksFor: "INSEAD" },
-    { name: "Mr. Robert Thompson", jobTitle: "Managing Partner", worksFor: "VENTURE CAPITAL" },
-    { name: "Dr. Jennifer Lee", jobTitle: "Associate Dean", worksFor: "COLUMBIA BUSINESS" },
-    { name: "Mr. Alex Patel", jobTitle: "Director of Innovation", worksFor: "FUTURE TECH" },
-    { name: "Dr. Rachel Brown", jobTitle: "Professor of Leadership", worksFor: "LONDON BUSINESS" },
-    { name: "Mr. Kevin Zhang", jobTitle: "Chief Technology Officer", worksFor: "DIGITAL DYNAMICS" },
-    { name: "Dr. Amanda Taylor", jobTitle: "Professor of Economics", worksFor: "CHICAGO BOOTH" },
-    { name: "Mr. Daniel Kim", jobTitle: "VP of Business Development", worksFor: "GROWTH PARTNERS" },
-    { name: "Dr. Sophie Miller", jobTitle: "Associate Professor", worksFor: "OXFORD SAID" },
-  ];
-  const normalizedFacultyPeople = facultyPeople
-    .map((person) => ({
-      name: person.name?.trim(),
-      jobTitle: person.jobTitle?.trim(),
-      worksFor: person.worksFor?.trim(),
+  // Use real faculty data — mapped to schema shape
+  const normalizedFacultyPeople = facultyMembers
+    .map((f) => ({
+      name: f.name?.trim(),
+      jobTitle: f.title?.trim(),
+      worksFor: f.company?.trim(),
+      image: f.imageSrc,
     }))
-    .filter((person) => person.name.length > 0);
+    .filter((f) => f.name.length > 0);
 
-  // Generate breadcrumb schema
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://chartersunion.com" },
-    { name: "Faculties", url: "https://chartersunion.com/faculties" },
-  ]);
-  const facultiesSchemaGraph = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "CollectionPage",
-        "@id": "https://chartersunion.com/faculties#webpage",
-        url: "https://chartersunion.com/faculties",
-        name: "Our Faculty | Charters' Union",
-        description:
-          "Meet our world-class faculty of industry leaders, CEOs, and experts who bring real-world experience to business education.",
-        isPartOf: {
-          "@id": "https://chartersunion.com/#website",
-        },
-        about: {
-          "@id": "https://chartersunion.com/#organization",
-        },
-        breadcrumb: {
-          "@id": "https://chartersunion.com/faculties#breadcrumb",
-        },
-        mainEntity: {
-          "@id": "https://chartersunion.com/faculties#faculty-list",
-        },
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://chartersunion.com/faculties#breadcrumb",
-        itemListElement: breadcrumbSchema.itemListElement,
-      },
+  const facultiesSchemaGraph = generateStandardPageSchemas({
+    path: "/faculties",
+    name: "Our Faculty | Charters' Union",
+    description:
+      "Meet our world-class faculty of industry leaders, CEOs, and experts who bring real-world experience to business education.",
+    type: "CollectionPage",
+    breadcrumbItems: [
+      { name: "Home", url: "https://chartersunion.com" },
+      { name: "Faculties", url: "https://chartersunion.com/faculties" },
+    ],
+    additionalSchemas: [
       {
         "@type": "ItemList",
         "@id": "https://chartersunion.com/faculties#faculty-list",
@@ -114,18 +73,21 @@ export default function FacultiesPage() {
             "@type": "Person",
             name: person.name,
             jobTitle: person.jobTitle,
-            worksFor: {
-              "@type": "Organization",
-              name: person.worksFor,
-            },
-            alumniOf: {
-              "@id": "https://chartersunion.com/#organization",
-            },
+            image: person.image,
+            worksFor: [
+              {
+                "@type": "Organization",
+                name: person.worksFor,
+              },
+              {
+                "@id": "https://chartersunion.com/#organization",
+              },
+            ],
           },
         })),
       },
     ],
-  };
+  });
 
   return (
     <>

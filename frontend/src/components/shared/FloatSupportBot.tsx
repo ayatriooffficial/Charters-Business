@@ -103,7 +103,7 @@ export default function FloatSupportBot() {
         <div className={`fixed right-3 z-[999] flex items-center gap-1 ${pathname === '/career-path' ? 'bottom-20' : 'bottom-3'}`}>
 
           {showQueryPill && (
-            <div className="group relative w-[200px] h-[56px] flex items-left rounded-t-[12px] rounded-bl-[15px] bg-white border border-[#cccccc] shadow-md px-4 py-2">
+            <div className="group relative w-[240px] sm:w-[280px] rounded-t-[12px] rounded-bl-[15px] bg-white border border-[#cccccc] shadow-md px-4 py-4">
               <button
                 type="button"
                 onClick={() => setShowQueryPill(false)}

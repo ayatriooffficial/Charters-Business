@@ -10,10 +10,11 @@ export const DEFAULT_LANGUAGE = "en-IN";
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
 export const HOME_PAGE_ID = `${SITE_URL}/#homepage`;
+export const SITE_PHONE_NUMBER = "+919836465083";
 
 const DEFAULT_LOGO_URL = `${SITE_URL}/Chaters_Union.avif`;
 const DEFAULT_EMAIL = "admissions@chartersunion.com";
-const DEFAULT_PHONE = "9836465083";
+const DEFAULT_PHONE = SITE_PHONE_NUMBER;
 
 export const buildSiteUrl = (path = "") => {
   if (!path || path === "/") {
@@ -81,9 +82,8 @@ const getValidAggregateRating = (rating?: { score?: number; reviews?: number }) 
   };
 };
 
-// Base Organization Reference Schema (Lightweight pointer for subpages)
+// Base Organization Reference Schema (Lightweight pointer — used inside @graph, no @context)
 export const organizationReferenceSchema = {
-  "@context": "https://schema.org",
   "@type": "EducationalOrganization",
   "@id": ORGANIZATION_ID,
   name: SITE_NAME,
@@ -94,7 +94,7 @@ export const organizationReferenceSchema = {
   },
 };
 
-// Base Organization Schema
+// Base Organization Schema (full — used on homepage only)
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
@@ -105,6 +105,8 @@ export const organizationSchema = {
   logo: {
     "@type": "ImageObject",
     url: DEFAULT_LOGO_URL,
+    width: 400,
+    height: 400,
   },
   image: DEFAULT_LOGO_URL,
   description:
@@ -112,9 +114,19 @@ export const organizationSchema = {
   foundingDate: "2025",
   email: DEFAULT_EMAIL,
   telephone: DEFAULT_PHONE,
+  sameAs: [
+    "https://www.linkedin.com/company/chartersunion",
+    "https://www.instagram.com/chartersunion",
+    "https://www.facebook.com/chartersunion",
+  ],
   areaServed: {
     "@type": "Country",
     name: "India",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 22.5432,
+    longitude: 88.3518,
   },
   knowsAbout: [
     "AI-Powered Job-Ready Training Institute Kolkata",
@@ -150,14 +162,14 @@ export const organizationSchema = {
     "Placement Support",
     "Job Readiness Framework",
     "Portfolio Building",
-    "Industry Certification"
-
-
-
-
+    "Industry Certification",
   ],
   address: {
     "@type": "PostalAddress",
+    streetAddress: "Shantiniketan Building, 8 Camac St, Elgin",
+    addressLocality: "Kolkata",
+    addressRegion: "WB",
+    postalCode: "700017",
     addressCountry: "IN",
   },
   contactPoint: [
@@ -172,7 +184,7 @@ export const organizationSchema = {
   ],
 };
 
-// Website Schema with Search Action
+// Website Schema — no SearchAction (no /search route exists)
 export const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -186,13 +198,21 @@ export const websiteSchema = {
   },
 };
 
+// Website Reference Schema (used inside @graph, no @context)
+export const websiteReferenceSchema = {
+  "@type": "WebSite",
+  "@id": WEBSITE_ID,
+  url: SITE_URL,
+  name: SITE_NAME,
+};
+
 // Home Page Schema
 export const homePageSchema = {
   "@context": "https://schema.org",
-  "@type": "CollectionPage",
+  "@type": "WebPage",
   "@id": HOME_PAGE_ID,
   name: "Charters' Union: Job-Ready Training Institute Kolkata | AI Curriculum | 100% Paid Internship 7 Countries | BCom BSc BBA BA Freshers",
-  url: buildSiteUrl("/"),
+  url: SITE_URL,
   description:
     "Kolkata's AI-first Job Ready training institute. 3 programs: Certified Business Accountant, Digital Growth & Marketing, Technology & Business Management. AICPA/ACCA/HBS/Google aligned. 4–6 month paid internship in 7 countries. Corporate English. AI interview coaching. Placement support. Book free democlass.",
   inLanguage: DEFAULT_LANGUAGE,
@@ -202,7 +222,12 @@ export const homePageSchema = {
   about: {
     "@id": ORGANIZATION_ID,
   },
-  primaryImageOfPage: DEFAULT_LOGO_URL,
+  primaryImageOfPage: {
+    "@type": "ImageObject",
+    url: "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp",
+    width: 1200,
+    height: 630,
+  },
 };
 
 // Home Programmes ItemList Schema
@@ -275,8 +300,70 @@ export const generateBreadcrumbSchema = (
         position: index + 1,
         name: item.name.trim(),
         item: item.url.trim(),
-      }))
+      })),
   };
+};
+
+export const generateWebPageSchema = ({
+  path,
+  name,
+  description,
+  type = "WebPage",
+}: {
+  path: string;
+  name: string;
+  description: string;
+  type?: "WebPage" | "AboutPage" | "CollectionPage" | "ContactPage";
+}) => {
+  const pageUrl = buildSiteUrl(path);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": type,
+    "@id": `${pageUrl}#webpage`,
+    url: pageUrl,
+    name,
+    description: normalizeText(description),
+    inLanguage: DEFAULT_LANGUAGE,
+    isPartOf: {
+      "@id": WEBSITE_ID,
+    },
+    about: {
+      "@id": ORGANIZATION_ID,
+    },
+  };
+};
+
+export const generateStandardPageSchemas = ({
+  path,
+  name,
+  description,
+  breadcrumbItems,
+  type,
+  additionalSchemas = [],
+}: {
+  path: string;
+  name: string;
+  description: string;
+  breadcrumbItems: { name: string; url: string }[];
+  type?: "WebPage" | "AboutPage" | "CollectionPage" | "ContactPage";
+  additionalSchemas?: unknown[];
+}) => {
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbItems);
+  const pageSchema = generateWebPageSchema({
+    path,
+    name,
+    description,
+    type,
+  });
+
+  return combineSchemas(
+    organizationReferenceSchema,
+    websiteReferenceSchema,
+    pageSchema,
+    breadcrumbSchema,
+    ...additionalSchemas,
+  );
 };
 
 // Course/Programme Schema Generator
@@ -663,10 +750,63 @@ export const generateLocalBusinessSchema = (location: {
   return schema;
 };
 
-// Helper function to combine multiple schemas
+// BlogPosting Schema Generator (for blog detail pages)
+export const generateBlogPostingSchema = (blog: {
+  title: string;
+  description: string;
+  url: string;
+  image: string;
+  datePublished: string;
+  dateModified?: string;
+  author?: string;
+}) => {
+  return {
+    "@type": "BlogPosting",
+    "@id": `${blog.url}#blogposting`,
+    headline: blog.title,
+    description: normalizeText(blog.description),
+    image: {
+      "@type": "ImageObject",
+      url: blog.image,
+      width: 1200,
+      height: 630,
+    },
+    datePublished: blog.datePublished,
+    dateModified: blog.dateModified || blog.datePublished,
+    author: blog.author
+      ? { "@type": "Person", name: blog.author }
+      : { "@id": ORGANIZATION_ID },
+    publisher: {
+      "@id": ORGANIZATION_ID,
+      "@type": "EducationalOrganization",
+      name: SITE_NAME,
+      logo: {
+        "@type": "ImageObject",
+        url: DEFAULT_LOGO_URL,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": blog.url,
+    },
+    isPartOf: { "@id": WEBSITE_ID },
+  };
+};
+
+// Helper: strips @context from a schema node (for use inside @graph)
+const stripContext = (schema: any): any => {
+  if (schema && typeof schema === "object" && !Array.isArray(schema)) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { "@context": _ctx, ...rest } = schema as Record<string, unknown>;
+    return rest;
+  }
+  return schema;
+};
+
+// Helper function to combine multiple schemas into a single @graph
 export const combineSchemas = (...schemas: any[]) => {
   return {
     "@context": "https://schema.org",
-    "@graph": schemas.flat().filter(Boolean),
+    "@graph": schemas.flat().filter(Boolean).map(stripContext),
   };
 };

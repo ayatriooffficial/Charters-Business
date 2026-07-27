@@ -84,18 +84,7 @@ const dgmCurriculumSection: CurriculumSectionData = {
       term: "Month 02",
       title: "AI-Powered SEO, GEO & AEO and ASO",
       termImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
-      badges: [
-        {
-          text: "Tetr Base Camp",
-          className:
-            "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold",
-        },
-        {
-          text: "FITT-IIT",
-          className:
-            "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold ml-2",
-        },
-      ],
+      badges: [],
       outcome: "Rank content on Google, grow organic social following",
       project: undefined,
       courses: {
@@ -1403,7 +1392,7 @@ export const dgm: Programme = {
       programName: "Digital Growth & Marketing (DGM™)",
       subtext: "AI-First Curriculums • 4-6 Month Paid Internships • Global Placements",
       buttonText: "Download Brochure",
-      downloadUrl: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784611644/charters-placement-report-2026_gyuu4p.avif",
+      downloadUrl: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840455/digital-growth-_-marketing-brochure_egxnfk.avif",
       downloadFilename: "charters-dgm-brochure.avif"
     },
     advisor: {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import BlogDetailPageClient from "./BlogDetailClient";
 import { STATIC_BLOGS, slugify, DisplayBlog } from "@/data/staticBlogs";
 import { getBlogById } from "@/lib/api";
-import { generateBreadcrumbSchema, combineSchemas } from "@/lib/schema";
+import { generateBlogPostingSchema, generateStandardPageSchemas } from "@/lib/schema";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -81,35 +81,30 @@ export default async function BlogDetailPage({ params }: Props) {
   const { id } = await params;
   const blog = await fetchFullBlog(id);
 
-  // Generate breadcrumb schema
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://chartersunion.com" },
-    { name: "Blogs", url: "https://chartersunion.com/blogs" },
-    { name: blog ? blog.title : "Blog Article", url: `https://chartersunion.com/blogs/${id}` },
-  ]);
-
-  // Generate article schema
-  const blogSchema = blog
-    ? ({
-        "@type": "BlogPosting",
-        "headline": blog.title,
-        "description": blog.content.substring(0, 155).replace(/[\r\n\t]+/g, " ").trim() + "...",
-        "url": `https://chartersunion.com/blogs/${id}`,
-        "image": SCHEMA_IMAGE,
-        "datePublished": blog.releasedAt,
-        "author": {
-          "@type": "Person",
-          "name": blog.author,
-        },
-        "publisher": {
-          "@type": "EducationalOrganization",
-          "@id": "https://chartersunion.com/#organization",
-          "name": "Charters' Union",
-        },
-      } as const)
+  const blogSchema = blog && blog.releasedAt
+    ? generateBlogPostingSchema({
+        title: blog.title,
+        description: blog.content.substring(0, 155).replace(/[\r\n\t]+/g, " ").trim() + "...",
+        url: `https://chartersunion.com/blogs/${id}`,
+        image: SCHEMA_IMAGE,
+        datePublished: blog.releasedAt,
+        dateModified: blog.releasedAt,
+        author: blog.author,
+      })
     : null;
 
-  const consolidatedSchema = combineSchemas(breadcrumbSchema, blogSchema);
+  const consolidatedSchema = generateStandardPageSchemas({
+    path: `/blogs/${id}`,
+    name: blog ? `${blog.title} | Charters' Union Blog` : "Blog Article | Charters' Union Blog",
+    description: blog
+      ? blog.content.substring(0, 155).replace(/[\r\n\t]+/g, " ").trim() + "..."
+      : "Read the latest insights and updates from Charters' Union.",
+    breadcrumbItems: [
+      { name: "Home", url: "https://chartersunion.com" },
+      { name: blog ? blog.title : "Blog Article", url: `https://chartersunion.com/blogs/${id}` },
+    ],
+    additionalSchemas: blogSchema ? [blogSchema] : [],
+  });
 
   return (
     <>

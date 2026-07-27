@@ -34,7 +34,7 @@ An interdisciplinary program bridging technology and management. Covers business
 - **Careers / Internships** (`/careers/internships`) — Active internship listings
 - **Community** (`/community`) — Student and alumni community, events, networking
 - **Faculties** (`/faculties`) — Faculty profiles, visiting professors, industry mentors
-- **Blogs** (`/blogs`) — Educational content, industry insights, career advice
+- **Blogs** (`/blogs/[id]`) — Educational content, industry insights, career advice
 - **Privacy Policy** (`/privacy-policy`)
 - **Terms and Conditions** (`/terms-and-conditions`)
 
@@ -53,9 +53,19 @@ An interdisciplinary program bridging technology and management. Covers business
 
 ---
 
+## Blog
+
+Blog posts covering career advice, AI education, digital marketing guides, accounting trends, and industry insights. Individual posts accessible at `/blogs/[id]` (backend MongoDB ID) or `/blogs/[slug]` (static URL slugs).
+
+Sample topics: AI Agent Frameworks, Will AI Replace Software Engineers, SQL Roadmap 2026, Top AI Skills for Students.
+
+---
+
 ## Contact
 
 - **Email:** support@chartersunion.com
 - **Phone:** +91 9836465083
-- **Location:** Kolkata, India
+- **Location:** Shantiniketan Building, 8 Camac St, Elgin, Kolkata 700017, West Bengal, India
 - **Website:** https://chartersunion.com
+- **LinkedIn:** https://www.linkedin.com/company/chartersunion
+- **Instagram:** https://www.instagram.com/chartersunion

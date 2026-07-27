@@ -1,6 +1,6 @@
 import TermsAndConditionsContent from "@/components/terms/TermsAndConditionsContent";
 
-import { organizationReferenceSchema, generateBreadcrumbSchema, combineSchemas } from "@/lib/schema";
+import { generateStandardPageSchemas } from "@/lib/schema";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -38,17 +38,19 @@ export const metadata: Metadata = {
 };
 
 export default function TermsAndConditionsPage() {
-  // Generate breadcrumb schema
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://chartersunion.com" },
-    {
-      name: "Terms and Conditions",
-      url: "https://chartersunion.com/terms-and-conditions",
-    },
-  ]);
-
-  // Combine into a single lightweight graph schema
-  const consolidatedSchema = combineSchemas(organizationReferenceSchema, breadcrumbSchema);
+  const consolidatedSchema = generateStandardPageSchemas({
+    path: "/terms-and-conditions",
+    name: "Terms and Conditions | Charters' Union",
+    description:
+      "Terms and conditions for using Charters' Union website. Learn about our policies, user agreements, and legal information.",
+    breadcrumbItems: [
+      { name: "Home", url: "https://chartersunion.com" },
+      {
+        name: "Terms and Conditions",
+        url: "https://chartersunion.com/terms-and-conditions",
+      },
+    ],
+  });
 
   return (
     <>

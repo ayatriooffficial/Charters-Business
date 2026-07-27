@@ -172,7 +172,7 @@ const NewsSliderComponent: React.FC<NewsSliderComponentProps> = ({
             id="news-slides"
           >
             {/* All news items*/}
-            {items.map((item) => (
+            {items.map((item, index) => (
               <div
                 key={item.id}
                 className="w-full md:w-[30%] h-full flex-shrink-0 overflow-hidden relative snap-start border-r border-t border-gray-200 pb-13"
@@ -183,7 +183,7 @@ const NewsSliderComponent: React.FC<NewsSliderComponentProps> = ({
                   fill
                   className="object-contain"
                   sizes="(max-width: 768px) 100vw, 30vw"
-                  loading="lazy"
+                  priority={index < 3}
                 />
                 <div className="absolute bottom-0 left-0 right-0 py-8 sm:py-5 bg-gradient-to-t from-black via-black/80 to-transparent text-white z-10 transform translate-y-full hover:translate-y-0 transition-transform duration-400 delay-200">
                   <h3 className="m-0 mb-2 text-xl sm:text-lg font-semibold leading-snug text-[#B30437]">

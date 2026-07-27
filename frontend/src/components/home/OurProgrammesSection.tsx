@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { programmes } from "@/data/programmes";
-
+import BrochureDownloadButton from "./BrochureDownloadButton";
 
 export default function OurProgrammesSection() {
   return (
@@ -321,24 +321,9 @@ export default function OurProgrammesSection() {
                       </button>
                     </Link>
 
-                    <Link
-                      href={`/${programme.slug}`}
-                      className="block w-full md:w-auto"
-                    >
-                      <button
-                        className="w-full md:w-auto cursor-pointer bg-[#222222] hover:bg-[#000000] text-white py-3 px-10 md:px-10 flex items-center justify-center gap-2 font-semibold text-sm md:text-xs transition-all duration-300 whitespace-nowrap"
-                        aria-label={`Download ${programme.card.title} brochure`}
-                        type="button"
-                      >
-                        <span>Brochure</span>
-                        <img src="/Charters-icon/download.svg"
-                          alt="Format icon"
-                          width={15}
-                          height={15}
-                          className=" w-[14px] h-[14px] object-contain"
-                        />
-                      </button>
-                    </Link>
+                    <div className="block w-full md:w-auto">
+                      <BrochureDownloadButton programme={programme} />
+                    </div>
                   </div>
                 </div>
               </article>

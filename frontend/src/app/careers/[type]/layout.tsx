@@ -4,6 +4,9 @@ import { getAllJobs, getAllInternships } from '@/lib/server/api';
 import {
   generateBreadcrumbSchema,
   combineSchemas,
+  organizationReferenceSchema,
+  websiteReferenceSchema,
+  generateWebPageSchema,
 } from '@/lib/schema';
 
 type LayoutProps = {
@@ -42,20 +45,21 @@ async function getListingSchema(type: string) {
       .trim()
       .substring(0, 150) + '...';
 
+  const collectionWebPageSchema = generateWebPageSchema({
+      path: `/careers/${type}`,
+      type: 'CollectionPage',
+      name: isJobs
+        ? "Job Openings at Charters' Union"
+        : "Internship Opportunities at Charters' Union",
+      description: isJobs
+        ? "Browse all available job positions at Charters' Union"
+        : "Explore internship opportunities at Charters' Union",
+    });
   const collectionSchema = {
-    '@type': 'CollectionPage',
-    '@id': `${SITE_URL}/careers/${type}#webpage`,
-    url: `${SITE_URL}/careers/${type}`,
-    name: isJobs
-      ? 'Job Openings at Charters’ Union'
-      : 'Internship Opportunities at Charters’ Union',
-    description: isJobs
-      ? 'Browse all available job positions at Charters’ Union'
-      : 'Explore internship opportunities at Charters’ Union',
-    isPartOf: { '@id': `${SITE_URL}/#website` },
-    about: { '@id': `${SITE_URL}/#organization` },
+    ...collectionWebPageSchema,
     mainEntity: { '@id': `${SITE_URL}/careers/${type}#listing` },
   };
+  delete (collectionSchema as Record<string, unknown>)["@context"];
 
   const itemListSchema = {
     '@type': 'ItemList',
@@ -75,7 +79,7 @@ async function getListingSchema(type: string) {
         hiringOrganization: {
           '@type': 'EducationalOrganization',
           '@id': `${SITE_URL}/#organization`,
-          name: 'Charters’ Union',
+          name: "Charters' Union",
         },
         jobLocation: {
           '@type': 'Place',
@@ -99,7 +103,13 @@ async function getListingSchema(type: string) {
     },
   ]);
 
-  return combineSchemas(breadcrumbSchema, collectionSchema, itemListSchema);
+  return combineSchemas(
+    organizationReferenceSchema,
+    websiteReferenceSchema,
+    breadcrumbSchema,
+    collectionSchema,
+    itemListSchema,
+  );
 }
 
 export async function generateMetadata({ params }: LayoutProps): Promise<Metadata> {

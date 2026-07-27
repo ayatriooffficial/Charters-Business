@@ -440,7 +440,7 @@ export default function DashboardNavbar({
             setShowLoginPopup(false);
             document.body.style.overflow = '';
           }} />
-          <div className="w-[80%] h-[80%] relative z-[99999]">
+          <div className="w-[80%] max-w-[1200px] h-[80%] max-h-[900px] relative z-[99999]">
             <button
               onClick={() => {
                 setShowLoginPopup(false);

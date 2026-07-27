@@ -61,11 +61,7 @@ const cbaCurriculumSection: CurriculumSectionData = {
       termImage:
         "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
       badges: [
-        {
-          text: "On Campus",
-          className:
-            "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold",
-        },
+        { text: "Beginner", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
       ],
       outcome:
         "The competencies required to envision the future, lead the strategic planning process, guide decisions, manage risk, and monitor performance.",
@@ -153,13 +149,7 @@ const cbaCurriculumSection: CurriculumSectionData = {
       title: "Reporting & Control",
       termImage:
         "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
-      badges: [
-        {
-          text: "On Campus",
-          className:
-            "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold",
-        },
-      ],
+      badges: [],
       outcome:
         "The competencies required to measure and report an organization's performance in compliance with relevant standards and regulations.",
       courses: {
@@ -249,11 +239,7 @@ const cbaCurriculumSection: CurriculumSectionData = {
       termImage:
         "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
       badges: [
-        {
-          text: "On Campus",
-          className:
-            "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold",
-        },
+        { text: "Intermediate", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
       ],
       outcome:
         "The competencies required to manage technology and analyze data to enhance organizational success.",
@@ -330,11 +316,7 @@ const cbaCurriculumSection: CurriculumSectionData = {
       termImage:
         "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
       badges: [
-        {
-          text: "On Campus",
-          className:
-            "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold",
-        },
+        { text: "Advanced", className: "bg-black text-white text-xs px-3 py-1 font-semibold" },
       ],
       highlight: "Faculty Guided Internship Program ",
       outcome:
@@ -402,11 +384,8 @@ const cbaCurriculumSection: CurriculumSectionData = {
       termImage:
         "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
       badges: [
-        {
-          text: "On Campus",
-          className:
-            "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold",
-        },
+        { text: "In-Class Faculty-Guided Internship", className: "bg-black text-white text-xs px-2 py-1 font-semibold" },
+        { text: "PRO", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
       ],
       outcome:
         "The competencies required to collaborate with others and inspire teams to achieve organizational goals.",
@@ -492,11 +471,8 @@ const cbaCurriculumSection: CurriculumSectionData = {
       termImage:
         "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
       badges: [
-        {
-          text: "On Campus",
-          className:
-            "bg-[#B30437] text-white text-xs px-2 py-1 rounded font-semibold",
-        },
+        { text: "On Campus", className: "bg-black text-white text-xs px-2 py-1 font-semibold" },
+        { text: "PRO", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
       ],
       outcome:
         "The competencies required to demonstrate the professional values, ethical behavior, and legal compliance essential to a sustainable business model.",
@@ -2237,7 +2213,7 @@ export const cba: Programme = {
       programName: "Certified Business Accountant (CBA™)",
       subtext: "AI-First Curriculums • 4-6 Month Paid Internships • Global Placements",
       buttonText: "Download Brochure",
-      downloadUrl: "#",
+      downloadUrl: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840455/certified-business-accountant-brochure_r2gsyn.avif",
       downloadFilename: "charters-cba-brochure.avif"
     },
     advisor: {

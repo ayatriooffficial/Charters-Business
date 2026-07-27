@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Subnav from "@/components/careers/Subnav";
 import CareersBelowFoldSections from "@/components/careers/CareersBelowFoldSections";
-import { generateBreadcrumbSchema } from "@/lib/schema";
+import { generateStandardPageSchemas } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Careers & Placements | Charters' Union",
@@ -75,30 +75,18 @@ const HERO_IMAGE = {
 };
 
 export default function CareersPage() {
-  const breadcrumbSchema = generateBreadcrumbSchema([
+  const breadcrumbItems = [
     { name: "Home", url: "https://chartersunion.com" },
     { name: "Careers", url: "https://chartersunion.com/careers" },
-  ]);
-  const careersSchemaGraph = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "CollectionPage",
-        "@id": "https://chartersunion.com/careers#webpage",
-        url: "https://chartersunion.com/careers",
-        name: "Careers & Placements | Charters' Union",
-        description:
-          "Benefit from Charters' Union's exceptional track record of graduates' success with measurable outcomes and expert career guidance.",
-        isPartOf: { "@id": "https://chartersunion.com/#website" },
-        about: { "@id": "https://chartersunion.com/#organization" },
-        breadcrumb: { "@id": "https://chartersunion.com/careers#breadcrumb" },
-        mainEntity: { "@id": "https://chartersunion.com/careers#career-outcomes" },
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://chartersunion.com/careers#breadcrumb",
-        itemListElement: breadcrumbSchema.itemListElement,
-      },
+  ];
+  const careersSchemaGraph = generateStandardPageSchemas({
+    path: "/careers",
+    name: "Careers & Placements | Charters' Union",
+    description:
+      "Benefit from Charters' Union's exceptional track record of graduates' success with measurable outcomes and expert career guidance.",
+    type: "CollectionPage",
+    breadcrumbItems,
+    additionalSchemas: [
       {
         "@type": "ItemList",
         "@id": "https://chartersunion.com/careers#career-outcomes",
@@ -116,7 +104,7 @@ export default function CareersPage() {
         })),
       },
     ],
-  };
+  });
 
   return (
     <>

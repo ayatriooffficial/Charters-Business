@@ -3,6 +3,7 @@ import { MetadataRoute } from "next";
 import { buildSiteUrl } from "@/lib/schema";
 import { getAllProgrammeSlugs } from "@/lib/server/programmes";
 import { API_BASE_URL } from "@/lib/server/api";
+import { STATIC_BLOGS, slugify } from "@/data/staticBlogs";
 
 const STATIC_ROUTES = [
   { path: "", changeFrequency: "weekly" as const, priority: 1 },
@@ -37,6 +38,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }),
   );
 
+  const blogEntries: MetadataRoute.Sitemap = STATIC_BLOGS.map((blog) => ({
+    url: buildSiteUrl(`/blogs/${slugify(blog.title)}`),
+    lastModified,
+    changeFrequency: "weekly",
+    priority: 0.6,
+  }));
+
   let jobEntries: MetadataRoute.Sitemap = [];
   try {
     const res = await fetch(`${API_BASE_URL}/careers?type=job&status=active`, {
@@ -44,14 +52,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
     if (res.ok) {
       const jobs = await res.json();
-      jobEntries = (Array.isArray(jobs) ? jobs : []).map(
-        (job: { _id?: string; updatedAt?: string }) => ({
+      jobEntries = (Array.isArray(jobs) ? jobs : [])
+        .filter((job: { _id?: string }) => typeof job?._id === "string")
+        .map((job: { _id: string; updatedAt?: string }) => ({
           url: buildSiteUrl(`/careers/jobs/${job._id}`),
           lastModified: job.updatedAt ? new Date(job.updatedAt) : lastModified,
           changeFrequency: "daily" as const,
           priority: 0.7,
-        }),
-      );
+        }));
     }
   } catch {
     // Backend unreachable — skip job entries
@@ -65,16 +73,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     );
     if (res.ok) {
       const internships = await res.json();
-      internshipEntries = (Array.isArray(internships) ? internships : []).map(
-        (internship: { _id?: string; updatedAt?: string }) => ({
+      internshipEntries = (Array.isArray(internships) ? internships : [])
+        .filter((internship: { _id?: string }) => typeof internship?._id === "string")
+        .map((internship: { _id: string; updatedAt?: string }) => ({
           url: buildSiteUrl(`/careers/internships/${internship._id}`),
           lastModified: internship.updatedAt
             ? new Date(internship.updatedAt)
             : lastModified,
           changeFrequency: "daily" as const,
           priority: 0.7,
-        }),
-      );
+        }));
     }
   } catch {
     // Backend unreachable — skip internship entries
@@ -83,6 +91,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...staticEntries,
     ...programmeEntries,
+    ...blogEntries,
     ...jobEntries,
     ...internshipEntries,
   ];

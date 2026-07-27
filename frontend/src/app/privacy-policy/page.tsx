@@ -1,6 +1,6 @@
 import PrivacyPolicyContent from "@/components/privacy/PrivacyPolicyContent";
 
-import { organizationReferenceSchema, generateBreadcrumbSchema, combineSchemas } from "@/lib/schema";
+import { generateStandardPageSchemas } from "@/lib/schema";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -38,17 +38,19 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacyPolicyPage() {
-  // Generate breadcrumb schema
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://chartersunion.com" },
-    {
-      name: "Privacy Policy",
-      url: "https://chartersunion.com/privacy-policy",
-    },
-  ]);
-
-  // Combine into a single lightweight graph schema
-  const consolidatedSchema = combineSchemas(organizationReferenceSchema, breadcrumbSchema);
+  const consolidatedSchema = generateStandardPageSchemas({
+    path: "/privacy-policy",
+    name: "Privacy Policy | Charters' Union",
+    description:
+      "Privacy policy for Charters' Union (A unit of Shanti Informatics). Learn how we collect, use, and protect your personal information.",
+    breadcrumbItems: [
+      { name: "Home", url: "https://chartersunion.com" },
+      {
+        name: "Privacy Policy",
+        url: "https://chartersunion.com/privacy-policy",
+      },
+    ],
+  });
 
   return (
     <>

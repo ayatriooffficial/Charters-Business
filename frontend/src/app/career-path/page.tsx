@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import CareerPathPageClient from "./CareerPathClient";
-import { generateBreadcrumbSchema, organizationReferenceSchema, combineSchemas } from "@/lib/schema";
+import { generateStandardPageSchemas } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "AI Career Path Assessment & Report | Charters' Union",
@@ -44,28 +44,16 @@ export const metadata: Metadata = {
 };
 
 export default function CareerPathPage() {
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://chartersunion.com" },
-    { name: "Career Path", url: "https://chartersunion.com/career-path" },
-  ]);
-
-  // Define WebPage schema
-  const careerPathPageSchema = {
-    "@type": "WebPage",
-    "@id": "https://chartersunion.com/career-path#webpage",
-    url: "https://chartersunion.com/career-path",
+  const consolidatedSchema = generateStandardPageSchemas({
+    path: "/career-path",
     name: "AI Career Path Assessment & Report | Charters' Union",
-    description: "Take our AI career path assessment to discover your strengths, explore customized program alignments, and receive a tailored growth plan.",
-    inLanguage: "en-IN",
-    isPartOf: {
-      "@id": "https://chartersunion.com/#website",
-    },
-    about: {
-      "@id": "https://chartersunion.com/#organization",
-    },
-  };
-
-  const consolidatedSchema = combineSchemas(organizationReferenceSchema, breadcrumbSchema, careerPathPageSchema);
+    description:
+      "Take our AI career path assessment to discover your strengths, explore customized program alignments, and receive a tailored growth plan.",
+    breadcrumbItems: [
+      { name: "Home", url: "https://chartersunion.com" },
+      { name: "Career Path", url: "https://chartersunion.com/career-path" },
+    ],
+  });
 
   return (
     <>

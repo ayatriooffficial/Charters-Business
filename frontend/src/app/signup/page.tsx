@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 export default function SignupPage() {
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-12 bg-gradient-to-br from-gray-50 to-gray-100 pt-24 pb-12">
-      <div className="w-full max-w-5xl h-[80vh]">
+      <div className="w-full max-w-5xl h-[80vh] max-h-[900px]">
         <ChartersInterviewAiPage />
       </div>
     </div>

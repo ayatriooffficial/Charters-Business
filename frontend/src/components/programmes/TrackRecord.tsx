@@ -171,7 +171,7 @@ const TrackRecord: React.FC<TrackRecordProps> = ({ data, assets }) => {
                 <span dangerouslySetInnerHTML={{ __html: data.auditorText }} />
               ) : (
                 <>
-                  Our placement reports are audited by <strong>AnalystPK</strong>, auditor for IIM and follow the IPRS Revision 2.2 framework for
+                  Our placement reports are audited by <strong>Zivanta Analytics</strong>, auditor for IIM and follow the IPRS Revision 2.2 framework for
                   transparent and consistent compensation data.
                 </>
               )}
