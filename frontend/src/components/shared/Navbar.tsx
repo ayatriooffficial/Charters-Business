@@ -720,7 +720,7 @@ function Navbar() {
             setShowInterviewAI(false);
             document.body.style.overflow = '';
           }} />
-          <div className="w-[90%] md:w-[80%] max-w-[1200px] h-[80vh] max-h-[900px] min-h-[500px] relative z-[99999] my-auto">
+          <div className="w-[90%] md:w-[80%] max-w-[1200px] h-auto max-h-[90vh] relative z-[99999] my-auto">
             <button
               onClick={() => {
                 setShowInterviewAI(false);

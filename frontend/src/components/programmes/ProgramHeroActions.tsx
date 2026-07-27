@@ -61,7 +61,7 @@ const ProgramHeroActions = ({ actions }: ProgramHeroActionsProps) => {
       {showInterviewAI && (
         <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[rgba(0,0,0,0.2)] overflow-y-auto">
           <ModalBackdrop onClick={handleClose} />
-          <div className="w-[90%] md:w-[80%] max-w-[1200px] h-[80vh] max-h-[900px] min-h-[500px] relative z-[99999] my-auto">
+          <div className="w-[90%] md:w-[80%] max-w-[1200px] h-auto max-h-[90vh] relative z-[99999] my-auto">
             <button
               onClick={handleClose}
               aria-label="Close interview AI"

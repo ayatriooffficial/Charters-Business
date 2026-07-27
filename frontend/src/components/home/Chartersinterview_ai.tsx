@@ -286,13 +286,15 @@ export default function ChartersInterviewAi() {
             <div className="w-full flex-1 flex flex-col sm:flex-row overflow-hidden min-h-0">
 
                 {/* LEFT image */}
-                <div className="hidden sm:block sm:w-1/2 h-full relative bg-gradient-to-b from-[#00142B] to-[#6F7BD6]">
-                    <Image src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784539837/ai-reday_marketing_and_accounting_course_login_djkluu.avif" alt="AI Interview" fill className="object-contain" sizes="50vw" />
+                <div className="hidden sm:flex sm:w-1/2 h-full flex-col bg-gradient-to-b from-[#00142B] to-[#6F7BD6] overflow-hidden">
+                    <div className="w-full aspect-[612/628] relative shrink-0">
+                        <Image src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784539837/ai-reday_marketing_and_accounting_course_login_djkluu.avif" alt="AI Interview" fill className="object-cover object-top" sizes="50vw" />
+                    </div>
                 </div>
 
                 {/* RIGHT panel */}
-                <div className="w-full sm:w-1/2 h-full flex flex-col overflow-y-auto px-4 sm:px-6 lg:px-12 py-6 sm:py-8">
-                    <div className="m-auto w-full max-w-[450px]">
+                <div className="w-full sm:w-1/2 flex flex-col justify-center overflow-y-auto px-4 sm:px-6 lg:px-12 py-6 sm:py-8">
+                    <div className="mx-auto w-full max-w-[450px]">
 
                     {isQuickLoggingIn ? (
                         /* ── QUICK LOGIN IN PROGRESS ── */
