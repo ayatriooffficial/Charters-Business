@@ -183,7 +183,7 @@ export default function OurProgrammesSection() {
                           </div>
                           <div className="flex items-center gap-2 text-[0.65rem]">
                             <div className="flex-1 bg-[#B30437] text-white px-2 py-[3px] rounded-r-[1.5px] font-semibold">
-                              CMP
+                              {programme.card.expectedCtc?.label }
                               <span className="ml-[7px] font-bold flex-shrink-0">
                                 {programme.card.expectedCtc?.cmp}
                                 <sup className="text-[0.5rem] ml-0.5">

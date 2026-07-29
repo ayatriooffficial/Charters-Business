@@ -7,7 +7,13 @@ import HighlightText from "../shared/HighlightObserver";
 import { Student, StudentCategory } from "@/data/students";
 
 interface StudentModelProps {
-  data?: any;
+  data?: {
+    eyebrow?: string;
+    title?: { prefix: string; highlight: string; suffix?: string };
+    subtitle?: string;
+    categories?: StudentCategory[];
+    students?: Student[];
+  };
 }
 
 function StudentModel({ data }: StudentModelProps) {
@@ -22,7 +28,7 @@ function StudentModel({ data }: StudentModelProps) {
   const [activeCategory, setActiveCategory] = useState<string>(initialCategory);
   
   // Sync the active category dynamically if the categories list changes (e.g. course switch)
-  const categoriesKey = dynamicCategories.map((c) => c.id).join(",");
+  const categoriesKey = dynamicCategories.map((c: StudentCategory) => c.id).join(",");
   useEffect(() => {
     if (dynamicCategories.length > 0) {
       setActiveCategory(dynamicCategories[0].id);
@@ -30,7 +36,7 @@ function StudentModel({ data }: StudentModelProps) {
   }, [categoriesKey]);
 
   const filteredStudents = studentsData.filter(
-    (s) => s.category === activeCategory
+    (s: Student) => s.category === activeCategory
   );
 
   const handleCategoryChange = (categoryId: string) => {
@@ -76,7 +82,7 @@ function StudentModel({ data }: StudentModelProps) {
           {/* Tabs */}
           <div aria-label="Student batch categories">
             <ul className="flex overflow-scroll scrollbar-hide sm:justify-center gap-1 sm:gap-3 md:gap-6 border-b border-gray-300">
-              {dynamicCategories.map((category) => (
+              {dynamicCategories.map((category: StudentCategory) => (
                 <li key={category.id}>
                   <button
                     onClick={() => handleCategoryChange(category.id)}
@@ -95,7 +101,7 @@ function StudentModel({ data }: StudentModelProps) {
 
           {/* Mobile: horizontal scroller with snap and 1:2 peek */}
           <div className="sm:hidden overflow-x-auto scrollbar-hide flex snap-x snap-mandatory">
-            {filteredStudents.map((student) => (
+            {filteredStudents.map((student: Student) => (
               <article key={student.name} className="snap-start w-[85vw] border-r border-b border-gray-200 hover:bg-[#F4F2EE] flex-shrink-0 flex flex-col">
                 <div className="w-full">
                   <Image src={student.imageSrc} alt={student.name} width={500} height={600} className="w-full h-auto object-contain" loading="lazy" />
@@ -135,7 +141,7 @@ function StudentModel({ data }: StudentModelProps) {
 
           {/* Desktop: grid layout */}
           <div className="hidden sm:grid grid-cols-2 lg:grid-cols-4 border-l border-gray-200">
-            {filteredStudents.map((student) => (
+            {filteredStudents.map((student: Student) => (
               <article key={student.name} className="w-full overflow-hidden border-r border-b border-gray-200 hover:bg-[#F4F2EE] flex flex-col">
                 <div className="w-full">
                   <Image src={student.imageSrc} alt={student.name} width={500} height={600} className="w-full h-auto object-contain" loading="lazy" />

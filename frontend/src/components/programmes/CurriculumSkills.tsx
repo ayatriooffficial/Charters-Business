@@ -7,7 +7,7 @@ export default function CurriculumSkills({ data }: { data?: CurriculumSkillsData
 
   return (
     <div className="mt-4 flex flex-col items-center">
-      <div className="flex flex-wrap justify-center items-center gap-2 max-w-4xl px-4">
+      <div className="flex flex-wrap justify-center items-center gap-2 px-2">
         {data.previewSkills.slice(0, 10).map((skill, index) => (
           <span
             key={index}

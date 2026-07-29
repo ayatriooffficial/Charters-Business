@@ -7,9 +7,9 @@ import { ProgrammeAssetConfig } from "@/data/programmes";
 import Modal from "@/components/shared/Modal";
 import ScholarshipsSection from "./ScholarshipsSection";
 
-const ChartersInterviewAi = dynamic(
-    () => import("@/components/home/Chartersinterview_ai"),
-    { ssr: false }
+const GlobalLoginModal = dynamic(
+    () => import("@/components/shared/GlobalLoginModal"),
+    { ssr: false, loading: () => <div /> }
 );
 
 // Custom SVG Icons
@@ -176,7 +176,7 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
     const seatsSuffix = pricing?.seatsLeft?.suffix;
     const bannerIcon = pricing?.scholarshipBannerIcon;
 
-    const benefits = pricing?.benefits ? pricing.benefits.map((b: any, i: number) => ({
+    const benefits = pricing?.benefits ? pricing?.benefits.map((b: any, i: number) => ({
         icon: getBenefitIcon(i),
         text: b.text,
         isDisclaimer: b.isDisclaimer
@@ -188,27 +188,79 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
                 <>
                     {/* What's Included Section - Postpaid */}
                     <div className="mb-8 sm:mb-12 px-4 sm:px-6 lg:px-8">
-                        <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-6 sm:mb-8">
-                            {pricing.title}
-                        </h2>
+                        <div className="flex flex-col  mb-6 sm:mb-8 items-center justify-center">
+                            <h2 className="text-xl sm:text-2xl mb-2 sm:mb-2 font-semibold text-gray-900">
+                                {pricing?.title}
+                            </h2>
+                            <p>Please find below the detailed steps to be followed as a part of the admission process and what are include on course?</p>
+                        </div>
+                        <div className="mb-10 w-full pt-2 pb-4">
+                            <div className="flex flex-col md:flex-row pb-4 border-b border-gray-200 items-start justify-between gap-8 md:gap-4">
+
+                                {/* Step 1 */}
+                                <div className="flex flex-col items-start w-full md:flex-1 bg-white">
+                                    <div className="w-12 h-12 mb-4 bg-red-50 rounded-lg flex items-center justify-center">
+                                        <Image src="/Charters-icon/planning and consultation.svg" alt="Submit Interest" width={24} height={24} />
+                                    </div>
+                                    <h3 className="text-lg font-bold text-gray-900 mb-2">Submit Your Interest</h3>
+                                    <p className="text-sm text-gray-600">Fill out the enquiry form on our website. Select your preferred city and centre.</p>
+                                </div>
+
+                                {/* Arrow 1-2 (Desktop Only) */}
+                                <div className="hidden md:flex items-center justify-center mt-[72px]">
+                                    <svg width="40" height="24" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-gray-400">
+                                        <line x1="0" y1="12" x2="32" y2="12" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" />
+                                        <path d="M26 6 L34 12 L26 18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                </div>
+
+                                {/* Step 2 */}
+                                <div className="flex flex-col items-start w-full md:flex-1 bg-white">
+                                    <div className="w-12 h-12 mb-4 bg-red-50 rounded-lg flex items-center justify-center">
+                                        <Image src="/Charters-icon/phone call.svg" alt="Counsellor" width={24} height={24} />
+                                    </div>
+                                    <h3 className="text-lg font-bold text-gray-900 mb-2">Speak to our Academic Counsellor</h3>
+                                    <p className="text-sm text-gray-600">Discuss your background, goals, and best-fit program.</p>
+                                </div>
+
+                                {/* Arrow 2-3 (Desktop Only) */}
+                                <div className="hidden md:flex items-center justify-center mt-[72px]">
+                                    <svg width="40" height="24" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-gray-400">
+                                        <line x1="0" y1="12" x2="32" y2="12" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" />
+                                        <path d="M26 6 L34 12 L26 18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                </div>
+
+                                {/* Step 3 */}
+                                <div className="flex flex-col items-start w-full md:flex-1 bg-white">
+                                    <div className="w-12 h-12 mb-4 bg-red-50 rounded-lg flex items-center justify-center">
+                                        <Image src="/Charters-icon/schudle.svg" alt="Confirm Batch" width={24} height={24} />
+                                    </div>
+                                    <h3 className="text-lg font-bold text-gray-900 mb-2">Confirm Your Batch</h3>
+                                    <p className="text-sm text-gray-600">Choose from our morning / evening / weekend batches that suit your schedule</p>
+                                </div>
+
+                            </div>
+                        </div>
+
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
                             {/* Left Column - Job Tracks */}
                             <div className="space-y-6">
                                 {/* Fundamentals */}
                                 <div className="flex items-start gap-3">
-                                    <div className="shrink-0 w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center">
-                                        <BookOpenIcon className="w-5 h-5 text-[#B30437]" />
+                                    <div className="w-12 h-12 mb-4 flex items-center justify-center">
+                                        <Image src="/Charters-icon/fundamental.svg" alt="Confirm Batch" width={24} height={24} />
                                     </div>
                                     <span className="text-gray-900 font-medium pt-2">
-                                        {pricing.features?.fundamentals}
+                                        {pricing?.features?.fundamentals}
                                     </span>
                                 </div>
 
                                 {/* Multiple Job Tracks */}
                                 <div className="flex items-start gap-3">
-                                    <div className="shrink-0 w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center">
-                                        <BriefcaseIcon className="w-5 h-5 text-[#B30437]" />
+                                    <div className="w-12 h-12 mb-4  flex items-center justify-center">
+                                        <Image src="/Charters-icon/jobs.svg" alt="Confirm Batch" width={24} height={24} />
                                     </div>
                                     <div>
                                         <span className="text-gray-900 font-medium">
@@ -243,46 +295,37 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
 
                                 {/* 3 Hours Classes */}
                                 <div className="flex items-start gap-3">
-                                    <div className="shrink-0 w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center">
-                                        <ClockIcon className="w-5 h-5 text-[#B30437]" />
+                                    <div className="w-12 h-12 mb-4  flex items-center justify-center">
+                                        <Image src="/Charters-icon/schudle.svg" alt="Confirm Batch" width={24} height={24} />
                                     </div>
                                     <span className="text-gray-900 font-medium pt-2">
-                                        {pricing.features?.classes}
+                                        {pricing?.features?.classes}
                                     </span>
                                 </div>
 
                                 {/* Trainers */}
                                 <div className="flex items-start gap-3">
-                                    <div className="shrink-0 w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center">
-                                        <UsersIcon className="w-5 h-5 text-[#B30437]" />
+                                    <div className="w-12 h-12 mb-4 flex items-center justify-center">
+                                        <Image src="/Charters-icon/lifetime.svg" alt="Confirm Batch" width={24} height={24} />
                                     </div>
                                     <span className="text-gray-900 font-medium pt-2">
-                                        {pricing.features?.trainers}
+                                        {pricing?.features?.trainers}
                                     </span>
                                 </div>
                             </div>
 
                             {/* Center Column - Placement Support */}
                             <div className="space-y-4">
-                                <div className="flex items-start gap-3 mb-4">
-                                    <div className="shrink-0 w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center">
-                                        <BuildingIcon className="w-5 h-5 text-[#B30437]" />
-                                    </div>
-                                    <span className="text-gray-900 font-medium pt-2">
-                                        {pricing.features?.opportunities}
-                                    </span>
-                                </div>
-
                                 <div className="flex items-start gap-3">
-                                    <div className="shrink-0 w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center">
-                                        <ShieldIcon className="w-5 h-5 text-[#B30437]" />
+                                    <div className="w-12 h-12 mb-4  flex items-center justify-center">
+                                        <Image src="/Charters-icon/jobs.svg" alt="Confirm Batch" width={24} height={24} />
                                     </div>
                                     <div>
                                         <span className="text-gray-900 font-medium">
-                                            {pricing.placementSupport?.title}
+                                            {pricing?.placementSupport?.title}
                                         </span>
                                         <ul className="mt-3 space-y-2 text-sm text-[#5f6368]">
-                                            {(pricing.placementSupport?.items || placementSupport).map((item: any, index: number) => (
+                                            {(pricing?.placementSupport?.items || placementSupport).map((item: any, index: number) => (
                                                 <li key={index} className="flex items-start gap-2">
                                                     <span className="text-[#80868b] mt-1">•</span>
                                                     {item}
@@ -295,14 +338,14 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
 
                             {/* Right Column - Benefits */}
                             <div className="space-y-5">
-                                {(pricing.benefits?.length ? pricing.benefits.map((b: any, i: number) => ({ ...b, icon: benefits[i]?.icon || benefits[0].icon })) : benefits).map((benefit: any, index: number) => (
+                                {(pricing?.benefits?.length ? pricing?.benefits.map((b: any, i: number) => ({ ...b, icon: benefits[i]?.icon || benefits[0].icon })) : benefits).map((benefit: any, index: number) => (
                                     <div
                                         key={index}
                                         className={`flex items-start gap-3 ${benefit.isDisclaimer ? "opacity-70" : ""
                                             }`}
                                     >
                                         <div
-                                            className={`shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${benefit.isDisclaimer ? "bg-gray-50" : "bg-red-50"
+                                            className={`shrink-0 w-10 h-10  flex items-center justify-center ${benefit.isDisclaimer ? "" : ""
                                                 }`}
                                         >
                                             <div
@@ -344,10 +387,10 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
                                 <div className="flex items-baseline gap-2 sm:gap-4 flex-wrap">
                                     <div>
                                         <span className="text-3xl sm:text-4xl font-bold text-gray-900">
-                                            {pricing.emiAmount}
+                                            {pricing?.emiAmount}
                                         </span>
                                         <span className="text-gray-600 text-sm sm:text-base">/month</span>
-                                        <div className="text-xs sm:text-sm text-[#5f6368]">(For {pricing.emiMonths}*)</div>
+                                        <div className="text-xs sm:text-sm text-[#5f6368]">(For {pricing?.emiMonths}*)</div>
                                     </div>
                                 </div>
 
@@ -356,18 +399,18 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
                                         <CheckCircleIcon className="w-5 h-5 text-green-500" />
                                         <div>
                                             <span className="font-semibold text-gray-900">
-                                                {pricing.cardFeatures?.freeTrial?.title}
+                                                {pricing?.cardFeatures?.freeTrial?.title}
                                             </span>
-                                            <div className="text-sm text-[#5f6368]">{pricing.cardFeatures?.freeTrial?.subtitle}</div>
+                                            <div className="text-sm text-[#5f6368]">{pricing?.cardFeatures?.freeTrial?.subtitle}</div>
                                         </div>
                                     </div>
                                     <div className="flex items-center gap-3">
                                         <CheckCircleIcon className="w-5 h-5 text-green-500" />
                                         <div>
                                             <span className="font-semibold text-gray-900">
-                                                {pricing.cardFeatures?.scholarships?.title}
+                                                {pricing?.cardFeatures?.scholarships?.title}
                                             </span>
-                                            <div className="text-sm text-[#5f6368]">{pricing.cardFeatures?.scholarships?.subtitle}</div>
+                                            <div className="text-sm text-[#5f6368]">{pricing?.cardFeatures?.scholarships?.subtitle}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -404,25 +447,10 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
             </div>
 
             {/* Login Modal for Advisory */}
-            {showLoginModal && (
-                <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[rgba(0,0,0,0.2)] overflow-y-auto">
-                    <div className="w-[90%] md:w-[80%] max-w-[1200px] h-auto max-h-[90vh] relative bg-white rounded-xl shadow-2xl overflow-hidden animate-scale-up my-auto">
-                        <button
-                            onClick={() => {
-                                setShowLoginModal(false);
-                                document.body.style.overflow = "";
-                            }}
-                            aria-label="Close login modal"
-                            className="absolute cursor-pointer top-3 right-3 z-50 bg-white/80 hover:bg-white rounded-full w-8 h-8 flex items-center justify-center shadow-md transition-all border border-gray-100"
-                        >
-                            <Image src="/Charters-icon/Cancel.svg" alt="Close" width={24} height={24} className="opacity-70 hover:opacity-100 transition-opacity" />
-                        </button>
-                        <div className="w-full h-full bg-white">
-                            <ChartersInterviewAi />
-                        </div>
-                    </div>
-                </div>
-            )}
+            <GlobalLoginModal 
+                isOpen={showLoginModal} 
+                onClose={() => setShowLoginModal(false)} 
+            />
 
             {/* EMI Modal */}
             <Modal isOpen={showEmiModal} onClose={() => setShowEmiModal(false)} className="!max-w-5xl overflow-y-auto">
@@ -456,7 +484,7 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-200 bg-white text-gray-700">
-                                {(pricing.emiPlans || []).map((plan: any, idx: number) => (
+                                {(pricing?.emiPlans || []).map((plan: any, idx: number) => (
                                     <tr key={idx} className="hover:bg-gray-50 transition-colors">
                                         <td className="px-6 py-4 text-center font-medium whitespace-nowrap">{plan.tenure}</td>
                                         <td className="px-6 py-4 text-center whitespace-nowrap">{plan.type}</td>
@@ -466,7 +494,7 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
                                         <td className="px-6 py-4 text-center whitespace-nowrap">{plan.totalLoanAmount}</td>
                                     </tr>
                                 ))}
-                                {!(pricing.emiPlans && pricing.emiPlans.length > 0) && (
+                                {!(pricing?.emiPlans && pricing?.emiPlans.length > 0) && (
                                     <tr>
                                         <td colSpan={6} className="px-6 py-8 text-center text-gray-500">
                                             No EMI plans configured for this course.

@@ -85,7 +85,7 @@ const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data, assets }) => 
                   type="button"
                   aria-expanded={openAccordion === accordion.id}
                 >
-                  <span className="text-black font-medium text-sm sm:text-base pr-4">
+                  <span className="text-black font-bold text-sm sm:text-base pr-4">
                     {accordion.title}
                   </span>
                   <div className="flex-shrink-0">

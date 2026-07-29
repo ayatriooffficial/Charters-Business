@@ -12,6 +12,7 @@ import {
   generateProgrammeWebPageSchema,
   generateBreadcrumbSchema,
   generateFAQSchema,
+  generateAdmissionHowToSchema,
   organizationReferenceSchema,
   websiteReferenceSchema,
   combineSchemas,
@@ -130,6 +131,7 @@ export default async function ProgrammePage({
     })),
   );
   const faqSchema = generateFAQSchema(allFaqs);
+  const howToSchema = generateAdmissionHowToSchema(programme.card.title);
 
   const consolidatedSchema = combineSchemas(
     organizationReferenceSchema,
@@ -138,6 +140,7 @@ export default async function ProgrammePage({
     courseSchema,
     breadcrumbSchema,
     faqSchema,
+    howToSchema,
   );
 
   return (

@@ -5,7 +5,7 @@ import LazyMount from "@/components/shared/LazyMount";
 
 // SectionSkeleton placeholder — mirrored from page.tsx
 import { facultyCategories, facultyMembers } from "@/data/faculty";
-import { studentCategories, studentMembers } from "@/data/students";
+import { homeStudentCategories, homeStudents } from "@/data/students";
 
 const SectionSkeleton = ({ height = "h-96" }: { height?: string }) => (
   <div className={`${height} w-full animate-pulse bg-gray-50 rounded`} />
@@ -117,8 +117,8 @@ export default function BelowFoldSections() {
             eyebrow: "MEET OUR ACHIEVERS",
             title: { prefix: "Young Charters at", highlight: "Global Companys" },
             subtitle: "From day one, our students are groomed to lead, innovate, and excel.",
-            categories: studentCategories,
-            students: studentMembers
+            categories: homeStudentCategories,
+            students: homeStudents
           }} />
           <StrategicExpansion />
         </SectionWrapper>

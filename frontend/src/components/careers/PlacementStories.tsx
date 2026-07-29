@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import HighlightText from "../shared/HighlightObserver";
 
-import { studentMembers } from "@/data/students";
+import { homeStudents } from "@/data/students";
 const LINKEDIN_ICON = "https://files.mastersunion.link/resources/svg/linkedin.svg";
 
 export default function PlacementStories() {
@@ -102,7 +102,7 @@ export default function PlacementStories() {
               div::-webkit-scrollbar { display: none; }
             `}</style>
 
-            {studentMembers.map((story, index) => (
+            {homeStudents.map((story, index) => (
               <div
                 key={index}
                 className="flex-shrink-0 w-[280px] sm:w-[320px] md:w-[360px] snap-start border-l border-b border-t border-gray-200 bg-white overflow-hidden hover:shadow-md transition-shadow duration-200"

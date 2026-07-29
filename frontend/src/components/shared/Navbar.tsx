@@ -9,7 +9,7 @@ import { getCountdownData, type CountdownData } from "@/lib/utils/timer";
 import UserDropdown from "@/components/dashboard/UserDropdown";
 const AcademicsDropdown = dynamic(() => import("./AcademicsDropdown"), { ssr: false });
 import { createPortal } from "react-dom";
-const ChartersInterviewAi = dynamic(() => import("../home/Chartersinterview_ai"), { ssr: false });
+const GlobalLoginModal = dynamic(() => import("@/components/shared/GlobalLoginModal"), { ssr: false, loading: () => <div /> });
 import ModalBackdrop from "@/components/shared/ModalBackdrop";
 import styles from "./Navbar.module.css";
 
@@ -714,28 +714,11 @@ function Navbar() {
           </div>
         </div>
       </div>
-      {isMounted && showInterviewAI && createPortal(
-        <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[rgba(0,0,0,0.2)] overflow-y-auto">
-          <ModalBackdrop onClick={() => {
-            setShowInterviewAI(false);
-            document.body.style.overflow = '';
-          }} />
-          <div className="w-[90%] md:w-[80%] max-w-[1200px] h-auto max-h-[90vh] relative z-[99999] my-auto">
-            <button
-              onClick={() => {
-                setShowInterviewAI(false);
-                document.body.style.overflow = '';
-              }}
-              className="absolute cursor-pointer top-3 right-3 z-50 bg-white/80 hover:bg-white rounded-full w-8 h-8 flex items-center justify-center shadow-md transition-all border border-gray-100"
-            >
-              <Image src="/Charters-icon/Cancel.svg" alt="Close" width={24} height={24} className="opacity-70 hover:opacity-100 transition-opacity" />
-            </button>
-            <div className="w-full h-full overflow-hidden rounded-xl shadow-2xl bg-white">
-              <ChartersInterviewAi />
-            </div>
-          </div>
-        </div>,
-        document.body
+      {isMounted && (
+        <GlobalLoginModal 
+          isOpen={showInterviewAI} 
+          onClose={() => setShowInterviewAI(false)} 
+        />
       )}
     </header>
   );

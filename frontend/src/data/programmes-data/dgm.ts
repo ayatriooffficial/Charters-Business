@@ -1,4 +1,5 @@
 import type { Programme, CurriculumSectionData } from "./types";
+import { dgmStudentCategories, dgmStudents } from "@/data/students";
 import { facultyMembers } from "@/data/faculty";
 
 const dgmCurriculumSection: CurriculumSectionData = {
@@ -13,14 +14,16 @@ const dgmCurriculumSection: CurriculumSectionData = {
     "business",
   ],
   skillsData: {
-    previewSkills: ["Client Services", "Marketing", "Data Storytelling", "Social Media Strategy", "Spreadsheet Software", "Campaign Management", "Paid media", "Email Marketing", "Online Advertising", "Social Media Marketing", "Web Presence"],
+    previewSkills: ["Data-Driven Marketing", "SEO, GEO & AEO and ASO", "AI-Powered Content Strategy", "Growth Hack Strategy", "Social Media Strategy",
+      "Google/Meta Ads - Scale & Measure ROI", "Google My Business Profile", "Pear publishing", "Email & Whatsapp Automation",
+      "Analytics with Excel & Power BI", "Prompt Patterns", "Interviewing Skills", "Loyalty Programs", "Performance Measurement"],
     modalTitle: "Skills and tools you'll learn",
     modalSkillsGain: {
       title: "Skills you'll gain",
       skills: [
-        "Client Services", "Marketing", "Data Storytelling", "Social Media Strategy",
+        "Data-Driven Marketing", "Marketing", "Data Storytelling", "Social Media Strategy",
         "Spreadsheet Software", "Campaign Management", "Paid media", "Email Marketing",
-        "Online Advertising", "Social Media Marketing", "Web Presence", "Interviewing Skills",
+        "Online Advertising", "Social Media Marketing", "Prompt Patterns", "Interviewing Skills",
         "Social Media Management", "Order Fulfillment", "Search Engine Optimization",
         "Media Planning", "Loyalty Programs", "Performance Measurement", "E-Commerce"
       ]
@@ -44,7 +47,7 @@ const dgmCurriculumSection: CurriculumSectionData = {
       project: undefined,
       courses: {
         initial: [
-          { code: "MAST 101", title: "Digital Marketing orientation, sales funnel & 4Ps/7Ps" },
+          { code: "MAST 101", title: "Digital Marketing Orientation & Consumer Sentiments, sales funnel & 4Ps/7Ps" },
           { code: "MAST 201", title: "Understanding AI - Gen AI and Agentic AI; Assistive and Autonomous Marketing (ChatGPT, Claude and Priplexity)" },
           { code: "MAST 301", title: "Introduction of ai-driven customer understanding & journey mapping" },
           { code: "MAST 401", title: "Website UX Principles + Tools, domains, hosting, DNS, browsers - Designing Landing Pages that Convert" },
@@ -391,6 +394,7 @@ export const dgm: Programme = {
     expectedCtc: {
       traditional: "1.8L",
       cmp: "7.3L",
+      label: "DGM™",
     },
   },
   // Hero Data
@@ -509,28 +513,7 @@ export const dgm: Programme = {
       },
     ],
     companyLogos: [
-      { name: "KPMG", logo: "https://logo.clearbit.com/kpmg.com" },
-      { name: "TCS", logo: "https://logo.clearbit.com/tcs.com" },
-      { name: "Infosys", logo: "https://logo.clearbit.com/infosys.com" },
-      { name: "Wipro", logo: "https://logo.clearbit.com/wipro.com" },
-      { name: "HCL", logo: "https://logo.clearbit.com/hcltech.com" },
-      {
-        name: "Tech Mahindra",
-        logo: "https://logo.clearbit.com/techmahindra.com",
-      },
-      { name: "Cognizant", logo: "https://logo.clearbit.com/cognizant.com" },
-      { name: "Capgemini", logo: "https://logo.clearbit.com/capgemini.com" },
-      { name: "IBM", logo: "https://logo.clearbit.com/ibm.com" },
-      { name: "Oracle", logo: "https://logo.clearbit.com/oracle.com" },
-      { name: "SAP", logo: "https://logo.clearbit.com/sap.com" },
-      { name: "Dell", logo: "https://logo.clearbit.com/dell.com" },
-      { name: "HP", logo: "https://logo.clearbit.com/hp.com" },
-      { name: "Cisco", logo: "https://logo.clearbit.com/cisco.com" },
-      { name: "Adobe", logo: "https://logo.clearbit.com/adobe.com" },
-      {
-        name: "Salesforce",
-        logo: "https://logo.clearbit.com/salesforce.com",
-      },
+
     ],
   },
 
@@ -547,9 +530,9 @@ export const dgm: Programme = {
         id: "placement",
         title: "Outstanding Placement Record and Career Support",
         items: [
-          "**92% placement** rate with top companies across diverse industries",
-          "**2.5x average salary** jump post-PGDM with CTC ranging from 15-40 LPA",
-          "Alumni at **KPMG, TCS, Infosys, Wipro, HCL, Accenture** in managerial roles",
+          "**99.3% placement** rate with top companies across diverse industries",
+          "**2.5x average salary** jump DGM™ Certified with CTC ranging from 5-12.7 LPA",
+          "Alumni at **Flipkart, TCS, Infosys, Wipro, Zomato, Ayatrio** in managerial roles",
           "**250+ recruiting partners** including IT giants, consulting firms, and FMCG companies",
           "**100% placement assistance** with dedicated support until job placement",
         ],
@@ -558,10 +541,10 @@ export const dgm: Programme = {
         id: "practical",
         title: "Industry-Focused Practical Learning Approach",
         items: [
-          "**200+ live projects** with real companies providing practical management experience",
+          "**100+ live projects** with real companies providing practical management experience",
           "**Mandatory summer internship** with stipend at leading companies",
           "**Industry mentorship program** - learn from practicing managers and business leaders",
-          "**Guest lectures** by 50+ CEOs, entrepreneurs, and senior executives annually",
+          "**Guest lectures** by 50+ CMOs, entrepreneurs, and senior executives annually",
           "**Simulation exercises** for supply chain, finance, marketing, and operations management",
         ],
       },
@@ -569,8 +552,8 @@ export const dgm: Programme = {
         id: "curriculum",
         title: "Flexible and Industry-Relevant Curriculum",
         items: [
-          "**Autonomous curriculum** - updated every 6 months based on industry requirements",
-          "**Specialization tracks** in Marketing, Finance, HR, Operations, Business Analytics",
+          "**Internship base curriculum** - updated every 6 months based on industry requirements",
+          "**Specialization tracks** in AI in Marketing, Paid Ads, Marketing Operations & Analytics",
           "**Skill development modules** in Excel, PowerBI, SQL, Python, and business tools",
           "**Soft skills training** - communication, leadership, negotiation, presentation skills",
           "**Capstone project** in final term solving real business problems",
@@ -578,17 +561,17 @@ export const dgm: Programme = {
       },
       {
         id: "recognition",
-        title: "PGDM Recognition and Career Advantages",
+        title: "Global Recognition and Career Advantages",
         items: [
-          "**AICTE approved** Post Graduate Diploma in Management",
+          "*7 globally recognized bodies Patnard** DGM™(Digital Growth & Marketing)",
           "**Equivalent to MBA** as per AICTE and accepted by all employers",
           "**Industry preferred** due to practical focus and updated curriculum",
-          "**Fast career growth** - PGDM graduates reach managerial positions 20% faster",
-          "**Higher education ready** - eligible for PhD and executive programs",
+          "**Fast career growth** - DGM™ Certified reach managerial positions 20% faster",
+          "**Higher education ready** - eligible for PGDM and executive programs",
         ],
       },
     ],
-    academicPartners: [{ name: "Charter's Business College" }],
+    academicPartners: [{ name: "ChartersUnion Business School" }],
     immersions: [{ name: "Industry Visits" }],
     campusImage: {
       src: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840455/Sanjana-recived-digital-growth-_-marketing-certification_z2hkzv.avif",
@@ -798,206 +781,8 @@ export const dgm: Programme = {
     eyebrow: "OUR STUDENTS",
     title: { prefix: "Meet our", highlight: "Achievers" },
     subtitle: "Real students. Real placements. See where our graduates are working today.",
-    categories: [
-      { id: "jan", name: "January" },
-      { id: "apr", name: "April" },
-      { id: "jul", name: "July" },
-    ],
-
-    students: [
-      {
-        name: "Sunita Das",
-        batch: "AUG 2025",
-        city: "Kolkata",
-        company: "TATA",
-        role: "Executive Finance",
-        timeToPlace: "Just in 7 months",
-        previousCollege: "Goenka College",
-        background: "2nd Year BCOM Fresher",
-        internship: "Kripton PVT Ltd / Horyzen PVT Ltd — Quarter Taxation, 2025 income tax, strategy on price section",
-        researchPaper: "How AI impacts on taxation automation at global countries",
-        caseStudies: "Why Amule SAP automation failed 100 million revenue at 2...",
-        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784619361/Varsha_Nadia_cpaagy.avif",
-        linkedinUrl: "#",
-        category: "jan",
-      },
-      {
-        name: "Rahul Sharma",
-        batch: "JAN 2025",
-        city: "Mumbai",
-        company: "TATA",
-        role: "Finance Analyst",
-        timeToPlace: "Just in 7 months",
-        previousCollege: "Mumbai University",
-        background: "3rd Year BCOM Fresher",
-        internship: "Deloitte India — Tax advisory and financial reporting",
-        researchPaper: "Impact of GST on SME growth in India",
-        caseStudies: "How Infosys restructured its finance division post-2020...",
-        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784619359/Somnath_jha_zdztpx.avif",
-        linkedinUrl: "#",
-        category: "jan",
-      },
-      {
-        name: "Priya Mehta",
-        batch: "JAN 2025",
-        city: "Delhi",
-        company: "TATA",
-        role: "Operations Executive",
-        timeToPlace: "Just in 6 months",
-        previousCollege: "Delhi University",
-        background: "Graduate Fresher",
-        internship: "PwC India — Business process optimization",
-        researchPaper: "Digital transformation in Indian banking sector",
-        caseStudies: "Why Jet Airways failed despite strong brand equity...",
-        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784619360/susmita_roy_umrfar.avif",
-        linkedinUrl: "#",
-        category: "jan",
-      },
-      {
-        name: "Sneha Dutta",
-        batch: "DEC 2025",
-        city: "Kolkata",
-        company: "WishCare",
-        role: "Digital Marketing",
-        timeToPlace: "Just in 9 months",
-        previousCollege: "Loreto College",
-        background: "2025 Pass Out Fresher",
-        internship: "WishCare — Brand marketing and influencer campaigns",
-        researchPaper: "Social media growth strategies for D2C brands",
-        caseStudies: "How WishCare built a beauty-first digital audience...",
-        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784619358/sneha_shing_kymmxk.avif",
-        linkedinUrl: "#",
-        category: "jan",
-      },
-      {
-        name: "Amit Kumar",
-        batch: "APR 2025",
-        city: "Bangalore",
-        company: "TATA",
-        role: "Business Analyst",
-        timeToPlace: "Just in 7 months",
-        previousCollege: "Christ University",
-        background: "BBA Graduate Fresher",
-        internship: "KPMG — Market research and data analysis",
-        researchPaper: "Role of fintech in financial inclusion in rural India",
-        caseStudies: "How Byju's lost market cap despite rapid expansion...",
-        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784619356/sankar_g4btwe.avif",
-        linkedinUrl: "#",
-        category: "apr",
-      },
-      {
-        name: "Neha Singh",
-        batch: "APR 2025",
-        city: "Pune",
-        company: "TATA",
-        role: "HR Executive",
-        timeToPlace: "Just in 7 months",
-        previousCollege: "Symbiosis College",
-        background: "BBA HR Fresher",
-        internship: "Wipro HR — Talent acquisition and onboarding",
-        researchPaper: "Employee retention strategies in post-pandemic era",
-        caseStudies: "How Zomato scaled its workforce from 500 to 5000...",
-        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784619355/Nishita_varma_ttxyb9.avif",
-        linkedinUrl: "#",
-        category: "apr",
-      },
-      {
-        name: "Riya Kapoor",
-        batch: "APR 2026",
-        city: "Kolkata",
-        company: "Jio",
-        role: "Growth Engineer",
-        timeToPlace: "10 Months later",
-        previousCollege: "Techno India",
-        background: "2nd Year MCA Fresher",
-        internship: "Jio Platforms — Growth engineering and analytics",
-        researchPaper: "AI-based customer engagement strategies in telecom industry",
-        caseStudies: "How Jio scaled digital adoption across India...",
-        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784619354/i5nqr8hxd3j1gbbyxtdu_mfkng1.avif",
-        linkedinUrl: "#",
-        category: "apr",
-      },
-      {
-        name: "Sarah Jenkins",
-        batch: "APR 2026",
-        city: "Chennai",
-        company: "Infosys",
-        role: "Financial Auditor",
-        timeToPlace: "Just in 6 months",
-        previousCollege: "Madras University",
-        background: "BCOM Fresher",
-        internship: "Infosys — Corporate Finance",
-        researchPaper: "Impact of AI on modern auditing",
-        caseStudies: "Infosys financial restructuring...",
-        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784619348/Govinth_mrrqka.avif",
-        linkedinUrl: "#",
-        category: "apr",
-      },
-      {
-        name: "Ravi Patel",
-        batch: "JUL 2025",
-        city: "Ahmedabad",
-        company: "TATA",
-        role: "Marketing Executive",
-        timeToPlace: "Just in 7 months",
-        previousCollege: "Gujarat University",
-        background: "BCOM Graduate Fresher",
-        internship: "Ogilvy India — Digital marketing campaigns",
-        researchPaper: "Social media influence on consumer buying behavior",
-        caseStudies: "How Amul maintained brand dominance for 70+ years...",
-        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784619353/gpfdgbkgv6dxnksnqhpq_kbxbod.avif",
-        linkedinUrl: "#",
-        category: "jul",
-      },
-      {
-        name: "John Doe",
-        batch: "JUL 2025",
-        city: "Delhi",
-        company: "Amazon",
-        role: "Financial Analyst",
-        timeToPlace: "Just in 5 months",
-        previousCollege: "Delhi University",
-        background: "BCOM Fresher",
-        internship: "Amazon India — Financial Planning",
-        researchPaper: "E-commerce profitability metrics",
-        caseStudies: "Amazon's inventory management...",
-        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784619348/Govinth_mrrqka.avif",
-        linkedinUrl: "#",
-        category: "jul",
-      },
-      {
-        name: "Jane Smith",
-        batch: "JUL 2025",
-        city: "Mumbai",
-        company: "Google",
-        role: "Marketing Manager",
-        timeToPlace: "Just in 6 months",
-        previousCollege: "Mumbai University",
-        background: "BBA Fresher",
-        internship: "Google India — Ad campaigns",
-        researchPaper: "Search engine marketing trends",
-        caseStudies: "Google Ads optimization...",
-        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784619347/ca6lpkxc1aeaqngb0wwg_ttqr7a.avif",
-        linkedinUrl: "#",
-        category: "jul",
-      },
-      {
-        name: "Alex Kumar",
-        batch: "JUL 2025",
-        city: "Bangalore",
-        company: "Microsoft",
-        role: "Business Consultant",
-        timeToPlace: "Just in 8 months",
-        previousCollege: "Christ University",
-        background: "MBA Fresher",
-        internship: "Microsoft India — Strategy",
-        researchPaper: "Cloud adoption strategies",
-        caseStudies: "Microsoft Azure growth...",
-        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784619346/anupom_banarjee_ax0gnc.avif",
-        linkedinUrl: "#",
-        category: "jul",
-      },
-    ],
+    categories: dgmStudentCategories,
+    students: dgmStudents,
   },
   faculty: {
     eyebrow: "LEARN FROM THE BEST",
@@ -1079,7 +864,7 @@ export const dgm: Programme = {
         { name: "Brand & Product Management" },
         { name: "Marketing Analytics & Automation", badge: "Seats filled. Next batch starts on", badgeDate: "01 Jul 2026" }
       ],
-      title: "What's included ?",
+      title: "Admission Process & Course Included ",
       features: {
         fundamentals: "Fundamentals",
         classes: "3 Hours classes and 3 Hours Labs Everyday",
@@ -1101,9 +886,9 @@ export const dgm: Programme = {
         ]
       },
       benefits: [
-        { text: "9AM - 9PM Doubt Clarification. 1500+ Mentors to help you." },
+        { text: "9AM - 9PM Doubt Clarification. 100+ Mentors to help you." },
         { text: "10+ Real-time Projects for strong resume" },
-        { text: "24/7 Online Lab Access" },
+        { text: "24/7 Online CareerPathx™ Access" },
         { text: "Charters' 100% Job Ready Program.", isDisclaimer: true }
       ],
       cardFeatures: {
@@ -1402,263 +1187,263 @@ export const dgm: Programme = {
     }
   },
   certificateOverviewData: {
-  title: "What is the DGM™ (Digital Growth & Marketing) from ChartersUnion?",
-  descriptionParagraphs: [
-    "Today, brands use search engines, social media, paid advertising, email marketing, and content marketing to reach the right audience and drive business growth. Digital Marketing has changed the way businesses operate.",
-    "The Job-Ready AI-Poward Certificate in  DGM™ (Digital Growth & Marketing) at the Chartersunion Learning Support Centre helps learners build Job-ready skills through instructor-led digital marketing classes, Hardvard Level Case Study, Live projects, in-class faculty Guided internship and CareerPathx™ AI-Poward English Communication, Personal Branding, Corporate Bodylangusge and AI-poward Mock-interview, AI-ready Profile Base Jobs Search Engine.",
-    "3-month theory foundation + 4-month inclass faculty guided internship program teaches modern ai-readay marketing strategies using real brand projects, marketing tools, and live campaign experience.. so that learners can confidently apply their knowledge in professional roles."
-  ],
-  whyChooseTitle: "Why Choose the Advanced Certificate in DGM™ (Digital Growth & Marketing)?",
-  whyChooseDescription: "Right now, there is a huge demand for digital marketing professionals in the market. Those with the right skills can enter a dynamic marketing field. This program helps learners understand complete digital marketing skills while gaining practical experience with industry tools and live projects.",
-  whyChoosePostTableDescription: "From building a strong foundation to running performance campaigns, every module combines theory with practical implementation. This curriculum combines the top digital marketing skills which the industry hires for.",
-  offlineVsOnlineTitle: "Online vs Offline Digital Marketing Course: Why Classroom Training Works",
-  offlineVsOnlineDescription: "Although both offline learning and online learning carry their own advantages, they suit people differently. For learners who prefer practical training and immediate feedback, classroom sessions can make learning more engaging and effective.",
-  offlineVsOnlinePostTableDescription: "From building a strong foundation to running performance campaigns, every module combines theory with practical implementation. This curriculum combines the top digital marketing skills which the industry hires for.",
-  offlineReasonsTitle: "Many learners prefer offline digital marketing classes because they offer:",
-  programHighlights: [
-    "Globally recognized certificate from ChartersUnion",
-    "Learn 70+ digital marketing tools",
-    "Real brand case studies and live campaign practice",
-    "Career mentorship with 1:1 guidance",
-    "Choose from 5 in-demand specializations across key marketing domains",
-    "Access to live sessions and doubt-clearing support",
-    "Learn through flexible online classes designed for working professionals"
-  ],
-  syllabusTitle: "Syllabus & Curriculum of the DGM™ (Digital Growth & Marketing)",
-  syllabusDescription: "From building a strong foundation to running performance campaigns, every module combines theory with practical implementation. This curriculum combines the top digital marketing skills which the industry hires for.",
-  syllabusPostTableDescription: "From building a strong foundation to running performance campaigns, every module combines theory with practical implementation. This curriculum combines the top digital marketing skills which the industry hires for.",
-  skillsTitle: "Skills You Will Learn in the DGM™ (Digital Growth & Marketing)",
-  skillsDescription: "The program helps learners build both technical marketing skills and business skills that are useful across industries.",
-  skillsPostTableDescription: "From building a strong foundation to running performance campaigns, every module combines theory with practical implementation. This curriculum combines the top digital marketing skills which the industry hires for.",
-  careerTitle: "Career Opportunities After Completing the DGM™ (Digital Growth & Marketing)",
-  careerDescriptionParagraphs: [
-    "Digital marketing has become one of the fastest-growing career fields in India. Today, every business wants to invest in their online presence to get leads.",
-    "As a result, skilled digital marketers are in demand all over India. You’ll find a huge number of opportunities in this vast field."
-  ],
-  careerJobRolesTitle: "Job Roles:",
-  careerJobRolesDescription: "Digital Marketing in India is amongst the top skills you can master. Some popular career opportunities after completing this digital marketing course include:",
-  idealLearners: [
-    {
-      label: "Students and Fresh Graduates",
-      text: "Build strong foundations in digital marketing, branding, and analytics to start your career sooner."
-    },
-    {
-      label: "Marketing Professionals",
-      text: "Upgrade your skills with advanced training in SEO, paid ads, automation, and campaign strategy."
-    },
-    {
-      label: "Entrepreneurs and Business Owners",
-      text: "Learn how to grow your brand online, increase visibility, and run performance-driven campaigns."
-    },
-    {
-      label: "Freelancers",
-      text: "Expand your service portfolio with skills in content marketing, social media, and performance marketing."
-    },
-    {
-      label: "Career Changers",
-      text: "Shift into digital marketing roles with practical projects, exposure to real campaigns, and industry-recognized certification."
-    }
-  ],
-  careerTopJobRolesTitle: "Top Job Roles You Can Pursue:",
-  certificationTitle: "Certification and Recognition",
-  certificationDescription: "When you complete the Advanced Certificate in AI-Powered Digital Marketing & Communication from ChartersUnion, you earn a respected qualification that highlights your understanding of digital marketing strategies, tools, and real-world applications.",
-  youWillReceiveTitle: "You Will Receive:",
-  youWillReceive: [
-    {
-      label: "Certificate of Completion from ChartersUnion and upGrad",
-      text: "A globally recognized certificate that adds strong value to your resume."
-    },
-    {
-      label: "Access to Career Services",
-      text: "Guidance for job applications, interview preparation, and skill improvement."
-    },
-    {
-      label: "Executive Alumni Status from ChartersUnion",
-      text: "Connect with a wide network of marketing professionals and industry leaders."
-    }
-  ],
-  worthItTitle: "Is this Certification Worth It?",
-  worthItDescriptionParagraphs: [
-    "Many learners want to grow in digital marketing, and this certificate is one of the most trusted ways to build strong skills.",
-    "But is it truly worth investing in?",
-    "Here are the reasons why this program can be a valuable choice for your career:"
-  ],
-  worthItReasons: [
-    {
-      label: "Learn Key Digital Marketing Skills",
-      text: "You gain hands-on practice with SEO, social media, Google Ads, content strategy, analytics, and automation tools."
-    },
-    {
-      label: "Improved Job Opportunities",
-      text: "The certification helps you stand out during job applications and shows companies that you are trained in modern marketing methods."
-    },
-    {
-      label: "Career Growth Potential",
-      text: "Whether you are a fresher or a working professional, this course supports your move into digital marketing roles."
-    },
-    {
-      label: "Flexible Learning Experience",
-      text: "The online format allows you to learn at your own pace while managing work, studies, or personal commitments."
-    },
-    {
-      label: "Networking and Industry Exposure",
-      text: "The program offers access to expert mentors, professionals, and peers, helping you grow your network."
-    }
-  ],
-  sourcedBy: "Sourced By: Ambitionbox",
-  hiringIndustriesTitle: "Industries Hiring Digital Marketing Professionals",
-  hiringIndustries: [
-    {
-      label: "E-Commerce",
-      text: "Focus on paid ads, SEO, social commerce, and influencer-led growth."
-    },
-    {
-      label: "EdTech",
-      text: "Demand for lead generation, performance campaigns, and content-driven marketing."
-    },
-    {
-      label: "BFSI",
-      text: "Branding, digital acquisition, personal finance content, and analytics-led targeting."
-    },
-    {
-      label: "Healthcare",
-      text: "Awareness campaigns, reputation management, and customer education online."
-    },
-    {
-      label: "Media & Entertainment",
-      text: "Content planning, audience engagement, and community growth."
-    },
-    {
-      label: "Retail & D2C",
-      text: "Conversion-focused ads, product marketing, and customer retention."
-    }
-  ],
-  topCompaniesTitle: "Top Companies Hiring",
-  topCompaniesDescriptionParagraphs: [
-    "Graduates with strong digital skills are in demand across startups, agencies, and global tech giants."
-  ],
-  topCompaniesSubtitle: "Companies hiring certified marketers include:",
-  topCompanies: [
-    "Google",
-    "Meta",
-    "Amazon",
-    "Deloitte",
-    "Zomato",
-    "Nykaa",
-    "Adobe",
-    "Tata Digital",
-    "Accenture",
-    "Ogilvy"
-  ],
-  table1: [
-    {
-      role: "Digital Marketing Executive",
-      salary: "INR 3.2L"
-    },
-    {
-      role: "SEO Specialist",
-      salary: "INR 5.1L"
-    },
-    {
-      role: "Social Media Strategist",
-      salary: "INR 4.7L"
-    },
-    {
-      role: "Performance Marketing Manager",
-      salary: "INR 15.3L"
-    },
-    {
-      role: "Brand Manager",
-      salary: "INR 19.3L"
-    }
-  ],
-  table2: [
-    {
-      role: "Digital Marketing Executive",
-      salary: "INR 3.2L"
-    },
-    {
-      role: "SEO Specialist",
-      salary: "INR 5.1L"
-    },
-    {
-      role: "Social Media Strategist",
-      salary: "INR 4.7L"
-    },
-    {
-      role: "Performance Marketing Manager",
-      salary: "INR 15.3L"
-    },
-    {
-      role: "Brand Manager",
-      salary: "INR 19.3L"
-    }
-  ],
-  table3: [
-    {
-      role: "Digital Marketing Executive",
-      salary: "INR 3.2L"
-    },
-    {
-      role: "SEO Specialist",
-      salary: "INR 5.1L"
-    },
-    {
-      role: "Social Media Strategist",
-      salary: "INR 4.7L"
-    },
-    {
-      role: "Performance Marketing Manager",
-      salary: "INR 15.3L"
-    },
-    {
-      role: "Brand Manager",
-      salary: "INR 19.3L"
-    }
-  ],
-  table4: [
-    {
-      role: "Digital Marketing Executive",
-      salary: "INR 3.2L"
-    },
-    {
-      role: "SEO Specialist",
-      salary: "INR 5.1L"
-    },
-    {
-      role: "Social Media Strategist",
-      salary: "INR 4.7L"
-    },
-    {
-      role: "Performance Marketing Manager",
-      salary: "INR 15.3L"
-    },
-    {
-      role: "Brand Manager",
-      salary: "INR 19.3L"
-    }
-  ],
-  table5: [
-    {
-      role: "Digital Marketing Executive",
-      salary: "INR 3.2L"
-    },
-    {
-      role: "SEO Specialist",
-      salary: "INR 5.1L"
-    },
-    {
-      role: "Social Media Strategist",
-      salary: "INR 4.7L"
-    },
-    {
-      role: "Performance Marketing Manager",
-      salary: "INR 15.3L"
-    },
-    {
-      role: "Brand Manager",
-      salary: "INR 19.3L"
-    }
-  ]
-},
+    title: "What is the DGM™ (Digital Growth & Marketing) from ChartersUnion?",
+    descriptionParagraphs: [
+      "Today, brands use search engines, social media, paid advertising, email marketing, and content marketing to reach the right audience and drive business growth. Digital Marketing has changed the way businesses operate.",
+      "The Job-Ready AI-Poward Certificate in  DGM™ (Digital Growth & Marketing) at the Chartersunion Learning Support Centre helps learners build Job-ready skills through instructor-led digital marketing classes, Hardvard Level Case Study, Live projects, in-class faculty Guided internship and CareerPathx™ AI-Poward English Communication, Personal Branding, Corporate Bodylangusge and AI-poward Mock-interview, AI-ready Profile Base Jobs Search Engine.",
+      "3-month theory foundation + 4-month inclass faculty guided internship program teaches modern ai-readay marketing strategies using real brand projects, marketing tools, and live campaign experience.. so that learners can confidently apply their knowledge in professional roles."
+    ],
+    whyChooseTitle: "Why Choose the Advanced Certificate in DGM™ (Digital Growth & Marketing)?",
+    whyChooseDescription: "Right now, there is a huge demand for digital marketing professionals in the market. Those with the right skills can enter a dynamic marketing field. This program helps learners understand complete digital marketing skills while gaining practical experience with industry tools and live projects.",
+    whyChoosePostTableDescription: "From building a strong foundation to running performance campaigns, every module combines theory with practical implementation. This curriculum combines the top digital marketing skills which the industry hires for.",
+    offlineVsOnlineTitle: "Online vs Offline Digital Marketing Course: Why Classroom Training Works",
+    offlineVsOnlineDescription: "Although both offline learning and online learning carry their own advantages, they suit people differently. For learners who prefer practical training and immediate feedback, classroom sessions can make learning more engaging and effective.",
+    offlineVsOnlinePostTableDescription: "From building a strong foundation to running performance campaigns, every module combines theory with practical implementation. This curriculum combines the top digital marketing skills which the industry hires for.",
+    offlineReasonsTitle: "Many learners prefer offline digital marketing classes because they offer:",
+    programHighlights: [
+      "Globally recognized certificate from ChartersUnion",
+      "Learn 70+ digital marketing tools",
+      "Real brand case studies and live campaign practice",
+      "Career mentorship with 1:1 guidance",
+      "Choose from 5 in-demand specializations across key marketing domains",
+      "Access to live sessions and doubt-clearing support",
+      "Learn through flexible online classes designed for working professionals"
+    ],
+    syllabusTitle: "Syllabus & Curriculum of the DGM™ (Digital Growth & Marketing)",
+    syllabusDescription: "From building a strong foundation to running performance campaigns, every module combines theory with practical implementation. This curriculum combines the top digital marketing skills which the industry hires for.",
+    syllabusPostTableDescription: "From building a strong foundation to running performance campaigns, every module combines theory with practical implementation. This curriculum combines the top digital marketing skills which the industry hires for.",
+    skillsTitle: "Skills You Will Learn in the DGM™ (Digital Growth & Marketing)",
+    skillsDescription: "The program helps learners build both technical marketing skills and business skills that are useful across industries.",
+    skillsPostTableDescription: "From building a strong foundation to running performance campaigns, every module combines theory with practical implementation. This curriculum combines the top digital marketing skills which the industry hires for.",
+    careerTitle: "Career Opportunities After Completing the DGM™ (Digital Growth & Marketing)",
+    careerDescriptionParagraphs: [
+      "Digital marketing has become one of the fastest-growing career fields in India. Today, every business wants to invest in their online presence to get leads.",
+      "As a result, skilled digital marketers are in demand all over India. You’ll find a huge number of opportunities in this vast field."
+    ],
+    careerJobRolesTitle: "Job Roles:",
+    careerJobRolesDescription: "Digital Marketing in India is amongst the top skills you can master. Some popular career opportunities after completing this digital marketing course include:",
+    idealLearners: [
+      {
+        label: "Students and Fresh Graduates",
+        text: "Build strong foundations in digital marketing, branding, and analytics to start your career sooner."
+      },
+      {
+        label: "Marketing Professionals",
+        text: "Upgrade your skills with advanced training in SEO, paid ads, automation, and campaign strategy."
+      },
+      {
+        label: "Entrepreneurs and Business Owners",
+        text: "Learn how to grow your brand online, increase visibility, and run performance-driven campaigns."
+      },
+      {
+        label: "Freelancers",
+        text: "Expand your service portfolio with skills in content marketing, social media, and performance marketing."
+      },
+      {
+        label: "Career Changers",
+        text: "Shift into digital marketing roles with practical projects, exposure to real campaigns, and industry-recognized certification."
+      }
+    ],
+    careerTopJobRolesTitle: "Top Job Roles You Can Pursue:",
+    certificationTitle: "Certification and Recognition",
+    certificationDescription: "When you complete the Advanced Certificate in AI-Powered Digital Marketing & Communication from ChartersUnion, you earn a respected qualification that highlights your understanding of digital marketing strategies, tools, and real-world applications.",
+    youWillReceiveTitle: "You Will Receive:",
+    youWillReceive: [
+      {
+        label: "Certificate of Completion from ChartersUnion and upGrad",
+        text: "A globally recognized certificate that adds strong value to your resume."
+      },
+      {
+        label: "Access to Career Services",
+        text: "Guidance for job applications, interview preparation, and skill improvement."
+      },
+      {
+        label: "Executive Alumni Status from ChartersUnion",
+        text: "Connect with a wide network of marketing professionals and industry leaders."
+      }
+    ],
+    worthItTitle: "Is this Certification Worth It?",
+    worthItDescriptionParagraphs: [
+      "Many learners want to grow in digital marketing, and this certificate is one of the most trusted ways to build strong skills.",
+      "But is it truly worth investing in?",
+      "Here are the reasons why this program can be a valuable choice for your career:"
+    ],
+    worthItReasons: [
+      {
+        label: "Learn Key Digital Marketing Skills",
+        text: "You gain hands-on practice with SEO, social media, Google Ads, content strategy, analytics, and automation tools."
+      },
+      {
+        label: "Improved Job Opportunities",
+        text: "The certification helps you stand out during job applications and shows companies that you are trained in modern marketing methods."
+      },
+      {
+        label: "Career Growth Potential",
+        text: "Whether you are a fresher or a working professional, this course supports your move into digital marketing roles."
+      },
+      {
+        label: "Flexible Learning Experience",
+        text: "The online format allows you to learn at your own pace while managing work, studies, or personal commitments."
+      },
+      {
+        label: "Networking and Industry Exposure",
+        text: "The program offers access to expert mentors, professionals, and peers, helping you grow your network."
+      }
+    ],
+    sourcedBy: "Sourced By: Ambitionbox",
+    hiringIndustriesTitle: "Industries Hiring Digital Marketing Professionals",
+    hiringIndustries: [
+      {
+        label: "E-Commerce",
+        text: "Focus on paid ads, SEO, social commerce, and influencer-led growth."
+      },
+      {
+        label: "EdTech",
+        text: "Demand for lead generation, performance campaigns, and content-driven marketing."
+      },
+      {
+        label: "BFSI",
+        text: "Branding, digital acquisition, personal finance content, and analytics-led targeting."
+      },
+      {
+        label: "Healthcare",
+        text: "Awareness campaigns, reputation management, and customer education online."
+      },
+      {
+        label: "Media & Entertainment",
+        text: "Content planning, audience engagement, and community growth."
+      },
+      {
+        label: "Retail & D2C",
+        text: "Conversion-focused ads, product marketing, and customer retention."
+      }
+    ],
+    topCompaniesTitle: "Top Companies Hiring",
+    topCompaniesDescriptionParagraphs: [
+      "Graduates with strong digital skills are in demand across startups, agencies, and global tech giants."
+    ],
+    topCompaniesSubtitle: "Companies hiring certified marketers include:",
+    topCompanies: [
+      "Google",
+      "Meta",
+      "Amazon",
+      "Deloitte",
+      "Zomato",
+      "Nykaa",
+      "Adobe",
+      "Tata Digital",
+      "Accenture",
+      "Ogilvy"
+    ],
+    table1: [
+      {
+        role: "Digital Marketing Executive",
+        salary: "INR 3.2L"
+      },
+      {
+        role: "SEO Specialist",
+        salary: "INR 5.1L"
+      },
+      {
+        role: "Social Media Strategist",
+        salary: "INR 4.7L"
+      },
+      {
+        role: "Performance Marketing Manager",
+        salary: "INR 15.3L"
+      },
+      {
+        role: "Brand Manager",
+        salary: "INR 19.3L"
+      }
+    ],
+    table2: [
+      {
+        role: "Digital Marketing Executive",
+        salary: "INR 3.2L"
+      },
+      {
+        role: "SEO Specialist",
+        salary: "INR 5.1L"
+      },
+      {
+        role: "Social Media Strategist",
+        salary: "INR 4.7L"
+      },
+      {
+        role: "Performance Marketing Manager",
+        salary: "INR 15.3L"
+      },
+      {
+        role: "Brand Manager",
+        salary: "INR 19.3L"
+      }
+    ],
+    table3: [
+      {
+        role: "Digital Marketing Executive",
+        salary: "INR 3.2L"
+      },
+      {
+        role: "SEO Specialist",
+        salary: "INR 5.1L"
+      },
+      {
+        role: "Social Media Strategist",
+        salary: "INR 4.7L"
+      },
+      {
+        role: "Performance Marketing Manager",
+        salary: "INR 15.3L"
+      },
+      {
+        role: "Brand Manager",
+        salary: "INR 19.3L"
+      }
+    ],
+    table4: [
+      {
+        role: "Digital Marketing Executive",
+        salary: "INR 3.2L"
+      },
+      {
+        role: "SEO Specialist",
+        salary: "INR 5.1L"
+      },
+      {
+        role: "Social Media Strategist",
+        salary: "INR 4.7L"
+      },
+      {
+        role: "Performance Marketing Manager",
+        salary: "INR 15.3L"
+      },
+      {
+        role: "Brand Manager",
+        salary: "INR 19.3L"
+      }
+    ],
+    table5: [
+      {
+        role: "Digital Marketing Executive",
+        salary: "INR 3.2L"
+      },
+      {
+        role: "SEO Specialist",
+        salary: "INR 5.1L"
+      },
+      {
+        role: "Social Media Strategist",
+        salary: "INR 4.7L"
+      },
+      {
+        role: "Performance Marketing Manager",
+        salary: "INR 15.3L"
+      },
+      {
+        role: "Brand Manager",
+        salary: "INR 19.3L"
+      }
+    ]
+  },
 };

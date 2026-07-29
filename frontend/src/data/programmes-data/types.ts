@@ -55,6 +55,7 @@ export interface ProgrammeCardData {
   expectedCtc?: {
     traditional: string;
     cmp: string;
+    label: string;
   };
 }
 

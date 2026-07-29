@@ -6,9 +6,9 @@ import dynamic from "next/dynamic";
 import { useAuth } from "@/context/AuthContext";
 import { Programme } from "@/data/programmes-data/types";
 
-const ChartersInterviewAi = dynamic(
-  () => import("../home/Chartersinterview_ai"),
-  { ssr: false }
+const GlobalLoginModal = dynamic(
+  () => import("@/components/shared/GlobalLoginModal"),
+  { ssr: false, loading: () => <div /> }
 );
 
 interface BrochureDownloadButtonProps {
@@ -94,26 +94,10 @@ export default function BrochureDownloadButton({ programme }: BrochureDownloadBu
         />
       </button>
 
-      {showLoginModal && (
-        <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[rgba(0,0,0,0.2)] overflow-y-auto">
-          <div className="w-[90%] md:w-[80%] max-w-[1200px] h-auto max-h-[90vh] relative bg-white rounded-xl shadow-2xl overflow-hidden animate-scale-up my-auto">
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setShowLoginModal(false);
-                document.body.style.overflow = "";
-              }}
-              aria-label="Close login modal"
-              className="absolute cursor-pointer top-3 right-3 z-50 bg-white/80 hover:bg-white rounded-full w-8 h-8 flex items-center justify-center shadow-md transition-all border border-gray-100"
-            >
-              <Image src="/Charters-icon/Cancel.svg" alt="Close" width={24} height={24} className="opacity-70 hover:opacity-100 transition-opacity" />
-            </button>
-            <div className="w-full h-full bg-white">
-              <ChartersInterviewAi />
-            </div>
-          </div>
-        </div>
-      )}
+      <GlobalLoginModal 
+        isOpen={showLoginModal} 
+        onClose={() => setShowLoginModal(false)} 
+      />
     </>
   );
 }

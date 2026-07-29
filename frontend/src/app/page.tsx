@@ -1,6 +1,7 @@
 import {
   combineSchemas,
   generateHomeProgrammesItemListSchema,
+  generateHomeBlogsItemListSchema,
   generateLocalBusinessSchema,
   generateSiteNavigationSchema,
   homePageSchema,
@@ -8,6 +9,7 @@ import {
   websiteSchema,
 } from "@/lib/schema";
 import { programmes } from "@/lib/server/programmes";
+import { STATIC_BLOGS } from "@/data/staticBlogs";
 import { Metadata } from "next";
 
 // Critical above-fold components — static imports so they SSR immediately
@@ -79,6 +81,11 @@ export default function Home() {
       url: "https://chartersunion.com/#about",
       description: "Learn more about Charters' Union",
     },
+    {
+      name: "Blogs",
+      url: "https://chartersunion.com/blogs",
+      description: "Read our latest articles and news",
+    },
   ]);
 
   const localBusinessSchema = generateLocalBusinessSchema({
@@ -99,7 +106,16 @@ export default function Home() {
     homePageSchema,
     siteNavigationSchema,
     localBusinessSchema,
-    generateHomeProgrammesItemListSchema(programmes)
+    generateHomeProgrammesItemListSchema(programmes),
+    generateHomeBlogsItemListSchema(
+      STATIC_BLOGS.slice(0, 4).map((blog: any) => ({
+        title: blog.title,
+        description: blog.excerpt,
+        url: `https://chartersunion.com/blogs/${blog.id}`,
+        image: blog.image,
+        datePublished: blog.date,
+      }))
+    )
   );
 
   return (

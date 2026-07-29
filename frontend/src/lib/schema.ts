@@ -248,14 +248,31 @@ export const generateHomeProgrammesItemListSchema = (
         name: programme.card.title,
         description: normalizeText(programme.card.description),
         url: buildSiteUrl(`/${programme.slug}`),
-        provider: {
-          "@id": ORGANIZATION_ID,
-        },
-        educationalLevel: programme.card.level,
-        courseMode: programme.card.format.type,
-        ...(toIsoDuration(programme.card.duration.type)
-          ? { timeRequired: toIsoDuration(programme.card.duration.type) }
-          : {}),
+      },
+    })),
+  };
+};
+
+// Home Blogs ItemList Schema
+export const generateHomeBlogsItemListSchema = (
+  blogs: { title: string; description: string; url: string; image?: string; datePublished?: string }[]
+) => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Latest Insights & Articles - Charters' Union",
+    itemListOrder: "https://schema.org/ItemListUnordered",
+    numberOfItems: blogs.length,
+    itemListElement: blogs.map((blog, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "BlogPosting",
+        headline: blog.title,
+        description: normalizeText(blog.description),
+        url: blog.url,
+        ...(blog.image && { image: blog.image }),
+        ...(blog.datePublished && { datePublished: blog.datePublished }),
       },
     })),
   };
@@ -412,6 +429,37 @@ export const generateCourseSchema = (programme: Programme) => {
     },
   };
 };
+
+// Admission HowTo Schema Generator
+export const generateAdmissionHowToSchema = (programmeName: string) => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: `How to Apply for ${programmeName}`,
+    description: `Follow these simple steps to enroll in the ${programmeName} at Charters' Union.`,
+    step: [
+      {
+        "@type": "HowToStep",
+        position: 1,
+        name: "Submit Your Interest",
+        text: "Fill out the enquiry form on our website. Select your preferred city and centre.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 2,
+        name: "Speak to our Academic Counsellor",
+        text: "Discuss your background, goals, and best-fit program.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 3,
+        name: "Confirm Your Batch",
+        text: "Choose from our morning / evening / weekend batches that suit your schedule.",
+      },
+    ],
+  };
+};
+
 
 // Programme WebPage Schema Generator
 export const generateProgrammeWebPageSchema = (programme: Programme) => {
@@ -718,6 +766,7 @@ export const generateLocalBusinessSchema = (location: {
     name: location.name,
     url: SITE_URL,
     image: DEFAULT_LOGO_URL,
+    priceRange: "$$",
     parentOrganization: {
       "@id": ORGANIZATION_ID,
     },
@@ -744,7 +793,19 @@ export const generateLocalBusinessSchema = (location: {
   }
 
   if (location.openingHours) {
-    schema.openingHours = location.openingHours;
+    schema.openingHoursSpecification = location.openingHours.map((hours) => ({
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      opens: hours.split("-")[0]?.trim() || "09:00",
+      closes: hours.split("-")[1]?.trim() || "18:00",
+    }));
   }
 
   return schema;

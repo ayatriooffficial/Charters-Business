@@ -5,7 +5,11 @@ import { createPortal } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
 import { useAuth } from "@/context/AuthContext";
-import ChartersInterviewAi from "@/components/home/Chartersinterview_ai";
+import dynamic from "next/dynamic";
+const GlobalLoginModal = dynamic(
+  () => import("@/components/shared/GlobalLoginModal"),
+  { ssr: false, loading: () => <div /> }
+);
 import ModalBackdrop from "@/components/shared/ModalBackdrop";
 
 interface DashboardNavbarProps {
@@ -91,13 +95,13 @@ export default function DashboardNavbar({
         <div className="flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
           {/* Left: Logo */}
           <Link href="/" className="flex items-center gap-2">
-              <Image priority src="/Chaters_Union.avif"
-                alt="Charters Business Logo"
-                width={120}
-                height={40}
-                className="h-8 w-auto"
-                style={{ width: 'auto' }}
-              />
+            <Image priority src="/Chaters_Union.avif"
+              alt="Charters Business Logo"
+              width={120}
+              height={40}
+              className="h-8 w-auto"
+              style={{ width: 'auto' }}
+            />
           </Link>
 
           {/*toggle + search */}
@@ -434,29 +438,10 @@ export default function DashboardNavbar({
         </div>
       </nav>
 
-      {showLoginPopup && createPortal(
-        <div className="fixed inset-0 flex items-center justify-center z-[9999] bg-[rgba(0,0,0,0.2)] overflow-y-auto">
-          <ModalBackdrop onClick={() => {
-            setShowLoginPopup(false);
-            document.body.style.overflow = '';
-          }} />
-          <div className="w-[90%] md:w-[80%] max-w-[1200px] h-auto max-h-[90vh] relative z-[99999] my-auto">
-            <button
-              onClick={() => {
-                setShowLoginPopup(false);
-                document.body.style.overflow = '';
-              }}
-              className="absolute cursor-pointer top-3 right-3 z-50 bg-white/80 hover:bg-white rounded-full w-8 h-8 flex items-center justify-center shadow-md transition-all border border-gray-100"
-            >
-              <Image src="/Charters-icon/Cancel.svg" alt="Close" width={24} height={24} className="opacity-70 hover:opacity-100 transition-opacity" />
-            </button>
-            <div className="w-full h-full overflow-hidden rounded-xl shadow-2xl bg-white">
-              <ChartersInterviewAi />
-            </div>
-          </div>
-        </div>,
-        document.body
-      )}
+      <GlobalLoginModal 
+        isOpen={showLoginPopup} 
+        onClose={() => setShowLoginPopup(false)} 
+      />
     </>
   );
 }

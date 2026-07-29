@@ -14,6 +14,8 @@ import { Faculty, FacultyCategory } from "@/data/faculty";
 
 interface FacultyModelProps {
   data?: {
+    eyebrow?: string;
+    title?: { prefix: string; highlight: string; suffix?: string };
     subtitle?: string;
     faculty?: Faculty[];
     categories?: FacultyCategory[];
