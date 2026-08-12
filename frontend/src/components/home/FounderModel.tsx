@@ -69,7 +69,8 @@ const facultyMembers: Faculty[] = [
 
 function FacultyModel() {
   const [isAnimating, setIsAnimating] = useState(false);
-  const [offsetPercent, setOffsetPercent] = useState(0);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
   const slidesContainerRef = useRef<HTMLDivElement>(null);
 
   const STEP = 60;
@@ -86,7 +87,8 @@ function FacultyModel() {
 
     setIsAnimating(true);
 
-    const scrollAmount = scrollContainer.clientWidth * (STEP / 100);
+    const firstSlide = scrollContainer.firstElementChild as HTMLElement;
+    const scrollAmount = firstSlide ? firstSlide.clientWidth : scrollContainer.clientWidth * (STEP / 100);
     const targetScroll = scrollContainer.scrollLeft + (direction * scrollAmount);
 
     scrollContainer.scrollTo({
@@ -106,8 +108,8 @@ function FacultyModel() {
     const handleScroll = () => {
       const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
       const currentScroll = scrollContainer.scrollLeft;
-      const newOffset = maxScrollLeft > 0 ? (currentScroll / maxScrollLeft) * 100 : 0;
-      setOffsetPercent(newOffset);
+      setCanScrollLeft(currentScroll > 5);
+      setCanScrollRight(maxScrollLeft > 0 && currentScroll < maxScrollLeft - 5);
     };
 
     scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
@@ -136,7 +138,7 @@ function FacultyModel() {
           {/* Section Header */}
           <div className="relative text-center pb-[3.25rem] sm:pb-[3.25rem]">
             <p className="text-sm font-semibold text-[#B30437] tracking-wider mb-4 sm:mb-6">
-              LEARN FROM THE BEST
+              INSTRUCTORS & MENTORS at CHARTERs’ UNION
             </p>
 
             <h2
@@ -158,14 +160,13 @@ function FacultyModel() {
                   className="relative z-10 text-[#B30437] font-medium px-3"
                   style={{ fontWeight: 700 }}
                 >
-                  Founder
+                  Faculty
                 </span>
               </span>
             </h2>
 
             <p className="text-black px-[20px] md:px-[50px] lg:px-[70px] text-sm sm:text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
-              Learn from industry leaders, academic experts, and seasoned
-              practitioners who bring real-world experience to your education.
+              At Charters' Union, your classroom is powered by top 1% business leaders, from Hardvard to Flipkart, from IISc to Google. Our Mentors don't just teach the playbook. They help to build it.
             </p>
           </div>
 
@@ -238,12 +239,12 @@ function FacultyModel() {
             </div>
 
             {/* Navigation Buttons */}
-            <div className="absolute top-1/2 -translate-y-1/2 right-4 sm:right-2 pointer-events-none">
-              {offsetPercent < 95 && (
+            <div className="absolute top-1/2 -translate-y-1/2 right-2 sm:right-0 z-20 pointer-events-none">
+              {canScrollRight && (
                 <button
                   onClick={() => changeSlide(1)}
                   disabled={isAnimating}
-                  className="w-10 h-10 sm:w-10 sm:h-10 rounded-full bg-[#000000] hover:bg-red-700 transition-all duration-300 ease-in-out shadow-sm hover:shadow flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B30437] pointer-events-auto"
+                  className="w-10 h-10 rounded-full bg-[#B30437] hover:bg-red-700 text-white shadow-lg flex items-center justify-center transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B30437] pointer-events-auto"
                   aria-label="Next slide"
                   type="button"
                 >
@@ -263,12 +264,12 @@ function FacultyModel() {
                 </button>
               )}
             </div>
-            <div className="absolute top-1/2 -translate-y-1/2 left-4 sm:left-2 pointer-events-none">
-              {offsetPercent > 5 && (
+            <div className="absolute top-1/2 -translate-y-1/2 left-2 sm:left-0 z-20 pointer-events-none">
+              {canScrollLeft && (
                 <button
                   onClick={() => changeSlide(-1)}
                   disabled={isAnimating}
-                  className="w-10 h-10 sm:w-10 sm:h-10 rounded-full bg-[#000000] hover:bg-red-700 transition-all duration-300 ease-in-out shadow-sm hover:shadow flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B30437] pointer-events-auto"
+                  className="w-10 h-10 rounded-full bg-[#B30437] hover:bg-red-700 text-white shadow-lg flex items-center justify-center transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B30437] pointer-events-auto"
                   aria-label="Previous slide"
                   type="button"
                 >

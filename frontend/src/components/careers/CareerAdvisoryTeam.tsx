@@ -21,60 +21,23 @@ export default function CareerAdvisoryTeam() {
           </h2>
         </div>
 
-        {/* Team */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 border-l border-t border-gray-300">
-          {ADVISORY_TEAM.map((member, index) => (
+        {/* Team - Revert to 5 cards: xl:grid-cols-5 */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 border-l border-t border-gray-300">
+          {/* Revert to 5 cards: {ADVISORY_TEAM.map((member, index) => ( */}
+          {ADVISORY_TEAM.slice(0, 4).map((member, index) => (
             <article
               key={index}
-              className="flex-shrink-0 w-full hover:bg-[#F4F2EE] border-r border-b border-gray-300 flex flex-col"
+              className="flex-shrink-0 w-full hover:bg-[#F6F4F2] border-r border-b border-gray-300 flex flex-col"
             >
               {/* Image */}
-              <div className="relative w-full aspect-square overflow-hidden bg-[#F4F2EE]">
+              <div className="relative w-full aspect-[651/905] overflow-hidden bg-[#F6F4F2]">
                 <Image
                   src={member.imageSrc}
                   alt={member.name}
                   fill
                   sizes="(max-width: 640px) 85vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
-                  className="object-cover"
+                  className="object-contain"
                 />
-              </div>
-
-              {/* Content */}
-              <div className="p-5">
-                <h2 className="text-[16px] font-semibold text-black">
-                  {member.title}
-                </h2>
-
-                <p className="text-[#5f6368] text-[12px] font-semibold mt-1">
-                  by {member.name}
-                </p>
-
-                <div className="h-px bg-gray-400 my-3" />
-
-                <p className="text-sm text-[#5f6368] mb-4">
-                  {member.experience}
-                </p>
-
-                <p className="text-[14px] font-semibold mb-2">
-                  Research Publications
-                </p>
-
-                <p className="text-[12px] font-semibold-gray-700 mb-4">
-                  {member.teaching}
-                </p>
-
-                {/* Logo */}
-                <div className="mt-2 h-10 flex items-center justify-start">
-                  {member.logoSrc ? (
-                    <Image
-                      src={member.logoSrc}
-                      alt={member.name}
-                      width={100}
-                      height={30}
-                      className="h-8 w-auto max-w-full object-contain bg-white rounded-md px-2 py-1"
-                    />
-                  ) : null}
-                </div>
               </div>
             </article>
           ))}

@@ -429,7 +429,7 @@ export interface Programme {
 export interface CertificateOverviewData {
   title: string;
   descriptionParagraphs: string[];
-  
+
   whyChooseTitle: string;
   whyChooseDescription: string;
   table1: { role: string; salary: string; }[];
@@ -442,6 +442,11 @@ export interface CertificateOverviewData {
 
   offlineReasonsTitle: string;
   programHighlights: string[];
+
+  receivebenefitTitle: string;
+  programreceivebenefit: string;
+  table6: { role: string; salary: string; }[];
+  receivebenefitTitlePostTableDescription: string;
 
   syllabusTitle: string;
   syllabusDescription: string;
@@ -458,7 +463,7 @@ export interface CertificateOverviewData {
   careerJobRolesTitle: string;
   careerJobRolesDescription: string;
   idealLearners: { label: string; text: string; }[];
-  
+
   careerTopJobRolesTitle: string;
   table5: { role: string; salary: string; }[];
 
@@ -467,11 +472,11 @@ export interface CertificateOverviewData {
   youWillReceiveTitle: string;
   youWillReceive: { label: string; text: string; }[];
 
-  worthItTitle: string;
-  worthItDescriptionParagraphs: string[];
-  worthItReasons: { label: string; text: string; }[];
+  worthItTitle?: string;
+  worthItDescriptionParagraphs?: string[];
+  worthItReasons?: { label: string; text: string; }[];
 
-  sourcedBy: string;
+  sourcedBy?: string;
 
   hiringIndustriesTitle: string;
   hiringIndustries: { label: string; text: string; }[];

@@ -42,15 +42,15 @@ const partnershipCards: PartnershipCard[] = [
     logos: [
       {
         name: 'NPTEL',
-        src: '/images/brands/nptel.avif',
+        src: 'https://res.cloudinary.com/ducgcl4dg/image/upload/v1785587503/nptel_b2ukmv.avif',
       },
       {
         name: 'IMA',
-        src: '/images/brands/ima.avif'
+        src: 'https://res.cloudinary.com/ducgcl4dg/image/upload/v1785587503/ima_prvm1s.avif'
       },
       {
         name: 'GNAM',
-        src: '/images/brands/GNAM-stack.avif'
+        src: 'https://res.cloudinary.com/ducgcl4dg/image/upload/v1785587503/GNAM-stack_zeizqd.avif'
       },
     ],
   },

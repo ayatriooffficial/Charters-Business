@@ -768,8 +768,8 @@ export const tbm: Programme = {
     ],
     jobOpenings: "2.12 Cr",
     expectedCtc: {
-      traditional: "2.8L",
-      cmp: "7.3L",
+      traditional: "₹2.8L",
+      cmp: "₹1435,617",
       label: "TBM™",
     },
   },
@@ -1201,9 +1201,9 @@ export const tbm: Programme = {
     students: tbmStudents,
   },
   faculty: {
-    eyebrow: "LEARN FROM THE BEST",
-    title: { prefix: "Meet your", highlight: "Faculty" },
-    subtitle: "Learn from industry leaders, academic experts, and seasoned practitioners who bring real-world experience to your education.",
+    eyebrow: "INSTRUCTORS & MENTORS at CHARTERs’ UNION",
+    title: { prefix: "Learn from", highlight: "Top 0.1% of Practitioners" },
+    subtitle: "At Charters' Union, your classroom is powered by top 1% business leaders, from Hardvard IIMC to Flipkart, from Hardvard MBA to Google. Our Mentors don't just teach the playbook. They help to build it.",
     categories: [
       { id: "technology", name: "Technology" },
       { id: "consulting", name: "Consulting" },
@@ -1310,7 +1310,7 @@ export const tbm: Programme = {
       features: {
         fundamentals: "Fundamentals",
         classes: "3 Hours classes and 3 Hours Labs Everyday",
-        trainers: "Trainers: IIT alumni and Ex-FAANG"
+        trainers: "Trainers: IIM alumni and EX-Flipkart/Zemota/PhonePay"
       },
       placementSupport: {
         title: "100% Placement Support",
@@ -1621,7 +1621,7 @@ export const tbm: Programme = {
       downloadFilename: "charters-tbm-brochure.avif"
     },
     advisor: {
-      heading: "Want to learn more about ventures and collaborations?",
+      heading: "Ready to join ChartersUnion and take your first step towards success?",
       buttonText: "Talk to an advisor",
       phoneNumber: "+919836465083"
     }
@@ -1648,6 +1648,13 @@ export const tbm: Programme = {
       "Choose from 5 in-demand specializations across key marketing domains",
       "Access to live sessions and doubt-clearing support",
       "Learn through flexible online classes designed for working professionals"
+    ],
+    table6: [
+      { role: "Role 1", salary: "INR X.XL" },
+      { role: "Role 2", salary: "INR X.XL" },
+      { role: "Role 3", salary: "INR X.XL" },
+      { role: "Role 4", salary: "INR X.XL" },
+      { role: "Role 5", salary: "INR X.XL" }
     ],
     syllabusTitle: "Syllabus & Curriculum of the TBM™ (Technology & Business Management)",
     syllabusDescription: "From building a strong foundation to running performance campaigns, every module combines theory with practical implementation. This curriculum combines the top digital marketing skills which the industry hires for.",
@@ -1690,7 +1697,7 @@ export const tbm: Programme = {
     youWillReceiveTitle: "You Will Receive:",
     youWillReceive: [
       {
-        label: "Certificate of Completion from ChartersUnion and upGrad",
+        label: "Certificate of Completion from ChartersUnion",
         text: "A globally recognized certificate that adds strong value to your resume."
       },
       {

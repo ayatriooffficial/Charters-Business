@@ -433,7 +433,7 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
                             </div>
 
                             {/* Right - Dynamic Scholarship Content */}
-                            <div className="w-full lg:border-l lg:border-gray-300 py-6 sm:py-8">
+                            <div className="w-full lg:border-l lg:border-gray-300 pt-6 sm:pt-8">
                                 {scholarships && scholarships.length > 0 && (
                                     <ScholarshipsSection
                                         scholarships={scholarships}
@@ -447,9 +447,9 @@ const PricingTabs: React.FC<PricingTabsProps> = ({
             </div>
 
             {/* Login Modal for Advisory */}
-            <GlobalLoginModal 
-                isOpen={showLoginModal} 
-                onClose={() => setShowLoginModal(false)} 
+            <GlobalLoginModal
+                isOpen={showLoginModal}
+                onClose={() => setShowLoginModal(false)}
             />
 
             {/* EMI Modal */}

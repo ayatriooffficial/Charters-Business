@@ -22,11 +22,11 @@ function StudentModel({ data }: StudentModelProps) {
   const eyebrowText = data?.eyebrow;
   const titleData = data?.title;
   const subtitleText = data?.subtitle;
-  
+
   // Set initial category dynamically to the first available category
   const initialCategory = dynamicCategories.length > 0 ? dynamicCategories[0].id : "jul";
   const [activeCategory, setActiveCategory] = useState<string>(initialCategory);
-  
+
   // Sync the active category dynamically if the categories list changes (e.g. course switch)
   const categoriesKey = dynamicCategories.map((c: StudentCategory) => c.id).join(",");
   useEffect(() => {
@@ -35,8 +35,11 @@ function StudentModel({ data }: StudentModelProps) {
     }
   }, [categoriesKey]);
 
+  const tabIds = dynamicCategories.map((c: StudentCategory) => c.id);
   const filteredStudents = studentsData.filter(
-    (s: Student) => s.category === activeCategory
+    (s: Student) =>
+      s.category === activeCategory ||
+      (!tabIds.includes(s.category) && s.courseCategory === activeCategory)
   );
 
   const handleCategoryChange = (categoryId: string) => {
@@ -102,7 +105,7 @@ function StudentModel({ data }: StudentModelProps) {
           {/* Mobile: horizontal scroller with snap and 1:2 peek */}
           <div className="sm:hidden overflow-x-auto scrollbar-hide flex snap-x snap-mandatory">
             {filteredStudents.map((student: Student) => (
-              <article key={student.name} className="snap-start w-[85vw] border-r border-b border-gray-200 hover:bg-[#F4F2EE] flex-shrink-0 flex flex-col">
+              <article key={student.id} className="snap-start w-[85vw] border-r border-b border-gray-200 hover:bg-[#F6F4F2] flex-shrink-0 flex flex-col">
                 <div className="w-full">
                   <Image src={student.imageSrc} alt={student.name} width={500} height={600} className="w-full h-auto object-contain" loading="lazy" />
                 </div>
@@ -142,7 +145,7 @@ function StudentModel({ data }: StudentModelProps) {
           {/* Desktop: grid layout */}
           <div className="hidden sm:grid grid-cols-2 lg:grid-cols-4 border-l border-gray-200">
             {filteredStudents.map((student: Student) => (
-              <article key={student.name} className="w-full overflow-hidden border-r border-b border-gray-200 hover:bg-[#F4F2EE] flex flex-col">
+              <article key={student.id} className="w-full overflow-hidden border-r border-b border-gray-200 hover:bg-[#F6F4F2] flex flex-col">
                 <div className="w-full">
                   <Image src={student.imageSrc} alt={student.name} width={500} height={600} className="w-full h-auto object-contain" loading="lazy" />
                 </div>
@@ -178,6 +181,18 @@ function StudentModel({ data }: StudentModelProps) {
               </article>
             ))}
           </div>
+
+          {/* 100+ more students strip — below the cards */}
+          {filteredStudents.length > 0 && (
+            <div className="flex items-center justify-center gap-2 pt-8">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#B30437]" />
+              <p className="text-xs sm:text-sm text-gray-700">
+                <span className="font-extrabold text-[#B30437]">100+</span>{" "}
+                <span className="font-medium">more students placed &amp; growing</span>
+              </p>
+              <span className="h-1.5 w-1.5 rounded-full bg-[#B30437]" />
+            </div>
+          )}
         </div>
       </section>
     </>

@@ -62,6 +62,18 @@ export default function LayoutBanner({ type }: LayoutBannerProps) {
   const programmeData = programKey ? getProgrammeBySlug(programKey) : null;
   const bannerConfig = programmeData?.layoutBanner;
 
+  // Label shown on the paper layer of the book animation on hover
+  const imageHoverLabel =
+    type === "placement"
+      ? "Placement Report 2025"
+      : isCba
+      ? "CBA™ Brochure"
+      : isDgm
+      ? "DGM Brochure"
+      : isTbm
+      ? "TBM Brochure"
+      : "Course Brochure";
+
   const fallbackBrochure = {
     imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784656491/charters-placement-report_yj1uj9.avif",
     imageAlt: "Charters Union Career Report 2025",
@@ -90,7 +102,7 @@ export default function LayoutBanner({ type }: LayoutBannerProps) {
   };
 
   const fallbackAdvisor = {
-    heading: "Want to learn more about ventures and collaborations?",
+    heading: "Ready to join ChartersUnion and take your first step towards success?",
     buttonText: "Talk to an advisor",
     phoneNumber: "+919836465083"
   };
@@ -171,6 +183,7 @@ export default function LayoutBanner({ type }: LayoutBannerProps) {
           <BannerBlock
             imageSrc={type !== "advisor" && "imageSrc" in currentBanner ? currentBanner.imageSrc : undefined}
             imageAlt={type !== "advisor" && "imageAlt" in currentBanner ? currentBanner.imageAlt : ""}
+            imageHoverLabel={type !== "advisor" ? imageHoverLabel : undefined}
             title={
               type === "placement" && "heading" in currentBanner && typeof currentBanner.heading === "object" ? (
                 <>
@@ -234,9 +247,9 @@ export default function LayoutBanner({ type }: LayoutBannerProps) {
       </div>
 
       {/* Login Modal for Brochure Download */}
-      <GlobalLoginModal 
-        isOpen={showLoginModal} 
-        onClose={() => setShowLoginModal(false)} 
+      <GlobalLoginModal
+        isOpen={showLoginModal}
+        onClose={() => setShowLoginModal(false)}
       />
     </>
   );

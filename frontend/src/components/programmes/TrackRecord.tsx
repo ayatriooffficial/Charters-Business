@@ -75,7 +75,7 @@ function VerticalBar({ item, index, maxValue, inView, duration = 600, textSize =
         {count}{suffix}
       </div>
       <div
-        className="w-full bg-[#56BAB3]"
+        className="w-full bg-[#AAC8EB]"
         style={{
           height: `${(item.value / maxValue) * 100}%`,
           transformOrigin: 'bottom',
@@ -259,7 +259,7 @@ const TrackRecord: React.FC<TrackRecordProps> = ({ data, assets }) => {
             {data.impactCards.map((card, index) => (
               <div
                 key={index}
-                className="bg-[#F4F2EE] p-4 sm:p-6 lg:p-8 transition-all duration-300 w-[85vw] min-w-[85vw] shrink-0 snap-start sm:flex-1 sm:min-w-[260px] md:min-w-[300px] border-r border-b border-t border-gray-200"
+                className="bg-[#EFEEEA] p-4 sm:p-6 lg:p-8 transition-all duration-300 w-[85vw] min-w-[85vw] shrink-0 snap-start sm:flex-1 sm:min-w-[260px] md:min-w-[300px] border-r border-b border-t border-gray-200"
               >
                 <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-black mb-2 sm:mb-4 text-left">
                   {card.title}

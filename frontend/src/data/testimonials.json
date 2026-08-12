@@ -3,11 +3,28 @@
     "id": "Arabian Access",
     "company": "TCS",
     "logo": "/logos/student-at-tcs.avif",
-    "quote": "There's power in a single platform where you can do all your work. Notion is that single place.",
+    "quote": "We Offered Full-Time Roles to Students as Arrived With AI Skills, Business Confidence, Leadership Mindset, and the Ability to Deliver Results From Day One.",
     "author": "Student Participant",
     "role": "Student Participant",
     "image": "/logos/student-at-arabian-access.avif",
-    "category": "engineering"
+    "category": "engineering",
+    "participants": [
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015920/Bikrom_haldar_jjnto8.avif"
+      },
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Alok_Shukla_kw56r0.avif"
+      },
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015920/Natasa_sikdar_io4kpy.avif"
+      }
+    ]
   },
   {
     "id": "ramp",
@@ -17,7 +34,24 @@
     "author": "Engineering Team Lead",
     "role": "Engineering Team Lead",
     "image": "logos/student-at-reliance.avif",
-    "category": "engineering"
+    "category": "engineering",
+    "participants": [
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015920/Bikrom_haldar_jjnto8.avif"
+      },
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Alok_Shukla_kw56r0.avif"
+      },
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015920/Natasa_sikdar_io4kpy.avif"
+      }
+    ]
   },
   {
     "id": "vercel",
@@ -27,7 +61,24 @@
     "author": "Operations Manager",
     "role": "Operations Manager",
     "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
-    "category": "engineering"
+    "category": "engineering",
+    "participants": [
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015920/Bikrom_haldar_jjnto8.avif"
+      },
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Alok_Shukla_kw56r0.avif"
+      },
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015920/Natasa_sikdar_io4kpy.avif"
+      }
+    ]
   },
   {
     "id": "matchgroup",
@@ -37,7 +88,24 @@
     "author": "HR Director",
     "role": "HR Director",
     "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face",
-    "category": "engineering"
+    "category": "engineering",
+    "participants": [
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015920/Bikrom_haldar_jjnto8.avif"
+      },
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Alok_Shukla_kw56r0.avif"
+      },
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015920/Natasa_sikdar_io4kpy.avif"
+      }
+    ]
   },
   {
     "id": "deel",
@@ -47,7 +115,24 @@
     "author": "Tech Lead",
     "role": "Tech Lead",
     "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop&crop=face",
-    "category": "engineering"
+    "category": "engineering",
+    "participants": [
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015920/Bikrom_haldar_jjnto8.avif"
+      },
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Alok_Shukla_kw56r0.avif"
+      },
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015920/Natasa_sikdar_io4kpy.avif"
+      }
+    ]
   },
   {
     "id": "planful",
@@ -57,37 +142,105 @@
     "author": "Product Manager",
     "role": "Product Manager",
     "image": "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face",
-    "category": "engineering"
+    "category": "engineering",
+    "participants": [
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015920/Bikrom_haldar_jjnto8.avif"
+      },
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Alok_Shukla_kw56r0.avif"
+      },
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015920/Natasa_sikdar_io4kpy.avif"
+      }
+    ]
   },
   {
     "id": "openai-product",
     "company": "TCS",
     "logo": "/logos/student-at-tcs.avif",
-    "quote": "There's power in a single platform where you can do all your work. Notion is that single place.",
-    "author": "Product Manager",
-    "role": "Product Manager",
+    "quote": "We offered full-time roles to students as arrived with AI skills, business confidence, leadership mindset, and the ability to deliver results from day one.",
+    "author": "Avilav Gupta, Director, Finance Data & Analytics, TCS",
+    "role": "Internship Participated Student",
     "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
-    "category": "product"
+    "category": "product",
+    "participants": [
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365629/Varsha_nadia_eoiti2.avif"
+      },
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Ravi_Patel_y9uebw.avif"
+      },
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Priya_dasgupto_mx1qlq.avif"
+      }
+    ]
   },
   {
     "id": "ramp-product",
     "company": "Reliance",
     "logo": "/logos/student-at-reliance.avif",
-    "quote": "With Notion, every person at Ramp has an AI assistant.",
-    "author": "Product Lead",
+    "quote": "Most interns need constant guidance. Charters needed real business challenges. Their practical learning, professional attitude made them immediate assets to our company.",
+    "author": "Subhas Sharma, Head of HR, Reliance",
     "role": "Product Lead",
     "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-    "category": "product"
+    "category": "product",
+    "participants": [
+      {
+        "name": "Anupom Banarjee",
+        "date": "Oct`25 . DGM™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365629/Varsha_nadia_eoiti2.avif"
+      },
+      {
+        "name": "Natasa sikdar",
+        "date": "Oct`25 . DGM™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Ravi_Patel_y9uebw.avif"
+      },
+      {
+        "name": "Priya Singh",
+        "date": "Oct`25 . DGM™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Priya_dasgupto_mx1qlq.avif"
+      }
+    ]
   },
   {
     "id": "vercel-product",
     "company": "Genpact",
     "logo": "/logos/student-at-genpact.avif",
-    "quote": "Notion understands that you can solve a lot of problems with one tool.",
+    "quote": "ChartersUnion certified demonstrated AI readiness, critical thinking, communication skills, and workplace confidence that earned them full-time offers",
     "author": "Product Director",
     "role": "Product Director",
     "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
-    "category": "product"
+    "category": "product",
+    "participants": [
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365629/Varsha_nadia_eoiti2.avif"
+      },
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Ravi_Patel_y9uebw.avif"
+      },
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Priya_dasgupto_mx1qlq.avif"
+      }
+    ]
   },
   {
     "id": "matchgroup-product",
@@ -97,7 +250,24 @@
     "author": "Product Owner",
     "role": "Product Owner",
     "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face",
-    "category": "product"
+    "category": "product",
+    "participants": [
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365629/Varsha_nadia_eoiti2.avif"
+      },
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Ravi_Patel_y9uebw.avif"
+      },
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Priya_dasgupto_mx1qlq.avif"
+      }
+    ]
   },
   {
     "id": "deel-product",
@@ -107,7 +277,24 @@
     "author": "Product Strategist",
     "role": "Product Strategist",
     "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop&crop=face",
-    "category": "product"
+    "category": "product",
+    "participants": [
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365629/Varsha_nadia_eoiti2.avif"
+      },
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Ravi_Patel_y9uebw.avif"
+      },
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Priya_dasgupto_mx1qlq.avif"
+      }
+    ]
   },
   {
     "id": "planful-product",
@@ -117,7 +304,24 @@
     "author": "Product Manager",
     "role": "Product Manager",
     "image": "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face",
-    "category": "product"
+    "category": "product",
+    "participants": [
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365629/Varsha_nadia_eoiti2.avif"
+      },
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Ravi_Patel_y9uebw.avif"
+      },
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Priya_dasgupto_mx1qlq.avif"
+      }
+    ]
   },
   {
     "id": "openai-design",
@@ -127,7 +331,24 @@
     "author": "Design Lead",
     "role": "Design Lead",
     "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
-    "category": "design"
+    "category": "design",
+    "participants": [
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Partho_Sen_kpzary.avif"
+      },
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Rahul_Sharma_hansjj.avif"
+      },
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365724/Sanjana_banerjee_phn953.avif"
+      }
+    ]
   },
   {
     "id": "ramp-design",
@@ -137,7 +358,24 @@
     "author": "UX Designer",
     "role": "UX Designer",
     "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-    "category": "design"
+    "category": "design",
+    "participants": [
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Partho_Sen_kpzary.avif"
+      },
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Rahul_Sharma_hansjj.avif"
+      },
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365724/Sanjana_banerjee_phn953.avif"
+      }
+    ]
   },
   {
     "id": "vercel-design",
@@ -147,7 +385,24 @@
     "author": "Creative Director",
     "role": "Creative Director",
     "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
-    "category": "design"
+    "category": "design",
+    "participants": [
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Partho_Sen_kpzary.avif"
+      },
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Rahul_Sharma_hansjj.avif"
+      },
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365724/Sanjana_banerjee_phn953.avif"
+      }
+    ]
   },
   {
     "id": "matchgroup-design",
@@ -157,7 +412,24 @@
     "author": "UI Designer",
     "role": "UI Designer",
     "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face",
-    "category": "design"
+    "category": "design",
+    "participants": [
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Partho_Sen_kpzary.avif"
+      },
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Rahul_Sharma_hansjj.avif"
+      },
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365724/Sanjana_banerjee_phn953.avif"
+      }
+    ]
   },
   {
     "id": "deel-design",
@@ -167,7 +439,24 @@
     "author": "Design Manager",
     "role": "Design Manager",
     "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop&crop=face",
-    "category": "design"
+    "category": "design",
+    "participants": [
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Partho_Sen_kpzary.avif"
+      },
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Rahul_Sharma_hansjj.avif"
+      },
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365724/Sanjana_banerjee_phn953.avif"
+      }
+    ]
   },
   {
     "id": "planful-design",
@@ -177,7 +466,24 @@
     "author": "Visual Designer",
     "role": "Visual Designer",
     "image": "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face",
-    "category": "design"
+    "category": "design",
+    "participants": [
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Partho_Sen_kpzary.avif"
+      },
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Rahul_Sharma_hansjj.avif"
+      },
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365724/Sanjana_banerjee_phn953.avif"
+      }
+    ]
   },
   {
     "id": "openai-it",
@@ -187,7 +493,24 @@
     "author": "IT Director",
     "role": "IT Director",
     "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
-    "category": "it"
+    "category": "it",
+    "participants": [
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Partho_Sen_kpzary.avif"
+      },
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365724/Sanjana_banerjee_phn953.avif"
+      },
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Rahul_Sharma_hansjj.avif"
+      }
+    ]
   },
   {
     "id": "ramp-it",
@@ -197,7 +520,24 @@
     "author": "Systems Administrator",
     "role": "Systems Administrator",
     "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-    "category": "it"
+    "category": "it",
+    "participants": [
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Partho_Sen_kpzary.avif"
+      },
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365724/Sanjana_banerjee_phn953.avif"
+      },
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Rahul_Sharma_hansjj.avif"
+      }
+    ]
   },
   {
     "id": "vercel-it",
@@ -207,7 +547,24 @@
     "author": "DevOps Engineer",
     "role": "DevOps Engineer",
     "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
-    "category": "it"
+    "category": "it",
+    "participants": [
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Partho_Sen_kpzary.avif"
+      },
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365724/Sanjana_banerjee_phn953.avif"
+      },
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Rahul_Sharma_hansjj.avif"
+      }
+    ]
   },
   {
     "id": "matchgroup-it",
@@ -217,7 +574,24 @@
     "author": "IT Specialist",
     "role": "IT Specialist",
     "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face",
-    "category": "it"
+    "category": "it",
+    "participants": [
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Partho_Sen_kpzary.avif"
+      },
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365724/Sanjana_banerjee_phn953.avif"
+      },
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Rahul_Sharma_hansjj.avif"
+      }
+    ]
   },
   {
     "id": "deel-it",
@@ -227,7 +601,24 @@
     "author": "Infrastructure Lead",
     "role": "Infrastructure Lead",
     "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop&crop=face",
-    "category": "it"
+    "category": "it",
+    "participants": [
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Partho_Sen_kpzary.avif"
+      },
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365724/Sanjana_banerjee_phn953.avif"
+      },
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Rahul_Sharma_hansjj.avif"
+      }
+    ]
   },
   {
     "id": "planful-it",
@@ -237,7 +628,24 @@
     "author": "Cloud Engineer",
     "role": "Cloud Engineer",
     "image": "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face",
-    "category": "it"
+    "category": "it",
+    "participants": [
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Partho_Sen_kpzary.avif"
+      },
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365724/Sanjana_banerjee_phn953.avif"
+      },
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Rahul_Sharma_hansjj.avif"
+      }
+    ]
   },
   {
     "id": "openai-marketing",
@@ -247,7 +655,24 @@
     "author": "Marketing Director",
     "role": "Marketing Director",
     "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
-    "category": "marketing"
+    "category": "marketing",
+    "participants": [
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365725/Afreen_khan_gqnyfw.avif"
+      },
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Sunita_Das_ad2knd.avif"
+      },
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365629/Somnath_jana_lofa0k.avif"
+      }
+    ]
   },
   {
     "id": "ramp-marketing",
@@ -257,7 +682,24 @@
     "author": "Growth Manager",
     "role": "Growth Manager",
     "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-    "category": "marketing"
+    "category": "marketing",
+    "participants": [
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365725/Afreen_khan_gqnyfw.avif"
+      },
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Sunita_Das_ad2knd.avif"
+      },
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365629/Somnath_jana_lofa0k.avif"
+      }
+    ]
   },
   {
     "id": "vercel-marketing",
@@ -267,7 +709,24 @@
     "author": "Content Manager",
     "role": "Content Manager",
     "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
-    "category": "marketing"
+    "category": "marketing",
+    "participants": [
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365725/Afreen_khan_gqnyfw.avif"
+      },
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Sunita_Das_ad2knd.avif"
+      },
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365629/Somnath_jana_lofa0k.avif"
+      }
+    ]
   },
   {
     "id": "matchgroup-marketing",
@@ -277,7 +736,24 @@
     "author": "Digital Marketing Lead",
     "role": "Digital Marketing Lead",
     "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face",
-    "category": "marketing"
+    "category": "marketing",
+    "participants": [
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365725/Afreen_khan_gqnyfw.avif"
+      },
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Sunita_Das_ad2knd.avif"
+      },
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365629/Somnath_jana_lofa0k.avif"
+      }
+    ]
   },
   {
     "id": "deel-marketing",
@@ -287,7 +763,24 @@
     "author": "Marketing Strategist",
     "role": "Marketing Strategist",
     "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop&crop=face",
-    "category": "marketing"
+    "category": "marketing",
+    "participants": [
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365725/Afreen_khan_gqnyfw.avif"
+      },
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Sunita_Das_ad2knd.avif"
+      },
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365629/Somnath_jana_lofa0k.avif"
+      }
+    ]
   },
   {
     "id": "planful-marketing",
@@ -297,7 +790,24 @@
     "author": "Brand Manager",
     "role": "Brand Manager",
     "image": "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face",
-    "category": "marketing"
+    "category": "marketing",
+    "participants": [
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365725/Afreen_khan_gqnyfw.avif"
+      },
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015921/Sunita_Das_ad2knd.avif"
+      },
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365629/Somnath_jana_lofa0k.avif"
+      }
+    ]
   },
   {
     "id": "openai-startups",
@@ -307,7 +817,24 @@
     "author": "Founder",
     "role": "Founder",
     "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
-    "category": "startups"
+    "category": "startups",
+    "participants": [
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Rohon_Gupta_ksl8ku.avif"
+      },
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Kousik_Banerjee_uezwse.avif"
+      },
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015920/Anuska_das_hpnipd.avif"
+      }
+    ]
   },
   {
     "id": "ramp-startups",
@@ -317,7 +844,24 @@
     "author": "Co-Founder",
     "role": "Co-Founder",
     "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-    "category": "startups"
+    "category": "startups",
+    "participants": [
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Rohon_Gupta_ksl8ku.avif"
+      },
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Kousik_Banerjee_uezwse.avif"
+      },
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015920/Anuska_das_hpnipd.avif"
+      }
+    ]
   },
   {
     "id": "vercel-startups",
@@ -327,7 +871,24 @@
     "author": "Startup Founder",
     "role": "Startup Founder",
     "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
-    "category": "startups"
+    "category": "startups",
+    "participants": [
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Rohon_Gupta_ksl8ku.avif"
+      },
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Kousik_Banerjee_uezwse.avif"
+      },
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015920/Anuska_das_hpnipd.avif"
+      }
+    ]
   },
   {
     "id": "matchgroup-startups",
@@ -337,7 +898,24 @@
     "author": "Entrepreneur",
     "role": "Entrepreneur",
     "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face",
-    "category": "startups"
+    "category": "startups",
+    "participants": [
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Rohon_Gupta_ksl8ku.avif"
+      },
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Kousik_Banerjee_uezwse.avif"
+      },
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015920/Anuska_das_hpnipd.avif"
+      }
+    ]
   },
   {
     "id": "deel-startups",
@@ -347,7 +925,24 @@
     "author": "Startup CEO",
     "role": "Startup CEO",
     "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop&crop=face",
-    "category": "startups"
+    "category": "startups",
+    "participants": [
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Rohon_Gupta_ksl8ku.avif"
+      },
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Kousik_Banerjee_uezwse.avif"
+      },
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015920/Anuska_das_hpnipd.avif"
+      }
+    ]
   },
   {
     "id": "planful-startups",
@@ -357,6 +952,23 @@
     "author": "Tech Entrepreneur",
     "role": "Tech Entrepreneur",
     "image": "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face",
-    "category": "startups"
+    "category": "startups",
+    "participants": [
+      {
+        "name": "Natasa sikdar",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Rohon_Gupta_ksl8ku.avif"
+      },
+      {
+        "name": "Priya Singh",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786365628/Kousik_Banerjee_uezwse.avif"
+      },
+      {
+        "name": "Paritosh Majhi",
+        "date": "Apr`25 . CBA™",
+        "image": "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786015920/Anuska_das_hpnipd.avif"
+      }
+    ]
   }
 ]

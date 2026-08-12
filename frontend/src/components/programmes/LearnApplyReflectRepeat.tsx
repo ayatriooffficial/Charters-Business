@@ -96,11 +96,10 @@ const LearnApplyReflectRepeat: React.FC<LearnApplyReflectRepeatProps> = ({
               id="main-heading"
               className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 md:mb-6 leading-tight text-center px-2"
             >
-              {data.title?.prefix}{" "}
-              <HighlightText className="font-bold hl-px-0">
-                {data.title?.highlight}
+
+              <HighlightText className="font-bold hl-px-2.5">
+                Learn. Apply. Repeat. Reflect.
               </HighlightText>
-              {data.title?.suffix ? ` ${data.title.suffix}` : ""}
             </h2>
             {data.subtitle && (
               <p className="text-black text-base sm:text-lg md:text-xl leading-relaxed text-center px-4"

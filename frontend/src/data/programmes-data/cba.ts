@@ -587,7 +587,7 @@ export const cba: Programme = {
       "Gain real-world corporate accounting through Harvard/Columbia case study, IIMK, US-CMA&CPA/CFA/ACCA integrated AI-led curriculum under top 1% industry faculty.",
     format: { type: "On Campus" },
     eligibility: { type: "12 Pass-out & Early under graduates." },
-    duration: { type: "3 Months theory + 4 Months in-class intranship" },
+    duration: { type: "~3 Months Foundation + 4 Months Paid Internship" },
     deadline: { type: "Round 1: 30th Oct '25" },
     careerOutcomes: [
       "Foundations in Industry-led learning base on Hardvard casestudy with US-CMA/CPA, Indian CA and ACCA specialisation carruculam.",
@@ -598,8 +598,8 @@ export const cba: Programme = {
     ],
     jobOpenings: "2.12 Cr",
     expectedCtc: {
-      traditional: "2.8L",
-      cmp: "7.3L",
+      traditional: "₹1.7L",
+      cmp: "₹735,650",
       label: "CBA™",
     },
   },
@@ -661,22 +661,17 @@ export const cba: Programme = {
 
   // Program Info
   programInfo: {
-    duration: "7 Months",
+    duration: "7 Month",
     details: [
-      {
-        label: "DURATION",
-        value: "7 Months",
-        subtitle: "(3 Months foundation + 4 Months in-class internship)",
-        dotColor: "bg-cyan-500",
-      },
-      { label: "100% PAID-INTERNSHIP", value: "7 Countries", dotColor: "bg-cyan-500" },
+      { label: "DURATION", value: "7 Month (~3 Months Foundation + 4 Months Internship)", dotColor: "bg-cyan-500" },
+      { label: "FORMAT", value: "~9 hrs/week, In-Class Tranning", dotColor: "bg-yellow-500" },
       {
         label: "ELIGIBILITY",
-        value: "12th · Under Graduate · Diploma · Post-graduate.",
+        value: "12th/Undergraduate(B.Tech, B.Sc, B.Com, B.A., BBA, BCA). No age limit",
         dotColor: "bg-pink-500",
       },
-      { label: "FORMAT", value: "In-class Residential", dotColor: "bg-yellow-500" },
-      { label: "NO. OF SEATS LEFT", value: "3", dotColor: "bg-green-500" },
+      { label: "INTERNSHIP", value: "100% Faculty guided internship", dotColor: "bg-yellow-500" },
+      { label: "PROGRAM FEES", value: "Zero Cost EMI Easy Monthly Installments", dotColor: "bg-green-500" },
     ],
   },
 
@@ -1631,9 +1626,9 @@ export const cba: Programme = {
     students: cbaStudents,
   },
   faculty: {
-    eyebrow: "LEARN FROM THE BEST",
-    title: { prefix: "Meet your", highlight: "Faculty" },
-    subtitle: "Learn from industry leaders, academic experts, and seasoned practitioners who bring real-world experience to your education.",
+    eyebrow: "INSTRUCTORS & MENTORS at CHARTERs’ UNION",
+    title: { prefix: "Learn from", highlight: "Top 0.1% of Practitioners" },
+    subtitle: "At Charters' Union, your classroom is powered by top 1% business leaders, from  CA to Flipkart, from US-CMA to Google. Our Mentors don't just teach the playbook. They help to build it.",
     categories: [
       { id: "technology", name: "GST Taxation" },
       { id: "entrepreneurship", name: "Accounting" },
@@ -1712,7 +1707,7 @@ export const cba: Programme = {
       features: {
         fundamentals: "Fundamentals",
         classes: "3 Hours classes and 3 Hours Labs Everyday",
-        trainers: "Trainers: IIT alumni and Ex-FAANG"
+        trainers: "Trainers: CA/CPA/CMA and EX-PWC/KPMG/Deloitte"
       },
       placementSupport: {
         title: "100% Placement Guarantee Support",
@@ -1751,7 +1746,7 @@ export const cba: Programme = {
     sidebarSubtitle: "Navigate through our mastery areas",
 
     comparisonTable: {
-      title: "How CBA™ is fundamentally different",
+      title: "How CBA™ is Fundamentally Different",
       subtitle: "CBA™ (Certified Business Accountant) VS TRADITIONAL EDUCATION",
       headers: ["Parameter", "CBA™ (Certified Business Accountant)", "Other Accounting Courses"],
       rows: [
@@ -2023,7 +2018,7 @@ export const cba: Programme = {
       downloadFilename: "charters-cba-brochure.avif"
     },
     advisor: {
-      heading: "Want to learn more about ventures and collaborations?",
+      heading: "Ready to join ChartersUnion and take your first step towards success?",
       buttonText: "Talk to an advisor",
       phoneNumber: "+919836465083"
     }
@@ -2050,6 +2045,13 @@ export const cba: Programme = {
       "Choose from 5 in-demand specializations across key marketing domains",
       "Access to live sessions and doubt-clearing support",
       "Learn through flexible online classes designed for working professionals"
+    ],
+    table6: [
+      { role: "Role 1", salary: "INR X.XL" },
+      { role: "Role 2", salary: "INR X.XL" },
+      { role: "Role 3", salary: "INR X.XL" },
+      { role: "Role 4", salary: "INR X.XL" },
+      { role: "Role 5", salary: "INR X.XL" }
     ],
     syllabusTitle: "Syllabus & Curriculum of the CBA™ (Certified Business Accountant)",
     syllabusDescription: "From building a strong foundation to running performance campaigns, every module combines theory with practical implementation. This curriculum combines the top digital marketing skills which the industry hires for.",
@@ -2092,7 +2094,7 @@ export const cba: Programme = {
     youWillReceiveTitle: "You Will Receive:",
     youWillReceive: [
       {
-        label: "Certificate of Completion from ChartersUnion and upGrad",
+        label: "Certificate of Completion from ChartersUnion",
         text: "A globally recognized certificate that adds strong value to your resume."
       },
       {

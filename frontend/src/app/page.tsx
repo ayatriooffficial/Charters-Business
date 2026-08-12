@@ -23,17 +23,17 @@ import Script from "next/script";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Charters' Union: AI-Powered Job-Ready Training in Kolkata | Paid Internship",
+    absolute: "Charters' Union: AI-Powered Job-Ready Training in Kolkata",
   },
   description:
-    "Kolkata's AI-first Job Ready training institute. 3 programs: Certified Business Accountant, Digital Growth & Marketing, Technology & Business Management. AICPA/ACCA/HBS/Google aligned. 4–6 month paid internship in 7 countries. Corporate English. AI interview coaching. Placement support for BCom, BSc, BBA, BA, Freshers. Book free democlass.",
+    "Kolkata's AI-first Job Ready training in Business Accountant, Digital Marketing for B.Com, BCA, BSc, BBA, BA, Freshers. USCMA/HBS/Google aligned. 100% Paid Internship. Corporate English, AI Interview, Job Search.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "Charters' Union: Job-Ready Training Institute Kolkata | AI Curriculum | 100% Paid Internship 7 Countries | BCom BSc BBA BA Freshers",
     description:
-      "Kolkata's AI-first 100% Job Guarantee training institute. 3 programs: Certified Business Accountant, Digital Growth & Marketing, Technology & Business Management. AICPA/ACCA/HBS/Google aligned. 4–6 month paid internship in 7 countries. Corporate English. AI interview coaching. Placement support. Book free democlass.",
+      "Kolkata's AI-first 100% Job Guarantee training institute. 3 programs: Certified Business Accountant, Digital Growth & Marketing, Technology & Business Management. USCMA/ACCA/HBS/Google aligned. 4 month paid internship in 7 countries. Corporate English. AI interview coaching. Placement support. Book free democlass.",
     url: "https://chartersunion.com",
     type: "website",
     images: [

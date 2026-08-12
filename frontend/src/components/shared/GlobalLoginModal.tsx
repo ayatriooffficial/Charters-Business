@@ -38,7 +38,7 @@ export default function GlobalLoginModal({ isOpen, onClose }: GlobalLoginModalPr
         <button
           onClick={handleClose}
           aria-label="Close login modal"
-          className="absolute cursor-pointer top-3 right-3 z-50 bg-white/80 hover:bg-white rounded-full w-8 h-8 flex items-center justify-center shadow-md transition-all border border-gray-100"
+          className="absolute cursor-pointer p-2 top-3 right-3 z-50 bg-[#efefef] hover:bg-[#cccccc] rounded-full w-8 h-8 flex items-center justify-center transition-all border border-gray-100"
         >
           <Image src="/Charters-icon/Cancel.svg" alt="Close" width={24} height={24} className="opacity-70 hover:opacity-100 transition-opacity" />
         </button>

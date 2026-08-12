@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { scholarshipBanner } from "@/data/applyPageData";
@@ -105,13 +107,29 @@ export default function Hersection() {
 
                             {/* CTA */}
                             <div className="mt-6 sm:mt-10">
-                                <Link
-                                    href={HERO_CTA.href}
-                                    className="inline-flex items-center  bg-[#222222] hover:bg-[#000000]  px-4 sm:px-6 py-2 sm:py-2 text-xs sm:text-sm font-semibold text-white"
+                                <button
+                                    onClick={async () => {
+                                        try {
+                                            const url = "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784611644/charters-placement-report-2026_gyuu4p.avif";
+                                            const filename = "charters-student-life-placement-report.avif";
+                                            const response = await fetch(url);
+                                            const blob = await response.blob();
+                                            const blobUrl = window.URL.createObjectURL(blob);
+                                            const link = document.createElement("a");
+                                            link.href = blobUrl;
+                                            link.download = filename;
+                                            document.body.appendChild(link);
+                                            link.click();
+                                            document.body.removeChild(link);
+                                            window.URL.revokeObjectURL(blobUrl);
+                                        } catch (error) {
+                                            console.error("Download failed:", error);
+                                        }
+                                    }}
+                                    className="inline-flex items-center bg-[#222222] hover:bg-[#000000] px-4 sm:px-6 py-2 sm:py-2 text-xs sm:text-sm font-semibold text-white cursor-pointer"
                                 >
                                     {HERO_CTA.label}
-
-                                </Link>
+                                </button>
                             </div>
                         </section>
 

@@ -288,23 +288,23 @@ function Navbar() {
                     <span>{countdown.dateStr}</span>
                     <span className="font-medium text-black ml-1">Ends In:</span>
                     <div className="flex items-center gap-0.5 font-bold">
-                      <span className="text-[#ff3b30] font-medium text-[14px]">{countdown.days}</span>
-                      <span className="text-black text-[13px] font-medium mr-0.5">D</span>
+                      <span className="text-[#ff3b30] font-bold text-[14px]">{countdown.days}</span>
+                      <span className="text-black text-[13px] font-bold mr-0.5">D</span>
                       <span className="text-black font-light text-[11px]">:</span>
-                      <span className="text-[#ff3b30] font-medium text-[14px]">{countdown.hours}</span>
+                      <span className="text-[#ff3b30] font-bold text-[14px]">{countdown.hours}</span>
                       <span className="text-black text-[13px] font-medium mr-0.5">H</span>
                       <span className="text-black font-light text-[11px]">:</span>
-                      <span className="text-[#ff3b30] font-medium text-[14px]">{countdown.minutes}</span>
+                      <span className="text-[#ff3b30] font-bold text-[14px]">{countdown.minutes}</span>
                       <span className="text-black text-[13px] font-medium mr-0.5">M</span>
                       <span className="text-black font-light text-[11px]">:</span>
-                      <span className="text-[#ff3b30] font-medium text-[14px]">{countdown.seconds}</span>
+                      <span className="text-[#ff3b30] font-bold text-[14px]">{countdown.seconds}</span>
                       <span className="text-black text-[13px] font-medium">S</span>
                     </div>
                     <span className="mx-1.5 text-black text-[13px] font-medium">|</span>
                     <span>Talk to Us:</span>
                     <a
                       href="tel:+919836465083"
-                      className="text-gray-900 hover:text-[#ff3b30] transition-colors font-bold"
+                      className="font-bold text-[14px] text-[#222222] hover:text-black transition-colors"
                       onClick={(e) => e.stopPropagation()}
                     >
                       +91 9836465083
@@ -391,7 +391,7 @@ function Navbar() {
           <div className="mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
             <div className="flex items-center justify-between py-2 sm:py-2 w-full">
               <div
-                className="w-28 sm:w-36 md:w-40 h-6 sm:h-7 md:h-8 relative cursor-pointer transition-opacity duration-200 shrink-0"
+                className="w-28 sm:w-36 md:w-40 h-8 sm:h-10 md:h-10 relative cursor-pointer transition-opacity duration-200 shrink-0"
                 onClick={handleLogoClick}
                 role="button"
                 tabIndex={0}
@@ -474,10 +474,21 @@ function Navbar() {
                       document.body.style.overflow = 'hidden';
                     }
                   }}
-                  className="px-3 py-1.5 text-xs font-semibold text-white bg-[#B30437] hover:bg-[#8B0329] rounded-md transition-colors"
+                  className="px-3 py-1.5 text-xs font-semibold text-white bg-[#B30437] hover:bg-[#8B0329] transition-colors"
                 >
                   APPLY
                 </button>
+                <a
+                  href="tel:+919836465083"
+                  className="p-1.5 rounded-md hover:bg-gray-100/60 transition-colors duration-150 flex items-center justify-center"
+                  aria-label="Call us"
+                >
+                  <Image src="/Charters-icon/phone call.svg"
+                    alt="Phone Call"
+                    width={18}
+                    height={18}
+                    className="w-[18px] h-[18px]" />
+                </a>
                 <button
                   className="p-2 rounded-md hover:bg-gray-100/60 transition-colors duration-150 relative z-[9999]"
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -715,9 +726,9 @@ function Navbar() {
         </div>
       </div>
       {isMounted && (
-        <GlobalLoginModal 
-          isOpen={showInterviewAI} 
-          onClose={() => setShowInterviewAI(false)} 
+        <GlobalLoginModal
+          isOpen={showInterviewAI}
+          onClose={() => setShowInterviewAI(false)}
         />
       )}
     </header>

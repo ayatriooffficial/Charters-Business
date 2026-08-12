@@ -57,13 +57,23 @@ const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
     setIsVisible(true);
   }, [inView]);
 
-  const handleDownload = () => {
-    const link = document.createElement("a");
-    link.href = "/home/Capdsdsfture.JPG";
-    link.download = "placement-report.JPG";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const handleDownload = async () => {
+    try {
+      const url = "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784611644/charters-placement-report-2026_gyuu4p.avif";
+      const filename = "charters-placement-report-2025.avif";
+      const response = await fetch(url);
+      const blob = await response.blob();
+      const blobUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = blobUrl;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(blobUrl);
+    } catch (error) {
+      console.error("Download failed:", error);
+    }
   };
 
   return (
@@ -161,6 +171,7 @@ const PlacementReportClient: React.FC<PlacementReportClientProps> = ({
           <BannerBlock
             imageSrc="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784656491/charters-placement-report_yj1uj9.avif"
             imageAlt="Charters Union Career Report 2025"
+            imageHoverLabel="Placement Report 2025"
             title={
               <>
                 <strong> 97%&apos;</strong> of students secured full time job offer by their <strong>4</strong>th month of Internship, with <br></br> the highest CTC being <strong> ₹12.3</strong>lakhs/month.

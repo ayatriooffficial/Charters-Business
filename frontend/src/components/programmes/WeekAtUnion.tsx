@@ -42,9 +42,9 @@ const WeekAtTetr = ({ data, assets }: WeekAtTetrProps) => {
       >
         <div className="max-w-[85rem] pt-2 sm:pt-3 md:pt-4 section-header-block">
           {/* Header */}
-          <div className="text-center mb-4 sm:mb-6 md:mb-8" id="week-content">
-            <p className="section-eyebrow" role="text">
-              WEEKLY SCHEDULE
+          <div className="text-center mb-2 sm:mb-4 md:mb-6" id="week-content">
+            <p id="timetable-heading" className="text-sm font-semibold text-[#B30437] tracking-wider mb-4 lg:mb-6">
+              Weekly Schedule Overview
             </p>
             <h2
               id="week-heading"
@@ -62,7 +62,7 @@ const WeekAtTetr = ({ data, assets }: WeekAtTetrProps) => {
                 heading
               )}
             </h2>
-            <p className="text-[#5f6368] text-sm md:text-base lg:text-lg">
+            <p className="text-[#5f6368] pb-4 text-sm md:text-base lg:text-lg">
               {subtitle}
             </p>
           </div>
@@ -73,9 +73,7 @@ const WeekAtTetr = ({ data, assets }: WeekAtTetrProps) => {
             role="region"
             aria-labelledby="timetable-heading"
           >
-            <h2 id="timetable-heading" className="sr-only">
-              Weekly Schedule Overview
-            </h2>
+
             <div className="min-w-[350vw] sm:min-w-full">
               <figure className="relative w-[350vw] sm:w-full">
                 {timetableImage && (
@@ -91,7 +89,7 @@ const WeekAtTetr = ({ data, assets }: WeekAtTetrProps) => {
                     alt="Weekly timetable showing daily activities at Charters' Union including morning sessions, afternoon workshops, evening projects, and weekend activities"
                     width={1200}
                     height={800}
-                    className="w-full h-auto shadow-lg border border-gray-200"
+                    className="w-full h-auto"
                     priority
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
                   />

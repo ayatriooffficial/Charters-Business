@@ -13,7 +13,6 @@ import {
   generateBreadcrumbSchema,
   generateFAQSchema,
   generateAdmissionHowToSchema,
-  organizationReferenceSchema,
   websiteReferenceSchema,
   combineSchemas,
 } from "@/lib/schema";
@@ -134,7 +133,6 @@ export default async function ProgrammePage({
   const howToSchema = generateAdmissionHowToSchema(programme.card.title);
 
   const consolidatedSchema = combineSchemas(
-    organizationReferenceSchema,
     websiteReferenceSchema,
     webPageSchema,
     courseSchema,

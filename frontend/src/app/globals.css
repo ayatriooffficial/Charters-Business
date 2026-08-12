@@ -83,8 +83,13 @@ body {
 
 /* ─── Animations (used across multiple components) ────────────── */
 @keyframes logoScroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .animate-logo-scroll {
@@ -97,6 +102,7 @@ body {
     transform: scale(1);
     opacity: 0.75;
   }
+
   100% {
     transform: scale(1.38);
     opacity: 0;
@@ -116,12 +122,15 @@ body {
   z-index: 0;
 }
 
-.hl-wrap.hl-px-0 { padding-left: 0; padding-right: 0; }
+.hl-wrap.hl-px-0 {
+  padding-left: 0;
+  padding-right: 0;
+}
 
 .hl-bg {
   position: absolute;
   inset: 0;
-  background: #56BAB3;
+  background: #AAC8EB;
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
@@ -140,7 +149,7 @@ body {
   width: 11px;
   height: 11px;
   border-radius: 5px;
-  background: #56BAB3;
+  background: #AAC8EB;
   opacity: 0;
   transition: opacity 0.2s ease 0.75s;
   z-index: 2;
@@ -162,9 +171,17 @@ body {
 }
 
 /* ─── Active state (when element enters viewport) ─── */
-.hl-wrap.hl-active .hl-bg   { transform: scaleX(1); }
-.hl-wrap.hl-active .hl-text { color: #000; }
-.hl-wrap.hl-active .hl-dot  { opacity: 1; }
+.hl-wrap.hl-active .hl-bg {
+  transform: scaleX(1);
+}
+
+.hl-wrap.hl-active .hl-text {
+  color: #000;
+}
+
+.hl-wrap.hl-active .hl-dot {
+  opacity: 1;
+}
 
 /* ─── Theme variants (add to hl-wrap to change color scheme) ─── */
 /* (Currently unused - add variants here if needed) */
@@ -173,8 +190,13 @@ body {
 
 /* ─── Modal animations (shared across all modal components) ───── */
 @keyframes modalBackdropFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes modalContentScaleIn {
@@ -182,6 +204,7 @@ body {
     opacity: 0;
     transform: scale(0.95) translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -189,8 +212,13 @@ body {
 }
 
 @keyframes modalBackdropFadeOut {
-  from { opacity: 1; }
-  to   { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }
 
 @keyframes modalContentScaleOut {
@@ -198,6 +226,7 @@ body {
     opacity: 1;
     transform: scale(1) translateY(0);
   }
+
   to {
     opacity: 0;
     transform: scale(0.95) translateY(10px);
@@ -222,8 +251,13 @@ body {
 
 /* Generic fadeIn — used by multiple components */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .animate-fadeIn {

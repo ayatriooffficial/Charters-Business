@@ -52,7 +52,7 @@ const ProgramInfo: React.FC<ProgramInfoProps> = ({ data }) => {
                       </dt>
                     </div>
 
-                    <div className="text-black text-[14px] sm:text-[16px] lg:text-[16px] font-bold">
+                    <div className="text-black text-[12px] sm:text-[14px] lg:text-[14px] font-bold">
                       {item.value}
                     </div>
                   </div>

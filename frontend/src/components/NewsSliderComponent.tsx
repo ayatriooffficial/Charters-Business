@@ -59,10 +59,11 @@ const NewsSliderComponent: React.FC<NewsSliderComponentProps> = ({
   const items = newsItems.length > 0 ? newsItems : defaultNews;
   const totalRealSlides = items.length;
 
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
   const SLIDE_WIDTH = 30;
-  const STEP = 60; // Increased from 30 to 60 for faster scrolling
-  const maxOffset = Math.max(0, totalRealSlides * SLIDE_WIDTH - 100);
-  const [offsetPercent, setOffsetPercent] = useState(0);
+  const STEP = 60;
 
   const isMobileView = () => {
     return typeof window !== "undefined" && window.innerWidth <= 768;
@@ -88,8 +89,9 @@ const NewsSliderComponent: React.FC<NewsSliderComponentProps> = ({
 
     setIsAnimating(true);
 
-    // Calculate scroll amount based on container width
-    const scrollAmount = scrollContainer.clientWidth * (STEP / 100);
+    // Calculate scroll amount based on the actual width of a slide
+    const firstSlide = scrollContainer.firstElementChild as HTMLElement;
+    const scrollAmount = firstSlide ? firstSlide.clientWidth : scrollContainer.clientWidth;
     const targetScroll = scrollContainer.scrollLeft + (direction * scrollAmount);
 
     scrollContainer.scrollTo({
@@ -125,8 +127,9 @@ const NewsSliderComponent: React.FC<NewsSliderComponentProps> = ({
           setCurrentIndex(activeIndex);
           updateDots(activeIndex);
 
-          const newOffset = scrollContainer.scrollLeft > 1 ? (scrollContainer.scrollLeft / scrollContainer.clientWidth) * 100 : 0;
-          setOffsetPercent(newOffset);
+          const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+          setCanScrollLeft(scrollContainer.scrollLeft > 5);
+          setCanScrollRight(maxScrollLeft > 0 && scrollContainer.scrollLeft < maxScrollLeft - 5);
           ticking = false;
         });
         ticking = true;
@@ -206,9 +209,8 @@ const NewsSliderComponent: React.FC<NewsSliderComponentProps> = ({
           </div>
         </div>
 
-        {/* Navigation Buttons - Outside scroll container */}
-        <div className="absolute top-1/2 -translate-y-1/2 right-4 sm:right-2 pointer-events-none">
-          {offsetPercent < maxOffset && (
+        <div className="absolute top-1/2 -translate-y-1/2 right-4 sm:right-2 z-20 pointer-events-none">
+          {canScrollRight && (
             <button
               onClick={() => changeSlide(1)}
               disabled={isAnimating}
@@ -232,8 +234,8 @@ const NewsSliderComponent: React.FC<NewsSliderComponentProps> = ({
             </button>
           )}
         </div>
-        <div className="absolute top-1/2 -translate-y-1/2 left-4 sm:left-2 pointer-events-none">
-          {offsetPercent > 0 && (
+        <div className="absolute top-1/2 -translate-y-1/2 left-4 sm:left-2 z-20 pointer-events-none">
+          {canScrollLeft && (
             <button
               onClick={() => changeSlide(-1)}
               disabled={isAnimating}

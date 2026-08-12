@@ -11,6 +11,11 @@ const ADMIN_RAW =
   "http://localhost:5001/api/internal/admin";
 export const ADMIN_API_BASE = ADMIN_RAW.replace(/\/$/, "");
 
+// Public (user-facing) endpoints of the admin backend, e.g. job applications.
+export const ADMIN_PUBLIC_API_BASE = ADMIN_RAW
+  .replace(/\/api\/internal\/admin\/?$/i, "/api")
+  .replace(/\/$/, "");
+
 // TYPES
 
 export interface CounselingFormData {
@@ -457,7 +462,7 @@ export const applyForPosition = async (
     }
 
     const response = await fetch(
-      `${API_BASE_URL}/job-applications/apply/${type}/${id}`,
+      `${ADMIN_PUBLIC_API_BASE}/job-applications/apply/${type}/${id}`,
       {
         method: "POST",
         headers: {
@@ -484,7 +489,7 @@ export const getMyApplications = async (
   token: string,
 ): Promise<ApiResponse<any>> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/job-applications/my`, {
+    const response = await fetch(`${ADMIN_PUBLIC_API_BASE}/job-applications/my`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

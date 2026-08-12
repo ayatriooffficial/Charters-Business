@@ -70,7 +70,7 @@ const OneSpaceForEveryTeam = () => {
           <h2 className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
             Young Charter&apos;s at{" "}
             <HighlightText className="font-bold">
-              Global Companys
+              Global Companys'
             </HighlightText>
           </h2>
           <div className="flex justify-center">
@@ -103,8 +103,8 @@ const OneSpaceForEveryTeam = () => {
         </div>
 
         {/* Main Content */}
-        <div className="bg-[#F4F2EE] p-4 sm:p-6 lg:p-8 flex flex-col lg:flex-col">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start mb-2 lg:mb-4 py-5">
+        <div className="bg-[#F6F4F2] p-4 sm:p-6 lg:p-8 flex flex-col lg:flex-col">
+          <div className="grid lg:grid-cols-2 gap-4 lg:gap-6 items-start mb-2 lg:mb-4 py-5">
             {/* Quote and Company Info */}
             <article
               className="space-y-6 lg:space-y-8 order-2 lg:order-none"
@@ -112,20 +112,21 @@ const OneSpaceForEveryTeam = () => {
               aria-label="Company testimonial"
             >
               {/* Company Logo */}
-              <div className="text-base sm:text-lg font-semibold lg:visible hidden text-black">
+              <div className=" lg:visible hidden text-black">
                 {currentTestimonial.company}
               </div>
 
               {/* Quote Section */}
-              <blockquote className="space-y-4 lg:space-y-6">
-                <p className="text-xl sm:text-2xl lg:text-3xl   text-black leading-relaxed font-light">
+              <blockquote className="space-y-2 lg:space-y-4">
+                <p className="font-semibold text-[14px] sm:text-[22px] md:text-[22px] lg:text-[26px]text-black leading-relaxed">
                   &ldquo;{currentTestimonial.quote}&rdquo;
                 </p>
                 <div>
                   <cite className="text-xs sm:text-sm text-gray-600">
-                    {currentTestimonial.role}
+                    &ldquo;{currentTestimonial.author}&rdquo;
                   </cite>
                 </div>
+                <p className="text-xs sm:text-sm pt-[25px] text-gray-600">Internship Participated Student</p>
               </blockquote>
 
               {/* Participant Avatars */}
@@ -134,59 +135,25 @@ const OneSpaceForEveryTeam = () => {
                   Course Participants
                 </h3>
                 <div className="flex items-start gap-4 sm:gap-6">
-                  {/* Avatar 1 */}
-                  <div className="text-center">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-300 overflow-hidden mb-2">
-                      <Image
-                        src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
-                        alt="Ananya Sharma"
-                        width={48}
-                        height={48}
-                        className="object-cover"
-                        loading="lazy"
-                      />
+                  {currentTestimonial.participants?.map((participant: any, index: number) => (
+                    <div key={index} className="text-center">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-400 overflow-hidden mb-2">
+                        <Image
+                          src={participant.image}
+                          alt={participant.name}
+                          width={48}
+                          height={48}
+                          className="object-cover w-full h-full"
+                          style={{ transform: "scale(1.35)", objectPosition: "125% 10%" }}
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="text-xs">
+                        <p className="text-black font-medium">{participant.name}</p>
+                        <p className="text-gray-600">{participant.date}</p>
+                      </div>
                     </div>
-                    <div className="text-xs">
-                      <p className="text-black font-medium">Ananya Sharma</p>
-                      <p className="text-gray-600">Finance analysis</p>
-                    </div>
-                  </div>
-
-                  {/* Avatar 2 */}
-                  <div className="text-center">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-400 overflow-hidden mb-2">
-                      <Image
-                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
-                        alt="Rohan Patel"
-                        width={48}
-                        height={48}
-                        className="object-cover"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="text-xs">
-                      <p className="text-black font-medium">Rohan Patel</p>
-                      <p className="text-gray-600">Finance analysis</p>
-                    </div>
-                  </div>
-
-                  {/* Avatar 3 */}
-                  <div className="text-center">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-400 overflow-hidden mb-2">
-                      <Image
-                        src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
-                        alt="Priya Singh"
-                        width={48}
-                        height={48}
-                        className="object-cover"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="text-xs">
-                      <p className="text-black font-medium">Priya Singh</p>
-                      <p className="text-gray-600">Finance analysis</p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </section>
             </article>
@@ -223,9 +190,9 @@ const OneSpaceForEveryTeam = () => {
                 <button
                   key={testimonial.id}
                   onClick={() => setActiveTestimonial(testimonial.id)}
-                  className={`text-left space-y-3 p-3 transition-all hover:shadow-md relative flex-shrink-0 w-[85vw] sm:w-full snap-center ${activeTestimonial === testimonial.id
-                    ? "bg-[#e3dfd2] border-l-2 border-black"
-                    : "hover:bg-[#fafafa]"
+                  className={`text-left space-y-3 py-2 px-3 transition-all hover:shadow-md relative flex-shrink-0 w-[85vw] sm:w-full snap-center ${activeTestimonial === testimonial.id
+                    ? "bg-[#ffffff] border-l-2 border-[#B30437]"
+                    : "hover:bg-[#ffffff]"
                     }`}
                   role="button"
                   aria-pressed={activeTestimonial === testimonial.id}
@@ -240,17 +207,11 @@ const OneSpaceForEveryTeam = () => {
                   </div>
                   <p className="text-xs text-gray-600 leading-relaxed">
                     {index === 0 &&
-                      "Streamlined workflows to reduce timelines by 3x. →"}
+                      `"${testimonial.quote.substring(0, 50)}..."`}
                     {index === 1 &&
-                      `"${testimonial.quote.substring(0, 50)}..." →`}
+                      `"${testimonial.quote.substring(0, 50)}..."`}
                     {index === 2 &&
-                      `"${testimonial.quote.substring(0, 50)}..." →`}
-                    {index === 3 &&
-                      `"${testimonial.quote.substring(0, 50)}..." →`}
-                    {index === 4 &&
-                      `"${testimonial.quote.substring(0, 50)}..." →`}
-                    {index === 5 &&
-                      "From six apps to one: Scaling faster with all teams running on Notion AI. →"}
+                      `"${testimonial.quote.substring(0, 50)}..."`}
                   </p>
                 </button>
               ))}

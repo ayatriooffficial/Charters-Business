@@ -293,242 +293,244 @@ export default function ChartersInterviewAi() {
                 </div>
 
                 {/* RIGHT panel */}
-                <div className="w-full sm:w-1/2 flex flex-col justify-center overflow-y-auto px-4 sm:px-6 lg:px-12 py-6 sm:py-8">
+                <div className="w-full sm:w-1/2 flex flex-col overflow-y-auto px-4 sm:px-6 lg:px-12 py-6 sm:py-8">
                     <div className="mx-auto w-full max-w-[450px]">
 
-                    {isQuickLoggingIn ? (
-                        /* ── QUICK LOGIN IN PROGRESS ── */
-                        <div className="flex flex-col items-center justify-center py-12">
-                            <div className="w-10 h-10 rounded-full border-4 border-[#6D6DCE] border-t-transparent animate-spin mb-4" />
-                            <p className="text-sm text-[#5f6368]">Checking session...</p>
-                        </div>
-
-                    ) : authStep === 'done' ? (
-                        /* ── SUCCESS ── */
-                        <div className="text-center py-8">
-                            <div className="w-14 h-14 rounded-full bg-[#6D6DCE] flex items-center justify-center mx-auto mb-4">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
-                                    <polyline points="20 6 9 17 4 12" />
-                                </svg>
+                        {isQuickLoggingIn ? (
+                            /* ── QUICK LOGIN IN PROGRESS ── */
+                            <div className="flex flex-col items-center justify-center py-12">
+                                <div className="w-10 h-10 rounded-full border-4 border-[#6D6DCE] border-t-transparent animate-spin mb-4" />
+                                <p className="text-sm text-[#5f6368]">Checking session...</p>
                             </div>
-                            <h3 className="text-xl font-semibold text-black mb-2">You&apos;re logged in!</h3>
-                            <p className="text-[#5f6368] text-sm">You can now continue.</p>
-                        </div>
 
-                    ) : authStep === 'phone' ? (
-                        /* ── STEP 1: PHONE ── */
-                        <>
-                            <div className="flex items-center justify-center mb-2 sm:mb-2 lg:mb-2 mx-auto">
-                                <h2 className="text-2xl sm:text-2xl font-bold text-black text-center px-10">Take your career to the next level now!</h2>
+                        ) : authStep === 'done' ? (
+                            /* ── SUCCESS ── */
+                            <div className="text-center py-8">
+                                <div className="w-14 h-14 rounded-full bg-[#6D6DCE] flex items-center justify-center mx-auto mb-4">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                </div>
+                                <h3 className="text-xl font-semibold text-black mb-2">You&apos;re logged in!</h3>
+                                <p className="text-[#5f6368] text-sm">You can now continue.</p>
                             </div>
-                            <div className="space-y-4">
-                                <div>
-                                    <label className="block text-sm sm:text-base font-medium text-black mb-1.5">
-                                        Phone Number*
-                                    </label>
-                                    <div className="flex">
-                                        <div className="bg-white border border-gray-300 px-3 sm:px-4 py-2 sm:py-2 flex items-center gap-1.5 text-sm sm:text-base text-gray-600 shrink-0 border-r-0">
-                                            <span>+91</span>
-                                            <img src="/Charters-icon/uparrow.svg" alt="arrow" width={14} height={14} className="opacity-55" />
+
+                        ) : authStep === 'phone' ? (
+                            /* ── STEP 1: PHONE ── */
+                            <>
+                                <div className="flex flex-col overflow-y-auto items-center justify-center mb-2 sm:mb-2 lg:mb-2 mx-auto">
+                                    <h2 className="text-2xl sm:text-2xl font-bold text-black text-center px-4 pt-6">Start, switch, or advance your Job-Guarantee career now!</h2>
+                                    <p className="pb-10 pt-2 px-8 text-[12px] sm:text-[12px] text-black text-center">Discover more on Accunting & Marketing course and gain essential skills for today's job market!</p>
+                                </div>
+                                <div className="pt-8 space-y-4">
+                                    <div>
+                                        <label className="block text-sm sm:text-base font-medium text-black mb-1.5">
+                                            Phone Number*
+                                        </label>
+                                        <div className="flex">
+                                            <div className="bg-white border border-gray-300 px-3 sm:px-4 py-2 sm:py-2 flex items-center gap-1.5 text-sm sm:text-base text-gray-600 shrink-0 border-r-0">
+                                                <span>+91</span>
+                                                <img src="/Charters-icon/uparrow.svg" alt="arrow" width={14} height={14} className="opacity-55" />
+                                            </div>
+                                            <input
+                                                className="bg-white flex-1 border border-gray-300 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-[#5f6368] placeholder-gray-400 focus:outline-none focus:border-[#6D6DCE] transition-colors"
+                                                placeholder="Enter phone number"
+                                                type="tel"
+                                                value={loginPhone}
+                                                onChange={(e) => setLoginPhone(e.target.value)}
+                                                onKeyDown={(e) => e.key === 'Enter' && handleSendOtp()}
+                                                required
+                                                pattern="[0-9]{10}"
+                                                title="Please enter a valid 10-digit phone number"
+                                            />
                                         </div>
+                                        <p className="text-[#5f6368] text-[12px] sm:text-[12px] mb-2 text-left">
+                                            Whatsapp linked phone number only
+                                        </p>
+                                    </div>
+                                    {error && <p className="text-sm text-[#B30437]">{error}</p>}
+                                    <button
+                                        onClick={handleSendOtp}
+                                        disabled={isLoading || loginPhone.replace(/\D/g, '').length !== 10}
+                                        className="w-full bg-[#222222] hover:bg-[#000000] cursor-pointer text-white font-bold text-sm sm:text-base tracking-widest py-2 sm:py-3 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                                    >
+                                        {isLoading ? 'VERIFYING...' : 'REQUEST A CALL →'}
+                                    </button>
+                                    <p className="pt-2 px-8 text-[10px] sm:text-[10px] text-black text-center">By submitting this form, you agree to our Terms of Service & Privacy Policy and to be contacted by us via Call/Email/WhatsApp/SMS.</p>
+                                </div>
+                            </>
+
+                        ) : authStep === 'password' ? (
+                            /* ── STEP 1.5: PASSWORD (returning user only) ── */
+                            <>
+                                <h2 className="text-2xl sm:text-3xl font-bold text-black mb-1.5 text-center">
+                                    Welcome Back!
+                                </h2>
+                                <p className="text-[#5f6368] text-sm sm:text-base mb-6 text-center">
+                                    Enter your password for <span className="font-semibold">+91 {loginPhone}</span>
+                                </p>
+                                <div className="space-y-4">
+                                    <div>
+                                        <label className="block text-sm font-medium text-black mb-1.5">
+                                            Password*
+                                        </label>
                                         <input
-                                            className="bg-white flex-1 border border-gray-300 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-[#5f6368] placeholder-gray-400 focus:outline-none focus:border-[#6D6DCE] transition-colors"
-                                            placeholder="Enter phone number"
-                                            type="tel"
-                                            value={loginPhone}
-                                            onChange={(e) => setLoginPhone(e.target.value)}
-                                            onKeyDown={(e) => e.key === 'Enter' && handleSendOtp()}
-                                            required
-                                            pattern="[0-9]{10}"
-                                            title="Please enter a valid 10-digit phone number"
+                                            className="bg-white w-full border border-gray-300 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-[#5f6368] placeholder-gray-400 focus:outline-none focus:border-[#6D6DCE] transition-colors"
+                                            placeholder="Enter your password"
+                                            type="password"
+                                            value={loginPassword}
+                                            onChange={(e) => setLoginPassword(e.target.value)}
+                                            onKeyDown={(e) => e.key === 'Enter' && handlePasswordLogin()}
                                         />
                                     </div>
-                                    <p className="text-[#5f6368] text-[12px] sm:text-[12px] mb-2 text-left">
-                                        Whatsapp linked phone number only
+                                    {error && <p className="text-sm text-[#B30437]">{error}</p>}
+                                    <button
+                                        onClick={handlePasswordLogin}
+                                        disabled={isLoading || !loginPassword}
+                                        className="w-full bg-[#222222] hover:bg-[#000000] text-white font-bold text-sm sm:text-base tracking-widest py-3 sm:py-3.5 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                                    >
+                                        {isLoading ? 'LOGGING IN...' : 'LOGIN →'}
+                                    </button>
+                                    <div className="text-center mt-4">
+                                        <button
+                                            type="button"
+                                            onClick={() => { setAuthStep('phone'); setLoginPassword(''); setError(''); }}
+                                            className="text-sm text-[#5f6368] hover:text-[#5f6368] underline"
+                                        >
+                                            Back to Phone Number
+                                        </button>
+                                    </div>
+                                </div>
+                            </>
+
+                        ) : authStep === 'otp' ? (
+                            /* ── STEP 2: OTP ── */
+                            <>
+                                <h2 className="text-2xl sm:text-3xl font-bold text-black mb-1.5 text-center">
+                                    Enter OTP
+                                </h2>
+                                <p className="text-[#5f6368] text-sm sm:text-base mb-6 text-center">
+                                    Sent to <span className="font-semibold">+91 {loginPhone}</span>
+                                </p>
+                                <div className="space-y-4">
+                                    <div>
+                                        <label className="block text-sm font-medium text-black mb-3">
+                                            Enter 6-digit OTP*
+                                        </label>
+                                        <div className="flex gap-2 justify-center" onPaste={handleOtpPaste}>
+                                            {otp.map((digit, index) => (
+                                                <input
+                                                    key={index}
+                                                    ref={(el) => { otpRefs.current[index] = el; }}
+                                                    type="text"
+                                                    inputMode="numeric"
+                                                    maxLength={1}
+                                                    value={digit}
+                                                    onChange={(e) => handleOtpChange(index, e.target.value)}
+                                                    onKeyDown={(e) => handleOtpKeyDown(index, e)}
+                                                    className="w-10 h-12 sm:w-12 sm:h-14 text-center text-lg sm:text-xl font-semibold border border-gray-300 focus:outline-none focus:border-[#6D6DCE] focus:ring-1 focus:ring-[#6D6DCE] transition-colors bg-white"
+                                                    autoFocus={index === 0}
+                                                />
+                                            ))}
+                                        </div>
+                                    </div>
+                                    {error && <p className="text-sm text-[#B30437]">{error}</p>}
+                                    <button
+                                        onClick={handleVerifyOtp}
+                                        disabled={isLoading || otp.join('').length !== 6}
+                                        className="w-full bg-[#222222] hover:bg-[#000000] text-white font-bold text-sm sm:text-base tracking-widest py-3 sm:py-3.5 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                                    >
+                                        {isLoading ? 'VERIFYING...' : 'VERIFY & CONTINUE →'}
+                                    </button>
+                                    <p className="text-xs text-center text-[#80868b]">
+                                        {resendTimer > 0 ? (
+                                            <>Resend OTP in <span className="text-[#6D6DCE] font-semibold">{resendTimer}s</span></>
+                                        ) : (
+                                            <button type="button" onClick={handleResend} className="text-[#6D6DCE] underline font-medium">
+                                                Resend OTP
+                                            </button>
+                                        )}
                                     </p>
                                 </div>
-                                {error && <p className="text-sm text-[#B30437]">{error}</p>}
-                                <button
-                                    onClick={handleSendOtp}
-                                    disabled={isLoading || loginPhone.replace(/\D/g, '').length !== 10}
-                                    className="w-full bg-[#222222] hover:bg-[#000000] cursor-pointer text-white font-bold text-sm sm:text-base tracking-widest py-2 sm:py-3 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                                >
-                                    {isLoading ? 'VERIFYING...' : 'CONTINUE →'}
-                                </button>
-                            </div>
-                        </>
+                            </>
 
-                    ) : authStep === 'password' ? (
-                        /* ── STEP 1.5: PASSWORD (returning user only) ── */
-                        <>
-                            <h2 className="text-2xl sm:text-3xl font-bold text-black mb-1.5 text-center">
-                                Welcome Back!
-                            </h2>
-                            <p className="text-[#5f6368] text-sm sm:text-base mb-6 text-center">
-                                Enter your password for <span className="font-semibold">+91 {loginPhone}</span>
-                            </p>
-                            <div className="space-y-4">
-                                <div>
-                                    <label className="block text-sm font-medium text-black mb-1.5">
-                                        Password*
-                                    </label>
-                                    <input
-                                        className="bg-white w-full border border-gray-300 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-[#5f6368] placeholder-gray-400 focus:outline-none focus:border-[#6D6DCE] transition-colors"
-                                        placeholder="Enter your password"
-                                        type="password"
-                                        value={loginPassword}
-                                        onChange={(e) => setLoginPassword(e.target.value)}
-                                        onKeyDown={(e) => e.key === 'Enter' && handlePasswordLogin()}
-                                    />
-                                </div>
-                                {error && <p className="text-sm text-[#B30437]">{error}</p>}
-                                <button
-                                    onClick={handlePasswordLogin}
-                                    disabled={isLoading || !loginPassword}
-                                    className="w-full bg-[#222222] hover:bg-[#000000] text-white font-bold text-sm sm:text-base tracking-widest py-3 sm:py-3.5 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                                >
-                                    {isLoading ? 'LOGGING IN...' : 'LOGIN →'}
-                                </button>
-                                <div className="text-center mt-4">
+                        ) : (
+                            /* ── STEP 3: DETAILS (new user only) ── */
+                            <>
+                                <h2 className="text-2xl sm:text-3xl font-bold text-black mb-1.5 text-center">
+                                    {loginPhone.replace(/\D/g, '').endsWith('1234567890') ? 'Set Admin Password' : 'Complete Your Profile'}
+                                </h2>
+                                <p className="text-[#5f6368] text-sm sm:text-base mb-6 text-center">
+                                    {loginPhone.replace(/\D/g, '').endsWith('1234567890') ? 'Create a secure password for future logins' : 'Just a few details to get you started'}
+                                </p>
+                                <div className="space-y-3 sm:space-y-4">
+                                    {!loginPhone.replace(/\D/g, '').endsWith('1234567890') && (
+                                        <>
+                                            <div>
+                                                <label className="block text-sm font-medium text-black mb-1.5">Full Name*</label>
+                                                <input
+                                                    className="bg-white w-full border border-gray-300 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-[#5f6368] placeholder-gray-400 focus:outline-none focus:border-[#6D6DCE] transition-colors"
+                                                    placeholder="Enter your full name"
+                                                    type="text"
+                                                    value={signupName}
+                                                    onChange={(e) => setSignupName(e.target.value)}
+                                                />
+                                            </div>
+                                            <div>
+                                                <label className="block text-sm font-medium text-black mb-1.5">Email Address*</label>
+                                                <input
+                                                    className="bg-white w-full border border-gray-300 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-[#5f6368] placeholder-gray-400 focus:outline-none focus:border-[#6D6DCE] transition-colors"
+                                                    placeholder="Enter your email"
+                                                    type="email"
+                                                    value={signupEmail}
+                                                    onChange={(e) => setSignupEmail(e.target.value)}
+                                                />
+                                            </div>
+                                        </>
+                                    )}
+                                    <div>
+                                        <label className="block text-sm font-medium text-black mb-1.5">Create Password*</label>
+                                        <input
+                                            className="bg-white w-full border border-gray-300 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-[#5f6368] placeholder-gray-400 focus:outline-none focus:border-[#6D6DCE] transition-colors"
+                                            placeholder="Min 8 characters"
+                                            type="password"
+                                            value={signupPassword}
+                                            onChange={(e) => setSignupPassword(e.target.value)}
+                                            required
+                                            minLength={8}
+                                        />
+                                    </div>
+                                    {!loginPhone.replace(/\D/g, '').endsWith('1234567890') && (
+                                        <div>
+                                            <label className="block text-sm font-medium text-black mb-1.5">Course Interested In*</label>
+                                            <div className="relative">
+                                                <select
+                                                    className="w-full border border-gray-300 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-[#5f6368] bg-white appearance-none focus:outline-none focus:border-[#6D6DCE] transition-colors"
+                                                    value={signupProgram}
+                                                    onChange={(e) => setSignupProgram(e.target.value)}
+                                                >
+                                                    <option value="" disabled>Select a course</option>
+                                                    {COURSE_OPTIONS.map((s) => (
+                                                        <option key={s} value={s}>{s}</option>
+                                                    ))}
+                                                </select>
+                                                <svg className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[#5f6368]" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                    <polyline points="6 9 12 15 18 9" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    )}
+                                    {error && <p className="text-sm text-[#B30437]">{error}</p>}
                                     <button
-                                        type="button"
-                                        onClick={() => { setAuthStep('phone'); setLoginPassword(''); setError(''); }}
-                                        className="text-sm text-[#5f6368] hover:text-[#5f6368] underline"
+                                        onClick={handleSignup}
+                                        disabled={isLoading || !signupPassword || (!loginPhone.replace(/\D/g, '').endsWith('1234567890') && (!signupName.trim() || !signupEmail.trim() || !signupProgram))}
+                                        className="w-full bg-[#222222] hover:bg-[#000000] text-white font-bold text-sm sm:text-base tracking-widest py-3 sm:py-3.5 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                                     >
-                                        Back to Phone Number
+                                        {isLoading ? 'CREATING ACCOUNT...' : 'COMPLETE SIGNUP →'}
                                     </button>
                                 </div>
-                            </div>
-                        </>
-
-                    ) : authStep === 'otp' ? (
-                        /* ── STEP 2: OTP ── */
-                        <>
-                            <h2 className="text-2xl sm:text-3xl font-bold text-black mb-1.5 text-center">
-                                Enter OTP
-                            </h2>
-                            <p className="text-[#5f6368] text-sm sm:text-base mb-6 text-center">
-                                Sent to <span className="font-semibold">+91 {loginPhone}</span>
-                            </p>
-                            <div className="space-y-4">
-                                <div>
-                                    <label className="block text-sm font-medium text-black mb-3">
-                                        Enter 6-digit OTP*
-                                    </label>
-                                    <div className="flex gap-2 justify-center" onPaste={handleOtpPaste}>
-                                        {otp.map((digit, index) => (
-                                            <input
-                                                key={index}
-                                                ref={(el) => { otpRefs.current[index] = el; }}
-                                                type="text"
-                                                inputMode="numeric"
-                                                maxLength={1}
-                                                value={digit}
-                                                onChange={(e) => handleOtpChange(index, e.target.value)}
-                                                onKeyDown={(e) => handleOtpKeyDown(index, e)}
-                                                className="w-10 h-12 sm:w-12 sm:h-14 text-center text-lg sm:text-xl font-semibold border border-gray-300 focus:outline-none focus:border-[#6D6DCE] focus:ring-1 focus:ring-[#6D6DCE] transition-colors bg-white"
-                                                autoFocus={index === 0}
-                                            />
-                                        ))}
-                                    </div>
-                                </div>
-                                {error && <p className="text-sm text-[#B30437]">{error}</p>}
-                                <button
-                                    onClick={handleVerifyOtp}
-                                    disabled={isLoading || otp.join('').length !== 6}
-                                    className="w-full bg-[#222222] hover:bg-[#000000] text-white font-bold text-sm sm:text-base tracking-widest py-3 sm:py-3.5 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                                >
-                                    {isLoading ? 'VERIFYING...' : 'VERIFY & CONTINUE →'}
-                                </button>
-                                <p className="text-xs text-center text-[#80868b]">
-                                    {resendTimer > 0 ? (
-                                        <>Resend OTP in <span className="text-[#6D6DCE] font-semibold">{resendTimer}s</span></>
-                                    ) : (
-                                        <button type="button" onClick={handleResend} className="text-[#6D6DCE] underline font-medium">
-                                            Resend OTP
-                                        </button>
-                                    )}
-                                </p>
-                            </div>
-                        </>
-
-                    ) : (
-                        /* ── STEP 3: DETAILS (new user only) ── */
-                        <>
-                            <h2 className="text-2xl sm:text-3xl font-bold text-black mb-1.5 text-center">
-                                {loginPhone.replace(/\D/g, '').endsWith('1234567890') ? 'Set Admin Password' : 'Complete Your Profile'}
-                            </h2>
-                            <p className="text-[#5f6368] text-sm sm:text-base mb-6 text-center">
-                                {loginPhone.replace(/\D/g, '').endsWith('1234567890') ? 'Create a secure password for future logins' : 'Just a few details to get you started'}
-                            </p>
-                            <div className="space-y-3 sm:space-y-4">
-                                {!loginPhone.replace(/\D/g, '').endsWith('1234567890') && (
-                                    <>
-                                        <div>
-                                            <label className="block text-sm font-medium text-black mb-1.5">Full Name*</label>
-                                            <input
-                                                className="bg-white w-full border border-gray-300 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-[#5f6368] placeholder-gray-400 focus:outline-none focus:border-[#6D6DCE] transition-colors"
-                                                placeholder="Enter your full name"
-                                                type="text"
-                                                value={signupName}
-                                                onChange={(e) => setSignupName(e.target.value)}
-                                            />
-                                        </div>
-                                        <div>
-                                            <label className="block text-sm font-medium text-black mb-1.5">Email Address*</label>
-                                            <input
-                                                className="bg-white w-full border border-gray-300 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-[#5f6368] placeholder-gray-400 focus:outline-none focus:border-[#6D6DCE] transition-colors"
-                                                placeholder="Enter your email"
-                                                type="email"
-                                                value={signupEmail}
-                                                onChange={(e) => setSignupEmail(e.target.value)}
-                                            />
-                                        </div>
-                                    </>
-                                )}
-                                <div>
-                                    <label className="block text-sm font-medium text-black mb-1.5">Create Password*</label>
-                                    <input
-                                        className="bg-white w-full border border-gray-300 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-[#5f6368] placeholder-gray-400 focus:outline-none focus:border-[#6D6DCE] transition-colors"
-                                        placeholder="Min 8 characters"
-                                        type="password"
-                                        value={signupPassword}
-                                        onChange={(e) => setSignupPassword(e.target.value)}
-                                        required
-                                        minLength={8}
-                                    />
-                                </div>
-                                {!loginPhone.replace(/\D/g, '').endsWith('1234567890') && (
-                                    <div>
-                                        <label className="block text-sm font-medium text-black mb-1.5">Course Interested In*</label>
-                                        <div className="relative">
-                                            <select
-                                                className="w-full border border-gray-300 px-4 py-2.5 sm:py-3 text-sm sm:text-base text-[#5f6368] bg-white appearance-none focus:outline-none focus:border-[#6D6DCE] transition-colors"
-                                                value={signupProgram}
-                                                onChange={(e) => setSignupProgram(e.target.value)}
-                                            >
-                                                <option value="" disabled>Select a course</option>
-                                                {COURSE_OPTIONS.map((s) => (
-                                                    <option key={s} value={s}>{s}</option>
-                                                ))}
-                                            </select>
-                                            <svg className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[#5f6368]" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                                <polyline points="6 9 12 15 18 9" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                )}
-                                {error && <p className="text-sm text-[#B30437]">{error}</p>}
-                                <button
-                                    onClick={handleSignup}
-                                    disabled={isLoading || !signupPassword || (!loginPhone.replace(/\D/g, '').endsWith('1234567890') && (!signupName.trim() || !signupEmail.trim() || !signupProgram))}
-                                    className="w-full bg-[#222222] hover:bg-[#000000] text-white font-bold text-sm sm:text-base tracking-widest py-3 sm:py-3.5 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                                >
-                                    {isLoading ? 'CREATING ACCOUNT...' : 'COMPLETE SIGNUP →'}
-                                </button>
-                            </div>
-                        </>
-                    )}
+                            </>
+                        )}
                     </div>
                 </div>
             </div>

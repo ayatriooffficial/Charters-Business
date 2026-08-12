@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import DownloadReportButton from "@/components/careers/DownloadReportButton";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -185,13 +186,7 @@ export default function CareersPage() {
 
               {/* CTA */}
               <div className="mt-6 sm:mt-10">
-                <Link
-                  href={HERO_CTA.href}
-                  className="inline-flex items-center bg-black px-6 sm:px-8 py-3 sm:py-3 text-xs sm:text-sm font-semibold text-white hover:border-gray-400 transition-colors"
-                >
-                  {HERO_CTA.label}
-
-                </Link>
+                <DownloadReportButton label={HERO_CTA.label} filename="charters-careers-placement-report.avif" />
               </div>
             </section>
 

@@ -39,7 +39,7 @@ export default function Breadcrumbs({ compact }: { compact?: boolean }) {
       aria-label="Breadcrumb"
       className="relative z-10 w-full py-2 bg-white "
     >
-      <ol className="flex flex-wrap items-center gap-1 text-xs sm:text-sm text-gray-600">
+      <ol className="flex flex-wrap items-center gap-1 text-[8px] sm:text-[12px] md:text-[12px] text-gray-600">
         {crumbs.map((crumb, index) => {
           const isLast = index === crumbs.length - 1;
 

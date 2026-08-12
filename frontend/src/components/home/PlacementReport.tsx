@@ -1,5 +1,6 @@
 import React from "react";
 import PlacementReportClient from "./PlacementReportClient";
+import HighlightText from "../shared/HighlightObserver";
 
 export const placementReportData = {
   title: "Charter's Career Transition '25'",
@@ -34,14 +35,20 @@ const PlacementReportDashboard = () => {
               className="text-xs sm:text-sm font-semibold text-[#B30437] tracking-wider mb-2 sm:mb-3"
               role="text"
             >
-              PLACEMENT REPORT
+              PROVEN PLACEMENT REPORT
             </p>
             <h2
-              id="placement-report-heading"
+              id="programs-heading"
               className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]"
             >
-              {placementReportData.title}
+              Charters'{" "}
+              <HighlightText className="mx-2 font-bold text-black">
+                &apos;Career Transition&apos;
+              </HighlightText>
+              {" "}'25/26'{" "}
             </h2>
+
+
           </div>
 
           <div className="flex flex-row overflow-x-auto scrollbar-none items-center gap-6 sm:flex-wrap sm:justify-center w-full px-4 sm:px-0 mb-5 sm:mb-0">

@@ -231,9 +231,9 @@ export default function SalaryGrowthChart({
       {/* Heading */}
       <div className="mb-4 flex-shrink-0">
         <h4 className="flex flex-row">
-          <p className="text-3xl font-bold">~{value.toFixed(2)}x</p> <span className="text-[10px] pl-[5px] pt-[15px]">| Growth 39% </span>
+          <p className="text-3xl font-bold">~{value.toFixed(2)}x</p>
         </h4>
-        <p className="text-sm text-gray-600">1:3 Internship Global Offer&apos;s</p>
+        <p className="text-sm text-gray-600">1:3 Internship Offer&apos;s</p>
       </div>
 
       {/* Chart */}

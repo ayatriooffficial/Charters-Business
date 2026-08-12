@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { programmes } from "@/data/programmes";
+import HighlightText from "../shared/HighlightObserver";
 import BrochureDownloadButton from "./BrochureDownloadButton";
 
 export default function OurProgrammesSection() {
@@ -11,21 +12,28 @@ export default function OurProgrammesSection() {
       aria-labelledby="programmes-heading"
     >
       {/* Header Section */}
-      <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-13 mb-2">
+      <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-22 md:pt-22 pb-13 mb-2">
         <div className="w-full mx-auto text-center">
           <div>
             <p
               className="text-sm font-semibold text-[#B30437] tracking-wider mb-3"
               role="text"
             >
-              PROGRAMMES OVERVIEW
+              ELEVATE. EXECUTE. EVOLVE.
             </p>
             <h2
-              id="programmes-heading"
+              id="programs-heading"
               className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]"
             >
-              Explore Programmes
+              {" "}
+              <HighlightText className="mx-2 font-bold text-black">
+                &apos;Hands-on & Placement&apos;
+              </HighlightText>
+              {" "}Driven{" "}
+              Programmes&apos;s
             </h2>
+
+
           </div>
           <p className="text-base sm:text-lg text-[#5f6368]">
             Choose from our range of programmes designed to build future leaders
@@ -39,7 +47,7 @@ export default function OurProgrammesSection() {
         <h3 className="sr-only">Available Academic Programmes</h3>
 
         <div className="relative overflow-x-auto overflow-y-hidden scrollbar-hide">
-          <div className="flex border-[#D5D0CA] divide-x divide-[#D5D0CA]">
+          <div className="flex border-gray-200 divide-x divide-gray-200">
             {programmes.map((programme, index) => (
               <article
                 key={programme.id}
@@ -79,9 +87,9 @@ export default function OurProgrammesSection() {
                   {/* Main Details Section - 3:7 Layout */}
                   <div className="flex gap-4 flex-1 md:flex-row flex-col pt-[15px]">
                     {/* Left Column (30%) - Format, Eligibility, Duration, Job, Salary */}
-                    <div className="flex md:flex-col gap-5 md:w-[30%] flex-row  flex-shrink-0 overflow-scroll scrollbar-hide">
+                    <div className="flex md:flex-col gap-6 md:gap-5 md:w-[30%] flex-row flex-shrink-0 overflow-x-auto scrollbar-hide">
                       {/* Format */}
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-2 w-fit max-w-[150px] md:max-w-none md:w-auto flex-shrink-0">
                         <div className="flex md:flex-row items-center flex-shrink-0 relative">
                           <img src="/Charters-icon/on-campus.svg"
                             alt="Format icon"
@@ -101,7 +109,7 @@ export default function OurProgrammesSection() {
                       </div>
 
                       {/* Eligibility */}
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-2 w-fit max-w-[150px] md:max-w-none md:w-auto flex-shrink-0">
                         <div className="flex md:flex-row items-center flex-shrink-0 relative">
                           <img src="/Charters-icon/eligibility.svg"
                             alt="Eligibility icon"
@@ -121,7 +129,7 @@ export default function OurProgrammesSection() {
                       </div>
 
                       {/* Duration */}
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-2 w-fit max-w-[150px] md:max-w-none md:w-auto flex-shrink-0">
                         <div className="flex md:flex-row items-center flex-shrink-0 relative">
                           <img src="/Charters-icon/duration.svg"
                             alt="Duration icon"
@@ -141,7 +149,7 @@ export default function OurProgrammesSection() {
                       </div>
 
                       {/* Job Openings */}
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-2 w-fit max-w-[150px] md:max-w-none md:w-auto flex-shrink-0">
                         <div className="flex md:flex-row items-center flex-shrink-0 relative">
                           <img src="/Charters-icon/jobs.svg"
                             alt="Job openings icon"
@@ -160,7 +168,7 @@ export default function OurProgrammesSection() {
                           </p>
                         </div>
                       </div>
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-2 w-fit max-w-[150px] md:max-w-none md:w-auto flex-shrink-0">
                         <div className="flex md:flex-row items-center flex-shrink-0 relative">
                           <img src="/Charters-icon/vision.svg"
                             alt="Expected CTC icon"
@@ -174,7 +182,7 @@ export default function OurProgrammesSection() {
                         </div>
                         <div className="flex-1 space-y-1 min-w-0">
                           <div className="flex items-center gap-1 text-[0.65rem]">
-                            <div className="flex bg-[#E1B2A8] text-[#382D29] px-2 py-[3px] rounded-r-[1.5px] font-semibold">
+                            <div className="flex bg-[#aac8eb] text-[#382D29] px-2 py-[3px] rounded-r-[1.5px] font-semibold">
                               Traditional
                               <span className="ml-[7px] font-bold text-gray-900 flex-shrink-0">
                                 {programme.card.expectedCtc?.traditional}
@@ -183,7 +191,7 @@ export default function OurProgrammesSection() {
                           </div>
                           <div className="flex items-center gap-2 text-[0.65rem]">
                             <div className="flex-1 bg-[#B30437] text-white px-2 py-[3px] rounded-r-[1.5px] font-semibold">
-                              {programme.card.expectedCtc?.label }
+                              {programme.card.expectedCtc?.label}
                               <span className="ml-[7px] font-bold flex-shrink-0">
                                 {programme.card.expectedCtc?.cmp}
                                 <sup className="text-[0.5rem] ml-0.5">
@@ -197,7 +205,7 @@ export default function OurProgrammesSection() {
                     </div>
 
                     {/* Vertical Divider */}
-                    <div className="w-[0.5px] bg-[#CCCBC9] h-auto flex-shrink-0"></div>
+                    <div className="w-[0.3px] bg-[#efefef] h-auto flex-shrink-0"></div>
 
                     {/* Right Column (70%) - Curriculum, Fee Structure & Program Partners */}
                     <div className="flex flex-col gap-2 flex-1 min-w-0">
@@ -305,7 +313,7 @@ export default function OurProgrammesSection() {
                       className="block w-full md:w-auto md:flex-1"
                     >
                       <button
-                        className="w-full bg-[#ffffff] cursor-pointer text-black py-3 px-2 md:px-2 flex items-center justify-center gap-2 transition-all duration-300 font-semibold text-sm md:text-xs whitespace-nowrap"
+                        className="w-full bg-[#ffffff] border border-black cursor-pointer text-black py-2.5 px-2 md:px-2 flex items-center justify-center gap-2 transition-all duration-300 font-semibold text-sm md:text-xs whitespace-nowrap"
                         aria-label={`Explore ${programme.card.title} programme details`}
                         type="button"
                       >

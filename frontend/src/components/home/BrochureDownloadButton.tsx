@@ -81,7 +81,7 @@ export default function BrochureDownloadButton({ programme }: BrochureDownloadBu
     <>
       <button
         onClick={handleDownloadBrochure}
-        className="w-full md:w-auto cursor-pointer bg-[#222222] hover:bg-[#000000] text-white py-3 px-10 md:px-10 flex items-center justify-center gap-2 font-semibold text-sm md:text-xs transition-all duration-300 whitespace-nowrap"
+        className="w-full md:w-auto cursor-pointer bg-[#222222] hover:bg-[#000000] text-white py-2.5 px-10 md:px-10 flex items-center justify-center gap-2 font-semibold text-sm md:text-xs transition-all duration-300 whitespace-nowrap"
         aria-label={`Download ${programme.card.title} brochure`}
         type="button"
       >
@@ -94,9 +94,9 @@ export default function BrochureDownloadButton({ programme }: BrochureDownloadBu
         />
       </button>
 
-      <GlobalLoginModal 
-        isOpen={showLoginModal} 
-        onClose={() => setShowLoginModal(false)} 
+      <GlobalLoginModal
+        isOpen={showLoginModal}
+        onClose={() => setShowLoginModal(false)}
       />
     </>
   );

@@ -4,7 +4,6 @@ import { getAllJobs, getAllInternships } from '@/lib/server/api';
 import {
   generateBreadcrumbSchema,
   combineSchemas,
-  organizationReferenceSchema,
   websiteReferenceSchema,
   generateWebPageSchema,
 } from '@/lib/schema';
@@ -104,7 +103,6 @@ async function getListingSchema(type: string) {
   ]);
 
   return combineSchemas(
-    organizationReferenceSchema,
     websiteReferenceSchema,
     breadcrumbSchema,
     collectionSchema,

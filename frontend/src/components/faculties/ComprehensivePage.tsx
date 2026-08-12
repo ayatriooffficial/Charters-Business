@@ -13,11 +13,22 @@ import PlacementReportClient from '../home/PlacementReportClient';
 import { placementReportData } from '../home/PlacementReport';
 
 
+import dynamic from 'next/dynamic';
+import { useAuth } from '@/context/AuthContext';
+
+const GlobalLoginModal = dynamic(
+  () => import('@/components/shared/GlobalLoginModal'),
+  { ssr: false, loading: () => <div /> }
+);
+
 const SectionSkeleton = () => (
   <div className="h-96 w-full animate-pulse bg-gray-50 rounded" />
 );
 
 export default function ComprehensivePage() {
+  const { user } = useAuth();
+  const [showLoginModal, setShowLoginModal] = useState(false);
+
   // State for LearnFromFinest section
   const [activeFilter, setActiveFilter] = useState('All');
 
@@ -38,6 +49,38 @@ export default function ComprehensivePage() {
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
   ];
+
+  const scrollToFacultySection = () => {
+    const section = document.getElementById('inspiring-educators-section');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  useEffect(() => {
+    if (user) {
+      if (sessionStorage.getItem('pendingExploreFacultyScroll') === 'true') {
+        sessionStorage.removeItem('pendingExploreFacultyScroll');
+        setShowLoginModal(false);
+        document.body.style.overflow = '';
+        setTimeout(() => {
+          scrollToFacultySection();
+        }, 300);
+      }
+    }
+  }, [user]);
+
+  const handleExploreFacultyClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (user) {
+      scrollToFacultySection();
+    } else {
+      sessionStorage.setItem('pendingExploreFacultyScroll', 'true');
+      setShowLoginModal(true);
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
   const HERO_IMAGE = {
     src: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784317152/charters-job-ready-faculty_lbfnuz.avif",
     alt: "job-ready faculty",
@@ -222,7 +265,8 @@ export default function ComprehensivePage() {
 
 
               <button
-                className="inline-flex items-center w-fit bg-[#222222] hover:bg-[#000000] text-white px-8 sm:px-12 py-2 sm:py-2 text-[16px] sm:text-[16px] transition-all duration-200 group"
+                onClick={handleExploreFacultyClick}
+                className="inline-flex items-center w-fit bg-[#222222] hover:bg-[#000000] text-white px-8 sm:px-12 py-2 sm:py-2 text-[16px] sm:text-[16px] transition-all duration-200 group cursor-pointer"
                 type="button"
               >
                 <span>Explore Faculty</span>
@@ -251,7 +295,7 @@ export default function ComprehensivePage() {
       </section >
 
       {/* Faculty Section - matches home page PlacementReport outer section */}
-      < section className="mx-[0%] border-gray-300 bg-white text-black relative" >
+      < section id="inspiring-educators-section" className="mx-[0%] border-gray-300 bg-white text-black relative" >
         <div className="max-w-[85rem] mx-auto pt-22">
           <div className="text-center">
             <p className="text-xs sm:text-sm font-semibold text-[#B30437] tracking-wider mb-2 sm:mb-3" role="text">
@@ -322,59 +366,23 @@ export default function ComprehensivePage() {
                             </div>
                           </div>
 
-                          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 border-l border-gray-300">
-                            {filteredFaculty.map((faculty, idx) => (
+                          {/* Revert to 5 cards: lg:grid-cols-5 */}
+                          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 border-l border-gray-300">
+                            {/* Revert to 5 cards: {filteredFaculty.map((faculty, idx) => ( */}
+                            {filteredFaculty.slice(0, 4).map((faculty, idx) => (
                               <article
                                 key={faculty.name + idx}
-                                className="flex-shrink-0 w-full sm:w-auto hover:bg-[#F4F2EE] border-r border-b border-gray-300 flex flex-col"
+                                className="flex-shrink-0 w-full sm:w-auto hover:bg-[#F6F4F2] border-r border-b border-gray-300 flex flex-col"
                               >
                                 {/* Image */}
-                                <div className="relative w-full aspect-square overflow-hidden bg-[#F4F2EE]">
+                                <div className="relative w-full aspect-[651/905] overflow-hidden bg-[#F6F4F2]">
                                   <Image
                                     src={faculty.imageSrc}
                                     alt={faculty.name}
                                     fill
                                     sizes="(max-width: 640px) 85vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
-                                    className="object-cover"
+                                    className="object-contain"
                                   />
-                                </div>
-
-                                {/* Content */}
-                                <div className="p-5">
-                                  <h2 className="text-[16px] font-semibold text-black">
-                                    {faculty.title}
-                                  </h2>
-
-                                  <p className="text-[#5f6368] text-[12px] font-semibold mt-1">
-                                    by {faculty.name}
-                                  </p>
-
-                                  <div className="h-px bg-gray-400 my-3" />
-
-                                  <p className="text-sm text-[#5f6368] mb-4">
-                                    {faculty.experience}
-                                  </p>
-
-                                  <p className="text-[14px] font-semibold mb-2">
-                                    Research Publications
-                                  </p>
-
-                                  <p className="text-[12px] font-semibold-gray-700 mb-4">
-                                    {faculty.teaching}
-                                  </p>
-
-                                  {/* Logo */}
-                                  <div className="mt-2 h-10 flex items-center justify-start">
-                                    {faculty.logoSrc ? (
-                                      <Image
-                                        src={faculty.logoSrc}
-                                        alt={faculty.name}
-                                        width={100}
-                                        height={30}
-                                        className="h-8 w-auto max-w-full object-contain bg-white rounded-md px-2 py-1"
-                                      />
-                                    ) : null}
-                                  </div>
                                 </div>
                               </article>
                             ))}
@@ -548,59 +556,23 @@ export default function ComprehensivePage() {
                             </h2>
                           </div>
 
-                          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 border-l border-gray-300">
-                            {businessLeaders.map((leader, idx) => (
+                          {/* Revert to 5 cards: lg:grid-cols-5 */}
+                          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 border-l border-gray-300">
+                            {/* Revert to 5 cards: {businessLeaders.map((leader, idx) => ( */}
+                            {businessLeaders.slice(0, 4).map((leader, idx) => (
                               <article
                                 key={leader.name + idx}
-                                className="flex-shrink-0 w-full sm:w-auto hover:bg-[#F4F2EE] border-r border-b border-gray-300 flex flex-col"
+                                className="flex-shrink-0 w-full sm:w-auto hover:bg-[#F6F4F2] border-r border-b border-gray-300 flex flex-col"
                               >
                                 {/* Image */}
-                                <div className="relative w-full aspect-square overflow-hidden bg-[#F4F2EE]">
+                                <div className="relative w-full aspect-[651/905] overflow-hidden bg-[#F6F4F2]">
                                   <Image
                                     src={leader.imageSrc}
                                     alt={leader.name}
                                     fill
                                     sizes="(max-width: 640px) 85vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
-                                    className="object-cover"
+                                    className="object-contain"
                                   />
-                                </div>
-
-                                {/* Content */}
-                                <div className="p-5">
-                                  <h2 className="text-[16px] font-semibold text-black">
-                                    {leader.title}
-                                  </h2>
-
-                                  <p className="text-[#5f6368] text-[12px] font-semibold mt-1">
-                                    by {leader.name}
-                                  </p>
-
-                                  <div className="h-px bg-gray-400 my-3" />
-
-                                  <p className="text-sm text-[#5f6368] mb-4">
-                                    {leader.experience}
-                                  </p>
-
-                                  <p className="text-[14px] font-semibold mb-2">
-                                    Research Publications
-                                  </p>
-
-                                  <p className="text-[12px] font-semibold-gray-700 mb-4">
-                                    {leader.teaching}
-                                  </p>
-
-                                  {/* Logo */}
-                                  <div className="mt-2 h-10 flex items-center justify-start">
-                                    {leader.logoSrc ? (
-                                      <Image
-                                        src={leader.logoSrc}
-                                        alt={leader.name}
-                                        width={100}
-                                        height={30}
-                                        className="h-8 w-auto max-w-full object-contain bg-white rounded-md px-2 py-1"
-                                      />
-                                    ) : null}
-                                  </div>
                                 </div>
                               </article>
                             ))}
@@ -620,6 +592,10 @@ export default function ComprehensivePage() {
           </div>
         </div>
       </section >
+      <GlobalLoginModal
+        isOpen={showLoginModal}
+        onClose={() => setShowLoginModal(false)}
+      />
     </div >
   );
 }

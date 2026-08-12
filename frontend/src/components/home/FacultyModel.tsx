@@ -87,7 +87,7 @@ function FacultyModel({ data }: FacultyModelProps) {
             </h2>
 
             {subtitleText && (
-              <p className="text-black px-[20px] md:px-[50px] lg:px-[70px] text-sm sm:text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
+              <p className="text-black text-sm sm:text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
                 {subtitleText}
               </p>
             )}
@@ -118,65 +118,29 @@ function FacultyModel({ data }: FacultyModelProps) {
           <div className="relative">
             <div
               className={
-                `flex overflow-x-auto scrollbar-none sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 border-l border-gray-300 transition-all duration-300 ease-out ` +
+                /* Revert to 5 cards: lg:grid-cols-5 */
+                `flex overflow-x-auto scrollbar-none sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 border-l border-gray-300 transition-all duration-300 ease-out ` +
                 `${isTabSwitching ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'}`
               }
               style={{ transition: 'opacity 200ms ease-out, transform 200ms ease-out' }}
               role="list"
               aria-label="Faculty members"
             >
-              {filteredFaculty.map((faculty) => (
+              {/* Revert to 5 cards: {filteredFaculty.map((faculty) => ( */}
+              {filteredFaculty.slice(0, 4).map((faculty) => (
                 <article
                   key={faculty.name}
-                  className="flex-shrink-0 w-[85vw] sm:w-auto hover:bg-[#F4F2EE] border-r border-b border-gray-300 flex flex-col"
+                  className="flex-shrink-0 w-[85vw] sm:w-auto hover:bg-[#F6F4F2] border-r border-b border-gray-300 flex flex-col"
                 >
                   {/* Image */}
-                  <div className="relative w-full aspect-square overflow-hidden bg-[#F4F2EE]">
+                  <div className="relative w-full aspect-[651/905] overflow-hidden bg-[#F6F4F2]">
                     <Image
                       src={faculty.imageSrc}
                       alt={faculty.name}
                       fill
                       sizes="(max-width: 640px) 85vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
-                      className="object-cover"
+                      className="object-contain"
                     />
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-5">
-                    <h2 className="text-[16px] font-semibold text-black">
-                      {faculty.title}
-                    </h2>
-
-                    <p className="text-[#5f6368] text-[12px] font-semibold mt-1">
-                      by {faculty.name}
-                    </p>
-
-                    <div className="h-px bg-gray-400 my-3" />
-
-                    <p className="text-sm text-[#5f6368] mb-4">
-                      {faculty.experience}
-                    </p>
-
-                    <p className="text-[14px] font-semibold mb-2">
-                      Research Publications
-                    </p>
-
-                    <p className="text-[12px] font-semibold-gray-700 mb-4">
-                      {faculty.teaching}
-                    </p>
-
-                    {/* Logo */}
-                    <div className="mt-2 h-10 flex items-center justify-start">
-                      {faculty.logoSrc ? (
-                        <Image
-                          src={faculty.logoSrc}
-                          alt={faculty.name}
-                          width={100}
-                          height={30}
-                          className="h-8 w-auto max-w-full object-contain bg-white rounded-md px-2 py-1"
-                        />
-                      ) : null}
-                    </div>
                   </div>
                 </article>
               ))}

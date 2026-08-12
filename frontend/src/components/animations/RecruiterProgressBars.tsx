@@ -103,7 +103,6 @@ const RecruiterProgressBars: React.FC<RecruiterProgressBarsProps> = ({
       <div className="mb-4 flex-shrink-0">
         <h4 className="flex flex-row">
           <p className="text-3xl font-bold">+1257 MNCs</p>
-          <span className="pl-[5px] pt-[15px] text-[10px]"> | Growth 39% </span>
         </h4>
         <p className="text-sm text-gray-600">
           33.7% International + 66.3% Indian Recruiters

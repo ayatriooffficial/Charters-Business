@@ -137,11 +137,40 @@ interface LoginPayload {
   };
 }
 
+
+const safeGetItem = (key: string): string | null => {
+  if (typeof window === 'undefined') return null;
+  try {
+    return localStorage.getItem(key);
+  } catch (e) {
+    return null;
+  }
+};
+
+const safeSetItem = (key: string, value: string): void => {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.setItem(key, value);
+  } catch (e) {
+    // Ignore error
+  }
+};
+
+const safeRemoveItem = (key: string): void => {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.removeItem(key);
+  } catch (e) {
+    // Ignore error
+  }
+};
+
 export function AuthProvider({ children }: { children: React.ReactNode }) {
+
   const getStoredValue = <T,>(key: string, parse: (raw: string) => T, fallback: T): T => {
     if (typeof window === "undefined") return fallback;
     try {
-      const raw = localStorage.getItem(key) || (key === "token" ? getAuthToken() : null);
+      const raw = safeGetItem(key) || (key === "token" ? getAuthToken() : null);
       if (!raw) return fallback;
       return parse(raw);
     } catch {
@@ -163,12 +192,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   );
   const [isLoading, setIsLoading] = useState(() => {
     if (typeof window === "undefined") return true;
-    const hasToken = !!localStorage.getItem("token") || !!getAuthToken();
+    const hasToken = !!safeGetItem("token") || !!getAuthToken();
     return hasToken; // loading if we need to revalidate
   });
   const [authReady, setAuthReady] = useState(() => {
     if (typeof window === "undefined") return false;
-    return !localStorage.getItem("token") && !getAuthToken(); // ready if no token to validate
+    return !safeGetItem("token") && !getAuthToken(); // ready if no token to validate
   });
   const [redirectCode, setRedirectCode] = useState<string | null>(null);
   const [isCodeGenerated, setIsCodeGenerated] = useState(false);
@@ -176,7 +205,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const router = useRouter();
 
   useEffect(() => {
-    const storedToken = localStorage.getItem("token") || getAuthToken();
+    const storedToken = safeGetItem("token") || getAuthToken();
 
     if (!storedToken) {
       setIsLoading(false);
@@ -214,17 +243,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
           setAuthToken(storedToken);
           setUser(userData);
-          localStorage.setItem("user", JSON.stringify(userData));
+          safeSetItem("user", JSON.stringify(userData));
 
           if (apiUser.applications) {
             setApplications(apiUser.applications);
-            localStorage.setItem("applications", JSON.stringify(apiUser.applications));
+            safeSetItem("applications", JSON.stringify(apiUser.applications));
           }
         }
       } catch (err) {
         console.error("Session revalidation failed:", err);
-        localStorage.removeItem("token");
-        localStorage.removeItem("user");
+        safeRemoveItem("token");
+        safeRemoveItem("user");
         sessionStorage.clear();
         removeAuthToken();
         setUser(null);
@@ -256,7 +285,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         if (response.ok && data?.data) {
           setApplications(data.data);
           if (typeof window !== "undefined")
-            localStorage.setItem(
+            safeSetItem(
               "applications",
               JSON.stringify(data.data)
             );
@@ -286,7 +315,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         if (response.ok && data?.data) {
           setCounselings(data.data);
           if (typeof window !== "undefined")
-            localStorage.setItem(
+            safeSetItem(
               "counselings",
               JSON.stringify(data.data)
             );
@@ -329,18 +358,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       if (typeof window !== "undefined") {
         setAuthToken(tokenFromApi);
-        localStorage.setItem("token", tokenFromApi);
-        localStorage.setItem("user", JSON.stringify(userData));
+        safeSetItem("token", tokenFromApi);
+        safeSetItem("user", JSON.stringify(userData));
 
         if (payload?.data?.applications) {
-          localStorage.setItem(
+          safeSetItem(
             "applications",
             JSON.stringify(payload.data.applications)
           );
         }
 
         if (payload?.data?.counselings) {
-          localStorage.setItem(
+          safeSetItem(
             "counselings",
             JSON.stringify(payload.data.counselings)
           );
@@ -477,7 +506,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     let activeToken = 
       token || 
       (typeof window !== 'undefined' 
-        ? (localStorage.getItem("token") || getAuthToken()) 
+        ? (safeGetItem("token") || getAuthToken()) 
         : null);
 
         if (!activeToken) {
@@ -598,10 +627,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     removeAuthToken();
 
     if (typeof window !== "undefined") {
-      localStorage.removeItem("token");
-      localStorage.removeItem("user");
-      localStorage.removeItem("applications");
-      localStorage.removeItem("counselings");
+      safeRemoveItem("token");
+      safeRemoveItem("user");
+      safeRemoveItem("applications");
+      safeRemoveItem("counselings");
       sessionStorage.clear();
     }
 
@@ -623,8 +652,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       if (typeof window !== "undefined") {
         setAuthToken(newToken);
-        localStorage.setItem("token", newToken);
-        localStorage.setItem("user", JSON.stringify(newUser));
+        safeSetItem("token", newToken);
+        safeSetItem("user", JSON.stringify(newUser));
       }
     },
     []
@@ -638,7 +667,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setUser(updatedUser);
 
       if (typeof window !== "undefined")
-        localStorage.setItem("user", JSON.stringify(updatedUser));
+        safeSetItem("user", JSON.stringify(updatedUser));
     },
     [user]
   );

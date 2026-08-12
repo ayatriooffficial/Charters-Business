@@ -110,8 +110,8 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
                       aria-current={selectedProgram === item.key ? 'true' : 'false'}
                       className={`w-full text-left group cursor-pointer py-4 px-6 transition-colors duration-200 ${index < programMenuItems.length - 1 ? 'border-b border-gray-200' : ''
                         } ${selectedProgram === item.key
-                          ? 'bg-[#F4F2EE] border-l-4 border-l-red-600'
-                          : 'hover:bg-[#F4F2EE] hover:border-l-4 hover:border-l-red-300'
+                          ? 'bg-[#F6F4F2] border-l-4 border-l-red-600'
+                          : 'hover:bg-[#F6F4F2] hover:border-l-4 hover:border-l-red-300'
                         }`}
                     >
                       <div className="flex items-center justify-between">
@@ -145,7 +145,7 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
 
               {/* Explore More Link */}
               <aside
-                className={`bg-[#F4F2EE] hover:bg-[#E3DFD2] flex flex-col justify-between p-4 sm:p-6 border-r border-gray-200 cursor-pointer transition-colors duration-200
+                className={`bg-[#F6F4F2] hover:bg-[#E3DFD2] flex flex-col justify-between p-4 sm:p-6 border-r border-gray-200 cursor-pointer transition-colors duration-200
                           w-full lg:w-40 xl:w-48 2xl:w-56 
                           flex-shrink-0 group ${isTransitioning ? 'opacity-0' : 'opacity-100'
                   }`}

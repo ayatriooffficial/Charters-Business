@@ -3,131 +3,24 @@ import type { CategoryKey, ProgramData } from "./types";
 export type { CategoryKey, ProgramData };
 
 export const categories: CategoryKey[] = [
-  "No-code AI Development",
-  "Creator Challenge",
-  "Specialization",
-  "CXO Mentorship Programme",
-  "Dropshipping Challenge",
+  "Reflections of Industry Practitioners",
+  "AI-Integrated Core Modules",
+  "Industry Experience with Real Internship",
+  "Corporate Personal Branding & Leadership",
+  "Accelerate Your Career Growth",
 ];
 
 export const contentData: Record<string, ProgramData> = {
-  "Dropshipping Challenge": {
+  "Accelerate Your Career Growth": {
+    month: "Months 6 to 7",
     title: "Launch & Run an E-commerce Store",
     description:
       "From running marketing campaigns to managing supply chains, students build their own websites and compete for revenue.",
     achievement:
-      "Students have dropshipped products ranging from pet supplies to green stationery worth over INR 2 Cr.",
+      "Go Global & Building Own",
     linkText: "Shop At Our Students' Stores",
     image:
-      "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081795/vgq4vkzkcvefkpv1lss2_h6ydos.avif",
-    specializations: [
-      "Foundations of AI & No-Code Product Building",
-      "Voice, Multimodal & Agentic AI",
-      "AI Automation & Workflow Design",
-      "AI SaaS Prototyping",
-    ],
-    tools: [
-      { name: "Make", icon: "/Charters-icon/Cancel.svg" },
-      { name: "OpenAI", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Canva", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Zapier", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Typedream", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Airtable", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Cloud", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Bolt", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Descript", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Notion", icon: "/Charters-icon/Cancel.svg" },
-    ],
-    techniques: [
-      { name: "Prompt Engineering", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Reading API Docs", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Voice Transcription", icon: "/Charters-icon/Cancel.svg" },
-      { name: "No-code Deployment", icon: "/Charters-icon/Cancel.svg" },
-    ],
-    projects: [
-      {
-        name: "Blockchain Decentralized Marketplace",
-        description:
-          "Create a blockchain-based marketplace with custom tokens and NFT integration",
-        icon: "₿",
-        color: "bg-yellow-100",
-      },
-      {
-        name: "Fake News Detection",
-        description:
-          "Develop an AI model to identify and filter fake news using NLP",
-        icon: "📰",
-        color: "bg-pink-100",
-      },
-      {
-        name: "Text Summarisation",
-        description: "Build an NLP-powered tool for summarising large texts",
-        icon: "📄",
-        color: "bg-purple-100",
-      },
-    ],
-  },
-  "Creator Challenge": {
-    title: "Become a Creator-preneur",
-    description:
-      "From identifying a content niche to building an audience, students are trained to grow their personal brands on Youtube, Instagram, and LinkedIn.",
-    achievement: "Meet Our Resident Influencers",
-    linkText: "Meet Our Resident Influencers",
-    image:
-      "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081795/pnh1arwigr92tkawxv6t_wetftd.avif",
-    specializations: [
-      "Foundations of AI & No-Code Product Building",
-      "Voice, Multimodal & Agentic AI",
-      "AI Automation & Workflow Design",
-      "AI SaaS Prototyping",
-    ],
-    tools: [
-      { name: "Make", icon: "/Charters-icon/Cancel.svg" },
-      { name: "OpenAI", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Canva", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Zapier", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Typedream", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Airtable", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Cloud", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Bolt", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Descript", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Notion", icon: "/Charters-icon/Cancel.svg" },
-    ],
-    techniques: [
-      { name: "Prompt Engineering", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Reading API Docs", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Voice Transcription", icon: "/Charters-icon/Cancel.svg" },
-      { name: "No-code Deployment", icon: "/Charters-icon/Cancel.svg" },
-    ],
-    projects: [
-      {
-        name: "Blockchain Decentralized Marketplace",
-        description:
-          "Create a blockchain-based marketplace with custom tokens and NFT integration",
-        icon: "₿",
-        color: "bg-yellow-100",
-      },
-      {
-        name: "Fake News Detection",
-        description:
-          "Develop an AI model to identify and filter fake news using NLP",
-        icon: "📰",
-        color: "bg-pink-100",
-      },
-      {
-        name: "Text Summarisation",
-        description: "Build an NLP-powered tool for summarising large texts",
-        icon: "📄",
-        color: "bg-purple-100",
-      },
-    ],
-  },
-  Specialization: {
-    title: "Specialization",
-    description:
-      "After mastering the fundamentals, students choose a specialization and build real-world, scalable systems.",
-    image:
-      "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081795/m64yqpshdiwiztfj3xry_e03vqn.avif",
+      "https://res.cloudinary.com/ducgcl4dg/image/upload/v1785526824/helping-msme-_-startup_alidog.avif",
     specializationTracks: [
       "Software Development",
       "Artificial Intelligence & Machine Learning",
@@ -139,22 +32,40 @@ export const contentData: Record<string, ProgramData> = {
         name: "Blockchain Decentralized Marketplace",
         description:
           "Build a decentralized marketplace with smart contracts, custom tokens, and NFT integration.",
-        icon: "₿",
+        icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840619/Moumita_Roy_frrb1g.avif",
         color: "bg-yellow-100",
+        chips: [
+          { text: "chartersunion", secondText: "Project Lead", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222135/Sudip_Banarjee_ehy9oo.avif", color: "bg-yellow-100", isImage: true },
+          { text: "chartersunion1", secondText: "Developer", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222134/Sameer_Shaikh_tny6qy.avif", color: "bg-yellow-100", isImage: true },
+          { text: "chartersunion2", secondText: "Designer", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222135/Sushmita_Chakraborty_taedof.avif", color: "bg-yellow-100", isImage: true },
+          { text: "chartersunion3", secondText: "Tester", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222134/Subhash_Das_bwgyqn.avif", color: "bg-yellow-100", isImage: true },
+        ]
       },
       {
         name: "Fake News Detection System",
         description:
           "Design an NLP-powered AI system to detect misinformation across news platforms.",
-        icon: "📰",
+        icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840619/Moumita_Roy_frrb1g.avif",
         color: "bg-pink-100",
+        chips: [
+          { text: "chartersunion", secondText: "chartersunion", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222134/Subhash_Das_bwgyqn.avif", color: "bg-pink-100", isImage: true },
+          { text: "chartersunion1", secondText: "chartersunion1", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222135/Sushmita_Chakraborty_taedof.avif", color: "bg-pink-100", isImage: true },
+          { text: "chartersunion2", secondText: "chartersunion2", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222134/Sameer_Shaikh_tny6qy.avif", color: "bg-pink-100", isImage: true },
+          { text: "chartersunion3", secondText: "chartersunion3", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222135/Sudip_Banarjee_ehy9oo.avif", color: "bg-pink-100", isImage: true },
+        ]
       },
       {
         name: "Text Summarisation Engine",
         description:
           "Create an NLP-based engine to summarize large documents and research papers.",
-        icon: "📄",
+        icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840619/Moumita_Roy_frrb1g.avif",
         color: "bg-purple-100",
+        chips: [
+          { text: "chartersunion", secondText: "chartersunion", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222134/Sameer_Shaikh_tny6qy.avif", color: "bg-purple-100", isImage: true },
+          { text: "chartersunion1", secondText: "chartersunion1", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222134/Subhash_Das_bwgyqn.avif", color: "bg-purple-100", isImage: true },
+          { text: "chartersunion2", secondText: "chartersunion2", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222135/Sudip_Banarjee_ehy9oo.avif", color: "bg-purple-100", isImage: true },
+          { text: "chartersunion3", secondText: "chartersunion3", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222135/Sushmita_Chakraborty_taedof.avif", color: "bg-purple-100", isImage: true },
+        ]
       },
     ],
     skills: [
@@ -171,113 +82,277 @@ export const contentData: Record<string, ProgramData> = {
     ],
     subjectsLink: "/curriculum/local-consulting",
   },
-  "CXO Mentorship Programme": {
+  "AI-Integrated Core Modules": {
+    month: "Months 2 to 3",
+    title: "Become a Creator-preneur",
+    description:
+      "From identifying a content niche to building an audience, students are trained to grow their personal brands on Youtube, Instagram, and LinkedIn.",
+    achievement: "Intermediate",
+    linkText: "Meet Our Resident Influencers",
+    image:
+      "https://res.cloudinary.com/ducgcl4dg/image/upload/v1785526824/learning-real-world-project_tyfev4.avif",
+    specializationTracks: [
+      "Software Development",
+      "Artificial Intelligence & Machine Learning",
+      "Blockchain & Cybersecurity",
+      "Algorithmic Trading (High-Frequency Trading)",
+    ],
+    projects: [
+      {
+        name: "Blockchain Decentralized Marketplace",
+        description:
+          "Build a decentralized marketplace with smart contracts, custom tokens, and NFT integration.",
+        icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840619/Moumita_Roy_frrb1g.avif",
+        color: "bg-yellow-100",
+        chips: [
+          { text: "chartersunion", secondText: "chartersunion", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222135/Sudip_Banarjee_ehy9oo.avif", color: "bg-yellow-100", isImage: true },
+          { text: "chartersunion1", secondText: "chartersunion1", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222134/Sameer_Shaikh_tny6qy.avif", color: "bg-yellow-100", isImage: true },
+          { text: "chartersunion2", secondText: "chartersunion2", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222135/Sushmita_Chakraborty_taedof.avif", color: "bg-yellow-100", isImage: true },
+          { text: "chartersunion3", secondText: "chartersunion3", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222134/Subhash_Das_bwgyqn.avif", color: "bg-yellow-100", isImage: true },
+        ]
+      },
+      {
+        name: "Fake News Detection System",
+        description:
+          "Design an NLP-powered AI system to detect misinformation across news platforms.",
+        icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840619/Moumita_Roy_frrb1g.avif",
+        color: "bg-pink-100",
+        chips: [
+          { text: "chartersunion", secondText: "chartersunion", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222134/Subhash_Das_bwgyqn.avif", color: "bg-pink-100", isImage: true },
+          { text: "chartersunion1", secondText: "chartersunion1", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222135/Sushmita_Chakraborty_taedof.avif", color: "bg-pink-100", isImage: true },
+          { text: "chartersunion2", secondText: "chartersunion2", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222134/Sameer_Shaikh_tny6qy.avif", color: "bg-pink-100", isImage: true },
+          { text: "chartersunion3", secondText: "chartersunion3", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222135/Sudip_Banarjee_ehy9oo.avif", color: "bg-pink-100", isImage: true },
+        ]
+      },
+      {
+        name: "Text Summarisation Engine",
+        description:
+          "Create an NLP-based engine to summarize large documents and research papers.",
+        icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840619/Moumita_Roy_frrb1g.avif",
+        color: "bg-purple-100",
+        chips: [
+          { text: "chartersunion", secondText: "chartersunion", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222134/Sameer_Shaikh_tny6qy.avif", color: "bg-purple-100", isImage: true },
+          { text: "chartersunion1", secondText: "chartersunion1", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222134/Subhash_Das_bwgyqn.avif", color: "bg-purple-100", isImage: true },
+          { text: "chartersunion2", secondText: "chartersunion2", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222135/Sudip_Banarjee_ehy9oo.avif", color: "bg-purple-100", isImage: true },
+          { text: "chartersunion3", secondText: "chartersunion3", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222135/Sushmita_Chakraborty_taedof.avif", color: "bg-purple-100", isImage: true },
+        ]
+      },
+    ],
+    skills: [
+      "Blockchain Fundamentals",
+      "Cloud Computing",
+      "Deep Learning",
+      "Natural Language Processing (NLP)",
+      "Cybersecurity",
+      "Algorithmic Trading",
+      "Low-Level Design (LLD)",
+      "High-Level Design (HLD)",
+      "Microservices Architecture",
+      "Generative AI",
+    ],
+    subjectsLink: "/curriculum/local-consulting",
+  },
+  "Industry Experience with Real Internship": {
+    month: "Months 3 to 4",
+    title: "Specialization",
+    achievement: "Advanced",
+    description:
+      "After mastering the fundamentals, students choose a specialization and build real-world, scalable systems.",
+    image: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1785526824/internship-around-the-world_b69nrk.avif",
+    specializationTracks: [
+      "Software Development",
+      "Artificial Intelligence & Machine Learning",
+      "Blockchain & Cybersecurity",
+      "Algorithmic Trading (High-Frequency Trading)",
+    ],
+    projects: [
+      {
+        name: "Blockchain Decentralized Marketplace",
+        description:
+          "Build a decentralized marketplace with smart contracts, custom tokens, and NFT integration.",
+        icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840619/Moumita_Roy_frrb1g.avif",
+        color: "bg-yellow-100",
+        chips: [
+          { text: "chartersunion", secondText: "chartersunion", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222135/Sudip_Banarjee_ehy9oo.avif", color: "bg-yellow-100", isImage: true },
+          { text: "chartersunion1", secondText: "chartersunion1", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222134/Sameer_Shaikh_tny6qy.avif", color: "bg-yellow-100", isImage: true },
+          { text: "chartersunion2", secondText: "chartersunion2", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222135/Sushmita_Chakraborty_taedof.avif", color: "bg-yellow-100", isImage: true },
+          { text: "chartersunion3", secondText: "chartersunion3", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222134/Subhash_Das_bwgyqn.avif", color: "bg-yellow-100", isImage: true },
+        ]
+      },
+      {
+        name: "Fake News Detection System",
+        description:
+          "Design an NLP-powered AI system to detect misinformation across news platforms.",
+        icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840619/Moumita_Roy_frrb1g.avif",
+        color: "bg-pink-100",
+        chips: [
+          { text: "chartersunion", secondText: "chartersunion", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222134/Subhash_Das_bwgyqn.avif", color: "bg-pink-100", isImage: true },
+          { text: "chartersunion1", secondText: "chartersunion1", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222135/Sushmita_Chakraborty_taedof.avif", color: "bg-pink-100", isImage: true },
+          { text: "chartersunion2", secondText: "chartersunion2", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222134/Sameer_Shaikh_tny6qy.avif", color: "bg-pink-100", isImage: true },
+          { text: "chartersunion3", secondText: "chartersunion3", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222135/Sudip_Banarjee_ehy9oo.avif", color: "bg-pink-100", isImage: true },
+        ]
+      },
+      {
+        name: "Text Summarisation Engine",
+        description:
+          "Create an NLP-based engine to summarize large documents and research papers.",
+        icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840619/Moumita_Roy_frrb1g.avif",
+        color: "bg-purple-100",
+        chips: [
+          { text: "chartersunion", secondText: "chartersunion", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222134/Sameer_Shaikh_tny6qy.avif", color: "bg-purple-100", isImage: true },
+          { text: "chartersunion1", secondText: "chartersunion1", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222134/Subhash_Das_bwgyqn.avif", color: "bg-purple-100", isImage: true },
+          { text: "chartersunion2", secondText: "chartersunion2", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222135/Sudip_Banarjee_ehy9oo.avif", color: "bg-purple-100", isImage: true },
+          { text: "chartersunion3", secondText: "chartersunion3", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222135/Sushmita_Chakraborty_taedof.avif", color: "bg-purple-100", isImage: true },
+        ]
+      },
+    ],
+    skills: [
+      "Blockchain Fundamentals",
+      "Cloud Computing",
+      "Deep Learning",
+      "Natural Language Processing (NLP)",
+      "Cybersecurity",
+      "Algorithmic Trading",
+      "Low-Level Design (LLD)",
+      "High-Level Design (HLD)",
+      "Microservices Architecture",
+      "Generative AI",
+    ],
+    subjectsLink: "/curriculum/local-consulting",
+  },
+  "Corporate Personal Branding & Leadership": {
+    month: "Months 6",
     title: "Get Mentored by Top CXOs",
     description:
       "Experience one-on-one mentorship, coaching and guidance from CXOs across industries.",
-    achievement: "Our Mentors Include",
+    achievement: "Professional",
     linkText: "Meet Our Mentors",
     image:
-      "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081794/k9yb4pex58iqxdce2zru_xjcckt.avif",
-    specializations: [
-      "Foundations of AI & No-Code Product Building",
-      "Voice, Multimodal & Agentic AI",
-      "AI Automation & Workflow Design",
-      "AI SaaS Prototyping",
-    ],
-    tools: [
-      { name: "Make", icon: "/Charters-icon/Cancel.svg" },
-      { name: "OpenAI", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Canva", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Zapier", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Typedream", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Airtable", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Cloud", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Bolt", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Descript", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Notion", icon: "/Charters-icon/Cancel.svg" },
-    ],
-    techniques: [
-      { name: "Prompt Engineering", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Reading API Docs", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Voice Transcription", icon: "/Charters-icon/Cancel.svg" },
-      { name: "No-code Deployment", icon: "/Charters-icon/Cancel.svg" },
+      "https://res.cloudinary.com/ducgcl4dg/image/upload/v1785526824/ai-ready-carriculam_rlvggz.avif",
+    specializationTracks: [
+      "Software Development",
+      "Artificial Intelligence & Machine Learning",
+      "Blockchain & Cybersecurity",
+      "Algorithmic Trading (High-Frequency Trading)",
     ],
     projects: [
       {
         name: "Blockchain Decentralized Marketplace",
         description:
-          "Create a blockchain-based marketplace with custom tokens and NFT integration",
-        icon: "₿",
+          "Build a decentralized marketplace with smart contracts, custom tokens, and NFT integration.",
+        icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840619/Moumita_Roy_frrb1g.avif",
         color: "bg-yellow-100",
+        chips: [
+          { text: "chartersunion", secondText: "chartersunion", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222135/Sudip_Banarjee_ehy9oo.avif", color: "bg-yellow-100", isImage: true },
+          { text: "chartersunion1", secondText: "chartersunion1", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222134/Sameer_Shaikh_tny6qy.avif", color: "bg-yellow-100", isImage: true },
+          { text: "chartersunion2", secondText: "chartersunion2", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222135/Sushmita_Chakraborty_taedof.avif", color: "bg-yellow-100", isImage: true },
+          { text: "chartersunion3", secondText: "chartersunion3", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222134/Subhash_Das_bwgyqn.avif", color: "bg-yellow-100", isImage: true },
+        ]
       },
       {
-        name: "Fake News Detection",
+        name: "Fake News Detection System",
         description:
-          "Develop an AI model to identify and filter fake news using NLP",
-        icon: "📰",
+          "Design an NLP-powered AI system to detect misinformation across news platforms.",
+        icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840619/Moumita_Roy_frrb1g.avif",
         color: "bg-pink-100",
+        chips: [
+          { text: "chartersunion", secondText: "chartersunion", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222134/Subhash_Das_bwgyqn.avif", color: "bg-pink-100", isImage: true },
+          { text: "chartersunion1", secondText: "chartersunion1", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222135/Sushmita_Chakraborty_taedof.avif", color: "bg-pink-100", isImage: true },
+          { text: "chartersunion2", secondText: "chartersunion2", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222134/Sameer_Shaikh_tny6qy.avif", color: "bg-pink-100", isImage: true },
+          { text: "chartersunion3", secondText: "chartersunion3", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222135/Sudip_Banarjee_ehy9oo.avif", color: "bg-pink-100", isImage: true },
+        ]
       },
       {
-        name: "Text Summarisation",
-        description: "Build an NLP-powered tool for summarising large texts",
-        icon: "📄",
+        name: "Text Summarisation Engine",
+        description:
+          "Create an NLP-based engine to summarize large documents and research papers.",
+        icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840619/Moumita_Roy_frrb1g.avif",
         color: "bg-purple-100",
+        chips: [
+          { text: "chartersunion", secondText: "chartersunion", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222134/Sameer_Shaikh_tny6qy.avif", color: "bg-purple-100", isImage: true },
+          { text: "chartersunion1", secondText: "chartersunion1", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222134/Subhash_Das_bwgyqn.avif", color: "bg-purple-100", isImage: true },
+          { text: "chartersunion2", secondText: "chartersunion2", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222135/Sudip_Banarjee_ehy9oo.avif", color: "bg-purple-100", isImage: true },
+          { text: "chartersunion3", secondText: "chartersunion3", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222135/Sushmita_Chakraborty_taedof.avif", color: "bg-purple-100", isImage: true },
+        ]
       },
     ],
+    skills: [
+      "Blockchain Fundamentals",
+      "Cloud Computing",
+      "Deep Learning",
+      "Natural Language Processing (NLP)",
+      "Cybersecurity",
+      "Algorithmic Trading",
+      "Low-Level Design (LLD)",
+      "High-Level Design (HLD)",
+      "Microservices Architecture",
+      "Generative AI",
+    ],
+    subjectsLink: "/curriculum/local-consulting",
   },
-  "No-code AI Development": {
-    title: "AI-Powerd Job-Ready Foundation on Curriculum",
+
+  "Reflections of Industry Practitioners": {
+    month: "Months 1 - 2",
+    title: "Job-Targeted Hands-on Theory Foudamental",
     description:
-      "After mastering the basics, it's time to choose your path and specialize.",
+      "The foundation build around Charters'Union programs around hands-on training on tools & practices that are actually used in the industry.",
+    achievement: "Beginner",
     image:
-      "https://res.cloudinary.com/ducgcl4dg/image/upload/v1778081794/dmmnhtok1iwgjpzvzgjw_l3zfw9.avif",
-    specializations: [
-      "Foundations of AI & No-Code Product Building",
-      "Voice, Multimodal & Agentic AI",
-      "AI Automation & Workflow Design",
-      "AI SaaS Prototyping",
-    ],
-    tools: [
-      { name: "Make", icon: "/Charters-icon/Cancel.svg" },
-      { name: "OpenAI", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Canva", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Zapier", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Typedream", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Airtable", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Cloud", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Bolt", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Descript", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Notion", icon: "/Charters-icon/Cancel.svg" },
-    ],
-    techniques: [
-      { name: "Prompt Engineering", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Reading API Docs", icon: "/Charters-icon/Cancel.svg" },
-      { name: "Voice Transcription", icon: "/Charters-icon/Cancel.svg" },
-      { name: "No-code Deployment", icon: "/Charters-icon/Cancel.svg" },
+      "https://res.cloudinary.com/ducgcl4dg/image/upload/v1785526824/chartersunion-foundation-month_kxz3cb.avif",
+    specializationTracks: [
+      "36 Houre",
+      "Industrial Fundamental",
+      "Case Studies",
+      "Career Prep",
     ],
     projects: [
       {
-        name: "Blockchain Decentralized Marketplace",
+        name: "Industries-led theory implementation on direct real companys data",
         description:
-          "Create a blockchain-based marketplace with custom tokens and NFT integration",
-        icon: "₿",
-        color: "bg-yellow-100",
+          "Build a decentralized marketplace with smart contracts, custom tokens, and NFT integration.",
+        icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840619/Moumita_Roy_frrb1g.avif",
+        color: "",
+        chips: [
+
+        ]
       },
       {
-        name: "Fake News Detection",
+        name: "Applied AI Across all Functions",
         description:
-          "Develop an AI model to identify and filter fake news using NLP",
-        icon: "📰",
-        color: "bg-pink-100",
+          "Design an NLP-powered AI system to detect misinformation across news platforms.",
+        icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840619/Moumita_Roy_frrb1g.avif",
+        color: "",
+        chips: [
+          { text: "", secondText: "", icon: "/Charters-icon/ai-foundation icon.svg", color: "" },
+          { text: "", secondText: "", icon: "/Charters-icon/ai-automation icon.svg", color: "" },
+          { text: "", secondText: "", icon: "/Charters-icon/ai-agent.svg", color: "" },
+        ]
       },
       {
-        name: "Text Summarisation",
-        description: "Build an NLP-powered tool for summarising large texts",
-        icon: "📄",
-        color: "bg-purple-100",
+        name: "Industries-led practitioner",
+        description:
+          "Create an NLP-based engine to summarize large documents and research papers.",
+        icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840619/Moumita_Roy_frrb1g.avif",
+        color: "",
+        chips: [
+          { text: "CA Sudip Banarjee", secondText: "Ex Executive Director-HR at IBM", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222135/Sudip_Banarjee_ehy9oo.avif", color: "", isImage: true },
+          { text: "Subhasis Das", secondText: "SEO vs GEO vs AEO Fundamental", icon: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786222134/Subhash_Das_bwgyqn.avif", color: "", isImage: true },
+        ]
       },
     ],
+    skills: [
+      "Blockchain Fundamentals",
+      "Cloud Computing",
+      "Deep Learning",
+      "Natural Language Processing (NLP)",
+      "Cybersecurity",
+      "Algorithmic Trading",
+      "Low-Level Design (LLD)",
+      "High-Level Design (HLD)",
+      "Microservices Architecture",
+      "Generative AI",
+    ],
+    subjectsLink: "/curriculum/local-consulting",
   },
 };
 

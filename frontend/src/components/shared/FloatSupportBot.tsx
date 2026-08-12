@@ -14,7 +14,8 @@ interface ChatMessage {
 
 const suggestedQuestions = [
   "What programs do you offer?",
-  "MBA fee details",
+  "CBA™ (Certified Business Accountant) fee details",
+  "DGM™(Digital Growth & Marketing) fee details",
   "Placement support",
   "Eligibility criteria",
 ];
@@ -100,10 +101,10 @@ export default function FloatSupportBot() {
   return (
     <>
       {!open && (
-        <div className={`fixed right-3 z-[999] flex items-center gap-1 ${pathname === '/career-path' ? 'bottom-20' : 'bottom-3'}`}>
+        <div className={`fixed right-1 md:right-3 z-[999] flex items-center gap-1 md:gap-2 ${pathname === '/career-path' ? 'bottom-20' : 'bottom-1 md:bottom-3'}`}>
 
           {showQueryPill && (
-            <div className="group relative w-[240px] sm:w-[280px] rounded-t-[12px] rounded-bl-[15px] bg-white border border-[#cccccc] shadow-md px-4 py-4">
+            <div className="group relative w-auto max-w-[210px] md:max-w-none md:w-[280px] rounded-t-[12px] rounded-bl-[15px] bg-white border border-[#cccccc] shadow-md px-4 py-2 md:px-4 md:py-2">
               <button
                 type="button"
                 onClick={() => setShowQueryPill(false)}
@@ -119,10 +120,10 @@ export default function FloatSupportBot() {
                   setShowQueryPill(false);
                   setOpen(true);
                 }}
-                className="text-sm text-gray-800 hover:text-[#B30437] transition"
+                className="text-xs md:text-sm text-gray-800 hover:text-[#B30437] transition text-left"
               >
-                <span>Hey there.👋</span>
-                Got any questions? Schedule a personalized demo here.
+                <span>Hey there.👋 </span>
+                <span className="hidden md:inline">Got any questions? Schedule a personalized demo class</span>
               </button>
             </div>
           )}
@@ -133,21 +134,21 @@ export default function FloatSupportBot() {
               setShowQueryPill(false);
               setOpen(true);
             }}
-            className="relative flex items-center justify-center p-2 focus:outline-none transition-transform duration-300 hover:scale-105"
+            className="relative flex items-center justify-center p-1 md:p-2 focus:outline-none transition-transform duration-300 hover:scale-105"
             aria-label="Open support chat"
           >
             {/* 1 Single Expanding & Fading Wave */}
             <span aria-hidden="true" className="absolute inset-1 rounded-full bg-[#00c853]/45 animate-samsung-ripple"></span>
 
             {/* Avatar with Green Line Border */}
-            <div className="relative z-10 rounded-full border-[2.5px] border-[#00c853] bg-white shadow-sm overflow-hidden">
+            <div className="relative z-10 rounded-full border-[2px] md:border-[2.5px] border-[#00c853] bg-white shadow-sm overflow-hidden">
               <Image
                 src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840455/charters-customer_care_nl06po.avif"
                 alt="Support representative"
                 width={52}
                 height={52}
                 sizes="52px"
-                className="h-[52px] w-[52px] rounded-full object-cover"
+                className="h-[44px] w-[44px] md:h-[52px] md:w-[52px] rounded-full object-cover"
               />
             </div>
           </button>
@@ -179,10 +180,10 @@ export default function FloatSupportBot() {
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="text-black cursor-pointer transition hover:text-[#5f6368]"
+              className=" cursor-pointer"
               aria-label="Close support chat"
             >
-              <img src="/Charters-icon/Cancel.svg" alt="" width={18} height={18} className="h-6 w-6" />
+              <img src="/Charters-icon/Cancel.svg" alt="" width={16} height={16} className="p-1 bg-[#efefef] hover:bg-[#cccccc] rounded-full h-6 w-6" />
             </button>
           </div>
 
@@ -207,7 +208,7 @@ export default function FloatSupportBot() {
                 <div
                   className={`max-w-[95%] break-words whitespace-pre-wrap rounded-xl px-4 py-3 text-sm leading-relaxed ${msg.sender === "user"
                     ? "bg-[#B30437] text-white"
-                    : "bg-[#F4F2EE] text-gray-800"
+                    : "bg-[#F6F4F2] text-gray-800"
                     }`}
                 >
                   <ReactMarkdown

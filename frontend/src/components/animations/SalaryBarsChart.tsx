@@ -24,7 +24,7 @@ const SalaryBarsChart: React.FC<SalaryBarsChartProps> = ({
         label: "Domestic Average CTC",
         label_sub: "72% Placed Indian StartUp's",
         height: 90,
-        color: "#E87D1E",
+        color: "#D84D16",
         hasPattern: true,
       },
       {
@@ -40,7 +40,7 @@ const SalaryBarsChart: React.FC<SalaryBarsChartProps> = ({
         label: "Highest CTC",
         label_sub: "3% Placed USA MNCs",
         height: 180,
-        color: "#6578b4",
+        color: "#316CA6",
         hasPattern: true,
       },
     ],
@@ -108,7 +108,7 @@ const SalaryBarsChart: React.FC<SalaryBarsChartProps> = ({
       {/* Heading */}
       <div className="mb-4 flex-shrink-0">
         <h4 className="flex flex-row" >
-          <p className="text-3xl font-bold">{value.toFixed(2)} Lakhs</p>  <span className="pl-[5px] pt-[15px] text-[10px]"> | Growth 39% </span>
+          <p className="text-3xl font-bold">{value.toFixed(2)} Lakhs</p>
         </h4>
         <p className="text-sm text-gray-600">Highest CTC In Aug/25 Cohort</p>
       </div>

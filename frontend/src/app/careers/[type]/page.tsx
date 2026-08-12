@@ -568,7 +568,7 @@ export default function CareersPage({
   }, []);
 
   return (
-    <div className="h-screen flex flex-col overflow-hidden bg-[#F4F2EE]">
+    <div className="h-screen flex flex-col overflow-hidden bg-[#F6F4F2]">
       <style>{`
         .custom-scroll::-webkit-scrollbar { width: 4px; }
         .custom-scroll::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 10px; }
@@ -607,7 +607,7 @@ export default function CareersPage({
       </div>
 
       {/* Split Layout */}
-      <div className="bg-[#F4F2EE] flex flex-1 overflow-hidden ">
+      <div className="bg-[#F6F4F2] flex flex-1 overflow-hidden ">
 
         {/* LEFT PANEL */}
         <aside className="w-full sm:w-[38%] border-r border-gray-200 flex flex-col bg-white overflow-hidden ml-[5%]">

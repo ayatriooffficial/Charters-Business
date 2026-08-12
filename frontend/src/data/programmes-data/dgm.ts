@@ -379,7 +379,7 @@ export const dgm: Programme = {
       "Master AI-driven performance marketing, SEO, social media, e-commerce growth, brand strategy, and media planning with top industry mentors.",
     format: { type: "On Campus" },
     eligibility: { type: "12 Pass-out & Early under graduates." },
-    duration: { type: "3 Months theory + 4 Months in-class intranship" },
+    duration: { type: "~3 Months Foundation + 4 Months Paid Internship" },
     deadline: { type: "Round 1: 30th Oct '25" },
     careerOutcomes: [
       "Fundamentals of AI-Reday Digital Marketing, Data-Draven Marketing and Growth Engineer Framework of Goggle Digital/Meta blueprint/Hubspot/Growth School",
@@ -392,8 +392,8 @@ export const dgm: Programme = {
     ],
     jobOpenings: "175912 (kolkata)",
     expectedCtc: {
-      traditional: "1.8L",
-      cmp: "7.3L",
+      traditional: "₹1.8L",
+      cmp: "₹835,500",
       label: "DGM™",
     },
   },
@@ -403,8 +403,6 @@ export const dgm: Programme = {
     categoryLabel: "Digital Marketing",
     title: {
       main: "AI-Ready, Internship-Driven Training for Digital Marketing",
-
-
     },
     description:
       "Learn AI-Ready SEO, Email Marketing, Data Driven Growth, Run a Live Paid Campaign for a Real Business + Google Digital | Meta Blueprint | HubSpot - Framework Aligned Curriculum + 4-Month Paid Internship.",
@@ -457,16 +455,17 @@ export const dgm: Programme = {
   },
   // Program Info
   programInfo: {
-    duration: "2 Years",
+    duration: "7 Month",
     details: [
-      { label: "LOCATION", value: "4 Countries", dotColor: "bg-cyan-500" },
+      { label: "DURATION", value: "7 Month (~3 Months Foundation + 4 Months Internship)", dotColor: "bg-cyan-500" },
+      { label: "FORMAT", value: "~9 hrs/week, In-Class Tranning", dotColor: "bg-yellow-500" },
       {
         label: "ELIGIBILITY",
-        value: "Bachelor's Degree",
+        value: "12th/Undergraduate(B.Tech, B.Sc, B.Com, B.A., BBA, BCA). No age limit",
         dotColor: "bg-pink-500",
       },
-      { label: "FORMAT", value: "Full Time", dotColor: "bg-yellow-500" },
-      { label: "START DATE", value: "Sept 2026", dotColor: "bg-green-500" },
+      { label: "INTERNSHIP", value: "100% Faculty guided internship", dotColor: "bg-yellow-500" },
+      { label: "PROGRAM FEES", value: "Zero Cost EMI Easy Monthly Installments", dotColor: "bg-green-500" },
     ],
   },
 
@@ -635,28 +634,445 @@ export const dgm: Programme = {
     },
     subtitle: `Hands-on courses and workshops designed to build real businesses—<br class="hidden sm:block" />because real learning comes from real applications.`,
     categories: [
-      { id: "growth", label: "GRW", title: "Growth Marketing" },
-      { id: "leadership", label: "LEAD", title: "Leadership Skills" },
+      { id: "strategy", label: "AIDMF", title: "Strategy & Leadership" },
+      { id: "finance", label: "SAG", title: "Finance & Analytics" },
+      { id: "marketing", label: "DGA", title: "Marketing & Sales" },
+      { id: "operations", label: "ADGM", title: "Operations & Supply Chain" },
+      { id: "tech", label: "TECH", title: "Technology & Digital Business" },
+      {
+        id: "entrepreneur",
+        label: "PRG",
+        title: "Entrepreneurship & Innovation",
+      },
+
     ],
     courseData: {
-      practical: [
+      strategy: [
+        {
+          term: "WEEK 1",
+          location: "Mumbai Startup",
+          courses: [
+            {
+              code: "AIDMF 101",
+              title: "How to build a comprehensive business strategy",
+            },
+            {
+              code: "AIDMF 102",
+              title: "How to lead high-performing teams effectively",
+            },
+            {
+              code: "AIDMF 103",
+              title: "How to analyze competitive landscapes",
+            },
+            {
+              code: "AIDMF 104",
+              title: "How to create sustainable competitive advantages",
+            },
+            {
+              code: "AIDMF 105",
+              title: "How to drive organizational change",
+            },
+          ],
+        },
+        {
+          term: "WEEK2",
+          location: "Kolkata Startup",
+          courses: [
+            {
+              code: "STRAT 201",
+              title: "How to make strategic decisions under uncertainty",
+            },
+            {
+              code: "STRAT 202",
+              title: "How to manage corporate portfolios",
+            },
+            {
+              code: "STRAT 203",
+              title: "How to build strategic alliances and partnerships",
+            },
+            {
+              code: "STRAT 204",
+              title: "How to lead digital transformation initiatives",
+            },
+            {
+              code: "STRAT 205",
+              title: "How to develop growth strategies for emerging markets",
+            },
+          ],
+        },
+        {
+          term: "TERM 3",
+          location: "Bangalore Startup",
+          courses: [
+            {
+              code: "STRAT 301",
+              title: "How to manage mergers and acquisitions",
+            },
+            {
+              code: "STRAT 302",
+              title: "How to create blue ocean strategies",
+            },
+            {
+              code: "STRAT 303",
+              title: "How to implement strategic initiatives",
+            },
+            {
+              code: "STRAT 304",
+              title: "How to build resilient organizations",
+            },
+            {
+              code: "STRAT 305",
+              title: "How to develop crisis management frameworks",
+            },
+          ],
+        },
+      ],
+      finance: [
         {
           term: "TERM 1",
           location: "Mumbai",
           courses: [
-            { code: "PRAC 101", title: "How to manage projects effectively" },
-            { code: "PRAC 102", title: "How to lead diverse teams" },
-            { code: "PRAC 103", title: "How to solve business problems" },
+            {
+              code: "FIN 101",
+              title: "How to analyze financial statements comprehensively",
+            },
+            {
+              code: "FIN 102",
+              title: "How to value companies using DCF models",
+            },
+            {
+              code: "FIN 103",
+              title: "How to build financial forecasting models",
+            },
+            {
+              code: "FIN 104",
+              title: "How to manage working capital efficiently",
+            },
+            {
+              code: "FIN 105",
+              title: "How to understand corporate finance fundamentals",
+            },
           ],
         },
-      ],
-      leadership: [
         {
           term: "TERM 2",
           location: "Delhi",
           courses: [
-            { code: "LEAD 101", title: "How to develop leadership presence" },
-            { code: "LEAD 102", title: "How to make strategic decisions" },
+            {
+              code: "FIN 201",
+              title: "How to structure investment portfolios",
+            },
+            {
+              code: "FIN 202",
+              title: "How to assess and manage financial risks",
+            },
+            {
+              code: "FIN 203",
+              title: "How to analyze mergers and acquisitions deals",
+            },
+            { code: "FIN 204", title: "How to raise capital for businesses" },
+            {
+              code: "FIN 205",
+              title: "How to conduct due diligence for investments",
+            },
+          ],
+        },
+        {
+          term: "TERM 3",
+          location: "Singapore",
+          courses: [
+            {
+              code: "FIN 301",
+              title: "How to structure private equity deals",
+            },
+            { code: "FIN 302", title: "How to manage hedge fund strategies" },
+            {
+              code: "FIN 303",
+              title: "How to analyze derivatives and options",
+            },
+            {
+              code: "FIN 304",
+              title: "How to implement treasury management systems",
+            },
+            { code: "FIN 305", title: "How to prepare companies for IPOs" },
+          ],
+        },
+      ],
+      marketing: [
+        {
+          term: "TERM 1",
+          location: "Mumbai",
+          courses: [
+            {
+              code: "MKT 101",
+              title: "How to build compelling brand narratives",
+            },
+            {
+              code: "MKT 102",
+              title: "How to design customer acquisition funnels",
+            },
+            {
+              code: "MKT 103",
+              title: "How to conduct market research effectively",
+            },
+            {
+              code: "MKT 104",
+              title: "How to develop product positioning strategies",
+            },
+            {
+              code: "MKT 105",
+              title: "How to create integrated marketing campaigns",
+            },
+          ],
+        },
+        {
+          term: "TERM 2",
+          location: "Bangalore",
+          courses: [
+            {
+              code: "MKT 201",
+              title: "How to master digital marketing channels",
+            },
+            {
+              code: "MKT 202",
+              title: "How to optimize conversion rates systematically",
+            },
+            {
+              code: "MKT 203",
+              title: "How to build social media strategies that work",
+            },
+            {
+              code: "MKT 204",
+              title: "How to create viral content campaigns",
+            },
+            {
+              code: "MKT 205",
+              title: "How to implement marketing automation tools",
+            },
+          ],
+        },
+        {
+          term: "TERM 3",
+          location: "Dubai",
+          courses: [
+            {
+              code: "MKT 301",
+              title: "How to expand into international markets",
+            },
+            {
+              code: "MKT 302",
+              title: "How to build influencer partnerships",
+            },
+            {
+              code: "MKT 303",
+              title: "How to create omnichannel customer experiences",
+            },
+            {
+              code: "MKT 304",
+              title: "How to measure and optimize marketing ROI",
+            },
+            {
+              code: "MKT 305",
+              title: "How to manage brand portfolios effectively",
+            },
+          ],
+        },
+      ],
+      operations: [
+        {
+          term: "TERM 1",
+          location: "Mumbai",
+          courses: [
+            {
+              code: "OPS 101",
+              title: "How to build efficient supply chains",
+            },
+            {
+              code: "OPS 102",
+              title: "How to optimize production processes",
+            },
+            {
+              code: "OPS 103",
+              title: "How to implement lean manufacturing principles",
+            },
+            { code: "OPS 104", title: "How to manage inventory effectively" },
+            { code: "OPS 105", title: "How to design service operations" },
+          ],
+        },
+        {
+          term: "TERM 2",
+          location: "Delhi",
+          courses: [
+            {
+              code: "OPS 201",
+              title: "How to implement Six Sigma methodologies",
+            },
+            {
+              code: "OPS 202",
+              title: "How to manage global supply chain networks",
+            },
+            {
+              code: "OPS 203",
+              title: "How to optimize logistics and distribution",
+            },
+            {
+              code: "OPS 204",
+              title: "How to implement quality management systems",
+            },
+            {
+              code: "OPS 205",
+              title: "How to manage supplier relationships",
+            },
+          ],
+        },
+        {
+          term: "TERM 3",
+          location: "Singapore",
+          courses: [
+            {
+              code: "OPS 301",
+              title: "How to build resilient supply chains",
+            },
+            {
+              code: "OPS 302",
+              title: "How to implement Industry 4.0 technologies",
+            },
+            { code: "OPS 303", title: "How to manage project portfolios" },
+            {
+              code: "OPS 304",
+              title: "How to optimize warehouse operations",
+            },
+            {
+              code: "OPS 305",
+              title: "How to implement sustainable operations",
+            },
+          ],
+        },
+      ],
+      entrepreneur: [
+        {
+          term: "TERM 1",
+          location: "Bangalore",
+          courses: [
+            {
+              code: "ENT 101",
+              title: "How to identify and validate business ideas",
+            },
+            {
+              code: "ENT 102",
+              title: "How to create minimum viable products",
+            },
+            { code: "ENT 103", title: "How to write winning business plans" },
+            {
+              code: "ENT 104",
+              title: "How to pitch to investors effectively",
+            },
+            { code: "ENT 105", title: "How to build founding teams" },
+          ],
+        },
+        {
+          term: "TERM 2",
+          location: "Mumbai",
+          courses: [
+            {
+              code: "ENT 201",
+              title: "How to raise seed and Series A funding",
+            },
+            { code: "ENT 202", title: "How to achieve product-market fit" },
+            { code: "ENT 203", title: "How to scale startups rapidly" },
+            {
+              code: "ENT 204",
+              title: "How to build startup culture and values",
+            },
+            { code: "ENT 205", title: "How to manage startup finances" },
+          ],
+        },
+        {
+          term: "TERM 3",
+          location: "Silicon Valley",
+          courses: [
+            {
+              code: "ENT 301",
+              title: "How to navigate exits and acquisitions",
+            },
+            {
+              code: "ENT 302",
+              title: "How to build venture-backable businesses",
+            },
+            { code: "ENT 303", title: "How to create innovation frameworks" },
+            {
+              code: "ENT 304",
+              title: "How to manage high-growth organizations",
+            },
+            {
+              code: "ENT 305",
+              title: "How to build sustainable competitive advantages",
+            },
+          ],
+        },
+      ],
+      tech: [
+        {
+          term: "TERM 1",
+          location: "Bangalore",
+          courses: [
+            {
+              code: "TECH 101",
+              title: "How to understand technology trends",
+            },
+            {
+              code: "TECH 102",
+              title: "How to build digital business models",
+            },
+            {
+              code: "TECH 103",
+              title: "How to implement cloud computing solutions",
+            },
+            {
+              code: "TECH 104",
+              title: "How to leverage artificial intelligence",
+            },
+            { code: "TECH 105", title: "How to design user experiences" },
+          ],
+        },
+        {
+          term: "TERM 2",
+          location: "Mumbai",
+          courses: [
+            {
+              code: "TECH 201",
+              title: "How to build data analytics capabilities",
+            },
+            {
+              code: "TECH 202",
+              title: "How to implement blockchain solutions",
+            },
+            { code: "TECH 203", title: "How to manage cybersecurity risks" },
+            {
+              code: "TECH 204",
+              title: "How to develop mobile-first strategies",
+            },
+            {
+              code: "TECH 205",
+              title: "How to implement agile methodologies",
+            },
+          ],
+        },
+        {
+          term: "TERM 3",
+          location: "Singapore",
+          courses: [
+            { code: "TECH 301", title: "How to build IoT ecosystems" },
+            {
+              code: "TECH 302",
+              title: "How to implement machine learning models",
+            },
+            { code: "TECH 303", title: "How to manage API economies" },
+            {
+              code: "TECH 304",
+              title: "How to scale technical infrastructure",
+            },
+            { code: "TECH 305", title: "How to build platform businesses" },
           ],
         },
       ],
@@ -703,27 +1119,27 @@ export const dgm: Programme = {
         faqs: [
           {
             id: "what-is-pgdm",
-            question: "What is PGDM?",
+            question: "Who can apply for the DGM™(Digital Growth & Marketing)?",
             answer:
-              "Post Graduate Diploma in Management (PGDM) is a 2-year industry-focused management program that emphasizes practical learning, live projects, and real-world business challenges. Unlike MBA, PGDM is offered by autonomous institutes and has more flexibility in curriculum design based on industry needs.",
+              "Anyone who has completed graduation in any stream such as B.E., B.Tech, B.Sc, B.Com, B.A., BBA, or BCA can apply. Students who are currently pursuing graduation are also eligible. This course is suitable for freshers and working professionals. No prior experience in marketing is required.",
           },
           {
             id: "pgdm-vs-mba",
-            question: "What is the difference between PGDM and MBA?",
+            question: "What are the top digital marketing skills I will learn in this course?",
             answer:
-              "PGDM is a diploma program offered by autonomous business schools with industry-focused curriculum, while MBA is a degree offered by universities. PGDM programs are often more flexible and updated frequently based on industry trends. Both are equally valued by employers and offer similar career opportunities.",
+              "The program covers SEO, Paid Ads, Social Media Marketing, Email Marketing, Content Marketing, and Marketing Analytics. You will also learn to use Generative AI for content and performance optimization. The curriculum includes campaign planning and execution. It is designed as per current industry needs.",
           },
           {
             id: "eligibility",
-            question: "What are the eligibility criteria?",
+            question: "Is technical or coding knowledge required?",
             answer:
-              "Candidates must have a Bachelor's degree in any discipline from a recognized university. Work experience is preferred but not mandatory. We welcome candidates from diverse backgrounds including engineering, commerce, arts, and sciences.",
+              "No coding or technical background is needed for this course. The focus is on marketing tools, platforms, and campaign execution. You will learn how to use tools with guided practice. Basic internet knowledge is helpful but not mandatory.",
           },
           {
             id: "practical-learning",
-            question: "How much practical learning is included?",
+            question: "Can I join the digital marketing course as a working professional?",
             answer:
-              "Our PGDM program emphasizes 60% practical learning through 200+ live projects, case studies, industry visits, and internships. Students work on real business challenges with guidance from industry mentors and faculty.",
+              "Yes, this program is designed for both students and working professionals. Flexible batch options such as morning, evening, and weekend classes are available. This allows learners to balance work and study. The course helps professionals switch to Digital Marketing roles.",
           },
         ],
       },
@@ -733,15 +1149,15 @@ export const dgm: Programme = {
         faqs: [
           {
             id: "how-to-apply",
-            question: "How do I apply for PGDM?",
+            question: "How do I apply for DGM™(Digital Growth & Marketing)?",
             answer:
-              "Applications can be submitted online through our admission portal. The process includes entrance exam scores, group discussion, and personal interview. We accept scores from CAT, XAT, GMAT, and CMAT.",
+              "Applications can be submitted online through our admission portal. The process includes entrance exam scores, group discussion, and personal interview.",
           },
           {
             id: "entrance-exams",
-            question: "Which entrance exams are accepted?",
+            question: "can i do digital marketing course after 12th?",
             answer:
-              "We accept CAT, XAT, GMAT, and CMAT scores. Candidates must have valid scores from current or previous year.",
+              "Yes, if you are currently pursuing your graduation (final year), you can apply for Chartersunion DGM™(Digital Growth & Marketing). The program is open to graduates from any discipline as well as final-year undergraduate students. No prior digital marketing experience is required. It is not available for students who have only completed Class 12 and are not enrolled in a graduation program.",
           },
         ],
       },
@@ -753,13 +1169,13 @@ export const dgm: Programme = {
             id: "placement-record",
             question: "What is the placement record?",
             answer:
-              "92% of our PGDM graduates receive job offers with an average CTC of ₹24.5 LPA and average salary jump of 2.5x. Top recruiters include KPMG, TCS, Infosys, and leading startups.",
+              "97.3% of our certified DGM™(Digital Growth & Marketing) receive job offers with an average CTC of ₹10.4 LPA and average salary jump of 2.5x. Top recruiters include Zomato, TCS, PhonePe, and leading startups.",
           },
           {
             id: "internships",
             question: "Are internships provided?",
             answer:
-              "Yes, summer internships are mandatory between first and second year. Our placement cell facilitates internships with 250+ partner companies offering stipends ranging from ₹30,000 to ₹80,000 per month.",
+              "Yes, 100% internships are mandatory between 3month to 7th month. Our placement cell facilitates internships with 250+ partner companies offering stipends ranging from ₹8,000 to ₹55,000 per month.",
           },
         ],
       },
@@ -771,7 +1187,7 @@ export const dgm: Programme = {
             id: "fee-structure",
             question: "What is the fee structure?",
             answer:
-              "The program fee is competitive with flexible payment options including semester-wise installments and EMI plans. Scholarships are available for meritorious students covering up to 100% tuition. Contact admissions for detailed fee information.",
+              "The program fee is competitive with flexible payment options including month-wise installments and EMI plans. Scholarships are available for meritorious students covering up to 100% tuition. Contact admissions for detailed fee information.",
           },
         ],
       },
@@ -785,13 +1201,13 @@ export const dgm: Programme = {
     students: dgmStudents,
   },
   faculty: {
-    eyebrow: "LEARN FROM THE BEST",
-    title: { prefix: "Meet your", highlight: "Faculty" },
-    subtitle: "Learn from industry leaders, academic experts, and seasoned practitioners who bring real-world experience to your education.",
+    eyebrow: "INSTRUCTORS & MENTORS at CHARTERs’ UNION",
+    title: { prefix: "Learn from", highlight: "Top 0.1% of Practitioners" },
+    subtitle: "At Charters' Union, your classroom is powered by top 1% business leaders, from Hardvard IIMC to Flipkart, from Hardvard MBA to Google. Our Mentors don't just teach the playbook. They help to build it.",
     categories: [
-      { id: "leadership", name: "Leadership" },
-      { id: "finance", name: "Finance" },
-      { id: "consulting", name: "Consulting" },
+      { id: "leadership", name: "AI-Fast Digital Marketing" },
+      { id: "finance", name: "Digital Growth & Scale" },
+      { id: "consulting", name: "Leadership & Branding" },
     ],
     faculty: [
       // Map 'technology' (Digital Marketing) to the 'leadership' tab
@@ -868,7 +1284,7 @@ export const dgm: Programme = {
       features: {
         fundamentals: "Fundamentals",
         classes: "3 Hours classes and 3 Hours Labs Everyday",
-        trainers: "Trainers: IIT alumni and Ex-FAANG"
+        trainers: "Trainers: IIM alumni and Ex-Flipkart/Zomato/Phonepe"
       },
       placementSupport: {
         title: "100% Placement Support",
@@ -923,8 +1339,8 @@ export const dgm: Programme = {
     },
     title: {
       prefix: "The",
-      highlight: "7",
-      suffix: "learning outcomes"
+      highlight: "7 Learning Outcomes",
+      suffix: ""
     },
     description: "We interviewed 100+ founders, CEO, CXOs,COO with one question: What makes someone genuinely useful in a Top Company globally within 5–7 months?\n\nTheir answers became 7 core outcomes that now shape every Charter course, project and pathway.",
     items: [
@@ -986,7 +1402,7 @@ export const dgm: Programme = {
             caption: 'Conduct customer discovery with early-stage startups',
           },
         ],
-        mainImage: "/images/dgm-tools/1.jpg",
+        mainImage: "",
       },
       {
         title: 'Effective Communication',
@@ -1046,7 +1462,7 @@ export const dgm: Programme = {
             caption: 'Join bi-monthly moderated group discussions on trending business topics',
           },
         ],
-        mainImage: "/images/dgm-tools/1.jpg",
+        mainImage: "",
       },
       {
         title: 'Business Acumen',
@@ -1072,7 +1488,7 @@ export const dgm: Programme = {
             caption: 'Solve 100+ renowned business cases in teams of 3-4',
           },
         ],
-        mainImage: "/images/dgm-tools/1.jpg",
+        mainImage: "",
       },
       {
         title: 'Agile Product Thinking',
@@ -1098,7 +1514,7 @@ export const dgm: Programme = {
             caption: 'Gain an Agile scrum certification',
           },
         ],
-        mainImage: "/images/dgm-tools/1.jpg",
+        mainImage: "",
       },
       {
         title: 'Sales',
@@ -1124,7 +1540,7 @@ export const dgm: Programme = {
             caption: 'Make upwards of 5L in revenue via the dropshipping challenge in Term 1',
           },
         ],
-        mainImage: "/images/dgm-tools/1.jpg",
+        mainImage: "",
       },
       {
         title: 'Process Thinking',
@@ -1150,7 +1566,7 @@ export const dgm: Programme = {
             caption: 'Manage business processes for your small business in term 1',
           },
         ],
-        mainImage: "/images/dgm-tools/1.jpg",
+        mainImage: "",
       },
     ]
   },
@@ -1181,7 +1597,7 @@ export const dgm: Programme = {
       downloadFilename: "charters-dgm-brochure.avif"
     },
     advisor: {
-      heading: "Want to learn more about ventures and collaborations?",
+      heading: "Ready to join ChartersUnion and take your first step towards success?",
       buttonText: "Talk to an advisor",
       phoneNumber: "+919836465083"
     }
@@ -1209,6 +1625,7 @@ export const dgm: Programme = {
       "Access to live sessions and doubt-clearing support",
       "Learn through flexible online classes designed for working professionals"
     ],
+
     syllabusTitle: "Syllabus & Curriculum of the DGM™ (Digital Growth & Marketing)",
     syllabusDescription: "From building a strong foundation to running performance campaigns, every module combines theory with practical implementation. This curriculum combines the top digital marketing skills which the industry hires for.",
     syllabusPostTableDescription: "From building a strong foundation to running performance campaigns, every module combines theory with practical implementation. This curriculum combines the top digital marketing skills which the industry hires for.",
@@ -1250,7 +1667,7 @@ export const dgm: Programme = {
     youWillReceiveTitle: "You Will Receive:",
     youWillReceive: [
       {
-        label: "Certificate of Completion from ChartersUnion and upGrad",
+        label: "Certificate of Completion from ChartersUnion",
         text: "A globally recognized certificate that adds strong value to your resume."
       },
       {
@@ -1262,35 +1679,39 @@ export const dgm: Programme = {
         text: "Connect with a wide network of marketing professionals and industry leaders."
       }
     ],
-    worthItTitle: "Is this Certification Worth It?",
-    worthItDescriptionParagraphs: [
-      "Many learners want to grow in digital marketing, and this certificate is one of the most trusted ways to build strong skills.",
-      "But is it truly worth investing in?",
-      "Here are the reasons why this program can be a valuable choice for your career:"
-    ],
-    worthItReasons: [
-      {
-        label: "Learn Key Digital Marketing Skills",
-        text: "You gain hands-on practice with SEO, social media, Google Ads, content strategy, analytics, and automation tools."
-      },
-      {
-        label: "Improved Job Opportunities",
-        text: "The certification helps you stand out during job applications and shows companies that you are trained in modern marketing methods."
-      },
-      {
-        label: "Career Growth Potential",
-        text: "Whether you are a fresher or a working professional, this course supports your move into digital marketing roles."
-      },
-      {
-        label: "Flexible Learning Experience",
-        text: "The online format allows you to learn at your own pace while managing work, studies, or personal commitments."
-      },
-      {
-        label: "Networking and Industry Exposure",
-        text: "The program offers access to expert mentors, professionals, and peers, helping you grow your network."
-      }
-    ],
-    sourcedBy: "Sourced By: Ambitionbox",
+    // worthItTitle: "Is this Certification Worth It?",
+    // worthItDescriptionParagraphs: [
+    //   "Many learners want to grow in digital marketing, and this certificate is one of the most trusted ways to build strong skills.",
+    //   "But is it truly worth investing in?",
+    //   "Here are the reasons why this program can be a valuable choice for your career:"
+    // ],
+    receivebenefitTitle: "Why Choose Charters'Union Learning Support Centre for the DGM™(Digital Growth & Marketing)?",
+    programreceivebenefit: "The Advanced Certificate in Digital Growth & Marketing focuses on practical learning through classroom sessions, industry projects, and mentor guidance. Every module is designed to help learners build skills that can be applied in real marketing campaigns.",
+    receivebenefitTitlePostTableDescription: "Along with practical digital marketing classes, you will also build a portfolio through projects and campaign-based assignments. The program also helps learners prepare for interviews and entry-level marketing roles through dedicated career support.",
+
+    // worthItReasons: [
+    //   {
+    //     label: "Learn Key Digital Marketing Skills",
+    //     text: "You gain hands-on practice with SEO, social media, Google Ads, content strategy, analytics, and automation tools."
+    //   },
+    //   {
+    //     label: "Improved Job Opportunities",
+    //     text: "The certification helps you stand out during job applications and shows companies that you are trained in modern marketing methods."
+    //   },
+    //   {
+    //     label: "Career Growth Potential",
+    //     text: "Whether you are a fresher or a working professional, this course supports your move into digital marketing roles."
+    //   },
+    //   {
+    //     label: "Flexible Learning Experience",
+    //     text: "The online format allows you to learn at your own pace while managing work, studies, or personal commitments."
+    //   },
+    //   {
+    //     label: "Networking and Industry Exposure",
+    //     text: "The program offers access to expert mentors, professionals, and peers, helping you grow your network."
+    //   }
+    // ],
+
     hiringIndustriesTitle: "Industries Hiring Digital Marketing Professionals",
     hiringIndustries: [
       {
@@ -1337,96 +1758,124 @@ export const dgm: Programme = {
     ],
     table1: [
       {
-        role: "Digital Marketing Executive",
-        salary: "INR 3.2L"
+        role: "Learning Format",
+        salary: "Offline classroom training"
       },
       {
-        role: "SEO Specialist",
-        salary: "INR 5.1L"
+        role: "Duration",
+        salary: "7 Months"
       },
       {
-        role: "Social Media Strategist",
-        salary: "INR 4.7L"
+        role: "Learning Approach",
+        salary: "~3 Months Foundation + 4 Months Internship, Harvard case studies, live projects, Local MSME project"
       },
       {
-        role: "Performance Marketing Manager",
-        salary: "INR 15.3L"
+        role: "Projects",
+        salary: "Real company campaign-based learning"
       },
       {
-        role: "Brand Manager",
-        salary: "INR 19.3L"
+        role: "Career Support",
+        salary: "CareerPathx™: Career Identity Engineering, Corporate English & Presentation Training, Paid internship in 7 countries, Jobs search engine"
+      },
+      {
+        role: "Skills Covered",
+        salary: "AI Powered-SEO, Google/Meta Ads, Customer Acquisition & A/B test, Viral Marketing Campaigns, Social Media Marketing, Growth Engineering, Performance Marketing, AI Powered-Content Marketing, Whatsapp/Email Automation, Marketing Analytics,"
       }
     ],
     table2: [
       {
-        role: "Digital Marketing Executive",
-        salary: "INR 3.2L"
+        role: "Live instructor-led sessions",
+        salary: "Mostly recorded lectures"
       },
       {
-        role: "SEO Specialist",
-        salary: "INR 5.1L"
+        role: "Real-time doubt solving",
+        salary: "Limited live interaction"
       },
       {
-        role: "Social Media Strategist",
-        salary: "INR 4.7L"
+        role: "Practical campaign activities",
+        salary: "Individual learning"
       },
       {
-        role: "Performance Marketing Manager",
-        salary: "INR 15.3L"
+        role: "Corporate Personality Development",
+        salary: "Self-paced progress"
       },
       {
-        role: "Brand Manager",
-        salary: "INR 19.3L"
-      }
+        role: "Faculty guide in-class internship",
+        salary: "Independent practice"
+      },
+      {
+        role: "1:1 with CareerLab on profile base career preparation ",
+        salary: "Limited collaboration"
+      },
     ],
     table3: [
       {
-        role: "Digital Marketing Executive",
-        salary: "INR 3.2L"
+        role: "Marketing Fundamentals",
+        salary: "Consumer behaviour, digital marketing ecosystem, branding fundamentals"
       },
       {
-        role: "SEO Specialist",
-        salary: "INR 5.1L"
+        role: " Search Engine Optimisation (SEO) ",
+        salary: "Keyword research, on-page SEO, off-page SEO, technical SEO"
       },
       {
-        role: "Social Media Strategist",
-        salary: "INR 4.7L"
+        role: "Search Engine Marketing (SEM)",
+        salary: "Google Ads, paid campaigns, bidding strategies"
       },
       {
-        role: "Performance Marketing Manager",
-        salary: "INR 15.3L"
+        role: "Social Media Marketing",
+        salary: "Meta Ads, Instagram, LinkedIn, YouTube marketing"
       },
       {
-        role: "Brand Manager",
-        salary: "INR 19.3L"
-      }
+        role: "Performance Marketing",
+        salary: "Campaign optimisation, lead generation, conversion tracking"
+      },
+      {
+        role: "Content & Email Marketing",
+        salary: "Content strategy, copywriting, email campaigns"
+      },
+      {
+        role: "Marketing Analytics & AI",
+        salary: "Google Analytics, reporting dashboards, AI-powered marketing tools"
+      },
     ],
     table4: [
       {
-        role: "Digital Marketing Executive",
-        salary: "INR 3.2L"
+        role: "Search Engine Optimization (SEO)",
+        salary: "Communication"
       },
       {
-        role: "SEO Specialist",
-        salary: "INR 5.1L"
+        role: "Google/Meta Ads",
+        salary: "Strategic Thinking"
       },
       {
-        role: "Social Media Strategist",
-        salary: "INR 4.7L"
+        role: "Performance Marketing",
+        salary: "Problem Solving"
       },
       {
-        role: "Performance Marketing Manager",
-        salary: "INR 15.3L"
+        role: "Social Media Marketing",
+        salary: "Campaign Planning"
       },
       {
-        role: "Brand Manager",
-        salary: "INR 19.3L"
+        role: "AI-Poward Content Marketing",
+        salary: "Business Understanding"
+      },
+      {
+        role: "Marketing Analytics",
+        salary: "Data Interpretation"
+      },
+      {
+        role: "Email Marketing",
+        salary: "Collaboration"
+      },
+      {
+        role: "AI-powered Marketing Tools",
+        salary: "Presentation Skills"
       }
     ],
     table5: [
       {
         role: "Digital Marketing Executive",
-        salary: "INR 3.2L"
+        salary: "INR 5.2L"
       },
       {
         role: "SEO Specialist",
@@ -1438,12 +1887,20 @@ export const dgm: Programme = {
       },
       {
         role: "Performance Marketing Manager",
-        salary: "INR 15.3L"
+        salary: "INR 8.3L"
       },
       {
-        role: "Brand Manager",
-        salary: "INR 19.3L"
+        role: "Growth Manager",
+        salary: "INR 10.3L"
       }
-    ]
+    ],
+    table6: [
+      { role: "Instructor-led classroom sessions", salary: "Learn directly from experienced trainers" },
+      { role: "Practical projects", salary: "Apply concepts through live campaigns" },
+      { role: "Industry case studies", salary: "Understand real business scenarios" },
+      { role: "Career support", salary: "Resume building, interview preparation, placement assistance" },
+      { role: "Learning platform access", salary: "Revise lessons and practice anytime" },
+      { role: "Mentor guidance", salary: "Continuous support throughout the digital marketing course" }
+    ],
   },
 };

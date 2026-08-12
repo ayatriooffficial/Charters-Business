@@ -375,7 +375,6 @@ export const generateStandardPageSchemas = ({
   });
 
   return combineSchemas(
-    organizationReferenceSchema,
     websiteReferenceSchema,
     pageSchema,
     breadcrumbSchema,

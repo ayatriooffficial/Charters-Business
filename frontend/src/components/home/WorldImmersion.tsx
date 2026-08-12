@@ -287,7 +287,7 @@ function WorldImmersion() {
             className="text-sm font-semibold text-[#B30437] tracking-wider mb-3"
             role="text"
           >
-            Global Culture{" "}
+            GLOBAL INTERNSHIP . GLOBAL JOB OPPORTUNITY{" "}
           </p>
           <h2 className="leading-none px-[20px] text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
             <HighlightText className=" font-bold">
@@ -400,7 +400,7 @@ function WorldImmersion() {
 
               {/* Navigation Buttons (Visible on Mobile/Tablet if overflow exists) */}
               <div className="lg:hidden">
-                <div className="absolute top-1/2 -translate-y-1/2 -left-2 sm:left-0 z-20">
+                <div className="absolute top-1/2 -translate-y-1/2 left-2 sm:left-0 z-20">
                   {offsetPercent > 0 && (
                     <button
                       onClick={() => changeSlide(-1)}
@@ -415,7 +415,7 @@ function WorldImmersion() {
                     </button>
                   )}
                 </div>
-                <div className="absolute top-1/2 -translate-y-1/2 -right-2 sm:right-0 z-20">
+                <div className="absolute top-1/2 -translate-y-1/2 right-2 sm:right-0 z-20">
                   {currentIndex < 2 && (
                     <button
                       onClick={() => changeSlide(1)}

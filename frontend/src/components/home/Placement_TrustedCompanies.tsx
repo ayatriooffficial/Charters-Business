@@ -224,10 +224,10 @@ function TrustedCompanies() {
             </p>
           </div>
 
-          <div className="mb-6 w-full sm:mb-8">
+          <div className="mb-12 w-full sm:mb-14 md:mb-8">
             <div
               ref={gridRef}
-              className="mx-auto grid grid-cols-3 max-w-6xl flex-wrap items-center justify-center gap-x-4 gap-y-10 px-4 md:flex md:gap-x-14 md:gap-y-18 md:px-6 lg:gap-x-20 lg:gap-y-15"
+              className="mx-auto grid grid-cols-3 max-w-6xl flex-wrap items-center justify-center gap-x-2 gap-y-16 px-2 md:flex md:gap-x-14 md:gap-y-18 md:px-6 lg:gap-x-20 lg:gap-y-15"
             >
               {POPULAR_COMPANIES.map((company, index) => {
                 const isActive = activeIndex === index;
@@ -235,7 +235,7 @@ function TrustedCompanies() {
                 return (
                   <div
                     key={company.name}
-                    className={`group relative z-10 h-8 md:h-10 w-full md:w-[140px] cursor-pointer hover:z-50 ${isActive ? 'z-50' : ''} ${index >= 6 ? 'hidden md:block' : 'block'}`}
+                    className={`group relative z-10 h-10 md:h-12 w-full md:w-[140px] cursor-pointer hover:z-50 ${isActive ? 'z-50' : ''} ${index >= 6 ? 'hidden md:block' : 'block'}`}
                     onClick={() => {
                       if (!isCaseStudy) return;
                       setActiveIndex((prev) => (prev === index ? null : index));
@@ -245,8 +245,8 @@ function TrustedCompanies() {
                       <Image src={company.logo} alt={company.name} fill className="object-contain" />
                     </div>
 
-                    <div className={`absolute inset-shadow-2xs left-1/2 top-[calc(100%+7px)] -translate-x-1/2 whitespace-nowrap border border-[#efefef] bg-[#fafafa] px-5 py-1.5 transition-colors group-hover:border-gray-200 group-hover:bg-[#efefef] ${isActive ? 'border-gray-200! bg-[#efefef]!' : ''}`}>
-                      <span className="text-[12px] font-normal text-[#222222]">{company.subjob}</span> <span className="text-[12px] font-bold text-[#222222]">{company.job}</span>
+                    <div className={`absolute inset-shadow-2xs left-1/2 top-[calc(100%+7px)] -translate-x-1/2 whitespace-nowrap border border-[#EDEEE8] bg-[#F3F3EF] px-1.5 py-0.5 md:px-5 md:py-1 transition-colors group-hover:border-[#F4F2EB] group-hover:bg-[#EDEEE8] ${isActive ? 'border-[#EDEEE8]! bg-[#F3F3EF]!' : ''}`}>
+                      <span className="text-[8.5px] md:text-[12px] font-normal text-[#222222]">{company.subjob}</span> <span className="text-[8.5px] md:text-[12px] font-bold text-[#222222]">{company.job}</span>
                     </div>
 
                     {isCaseStudy && company.caseStudy && (
@@ -288,7 +288,7 @@ function TrustedCompanies() {
 
       <div className="flex justify-center pt-8 pb-2">
         <button
-          className="text-sm text-black cursor-pointer opacity-50 transition-opacity duration-300 group-hover/main:opacity-100"
+          className="text-sm hover:underline text-black cursor-pointer opacity-50 transition-opacity duration-300 group-hover/main:opacity-100"
           onClick={() => {
             window.open(
               'https://spangled-cardinal-ac7.notion.site/2fe34c26081b800fb860c41b85555e68?v=393d012ded8a4a589d3a2d09872a78cc',
@@ -297,7 +297,7 @@ function TrustedCompanies() {
             );
           }}
         >
-          View all 1253 companies
+          View all <strong>1253</strong> companies
           <span className="inline-block">
             <img src="/Charters-icon/top_arrow-black.svg"
               alt="Format icon"

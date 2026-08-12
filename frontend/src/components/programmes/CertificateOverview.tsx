@@ -40,10 +40,10 @@ function CertificateOverview({ data }: Props) {
                   <thead>
                     <tr>
                       <th className="w-1/2 border border-gray-300 px-3 py-2 text-left font-semibold text-black bg-gray-50">
-                        Job Role
+                        Program Highlights
                       </th>
                       <th className="w-1/2 border border-gray-300 px-3 py-2 text-left font-semibold text-black bg-gray-50">
-                        Average Annual Salary in India
+                        Details
                       </th>
                     </tr>
                   </thead>
@@ -74,10 +74,10 @@ function CertificateOverview({ data }: Props) {
                   <thead>
                     <tr>
                       <th className="w-1/2 border border-gray-300 px-3 py-2 text-left font-semibold text-black bg-gray-50">
-                        Job Role
+                        Offline Classroom Learning
                       </th>
                       <th className="w-1/2 border border-gray-300 px-3 py-2 text-left font-semibold text-black bg-gray-50">
-                        Average Annual Salary in India
+                        Self-Paced Online Learning
                       </th>
                     </tr>
                   </thead>
@@ -117,10 +117,10 @@ function CertificateOverview({ data }: Props) {
                   <thead>
                     <tr>
                       <th className="w-1/2 border border-gray-300 px-3 py-2 text-left font-semibold text-black bg-gray-50">
-                        Job Role
+                        Module
                       </th>
                       <th className="w-1/2 border border-gray-300 px-3 py-2 text-left font-semibold text-black bg-gray-50">
-                        Average Annual Salary in India
+                        What You'll Learn
                       </th>
                     </tr>
                   </thead>
@@ -151,10 +151,10 @@ function CertificateOverview({ data }: Props) {
                   <thead>
                     <tr>
                       <th className="w-1/2 border border-gray-300 px-3 py-2 text-left font-semibold text-black bg-gray-50">
-                        Job Role
+                        Technical Skills
                       </th>
                       <th className="w-1/2 border border-gray-300 px-3 py-2 text-left font-semibold text-black bg-gray-50">
-                        Average Annual Salary in India
+                        Professional Skills
                       </th>
                     </tr>
                   </thead>
@@ -181,7 +181,7 @@ function CertificateOverview({ data }: Props) {
                 {para}
               </p>
             ))}
-            
+
             <p className="text-sm sm:text-base font-semibold text-black mb-2">
               {data.careerJobRolesTitle}
             </p>
@@ -221,6 +221,41 @@ function CertificateOverview({ data }: Props) {
               </table>
             </div>
 
+            <div>
+              <h3 className="text-base sm:text-lg font-semibold text-black mt-6 mb-2">
+                {data.receivebenefitTitle}
+              </h3>
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-3">
+                {data.programreceivebenefit}
+              </p>
+
+              <div className="overflow-x-auto mb-4">
+                <table className="w-full table-fixed text-sm sm:text-base border-collapse border border-gray-300">
+                  <thead>
+                    <tr>
+                      <th className="w-1/2 border border-gray-300 px-3 py-2 text-left font-semibold text-black bg-gray-50">
+                        What You Receive
+                      </th>
+                      <th className="w-1/2 border border-gray-300 px-3 py-2 text-left font-semibold text-black bg-gray-50">
+                        Benefit
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data.table6?.map((row) => (
+                      <tr key={row.role}>
+                        <td className="border border-gray-300 px-3 py-2 text-gray-700">{row.role}</td>
+                        <td className="border border-gray-300 px-3 py-2 text-gray-700">{row.salary}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-3">
+                {data.receivebenefitTitlePostTableDescription}
+              </p>
+            </div>
+
             <h2 className="text-lg sm:text-xl font-bold text-black mt-8 mb-3">
               {data.certificationTitle}
             </h2>
@@ -239,22 +274,22 @@ function CertificateOverview({ data }: Props) {
               ))}
             </ul>
 
-            <h2 className="text-lg sm:text-xl font-bold text-black mt-8 mb-3">
+            {/* <h2 className="text-lg sm:text-xl font-bold text-black mt-8 mb-3">
               {data.worthItTitle}
             </h2>
             {data.worthItDescriptionParagraphs.map((para, idx) => (
               <p key={idx} className="text-sm sm:text-base text-gray-700 leading-relaxed mb-3">
                 {para}
               </p>
-            ))}
-            <ol className="list-decimal pl-5 space-y-1 text-sm sm:text-base text-gray-700 mb-4">
+            ))} */}
+            {/* <ol className="list-decimal pl-5 space-y-1 text-sm sm:text-base text-gray-700 mb-4">
               {data.worthItReasons.map((item) => (
                 <li key={item.label}>
                   <span className="font-semibold text-black">{item.label}:</span>{' '}
                   {item.text}
                 </li>
               ))}
-            </ol>
+            </ol> */}
 
             <p className="text-xs italic text-gray-500 mb-4">
               {data.sourcedBy}
@@ -303,7 +338,7 @@ function CertificateOverview({ data }: Props) {
             <button
               type="button"
               onClick={() => setExpanded((prev) => !prev)}
-              className="text-[#B30437] text-sm sm:text-base font-semibold underline underline-offset-2 hover:text-red-800 transition-colors"
+              className="text-[#B30437] text-sm sm:text-base cursor-pointer font-semibold underline underline-offset-2 hover:text-red-800 transition-colors"
             >
               {expanded ? 'Read Less' : 'Read More'}
             </button>

@@ -28,7 +28,7 @@ const ProgramHero = ({ data, slug, assets }: ProgramHeroProps) => {
 
   return (
     <div
-      className="mx-[1%] sm:mx-[1.7%] md:mx-[2.7%] relative z-[5] mt-10 bg-white pb-4 sm:pb-6 md:pb-8"
+      className="mx-[1%] sm:mx-[1.7%] md:mx-[2.7%] relative z-[5] mt-11 bg-white pb-4 sm:pb-6 md:pb-8"
       aria-labelledby="programme-heading"
       role="region"
     >

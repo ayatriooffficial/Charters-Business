@@ -11,7 +11,7 @@ export default function CurriculumSkills({ data }: { data?: CurriculumSkillsData
         {data.previewSkills.slice(0, 10).map((skill, index) => (
           <span
             key={index}
-            className="px-4 py-[3px] bg-[#E2E8F0] text-gray-800 text-sm font-medium rounded-full"
+            className="px-4 py-[3px] bg-[#F2F2F2] text-gray-800 text-sm font-medium rounded-full"
           >
             {skill}
           </span>

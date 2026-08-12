@@ -16,7 +16,7 @@ const MenuItem = memo<{
     <button
       onClick={onClick}
       className={`flex-shrink-0 w-auto lg:w-full flex justify-center lg:border-b border-r lg:border-r-0 border-[#efefef] px-4 sm:px-[15px] py-2 sm:py-3 transition-colors ${isActive
-        ? "bg-[#F4F2EE] lg:bg-[#F4F2EE] border-l-4 lg:border-l-4 lg:border-l-[#B30437]"
+        ? "bg-[#F6F4F2] lg:bg-[#F6F4F2] border-l-4 lg:border-l-4 lg:border-l-[#B30437]"
         : "bg-white lg:hover:bg-gray-50"
         }`}
       aria-pressed={isActive}
@@ -24,10 +24,10 @@ const MenuItem = memo<{
     >
       <div className="flex-1 text-left min-w-0">
         <p
-          className={`uppercase tracking-wider font-semibold text-[10px] sm:text-[12px] transition-colors ${isActive ? "text-black lg:text-black" : "text-gray-500 lg:text-gray-500"
+          className={`uppercase tracking-wider font-semibold text-[10px] sm:text-[10px] transition-colors ${isActive ? "text-black lg:text-black" : "text-gray-500 lg:text-gray-500"
             }`}
         >
-          Month {index + 1}
+          Module {index + 1}
         </p>
         <div
           className={`font-semibold text-[11px] sm:text-[14px] lg:text-[16px] transition-colors whitespace-nowrap lg:whitespace-normal ${isActive ? "text-black lg:text-black" : "text-gray-500 lg:text-gray-500"
@@ -158,10 +158,34 @@ const ContentCard = memo<{
 
 
 
+
+          {/* Left Section - Vertical Image (hidden on mobile) */}
+          <div className="hidden sm:block sm:w-[23%] flex-shrink-0 overflow-hidden h-full">
+            <Image
+              src={
+                contentData[category]?.image ||
+                ""
+              }
+              alt={`Visual representation of ${contentData[category]?.title || category
+                } program`}
+              width={300}
+              height={400}
+              className="w-full h-full object-cover"
+              priority={index <= 2}
+            />
+          </div>
           {/* Right Section - Content */}
           <div className="w-full sm:w-4/5 flex flex-col overflow-hidden">
             <div className="p-2 sm:p-3 md:p-4 lg:p-6 h-full flex flex-col overflow-hidden">
               {/* Program Header */}
+              <div className="inline-flex">
+                <div className="items-center gap-1.5 bg-black text-white px-2 py-1 text-[12px] font-semibold mb-2">
+                  {contentData[category]?.month}
+                </div>
+                <p className="text-[14px] leading-none mb-2 bg-black text-white font-bold">.</p>
+                <div className="items-center gap-1.5 bg-black text-white px-2 py-1 text-[12px] font-semibold mb-2">
+                  {contentData[category]?.achievement}
+                </div></div>
               <div className="mb-1 sm:mb-2 flex-shrink-0 relative">
                 {(() => {
                   try {
@@ -193,24 +217,20 @@ const ContentCard = memo<{
               </div>
 
               {/* Category-Specific Content */}
+
               <div className="space-y-2 sm:space-y-3 md:space-y-4 flex-1 overflow-y-auto min-h-0 scrollbar-hide">
-                {category === "Specialization" && contentData[category] && (
+                {contentData[category]?.specializationTracks && contentData[category] && (
                   <section
                     aria-labelledby="specialization-heading"
                     className="bg-white rounded-xl"
                   >
                     <div>
-                      <div className="inline-flex items-center gap-1.5 bg-purple-50 text-purple-700 px-2 py-1 rounded text-[10px] font-medium mb-2">
-                        🎯 Students choose one of the following specialization
-                        tracks
-                      </div>
-
-                      <ol className="list-decimal list-inside flex flex-wrap gap-x-6 gap-y-1 text-[10px] text-[#5f6368] mb-1">
+                      <ol className="list-decimal list-inside flex flex-wrap gap-x-2 gap-y-1 text-[10px] font-semibold tracking-wide text-black mb-1">
                         {contentData[category].specializationTracks?.map(
                           (track) => (
                             <li
                               key={track}
-                              className=" inline-flex  w-max whitespace-nowrap"
+                              className=" inline-flex border-1 border-black px-2 py-0.5  w-max whitespace-nowrap"
                             >
                               {track}
                             </li>
@@ -218,68 +238,102 @@ const ContentCard = memo<{
                         )}
                       </ol>
 
-                      <p className="text-[10px] text-[#5f6368] italic">
+                      {/* <p className="text-[10px] text-[#5f6368] italic">
                         Students build complex systems and applications in their
                         chosen track.
-                      </p>
+                      </p> */}
                     </div>
 
                     {/* ================= PART 2: PROJECTS ================= */}
                     <div>
-                      <div className="inline-flex items-center gap-1.5 bg-green-50 text-green-700 px-2 py-1 rounded text-[10px] font-semibold mb-2">
-                        🧩 High-impact projects
-                      </div>
 
                       <div
-                        className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide"
+                        className="gap-3 pt-4 overflow-y-auto"
                         role="list"
-                        aria-label="High impact projects"
+                        aria-label="Live 100% job-ready based curriculum"
                       >
                         {contentData[category].projects?.map((project) => (
+
                           <div
                             key={project.name}
                             role="listitem"
-                            className="flex-shrink-0 w-[180px]"
+                            className="flex-shrink-0 pb-2 w-auto"
                           >
-                            <h5 className="text-[10px] font-semibold text-gray-900 leading-tight h-[28px] line-clamp-2 mb-1">
-                              {project.name}
-                            </h5>
+                            <div className="flex">
 
-                            <div
-                              className={`${project.color} h-[90px] rounded-lg flex items-center justify-center mb-1`}
-                            >
-                              <span className="text-3xl scale-75">
-                                {project.icon}
-                              </span>
+                              <img
+                                src="/Charters-icon/group-r-dot.svg"
+                                alt=""
+                                className="w-3 h-3 mt-[3px] object-cover flex-shrink-0"
+                              />
+
+                              <div className="pl-2">
+                                <h5 className="text-[14px] pb-1 font-semibold text-gray-900">
+                                  {project.name}
+                                </h5>
+                                <p className="text-[12px] pb-2 text-gray-600 leading-tight pb-1">
+                                  {project.description}
+                                </p>
+                                <div className="flex flex-wrap gap-2 mb-1 w-full">
+                                  {project.chips?.map((chip, chipIdx) => (
+                                    <div
+                                      key={chipIdx}
+                                      className={`${chip.color || project.color} w-auto flex-shrink-0 flex items-center gap-2`}
+                                    >
+                                      {chip.icon && (
+                                        chip.isImage ? (
+                                          <div className="w-8 h-8 overflow-hidden flex-shrink-0">
+                                            <img
+                                              src={chip.icon}
+                                              alt=""
+                                              className="w-full h-full object-cover"
+                                              style={{ objectPosition: "top", transform: "scale(1.4)", transformOrigin: "top center" }}
+                                            />
+                                          </div>
+                                        ) : (
+                                          <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center">
+                                            <img
+                                              src={chip.icon}
+                                              alt=""
+                                              className="w-full h-full object-contain"
+                                            />
+                                          </div>
+                                        )
+                                      )}
+                                      {(chip.text || chip.secondText) && (
+                                        <div className="min-w-0">
+                                          {chip.text && (
+                                            <p className="text-[12px] font-semibold text-gray-900 ">
+                                              {chip.text}
+                                            </p>
+                                          )}
+                                          {chip.secondText && (
+                                            <p className="text-[12px] text-gray-600 ">
+                                              {chip.secondText}
+                                            </p>
+                                          )}
+                                        </div>
+                                      )}
+                                    </div>
+                                  ))}
+                                </div>
+
+                              </div>
                             </div>
-
-                            <p className="text-[9px] text-gray-600 leading-tight line-clamp-3">
-                              {project.description}
-                            </p>
                           </div>
                         ))}
                       </div>
                     </div>
 
                     {/* ================= PART 3: SKILLS ================= */}
-                    <div>
-                      <div className="inline-flex items-center gap-3 bg-yellow-50 text-yellow-700 px-2 py-1 rounded text-[10px] font-semibold mb-1">
-                        ✨ Skills you’ll build
-                      </div>
 
-                      <div className="flex flex-wrap gap-x-3 gap-y-1 text-[10px] text-[#5f6368] mb-3">
-                        {contentData[category].skills?.map((skill) => (
-                          <span key={skill}>{skill}</span>
-                        ))}
-                      </div>
-
-                      <button
-                        type="button"
-                        className="w-full border border-dashed border-blue-400 text-blue-700 text-[11px] font-medium py-2 rounded-lg hover:bg-blue-50 transition"
-                      >
-                        📘 View subjects list
-                      </button>
+                    <div className="flex flex-wrap gap-x-3 gap-y-1 text-[10px] text-[#5f6368] mb-3">
+                      <p className="text-[14px} text-black font-semibold">Job-Ready Skills:</p>
+                      {contentData[category].skills?.map((skill) => (
+                        <span key={skill}>{skill}</span>
+                      ))}
                     </div>
+
                   </section>
                 )}
 
@@ -388,49 +442,33 @@ const ContentCard = memo<{
                 )}
 
                 {/* Call-to-Action Button */}
-                {!contentData[category]?.specializations &&
-                  category !== "Specialization" && (
-                    <div className="mt-auto pt-2 sm:pt-3 md:pt-4 flex-shrink-0">
-                      <button
-                        className={`bg-[#B30437] hover:bg-[#8B0329] text-white px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-lg font-semibold text-xs sm:text-sm md:text-base ${styles.handsOnCtaButton} flex items-center space-x-2`}
-                        aria-label={`View all ${category} details`}
-                        type="button"
+                {!contentData[category]?.specializationTracks && (
+                  <div className="mt-auto pt-2 sm:pt-3 md:pt-4 flex-shrink-0">
+                    <button
+                      className={`bg-[#B30437] hover:bg-[#8B0329] text-white px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-lg font-semibold text-xs sm:text-sm md:text-base ${styles.handsOnCtaButton} flex items-center space-x-2`}
+                      aria-label={`View all ${category} details`}
+                      type="button"
+                    >
+                      <span>Explore {category}</span>
+                      <svg
+                        className="w-3 h-3 sm:w-4 sm:h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
                       >
-                        <span>Explore {category}</span>
-                        <svg
-                          className="w-3 h-3 sm:w-4 sm:h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          aria-hidden="true"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 5l7 7-7 7"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                  )}
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
-          </div>
-          {/* Left Section - Vertical Image (hidden on mobile) */}
-          <div className="hidden sm:block sm:w-[23%] flex-shrink-0 overflow-hidden h-full">
-            <Image
-              src={
-                contentData[category]?.image ||
-                ""
-              }
-              alt={`Visual representation of ${contentData[category]?.title || category
-                } program`}
-              width={300}
-              height={400}
-              className="w-full h-full object-cover"
-              priority={index <= 2}
-            />
           </div>
         </div>
       </div>
@@ -548,14 +586,15 @@ function HandsOnLearningComponent() {
     (targetIndex: number) => {
       if (!containerRef.current) return;
 
-      const containerTop = containerRef.current.offsetTop;
+      const rect = containerRef.current.getBoundingClientRect();
+      const absoluteTop = window.scrollY + rect.top;
       const windowHeight = window.innerHeight;
       const containerHeight = containerRef.current.offsetHeight;
       const scrollableHeight = containerHeight - windowHeight;
 
       const targetProgress = targetIndex / (categories.length - 1);
       const targetScrollOffset = targetProgress * scrollableHeight;
-      const finalScrollPosition = containerTop + targetScrollOffset;
+      const finalScrollPosition = absoluteTop + targetScrollOffset;
 
       window.scrollTo({
         top: finalScrollPosition,
@@ -585,7 +624,7 @@ function HandsOnLearningComponent() {
                 className="text-sm font-semibold text-[#B30437] tracking-wider pb-2 sm:pb-3 md:pb-4"
                 role="text"
               >
-                THE YOUNG CHARTER&apos;S HANDS-ON
+                TRANSFORM FRESHER TAG - BE TOP 1%
               </p>
               <h2
                 id="hands-on-heading"
@@ -602,7 +641,7 @@ function HandsOnLearningComponent() {
             {/* Description */}
             <div className="flex flex-col items-start sm:flex-row sm:flex-wrap sm:justify-center sm:items-center gap-3 sm:gap-6 mb-2 sm:mb-4 w-fit mx-auto sm:w-full">
               <h3 className="text-base px-[20px] md:px-[50px] lg:px-[70px] sm:text-lg text-[#5f6368]">
-                <strong> 7 </strong>months. <strong>Paid internship</strong> at global companys. <strong>AI-powered</strong> curriculum. Corporate <strong>English training</strong>. <strong>1:1</strong> mentorship. <strong>7</strong> countries. <strong>1,257+</strong> companies.
+                <strong>7 months</strong>. <strong>Paid internship</strong> at global companys. <strong>AI-powered</strong> curriculum. Corporate <strong>English training</strong>. <strong>1:1</strong> Profile base career mentorship. Work around <strong>7 countries</strong>. <strong>1,257+ companies</strong>.
 
               </h3>
             </div>
@@ -625,7 +664,7 @@ function HandsOnLearningComponent() {
         >
 
 
-          <div className="w-full max-w-[85rem] lg:border-t border-gray-200 mx-auto mt-0 lg:mt-2 flex flex-col lg:flex-row flex-1 min-h-0">
+          <div className="w-full max-w-[85rem] lg:border-t border-gray-200 mx-auto flex flex-col lg:flex-row flex-1 min-h-0">
             {/* Left Section - menu (Unified for Mobile & Desktop) */}
             <div className="w-full lg:w-1/4 relative lg:border-r border-gray-300 flex-shrink-0 lg:flex-shrink">
               <div ref={menuRef} className="flex flex-col h-full">
@@ -646,7 +685,7 @@ function HandsOnLearningComponent() {
                       />
                     </div>
                     <p className="text-[#80868b] text-xs pl-4">
-                      Built by Harvard Scholars, Led by Industry-
+                      Built by Harvard Scholars, Led by Industry...
                     </p>
                   </div>
 

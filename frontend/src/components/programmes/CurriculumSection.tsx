@@ -24,7 +24,7 @@ interface CurriculumSectionProps {
 const TAB_LABELS: Record<CurriculumTabKey, string> = {
   courses: "Courses & Workshops",
   collaboration: "Collaboration",
-  business: "Business Immersions",
+  business: "Charters CareerLab",
   cultural: "Cultural Immersions",
 };
 

@@ -15,14 +15,14 @@ const Footer = () => {
     },
     {
       title: "Innovation",
-      links: ["On-class internship", "Student Entrepreneurship", "Student research program"],
+      links: ["On-class internship", "i-Lab Entrepreneurship", "Student research program"],
     },
     {
       title: "About us",
       links: [
         "For Companies",
-        "Jobs",
         "Events",
+        "Jobs",
         "Blog",
       ],
     },
@@ -46,14 +46,14 @@ const Footer = () => {
         <div className="flex flex-col lg:flex-row justify-between gap-9">
           {/* Logo Section  */}
           <div className="flex-shrink-0 w-full lg:w-auto mb-6 lg:mb-0">
-            <div className="flex items-center gap-2 mb-6 lg:mb-8">
+            <div className="flex items-center gap-2 mb-2 lg:mb-4">
               <Image
                 src="/Chaters_Union.avif"
                 alt="Chaters' Union - Business Education Excellence"
-                width={120}
-                height={58}
+                width={150}
+                height={80}
                 quality={50}
-                sizes="(max-width: 640px) 80px, 96px"
+                sizes="(max-width: 640px) 80px, 150px"
                 className="w-auto h-auto"
               />
             </div>
@@ -68,7 +68,7 @@ const Footer = () => {
                 {/* EFMD Logo */}
                 <div className="relative w-[270px] max-w-full h-[60px]">
                   <Image
-                    src="/charters-partners.avif"
+                    src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784550674/charters-partners_ufcct9.avif"
                     alt=" Global - Educational accreditation and quality assurance partner"
                     fill
                     sizes="270px"

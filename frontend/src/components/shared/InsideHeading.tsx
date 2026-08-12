@@ -12,7 +12,7 @@ export default function InsideHeading({
   badgeText = null,
 }: Props) {
   return (
-    <div className="mb-1 flex-shrink-0">
+    <div className="flex-shrink-0">
       <div className="flex items-start justify-between">
         <h3 className="text-xl sm:text-xl font-bold text-black mb-1">
           {title}
@@ -25,7 +25,7 @@ export default function InsideHeading({
       </div>
 
       {description ? (
-        <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+        <p className="text-sm sm:text-base text-gray-600">
           {description}
         </p>
       ) : null}

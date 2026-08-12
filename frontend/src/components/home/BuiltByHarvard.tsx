@@ -6,13 +6,13 @@ import HighlightText from "@/components/shared/HighlightObserver";
 function BuiltByHarvard() {
   return (
     <section
-      className="relative text-black py-8 sm:py-10 px-10 mt-[70px] md:py-16 mb-16"
+      className="relative text-black py-8 sm:py-10 px-[25px] sm:px-[25px] md:px-[65px] lg:px-[65px] mt-[70px] md:py-16 mb-16"
       role="region"
       aria-labelledby="trusted-companies-heading"
     >
       {/* Full-width background */}
       <div
-        className="absolute inset-0 bg-[#F4F2EE] -z-10"
+        className="absolute inset-0 bg-[#F6F4F2] -z-10"
         style={{
           width: "100vw",
           left: "50%",
@@ -28,9 +28,9 @@ function BuiltByHarvard() {
         >
           The most{" "}
           <HighlightText className="mx-2 font-bold">
-            innovative
+            Innovative Job-Ready
           </HighlightText>{" "}
-          institution
+          Institution
         </h2>
 
         <p className="text-[#5f6368] text-sm sm:text-base md:text-lg max-w-4xl mx-auto leading-relaxed px-4">
@@ -50,7 +50,7 @@ function BuiltByHarvard() {
             </h3>
 
 
-            <div className="w-full h-32 sm:h-38 border-r border-[#D5D0CA] relative group">
+            <div className="w-full h-32 sm:h-38 border-r border-[#efefef] relative group">
               <Image
                 src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784539837/charters_alumni_from_stfaaa.avif"
                 alt="Built by alumni"

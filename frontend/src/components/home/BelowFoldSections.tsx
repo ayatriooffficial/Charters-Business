@@ -95,9 +95,9 @@ export default function BelowFoldSections() {
       <LazyMount fallback={<SectionSkeleton height="h-80" />}>
         <SectionWrapper hideCorners={"all"}>
           <FacultyModel data={{
-            eyebrow: "LEARN FROM THE BEST",
-            title: { prefix: "Meet your", highlight: "Faculty" },
-            subtitle: "Learn from industry leaders, academic experts, and seasoned practitioners who bring real-world experience to your education.",
+            eyebrow: "INSTRUCTORS & MENTORS at CHARTERs’ UNION",
+            title: { prefix: "Learn from the", highlight: "Top 0.1% of Industry Practitioners" },
+            subtitle: "At Charters' Union, your classroom is powered by top 1% business leaders, from  Hardvard to Flipkart, from IISc to Google. Our Mentors don't just teach the playbook. They help to build it.",
             categories: facultyCategories,
             faculty: facultyMembers
           }} />
@@ -114,8 +114,8 @@ export default function BelowFoldSections() {
       <LazyMount fallback={<SectionSkeleton height="h-80" />}>
         <SectionWrapper hideCorners={"all"}>
           <StudentModel data={{
-            eyebrow: "MEET OUR ACHIEVERS",
-            title: { prefix: "Young Charters at", highlight: "Global Companys" },
+            eyebrow: "INTERNSHIP + PPO HIGHLIGHTS",
+            title: { prefix: "Young Charters' at", highlight: "Global Companys" },
             subtitle: "From day one, our students are groomed to lead, innovate, and excel.",
             categories: homeStudentCategories,
             students: homeStudents

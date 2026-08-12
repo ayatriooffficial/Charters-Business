@@ -17,8 +17,7 @@ const cardsData = [
     badge: "100% Job-Ready Career Conversion",
     title: "AI-Powered Curriculum for",
     subtitle: "Corporate foundation",
-    description:
-      "",
+    description: "",
     mediaSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784538676/world-map-illistarter_syq1gl.avif",
     logos: ["Charters hiring partner around the word"],
   },
@@ -83,7 +82,7 @@ function EditorialCard({ card }: EditorialCardProps) {
           fill
           className="w-full h-full object-cover object-left-bottom"
           priority
-          quality={45}
+          quality={50}
           sizes={CARD_MOBILE_BANNER_SIZES}
         />
       </div>
@@ -170,7 +169,7 @@ interface HealthGridCardProps {
 
 function HealthGridCard({ card }: HealthGridCardProps) {
   return (
-    <section className="flex flex-col w-full bg-[#F4F2EE] overflow-hidden h-auto">
+    <section className="flex flex-col w-full bg-[#F6F4F2] overflow-hidden h-auto">
       {/* Mobile banner image */}
       <div className="relative block aspect-square w-full flex-shrink-0 overflow-hidden lg:hidden">
         <Image
@@ -335,7 +334,7 @@ function FlagshipCard({ card }: FlagshipCardProps) {
               </div>
             </div>
 
-            <div className="-mx-3 sm:mx-0">
+            <div className="mx-0 sm:mx-0">
               <div ref={sliderRef} className="flex overflow-x-auto scrollbar-hide h-[160px] sm:h-[180px] items-stretch scroll-smooth divide-x divide-[#016833] border-[#016833]">
                 {card.programs?.map((p: { name: string; duration: string }) => (
                   <div key={p.name} className="w-[150px] sm:w-[150px] flex-shrink-0 h-full bg-[#78BA9E] px-4 sm:px-5 py-4 sm:py-5 flex flex-col justify-between">

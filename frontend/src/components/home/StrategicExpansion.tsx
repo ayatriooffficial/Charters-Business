@@ -179,10 +179,10 @@ const contentData: Record<string, ContentData> = {
             },
         ],
         footer: {
-            title: "AI Brand Profile Engine",
+            title: "AI-Powered Profile Base Job Search Engine",
             description: "Charter Career provides the high-level exposure and brand-building tools needed to position students for elite leadership roles.",
             features: [
-                { icon: "chart", label: "Brand Analytics" },
+                { icon: "chart", label: "Profile Brand Analytics" },
                 { icon: "lightning", label: "Executive Sync" },
                 { icon: "check", label: "Success Plan" },
                 { icon: "document", label: "Case Notes" }
@@ -276,7 +276,7 @@ const contentData: Record<string, ContentData> = {
             ]
         },
         avatar: {
-            src: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
+            src: "",
             alt: "Executive Mentor",
             borderColor: "border-yellow-400"
         },
@@ -364,7 +364,7 @@ const contentData: Record<string, ContentData> = {
             ]
         },
         avatar: {
-            src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+            src: "",
             alt: "Career Coach",
             borderColor: "border-purple-500"
         },
@@ -451,7 +451,7 @@ const contentData: Record<string, ContentData> = {
             ]
         },
         avatar: {
-            src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
+            src: "",
             alt: "Technical Lead",
             borderColor: "border-orange-500"
         },
@@ -539,7 +539,7 @@ const contentData: Record<string, ContentData> = {
             ]
         },
         avatar: {
-            src: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=100&h=100&fit=crop",
+            src: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784539836/charters-faculty-member_tlvkib.avif",
             alt: "HR Specialist",
             borderColor: "border-blue-500"
         },
@@ -565,7 +565,7 @@ const StrategicExpansion: React.FC = () => {
             {isVisible && (
                 <>
                     <div className="flex-shrink-0 text-center mb-8 sm:mb-8">
-                        <p className=" text-sm px-[40px] font-semibold text-[#B30437] tracking-wider mb-4 sm:mb-6">NEXT-GENERATION EMPLOYABILITY ASSURANCE ECOSYSTEM</p>
+                        <p className=" text-sm px-[40px] font-semibold text-[#B30437] tracking-wider mb-4 sm:mb-6">NEXT-GENERATION GUARANTEE EMPLOYABILITY ECOSYSTEM</p>
                         <h2 className="leading-none text-black px-[20px] text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]">
                             1st Week to 1st Job:
                             <HighlightText className="font-bold">CareerPathx™</HighlightText>{" "} Career AI-Engine
@@ -637,9 +637,9 @@ const StrategicExpansion: React.FC = () => {
 
                                     {/* Stats */}
                                     <div className="space-y-6">
-                                        <div className="flex gap-6">
+                                        <div className="flex gap-2">
                                             {currentContent.stats.secondary.map((stat, i) => (
-                                                <div key={i} className="bg-[#E3DFD2] p-[10px] relative pl-4">
+                                                <div key={i} className="bg-white p-[10px] relative pl-4">
                                                     <div className="relative z-10">
                                                         <div className="text-xl font-semibold text-black">{stat.value}</div>
                                                         <p className="text-black text-xs font-medium">
@@ -725,21 +725,21 @@ const StrategicExpansion: React.FC = () => {
                             <div className="relative h-8 hidden md:flex justify-around">
                                 {/* Left dotted lines group (3 lines) */}
                                 <div className="absolute left-[16.67%] top-0 h-full flex gap-1">
-                                    <div className="h-full border-l-2 border-dashed border-[#B30437]/40"></div>
-                                    <div className="h-full border-l-2 border-dashed border-[#B30437]/40"></div>
-                                    <div className="h-full border-l-2 border-dashed border-[#B30437]/40"></div>
+                                    <div className="h-full border-l-2 border-dashed border-[#B30437]"></div>
+                                    <div className="h-full border-l-2 border-dashed border-[#B30437]"></div>
+                                    <div className="h-full border-l-2 border-dashed border-[#B30437]"></div>
                                 </div>
                                 {/* Center dotted lines group (3 lines) */}
                                 <div className="absolute left-1/2 top-0 h-full flex gap-1 transform -translate-x-1/2">
-                                    <div className="h-full border-l-2 border-dashed border-orange-400/40"></div>
-                                    <div className="h-full border-l-2 border-dashed border-orange-400/40"></div>
-                                    <div className="h-full border-l-2 border-dashed border-orange-400/40"></div>
+                                    <div className="h-full border-l-2 border-dashed border-[#000000]"></div>
+                                    <div className="h-full border-l-2 border-dashed border-[#000000]"></div>
+                                    <div className="h-full border-l-2 border-dashed border-[#000000]"></div>
                                 </div>
                                 {/* Right dotted lines group (3 lines) */}
                                 <div className="absolute right-[16.67%] top-0 h-full flex gap-1">
-                                    <div className="h-full border-l-2 border-dashed border-[#B30437]/40"></div>
-                                    <div className="h-full border-l-2 border-dashed border-[#B30437]/40"></div>
-                                    <div className="h-full border-l-2 border-dashed border-[#B30437]/40"></div>
+                                    <div className="h-full border-l-2 border-dashed border-[#B30437]"></div>
+                                    <div className="h-full border-l-2 border-dashed border-[#B30437]"></div>
+                                    <div className="h-full border-l-2 border-dashed border-[#B30437]"></div>
                                 </div>
                             </div>
 
@@ -779,7 +779,7 @@ const StrategicExpansion: React.FC = () => {
                                         stroke="#B30437"
                                         strokeWidth="2"
                                         strokeDasharray="6 4"
-                                        opacity="0.6"
+                                        opacity="1"
                                     />
 
                                     {/* Left inner curve - Red (Adjusted for smooth curve) */}
@@ -789,61 +789,57 @@ const StrategicExpansion: React.FC = () => {
                                         stroke="#B30437"
                                         strokeWidth="2"
                                         strokeDasharray="6 4"
-                                        opacity="0.6"
+                                        opacity="1"
                                     />
 
                                     {/* Right inner curve - Orange (Adjusted for smooth curve) */}
                                     <path
                                         d="M 625 0 L 625 5 Q 625 15, 600 15 L 570 15 Q 555 15, 555 30 L 555 35 Q 555 42, 545 42 L 535 42"
                                         fill="none"
-                                        stroke="#F97316"
+                                        stroke="#000000"
                                         strokeWidth="2"
                                         strokeDasharray="6 4"
-                                        opacity="0.6"
+                                        opacity="1"
                                     />
 
                                     {/* Right outer curve - Orange (Smooth S-curve) */}
                                     <path
                                         d="M 875 0 L 875 5 Q 875 15, 840 15 L 610 15 Q 590 15, 590 30 L 590 35 Q 590 45, 575 48 L 561 51"
                                         fill="none"
-                                        stroke="#F97316"
+                                        stroke="#000000"
                                         strokeWidth="2"
                                         strokeDasharray="6 4"
-                                        opacity="0.6"
+                                        opacity="1"
                                     />
 
                                     {/* Arrow heads - Adjusted positions to match new curve ends */}
                                     <polygon points="447,52 439,47 439,56" fill="#B30437" opacity="0.6" />
                                     <polygon points="470,42 462,38 462,46" fill="#B30437" opacity="0.6" />
-                                    <polygon points="530,42 538,38 538,46" fill="#F97316" opacity="0.6" />
-                                    <polygon points="553,52 561,47 561,56" fill="#F97316" opacity="0.6" />
+                                    <polygon points="530,42 538,38 538,46" fill="#000000" opacity="0.6" />
+                                    <polygon points="553,52 561,47 561,56" fill="#000000" opacity="0.6" />
                                 </svg>
 
                                 {/* Avatar Group */}
                                 <div className="relative z-10 mt-8 flex items-center justify-center -space-x-3">
-                                    <div
-                                        className={`w-19 h-19 rounded-full border-4 ${currentContent.avatar.borderColor} overflow-hidden shadow-lg z-20 cursor-pointer transition-transform hover:scale-110`}
-                                        onClick={() => setShowInterviewAI(true)}
-                                    >
-                                        {currentContent.avatar.src ? (
-                                            <Image
-                                                src={currentContent.avatar.src}
-                                                alt={currentContent.avatar.alt}
-                                                width={50}
-                                                height={50}
-                                                loading="lazy"
-                                                priority={false}
-                                                className="w-full h-full object-cover"
-                                                sizes="(max-width: 768px) 100vw, 320px"
-                                            />
-                                        ) : null}
+                                    <div className="w-auto h-auto rounded-full  overflow-hidden z-20 cursor-pointer transition-transform hover:scale-110">
+                                        <Image
+                                            src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1786450741/placement-partners_ikdgmf.avif"
+                                            alt={currentContent.avatar.alt}
+                                            width={200}
+                                            height={50}
+                                            loading="lazy"
+                                            priority={false}
+                                            className="w-full h-full object-cover"
+                                            sizes="(max-width: 768px) 100vw, 270px"
+                                        />
+
                                     </div>
                                 </div>
                             </div>
 
-                            <GlobalLoginModal 
-                                isOpen={showInterviewAI} 
-                                onClose={() => setShowInterviewAI(false)} 
+                            <GlobalLoginModal
+                                isOpen={showInterviewAI}
+                                onClose={() => setShowInterviewAI(false)}
                             />
                         </div>
                     </div>
