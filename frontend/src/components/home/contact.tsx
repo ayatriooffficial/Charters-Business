@@ -97,7 +97,7 @@ const Contact = () => {
                     </div>
                     <div className="flex flex-col justify-center h-full">
                         <p className="text-sm mb-1">Write to Us</p>
-                        <p className="text-base font-bold">info@tetr.org</p>
+                        <p className="text-base font-bold">info@chartersunion.com</p>
                     </div>
                 </div>
 

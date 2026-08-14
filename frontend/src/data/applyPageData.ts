@@ -164,7 +164,7 @@ export const newsArticles: NewsArticle[] = [
     title:
       "I don't think entrepreneurship is only for school founder Nathan Barrans",
     excerpt:
-      "Global Survey by Tetr College of Business seeks to build the next generation in business education and entrepreneurship",
+      "Global Survey by charters'union College of Business seeks to build the next generation in business education and entrepreneurship",
     image: getCloudinaryUrl("news/forbes", {
       width: 800,
       quality: "auto",
@@ -176,16 +176,16 @@ export const newsArticles: NewsArticle[] = [
       quality: "auto",
       format: "auto",
     }),
-    url: "https://forbes.com/article/tetr-entrepreneurship",
+    url: "https://forbes.com/article/charters'union-entrepreneurship",
     publishedAt: "2024-01-15",
     category: "Entrepreneurship",
   },
   {
     id: "2",
     title:
-      "Tetr is training entrepreneurs across the Globe: The next revolution in Entrepreneurship",
+      "charters'union is training entrepreneurs across the Globe: The next revolution in Entrepreneurship",
     excerpt:
-      "Tetr College of Business is revolutionizing business education with global partnerships and innovative learning methods",
+      "charters'union College of Business is revolutionizing business education with global partnerships and innovative learning methods",
     image: getCloudinaryUrl("news/entrepreneur", {
       width: 800,
       quality: "auto",
@@ -197,14 +197,14 @@ export const newsArticles: NewsArticle[] = [
       quality: "auto",
       format: "auto",
     }),
-    url: "https://entrepreneur.com/article/tetr-global-training",
+    url: "https://entrepreneur.com/article/charters'union-global-training",
     publishedAt: "2024-02-20",
     category: "Innovation",
   },
   {
     id: "3",
     title:
-      "Global Survey by Tetr College of Business seeks to build cross-border impact",
+      "Global Survey by charters'union College of Business seeks to build cross-border impact",
     excerpt:
       "A comprehensive global survey exploring the future of business education and industry collaboration across continents",
     image: getCloudinaryUrl("news/education", {
@@ -218,13 +218,13 @@ export const newsArticles: NewsArticle[] = [
       quality: "auto",
       format: "auto",
     }),
-    url: "https://educationtimes.com/tetr-global-impact",
+    url: "https://educationtimes.com/charters'union-global-impact",
     publishedAt: "2024-03-10",
     category: "Education",
   },
   {
     id: "4",
-    title: "Tetr College launches new scholarship program worth $10M",
+    title: "charters'union College launches new scholarship program worth $10M",
     excerpt:
       "New scholarship initiative aims to support talented students from diverse backgrounds worldwide",
     image: getCloudinaryUrl("news/scholarship", {
@@ -238,13 +238,13 @@ export const newsArticles: NewsArticle[] = [
       quality: "auto",
       format: "auto",
     }),
-    url: "https://gulfnews.com/tetr-scholarship",
+    url: "https://gulfnews.com/charters'union-scholarship",
     publishedAt: "2024-04-05",
     category: "Scholarships",
   },
   {
     id: "5",
-    title: "Industry leaders partner with Tetr for mentorship program",
+    title: "Industry leaders partner with charters'union for mentorship program",
     excerpt:
       "Top CEOs and founders commit to mentoring next generation of business leaders through exclusive program",
     image: getCloudinaryUrl("news/mentorship", {
@@ -258,13 +258,13 @@ export const newsArticles: NewsArticle[] = [
       quality: "auto",
       format: "auto",
     }),
-    url: "https://businessinsider.com/tetr-mentorship",
+    url: "https://businessinsider.com/charters'union-mentorship",
     publishedAt: "2024-05-15",
     category: "Partnerships",
   },
   {
     id: "6",
-    title: "Tetr graduates secure positions at Fortune 500 companies",
+    title: "charters'union graduates secure positions at Fortune 500 companies",
     excerpt:
       "95% placement rate showcases quality of business education and industry readiness of graduates",
     image: getCloudinaryUrl("news/placement", {
@@ -278,7 +278,7 @@ export const newsArticles: NewsArticle[] = [
       quality: "auto",
       format: "auto",
     }),
-    url: "https://economictimes.com/tetr-placements",
+    url: "https://economictimes.com/charters'union-placements",
     publishedAt: "2024-06-20",
     category: "Placements",
   },
@@ -291,7 +291,7 @@ export const scholarships: Scholarship[] = [
     id: "1",
     title: "The Outliers Scholarship",
     description:
-      "Celebrating exceptional talents beyond academics. If you're leading in fields like device, science, robotics, analytics, this scholarship is designed to propel your unique journey forward at Tetr.",
+      "Celebrating exceptional talents beyond academics. If you're leading in fields like device, science, robotics, analytics, this scholarship is designed to propel your unique journey forward at charters'union.",
     eligibility: [
       "Recognized in the top 1% in any field",
       "Demonstrated leadership in extracurricular activities",
@@ -366,7 +366,7 @@ export const scholarships: Scholarship[] = [
     id: "6",
     title: "The Transfer Students Scholarship",
     description:
-      "Supporting students transferring from other institutions to continue their education journey at Tetr with seamless transition.",
+      "Supporting students transferring from other institutions to continue their education journey at charters'union with seamless transition.",
     eligibility: [
       "Minimum 3.0 GPA from previous institution",
       "Good academic standing with no disciplinary issues",
@@ -550,26 +550,26 @@ export const pageContent = {
     processHeading: "A simple 3-step admission process",
   },
   newsSection: {
-    title: "Tetr in the",
+    title: "charters'union in the",
     titleItalic: "News",
     viewMoreText: "VIEW MORE",
   },
   scholarshipsSection: {
     title: "Scholarships",
     description:
-      "At Tetr, we believe financial barriers should never stand in the way of exceptional education. We offer a merit-based scholarships that recognizes your achievements, ensuring your ambitions are fully realized without the burden of financial constraints.",
+      "At charters'union, we believe financial barriers should never stand in the way of exceptional education. We offer a merit-based scholarships that recognizes your achievements, ensuring your ambitions are fully realized without the burden of financial constraints.",
     badgeText: "UNDERGRADUATE",
   },
   successPage: {
     title: "Congratulations!",
     subtitle: "Your Application Has Been Successfully Submitted",
     description:
-      "Thank you for applying to Charters Business Tetr Program. We're excited to review your application!",
+      "Thank you for applying to Charters Business charters'union Program. We're excited to review your application!",
     nextStepsTitle: "What Happens Next?",
     nextSteps: [
       "You'll receive a confirmation email within 24 hours with your application details.",
       "Our admissions team will review your application within 3-5 business days.",
-      "You'll be invited to attempt the Tetr Trial (AI-Powered aptitude test).",
+      "You'll be invited to attempt the charters'union Trial (AI-Powered aptitude test).",
       "Successful candidates will be contacted for an interview with an Industry Leader.",
     ],
   },

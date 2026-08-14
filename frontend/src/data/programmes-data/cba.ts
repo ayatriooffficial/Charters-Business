@@ -61,8 +61,7 @@ const cbaCurriculumSection: CurriculumSectionData = {
       id: "dubai",
       term: "Month 01",
       title: "Strategy, Planning & Performance",
-      termImage:
-        "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
+      termImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
       badges: [
         { text: "Beginner", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
       ],
@@ -151,7 +150,7 @@ const cbaCurriculumSection: CurriculumSectionData = {
       term: "Month 02",
       title: "Reporting & Control",
       termImage:
-        "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
+        "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840455/digital-growth-_-marketing-classroom_r1pqba.avif",
       badges: [],
       outcome:
         "The competencies required to measure and report an organization's performance in compliance with relevant standards and regulations.",
@@ -239,8 +238,7 @@ const cbaCurriculumSection: CurriculumSectionData = {
       id: "singapore",
       term: "Month 03",
       title: "Technology & Analytics",
-      termImage:
-        "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
+      termImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786642832/chartersunion-student-build-ai-agent-for-scale_ifrulw.avif",
       badges: [
         { text: "Intermediate", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
       ],

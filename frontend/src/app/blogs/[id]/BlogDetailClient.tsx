@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { getBlogById } from "@/lib/api";
 import { STATIC_BLOGS, slugify } from "@/data/staticBlogs";
 import type { DisplayBlog } from "@/data/staticBlogs";
@@ -115,12 +117,84 @@ export default function BlogDetailPage({
     </div>
   );
 
-  // Simple parser to render basic markdown paragraphs and bolding
+  // Full-markdown renderer (superset of the old parser): legacy ##/###/bullets/bold
+  // render identically; tables, links and blockquotes from the content-agent work too.
+  const MarkdownContent = ({ content }: { content: string }) => (
+    <ReactMarkdown
+      remarkPlugins={[remarkGfm]}
+      components={{
+        h2: ({ children }) => (
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-8 mb-4 border-b border-gray-100 pb-3">
+            {children}
+          </h2>
+        ),
+        h3: ({ children }) => (
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mt-6 mb-3">
+            {children}
+          </h3>
+        ),
+        p: ({ children }) => (
+          <p className="text-[#5f6368] text-base sm:text-lg leading-relaxed mb-4">
+            {children}
+          </p>
+        ),
+        li: ({ children }) => (
+          <li className="text-[#5f6368] text-base sm:text-lg leading-relaxed ml-6 list-disc mb-3">
+            {children}
+          </li>
+        ),
+        strong: ({ children }) => (
+          <strong className="font-bold text-gray-950">{children}</strong>
+        ),
+        a: ({ href, children }) => (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#B30437] font-semibold underline underline-offset-2 hover:text-red-700"
+          >
+            {children}
+          </a>
+        ),
+        blockquote: ({ children }) => (
+          <blockquote className="border-l-4 border-[#B30437]/30 pl-4 my-4 text-[#5f6368] italic">
+            {children}
+          </blockquote>
+        ),
+        table: ({ children }) => (
+          <div className="overflow-x-auto my-6">
+            <table className="w-full text-left border-collapse border border-gray-200 rounded-lg overflow-hidden">
+              {children}
+            </table>
+          </div>
+        ),
+        th: ({ children }) => (
+          <th className="py-3 px-4 font-bold text-gray-900 bg-gray-50 border-b border-gray-200">
+            {children}
+          </th>
+        ),
+        td: ({ children }) => (
+          <td className="py-3 px-4 text-[#5f6368] border-b border-gray-200">
+            {children}
+          </td>
+        ),
+        hr: () => <hr className="my-8 border-gray-100" />,
+      }}
+    >
+      {content}
+    </ReactMarkdown>
+  );
+
+  // Renders content with full markdown; static blogs with promoData keep their
+  // mid-article promo section (legacy layout preserved).
   const renderBlogContent = (markdownText: string) => {
     if (!markdownText) return null;
+
+    if (!blog.promoData) {
+      return <MarkdownContent content={markdownText} />;
+    }
+
     const lines = markdownText.split("\n");
-    
-    // Find a good place to insert the promo section (roughly in the middle, preferably at an empty line or before a header)
     const middleIndex = Math.floor(lines.length / 2);
     let insertIndex = middleIndex;
     for (let i = middleIndex; i < lines.length; i++) {
@@ -130,72 +204,15 @@ export default function BlogDetailPage({
       }
     }
 
-    return lines.map((paragraph, index) => {
-      const trimmed = paragraph.trim();
-      let contentElement = null;
+    const firstHalf = lines.slice(0, insertIndex).join("\n");
+    const secondHalf = lines.slice(insertIndex).join("\n");
 
-      if (!trimmed) contentElement = <div key={index} className="h-4" />;
-      else if (trimmed.startsWith("## ")) {
-        contentElement = (
-          <h2
-            key={index}
-            className="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-8 mb-4 border-b border-gray-100 pb-3"
-          >
-            {trimmed.replace("## ", "")}
-          </h2>
-        );
-      } else if (trimmed.startsWith("### ")) {
-        contentElement = (
-          <h3
-            key={index}
-            className="text-xl sm:text-2xl font-bold text-gray-900 mt-6 mb-3"
-          >
-            {trimmed.replace("### ", "")}
-          </h3>
-        );
-      } else if (trimmed.startsWith("* ") || trimmed.startsWith("- ")) {
-        contentElement = (
-          <li
-            key={index}
-            className="text-[#5f6368] text-base sm:text-lg leading-relaxed ml-6 list-disc mb-3"
-          >
-            {parseBoldText(trimmed.substring(2))}
-          </li>
-        );
-      } else {
-        contentElement = (
-          <p
-            key={index}
-            className="text-[#5f6368] text-base sm:text-lg leading-relaxed mb-4"
-          >
-            {parseBoldText(trimmed)}
-          </p>
-        );
-      }
-
-      if (index === insertIndex && blog.promoData) {
-        return (
-          <div key={`group-${index}`}>
-            {contentElement}
-            <BlogPromoSection data={blog.promoData} />
-          </div>
-        );
-      }
-
-      return contentElement;
-    });
-  };
-
-  const parseBoldText = (text: string) => {
-    const parts = text.split(/\*\*([\s\S]*?)\*\*/g);
-    return parts.map((part, i) =>
-      i % 2 === 1 ? (
-        <strong key={i} className="font-bold text-gray-950">
-          {part}
-        </strong>
-      ) : (
-        part
-      )
+    return (
+      <>
+        <MarkdownContent content={firstHalf} />
+        <BlogPromoSection data={blog.promoData} />
+        <MarkdownContent content={secondHalf} />
+      </>
     );
   };
 
@@ -212,7 +229,7 @@ export default function BlogDetailPage({
       <div className="max-w-4xl w-full mx-auto px-4">
         {/* Back Link */}
         <Link
-          href="/"
+          href="/blogs"
           className="inline-flex items-center gap-2 text-sm font-semibold text-[#B30437] hover:text-red-700 transition-colors mb-8 group"
         >
           <svg
@@ -228,7 +245,7 @@ export default function BlogDetailPage({
               d="M10 19l-7-7m0 0l7-7m-7 7h18"
             />
           </svg>
-          Back to Home
+          Back to Blogs
         </Link>
 
         {/* Header Section */}

@@ -42,7 +42,7 @@ const TetrLandingPage = () => {
       title: "Focus on core values that shape character",
       subtitle: "of superficial learning",
       description:
-        "Tetr's curriculum emphasizes Values that nurture the right mindsets, helping students develop integrity, empathy, and leadership qualities essential for success.",
+        "Charters' Union curriculum emphasizes Values that nurture the right mindsets, helping students develop integrity, empathy, and leadership qualities essential for success.",
       points: [
         "Character development through real-world challenges and ethical decision-making",
         "Leadership training with mentors who exemplify strong moral principles",
@@ -68,7 +68,7 @@ const TetrLandingPage = () => {
       title: "Gain global exposure and diverse perspectives",
       subtitle: "beyond textbook knowledge",
       description:
-        "Tetr's curriculum provides Exposure that cultivates perspective, connecting students with diverse cultures, industries, and thought leaders worldwide.",
+        "Charters' Union curriculum provides Exposure that cultivates perspective, connecting students with diverse cultures, industries, and thought leaders worldwide.",
       points: [
         "International immersion programs in major business hubs across continents",
         "Cross-cultural collaboration projects with students from partner universities",
@@ -95,7 +95,7 @@ const TetrLandingPage = () => {
       title: "Gain hands-on experiences in real environments",
       subtitle: "not simulated scenarios",
       description:
-        "Tetr's curriculum centers on Experiences that hone internalization, providing authentic business challenges and real-world problem-solving opportunities.",
+        "Charters' Union curriculum centers on Experiences that hone internalization, providing authentic business challenges and real-world problem-solving opportunities.",
       points: [
         "Live consulting projects with actual companies facing real business challenges",
         "Internships integrated into curriculum with performance-based evaluations",
@@ -121,7 +121,7 @@ const TetrLandingPage = () => {
       title: "Focus on applicable skills instead",
       subtitle: "of rote memorization",
       description:
-        "Tetr's curriculum is rooted in Workshops, where students learn applied skills in a real world context from experienced practitioners.",
+        "Charters' Union curriculum is rooted in Workshops, where students learn applied skills in a real world context from experienced practitioners.",
       points: [
         "Students enroll in gamified & engaging workshops, rather than long theoretical courses",
         "Inspiring practitioners teach what they live for and what they practice everyday",
@@ -153,7 +153,7 @@ const TetrLandingPage = () => {
       role: "Founder",
       image:
         "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      description: "Founder, Tetr | Masters' Union | Outgrow",
+      description: "Founder, Charters' Union | Masters' Union | Outgrow",
     },
     {
       name: "Mr. Vinay Swafney",
@@ -226,7 +226,7 @@ const TetrLandingPage = () => {
             <div className="relative w-full h-[50vh] mb-6">
               <div className="w-full h-full bg-gray-200 overflow-hidden shadow-2xl rounded-lg">
                 <Image
-                  src="https://cdn.tetr.com/assets/ih-images/tetr-about-hero.webp"
+                  src="https://cdn.Charters' Union.com/assets/ih-images/Charters' Union-about-hero.webp"
                   alt="Students collaborating and learning"
                   className="w-full h-full object-cover"
                   fill
@@ -240,7 +240,7 @@ const TetrLandingPage = () => {
 
             <div className="bg-[#B30437] p-5 rounded-2xl shadow-xl">
               <p className="text-white text-sm font-medium mb-4 leading-relaxed">
-                At Tetr, students learn business by building businesses while
+                At Charters' Union, students learn business by building businesses while
                 traveling across the world and getting mentored by top
                 professors & practitioners.
               </p>
@@ -264,7 +264,7 @@ const TetrLandingPage = () => {
               <div className="relative w-1/2 h-[60vh] sm:h-[70vh] lg:h-[80vh]">
                 <div className="w-full h-full bg-gray-200 overflow-hidden shadow-2xl">
                   <Image
-                    src="https://cdn.tetr.com/assets/ih-images/tetr-about-hero.webp"
+                    src="https://cdn.Charters' Union.com/assets/ih-images/Charters' Union-about-hero.webp"
                     alt="Students collaborating and learning"
                     className="w-full h-full object-cover"
                     fill
@@ -288,7 +288,7 @@ const TetrLandingPage = () => {
 
             <div className="absolute bottom-8 left-1/4 transform -translate-x-1/2 bg-[#B30437] p-6 rounded-2xl shadow-xl max-w-xs sm:max-w-sm z-10">
               <p className="text-white text-xs sm:text-sm font-medium mb-4 leading-relaxed">
-                At Tetr, students learn business by building businesses while
+                At Charters' Union, students learn business by building businesses while
                 traveling across the world and getting mentored by top
                 professors & practitioners.
               </p>
@@ -318,7 +318,7 @@ const TetrLandingPage = () => {
                 className="text-xs font-semibold text-[#B30437] tracking-wider mb-2"
                 role="text"
               >
-                TETR METHODOLOGY
+                Charters' Union METHODOLOGY
               </p>
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-4 text-black leading-tight">
                 Rooted in{" "}
@@ -849,7 +849,7 @@ const TetrLandingPage = () => {
                   </div>
                   <div className="flex flex-col justify-center h-full">
                     <p className="text-sm mb-1">Write to Us</p>
-                    <p className="text-base font-bold">info@tetr.org</p>
+                    <p className="text-base font-bold">info@Charters' Union.org</p>
                   </div>
                 </div>
 

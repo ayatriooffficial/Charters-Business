@@ -16,21 +16,21 @@ interface ImageItem {
 }
 
 const masterclassImages: ImageItem[] = [
-    { src: "https://cdn.tetr.com/assets/ih-images/V2/las-masterclass.webp", caption: "Sven Herzing, CTO, Talabat" },
-    { src: "https://cdn.tetr.com/assets/ih-images/V2/las-masterclass.webp", caption: "Nishant Sukumaran, Marketing Head, Dabur International" },
-    { src: "https://cdn.tetr.com/assets/ih-images/V2/las-masterclass.webp", caption: "Jeff Strachen, VP, Dubai's Department of Economy and Tourism" },
+    { src: "https://cdn.charters'union.com/assets/ih-images/V2/las-masterclass.webp", caption: "Sven Herzing, CTO, Talabat" },
+    { src: "https://cdn.charters'union.com/assets/ih-images/V2/las-masterclass.webp", caption: "Nishant Sukumaran, Marketing Head, Dabur International" },
+    { src: "https://cdn.charters'union.com/assets/ih-images/V2/las-masterclass.webp", caption: "Jeff Strachen, VP, Dubai's Department of Economy and Tourism" },
 ];
 
 const mentorshipImages: ImageItem[] = [
-    { src: "https://cdn.tetr.com/assets/ih-images/V2/las-mentorship.webp", caption: "Ziad Shaltuni, Chief Commercial Officer, REALM" },
-    { src: "https://cdn.tetr.com/assets/ih-images/V2/las-mentorship.webp", caption: "Yusuf Saber, Ex VP, Talabat" },
-    { src: "https://cdn.tetr.com/assets/ih-images/V2/las-mentorship.webp", caption: "Sameer Rana, Group CMO, Beyond ONE" },
-    { src: "https://cdn.tetr.com/assets/ih-images/V2/las-mentorship.webp", caption: "Maryam Shahin, Head of Marketing, Ministry of Education UAE" },
+    { src: "https://cdn.charters'union.com/assets/ih-images/V2/las-mentorship.webp", caption: "Ziad Shaltuni, Chief Commercial Officer, REALM" },
+    { src: "https://cdn.charters'union.com/assets/ih-images/V2/las-mentorship.webp", caption: "Yusuf Saber, Ex VP, Talabat" },
+    { src: "https://cdn.charters'union.com/assets/ih-images/V2/las-mentorship.webp", caption: "Sameer Rana, Group CMO, Beyond ONE" },
+    { src: "https://cdn.charters'union.com/assets/ih-images/V2/las-mentorship.webp", caption: "Maryam Shahin, Head of Marketing, Ministry of Education UAE" },
 ];
 
 const firesideImages: ImageItem[] = [
-    { src: "https://cdn.tetr.com/assets/ih-images/V2/las-fireside.webp", caption: "Manish Mathur, CFO, Dabur International" },
-    { src: "https://cdn.tetr.com/assets/ih-images/V2/las-fireside.webp", caption: "Sylvain Perret, Co-Founder, The Healthy Ice Cream Company" },
+    { src: "https://cdn.charters'union.com/assets/ih-images/V2/las-fireside.webp", caption: "Manish Mathur, CFO, Dabur International" },
+    { src: "https://cdn.charters'union.com/assets/ih-images/V2/las-fireside.webp", caption: "Sylvain Perret, Co-Founder, The Healthy Ice Cream Company" },
 ];
 
 function ImageCard({ src, caption, className = "" }: ImageItem & { className?: string }) {

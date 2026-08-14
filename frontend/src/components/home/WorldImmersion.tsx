@@ -9,29 +9,22 @@ const immersionData = [
     location: "India",
     flag: "https://flagcdn.com/w40/in.png", // India
     business: {
-      imageSrc: "/images/tetr/indiaMarket.webp",
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786641088/student-impact-on-local-kirana-business_swsax6.avif",
       title: "Accountant & Finance",
       subtitle: "",
       description:
         "FinTech & Digital Payments | Accounting Consulting | Financial Services & Compliance | Global Bookkeeping | Payroll Management | Tax Consulting | SME Finance Departments",
     },
     cultural: {
-      imageSrc: "/images/tetr/indiaParade.webp",
-      title: "Digital Growth marketing",
-      subtitle: "Republic Day Parade",
-      description:
-        "Digital Marketing | Product Growth Marketing | ",
-    },
-    growth: {
-      imageSrc: "/images/tetr/indiaParade.webp",
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786641088/student-impact-on-indian-startup_lqjxss.avif",
       title: "Digital Growth marketing",
       subtitle: "Republic Day Parade",
       description:
         "Digital Marketing | Product Growth Marketing | ",
     },
     social: {
-      imageSrc: "/images/tetr/FMCGBrandNew.webp",
-      title: "Social Immersions",
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786641088/student-impact-on-top-company_iyd6xe.avif",
+      title: "Work at top 4",
       subtitle: "Rural Development Project",
       description:
         "Understand grassroots development projects | Engage with local community leaders | Analyze rural economic models",
@@ -41,21 +34,21 @@ const immersionData = [
     location: "United States",
     flag: "https://flagcdn.com/w40/us.png", // US
     business: {
-      imageSrc: "/images/tetr/usGoogle.webp",
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786641089/student-internship-at-google_ixdhfk.avif",
       title: "Business Immersions",
       subtitle: "Googleplex",
       description:
         "Explore cutting-edge tech innovation | Understand product development cycles | Observe workplace culture in top tech firms",
     },
     cultural: {
-      imageSrc: "/images/tetr/usNasdaq.webp",
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786641089/student-internship-at-gulf-countries_ymutpn.avif",
       title: "Cultural Immersions",
       subtitle: "NASDAQ, NYC",
       description:
         "Witness high-stakes financial moments | Learn about IPO processes | Experience the energy of Wall Street",
     },
     social: {
-      imageSrc: "/images/tetr/TechUSNew.webp",
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786641088/student-internship-at-usa-top-ecom-company_iwu8by.avif",
       title: "Social Immersions",
       subtitle: "Silicon Valley Incubators",
       description:
@@ -66,21 +59,21 @@ const immersionData = [
     location: "Canada",
     flag: "https://flagcdn.com/w40/ca.png", // Canada
     business: {
-      imageSrc: "/images/tetr/arGrobo.webp",
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786641088/student-impact-on-indian-startup_lqjxss.avif",
       title: "Business Immersions",
       subtitle: "Los Grobo HQ",
       description:
         "Understand agribusiness operations | Learn about large-scale supply chains | Explore innovation in farming technology",
     },
     cultural: {
-      imageSrc: "/images/tetr/arFootball.webp",
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786641089/student-internship-at-google_ixdhfk.avif",
       title: "Cultural Immersions",
       subtitle: "La Bombonera",
       description:
         "Experience passionate football culture | Engage with local fan traditions | Feel the intensity of live matches",
     },
     social: {
-      imageSrc: "/images/tetr/GreenArgentinaNew.webp",
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786641088/student-internship-at-usa-top-ecom-company_iwu8by.avif",
       title: "Social Immersions",
       subtitle: "Sustainable Agriculture Labs",
       description:
@@ -91,21 +84,21 @@ const immersionData = [
     location: "Saudi Arabia",
     flag: "https://flagcdn.com/w40/sa.png", // Saudi
     business: {
-      imageSrc: "/images/tetr/dubaiEmirates.webp",
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786641088/student-impact-on-indian-startup_lqjxss.avif",
       title: "Business Immersions",
       subtitle: "Dubai World Expo",
       description:
         "Explore global innovation showcases | Understand international trade dynamics | Experience luxury retail ecosystems",
     },
     cultural: {
-      imageSrc: "/images/tetr/dubaiSafari.webp",
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786641089/student-internship-at-google_ixdhfk.avif",
       title: "Cultural Immersions",
       subtitle: "Desert Safari",
       description:
         "Experience traditional desert life | Enjoy cultural performances and cuisine | Learn Bedouin heritage and customs",
     },
     social: {
-      imageSrc: "/images/tetr/7ghanaNew.webp",
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786641088/student-internship-at-usa-top-ecom-company_iwu8by.avif",
       title: "Social Immersions",
       subtitle: "Future Cities Projects",
       description:
@@ -116,21 +109,21 @@ const immersionData = [
     location: "Dubai",
     flag: "https://flagcdn.com/w40/ae.png", // Dubai/UAE
     business: {
-      imageSrc: "/images/tetr/dubaiEmirates.webp",
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786641089/student-internship-at-google_ixdhfk.avif",
       title: "Business Immersions",
       subtitle: "Dubai World Expo",
       description:
         "Explore global innovation showcases | Understand international trade dynamics | Experience luxury retail ecosystems",
     },
     cultural: {
-      imageSrc: "/images/tetr/dubaiSafari.webp",
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786641088/student-impact-on-indian-startup_lqjxss.avif",
       title: "Cultural Immersions",
       subtitle: "Desert Safari",
       description:
         "Experience traditional desert life | Enjoy cultural performances and cuisine | Learn Bedouin heritage and customs",
     },
     social: {
-      imageSrc: "/images/tetr/socialchannelEuropeNew.webp",
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786641088/student-internship-at-usa-top-ecom-company_iwu8by.avif",
       title: "Social Immersions",
       subtitle: "Civic Tech Hubs",
       description:
@@ -141,21 +134,21 @@ const immersionData = [
     location: "Qatar",
     flag: "https://flagcdn.com/w40/qa.png", // Qatar
     business: {
-      imageSrc: "/images/tetr/dubaiEmirates.webp",
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786641088/student-impact-on-indian-startup_lqjxss.avif",
       title: "Business Immersions",
       subtitle: "Dubai World Expo",
       description:
         "Explore global innovation showcases | Understand international trade dynamics | Experience luxury retail ecosystems",
     },
     cultural: {
-      imageSrc: "/images/tetr/dubaiSafari.webp",
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786641088/student-internship-at-usa-top-ecom-company_iwu8by.avif",
       title: "Cultural Immersions",
       subtitle: "Desert Safari",
       description:
         "Experience traditional desert life | Enjoy cultural performances and cuisine | Learn Bedouin heritage and customs",
     },
     social: {
-      imageSrc: "/images/tetr/euRace.webp",
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786641088/student-impact-on-top-company_iyd6xe.avif",
       title: "Social Immersions",
       subtitle: "Cultural Heritage Conservation",
       description:
@@ -166,21 +159,21 @@ const immersionData = [
     location: "Singapore",
     flag: "https://flagcdn.com/w40/sg.png", // Singapore
     business: {
-      imageSrc: "/images/tetr/singSkyline.webp",
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786641088/student-impact-on-indian-startup_lqjxss.avif",
       title: "Market Research, Branding & Digital Marketing",
       subtitle: "MAS, Singapore",
       description:
         "Learn global financial systems | Explore fintech innovation | Understand regulatory frameworks in banking",
     },
     cultural: {
-      imageSrc: "/images/tetr/singVip.webp",
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786641088/student-impact-on-top-company_iyd6xe.avif",
       title: "Cultural Immersions",
       subtitle: "National Day",
       description:
         "Celebrate national identity and unity | Enjoy grand parades and fireworks | Experience multicultural performances",
     },
     social: {
-      imageSrc: "/images/tetr/euMilan.webp",
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786641088/student-internship-at-usa-top-ecom-company_iwu8by.avif",
       title: "Social Immersions",
       subtitle: "Green Hub Ecosystems",
       description:

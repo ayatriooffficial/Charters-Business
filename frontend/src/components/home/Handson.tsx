@@ -221,7 +221,7 @@ function HealthGridCard({ card }: HealthGridCardProps) {
             </div>
           </div>
 
-          <div className="mb-2">
+          <div className="mb-6">
             <p className="text-[11px] font-semibold text-[#80868b] pt-2 mb-2 uppercase tracking-wider">
               Internship/Job around the 7 countries
             </p>

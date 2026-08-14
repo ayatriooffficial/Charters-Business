@@ -206,15 +206,6 @@ export const CLOUDINARY_IMAGES = {
     us: "charters-business/curriculumsection/us",
   },
 
-  // Tetr programme images
-  tetr: {
-    ghanaNew: "charters-business/tetr/7ghanaNew",
-    fmcgBrand: "charters-business/tetr/FMCGBrandNew",
-    greenArgentina: "charters-business/tetr/GreenArgentinaNew",
-    techUS: "charters-business/tetr/TechUSNew",
-    arFootball: "charters-business/tetr/arFootball",
-    arGrobo: "charters-business/tetr/arGrobo",
-  },
 
   // Apply section
   apply: {

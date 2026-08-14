@@ -5,13 +5,13 @@ import Image from 'next/image';
 import useInViewPlay from '@/components/micro/useInViewPlay';
 
 const businesses = [
-  { title: "E-Commerce", location: "Dubai", imageSrc: "/images/tetr/dubaiEmirates.webp", description: "Launch a dropshipping business of globally sourced products in Dubai.", showProgress: true },
-  { title: "FMCG Brand", location: "India", imageSrc: "/images/tetr/FMCGBrandNew.webp", description: "Launch a consumer brand for suburban Indian markets.", showProgress: true },
-  { title: "Kickstarter", location: "Singapore & Malaysia", imageSrc: "/images/tetr/kickstarter.webp", description: "Start a kickstarter campaign for a hardware solution inspired by design thinking.", showProgress: false },
-  { title: "Social Venture", location: "Ghana", imageSrc: "/images/tetr/7ghanaNew.webp", description: "Pilot a social enterprise focused on addressing a local cause in Ghana.", showProgress: false },
-  { title: "Tech Startup", location: "United States", imageSrc: "/images/tetr/TechUSNew.webp", description: "Build a SaaS tool, marketplace, AI tool or a mobile app to solve a key business problem.", showProgress: false },
-  { title: "Green Venture", location: "Argentina", imageSrc: "/images/tetr/GreenArgentinaNew.webp", description: "Start a green initiative focused on renewables, EVs or Sustainability.", showProgress: false },
-  { title: "Social Channel", location: "Europe", imageSrc: "/images/tetr/socialchannelEuropeNew.webp", description: "Start a lifestyle or niche YouTube channel, grow a community and land brand deals.", showProgress: false }
+  { title: "E-Commerce", location: "Dubai", imageSrc: "/images/uharters'union/dubaiEmirates.webp", description: "Launch a dropshipping business of globally sourced products in Dubai.", showProgress: true },
+  { title: "FMCG Brand", location: "India", imageSrc: "/images/uharters'union/FMCGBrandNew.webp", description: "Launch a consumer brand for suburban Indian markets.", showProgress: true },
+  { title: "Kickstarter", location: "Singapore & Malaysia", imageSrc: "/images/uharters'union/kickstarter.webp", description: "Start a kickstarter campaign for a hardware solution inspired by design thinking.", showProgress: false },
+  { title: "Social Venture", location: "Ghana", imageSrc: "/images/uharters'union/7ghanaNew.webp", description: "Pilot a social enterprise focused on addressing a local cause in Ghana.", showProgress: false },
+  { title: "Tech Startup", location: "United States", imageSrc: "/images/uharters'union/TechUSNew.webp", description: "Build a SaaS tool, marketplace, AI tool or a mobile app to solve a key business problem.", showProgress: false },
+  { title: "Green Venture", location: "Argentina", imageSrc: "/images/uharters'union/GreenArgentinaNew.webp", description: "Start a green initiative focused on renewables, EVs or Sustainability.", showProgress: false },
+  { title: "Social Channel", location: "Europe", imageSrc: "/images/uharters'union/socialchannelEuropeNew.webp", description: "Start a lifestyle or niche YouTube channel, grow a community and land brand deals.", showProgress: false }
 ];
 
 function SevenBusinessesComponent() {

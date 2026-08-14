@@ -21,14 +21,16 @@ export interface Student {
 export interface StudentCategory {
   id: string;
   name: string;
+  placedCount?: number;
+  outOf?: number;
 }
 
 export const homeStudentCategories: StudentCategory[] = [
-  { id: "jul", name: "July'26" },
-  { id: "apr", name: "April'26" },
-  { id: "jan", name: "January'26" },
-  { id: "oct", name: "October'25" },
-  { id: "dec", name: "August'25" },
+  { id: "jul", name: "July'26", placedCount: 97, outOf: 100 },
+  { id: "apr", name: "April'26", placedCount: 95, outOf: 100 },
+  { id: "jan", name: "January'26", placedCount: 89, outOf: 100 },
+  { id: "oct", name: "October'25", placedCount: 98, outOf: 100 },
+  { id: "dec", name: "August'25", placedCount: 94, outOf: 100 },
 ];
 
 // Single source of truth: individual student records (referenced by both homeStudents and the course arrays).
@@ -425,9 +427,9 @@ export const homeStudents: Student[] = [
 
 
 export const cbaStudentCategories: StudentCategory[] = [
-  { id: "jul", name: "July" },
-  { id: "apr", name: "April" },
-  { id: "jan", name: "January" },
+  { id: "jul", name: "July", placedCount: 90, outOf: 100 },
+  { id: "apr", name: "April", placedCount: 96, outOf: 100 },
+  { id: "jan", name: "January", placedCount: 95, outOf: 100 },
 ];
 
 export const cbaStudents: Student[] = [
@@ -450,9 +452,9 @@ export const cbaStudents: Student[] = [
 ];
 
 export const dgmStudentCategories: StudentCategory[] = [
-  { id: "jan", name: "January" },
-  { id: "apr", name: "April" },
-  { id: "jul", name: "July" },
+  { id: "jan", name: "January", placedCount: 95, outOf: 100 },
+  { id: "apr", name: "April", placedCount: 96, outOf: 100 },
+  { id: "jul", name: "July", placedCount: 90, outOf: 100 },
 ];
 
 export const dgmStudents: Student[] = [
@@ -476,9 +478,9 @@ export const dgmStudents: Student[] = [
 ];
 
 export const tbmStudentCategories: StudentCategory[] = [
-  { id: "jul", name: "July" },
-  { id: "apr", name: "April" },
-  { id: "jan", name: "January" },
+  { id: "jul", name: "July", placedCount: 90, outOf: 100 },
+  { id: "apr", name: "April", placedCount: 96, outOf: 100 },
+  { id: "jan", name: "January", placedCount: 95, outOf: 100 },
 ];
 
 export const tbmStudents: Student[] = [

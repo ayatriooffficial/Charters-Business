@@ -35,6 +35,12 @@ function StudentModel({ data }: StudentModelProps) {
     }
   }, [categoriesKey]);
 
+  // Extract month name and placement counts from the active category (handles both "July'26" and "July")
+  const activeCategoryObj = dynamicCategories.find((c: StudentCategory) => c.id === activeCategory);
+  const activeMonth = activeCategoryObj?.name.split("'")[0] ?? "";
+  const placedCount = activeCategoryObj?.placedCount;
+  const outOf = activeCategoryObj?.outOf;
+
   const tabIds = dynamicCategories.map((c: StudentCategory) => c.id);
   const filteredStudents = studentsData.filter(
     (s: Student) =>
@@ -184,13 +190,17 @@ function StudentModel({ data }: StudentModelProps) {
 
           {/* 100+ more students strip — below the cards */}
           {filteredStudents.length > 0 && (
-            <div className="flex items-center justify-center gap-2 pt-8">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#B30437]" />
-              <p className="text-xs sm:text-sm text-gray-700">
-                <span className="font-extrabold text-[#B30437]">100+</span>{" "}
-                <span className="font-medium">more students placed &amp; growing</span>
+            <div className="flex items-center justify-center gap-2 pt-4">
+              <p className="text-sm hover:underline text-black cursor-pointer transition-opacity duration-300">
+                View all{" "}
+                {placedCount != null && outOf != null && (
+                  <>
+                    <span className="font-extrabold text-[#B30437]">{placedCount}</span> {" "} Out of {" "}{outOf} {" "}
+                  </>
+                )}
+                <span className="font-medium">Students got placed month of
+                  <span className="font-extrabold"> {activeMonth} </span></span>
               </p>
-              <span className="h-1.5 w-1.5 rounded-full bg-[#B30437]" />
             </div>
           )}
         </div>

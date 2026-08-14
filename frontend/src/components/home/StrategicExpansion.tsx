@@ -312,7 +312,7 @@ const contentData: Record<string, ContentData> = {
         },
         buttonText: "VIEW CAREER LAB REPORT →",
         buttonColor: "bg-[#8B5CF6] hover:bg-[#8B5CF6]/90",
-        imageSrc: "/home/careerlunch.avif",
+        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786653705/student-job-ready-platform_rgcdju.avif",
         imageAlt:
             "Students in flexible internship program working evenings and weekends",
         serviceCards: [
@@ -400,7 +400,7 @@ const contentData: Record<string, ContentData> = {
         },
         buttonText: "VIEW CAREER DEVELOPMENT →",
         buttonColor: "bg-[#8B5CF6] hover:bg-[#8B5CF6]/90",
-        imageSrc: "/home/careerlunch.avif",
+        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786653705/student-job-ready-platform_rgcdju.avif",
         imageAlt: "Career development and coaching program",
         serviceCards: [
             {
@@ -487,7 +487,7 @@ const contentData: Record<string, ContentData> = {
         },
         buttonText: "VIEW JOB APPLICATIONS →",
         buttonColor: "bg-[#8B5CF6] hover:bg-[#8B5CF6]/90",
-        imageSrc: "/home/careerlunch.avif",
+        imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786653705/student-job-ready-platform_rgcdju.avif",
         imageAlt: "VRise job application hub",
         serviceCards: [
             {
@@ -656,7 +656,7 @@ const StrategicExpansion: React.FC = () => {
 
                                 {/* Right Side - Profile Image */}
                                 <div className="flex-1 flex justify-center">
-                                    <div className=" relative w-auto h-auto lg:w-140 lg:h-84">
+                                    <div className="relative w-auto h-auto lg:w-140 lg:h-82">
                                         <div className="w-full h-full relative">
                                             <Image
                                                 key={selectedCard}

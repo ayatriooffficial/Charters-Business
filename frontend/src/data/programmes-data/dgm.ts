@@ -86,7 +86,7 @@ const dgmCurriculumSection: CurriculumSectionData = {
       id: "india",
       term: "Month 02",
       title: "AI-Powered SEO, GEO & AEO and ASO",
-      termImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
+      termImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786642832/chartersunion-student-hand-on-project_zguqdf.avif",
       badges: [],
       outcome: "Rank content on Google, grow organic social following",
       project: undefined,
@@ -133,7 +133,7 @@ const dgmCurriculumSection: CurriculumSectionData = {
       id: "singapore",
       term: "Month 03",
       title: "AI-Poweard Marketing Analytics with Excel & Power BI",
-      termImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
+      termImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786642832/chartersunion-student-build-ai-agent-for-scale_ifrulw.avif",
       badges: [
         { text: "Intermediate", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
       ],
@@ -229,7 +229,7 @@ const dgmCurriculumSection: CurriculumSectionData = {
       id: "usa",
       term: "Month 05",
       title: "CRM & Internship",
-      termImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
+      termImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786642832/chartersunion-student-build_-personal-brand_d135q4.avif",
       badges: [
         { text: "In-Class Faculty-Guided Internship", className: "bg-black text-white text-xs px-2 py-1 font-semibold" },
         { text: "PRO", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
@@ -276,7 +276,7 @@ const dgmCurriculumSection: CurriculumSectionData = {
       id: "argentina",
       term: "Month 06",
       title: "Growth Engineer, PRO & Faculty guided internship",
-      termImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
+      termImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786642832/chartersunion-student-at-networking-events_iutdjm.avif",
       badges: [
         { text: "On Campus", className: "bg-black text-white text-xs px-2 py-1 font-semibold" },
         { text: "PRO", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },

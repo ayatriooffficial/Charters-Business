@@ -30,7 +30,7 @@ const videoCardsByCompany: Record<string, Array<{
   google: [
     {
       id: 'g1',
-      title: 'Meet the Tetr Tribe: Class of 2028',
+      title: 'Meet the ChartersUnion Tribe: Class of 2028',
       speaker: 'Srividya Pranavi',
       role: 'Machine Learning Scientist',
       company: 'Apple',
@@ -48,7 +48,7 @@ const videoCardsByCompany: Record<string, Array<{
     },
     {
       id: 'g3',
-      title: 'Cracking the Tetr Admissions Code',
+      title: 'Cracking the ChartersUnion Admissions Code',
       speaker: 'Srividya Pranavi',
       role: 'Machine Learning Scientist',
       company: 'Apple',
@@ -268,23 +268,55 @@ const universityLogos = [
 
 export default function FirstStepSuccessComponent() {
   const blogSliderRef = useRef<HTMLDivElement>(null);
+  const [canBlogsScrollLeft, setCanBlogsScrollLeft] = useState(false);
+  const [canBlogsScrollRight, setCanBlogsScrollRight] = useState(true);
+  const [blogPage, setBlogPage] = useState(0);
 
-  const scrollBlogs = () => {
+  const scrollBlogsBy = (direction: number) => {
     if (!blogSliderRef.current) return;
-
-    blogSliderRef.current.scrollBy({
-      left: 420,
+    const slider = blogSliderRef.current;
+    const cardWidth = slider.querySelector("a")?.offsetWidth || 420;
+    slider.scrollBy({
+      left: direction * cardWidth,
       behavior: "smooth",
     });
   };
+
+  // Dynamic blogs state
+  const [blogsList, setBlogsList] = useState<DisplayBlog[]>(STATIC_BLOGS);
+
+  // Track scroll position for arrows + page dots
+  useEffect(() => {
+    const slider = blogSliderRef.current;
+    if (!slider) return;
+
+    let ticking = false;
+    const update = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const maxScroll = slider.scrollWidth - slider.clientWidth;
+          setCanBlogsScrollLeft(slider.scrollLeft > 10);
+          setCanBlogsScrollRight(slider.scrollLeft < maxScroll - 10);
+          const cardWidth = slider.querySelector("a")?.offsetWidth || 420;
+          setBlogPage(cardWidth > 0 ? Math.round(slider.scrollLeft / cardWidth) : 0);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    update();
+    slider.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      slider.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, [blogsList.length]);
   const [mainTab, setMainTab] = useState('mentor');
   const [activeTab, setActiveTab] = useState('google');
   const videoSliderRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
-
-  // Dynamic blogs state
-  const [blogsList, setBlogsList] = useState<DisplayBlog[]>(STATIC_BLOGS);
 
   // Fetch approved blogs from backend database on load
   useEffect(() => {
@@ -549,10 +581,31 @@ export default function FirstStepSuccessComponent() {
           ))}
         </div>
 
+        <div className="absolute top-1/2 -translate-y-1/2 left-4 pointer-events-none">
+          <button
+            onClick={() => scrollBlogsBy(-1)}
+            disabled={!canBlogsScrollLeft}
+            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#B30437] hover:bg-red-700 shadow flex items-center justify-center pointer-events-auto transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed"
+            aria-label="Previous"
+            type="button"
+          >
+            <svg viewBox="0 0 24 24" className="w-5 h-5 text-white rotate-180">
+              <path
+                d="M9 18l6-6-6-6"
+                stroke="currentColor"
+                strokeWidth="2"
+                fill="none"
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
+        </div>
+
         <div className="absolute top-1/2 -translate-y-1/2 right-4 pointer-events-none">
           <button
-            onClick={scrollBlogs}
-            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#B30437] hover:bg-red-700 shadow flex items-center justify-center pointer-events-auto transition-all duration-200"
+            onClick={() => scrollBlogsBy(1)}
+            disabled={!canBlogsScrollRight}
+            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#B30437] hover:bg-red-700 shadow flex items-center justify-center pointer-events-auto transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed"
             aria-label="Next"
             type="button"
           >
@@ -568,6 +621,8 @@ export default function FirstStepSuccessComponent() {
           </button>
         </div>
       </div>
+
+      {/* Page dots removed per request — arrows only */}
 
       {/* Article Preview Modal removed to open in a different page */}
     </section>
