@@ -1,7 +1,4 @@
-import Link from "next/link";
 import { getApprovedBlogs } from "@/lib/api";
-import { STATIC_BLOGS, slugify } from "@/data/staticBlogs";
-import type { DisplayBlog } from "@/data/staticBlogs";
 import BlogsClient from "./BlogsClient";
 
 export const metadata = {
@@ -35,35 +32,7 @@ async function fetchAllBlogs(): Promise<BlogCardData[]> {
 }
 
 export default async function BlogsPage() {
-  const dbBlogs = await fetchAllBlogs();
+  const blogs = await fetchAllBlogs();
 
-  // Merge static blogs (fallback + legacy) with DB blogs, dedupe by title
-  const merged: BlogCardData[] = [];
-  const seen = new Set<string>();
-  const normalize = (t: string) => t.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
-
-  for (const blog of dbBlogs) {
-    const key = normalize(blog.title);
-    if (seen.has(key)) continue;
-    seen.add(key);
-    merged.push(blog);
-  }
-
-  for (const staticBlog of STATIC_BLOGS as DisplayBlog[]) {
-    const key = normalize(staticBlog.title);
-    if (seen.has(key)) continue;
-    seen.add(key);
-    merged.push({
-      _id: undefined,
-      title: staticBlog.title,
-      author: staticBlog.author,
-      readTime: staticBlog.readTime,
-      category: staticBlog.category,
-      content: staticBlog.content,
-      releasedAt: staticBlog.releasedAt ? String(staticBlog.releasedAt) : undefined,
-      description: staticBlog.description,
-    });
-  }
-
-  return <BlogsClient initialBlogs={merged} />;
+  return <BlogsClient initialBlogs={blogs} />;
 }
