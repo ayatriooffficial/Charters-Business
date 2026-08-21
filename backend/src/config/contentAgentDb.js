@@ -35,18 +35,13 @@ export function mapAgentBlog(doc) {
     .replace(/^"|"$/g, '')
     .trim();
 
-  const cleanCategory = String(doc.category || '')
-    .trim()
-    .replace(/^"|"$/g, '')
-    .trim();
-
   return {
     _id: doc._id,
     title: cleanTitle,
     content: doc.content || '',
     author: 'Charters Team',
     readTime: computeReadTime(doc.content),
-    category: cleanCategory || 'Career Growth',
+    category: doc.category || 'Career Growth',
     tags: Array.isArray(doc.tags) ? doc.tags : [],
     status: 'approved',
     releasedAt: doc.createdAt || new Date(),
