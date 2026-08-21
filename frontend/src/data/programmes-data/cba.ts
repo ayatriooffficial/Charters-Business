@@ -617,9 +617,7 @@ export const cba: Programme = {
     ],
     alumniLabel: "Find our student at -",
     alumniCompanies: [
-      { name: "Google", logo: "/images/companies/google.png" },
-      { name: "Amazon", logo: "/images/companies/amazon.png" },
-      { name: "Deloitte", logo: "/images/companies/deloitte.png" },
+
     ],
     actions: {
       primaryText: "Apply Now",
@@ -715,25 +713,7 @@ export const cba: Programme = {
       },
     ],
     companyLogos: [
-      { name: "Google", logo: "https://logo.clearbit.com/google.com" },
-      { name: "Amazon", logo: "https://logo.clearbit.com/amazon.com" },
-      { name: "Deloitte", logo: "https://logo.clearbit.com/deloitte.com" },
-      { name: "McKinsey", logo: "https://logo.clearbit.com/mckinsey.com" },
-      {
-        name: "Goldman Sachs",
-        logo: "https://logo.clearbit.com/goldmansachs.com",
-      },
-      { name: "BCG", logo: "https://logo.clearbit.com/bcg.com" },
-      { name: "Bain", logo: "https://logo.clearbit.com/bain.com" },
-      { name: "Microsoft", logo: "https://logo.clearbit.com/microsoft.com" },
-      { name: "Apple", logo: "https://logo.clearbit.com/apple.com" },
-      { name: "JP Morgan", logo: "https://logo.clearbit.com/jpmorgan.com" },
-      { name: "Accenture", logo: "https://logo.clearbit.com/accenture.com" },
-      { name: "EY", logo: "https://logo.clearbit.com/ey.com" },
-      { name: "PwC", logo: "https://logo.clearbit.com/pwc.com" },
-      { name: "KPMG", logo: "https://logo.clearbit.com/kpmg.com" },
-      { name: "Flipkart", logo: "https://logo.clearbit.com/flipkart.com" },
-      { name: "Paytm", logo: "https://logo.clearbit.com/paytm.com" },
+
     ],
   },
 
@@ -743,7 +723,7 @@ export const cba: Programme = {
     title: {
       prefix: "Global Recognized",
       highlight: "CBA™",
-      suffix: "Certification",
+      suffix: "(Certified Business Accountant)",
     },
     auditorText: "Our placement reports are audited by <strong>Zivanta Analytics</strong>, auditor for IIM and follow the IPRS Revision 2.2 framework for transparent and consistent compensation data.",
     accordions: [
@@ -1684,17 +1664,9 @@ export const cba: Programme = {
     pricing: {
       emiLabel: "Starting at",
       primaryButton: { text: "Book a Free Demo" },
-      emiAmount: "₹6430",
+      emiAmount: "₹3750",
       emiMonths: "total ₹45000",
       secondaryButton: { text: "VIEW EMI" },
-      emiPlans: [
-        { tenure: 12, type: "No Cost", loanAmount: 379000, rate: "0%", emi: 31583, totalLoanAmount: 379000 },
-        { tenure: 18, type: "No Cost", loanAmount: 379000, rate: "0%", emi: 21056, totalLoanAmount: 379000 },
-        { tenure: 24, type: "Low Cost", loanAmount: 379000, rate: "4%", emi: 16423, totalLoanAmount: 394160 },
-        { tenure: 36, type: "Flat 11%", loanAmount: 379000, rate: "11%", emi: 14002, totalLoanAmount: 504070 },
-        { tenure: 48, type: "Flat 11%", loanAmount: 379000, rate: "11%", emi: 11370, totalLoanAmount: 545760 },
-        { tenure: 60, type: "Flat 11%", loanAmount: 379000, rate: "11%", emi: 9791, totalLoanAmount: 587450 },
-      ],
       jobTracks: [
         { name: "Corporate Finance & Accounting" },
         { name: "Financial Planning & Analysis (FP&A)" },
@@ -2020,8 +1992,8 @@ export const cba: Programme = {
       buttonText: "Talk to an advisor",
       phoneNumber: "+919836465083"
     }
-  }
-  , certificateOverviewData: {
+  },
+  certificateOverviewData: {
     title: "What is the CBA™ (Certified Business Accountant) from ChartersUnion?",
     descriptionParagraphs: [
       "Today, brands use search engines, social media, paid advertising, email marketing, and content marketing to reach the right audience and drive business growth. Digital Marketing has changed the way businesses operate.",

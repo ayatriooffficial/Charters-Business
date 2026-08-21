@@ -25,7 +25,7 @@ export default function InsideHeading({
       </div>
 
       {description ? (
-        <p className="text-sm sm:text-base text-gray-600">
+        <p className="text-[12px] sm:text-[14px] md:text-[14px] text-gray-600">
           {description}
         </p>
       ) : null}

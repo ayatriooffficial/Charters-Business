@@ -74,7 +74,7 @@ export default function CookieConsent() {
         <button
           type="button"
           onClick={onlyNecessary}
-          className="w-full border cursor-pointer border-gray-300 px-4 py-2.5 text-[13px] font-medium hover:bg-gray-50 transition"
+          className="w-full border cursor-pointer border-gray-300 px-4 py-2.5 text-[13px] font-medium hover:bg-[#F6F4F2] transition"
         >
           Only necessary
         </button>

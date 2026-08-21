@@ -19,6 +19,7 @@ import PlacementReport from "@/components/home/PlacementReport";
 // Client Component that owns all ssr:false dynamic() calls
 // (ssr:false is not permitted inside Server Components)
 import BelowFoldSections from "@/components/home/BelowFoldSections";
+import ScrollIntentPopup from "@/components/programmes/ScrollIntentPopup";
 import Script from "next/script";
 
 export const metadata: Metadata = {
@@ -135,6 +136,9 @@ export default function Home() {
       <div className="md:border-x border-gray-200 max-w-[85rem] w-full md:w-[90%] mx-auto overflow-x-clip md:overflow-x-visible">
         <BelowFoldSections />
       </div>
+
+      {/* Exit-intent Scroll Popup */}
+      <ScrollIntentPopup />
     </>
   );
 }

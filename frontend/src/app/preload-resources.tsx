@@ -4,8 +4,8 @@ import ReactDOM from "react-dom";
 // - Desktop: w=1080 (our heroData width param)  
 // - Mobile:  w=640
 // Matching width + quality ensures the browser actually uses the preloaded response.
-const MOBILE_BG = "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784549510/chartersUnion-mantor-placed-students-m_homu0z.avif";
-const DESKTOP_BG = "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784546558/chartersUnion-mantor-placed-students_hwtwko.avif";
+const MOBILE_BG = "https://res.cloudinary.com/ducgcl4dg/image/upload/v1785503187/chartersUnion-mantor-placed-students-m_n49fnw.avif";
+const DESKTOP_BG = "https://res.cloudinary.com/ducgcl4dg/image/upload/v1785502371/ChartersUnion-faculty-alreday-placed-students_l6oqu2.avif";
 
 // Optimized Logo URLs matching sizes in Navbar.tsx
 const MOBILE_LOGO =

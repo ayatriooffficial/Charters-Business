@@ -888,28 +888,7 @@ export const tbm: Programme = {
       },
     ],
     companyLogos: [
-      { name: "McKinsey", logo: "https://logo.clearbit.com/mckinsey.com" },
-      { name: "BCG", logo: "https://logo.clearbit.com/bcg.com" },
-      { name: "Bain", logo: "https://logo.clearbit.com/bain.com" },
-      { name: "Accenture", logo: "https://logo.clearbit.com/accenture.com" },
-      { name: "Deloitte", logo: "https://logo.clearbit.com/deloitte.com" },
-      { name: "EY", logo: "https://logo.clearbit.com/ey.com" },
-      { name: "PwC", logo: "https://logo.clearbit.com/pwc.com" },
-      { name: "KPMG", logo: "https://logo.clearbit.com/kpmg.com" },
-      {
-        name: "Goldman Sachs",
-        logo: "https://logo.clearbit.com/goldmansachs.com",
-      },
-      { name: "JP Morgan", logo: "https://logo.clearbit.com/jpmorgan.com" },
-      {
-        name: "Morgan Stanley",
-        logo: "https://logo.clearbit.com/morganstanley.com",
-      },
-      { name: "Google", logo: "https://logo.clearbit.com/google.com" },
-      { name: "Microsoft", logo: "https://logo.clearbit.com/microsoft.com" },
-      { name: "Amazon", logo: "https://logo.clearbit.com/amazon.com" },
-      { name: "Apple", logo: "https://logo.clearbit.com/apple.com" },
-      { name: "Meta", logo: "https://logo.clearbit.com/meta.com" },
+
     ],
   },
 
@@ -1263,7 +1242,7 @@ export const tbm: Programme = {
     // Renders as the list of placement partner logos in TrackRecord
     hiredCompaniesBanner: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784891196/DGM_Hired_Company_me01cr.avif",
     campusImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840455/Sanjana-recived-digital-growth-_-marketing-certification_z2hkzv.avif",
-    academicPartnerLogo: "/charter-partner/charter-academic-partner.avif",
+    academicPartnerLogo: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784554663/digital_growth_marketing_curriculum_partner_x7c7y3.avif",
     disclaimerText: "Every TBM™ (Technology & Business Management) completed student who fulfils the minimum requirements will be eligible to apply for global leadership credentials, C-suite mentoring pathways, and executive placement opportunities.",
     timetableImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784606398/day_to_day_at_charters-digital_marketing_f4kdtc.avif",
 
@@ -1289,17 +1268,10 @@ export const tbm: Programme = {
     pricing: {
       emiLabel: "Starting at",
       primaryButton: { text: "Book a Free Demo" },
-      emiAmount: "₹6430",
+      emiAmount: "₹3750",
       emiMonths: "total ₹45000",
       secondaryButton: { text: "VIEW EMI" },
-      emiPlans: [
-        { tenure: 12, type: "No Cost", loanAmount: 379000, rate: "0%", emi: 31583, totalLoanAmount: 379000 },
-        { tenure: 18, type: "No Cost", loanAmount: 379000, rate: "0%", emi: 21056, totalLoanAmount: 379000 },
-        { tenure: 24, type: "Low Cost", loanAmount: 379000, rate: "4%", emi: 16423, totalLoanAmount: 394160 },
-        { tenure: 36, type: "Flat 11%", loanAmount: 379000, rate: "11%", emi: 14002, totalLoanAmount: 504070 },
-        { tenure: 48, type: "Flat 11%", loanAmount: 379000, rate: "11%", emi: 11370, totalLoanAmount: 545760 },
-        { tenure: 60, type: "Flat 11%", loanAmount: 379000, rate: "11%", emi: 9791, totalLoanAmount: 587450 },
-      ],
+
       jobTracks: [
         { name: "Product Management" },
         { name: "Tech Startup Scaling" },

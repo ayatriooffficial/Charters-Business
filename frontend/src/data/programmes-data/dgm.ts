@@ -1264,17 +1264,9 @@ export const dgm: Programme = {
     pricing: {
       emiLabel: "Starting at",
       primaryButton: { text: "Book a Free Demo" },
-      emiAmount: "₹6430",
+      emiAmount: "₹3750",
       emiMonths: "total ₹45000",
       secondaryButton: { text: "VIEW EMI" },
-      emiPlans: [
-        { tenure: 12, type: "No Cost", loanAmount: 379000, rate: "0%", emi: 31583, totalLoanAmount: 379000 },
-        { tenure: 18, type: "No Cost", loanAmount: 379000, rate: "0%", emi: 21056, totalLoanAmount: 379000 },
-        { tenure: 24, type: "Low Cost", loanAmount: 379000, rate: "4%", emi: 16423, totalLoanAmount: 394160 },
-        { tenure: 36, type: "Flat 11%", loanAmount: 379000, rate: "11%", emi: 14002, totalLoanAmount: 504070 },
-        { tenure: 48, type: "Flat 11%", loanAmount: 379000, rate: "11%", emi: 11370, totalLoanAmount: 545760 },
-        { tenure: 60, type: "Flat 11%", loanAmount: 379000, rate: "11%", emi: 9791, totalLoanAmount: 587450 },
-      ],
       jobTracks: [
         { name: "SEO & Growth Marketing" },
         { name: "Brand & Product Management" },

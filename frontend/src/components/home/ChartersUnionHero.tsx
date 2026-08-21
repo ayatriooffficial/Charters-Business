@@ -78,19 +78,23 @@ function ChartersUnionHero() {
           </div>
         </div>
 
-        <div className="relative w-full h-auto">
+        <div className="relative w-full aspect-[375/667] sm:aspect-[4/3] md:aspect-[1920/940] max-h-[85vh] overflow-hidden">
           <picture>
             <source
               media="(min-width: 768px)"
               srcSet={heroData.desktopBackgroundImage}
+              width={1920}
+              height={940}
             />
             <img
               src={heroData.mobileBackgroundImage}
               sizes="100vw"
+              width={750}
+              height={1334}
               alt="From Fresher to Global Career: AI in Every Class, Faculty-Guided Paid Internships, Job-Ready Training Built for top MNCs"
               fetchPriority="high"
               decoding="sync"
-              className="relative h-auto w-full object-contain"
+              className="relative w-full h-full object-contain md:object-cover"
             />
           </picture>
         </div>

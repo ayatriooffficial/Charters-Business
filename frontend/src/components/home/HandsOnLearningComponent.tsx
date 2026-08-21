@@ -179,13 +179,14 @@ const ContentCard = memo<{
             <div className="p-2 sm:p-3 md:p-4 lg:p-6 h-full flex flex-col overflow-hidden">
               {/* Program Header */}
               <div className="inline-flex">
-                <div className="items-center gap-1.5 bg-black text-white px-2 py-1 text-[12px] font-semibold mb-2">
+                <div className="items-center gap-1.5 bg-black text-white px-2 py-0.5 text-[12px] font-semibold mb-2">
                   {contentData[category]?.month}
                 </div>
-                <p className="text-[14px] leading-none mb-2 bg-black text-white font-bold">.</p>
-                <div className="items-center gap-1.5 bg-black text-white px-2 py-1 text-[12px] font-semibold mb-2">
+                <div className="items-center bg-black text-white px-1 text-[14px] font-semibold mb-2">/</div>
+                <div className="items-center gap-1.5 bg-black text-white px-2 py-0.5 text-[12px] font-semibold mb-2">
                   {contentData[category]?.achievement}
-                </div></div>
+                </div>
+              </div>
               <div className="mb-1 sm:mb-2 flex-shrink-0 relative">
                 {(() => {
                   try {
@@ -248,7 +249,7 @@ const ContentCard = memo<{
                     <div>
 
                       <div
-                        className="gap-3 pt-4 overflow-y-auto"
+                        className="gap-3 pr-[30px] sm:pr-[30px] md:pr-[30px] lg:pr-[30px] pt-4 overflow-y-auto"
                         role="list"
                         aria-label="Live 100% job-ready based curriculum"
                       >

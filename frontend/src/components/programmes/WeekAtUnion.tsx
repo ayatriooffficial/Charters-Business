@@ -44,7 +44,7 @@ const WeekAtTetr = ({ data, assets }: WeekAtTetrProps) => {
           {/* Header */}
           <div className="text-center mb-2 sm:mb-4 md:mb-6" id="week-content">
             <p id="timetable-heading" className="text-sm font-semibold text-[#B30437] tracking-wider mb-4 lg:mb-6">
-              Weekly Schedule Overview
+              WEEKLY SCHEDULE OVERVIEW
             </p>
             <h2
               id="week-heading"

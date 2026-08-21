@@ -110,13 +110,13 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
                       aria-current={selectedProgram === item.key ? 'true' : 'false'}
                       className={`w-full text-left group cursor-pointer py-4 px-6 transition-colors duration-200 ${index < programMenuItems.length - 1 ? 'border-b border-gray-200' : ''
                         } ${selectedProgram === item.key
-                          ? 'bg-[#F6F4F2] border-l-4 border-l-red-600'
-                          : 'hover:bg-[#F6F4F2] hover:border-l-4 hover:border-l-red-300'
+                          ? 'bg-[#F6F4F2] border-l-4 border-l-[#B30437]'
+                          : 'hover:bg-[#F6F4F2] hover:border-l-4 hover:border-l-[#B30437]'
                         }`}
                     >
                       <div className="flex items-center justify-between">
                         <span className={`text-sm font-medium transition-colors duration-200 ${selectedProgram === item.key
-                          ? 'text-red-700'
+                          ? 'text-[#B30437]'
                           : 'text-[#5f6368] group-hover:text-[#B30437]'
                           }`}>
                           {item.label}
@@ -145,7 +145,7 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
 
               {/* Explore More Link */}
               <aside
-                className={`bg-[#F6F4F2] hover:bg-[#E3DFD2] flex flex-col justify-between p-4 sm:p-6 border-r border-gray-200 cursor-pointer transition-colors duration-200
+                className={`bg-[#F6F4F2] hover:bg-[#E6DAC4] flex flex-col justify-between p-4 sm:p-6 cursor-pointer transition-colors duration-200
                           w-full lg:w-40 xl:w-48 2xl:w-56 
                           flex-shrink-0 group ${isTransitioning ? 'opacity-0' : 'opacity-100'
                   }`}

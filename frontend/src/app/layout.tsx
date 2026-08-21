@@ -24,6 +24,11 @@ const ClientOnlyComponents = dynamic(
   { ssr: true }
 );
 
+const WebMCPDeclarations = dynamic(
+  () => import("@/components/shared/WebMCPDeclarations"),
+  { ssr: true }
+);
+
 const PageLayout = dynamic(
   () => import("@/components/shared/PageLayout"),
   { ssr: true }
@@ -151,6 +156,7 @@ export default function RootLayout({
           <GoogleTagManager />
           <GoogleAnalytics />
           <ClientOnlyComponents />
+          <WebMCPDeclarations />
 
           <div className="flex flex-col min-h-screen px-2 sm:px-4 md:px-0">
             <PageLayout>{children}</PageLayout>

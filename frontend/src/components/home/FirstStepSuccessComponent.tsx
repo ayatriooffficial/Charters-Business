@@ -5,7 +5,7 @@ import Image from 'next/image';
 import HighlightText from '../shared/HighlightObserver';
 import Link from "next/link";
 import { getApprovedBlogs, Blog } from '../../lib/api';
-import { STATIC_BLOGS, slugify } from '../../data/staticBlogs';
+import { slugify } from '../../data/staticBlogs';
 import type { DisplayBlog } from '../../data/staticBlogs';
 // Company tabs data
 const companyTabs = [
@@ -268,57 +268,21 @@ const universityLogos = [
 
 export default function FirstStepSuccessComponent() {
   const blogSliderRef = useRef<HTMLDivElement>(null);
-  const [canBlogsScrollLeft, setCanBlogsScrollLeft] = useState(false);
-  const [canBlogsScrollRight, setCanBlogsScrollRight] = useState(true);
-  const [blogPage, setBlogPage] = useState(0);
 
-  const scrollBlogsBy = (direction: number) => {
-    if (!blogSliderRef.current) return;
-    const slider = blogSliderRef.current;
-    const cardWidth = slider.querySelector("a")?.offsetWidth || 420;
-    slider.scrollBy({
-      left: direction * cardWidth,
-      behavior: "smooth",
-    });
-  };
+  // Full agent blog list (fetched), and how many of them are rendered so far.
+  // New blogs lazy-load at the RIGHT end as the user scrolls right-to-left.
+  const [allBlogs, setAllBlogs] = useState<DisplayBlog[]>([]);
+  const [visibleCount, setVisibleCount] = useState(8);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
 
-  // Dynamic blogs state
-  const [blogsList, setBlogsList] = useState<DisplayBlog[]>(STATIC_BLOGS);
-
-  // Track scroll position for arrows + page dots
-  useEffect(() => {
-    const slider = blogSliderRef.current;
-    if (!slider) return;
-
-    let ticking = false;
-    const update = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          const maxScroll = slider.scrollWidth - slider.clientWidth;
-          setCanBlogsScrollLeft(slider.scrollLeft > 10);
-          setCanBlogsScrollRight(slider.scrollLeft < maxScroll - 10);
-          const cardWidth = slider.querySelector("a")?.offsetWidth || 420;
-          setBlogPage(cardWidth > 0 ? Math.round(slider.scrollLeft / cardWidth) : 0);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-    update();
-    slider.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-    return () => {
-      slider.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
-    };
-  }, [blogsList.length]);
+  const blogsList = allBlogs.slice(0, visibleCount);
   const [mainTab, setMainTab] = useState('mentor');
   const [activeTab, setActiveTab] = useState('google');
   const videoSliderRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
-  // Fetch approved blogs from backend database on load
+  // Fetch agent blogs from backend on load (no static fallback)
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
@@ -334,25 +298,46 @@ export default function FirstStepSuccessComponent() {
             tags: b.tags,
             releasedAt: b.releasedAt ? String(b.releasedAt) : undefined
           }));
-
-          const combined = [...dbBlogsMapped];
-          STATIC_BLOGS.forEach(sb => {
-            const titleExists = dbBlogsMapped.some(db =>
-              db.title.toLowerCase().replace(/[^a-z0-9]/g, '') === sb.title.toLowerCase().replace(/[^a-z0-9]/g, '')
-            );
-            if (!titleExists) {
-              combined.push(sb);
-            }
-          });
-          setBlogsList(combined);
+          setAllBlogs(dbBlogsMapped);
+          setVisibleCount(8);
+        } else {
+          setAllBlogs([]);
         }
       } catch (err) {
-        console.error("Failed to load approved blogs, using static fallbacks:", err);
+        console.error("Failed to load blogs:", err);
+        setAllBlogs([]);
       }
     };
 
     fetchBlogs();
   }, []);
+
+  // Lazy-load more blogs when the user scrolls near the RIGHT end of the slider
+  useEffect(() => {
+    const slider = blogSliderRef.current;
+    if (!slider) return;
+
+    let ticking = false;
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        const distanceFromEnd =
+          slider.scrollWidth - slider.clientWidth - slider.scrollLeft;
+        if (distanceFromEnd < 600 && visibleCount < allBlogs.length && !isLoadingMore) {
+          setIsLoadingMore(true);
+          setTimeout(() => {
+            setVisibleCount((c) => Math.min(c + 8, allBlogs.length));
+            setIsLoadingMore(false);
+          }, 300);
+        }
+      });
+    };
+
+    slider.addEventListener("scroll", handleScroll, { passive: true });
+    return () => slider.removeEventListener("scroll", handleScroll);
+  }, [allBlogs.length, visibleCount, isLoadingMore]);
 
   // Main tabs data — ai_interview added
   const mainTabs = [
@@ -581,48 +566,12 @@ export default function FirstStepSuccessComponent() {
           ))}
         </div>
 
-        <div className="absolute top-1/2 -translate-y-1/2 left-4 pointer-events-none">
-          <button
-            onClick={() => scrollBlogsBy(-1)}
-            disabled={!canBlogsScrollLeft}
-            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#B30437] hover:bg-red-700 shadow flex items-center justify-center pointer-events-auto transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed"
-            aria-label="Previous"
-            type="button"
-          >
-            <svg viewBox="0 0 24 24" className="w-5 h-5 text-white rotate-180">
-              <path
-                d="M9 18l6-6-6-6"
-                stroke="currentColor"
-                strokeWidth="2"
-                fill="none"
-                strokeLinecap="round"
-              />
-            </svg>
-          </button>
-        </div>
-
-        <div className="absolute top-1/2 -translate-y-1/2 right-4 pointer-events-none">
-          <button
-            onClick={() => scrollBlogsBy(1)}
-            disabled={!canBlogsScrollRight}
-            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#B30437] hover:bg-red-700 shadow flex items-center justify-center pointer-events-auto transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed"
-            aria-label="Next"
-            type="button"
-          >
-            <svg viewBox="0 0 24 24" className="w-5 h-5 text-white">
-              <path
-                d="M9 18l6-6-6-6"
-                stroke="currentColor"
-                strokeWidth="2"
-                fill="none"
-                strokeLinecap="round"
-              />
-            </svg>
-          </button>
-        </div>
+        {isLoadingMore && (
+          <div className="absolute right-4 bottom-2 pointer-events-none">
+            <span className="inline-block h-6 w-6 animate-spin rounded-full border-2 border-[#B30437] border-r-transparent" />
+          </div>
+        )}
       </div>
-
-      {/* Page dots removed per request — arrows only */}
 
       {/* Article Preview Modal removed to open in a different page */}
     </section>

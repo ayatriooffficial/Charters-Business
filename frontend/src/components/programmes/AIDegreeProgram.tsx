@@ -38,10 +38,10 @@ const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data, assets }) => 
             id="track-record-heading"
             className="leading-none text-black text-2xl sm:text-3xl md:text-[35px] font-bold pb-[17px]"
           >
-            {data.title.prefix}{" "}
+
             <HighlightText className="font-bold hl-px-0">
-              {data.title.highlight}
-            </HighlightText>{" "}
+              {data.title.prefix}{" "}
+            </HighlightText>{" "} {data.title.highlight}
             {data.title.suffix}
           </h2>
           {data.auditorText && (
