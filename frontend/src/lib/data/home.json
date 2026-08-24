@@ -1,14 +1,16 @@
 {
   "placement_highlights": {
-    "highest_ctc": "₹12.30 LPA",
-    "average_ctc": "₹5.66 LPA",
-    "top_25_percent": "₹8.52 LPA",
+    "highest_ctc": "42 LPA",
+    "average_ctc": "26.5 LPA",
+    "salary_range": "16 – 42 LPA",
+    "placement_rate": "95%+",
+    "salary_growth": "3.05x jump",
     "placement_distribution": {
       "indian_startups": "72%",
       "gulf_asian_mncs": "25%",
       "usa_mncs": "3%"
     },
-    "recruiters": "1500+"
+    "recruiters": "KPMG, PwC, EY, Deloitte, Saudi Aramco, Google, Amazon"
   },
   "global_curriculum": true,
   "experiential_learning": true,
