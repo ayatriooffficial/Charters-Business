@@ -1,20 +1,62 @@
+import mongoose from 'mongoose';
 import '../config/loadEnv.js';
 
 /**
- * Content-Agent blog fetcher — pulls published blogs from the deployed
- * content-agent backend API (on-demand, no cron — Render free-tier safe).
+ * Content-Agent blog fetcher — pulls published/approved blogs directly from
+ * the Content-Agent MongoDB database (0ms Render sleep latency).
  *
- * The live content-agent (blog-automation-1-afvy.onrender.com) serves 41
- * blogs with this schema (NO status field):
- *   _id, title, slug, excerpt, summary, content (Markdown), category,
- *   likes, dislikes, featuredImage, createdAt
- *
- * All blogs returned by that API are considered published. Graceful by
- * design: on any failure we return []/null so the client falls back to
- * the Old Blog DB + static blogs.
+ * Falls back gracefully to HTTP API if DB is unreachable.
  */
 
-const API_BASE = (process.env.CONTENT_AGENT_API_URL || 'https://blog-automation-1-afvy.onrender.com').replace(/\/+$/, '');
+const CONTENT_AGENT_MONGO_URI =
+  process.env.CONTENT_AGENT_MONGO_URI ||
+  'mongodb+srv://searchaicloud_db_user:fyZzDNC5lc3moX1X@cluster0.agttjrc.mongodb.net/contentAgent';
+
+const API_BASE = (
+  process.env.CONTENT_AGENT_API_URL ||
+  'https://content-agent-u1on.onrender.com'
+).replace(/\/+$/, '');
+
+let agentDbConnection = null;
+let AgentBlogModel = null;
+
+function getAgentBlogModel() {
+  if (AgentBlogModel) return AgentBlogModel;
+  if (!agentDbConnection) {
+    agentDbConnection = mongoose.createConnection(CONTENT_AGENT_MONGO_URI, {
+      serverSelectionTimeoutMS: 5000,
+    });
+    agentDbConnection.on('error', (err) => {
+      console.warn(`⚠️ Content-Agent MongoDB connection error: ${err.message}`);
+    });
+  }
+
+  const blogSchema = new mongoose.Schema(
+    {
+      title: String,
+      content: String,
+      summary: String,
+      metaDescription: String,
+      h1: String,
+      h2s: [String],
+      category: String,
+      status: String,
+      tags: [String],
+      faq: [{ question: String, answer: String, _id: false }],
+      cta: String,
+      wordCount: Number,
+      readingTime: Number,
+      course: String,
+      seoKeywords: [String],
+      createdAt: Date,
+      updatedAt: Date,
+    },
+    { collection: 'blogs' }
+  );
+
+  AgentBlogModel = agentDbConnection.model('ContentAgentBlog', blogSchema);
+  return AgentBlogModel;
+}
 
 function computeReadTime(content) {
   const words = String(content || '').trim().split(/\s+/).filter(Boolean).length;
@@ -24,43 +66,61 @@ function computeReadTime(content) {
 }
 
 /**
- * Maps a raw cloud content-agent blog doc into the client's Blog shape.
- * Strips stray surrounding double quotes some agent titles carry.
+ * Maps a raw content-agent blog doc into the client's Blog shape.
  */
 export function mapAgentBlog(doc) {
   if (!doc) return null;
+  const raw = doc.toObject ? doc.toObject() : doc;
 
-  const cleanTitle = String(doc.title || '')
+  const cleanTitle = String(raw.title || '')
     .trim()
     .replace(/^"|"$/g, '')
     .trim();
 
-  const cleanCategory = String(doc.category || '')
+  const cleanCategory = String(raw.category || '')
     .trim()
     .replace(/^"|"$/g, '')
     .trim();
 
   return {
-    _id: doc._id,
+    _id: String(raw._id),
     title: cleanTitle,
-    content: doc.content || '',
+    content: raw.content || '',
     author: 'Charters Team',
-    readTime: computeReadTime(doc.content),
+    readTime: raw.readingTime ? `${raw.readingTime} min read` : computeReadTime(raw.content),
     category: cleanCategory || 'Career Growth',
-    tags: Array.isArray(doc.tags) ? doc.tags : [],
-    status: 'approved',
-    releasedAt: doc.createdAt || new Date(),
-    createdAt: doc.createdAt || new Date(),
-    updatedAt: doc.createdAt || new Date(),
+    tags: Array.isArray(raw.tags) ? raw.tags : [],
+    status: raw.status || 'approved',
+    releasedAt: raw.createdAt || new Date(),
+    createdAt: raw.createdAt || new Date(),
+    updatedAt: raw.updatedAt || raw.createdAt || new Date(),
     source: 'content-agent',
   };
 }
 
 /**
- * Fetches all blogs from the content-agent API (already published).
- * Returns mapped docs or [] on any error.
+ * Fetches all approved/published blogs directly from MongoDB (fallback to API).
  */
 export async function getContentAgentBlogs() {
+  // 1. Direct MongoDB fetch (instant, zero Render sleep latency)
+  try {
+    const Model = getAgentBlogModel();
+    const query = {
+      $or: [
+        { status: { $in: ['approved', 'published'] } },
+        { status: { $exists: false } },
+        { status: null },
+      ],
+    };
+    const docs = await Model.find(query).sort({ createdAt: -1 }).lean().exec();
+    if (docs && docs.length > 0) {
+      return docs.map(mapAgentBlog);
+    }
+  } catch (dbErr) {
+    console.warn(`⚠️ Direct Content-Agent DB fetch notice: ${dbErr.message} — falling back to API`);
+  }
+
+  // 2. HTTP Fallback
   try {
     const res = await fetch(`${API_BASE}/api/blogs`, {
       signal: AbortSignal.timeout(8000),
@@ -77,10 +137,21 @@ export async function getContentAgentBlogs() {
 }
 
 /**
- * Fetches a single blog by ID from the content-agent API.
- * Returns a mapped doc or null.
+ * Fetches a single blog by ID directly from MongoDB (fallback to API).
  */
 export async function getContentAgentBlogById(id) {
+  // 1. Direct MongoDB fetch
+  try {
+    const Model = getAgentBlogModel();
+    if (mongoose.Types.ObjectId.isValid(id)) {
+      const doc = await Model.findById(id).lean().exec();
+      if (doc) return mapAgentBlog(doc);
+    }
+  } catch (dbErr) {
+    console.warn(`⚠️ Direct Content-Agent DB fetch by id notice: ${dbErr.message}`);
+  }
+
+  // 2. HTTP Fallback
   try {
     const res = await fetch(`${API_BASE}/api/blogs/${id}`, {
       signal: AbortSignal.timeout(8000),

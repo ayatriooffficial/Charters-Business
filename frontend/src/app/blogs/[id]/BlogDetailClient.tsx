@@ -123,6 +123,7 @@ export default function BlogDetailPage({
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}
       components={{
+        h1: () => null, // Suppress second H1 inside body since top header already renders blog.title
         h2: ({ children }) => (
           <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-8 mb-4 border-b border-gray-100 pb-3">
             {children}
@@ -190,11 +191,14 @@ export default function BlogDetailPage({
   const renderBlogContent = (markdownText: string) => {
     if (!markdownText) return null;
 
+    // Strip leading markdown H1 (# ...) to prevent duplicate heading
+    const cleanedText = markdownText.replace(/^\s*#\s+[^\n]+\n*/, "").trim();
+
     if (!blog.promoData) {
-      return <MarkdownContent content={markdownText} />;
+      return <MarkdownContent content={cleanedText} />;
     }
 
-    const lines = markdownText.split("\n");
+    const lines = cleanedText.split("\n");
     const middleIndex = Math.floor(lines.length / 2);
     let insertIndex = middleIndex;
     for (let i = middleIndex; i < lines.length; i++) {
