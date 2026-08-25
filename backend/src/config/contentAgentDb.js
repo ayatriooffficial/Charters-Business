@@ -8,9 +8,7 @@ import '../config/loadEnv.js';
  * Falls back gracefully to HTTP API if DB is unreachable.
  */
 
-const CONTENT_AGENT_MONGO_URI =
-  process.env.CONTENT_AGENT_MONGO_URI ||
-  'mongodb+srv://searchaicloud_db_user:fyZzDNC5lc3moX1X@cluster0.agttjrc.mongodb.net/contentAgent';
+const CONTENT_AGENT_MONGO_URI = (process.env.CONTENT_AGENT_MONGO_URI || '').trim();
 
 const API_BASE = (
   process.env.CONTENT_AGENT_API_URL ||
@@ -22,6 +20,8 @@ let AgentBlogModel = null;
 
 function getAgentBlogModel() {
   if (AgentBlogModel) return AgentBlogModel;
+  if (!CONTENT_AGENT_MONGO_URI) return null;
+
   if (!agentDbConnection) {
     agentDbConnection = mongoose.createConnection(CONTENT_AGENT_MONGO_URI, {
       serverSelectionTimeoutMS: 5000,
