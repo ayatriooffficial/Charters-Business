@@ -5,6 +5,7 @@ import faculty from "@/lib/data/faculty.json";
 import homeData from "@/lib/data/home.json";
 import { programmes } from "@/data/programmes";
 import { homeStudents, cbaStudents, dgmStudents, tbmStudents } from "@/data/students";
+import { facultyMembers } from "@/data/faculty";
 import { jobs } from "@/data/jobs";
 import { internships } from "@/data/internships";
 import { careerPageData } from "@/data/careers";
@@ -42,6 +43,7 @@ export async function GET() {
       },
       institute,
       faculty,
+      facultyMembers,
       home: homeData,
       jobs,
       internships,

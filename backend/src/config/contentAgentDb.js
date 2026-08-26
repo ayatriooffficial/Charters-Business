@@ -48,6 +48,8 @@ function getAgentBlogModel() {
       readingTime: Number,
       course: String,
       seoKeywords: [String],
+      dayOffset: Number,
+      releaseDate: Date,
       createdAt: Date,
       updatedAt: Date,
     },
@@ -82,6 +84,8 @@ export function mapAgentBlog(doc) {
     .replace(/^"|"$/g, '')
     .trim();
 
+  const publishTimestamp = raw.releaseDate || raw.createdAt || new Date();
+
   return {
     _id: String(raw._id),
     title: cleanTitle,
@@ -91,30 +95,44 @@ export function mapAgentBlog(doc) {
     category: cleanCategory || 'Career Growth',
     tags: Array.isArray(raw.tags) ? raw.tags : [],
     status: raw.status || 'approved',
-    releasedAt: raw.createdAt || new Date(),
-    createdAt: raw.createdAt || new Date(),
-    updatedAt: raw.updatedAt || raw.createdAt || new Date(),
+    releasedAt: publishTimestamp,
+    createdAt: raw.createdAt || publishTimestamp,
+    updatedAt: raw.updatedAt || raw.createdAt || publishTimestamp,
     source: 'content-agent',
   };
 }
 
 /**
- * Fetches all approved/published blogs directly from MongoDB (fallback to API).
+ * Fetches all approved/published blogs that have reached their scheduled releaseDate.
  */
 export async function getContentAgentBlogs() {
   // 1. Direct MongoDB fetch (instant, zero Render sleep latency)
   try {
     const Model = getAgentBlogModel();
-    const query = {
-      $or: [
-        { status: { $in: ['approved', 'published'] } },
-        { status: { $exists: false } },
-        { status: null },
-      ],
-    };
-    const docs = await Model.find(query).sort({ createdAt: -1 }).lean().exec();
-    if (docs && docs.length > 0) {
-      return docs.map(mapAgentBlog);
+    if (Model) {
+      const now = new Date();
+      const query = {
+        $and: [
+          {
+            $or: [
+              { status: { $in: ['approved', 'published'] } },
+              { status: { $exists: false } },
+              { status: null },
+            ],
+          },
+          {
+            $or: [
+              { releaseDate: { $lte: now } },
+              { releaseDate: { $exists: false } },
+              { releaseDate: null },
+            ],
+          },
+        ],
+      };
+      const docs = await Model.find(query).sort({ releaseDate: -1, createdAt: -1 }).lean().exec();
+      if (docs && docs.length > 0) {
+        return docs.map(mapAgentBlog);
+      }
     }
   } catch (dbErr) {
     console.warn(`⚠️ Direct Content-Agent DB fetch notice: ${dbErr.message} — falling back to API`);
