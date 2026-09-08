@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     absolute: "Charters' Union: AI-Powered Job-Ready Training in Kolkata",
   },
   description:
-    "Kolkata's AI-first Job Ready training in Business Accountant, Digital Marketing for B.Com, BCA, BSc, BBA, BA, Freshers. USCMA/HBS/Google aligned. 100% Paid Internship. Corporate English, AI Interview, Job Search.",
+    "Kolkata's AI-first Job Ready training in Accountant, Digital Marketing for B.Com,BCA,BSc,BBA,BA, Freshers. USCMA/HBS/Google aligned. 100% Paid Internship.",
   alternates: {
     canonical: "/",
   },

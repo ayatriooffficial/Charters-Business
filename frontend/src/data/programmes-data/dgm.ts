@@ -632,85 +632,78 @@ export const dgm: Programme = {
       prefix: "Learn. Apply. Reflect.",
       highlight: "Repeat.",
     },
-    subtitle: `Hands-on courses and workshops designed to build real businesses—<br class="hidden sm:block" />because real learning comes from real applications.`,
+    subtitle: `Hands-on courses and workshops designed to build real businesses— because real learning <br class="hidden sm:block" /> comes from apply on real companys'.`,
     categories: [
-      { id: "strategy", label: "AIDMF", title: "Strategy & Leadership" },
-      { id: "finance", label: "SAG", title: "Finance & Analytics" },
-      { id: "marketing", label: "DGA", title: "Marketing & Sales" },
-      { id: "operations", label: "ADGM", title: "Operations & Supply Chain" },
-      { id: "tech", label: "TECH", title: "Technology & Digital Business" },
-      {
-        id: "entrepreneur",
-        label: "PRG",
-        title: "Entrepreneurship & Innovation",
-      },
+      { id: "strategy", label: "AIDMF", title: "AI-integrated Marketing on Real Company" },
+      { id: "finance", label: "AISAG", title: "AI-Fast SEO/AEO/GEO Strategy" },
+      { id: "marketing", label: "AIDGA", title: "Digital Strategies: Data, Automation, AI & Analytics" },
+      { id: "operations", label: "ADGM", title: "Optimize Multi-channel Paid Campaigns" },
+      { id: "tech", label: "TECH", title: "Marketing Automation & Agentic AI" },
+      { id: "entrepreneur", label: "PRG", title: "Entrepreneurship & Innovation", },
 
     ],
     courseData: {
       strategy: [
         {
           term: "WEEK 1",
-          location: "Mumbai Startup",
-          courses: [
-            {
-              code: "AIDMF 101",
-              title: "How to build a comprehensive business strategy",
-            },
-            {
-              code: "AIDMF 102",
-              title: "How to lead high-performing teams effectively",
-            },
-            {
-              code: "AIDMF 103",
-              title: "How to analyze competitive landscapes",
-            },
-            {
-              code: "AIDMF 104",
-              title: "How to create sustainable competitive advantages",
-            },
-            {
-              code: "AIDMF 105",
-              title: "How to drive organizational change",
-            },
-          ],
-        },
-        {
-          term: "WEEK2",
           location: "Kolkata Startup",
           courses: [
             {
+              code: "AIPDMF 101",
+              title: "Digital + Marketing apply on real company",
+            },
+            {
+              code: "AIPDMF 102",
+              title: "Digital channel + Customer segmentation on real brand",
+            },
+            {
+              code: "AIPDMF 103",
+              title: "AI Tool + Digital integration on real brand",
+            },
+            {
+              code: "AIPDMF 104",
+              title: "Personal Digital Braning + Business Communication",
+            },
+
+          ],
+        },
+        {
+          term: "WEEK 2",
+          location: "Singapore ECommerce Brand",
+          courses: [
+            {
               code: "STRAT 201",
-              title: "How to make strategic decisions under uncertainty",
+              title: "AI Poward Design Thinking (User-centered design) on ECommerce Brand",
             },
             {
               code: "STRAT 202",
-              title: "How to manage corporate portfolios",
+              title: "Using AI for Image, Video, and Audio Content for ECommerce Brand",
             },
             {
               code: "STRAT 203",
-              title: "How to build strategic alliances and partnerships",
+              title: "AI in Search Algorithms and Consumer Behavior — I (AEO/GEO I)",
             },
             {
               code: "STRAT 204",
-              title: "How to lead digital transformation initiatives",
+              title: "AI in Search Algorithms and Consumer Behavior — II (AEO/GEO II)",
             },
             {
               code: "STRAT 205",
-              title: "How to develop growth strategies for emerging markets",
+              title: "Personal Digital Braning + Business Communication",
             },
           ],
         },
         {
-          term: "TERM 3",
-          location: "Bangalore Startup",
+          term: "WEEK 3",
+          location: "Mumbai MSME Startup",
           courses: [
             {
               code: "STRAT 301",
-              title: "How to manage mergers and acquisitions",
+              title: "Content Marketing Lifecycle, Competitor Analysis, Brand Guideline on Company",
             },
             {
               code: "STRAT 302",
-              title: "How to create blue ocean strategies",
+              title: "AI and Customer Experience Management",
             },
             {
               code: "STRAT 303",
@@ -718,18 +711,14 @@ export const dgm: Programme = {
             },
             {
               code: "STRAT 304",
-              title: "How to build resilient organizations",
-            },
-            {
-              code: "STRAT 305",
-              title: "How to develop crisis management frameworks",
+              title: "Personal Digital Braning + Business Communication",
             },
           ],
         },
       ],
       finance: [
         {
-          term: "TERM 1",
+          term: "WEEK 4",
           location: "Mumbai",
           courses: [
             {
@@ -755,7 +744,7 @@ export const dgm: Programme = {
           ],
         },
         {
-          term: "TERM 2",
+          term: "WEEK 4",
           location: "Delhi",
           courses: [
             {
@@ -778,7 +767,7 @@ export const dgm: Programme = {
           ],
         },
         {
-          term: "TERM 3",
+          term: "WEEK 5",
           location: "Singapore",
           courses: [
             {
@@ -800,7 +789,7 @@ export const dgm: Programme = {
       ],
       marketing: [
         {
-          term: "TERM 1",
+          term: "WEEK 6",
           location: "Mumbai",
           courses: [
             {
@@ -826,7 +815,7 @@ export const dgm: Programme = {
           ],
         },
         {
-          term: "TERM 2",
+          term: "WEEK 7",
           location: "Bangalore",
           courses: [
             {
@@ -852,7 +841,7 @@ export const dgm: Programme = {
           ],
         },
         {
-          term: "TERM 3",
+          term: "WEEK 8",
           location: "Dubai",
           courses: [
             {
@@ -880,7 +869,7 @@ export const dgm: Programme = {
       ],
       operations: [
         {
-          term: "TERM 1",
+          term: "WEEK 9",
           location: "Mumbai",
           courses: [
             {
@@ -900,7 +889,7 @@ export const dgm: Programme = {
           ],
         },
         {
-          term: "TERM 2",
+          term: "WEEK 10",
           location: "Delhi",
           courses: [
             {
@@ -926,7 +915,7 @@ export const dgm: Programme = {
           ],
         },
         {
-          term: "TERM 3",
+          term: "WEEK 11",
           location: "Singapore",
           courses: [
             {
@@ -951,7 +940,7 @@ export const dgm: Programme = {
       ],
       entrepreneur: [
         {
-          term: "TERM 1",
+          term: "WEEK 12",
           location: "Bangalore",
           courses: [
             {
@@ -971,7 +960,7 @@ export const dgm: Programme = {
           ],
         },
         {
-          term: "TERM 2",
+          term: "WEEK 13",
           location: "Mumbai",
           courses: [
             {
@@ -988,7 +977,7 @@ export const dgm: Programme = {
           ],
         },
         {
-          term: "TERM 3",
+          term: "WEEK 14",
           location: "Silicon Valley",
           courses: [
             {
@@ -1013,7 +1002,7 @@ export const dgm: Programme = {
       ],
       tech: [
         {
-          term: "TERM 1",
+          term: "WEEK 15",
           location: "Bangalore",
           courses: [
             {
@@ -1036,7 +1025,7 @@ export const dgm: Programme = {
           ],
         },
         {
-          term: "TERM 2",
+          term: "WEEK 16",
           location: "Mumbai",
           courses: [
             {
@@ -1059,7 +1048,7 @@ export const dgm: Programme = {
           ],
         },
         {
-          term: "TERM 3",
+          term: "WEEK 17",
           location: "Singapore",
           courses: [
             { code: "TECH 301", title: "How to build IoT ecosystems" },
@@ -1302,6 +1291,33 @@ export const dgm: Programme = {
       cardFeatures: {
         freeTrial: { title: "A Free Trial Session", subtitle: "No Fee Required" },
         scholarships: { title: "Assured Scholarships", subtitle: "After Free Trial" }
+      },
+      pricingCard: {
+        title: "DGM™ (Digital Growth & Marketing)",
+        highlightText: "₹3,750",
+        highlightSuffix: "/month",
+        startingAtLabel: "Starts at",
+        startingAtValue: "INR 3,500",
+        startingAtSuffix: "/month",
+        noCostEmiText: "Zero cost EMI options available.",
+        viewPlansLabel: "View Plans",
+        admissionFeeLabel: "Admission Fee (Non-Refundable)",
+        admissionFeeValue: "Rs. 1,000/-",
+        admissionGstText: "(Add GST) Rs. 4,500",
+        tuitionFeeLabel: "One Time Laptop Fee(Optional)",
+        tuitionFeeValue: "Rs. 6,000/-",
+        tuitionGstText: "(Add GST) Rs. 70,200",
+        totalLabel: "Total Programme Fee:",
+        totalValue: "INR 42,000/-",
+        highlightFeatures: [
+          "Live Instruction From IIM Alumni & Ex-Flipkart/Zomato/PhonePe",
+          "Vibrant Community Of Growth Marketers & Brand Builders",
+          "Hands-On Curriculum With 12+ Live Marketing Campaigns",
+          "Official Certification In Digital Growth & Marketing"
+        ],
+        footerNote: "The Course Fee is payable through Net Banking and Credit/Debit Cards.",
+        ctaPrimary: "Book a Free Demo",
+        ctaSecondary: "VIEW EMI"
       }
     }
   },

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { DegreeProgramData, ProgrammeAssetConfig } from "@/data/programmes";
 import HighlightText from "../shared/HighlightObserver";
+import { boldText } from "@/lib/boldText";
 
 interface AIDegreeComponentProps {
   data: DegreeProgramData;
@@ -48,7 +49,7 @@ const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data, assets }) => 
             <h3
               className="text-base px-[20px] md:px-[50px] lg:px-[70px] sm:text-lg text-[#5f6368]"
               dangerouslySetInnerHTML={{
-                __html: data.auditorText
+                __html: boldText(data.auditorText)
               }}
             />
           )}
@@ -77,11 +78,11 @@ const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data, assets }) => 
             {data.accordions.map((accordion) => (
               <div
                 key={accordion.id}
-                className="border-b border-r border-gray-200 bg-white overflow-hidden "
+                className="border-b border-r border-gray-200 hover:bg-[#F6F4F2] bg-white overflow-hidden "
               >
                 <button
                   onClick={() => toggleAccordion(accordion.id)}
-                  className="w-full px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+                  className="w-full px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between text-left  transition-colors"
                   type="button"
                   aria-expanded={openAccordion === accordion.id}
                 >
@@ -98,7 +99,7 @@ const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data, assets }) => 
                 </button>
 
                 <div
-                  className={`transition-all duration-300 ease-in-out ${openAccordion === accordion.id
+                  className={`transition-all duration-300  ease-in-out ${openAccordion === accordion.id
                     ? "max-h-160 opacity-100"
                     : "max-h-0 opacity-0"
                     }`}

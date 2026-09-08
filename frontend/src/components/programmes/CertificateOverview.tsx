@@ -185,7 +185,7 @@ function CertificateOverview({ data }: Props) {
             <p className="text-sm sm:text-base font-semibold text-black mb-2">
               {data.careerJobRolesTitle}
             </p>
-            <p>{data.careerJobRolesDescription}</p>
+            <p>                {data.careerJobRolesDescription}</p>
             <ul className="list-disc pl-5 space-y-1 text-sm sm:text-base text-gray-700 mb-4">
               {data.idealLearners.map((item) => (
                 <li key={item.label}>

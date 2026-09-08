@@ -220,7 +220,7 @@ function TrustedCompanies() {
         <div className="mx-auto w-full max-w-7xl py-[15px] px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-[30px]">
             <p className="mx-auto text-base text-black sm:text-lg lg:text-xl">
-              <strong>97.3%</strong> of students secured internships by their <strong>4 months</strong>, with the highest stipend <strong>₹57k/month</strong>
+              <strong>97.3%</strong> of students secured internships by their <strong>4 months</strong>, with the <br /> highest stipend <strong>₹57k/month</strong>
             </p>
           </div>
 

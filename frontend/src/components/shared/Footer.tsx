@@ -20,6 +20,7 @@ const Footer = () => {
     {
       title: "About us",
       links: [
+        "About Us",
         "For Companies",
         "Events",
         "Jobs",

@@ -21,6 +21,20 @@ interface CurriculumSectionProps {
   slug?: string;
 }
 
+function groupByCategory(courses: CurriculumCourse[]) {
+  const groups: { category: string; courses: CurriculumCourse[] }[] = [];
+  courses.forEach((course) => {
+    const cat = course.category || "";
+    const existing = groups.find((g) => g.category === cat);
+    if (existing) {
+      existing.courses.push(course);
+    } else {
+      groups.push({ category: cat, courses: [course] });
+    }
+  });
+  return groups;
+}
+
 const TAB_LABELS: Record<CurriculumTabKey, string> = {
   courses: "Courses & Workshops",
   collaboration: "Collaboration",
@@ -188,7 +202,7 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                 return (
                   <div key={item.id} role="listitem">
                     {/* Main curriculum item */}
-                    <article className="border-b border-l border-gray-200 text-gray-600 hover:text-black hover:bg-gray-50">
+                    <article className="border-b border-l border-gray-200 text-gray-600 hover:text-black hover:bg-[#F6F4F2]">
                       <div className="p-2 sm:p-4">
                         <div
                           className="flex items-center justify-between cursor-pointer"
@@ -297,7 +311,7 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                                         className={`text-[#5f6368] leading-relaxed text-sm ${i === 0 ? "mb-4" : "mb-3"
                                           }`}
                                       >
-                                        {p}
+                                         {p}
                                       </p>
                                     ),
                                   )}
@@ -310,7 +324,7 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                                         >
                                           <div className="w-2 h-2 bg-[#B30437] rounded-full mt-2 flex-shrink-0"></div>
                                           <p className="text-[#5f6368] leading-relaxed text-sm">
-                                            {o}
+                                             {o}
                                           </p>
                                         </div>
                                       ),
@@ -324,7 +338,7 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                                 {item.outcome ? (
                                   <div>
                                     <p className="text-[#5f6368] leading-relaxed text-sm">
-                                      {item.outcome}
+                                       {item.outcome}
                                     </p>
                                   </div>
                                 ) : item.project ? (
@@ -333,7 +347,7 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                                       Term Project:
                                     </h4>
                                     <p className="text-[#5f6368] leading-relaxed text-sm">
-                                      {item.project.description}
+                                       {item.project.description}
                                     </p>
                                     <button className="mt-3 text-orange-500 hover:text-orange-600 font-medium text-xs flex items-center gap-2 transition-colors">
                                       {item.project.buttonLabel ||
@@ -384,20 +398,35 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                                   {activeTab(item.id, tabs) === "courses" &&
                                     item.courses && (
                                       <>
-                                        {item.courses.initial.map(
-                                          (course: CurriculumCourse, i: number) => (
-                                            <div
-                                              key={i}
-                                              className="flex items-start gap-3"
-                                            >
-                                              <div className="w-2 h-2 bg-[#B30437] rounded-full mt-2 flex-shrink-0"></div>
-                                              <div>
-                                                <span className="font-semibold text-black text-sm">
-                                                  {course.code}:
-                                                </span>
-                                                <span className="ml-2 text-black text-sm">
-                                                  {course.title}
-                                                </span>
+                                        {groupByCategory(item.courses.initial).map(
+                                          (group, gi) => (
+                                            <div key={gi}>
+                                              {group.category && (
+                                                <h4 className="font-bold text-black text-base mt-4 mb-2 first:mt-0">
+                                                  {group.category}
+                                                </h4>
+                                              )}
+                                              <div className="space-y-3">
+                                                {group.courses.map(
+                                                  (course: CurriculumCourse, i: number) => (
+                                                    <div
+                                                      key={i}
+                                                      className="flex items-start gap-3"
+                                                    >
+                                                      <div className="w-2 h-2 bg-[#B30437] rounded-full mt-2 flex-shrink-0"></div>
+                                                      <div>
+                                                        {course.code && (
+                                                          <span className="font-semibold text-black text-sm">
+                                                            {course.code}:{" "}
+                                                          </span>
+                                                        )}
+                                                        <span className="text-black text-sm">
+                                                          {course.title}
+                                                        </span>
+                                                      </div>
+                                                    </div>
+                                                  ),
+                                                )}
                                               </div>
                                             </div>
                                           ),
@@ -406,32 +435,48 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                                         {/* Additional courses with smooth transition */}
                                         <div
                                           className={`overflow-hidden transition-all duration-500 ease-in-out ${isShowMore(item.id)
-                                            ? "max-h-[600px] opacity-100"
+                                            ? "max-h-[3000px] opacity-100"
                                             : "max-h-0 opacity-0"
                                             }`}
                                         >
                                           <div className="space-y-3 mt-3">
-                                            {item.courses.more.map(
-                                              (course: CurriculumCourse, i: number) => (
-                                                <div
-                                                  key={i}
-                                                  className="flex items-start gap-3"
-                                                >
-                                                  <div className="w-2 h-2 bg-[#B30437] rounded-full mt-2 flex-shrink-0"></div>
-                                                  <div>
-                                                    <span
-                                                      className={`font-semibold ${item.moreCoursesGray ? "text-[#5f6368]" : "text-black"
-                                                        } text-sm`}
+                                            {groupByCategory(item.courses.more).map(
+                                              (group, gi) => (
+                                                <div key={gi}>
+                                                  {group.category && (
+                                                    <h4
+                                                      className={`font-bold text-base mt-4 mb-2 first:mt-0 ${item.moreCoursesGray ? "text-[#5f6368]" : "text-black"
+                                                        }`}
                                                     >
-                                                      {course.code}:
-                                                    </span>
-                                                    <span
-                                                      className={`ml-2 ${item.moreCoursesGray ? "text-[#5f6368]" : "text-black"
-                                                        } text-sm`}
-                                                    >
-                                                      {course.title}
-                                                    </span>
-                                                  </div>
+                                                      {group.category}
+                                                    </h4>
+                                                  )}
+                                                  {group.courses.map(
+                                                    (course: CurriculumCourse, i: number) => (
+                                                      <div
+                                                        key={i}
+                                                        className="flex items-start gap-3"
+                                                      >
+                                                        <div className="w-2 h-2 bg-[#B30437] rounded-full mt-2 flex-shrink-0"></div>
+                                                        <div>
+                                                          {course.code && (
+                                                            <span
+                                                              className={`font-semibold ${item.moreCoursesGray ? "text-[#5f6368]" : "text-black"
+                                                                } text-sm`}
+                                                            >
+                                                              {course.code}:{" "}
+                                                            </span>
+                                                          )}
+                                                          <span
+                                                            className={`${item.moreCoursesGray ? "text-[#5f6368]" : "text-black"
+                                                              } text-sm`}
+                                                          >
+                                                            {course.title}
+                                                          </span>
+                                                        </div>
+                                                      </div>
+                                                    ),
+                                                  )}
                                                 </div>
                                               ),
                                             )}
@@ -515,7 +560,7 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                                               <div className="w-2 h-2 bg-[#B30437] rounded-full mt-2 flex-shrink-0"></div>
                                               <div>
                                                 <p className="font-semibold text-gray-900 text-sm">
-                                                  {item.businessNote}
+                                                   {item.businessNote}
                                                 </p>
                                               </div>
                                             </div>
@@ -590,7 +635,7 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                           className="text-[#4F0118] font-medium text-xs"
                           role="text"
                         >
-                          {item.highlight}
+                           {item.highlight}
                         </span>
                       </div>
                     )}

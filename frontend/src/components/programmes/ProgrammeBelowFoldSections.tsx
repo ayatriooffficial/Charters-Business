@@ -17,7 +17,7 @@ const FacultyModel = dynamic(() => import("@/components/home/FacultyModel"), { s
 const LearnApplyReflectRepeat = dynamic(() => import("@/components/programmes/LearnApplyReflectRepeat"), { ssr: false, loading: () => <SectionSkeleton /> });
 const StudentModel = dynamic(() => import("@/components/home/StudentModel"), { ssr: false, loading: () => <SectionSkeleton height="h-80" /> });
 const LearningOutcomes = dynamic(() => import("@/components/home/LearningOutcomes"), { ssr: false, loading: () => <SectionSkeleton /> });
-const PricingTabs = dynamic(() => import("@/components/programmes/PricingTabs"), { ssr: false, loading: () => <SectionSkeleton /> });
+const PricingAndScholarshipSection = dynamic(() => import("@/components/programmes/PricingAndScholarshipSection"), { ssr: false, loading: () => <SectionSkeleton /> });
 const FAQ = dynamic(() => import("@/components/programmes/FAQ"), { ssr: false, loading: () => <SectionSkeleton /> });
 const CertificateOverview = dynamic(() => import("@/components/programmes/CertificateOverview"), { ssr: false, loading: () => <SectionSkeleton /> });
 
@@ -82,11 +82,12 @@ export default function ProgrammeBelowFoldSections({ programme }: { programme: P
 
       <LazyMount fallback={<SectionSkeleton />}>
         <SectionWrapper hideCorners={"all"}>
-          <PricingTabs 
-            data={programme.pricing} 
-            assets={programme.assets} 
+          <PricingAndScholarshipSection
+            assets={programme.assets}
             scholarships={programme.scholarships}
             scholarshipConfig={programme.scholarshipConfig}
+            imageSrc="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif"
+            imageAlt={`${programme.card.title} - Classroom`}
           />
         </SectionWrapper>
       </LazyMount>

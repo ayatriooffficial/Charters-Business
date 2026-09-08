@@ -3,6 +3,7 @@ import { useRef, useEffect, useState } from 'react';
 import React from "react";
 import { TrackRecordData, ProgrammeAssetConfig } from "@/data/programmes";
 import HighlightText from "../shared/HighlightObserver";
+import { boldText } from "@/lib/boldText";
 
 // when 20% of element scrolls into view
 function useInView(ref: React.RefObject<Element | null>) {
@@ -168,7 +169,7 @@ const TrackRecord: React.FC<TrackRecordProps> = ({ data, assets }) => {
             </h2>
             <h3 className="text-base px-[20px] md:px-[50px] lg:px-[70px] sm:text-lg text-[#5f6368]">
               {data.auditorText ? (
-                <span dangerouslySetInnerHTML={{ __html: data.auditorText }} />
+                <span dangerouslySetInnerHTML={{ __html: boldText(data.auditorText) }} />
               ) : (
                 <>
                   Our placement reports are audited by <strong>Zivanta Analytics</strong>, auditor for IIM and follow the IPRS Revision 2.2 framework for

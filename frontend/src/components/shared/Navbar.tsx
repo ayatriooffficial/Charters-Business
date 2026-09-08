@@ -303,11 +303,11 @@ function Navbar() {
                     <span className="mx-1.5 text-black text-[13px] font-medium">|</span>
                     <span>Talk to Us:</span>
                     <a
-                      href="tel:+919836465083"
+                      href="tel:+918910204292"
                       className="font-bold text-[14px] text-[#222222] hover:text-black transition-colors"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      +91 9836465083
+                      +91 8910204292
                     </a>
                   </div>
                 ) : (

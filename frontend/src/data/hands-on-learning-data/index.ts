@@ -74,13 +74,13 @@ export const contentData: Record<string, ProgramData> = {
   },
   "AI-Integrated Core Modules": {
     month: "Months 2 to 3",
-    title: "AI-Integrated Core Modules",
+    title: "Build AI Agents & Workflows(No Coding)",
     description:
       "From identifying a content niche to building an audience, students are trained to grow their personal brands on Youtube, Instagram, and LinkedIn.",
     achievement: "Intermediate",
     linkText: "Meet Our Resident Influencers",
     image:
-      "https://res.cloudinary.com/ducgcl4dg/image/upload/v1785526824/learning-real-world-project_tyfev4.avif",
+      "https://res.cloudinary.com/ducgcl4dg/image/upload/v1785526824/ai-ready-carriculam_rlvggz.avif",
     specializationTracks: [
       "36 Houre",
       "4 Hand-On Projects",
@@ -200,14 +200,14 @@ export const contentData: Record<string, ProgramData> = {
     subjectsLink: "/curriculum/local-consulting",
   },
   "Corporate Personal Branding & Leadership": {
-    month: "Months 6",
+    month: "Months 5 to 6",
     title: "Get Mentored by Top CXOs",
     description:
       "Experience one-on-one mentorship, coaching and guidance from CXOs across industries.",
     achievement: "Professional",
     linkText: "Meet Our Mentors",
     image:
-      "https://res.cloudinary.com/ducgcl4dg/image/upload/v1785526824/ai-ready-carriculam_rlvggz.avif",
+      "https://res.cloudinary.com/ducgcl4dg/image/upload/v1785526824/chartersunion-foundation-month_kxz3cb.avif",
     specializationTracks: [
       "36 Houre",
       "4 Hand-On Projects",
@@ -260,13 +260,13 @@ export const contentData: Record<string, ProgramData> = {
   },
 
   "Reflections of Industry Practitioners": {
-    month: "Months 1 - 2",
+    month: "Months 1 to 2",
     title: "Job-Targeted Hands-on Theory Foudamental",
     description:
       "Learn new-age skills from industries-led practitioner from top MNCs, with multi-disciplinary subjects ranging from Accounting & finance, marketing, and AI.",
     achievement: "Beginner",
     image:
-      "https://res.cloudinary.com/ducgcl4dg/image/upload/v1785526824/chartersunion-foundation-month_kxz3cb.avif",
+      "https://res.cloudinary.com/ducgcl4dg/image/upload/v1785526824/learning-real-world-project_tyfev4.avif",
     specializationTracks: [
       "36 Houre",
       "4 Hand-On Projects",

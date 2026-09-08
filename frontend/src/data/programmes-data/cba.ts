@@ -60,28 +60,28 @@ const cbaCurriculumSection: CurriculumSectionData = {
     {
       id: "dubai",
       term: "Month 01",
-      title: "Strategy, Planning & Performance",
+      title: "Foundational & Transaction Processing",
       termImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
       badges: [
-        { text: "Beginner", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
+        { text: "Associate-entry", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
       ],
       outcome:
-        "The competencies required to envision the future, lead the strategic planning process, guide decisions, manage risk, and monitor performance.",
+        "Build a strong foundation in accounting fundamentals, transaction processing, and AI-powered accounting workflows.",
       courses: {
         initial: [
-          { code: "MAST 101", title: "Strategic and Tactical Planning" },
-          { code: "MAST 201", title: "Decision Analysis" },
-          { code: "MAST 301", title: "Strategic Cost Management" },
-          { code: "MAST 401", title: "Capital Investment Decisions" },
-          { code: "MAST 501", title: "Enterprise Risk Management" },
+          { code: "", title: "Accounting fundamentals & double-entry", category: "Foundational & Transaction Processing" },
+          { code: "", title: "Journal, Ledger & Trial Balance", category: "Foundational & Transaction Processing" },
+          { code: "", title: "Vouchers, invoices & documentation", category: "Foundational & Transaction Processing" },
+          { code: "", title: "AP/AR accounting", category: "Foundational & Transaction Processing" },
+          { code: "", title: "Fixed assets & depreciation", category: "Foundational & Transaction Processing" },
         ],
         more: [
-          { code: "SAMA 101", title: "Budgeting and Forecasting" },
-          { code: "SAMA 201", title: "Corporate Finance" },
-          { code: "SAMA 301", title: "Performance Management" },
-          { code: "SAMA 401", title: "Corporate english specking" },
-          { code: "FIFI 101", title: "Profesonal personal branding" },
-          { code: "FIFI 102", title: "Profesonal digital Networking" },
+          { code: "", title: "Accounting for Partnership, Hire Purchase, and NGO & NPO" },
+          { code: "", title: "Real Company Case Study Discussion" },
+          { code: "", title: "Microsoft Power Automate for Accounting Workflows" },
+          { code: "", title: "AI for Accountants & Managers" },
+          { code: "", title: "Excel + AI for reconciliation & reporting" },
+          { code: "", title: "Live Clients Project Practice" },
         ],
       },
       business: [
@@ -148,27 +148,31 @@ const cbaCurriculumSection: CurriculumSectionData = {
     {
       id: "india",
       term: "Month 02",
-      title: "Reporting & Control",
+      title: "Financial Close, TDS/TCS & AI Automation",
       termImage:
         "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784840455/digital-growth-_-marketing-classroom_r1pqba.avif",
       badges: [],
       outcome:
-        "The competencies required to measure and report an organization's performance in compliance with relevant standards and regulations.",
+        "Master financial close processes, reconciliations, and TDS/TCS compliance with AI-powered automation tools.",
       courses: {
         initial: [
-          { code: "MAST 102", title: "Internal Control" },
-          { code: "MAST 202", title: "Financial Recordkeeping" },
-          { code: "MAST 302", title: "Cost Accounting" },
-          { code: "MAST 402", title: "Financial Statement Preparation" },
-          { code: "SAMA 102", title: "Financial Statement Analysis" },
+          { code: "", title: "Bank Reconciliation (BRS)", category: "Financial Reconciliation, Close & Intelligent Reporting" },
+          { code: "", title: "Vendor & customer reconciliation", category: "Financial Reconciliation, Close & Intelligent Reporting" },
+          { code: "", title: "Balance-sheet reconciliation", category: "Financial Reconciliation, Close & Intelligent Reporting" },
+          { code: "", title: "Accruals, prepayments & provisions", category: "Financial Reconciliation, Close & Intelligent Reporting" },
+          { code: "", title: "Intercompany reconciliation", category: "Financial Reconciliation, Close & Intelligent Reporting" },
         ],
         more: [
-          { code: "SAMA 202", title: "Tax Compliance and Planning" },
-          { code: "SAMA 302", title: "Integrated Reporting" },
-          { code: "SAMA 402", title: "LinkedIn for personal branding & B2B" },
-          { code: "FIFI 201", title: "Structure thinking" },
-          { code: "FIFI 202", title: "Personal Video creator studio" },
-          { code: "PRTC 102", title: "Body lunguage tranning" },
+          { code: "", title: "Journal adjustments & Depreciation" },
+          { code: "", title: "Business Intelligence & Dashboards with Power BI" },
+          { code: "", title: "AI/ML-Assisted Financial Analysis" },
+          { code: "", title: "Basic concept of TDS & TCS", category: "TDS & TCS" },
+          { code: "", title: "Registration for TDS & TCS", category: "TDS & TCS" },
+          { code: "", title: "Different TDS rates", category: "TDS & TCS" },
+          { code: "", title: "TDS on TALLY", category: "TDS & TCS" },
+          { code: "", title: "Filling of various returns", category: "TDS & TCS" },
+          { code: "", title: "Copilot Studio: Building AI Agents", category: "TDS & TCS" },
+          { code: "", title: "AI-Assisted TDS Analysis", category: "TDS & TCS" },
         ],
       },
       collaboration: [
@@ -237,26 +241,48 @@ const cbaCurriculumSection: CurriculumSectionData = {
     {
       id: "singapore",
       term: "Month 03",
-      title: "Technology & Analytics",
+      title: "Tally, Compliance, AI in Tax, & GST",
       termImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786642832/chartersunion-student-build-ai-agent-for-scale_ifrulw.avif",
       badges: [
-        { text: "Intermediate", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
+        { text: "Associate-entry", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
       ],
       outcome:
-        "The competencies required to manage technology and analyze data to enhance organizational success.",
+        "Get hands-on with Tally ERP-9/Prime, corporate compliance, income tax, and GST, powered by AI-assisted tools.",
       courses: {
         initial: [
-          { code: "PRTC 203", title: "Information Systems" },
-          { code: "AIML 103", title: "Data Governance" },
-          { code: "FIFI 203", title: "Data Analytics" },
-          { code: "SAMA 303", title: "Data Visualization" },
-          { code: "COMM 103", title: "Leadershiph social impact tranning" },
+          { code: "", title: "Company creation", category: "Practical Training & Tally ERP-9 / Prime" },
+          { code: "", title: "Cost center & cost category", category: "Practical Training & Tally ERP-9 / Prime" },
+          { code: "", title: "Purchase & sale entries", category: "Practical Training & Tally ERP-9 / Prime" },
+          { code: "", title: "Accounting with inventory & godowns", category: "Practical Training & Tally ERP-9 / Prime" },
+          { code: "", title: "Generation of returns", category: "Practical Training & Tally ERP-9 / Prime" },
+          { code: "", title: "Report generation", category: "Practical Training & Tally ERP-9 / Prime" },
         ],
         more: [
-          {
-            code: "FIFI 303",
-            title: "Personal Video grwoth strategy creator studio",
-          },
+          { code: "", title: "Start-up Registration Overview", category: "Corporate Compliance" },
+          { code: "", title: "Concept of company & LLP", category: "Corporate Compliance" },
+          { code: "", title: "Creation of DSC and DIN", category: "Corporate Compliance" },
+          { code: "", title: "Practice on live projects", category: "Corporate Compliance" },
+          { code: "", title: "Annual form filling for company, LLP and OPC", category: "Corporate Compliance" },
+          { code: "", title: "Types of meeting and directors", category: "Corporate Compliance" },
+          { code: "", title: "Regulatory Compliance Evaluation with AI", category: "Corporate Compliance" },
+          { code: "", title: "AI-fast Regulatory Compliance", category: "Corporate Compliance" },
+          { code: "", title: "Live Clients Project Practice", category: "Corporate Compliance" },
+          { code: "", title: "Basic of Income Tax", category: "Practical Training & Tally ERP-9 / Prime" },
+          { code: "", title: "Different heads of Income", category: "Practical Training & Tally ERP-9 / Prime" },
+          { code: "", title: "Deduction under chapter VI-A", category: "Practical Training & Tally ERP-9 / Prime" },
+          { code: "", title: "Computation of Total Income", category: "Practical Training & Tally ERP-9 / Prime" },
+          { code: "", title: "Filling of various returns", category: "Practical Training & Tally ERP-9 / Prime" },
+          { code: "", title: "AI-Assisted Tax Roadmap Analysis", category: "Practical Training & Tally ERP-9 / Prime" },
+          { code: "", title: "AI-Optimised Tax Saving", category: "Practical Training & Tally ERP-9 / Prime" },
+          { code: "", title: "Applied AI in Tax on Client Projects", category: "Practical Training & Tally ERP-9 / Prime" },
+          { code: "", title: "Live Client Projects & Case Study", category: "Practical Training & Tally ERP-9 / Prime" },
+          { code: "", title: "Basic concept of GST", category: "Goods & Services Tax (GST)" },
+          { code: "", title: "Rate of GST, Supply of goods & services", category: "Goods & Services Tax (GST)" },
+          { code: "", title: "Levy and collection of Tax", category: "Goods & Services Tax (GST)" },
+          { code: "", title: "GST Registration and different GST Scheme", category: "Goods & Services Tax (GST)" },
+          { code: "", title: "Practice on live client projects", category: "Goods & Services Tax (GST)" },
+          { code: "", title: "AI GST Compliance", category: "Goods & Services Tax (GST)" },
+          { code: "", title: "GST Calculation help of AI", category: "Goods & Services Tax (GST)" },
         ],
       },
       moreCoursesGray: false,
@@ -313,26 +339,36 @@ const cbaCurriculumSection: CurriculumSectionData = {
     {
       id: "ghana",
       term: "Month 04",
-      title: "Business Acumen & Operations",
+      title: "Strategy, Planning & Performance",
       termImage:
         "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
       badges: [
-        { text: "Advanced", className: "bg-black text-white text-xs px-3 py-1 font-semibold" },
+        { text: "Senior Associate", className: "bg-black text-white text-xs px-3 py-1 font-semibold" },
       ],
       highlight: "Faculty Guided Internship Program ",
       outcome:
-        "The competencies required to contribute as a cross-functional business partner to transform company-wide operations.",
+        "Sharpen decision analysis, strategic cost management, and capital investment skills, along with budgeting and corporate finance expertise.",
       courses: {
         initial: [
-          { code: "MAST 104", title: "Industry-Specific Knowledge" },
-          { code: "MAST 204", title: "Operational Knowledge" },
-          {
-            code: "MAST 304",
-            title: "Quality Management and Continuous Improvement",
-          },
-          { code: "MAST 404", title: "Project Management" },
+          { code: "", title: "Relevant Costing", category: "Decision Analysis" },
+          { code: "", title: "CVP & Break-even Analysis", category: "Decision Analysis" },
+          { code: "", title: "Pricing Decisions", category: "Decision Analysis" },
+          { code: "", title: "Activity-Based Costing", category: "Strategic Cost Management" },
+          { code: "", title: "Life-Cycle & Target Costing", category: "Strategic Cost Management" },
+          { code: "", title: "Value Chain Analysis", category: "Strategic Cost Management" },
         ],
-        more: [],
+        more: [
+          { code: "", title: "NPV, IRR & Payback", category: "Capital Investment Decisions" },
+          { code: "", title: "Risk-Adjusted Analysis", category: "Capital Investment Decisions" },
+          { code: "", title: "COSO ERM Framework", category: "Enterprise Risk Management" },
+          { code: "", title: "Risk Quantification", category: "Enterprise Risk Management" },
+          { code: "", title: "Operating & Master Budgets", category: "Budgeting and Forecasting" },
+          { code: "", title: "Rolling Forecasts & Variance Analysis", category: "Budgeting and Forecasting" },
+          { code: "", title: "Operating & Master Budgets", category: "Corporate Finance & Performance" },
+          { code: "", title: "Rolling Forecasts & Variance Analysis", category: "Corporate Finance & Performance" },
+          { code: "", title: "Balanced Scorecard", category: "Corporate Finance & Performance" },
+          { code: "", title: "Responsibility Accounting & KPIs", category: "Corporate Finance & Performance" },
+        ],
       },
       moreCoursesGray: true,
       business: [
@@ -381,29 +417,27 @@ const cbaCurriculumSection: CurriculumSectionData = {
     {
       id: "usa",
       term: "Month 05",
-      title: "Leadership",
+      title: "Reporting & Control",
       termImage:
         "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
       badges: [
-        { text: "In-Class Faculty-Guided Internship", className: "bg-black text-white text-xs px-2 py-1 font-semibold" },
-        { text: "PRO", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
+        { text: "Senior Associate at Big 4", className: "bg-black text-white text-xs px-2 py-1 font-semibold" },
       ],
       outcome:
-        "The competencies required to collaborate with others and inspire teams to achieve organizational goals.",
+        "Strengthen internal controls, cost accounting, and reporting skills required to measure and report organisational performance.",
       courses: {
         initial: [
-          { code: "MAST 105", title: "Communication Skills" },
-          { code: "MAST 205", title: "Motivating and Inspiring Others" },
-          {
-            code: "MAST 305",
-            title: "Collaboration, Teamwork, and Relationship",
-          },
-          { code: "SAMA 105", title: "Change Management" },
-          { code: "SAMA 205", title: "Conflict Management" },
+          { code: "", title: "COSO Internal Control Framework", category: "Internal Control" },
+          { code: "", title: "Fraud Risk & SOX-Style Controls", category: "Internal Control" },
+          { code: "", title: "Job, Process & Standard Costing", category: "Cost Accounting" },
+          { code: "", title: "Overhead Allocation", category: "Cost Accounting" },
+          { code: "", title: "Ind AS / IFRS Alignment", category: "Financial Statement Preparation" },
         ],
         more: [
-          { code: "SAMA 305", title: "Negotiation" },
-          { code: "SAMA 405", title: "Talent Management" },
+          { code: "", title: "Ratio & Trend Analysis", category: "Financial Statement Analysis" },
+          { code: "", title: "Quality of Earnings", category: "Financial Statement Analysis" },
+          { code: "", title: "IR Framework & Six Capitals", category: "Integrated Reporting" },
+          { code: "", title: "Connecting Financial & Non-Financial Narrative", category: "Integrated Reporting" },
         ],
       },
       moreCoursesGray: false,
@@ -468,25 +502,26 @@ const cbaCurriculumSection: CurriculumSectionData = {
     {
       id: "argentina",
       term: "Month 06",
-      title: "Professional Ethics & Values",
+      title: "Technology & Analytics",
       termImage:
         "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
       badges: [
-        { text: "On Campus", className: "bg-black text-white text-xs px-2 py-1 font-semibold" },
-        { text: "PRO", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
+        { text: "Senior Associate at Big 4", className: "bg-black text-white text-xs px-2 py-1 font-semibold" },
       ],
       outcome:
-        "The competencies required to demonstrate the professional values, ethical behavior, and legal compliance essential to a sustainable business model.",
+        "Build technology governance and data analytics skills needed to manage systems and drive data-informed decisions.",
       courses: {
         initial: [
-          { code: "MAST 106", title: "Professional Ethical Behavior" },
-          {
-            code: "MAST 206",
-            title: "Recognizing and Resolving Unethical Behavior",
-          },
-          { code: "MAST 306", title: "Legal and Regulatory Requirements." },
+          { code: "", title: "SAP ERP Fundamentals", category: "Internal Control" },
+          { code: "", title: "IT General Controls", category: "Internal Control" },
+          { code: "", title: "Data Quality & Ownership", category: "Data Governance" },
+          { code: "", title: "Master Data Management", category: "Data Governance" },
+          { code: "", title: "Excel & Query-Based Analysis", category: "Data Analytics" },
+          { code: "", title: "AI-Assisted Analytics Workflows", category: "Data Analytics" },
         ],
-        more: [],
+        more: [
+          { code: "", title: "Dashboard Design Principles", category: "Data Analytics" },
+        ],
       },
       moreCoursesGray: true,
       business: [
@@ -522,15 +557,20 @@ const cbaCurriculumSection: CurriculumSectionData = {
     {
       id: "europe",
       term: "Month 07",
-      title: "Capstone: Build & Launch a Digital Marketing Agency",
+      title: "Business Acumen & Operations",
       termImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784609214/Charters-classroom_g8znqy.avif",
-      badges: [
-        { text: "PRO", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
-      ],
-      outcome: "Pai-Lam help to build won digital company",
+      badges: [],
+      outcome: "Develop leadership, operational awareness, and project management skills to apply compliance, tax, GST, and quality frameworks on real client engagements.",
       project: undefined,
       courses: {
-        initial: [],
+        initial: [
+          { code: "", title: "Leading Without Authority", category: "Leadership & Social Impact Training" },
+          { code: "", title: "Social Impact & CSR Context", category: "Leadership & Social Impact Training" },
+          { code: "", title: "Reading Operations into Financials", category: "Operational & Industry-led Knowledge" },
+          { code: "", title: "Sector Financial Drivers", category: "Operational & Industry-led Knowledge" },
+          { code: "", title: "Process Improvement Basics", category: "Project and Quality Management" },
+          { code: "", title: "Engagement Planning & Tracking", category: "Project and Quality Management" },
+        ],
         more: [],
       },
       moreCoursesGray: true,
@@ -840,7 +880,7 @@ export const cba: Programme = {
       prefix: "Learn. Apply. Reflect.",
       highlight: "Repeat.",
     },
-    subtitle: `Hands-on courses and workshops designed to build real businesses—<br class="hidden sm:block" />because real learning comes from real applications.`,
+    subtitle: `Hands-on courses and workshops designed to build real businesses— because real learning <br class="hidden sm:block" /> comes from apply on real company.`,
     categories: [
       { id: "strategy", label: "STRAT", title: "Strategy & Leadership" },
       { id: "finance", label: "FIN", title: "Finance & Analytics" },
@@ -1295,45 +1335,31 @@ export const cba: Programme = {
   scholarships: [
     {
       id: "outliers",
-      title: "The Outliers Scholarship",
+      title: "Young Charter Fellowship ",
       description:
         "Celebrating exceptional talents beyond academics. If you're leading in fields like dance, space science, or robotics, this scholarship is designed to propel your unique journey forward.",
       eligibility: "Recognized in the top 1% in any field.",
     },
     {
       id: "community",
-      title: "The Community Leaders Scholarship",
+      title: "MAA Sarifa Fellowship",
       description:
         "For those who have made significant impact in their communities through leadership, volunteer work, or social initiatives.",
       eligibility: "Demonstrated community leadership and impact.",
     },
     {
       id: "entrepreneur",
-      title: "The Entrepreneur & Innovation Scholarship",
+      title: "Vidyavarthi Merit Scholarship",
       description:
         "Supporting young entrepreneurs and innovators who have started their own ventures or created innovative solutions.",
       eligibility: "Founded a startup or created innovative projects.",
     },
     {
       id: "merit",
-      title: "The Merit Scholarship",
+      title: "Young Women in Global Leadership Scholarship",
       description:
         "Academic excellence scholarship for students with outstanding academic achievements and test scores.",
       eligibility: "High academic scores and strong record.",
-    },
-    {
-      id: "pathfinders",
-      title: "The Pathfinders Scholarship",
-      description:
-        "For students who have overcome significant challenges and demonstrated resilience in their educational journey.",
-      eligibility: "Demonstrated resilience and overcoming challenges.",
-    },
-    {
-      id: "transfer",
-      title: "The Transfer Students Scholarship",
-      description:
-        "Supporting students transitioning from other institutions who show exceptional promise and dedication.",
-      eligibility: "Transfer students with strong performance.",
     },
   ],
 
@@ -1524,7 +1550,7 @@ export const cba: Programme = {
             id: "placement-record",
             question: "What is the placement record?",
             answer:
-              "95% of our MBA graduates receive job offers within 3 months of graduation. The average CTC is ₹26.5 LPA with an average salary jump of 3.05x. Highest package in recent years reached ₹61.8 LPA. Our graduates work at top companies including Google, Amazon, Deloitte, McKinsey, KPMG, and leading startups.",
+              "95% of our MBA graduates receive job offers within 3 months of graduation. The average CTC is ₹26.5 LPA with an average salary jump of 3.05x. Highest package in recent years reached ₹61.8 LPA. Our graduates work at top companies including Google, Amazon, Deloitte, KPMG, and leading startups.",
           },
           {
             id: "placement-guarantee",
@@ -1703,6 +1729,33 @@ export const cba: Programme = {
       cardFeatures: {
         freeTrial: { title: "A Free Trial Session", subtitle: "No Fee Required" },
         scholarships: { title: "Assured Scholarships", subtitle: "After Free Trial" }
+      },
+      pricingCard: {
+        title: "CBA™ (Certified Business Accountant)",
+        highlightText: "₹3,750",
+        highlightSuffix: "/month",
+        startingAtLabel: "Starts at",
+        startingAtValue: "INR 3,500",
+        startingAtSuffix: "/month",
+        noCostEmiText: "Zero cost EMI options available.",
+        viewPlansLabel: "View Plans",
+        admissionFeeLabel: "Admission Fee (Non-Refundable)",
+        admissionFeeValue: "Rs. 1,000/-",
+        admissionGstText: "(Add GST) Rs. 4,500",
+        tuitionFeeLabel: "One Time Laptop Fee(Optional)",
+        tuitionFeeValue: "Rs. 6,000/-",
+        tuitionGstText: "(Add GST) Rs. 70,200",
+        totalLabel: "Total Programme Fee:",
+        totalValue: "INR 42,000/-",
+        highlightFeatures: [
+          "Live Instruction From CA/CMA & Big-4 Faculty",
+          "Vibrant Community Across India, GCC & Singapore",
+          "Hands-On Curriculum With Real Corporate Case Studies",
+          "Official Certification In Business Accounting"
+        ],
+        footerNote: "The Course Fee is payable through Net Banking and Credit/Debit Cards.",
+        ctaPrimary: "Book a Free Demo",
+        ctaSecondary: "VIEW EMI"
       }
     }
   },

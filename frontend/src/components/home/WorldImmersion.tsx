@@ -16,11 +16,11 @@ const immersionData = [
         "FinTech & Digital Payments | Accounting Consulting | Financial Services & Compliance | Global Bookkeeping | Payroll Management | Tax Consulting | SME Finance Departments",
     },
     cultural: {
-      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786641088/student-impact-on-indian-startup_lqjxss.avif",
+      imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1788558578/charters_digital_marketing_class_zxllnr.avif",
       title: "Digital Growth marketing",
       subtitle: "Republic Day Parade",
       description:
-        "Digital Marketing | Product Growth Marketing | ",
+        "Digital Marketing | Product Growth Marketing | Performance Marketing",
     },
     social: {
       imageSrc: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786641088/student-impact-on-top-company_iyd6xe.avif",

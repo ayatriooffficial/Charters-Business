@@ -147,66 +147,66 @@ const TetrLandingPage = () => {
     },
   };
 
-  const founders = [
-    {
-      name: "Mr. Pratham Mittal",
-      role: "Founder",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      description: "Founder, Charters' Union | Masters' Union | Outgrow",
-    },
-    {
-      name: "Mr. Vinay Swafney",
-      role: "Strategic Advisor",
-      image:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      description:
-        "Professor, Harvard University | President, National Capital Partners",
-    },
-    {
-      name: "Dr. Edward Rogers",
-      role: "Chief Learning Officer",
-      image:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      description: "Former Chief Knowledge Officer, NASA",
-    },
-    {
-      name: "Mr. Fawaris Stephane",
-      role: "Chief Evangelist",
-      image:
-        "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      description:
-        "Executive Group President, Eddie Lauder | Ex-VP Marketing, L'Oreal USA",
-    },
-    {
-      name: "Dr. Daniel Garrett Van Der Vliet",
-      role: "Strategic Advisor",
-      image:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      description: "Executive Director, Cornell University",
-    },
-    {
-      name: "Mr. Manoj Kohli",
-      role: "Chief Evangelist",
-      image:
-        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      description: "Former Country Head, SoftBank | Ex-CEO, Bharti Airtel",
-    },
-    {
-      name: "Dr. Sarah Johnson",
-      role: "Head of Innovation",
-      image:
-        "https://images.unsplash.com/photo-1494790108755-2616b169d5b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      description: "Former Director of Innovation, MIT | AI Research Leader",
-    },
-    {
-      name: "Prof. Michael Chen",
-      role: "Head of Technology",
-      image:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-      description: "Professor, Stanford University | Tech Industry Veteran",
-    },
-  ];
+  // const founders = [
+  //   {
+  //     name: "Mr. Pratham Mittal",
+  //     role: "Founder",
+  //     image:
+  //       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+  //     description: "Founder, Charters' Union | Masters' Union | Outgrow",
+  //   },
+  //   {
+  //     name: "Mr. Vinay Swafney",
+  //     role: "Strategic Advisor",
+  //     image:
+  //       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+  //     description:
+  //       "Professor, Harvard University | President, National Capital Partners",
+  //   },
+  //   {
+  //     name: "Dr. Edward Rogers",
+  //     role: "Chief Learning Officer",
+  //     image:
+  //       "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+  //     description: "Former Chief Knowledge Officer, NASA",
+  //   },
+  //   {
+  //     name: "Mr. Fawaris Stephane",
+  //     role: "Chief Evangelist",
+  //     image:
+  //       "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+  //     description:
+  //       "Executive Group President, Eddie Lauder | Ex-VP Marketing, L'Oreal USA",
+  //   },
+  //   {
+  //     name: "Dr. Daniel Garrett Van Der Vliet",
+  //     role: "Strategic Advisor",
+  //     image:
+  //       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+  //     description: "Executive Director, Cornell University",
+  //   },
+  //   {
+  //     name: "Mr. Manoj Kohli",
+  //     role: "Chief Evangelist",
+  //     image:
+  //       "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+  //     description: "Former Country Head, SoftBank | Ex-CEO, Bharti Airtel",
+  //   },
+  //   {
+  //     name: "Dr. Sarah Johnson",
+  //     role: "Head of Innovation",
+  //     image:
+  //       "https://images.unsplash.com/photo-1494790108755-2616b169d5b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+  //     description: "Former Director of Innovation, MIT | AI Research Leader",
+  //   },
+  //   {
+  //     name: "Prof. Michael Chen",
+  //     role: "Head of Technology",
+  //     image:
+  //       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+  //     description: "Professor, Stanford University | Tech Industry Veteran",
+  //   },
+  // ];
 
   return (
     <>
@@ -224,9 +224,9 @@ const TetrLandingPage = () => {
             </div>
 
             <div className="relative w-full h-[50vh] mb-6">
-              <div className="w-full h-full bg-gray-200 overflow-hidden shadow-2xl rounded-lg">
+              <div className="w-full h-full bg-[#F6F4F2] overflow-hidden shadow-2xl rounded-lg">
                 <Image
-                  src="https://cdn.Charters' Union.com/assets/ih-images/Charters' Union-about-hero.webp"
+                  src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1784458521/student-life-at-chartersUnion_yglfog.avif"
                   alt="Students collaborating and learning"
                   className="w-full h-full object-cover"
                   fill
@@ -308,12 +308,6 @@ const TetrLandingPage = () => {
         <div className="max-w-7xl w-full mx-auto px-4 md:px-6">
           <div className="mb-12">
             <div className="text-center">
-              <div
-                className="inline-flex items-center bg-[#B30437] text-white px-4 py-2 rounded-full text-xs font-medium mb-4"
-                role="status"
-              >
-                <span>Transformation Layers</span>
-              </div>
               <p
                 className="text-xs font-semibold text-[#B30437] tracking-wider mb-2"
                 role="text"
@@ -322,9 +316,9 @@ const TetrLandingPage = () => {
               </p>
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-4 text-black leading-tight">
                 Rooted in{" "}
-                <span className="italic text-[#B30437]">
-                  science & first principles
-                </span>
+
+                Job-Ready & AI principles
+
               </h2>
               <p className="text-lg text-black mb-6 max-w-3xl mx-auto">
                 Our curriculum is structured around{" "}
@@ -688,12 +682,6 @@ const TetrLandingPage = () => {
         <div className="max-w-7xl w-full mx-auto">
           <div className="mb-12">
             <div className="mb-8 text-center">
-              <div
-                className="inline-flex items-center bg-[#B30437] text-white px-4 py-2 rounded-full text-xs font-medium mb-4"
-                role="status"
-              >
-                <span>Leadership Team</span>
-              </div>
               <p
                 className="text-xs font-semibold text-[#B30437] tracking-wider mb-2"
                 role="text"
@@ -702,13 +690,13 @@ const TetrLandingPage = () => {
               </p>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-light text-black leading-tight">
                 Meet our{" "}
-                <span className="italic text-[#B30437]">
-                  founding academic council
-                </span>
+
+                founding academic council
+
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
               {founders.slice(0, 4).map((founder, index) => (
                 <div key={index} className="text-left">
                   <div className="relative mb-3">
@@ -730,9 +718,9 @@ const TetrLandingPage = () => {
                   <p className="text-gray-600 text-xs">{founder.description}</p>
                 </div>
               ))}
-            </div>
+            </div> */}
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+            {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
               {founders.slice(4, 8).map((founder, index) => (
                 <div key={index + 4} className="text-left">
                   <div className="relative mb-3">
@@ -754,31 +742,10 @@ const TetrLandingPage = () => {
                   <p className="text-gray-600 text-xs">{founder.description}</p>
                 </div>
               ))}
-            </div>
+            </div> */}
 
-            <div className="text-center mb-8">
-              <div
-                className="inline-flex items-center bg-[#B30437] text-white px-4 py-2 rounded-full text-xs font-medium mb-4"
-                role="status"
-              >
-                <span>Get Started</span>
-              </div>
-              <p
-                className="text-xs font-semibold text-[#B30437] tracking-wider mb-2"
-                role="text"
-              >
-                READY TO BEGIN?
-              </p>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-light leading-tight text-black">
-                Its time to get{" "}
-                <span className="italic text-[#B30437]">
-                  out there
-                </span>
-                .
-              </h2>
-            </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               <div className="relative bg-gradient-to-r from-orange-600 to-orange-500 text-white p-4 md:p-6 overflow-hidden rounded-lg shadow-sm">
                 <div className="absolute inset-0 opacity-30">
                   <Image
@@ -866,7 +833,7 @@ const TetrLandingPage = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

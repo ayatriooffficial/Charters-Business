@@ -216,6 +216,7 @@ export interface CurriculumBadge {
 export interface CurriculumCourse {
   code: string;
   title: string;
+  category?: string;
 }
 
 export interface CurriculumImmersionItem {
@@ -443,10 +444,10 @@ export interface CertificateOverviewData {
   offlineReasonsTitle: string;
   programHighlights: string[];
 
-  receivebenefitTitle: string;
-  programreceivebenefit: string;
+  receivebenefitTitle?: string;
+  programreceivebenefit?: string;
   table6: { role: string; salary: string; }[];
-  receivebenefitTitlePostTableDescription: string;
+  receivebenefitTitlePostTableDescription?: string;
 
   syllabusTitle: string;
   syllabusDescription: string;
@@ -562,5 +563,27 @@ export interface ProgrammeAssetConfig {
       totalLoanAmount: string | number;
     }[];
     scholarshipBannerIcon?: string;
+    pricingCard?: {
+      title: string;
+      highlightText: string;
+      highlightSuffix?: string;
+      startingAtLabel: string;
+      startingAtValue: string;
+      startingAtSuffix?: string;
+      noCostEmiText: string;
+      viewPlansLabel: string;
+      admissionFeeLabel: string;
+      admissionFeeValue: string;
+      admissionGstText: string;
+      tuitionFeeLabel: string;
+      tuitionFeeValue: string;
+      tuitionGstText: string;
+      totalLabel: string;
+      totalValue: string;
+      highlightFeatures: string[];
+      footerNote: string;
+      ctaPrimary?: string;
+      ctaSecondary?: string;
+    };
   };
 }

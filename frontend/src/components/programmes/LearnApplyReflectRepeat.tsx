@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { LearnApplyData } from "@/data/programmes";
 import HighlightText from "../shared/HighlightObserver";
+import { boldText } from "@/lib/boldText";
 
 interface LearnApplyReflectRepeatProps {
   data: LearnApplyData;
@@ -104,7 +105,7 @@ const LearnApplyReflectRepeat: React.FC<LearnApplyReflectRepeatProps> = ({
             {data.subtitle && (
               <p className="text-black text-base sm:text-lg md:text-xl leading-relaxed text-center px-4"
                 dangerouslySetInnerHTML={{
-                  __html: data.subtitle
+                  __html: boldText(data.subtitle)
                 }}
               />
             )}
@@ -120,7 +121,7 @@ const LearnApplyReflectRepeat: React.FC<LearnApplyReflectRepeatProps> = ({
               Course Subject Categories
             </h3>
             <div
-              className="flex overflow-x-auto scrollbar-hide gap-0 px-5 sm:mx-2 justify-start sm:justify-center"
+              className="flex overflow-x-auto scrollbar-hide gap-0 justify-start sm:justify-center"
               role="tablist"
               aria-label="Course categories"
             >
@@ -128,9 +129,9 @@ const LearnApplyReflectRepeat: React.FC<LearnApplyReflectRepeatProps> = ({
                 <button
                   key={category.id}
                   onClick={() => handleCategoryChange(category.id)}
-                  className={`relative px-3 sm:px-4 py-3 sm:py-4 text-left focus:outline-none ${activeCategory === category.id
+                  className={`relative max-w-[200px] px-4 sm:px-6 md:px-6 py-3 sm:py-4 text-left focus:outline-none ${activeCategory === category.id
                     ? "text-black"
-                    : "text-black hover:bg-gray-100"
+                    : "text-black hover:bg-[#F6F4F2]"
                     }`}
                   type="button"
                   role="tab"
@@ -233,17 +234,13 @@ const LearnApplyReflectRepeat: React.FC<LearnApplyReflectRepeatProps> = ({
                 {currentCourseSet.map((courseSet, index) => (
                   <article
                     key={`${activeCategory}-${index}`}
-                    className="bg-white text-black p-4 sm:p-5 space-y-2 sm:space-y-3 flex-shrink-0 w-[280px] sm:w-80 md:w-96 h-[280px] sm:h-[300px] md:h-[320px] flex flex-col overflow-hidden border-r border-b border-t  border-gray-200"
+                    className="bg-white text-black p-4 sm:p-5 space-y-2 sm:space-y-3 flex-shrink-0 w-[280px] sm:w-80 md:w-96 h-[280px] sm:h-[320px] md:h-[350px] flex flex-col overflow-hidden border-r border-b border-t  border-gray-200"
                     role="listitem"
                     aria-labelledby={`course-set-${activeCategory}-${index}-heading`}
                   >
                     {/* Course Set Header */}
                     <div className="border-b border-gray-200 pb-2 sm:pb-3">
                       <div className="flex items-center gap-2 mb-1">
-                        <div
-                          className="w-2 h-2 bg-[#B30437] rounded-full"
-                          aria-hidden="true"
-                        ></div>
                         <span className="text-[10px] sm:text-xs font-bold text-black tracking-wider">
                           {courseSet.term}
                         </span>

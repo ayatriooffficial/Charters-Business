@@ -132,7 +132,7 @@ function ChartersUnionHero() {
             <button
               aria-label={heroData.cta.buttonAriaLabel}
               onClick={() => triggerDownload("https://res.cloudinary.com/ducgcl4dg/image/upload/v1784611644/charters-placement-report-2026_gyuu4p.avif", "charters-placement-report-2025.avif")}
-              className="bg-[#B30437] hover:bg-[#B30437] text-white cursor-pointer py-2 px-10 text-sm font-medium transition-all duration-300 hover:scale-105"
+              className="bg-[#B30437] hover:bg-[#B30437] text-white cursor-pointer py-1.5 px-10 text-sm font-medium transition-all duration-300 hover:scale-105"
             >
               {heroData.cta.buttonText}
             </button>
@@ -140,7 +140,7 @@ function ChartersUnionHero() {
             {/* TRACK CAREER BUTTON */}
             <Link href="/career-path">
               <button
-                className="bg-white hover:bg-[#F6F4F2] cursor-pointer text-black py-2 px-8 border border-black text-sm font-medium transition-all duration-300 hover:scale-105"
+                className="bg-white hover:bg-[#F6F4F2] cursor-pointer text-black py-1.5 px-8 border border-black text-sm font-medium transition-all duration-300 hover:scale-105"
               >
                 Track Your Career Path
               </button>

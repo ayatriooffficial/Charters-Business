@@ -1018,7 +1018,7 @@ export const tbm: Programme = {
       prefix: "Learn. Apply. Reflect.",
       highlight: "Repeat.",
     },
-    subtitle: `Hands-on courses and workshops designed to build real businesses—<br class="hidden sm:block" />because real learning comes from real applications.`,
+    subtitle: `Hands-on courses and workshops designed to build real businesses— because real learning <br class="hidden sm:block" /> comes from apply on real companys'.`,
     categories: [
       { id: "tech", label: "TECH", title: "Technology Leadership" },
       { id: "strategic", label: "STRAT", title: "Strategic Leadership" },
@@ -1308,6 +1308,33 @@ export const tbm: Programme = {
       cardFeatures: {
         freeTrial: { title: "A Free Trial Session", subtitle: "No Fee Required" },
         scholarships: { title: "Assured Scholarships", subtitle: "After Free Trial" }
+      },
+      pricingCard: {
+        title: "TBM™ (Technology & Business Management)",
+        highlightText: "₹3,750",
+        highlightSuffix: "/month",
+        startingAtLabel: "Starts at",
+        startingAtValue: "INR 22,200",
+        startingAtSuffix: "/month",
+        noCostEmiText: "No cost EMI options available.",
+        viewPlansLabel: "View Plans",
+        admissionFeeLabel: "Admission Fee (Non-Refundable)",
+        admissionFeeValue: "Rs. 30,000/-",
+        admissionGstText: "(Add GST) Rs. 5,400",
+        tuitionFeeLabel: "Tuition Fee",
+        tuitionFeeValue: "Rs. 4,90,000/-",
+        tuitionGstText: "(Add GST) Rs. 88,200",
+        totalLabel: "Total Programme Fee:",
+        totalValue: "INR 5,20,000 + GST",
+        highlightFeatures: [
+          "Live Instruction From IIM Alumni & Ex-Product Leaders",
+          "Vibrant Community Of Tech Operators & Founders",
+          "Hands-On Curriculum With Real Startup Builds",
+          "Official Certification In Technology & Business Management"
+        ],
+        footerNote: "The Course Fee is payable through Net Banking and Credit/Debit Cards.",
+        ctaPrimary: "Book a Free Demo",
+        ctaSecondary: "VIEW EMI"
       }
     }
   },
