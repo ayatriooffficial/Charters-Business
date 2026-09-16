@@ -18,8 +18,6 @@ function getCookieOptions(req, httpOnly = false) {
   const isProduction = process.env.NODE_ENV === "production";
   const cookieDomain = process.env.COOKIE_DOMAIN;
 
-  // In production or when accessed via public URL, SameSite=None and Secure=true are required.
-  // We use SameSite=None if we're not on localhost to ensure cross-domain compatibility.
   const useSecure = !isLocalhost || isProduction;
 
   return {
@@ -33,9 +31,6 @@ function getCookieOptions(req, httpOnly = false) {
 }
 
 function setAuthCookie(req, res, token) {
-  // SECURITY: httpOnly=true prevents JavaScript from reading the auth token,
-  // protecting against XSS-based token theft. The frontend should use
-  // credentials:'include' on fetch() and let the browser manage the cookie.
   res.cookie(AUTH_COOKIE_NAME, token, getCookieOptions(req, true));
 }
 
@@ -49,13 +44,12 @@ const TRUSTED_DEVICE_COOKIE_NAME = "trustedDevice";
 const TRUSTED_DEVICE_MAX_AGE = 180 * 24 * 60 * 60 * 1000; // 180 days
 
 function setTrustedDeviceCookie(req, res, rawToken) {
-  const options = getCookieOptions(req, true); // httpOnly for security
+  const options = getCookieOptions(req, true);
   options.maxAge = TRUSTED_DEVICE_MAX_AGE;
   res.cookie(TRUSTED_DEVICE_COOKIE_NAME, rawToken, options);
 }
 
 async function setupTrustedDevice(req, res, user) {
-  // Fix 1: Safe initialization — old users may not have this field yet
   if (!Array.isArray(user.trustedDevices)) {
     user.trustedDevices = [];
   }
@@ -68,7 +62,6 @@ async function setupTrustedDevice(req, res, user) {
       for (const device of user.trustedDevices) {
         const isMatch = await bcrypt.compare(plainToken, device.tokenHash);
         if (isMatch) {
-          // Existing device — update lastUsed and refresh cookie max-age
           device.lastUsed = new Date();
           await user.save();
           setTrustedDeviceCookie(req, res, trustedCookie);
@@ -81,8 +74,6 @@ async function setupTrustedDevice(req, res, user) {
   const plainToken = crypto.randomBytes(32).toString("hex");
   const tokenHash = await bcrypt.hash(plainToken, 10);
 
-  // Fix 2 & 3: Evict oldest device without mutating array via sort
-  // Use safe Date fallback for missing/corrupted createdAt values
   const MAX_TRUSTED_DEVICES = 3;
   if (user.trustedDevices.length >= MAX_TRUSTED_DEVICES) {
     let oldestIndex = 0;
@@ -119,7 +110,6 @@ async function markLastLogin(user) {
   const loginTime = new Date();
   user.lastLogin = loginTime;
 
-  // Avoid full-document validation on legacy users while still recording login.
   await User.updateOne({ _id: user._id }, { $set: { lastLogin: loginTime } });
 }
 
@@ -139,12 +129,10 @@ export const login = asyncHandler(async (req, res) => {
   const { email, phoneNumber, password } = req.body;
   const identifier = email || phoneNumber;
 
-  // Validation
   if (!identifier || !password) {
     throw new ApiError(400, "Please provide email/phone and password");
   }
 
-  // Find user with password field
   const user = await User.findOne({
     $or: [{ email: identifier }, { phoneNumber: identifier }]
   })
@@ -155,16 +143,11 @@ export const login = asyncHandler(async (req, res) => {
     throw new ApiError(401, "Invalid credentials");
   }
 
-  // Setting id for code generation
-  //req.session.userId = user._id;
-
-  // Check password
   const isPasswordMatch = await user.comparePassword(password);
   if (!isPasswordMatch) {
     throw new ApiError(401, "Invalid credentials");
   }
 
-  // Check if account is active
   if (!isUserActive(user)) {
     throw new ApiError(
       401,
@@ -172,22 +155,18 @@ export const login = asyncHandler(async (req, res) => {
     );
   }
 
-  // Update last login without triggering unrelated schema validation.
   await markLastLogin(user);
 
-  // Generate JWT token & setup trusted device
   const token = user.generateToken();
   setAuthCookie(req, res, token);
   await setupTrustedDevice(req, res, user);
 
-  // Get all applications for this user
   const applications = await Application.find({ userId: user._id })
     .select(
       "applicationNumber status program counselingDate counselingTime createdAt",
     )
     .sort({ createdAt: -1 });
 
-  // Get last job application to get resume info
   const lastJobApplication = await JobApplication.findOne({ user: user._id })
     .sort("-createdAt")
     .select("resume createdAt")
@@ -240,7 +219,6 @@ export const changePasswordFirstLogin = asyncHandler(async (req, res) => {
     throw new ApiError(404, "User not found");
   }
 
-  // Update password and mark first login complete
   user.password = newPassword;
   user.isFirstLogin = false;
   await user.save();
@@ -270,14 +248,12 @@ export const getMe = asyncHandler(async (req, res) => {
     throw new ApiError(404, "User not found");
   }
 
-  // Get all applications for this user
   const applications = await Application.find({ userId: user._id })
     .select(
       "applicationNumber status program counselingDate counselingTime createdAt",
     )
     .sort({ createdAt: -1 });
 
-  // Get last job application resume info
   const lastJobApplication = await JobApplication.findOne({ user: user._id })
     .sort("-createdAt")
     .select("resume createdAt")
@@ -310,7 +286,6 @@ export const updateProfile = asyncHandler(async (req, res) => {
     runValidators: true,
   }).populate("applicationId");
 
-  // Get last job application resume info
   const lastJobApplication = await JobApplication.findOne({ user: user._id })
     .sort("-createdAt")
     .select("resume createdAt")
@@ -371,15 +346,12 @@ export const firebaseLogin = asyncHandler(async (req, res) => {
   }
 
   try {
-    // Verify Firebase ID token - Commented out for bypass
-    // const decodedToken = await admin.auth().verifyIdToken(idToken);
-    // const { phone_number } = decodedToken;
     let phone_number = phoneNumber;
     if (!phone_number && idToken) {
       if (idToken.startsWith("bypass-token-")) {
         phone_number = idToken.replace("bypass-token-", "");
       } else {
-        phone_number = idToken; // Direct phone check fallback
+        phone_number = idToken;
       }
     }
 
@@ -387,13 +359,11 @@ export const firebaseLogin = asyncHandler(async (req, res) => {
       throw new ApiError(400, "Phone number not found in token/request");
     }
 
-    // Find user by phone number
     const user = await User.findOne({ phoneNumber: phone_number })
       .select("+isFirstLogin")
       .populate("applicationId");
 
     if (!user) {
-      // User not found - Client should redirect to signup
       return res
         .status(404)
         .json(
@@ -408,22 +378,18 @@ export const firebaseLogin = asyncHandler(async (req, res) => {
       );
     }
 
-    // Update last login without triggering unrelated schema validation.
     await markLastLogin(user);
 
-    // Generate JWT token & trusted device token
     const token = user.generateToken();
     setAuthCookie(req, res, token);
     await setupTrustedDevice(req, res, user);
 
-    // Get all applications for this user
     const applications = await Application.find({ userId: user._id })
       .select(
         "applicationNumber status program counselingDate counselingTime createdAt",
       )
       .sort({ createdAt: -1 });
 
-    // Get last job application to get resume info
     const lastJobApplication = await JobApplication.findOne({ user: user._id })
       .sort("-createdAt")
       .select("resume createdAt")
@@ -472,15 +438,12 @@ export const firebaseSignup = asyncHandler(async (req, res) => {
   }
 
   try {
-    // Verify Firebase ID token - Commented out for bypass
-    // const decodedToken = await admin.auth().verifyIdToken(idToken);
-    // const { phone_number, uid } = decodedToken;
     let phone_number = phoneNumber;
     if (!phone_number && idToken) {
       if (idToken.startsWith("bypass-token-")) {
         phone_number = idToken.replace("bypass-token-", "");
       } else {
-        phone_number = idToken; // Direct phone check fallback
+        phone_number = idToken;
       }
     }
 
@@ -488,7 +451,6 @@ export const firebaseSignup = asyncHandler(async (req, res) => {
       throw new ApiError(400, "Phone number not found in token/request");
     }
 
-    // Check if user already exists
     const existingUser = await User.findOne({
       $or: [{ phoneNumber: phone_number }, { email }],
     });
@@ -497,7 +459,6 @@ export const firebaseSignup = asyncHandler(async (req, res) => {
       throw new ApiError(400, "User already exists with this phone or email");
     }
 
-    // Create new user
     const user = await User.create({
       name,
       email,
@@ -507,6 +468,25 @@ export const firebaseSignup = asyncHandler(async (req, res) => {
       lastLogin: new Date(),
       isFirstLogin: false,
     });
+
+    const eventId = crypto.randomUUID();
+
+    console.log("[DEBUG-META] Reached CAPI point. eventId:", eventId, "email:", email, "phone:", phone_number, "PIXEL_ID:", !!process.env.META_PIXEL_ID, "TOKEN:", !!process.env.META_ACCESS_TOKEN);
+    // === META CONVERSIONS API — CompleteRegistration event ===
+    // Fire-and-forget: a CAPI failure must never block or fail the signup response.
+    sendMetaConversionEvent({
+      eventName: "CompleteRegistration",
+      eventId: eventId,
+      eventSourceUrl: `${process.env.NEXT_PUBLIC_SITE_URL || "https://chartersunion.com"}/signup`,
+      req,
+      userData: {
+        email: email,
+        phone: phone_number,
+      },
+      customData: {
+        content_name: program,
+      },
+    }).catch((err) => console.error("[MetaCAPI] Signup event failed:", err));
 
     // Generate JWT token & trusted device token
     const token = user.generateToken();
