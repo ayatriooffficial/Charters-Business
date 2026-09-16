@@ -9,6 +9,7 @@ import ApiResponse from "../utils/ApiResponse.js";
 import ApiError from "../utils/ApiError.js";
 import admin from "../config/firebase.config.js";
 import { isUserActive } from "../utils/userStatus.js";
+import { sendMetaConversionEvent } from "../utils/metaConversionApi.js";
 
 const AUTH_COOKIE_NAME = "authToken";
 const AUTH_COOKIE_MAX_AGE = 30 * 24 * 60 * 60 * 1000;
@@ -428,7 +429,7 @@ export const firebaseLogin = asyncHandler(async (req, res) => {
 
 // Firebase OTP Signup
 export const firebaseSignup = asyncHandler(async (req, res) => {
-  const { idToken, name, email, program, password, phoneNumber } = req.body;
+  const { idToken, name, email, program, password, phoneNumber, eventId } = req.body;
 
   if ((!idToken && !phoneNumber) || !name || !email || !program || !password) {
     throw new ApiError(
@@ -468,8 +469,6 @@ export const firebaseSignup = asyncHandler(async (req, res) => {
       lastLogin: new Date(),
       isFirstLogin: false,
     });
-
-    const eventId = crypto.randomUUID();
 
     console.log("[DEBUG-META] Reached CAPI point. eventId:", eventId, "email:", email, "phone:", phone_number, "PIXEL_ID:", !!process.env.META_PIXEL_ID, "TOKEN:", !!process.env.META_ACCESS_TOKEN);
     // === META CONVERSIONS API — CompleteRegistration event ===
