@@ -32,7 +32,7 @@ export default function TrustedCompanies() {
                     <div className="flex flex-wrap gap-3 sm:gap-5 md:gap-6 lg:gap-8 justify-center items-center">
                         <div className="flex items-center justify-center w-full h-full">
                             <img
-                                src="/images/program-placements/CBA_Hired_Company.avif"
+                                src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1789934971/CBA_Hired_Company_p22ehx.avif"
                                 alt=""
                                 className="w-full sm:h-[50px] md:h-[70px] lg:h-[120px] object-contain"
                                 loading="lazy"

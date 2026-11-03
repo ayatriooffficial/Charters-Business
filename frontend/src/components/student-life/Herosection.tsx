@@ -154,11 +154,11 @@ export default function Hersection() {
 
             <section className="bg-white pt-10 sm:pt-12 pb-2 sm:pb-3 text-center">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
-                    A{" "}
+                    Charters'{" "}
                     <HighlightText className="mx-2 font-bold">
-                        Kaleidoscope
+                        Class Room
                     </HighlightText>{" "}
-                    of Diversity
+                    Experience
                 </h2>
             </section>
 
