@@ -1,137 +1,20 @@
-// components/KaleidoscopeSection.tsx
 "use client";
 
-function PhotoTile({ image, number, numberSub, label, className = "" }: {
-    image: string;
-    number: string;
-    numberSub?: string;
-    label: string;
-    className?: string;
-}) {
-    return (
-        <div className={`relative overflow-hidden group ${className}`}>
-            <img
-                src={image}
-                alt={label}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/5 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
-                <p className="text-4xl sm:text-5xl font-bold text-white leading-none">
-                    {number}
-                    {numberSub && (
-                        <span className="font-sans text-2xl font-normal text-white/50 ml-1">
-                            {numberSub}
-                        </span>
-                    )}
-                </p>
-                <p className="text-white/80 text-xs font-medium tracking-widest uppercase mt-1.5">
-                    {label}
-                </p>
-            </div>
-        </div>
-    );
-}
-
-function DarkTile({ className = "" }: { className?: string }) {
-    return (
-        <div className={`bg-[#1c1c1c] flex flex-col justify-center px-6 py-7 ${className}`}>
-            <div className="flex gap-6 mb-5">
-                <div>
-                    <p className="text-4xl font-bold text-white leading-none">50+</p>
-                    <p className="text-white/40 text-[10px] font-semibold tracking-widest uppercase mt-1.5">Countries</p>
-                </div>
-                <div>
-                    <p className="text-4xl font-bold text-white leading-none">45+</p>
-                    <p className="text-white/40 text-[10px] font-semibold tracking-widest uppercase mt-1.5">Languages</p>
-                </div>
-            </div>
-        </div>
-    );
-}
-
-function GenderTile({ className = "" }: { className?: string }) {
-    return (
-        <div className={`bg-white flex flex-col justify-center px-6 py-7 ${className}`}>
-            <p className="text-[10px] font-semibold tracking-widest uppercase text-[#80868b] mb-5">
-                Gender Split
-            </p>
-            <div className="space-y-4">
-                {[
-                    { label: "Male", pct: 60, fillClass: "bg-gray-900" },
-                    { label: "Female", pct: 40, fillClass: "bg-gray-400" },
-                ].map(({ label, pct, fillClass }) => (
-                    <div key={label}>
-                        <div className="flex justify-between items-baseline mb-1.5">
-                            <span className="text-xs font-medium text-[#5f6368]">{label}</span>
-                            <span className="text-2xl font-bold text-gray-900">{pct}%</span>
-                        </div>
-                        <div className="w-full h-1 bg-gray-100 rounded-full overflow-hidden">
-                            <div
-                                className={`h-full rounded-full ${fillClass}`}
-                                style={{ width: `${pct}%` }}
-                            />
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
-}
+import Image from "next/image";
 
 export default function Diversity() {
     return (
         <section className="bg-white">
-            {/* Mobile: horizontal scroll (snap). md+: original 4-col / 2-row grid */}
-            <div className="overflow-x-auto snap-x snap-mandatory scrollbar-hide md:overflow-visible">
-                {/* gap-px gives the hairline grid-line effect using bg-[#dedad4] showing through */}
-                <div
-                    className="flex md:grid gap-px bg-[#dedad4] border-t-1 border-gray-200"
-                    style={{ gridTemplateColumns: "repeat(4, 1fr)", gridTemplateRows: "260px 260px" }}
-                >
-                    {/* Row 1 */}
-                    <PhotoTile
-                        image="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80"
-                        number="300+"
-                        label="Students"
-                        className="w-[45%] h-65 shrink-0 snap-start md:w-auto md:h-auto md:shrink"
-                    />
-
-                    <DarkTile className="w-[45%] h-65 shrink-0 snap-start md:w-auto md:h-auto md:shrink" />
-
-                    <PhotoTile
-                        image="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&q=80"
-                        number="1490"
-                        numberSub="/ 1600"
-                        label="Average SAT Score"
-                        className="col-span-2 w-[90%] h-65 shrink-0 snap-start md:w-auto md:h-auto md:shrink"
-                    />
-
-                    {/* Row 2 */}
-                    <PhotoTile
-                        image="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&q=80"
-                        number="10"
-                        label="National-level Athletes"
-                        className="w-[45%] h-65 shrink-0 snap-start md:w-auto md:h-auto md:shrink"
-                    />
-
-                    <PhotoTile
-                        image="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=600&q=80"
-                        number="18"
-                        numberSub="yrs"
-                        label="Average Age"
-                        className="w-[45%] h-65 shrink-0 snap-start md:w-auto md:h-auto md:shrink"
-                    />
-
-                    <GenderTile className="w-[45%] h-65 shrink-0 snap-start md:w-auto md:h-auto md:shrink" />
-
-                    <PhotoTile
-                        image="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80"
-                        number="4"
-                        label="Student TEDx Speakers"
-                        className="w-[45%] h-65 shrink-0 snap-start md:w-auto md:h-auto md:shrink"
-                    />
-                </div>
+            <div className="w-full border-t border-gray-200 overflow-hidden">
+                <Image
+                    src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1793733386/chartersunion-diversity_p4umqh.avif"
+                    alt="Charters Union Classroom and Student Diversity"
+                    width={2482}
+                    height={1054}
+                    className="w-full h-auto object-cover block"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                    priority
+                />
             </div>
         </section>
     );
