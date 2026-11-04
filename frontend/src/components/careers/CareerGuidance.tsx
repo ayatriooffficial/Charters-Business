@@ -3,9 +3,9 @@ import { useState } from "react";
 import Image from "next/image";
 import HighlightText from "../shared/HighlightObserver";
 
-const STAR_ICON = "";
+
 const SMALL_STAR_ICON =
-  "";
+  "/dot-icon.svg";
 
 const ROADMAP_DATA = [
   {
@@ -121,13 +121,7 @@ export default function CareerGuidance() {
         {/* Header */}
         <div className="mb-6 sm:mb-8 px-4 sm:px-5">
           <div className="flex items-center justify-center gap-2 mb-2 sm:mb-3">
-            <Image
-              src={STAR_ICON}
-              alt="star"
-              width={14}
-              height={14}
-              className="sm:w-[18px] sm:h-[18px]"
-            />
+
             <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.12em] text-[#80868b]">
               ANNUAL ROADMAP
             </span>
@@ -148,7 +142,7 @@ export default function CareerGuidance() {
         </div>
 
         {/* Tabs*/}
-        <div className="mb-6 sm:mb-8 overflow-x-auto scrollbar-hide px-4 sm:px-5">
+        <div className=" overflow-x-auto scrollbar-hide px-4 sm:px-5">
           <div className="flex justify-center min-w-max sm:min-w-0 sm:flex-wrap">
             {ROADMAP_DATA.map((term) => (
               <button

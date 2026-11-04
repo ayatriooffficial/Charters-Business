@@ -55,7 +55,7 @@ const Footer = () => {
                 height={80}
                 quality={50}
                 sizes="(max-width: 640px) 80px, 150px"
-                className="w-auto h-auto"
+                className="w-[150px] h-auto"
               />
             </div>
             <p className="text-sm text-[#222222] leading-relaxed max-w-xs">
