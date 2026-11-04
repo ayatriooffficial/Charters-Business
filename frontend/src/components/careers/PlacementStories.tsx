@@ -5,7 +5,7 @@ import Link from "next/link";
 import HighlightText from "../shared/HighlightObserver";
 
 import { homeStudents } from "@/data/students";
-const LINKEDIN_ICON = "https://files.mastersunion.link/resources/svg/linkedin.svg";
+const LINKEDIN_ICON = "";
 
 export default function PlacementStories() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -131,12 +131,6 @@ export default function PlacementStories() {
                         rel="noopener noreferrer"
                         className="flex-shrink-0 hover:opacity-75 transition mt-0.5"
                       >
-                        <Image
-                          src={LINKEDIN_ICON}
-                          alt="LinkedIn"
-                          width={18}
-                          height={18}
-                        />
                       </Link>
                     )}
                   </div>

@@ -162,10 +162,10 @@ export default function Hersection() {
                 </h2>
             </section>
 
-            <div className="w-full border-gray-200 md:mx-auto flex flex-col items-center justify-center">
+            <div className="w-full md:mx-auto flex flex-col items-center justify-center">
 
                 <div
-                    className="md:border-x pt-2 pb-8 border-gray-200 md:w-[90%] max-w-[85rem]"
+                    className=" pt-2 pb-8 md:w-[90%] max-w-[85rem]"
                     aria-label="Scholarship information"
                 >
                     <div className="px-4 sm:px-6 lg:px-8">

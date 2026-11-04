@@ -76,32 +76,32 @@ const RECRUITER_TABS = [
   {
     id: "consulting",
     label: "Consulting",
-    img: "https://files.mastersunion.link/media/img/ug-recruiter-1.webp",
+    img: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1793815913/consumertech_iycsll.avif",
   },
   {
     id: "finance",
     label: "Finance And Fintech",
-    img: "https://files.mastersunion.link/media/img/ug-recruiter-2.webp",
+    img: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1793815913/consumertech_iycsll.avif",
   },
   {
     id: "large-tech",
     label: "Large Tech",
-    img: "https://files.mastersunion.link/media/img/ug-recruiter-3.webp",
+    img: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1793815913/consumertech_iycsll.avif",
   },
   {
     id: "vc",
     label: "Venture Capital",
-    img: "https://files.mastersunion.link/media/img/ug-recruiter-4.webp",
+    img: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1793815913/consumertech_iycsll.avif",
   },
   {
     id: "consumer",
     label: "Consumer Tech",
-    img: "https://files.mastersunion.link/media/img/ug-recruiter-5.webp",
+    img: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1793815913/consumertech_iycsll.avif",
   },
   {
     id: "emerging",
     label: "Emerging",
-    img: "https://files.mastersunion.link/media/img/ug-recruiter-6.webp",
+    img: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1793815913/consumertech_iycsll.avif",
   },
 ];
 
@@ -145,13 +145,13 @@ const PGP_YLC_TABLE = [
 const SALARY_COMPONENTS = {
   title: "Salary Components",
   desktop:
-    "https://images.mastersunion.link/uploads/19052025/v1/Group1171279927.webp",
-  mobile: "https://files.mastersunion.link/resources/img/ctccomponentmob.webp",
+    "https://res.cloudinary.com/ducgcl4dg/image/upload/v1793815913/consumertech_iycsll.avif",
+  mobile: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1793815913/consumertech_iycsll.avif",
 };
 
 const SALARY_DISTRIBUTION = {
   title: "Salary Distribution",
-  img: "https://files.mastersunion.link/media/img/pgp-salary-distribution.png",
+  img: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1793815913/consumertech_iycsll.avif",
 };
 
 // COMPONENT

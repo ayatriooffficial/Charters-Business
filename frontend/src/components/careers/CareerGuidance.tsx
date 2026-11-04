@@ -3,9 +3,9 @@ import { useState } from "react";
 import Image from "next/image";
 import HighlightText from "../shared/HighlightObserver";
 
-const STAR_ICON = "https://files.mastersunion.link/resources/svg/star.svg";
+const STAR_ICON = "";
 const SMALL_STAR_ICON =
-  "https://files.mastersunion.link/resources/svg/smallGradientStar.svg";
+  "";
 
 const ROADMAP_DATA = [
   {
@@ -22,7 +22,7 @@ const ROADMAP_DATA = [
       "Case and Business Plan Competition Workshop",
       "Placement Policies",
     ],
-    image: "https://files.mastersunion.link/media/img/career-roadmap1.webp",
+    image: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1793733352/chartersunion-industry-classroom_xh0t6x.avif",
   },
   {
     id: 2,
@@ -39,7 +39,7 @@ const ROADMAP_DATA = [
       "Corporate Competitions",
       "Self Assessment Exercises (Tool Based like MBT, Big 5)",
     ],
-    image: "https://files.mastersunion.link/media/img/career-roadmap2.webp",
+    image: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1793733352/chartersunion-industry-classroom_xh0t6x.avif",
   },
   {
     id: 3,
@@ -53,7 +53,7 @@ const ROADMAP_DATA = [
       "Team Work & Conflict Management Workshop",
       "Industry/Functional/Role Based Workshops",
     ],
-    image: "https://files.mastersunion.link/media/img/career-roadmap3.webp",
+    image: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1793733352/chartersunion-industry-classroom_xh0t6x.avif",
   },
   {
     id: 4,
@@ -67,7 +67,7 @@ const ROADMAP_DATA = [
       "Mock Interviews",
       "Last Mile Preps",
     ],
-    image: "https://files.mastersunion.link/media/img/career-roadmap4.webp",
+    image: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1793733352/chartersunion-industry-classroom_xh0t6x.avif",
   },
   {
     id: 5,
@@ -78,7 +78,7 @@ const ROADMAP_DATA = [
       "Last Mile Preps",
       "One-on-one With the Director of Career Preparation",
     ],
-    image: "https://files.mastersunion.link/media/img/career-roadmap5.webp",
+    image: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1793733352/chartersunion-industry-classroom_xh0t6x.avif",
   },
   {
     id: 6,
@@ -89,19 +89,19 @@ const ROADMAP_DATA = [
       "Mock Interviews",
       "Last Mile Preps",
     ],
-    image: "https://files.mastersunion.link/media/img/career-roadmap6.webp",
+    image: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1793733352/chartersunion-industry-classroom_xh0t6x.avif",
   },
   {
     id: 7,
     term: "Term 7",
     items: ["Mock Interviews", "Placement Drives", "Last Mile Preps"],
-    image: "https://files.mastersunion.link/media/img/career-roadmap7.webp",
+    image: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1793733352/chartersunion-industry-classroom_xh0t6x.avif",
   },
   {
     id: 8,
     term: "Term 8",
     items: ["Placement Drives", "Last Mile Preps"],
-    image: "https://files.mastersunion.link/media/img/career-roadmap8.webp",
+    image: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1793733352/chartersunion-industry-classroom_xh0t6x.avif",
   },
 ];
 

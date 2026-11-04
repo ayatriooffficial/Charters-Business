@@ -8,7 +8,7 @@ const SECTION_HEADING = {
 };
 
 const ICON_BUILDING =
-  "https://files.mastersunion.link/resources/svg/building.svg";
+  "";
 
 const YLC_LAUNCHES = [
   {
@@ -144,15 +144,7 @@ export default function CareerTransitions() {
               >
                 {/* Header — touches divider and outer boundary */}
                 <div className="flex items-center justify-center gap-2 sm:gap-3 py-2 sm:py-3 border-b border-gray-300 px-4 sm:px-5">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
-                    <Image
-                      src={ICON_BUILDING}
-                      alt="building"
-                      width={16}
-                      height={16}
-                      className="sm:w-5 sm:h-5"
-                    />
-                  </div>
+
                   <span className="text-xs sm:text-sm font-semibold text-[#5f6368]">
                     {column.category}
                   </span>
@@ -196,14 +188,14 @@ export default function CareerTransitions() {
         </div>
       </section>
 
-      {/* Career Transitions for PGP TBM */}
+      {/* Career Transitions for CBA/DGM */}
       <section className="w-full py-8 sm:py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-5 text-center">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-gray-900 mb-1 sm:mb-2">
-            Career Transitions For PGP TBM
+            Career Transitions For CBA/DGM
           </h2>
           <p className="text-base sm:text-lg text-[#5f6368] mb-6 sm:mb-8 md:mb-12">
-            (Pre-MBA to Post-MBA)
+            (Pre-CBA/DGM to Post-CBA/DGM)
           </p>
         </div>
 
@@ -216,15 +208,7 @@ export default function CareerTransitions() {
               >
                 {/* Header — touches divider and outer boundary */}
                 <div className="flex items-center justify-center gap-2 sm:gap-3 py-2 sm:py-3 border-b border-gray-300 px-4 sm:px-5">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center flex-shrink-0">
-                    <Image
-                      src={ICON_BUILDING}
-                      alt="building"
-                      width={16}
-                      height={16}
-                      className="sm:w-5 sm:h-5"
-                    />
-                  </div>
+
                   <span className="text-xs sm:text-sm font-semibold text-[#5f6368]">
                     {column.category}
                   </span>
