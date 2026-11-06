@@ -760,7 +760,7 @@ export const tbm: Programme = {
     duration: { type: "6 Months theory + 6 Months in-class intranship" },
     deadline: { type: "Round 1: 30th Oct '25" },
     careerOutcomes: [
-      "Foundations in Industry-led learning base on Hardvard casestudy with US-CMA/CPA, Indian CA and ACCA specialisation carruculam.",
+      "Foundations in Industry-led learning base on Harvard casestudy with US-CMA/CPA, Indian CA and ACCA specialisation carruculam.",
       "In-class live projects intranship under faculty with top Startup & MNC from India, USA, CANADA, SAUDI, QATAR and Singapore.",
       "AI-powered corporate accountant, finance, FP&A, fintech & GCC-ready roles.",
       "Personal devlopment prep with communication, bodylangusge and placement cell.",
@@ -1182,7 +1182,7 @@ export const tbm: Programme = {
   faculty: {
     eyebrow: "INSTRUCTORS & MENTORS at CHARTERs’ UNION",
     title: { prefix: "Learn from", highlight: "Top 0.1% of Practitioners" },
-    subtitle: "At Charters' Union, your classroom is powered by top 1% business leaders, from Hardvard IIMC to Flipkart, from Hardvard MBA to Google. Our Mentors don't just teach the playbook. They help to build it.",
+    subtitle: "At Charters' Union, your classroom is powered by top 1% business leaders, from Harvard IIMC to Flipkart, from Harvard MBA to Google. Our Mentors don't just teach the playbook. They help to build it.",
     categories: [
       { id: "technology", name: "Technology" },
       { id: "consulting", name: "Consulting" },
@@ -1629,7 +1629,7 @@ export const tbm: Programme = {
     title: "What is the TBM™ (Technology & Business Management) from ChartersUnion?",
     descriptionParagraphs: [
       "Today, brands use search engines, social media, paid advertising, email marketing, and content marketing to reach the right audience and drive business growth. Digital Marketing has changed the way businesses operate.",
-      "The Job-Ready AI-Poward Certificate in  DGM™ (Digital Growth & Marketing) at the Chartersunion Learning Support Centre helps learners build Job-ready skills through instructor-led digital marketing classes, Hardvard Level Case Study, Live projects, in-class faculty Guided internship and CareerPathx™ AI-Poward English Communication, Personal Branding, Corporate Bodylangusge and AI-poward Mock-interview, AI-ready Profile Base Jobs Search Engine.",
+      "The Job-Ready AI-Poward Certificate in  DGM™ (Digital Growth & Marketing) at the Chartersunion Learning Support Centre helps learners build Job-ready skills through instructor-led digital marketing classes, Harvard Level Case Study, Live projects, in-class faculty Guided internship and CareerPathx™ AI-Poward English Communication, Personal Branding, Corporate Body Language and AI-poward Mock-interview, AI-ready Profile Base Jobs Search Engine.",
       "3-month theory foundation + 4-month inclass faculty guided internship program teaches modern ai-readay marketing strategies using real brand projects, marketing tools, and live campaign experience.. so that learners can confidently apply their knowledge in professional roles."
     ],
     whyChooseTitle: "Why Choose the Advanced Certificate in TBM™ (Technology & Business Management)?",

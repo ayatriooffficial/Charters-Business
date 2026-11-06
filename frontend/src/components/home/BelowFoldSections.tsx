@@ -97,7 +97,7 @@ export default function BelowFoldSections() {
           <FacultyModel data={{
             eyebrow: "INSTRUCTORS & MENTORS at CHARTERs’ UNION",
             title: { prefix: "Learn from the", highlight: "Top 0.1% of Industry Practitioners" },
-            subtitle: "At Charters' Union, your classroom is powered by top 1% business leaders, from  Hardvard to Flipkart, from IISc to Google. Our Mentors don't just teach the playbook. They help to build it.",
+            subtitle: "At Charters' Union, your classroom is powered by top 1% business leaders, from  Harvard to Flipkart, from IISc to Google. Our Mentors don't just teach the playbook. They help to build it.",
             categories: facultyCategories,
             faculty: facultyMembers
           }} />

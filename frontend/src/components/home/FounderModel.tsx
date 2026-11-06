@@ -166,7 +166,7 @@ function FacultyModel() {
             </h2>
 
             <p className="text-black px-[20px] md:px-[50px] lg:px-[70px] text-sm sm:text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
-              At Charters' Union, your classroom is powered by top 1% business leaders, from Hardvard to Flipkart, from IISc to Google. Our Mentors don't just teach the playbook. They help to build it.
+              At Charters' Union, your classroom is powered by top 1% business leaders, from Harvard to Flipkart, from IISc to Google. Our Mentors don't just teach the playbook. They help to build it.
             </p>
           </div>
 

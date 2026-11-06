@@ -64,7 +64,7 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
   const allProgramMenuItems: { key: ProgramKey; label: string }[] = [
     { key: 'certified-business-accountant', label: 'Accounting' },
     { key: 'digital-growth-&-marketing', label: 'Marketing' },
-    { key: 'technology-&-business-management', label: 'Bsusiness' },
+    { key: 'technology-&-business-management', label: 'Business' },
 
   ];
 

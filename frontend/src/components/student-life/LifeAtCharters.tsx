@@ -107,7 +107,7 @@ export default function LifeAtCharters() {
                         </HighlightText>
                     </h2>
                     <p className="text-base px-[20px] md:px-[50px] lg:px-[70px] sm:text-lg text-[#5f6368]">
-                        Solve real-world problems on foundation and <strong>internshiph</strong> through industies faculty guided mentorship with <strong>CA/US-CMA/CPA/ACCA/CFA</strong> for <strong>CBA™ </strong>(Certified Business Accountant)  and <strong>Growth Engineer, Growth Hacker CMO, CXO</strong> for <strong> DGM™</strong>(Digital Growth & Marketing).
+                        Solve real-world problems on foundation and <strong>Internship</strong> through industies faculty guided mentorship with <strong>CA/US-CMA/CPA/ACCA/CFA</strong> for <strong>CBA™ </strong>(Certified Business Accountant)  and <strong>Growth Engineer, Growth Hacker CMO, CXO</strong> for <strong> DGM™</strong>(Digital Growth & Marketing).
                     </p>
                 </div>
 

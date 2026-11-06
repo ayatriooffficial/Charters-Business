@@ -132,7 +132,7 @@ const dgmCurriculumSection: CurriculumSectionData = {
     {
       id: "singapore",
       term: "Month 03",
-      title: "AI-Poweard Marketing Analytics with Excel & Power BI",
+      title: "AI-Powered Marketing Analytics with Excel & Power BI",
       termImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1786642832/chartersunion-student-build-ai-agent-for-scale_ifrulw.avif",
       badges: [
         { text: "Intermediate", className: "bg-black text-white text-xs px-2 py-1 font-semibold ml-2" },
@@ -384,10 +384,10 @@ export const dgm: Programme = {
     careerOutcomes: [
       "Fundamentals of AI-Reday Digital Marketing, Data-Draven Marketing and Growth Engineer Framework of Goggle Digital/Meta blueprint/Hubspot/Growth School",
       "Foundation of SEO/AEO/GEO - Gen AI and Agentic AI; Marketing Autonomous  with (ChatGPT, Claude & Gemini).",
-      "AI-Poweard Marketing Analytics(GA, Pixel) with Excel & Power BI.",
+      "AI-Powered Marketing Analytics(GA, Pixel) with Excel & Power BI.",
       "Google/Meta Ads - Architecture, Plan, Validate, Auction, Bidding, Scale & Measure ROI.",
       "In-class faculty guided intranship with top Startup & MNC from India, USA, CANADA, SAUDI, QATAR and Singapore.",
-      "Personal devlopment prep with English communication, Personal Branding, Corporate Bodylangusge and Placement cell.",
+      "Personal devlopment prep with English communication, Personal Branding, Corporate Body Language and Placement cell.",
 
     ],
     jobOpenings: "175912 (kolkata)",
@@ -1192,7 +1192,7 @@ export const dgm: Programme = {
   faculty: {
     eyebrow: "INSTRUCTORS & MENTORS at CHARTERs’ UNION",
     title: { prefix: "Learn from", highlight: "Top 0.1% of Practitioners" },
-    subtitle: "At Charters' Union, your classroom is powered by top 1% business leaders, from Hardvard IIMC to Flipkart, from Hardvard MBA to Google. Our Mentors don't just teach the playbook. They help to build it.",
+    subtitle: "At Charters' Union, your classroom is powered by top 1% business leaders, from Harvard IIMC to Flipkart, from Harvard MBA to Google. Our Mentors don't just teach the playbook. They help to build it.",
     categories: [
       { id: "leadership", name: "AI-Fast Digital Marketing" },
       { id: "finance", name: "Digital Growth & Scale" },
@@ -1246,7 +1246,7 @@ export const dgm: Programme = {
     // Renders as ChartCard headers in TrackRecord
     chartTitles: {
       card1: "Paid Internship in 557+ Companies Across 7 Countries",
-      card2: "87% student got full time jobs offer before end intrashiph"
+      card2: "87% student got full time jobs offer before end Internship"
     },
 
     // Renders the EMI value, payment months, and career tracks inside PricingTabs
@@ -1614,7 +1614,7 @@ export const dgm: Programme = {
     title: "What is the DGM™ (Digital Growth & Marketing) from ChartersUnion?",
     descriptionParagraphs: [
       "Today, brands use search engines, social media, paid advertising, email marketing, and content marketing to reach the right audience and drive business growth. Digital Marketing has changed the way businesses operate.",
-      "The Job-Ready AI-Poward Certificate in  DGM™ (Digital Growth & Marketing) at the Chartersunion Learning Support Centre helps learners build Job-ready skills through instructor-led digital marketing classes, Hardvard Level Case Study, Live projects, in-class faculty Guided internship and CareerPathx™ AI-Poward English Communication, Personal Branding, Corporate Bodylangusge and AI-poward Mock-interview, AI-ready Profile Base Jobs Search Engine.",
+      "The Job-Ready AI-Poward Certificate in  DGM™ (Digital Growth & Marketing) at the Chartersunion Learning Support Centre helps learners build Job-ready skills through instructor-led digital marketing classes, Harvard Level Case Study, Live projects, in-class faculty Guided internship and CareerPathx™ AI-Poward English Communication, Personal Branding, Corporate Body Language and AI-poward Mock-interview, AI-ready Profile Base Jobs Search Engine.",
       "3-month theory foundation + 4-month inclass faculty guided internship program teaches modern ai-readay marketing strategies using real brand projects, marketing tools, and live campaign experience.. so that learners can confidently apply their knowledge in professional roles."
     ],
     whyChooseTitle: "Why Choose the Advanced Certificate in DGM™ (Digital Growth & Marketing)?",

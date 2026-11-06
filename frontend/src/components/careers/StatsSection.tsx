@@ -175,7 +175,7 @@ export default function StatsSection() {
               <span className="text-xs font-bold uppercase tracking-[0.12em] text-[#80868b] mb-2 sm:mb-3 block">
                 {SECTION_HEADING.eyebrow}
               </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-gray-900">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900">
                 {SECTION_HEADING.title}
               </h2>
             </div>

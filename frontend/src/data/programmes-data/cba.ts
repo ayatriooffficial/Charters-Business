@@ -13,7 +13,7 @@ const cbaCurriculumSection: CurriculumSectionData = {
   skillsData: {
     previewSkills: [
       "Business Accounting",
-      "Banking & Finance fundamantals",
+      "Banking & Finance fundamentals",
       "GST Compliances & Return filing",
       "Income Tax Filing/Return",
       "Financial Statement Analysis",
@@ -628,7 +628,7 @@ export const cba: Programme = {
     duration: { type: "~3 Months Foundation + 4 Months Paid Internship" },
     deadline: { type: "Round 1: 30th Oct '25" },
     careerOutcomes: [
-      "Foundations in Industry-led learning base on Hardvard casestudy with US-CMA/CPA, Indian CA and ACCA specialisation carruculam.",
+      "Foundations in Industry-led learning base on Harvard casestudy with US-CMA/CPA, Indian CA and ACCA specialisation carruculam.",
       "In-class live projects intranship under faculty with top Startup & MNC from India, USA, CANADA, SAUDI, QATAR and Singapore.",
       "AI-powered corporate accountant, finance, FP&A, fintech & GCC-ready roles.",
       "Personal devlopment prep with communication, bodylangusge and placement cell.",
@@ -646,11 +646,11 @@ export const cba: Programme = {
     badge: "",
     categoryLabel: "",
     title: {
-      main: "India's #1 Job-Ready AI-Poweard Global Business Accounting",
+      main: "India's #1 Job-Ready AI-Powered Global Business Accounting",
 
     },
     description:
-      "AI-Ready curriculum build on USCMA, ACCA, ICAI, and Hardvard Case Study based Corporate Accounting. 1:1 mentorship.  Paid internship in 7 countries.",
+      "AI-Ready curriculum build on USCMA, ACCA, ICAI, and Harvard Case Study based Corporate Accounting. 1:1 mentorship.  Paid internship in 7 countries.",
     stats: [
       { label: "97.7% Avg Placement", value: "93%" },
       { label: "100% Paid Internship", value: "150+" },
@@ -715,8 +715,8 @@ export const cba: Programme = {
   trackRecord: {
     stats: [
       { value: "12.5", unit: "LPA", label: "Highest CTC" },
-      { value: ">2.7", unit: "x", label: "Internshiph offer per student" },
-      { value: "16-42", unit: "LPA", label: "Internshiph highest salary " },
+      { value: ">2.7", unit: "x", label: "Internship offer per student" },
+      { value: "16-42", unit: "LPA", label: "Internship highest salary " },
       { value: ">95", unit: "%", label: "Joined full-time roles before end internship" },
     ],
     experienceData: [
@@ -1683,7 +1683,7 @@ export const cba: Programme = {
     // Renders as ChartCard headers in TrackRecord
     chartTitles: {
       card1: "Paid Internship in 557+ Companies Across 7 Countries",
-      card2: "87% student got full time jobs offer before end intrashiph"
+      card2: "87% student got full time jobs offer before end Internship"
     },
 
     // Renders the EMI value, payment months, and career tracks inside PricingTabs
@@ -2050,7 +2050,7 @@ export const cba: Programme = {
     title: "What is the CBA™ (Certified Business Accountant) from ChartersUnion?",
     descriptionParagraphs: [
       "Today, brands use search engines, social media, paid advertising, email marketing, and content marketing to reach the right audience and drive business growth. Digital Marketing has changed the way businesses operate.",
-      "The Job-Ready AI-Poward Certificate in  DGM™ (Digital Growth & Marketing) at the Chartersunion Learning Support Centre helps learners build Job-ready skills through instructor-led digital marketing classes, Hardvard Level Case Study, Live projects, in-class faculty Guided internship and CareerPathx™ AI-Poward English Communication, Personal Branding, Corporate Bodylangusge and AI-poward Mock-interview, AI-ready Profile Base Jobs Search Engine.",
+      "The Job-Ready AI-Poward Certificate in  DGM™ (Digital Growth & Marketing) at the Chartersunion Learning Support Centre helps learners build Job-ready skills through instructor-led digital marketing classes, Harvard Level Case Study, Live projects, in-class faculty Guided internship and CareerPathx™ AI-Poward English Communication, Personal Branding, Corporate Body Language and AI-poward Mock-interview, AI-ready Profile Base Jobs Search Engine.",
       "3-month theory foundation + 4-month inclass faculty guided internship program teaches modern ai-readay marketing strategies using real brand projects, marketing tools, and live campaign experience.. so that learners can confidently apply their knowledge in professional roles."
     ],
     whyChooseTitle: "Why Choose the Advanced Certificate in CBA™ (Certified Business Accountant)?",
