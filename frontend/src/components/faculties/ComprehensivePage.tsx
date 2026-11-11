@@ -458,7 +458,7 @@ export default function ComprehensivePage() {
                                   'Strategize your way to senior management and leadership-level roles',
                                 ].map((text, idx) => (
                                   <div key={idx} className="flex items-start gap-3">
-                                    <img src="/dot-icon.svg" alt="" width={18} height={18} className="mt-0.5 opacity-[0.5] flex-shrink-0" />
+                                    <img src="/dot-icon.svg" alt="icon" width={18} height={18} className="mt-0.5 opacity-[0.5] flex-shrink-0" />
                                     <p className="text-sm leading-relaxed">{text}</p>
                                   </div>
                                 ))}
@@ -492,7 +492,7 @@ export default function ComprehensivePage() {
                                   'Gain the insights and leadership skills needed to stand out in your chosen domain',
                                 ].map((text, idx) => (
                                   <div key={idx} className="flex items-start gap-3">
-                                    <img src="/dot-icon.svg" alt="" width={18} height={18} className="mt-0.5  opacity-[0.5] flex-shrink-0" />
+                                    <img src="/dot-icon.svg" alt="icon" width={18} height={18} className="mt-0.5  opacity-[0.5] flex-shrink-0" />
                                     <p className="text-sm leading-relaxed">{text}</p>
                                   </div>
                                 ))}
@@ -526,7 +526,7 @@ export default function ComprehensivePage() {
                                   'Acquire your first 1000 customers, accelerate growth, and establish your market presence',
                                 ].map((text, idx) => (
                                   <div key={idx} className="flex items-start gap-3">
-                                    <img src="/dot-icon.svg" alt="" width={18} height={18} className="mt-0.5 opacity-[0.5] flex-shrink-0" />
+                                    <img src="/dot-icon.svg" alt="icon" width={18} height={18} className="mt-0.5 opacity-[0.5] flex-shrink-0" />
                                     <p className="text-sm leading-relaxed">{text}</p>
                                   </div>
                                 ))}

@@ -91,9 +91,9 @@ const AIDegreeProgram: React.FC<AIDegreeComponentProps> = ({ data, assets }) => 
                   </span>
                   <div className="flex-shrink-0">
                     {openAccordion === accordion.id ? (
-                      <img src="/Charters-icon/uparrow.svg" alt="" width={20} height={20} className=" opacity-0.5 w-4 h-4 sm:w-4 sm:h-4" />
+                      <img src="/Charters-icon/uparrow.svg" alt="icon" width={20} height={20} className=" opacity-0.5 w-4 h-4 sm:w-4 sm:h-4" />
                     ) : (
-                      <img src="/Charters-icon/Dropdown.svg" alt="" width={20} height={20} className="w-4 h-4 sm:w-4 sm:h-4" />
+                      <img src="/Charters-icon/Dropdown.svg" alt="icon" width={20} height={20} className="w-4 h-4 sm:w-4 sm:h-4" />
                     )}
                   </div>
                 </button>

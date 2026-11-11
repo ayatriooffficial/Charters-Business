@@ -268,7 +268,7 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                               )}
                             </div>
                           </div>
-                          <img src="/Charters-icon/joint-icon.svg" alt="" width={20} height={20}
+                          <img src="/Charters-icon/joint-icon.svg" alt="icon" width={20} height={20}
                             className={`w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200 flex-shrink-0 ${expandedItems[item.id] ? "rotate-45" : ""}`}
                             aria-hidden="true"
                           />
@@ -311,7 +311,7 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                                         className={`text-[#5f6368] leading-relaxed text-sm ${i === 0 ? "mb-4" : "mb-3"
                                           }`}
                                       >
-                                         {p}
+                                        {p}
                                       </p>
                                     ),
                                   )}
@@ -324,7 +324,7 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                                         >
                                           <div className="w-2 h-2 bg-[#B30437] rounded-full mt-2 flex-shrink-0"></div>
                                           <p className="text-[#5f6368] leading-relaxed text-sm">
-                                             {o}
+                                            {o}
                                           </p>
                                         </div>
                                       ),
@@ -338,7 +338,7 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                                 {item.outcome ? (
                                   <div>
                                     <p className="text-[#5f6368] leading-relaxed text-sm">
-                                       {item.outcome}
+                                      {item.outcome}
                                     </p>
                                   </div>
                                 ) : item.project ? (
@@ -347,7 +347,7 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                                       Term Project:
                                     </h4>
                                     <p className="text-[#5f6368] leading-relaxed text-sm">
-                                       {item.project.description}
+                                      {item.project.description}
                                     </p>
                                     <button className="mt-3 text-orange-500 hover:text-orange-600 font-medium text-xs flex items-center gap-2 transition-colors">
                                       {item.project.buttonLabel ||
@@ -560,7 +560,7 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                                               <div className="w-2 h-2 bg-[#B30437] rounded-full mt-2 flex-shrink-0"></div>
                                               <div>
                                                 <p className="font-semibold text-gray-900 text-sm">
-                                                   {item.businessNote}
+                                                  {item.businessNote}
                                                 </p>
                                               </div>
                                             </div>
@@ -627,7 +627,7 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                         className="flex items-center gap-3 py-4 px-4 bg-red-50 border border-red-100"
                         role="complementary"
                       >
-                        <img src="/Charters-icon/AI-icon.svg" alt="" width={20} height={20}
+                        <img src="/Charters-icon/AI-icon.svg" alt="icon" width={20} height={20}
                           className="w-5 h-5 flex-shrink-0"
                           aria-hidden="true"
                         />
@@ -635,7 +635,7 @@ const CurriculumSection = ({ data, assets, slug }: CurriculumSectionProps) => {
                           className="text-[#4F0118] font-medium text-xs"
                           role="text"
                         >
-                           {item.highlight}
+                          {item.highlight}
                         </span>
                       </div>
                     )}

@@ -33,7 +33,7 @@ export default function TrustedCompanies() {
                         <div className="flex items-center justify-center w-full h-full">
                             <img
                                 src="https://res.cloudinary.com/ducgcl4dg/image/upload/v1789934971/CBA_Hired_Company_p22ehx.avif"
-                                alt=""
+                                alt="partner company"
                                 className="w-full sm:h-[50px] md:h-[70px] lg:h-[120px] object-contain"
                                 loading="lazy"
                             />

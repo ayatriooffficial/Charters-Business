@@ -245,7 +245,7 @@ const TetrLandingPage = () => {
                 professors & practitioners.
               </p>
               <button className="bg-white text-[#B30437] px-4 py-2 rounded-lg hover:bg-gray-100 transition font-medium flex items-center gap-2 text-sm">
-                OUR PEDAGOGY <img src="/Charters-icon/rightarrow.svg" alt="" width={12} height={12} className="w-3 h-3" />
+                OUR PEDAGOGY <img src="/Charters-icon/rightarrow.svg" alt="arrow" width={12} height={12} className="w-3 h-3" />
               </button>
             </div>
           </div>
@@ -293,7 +293,7 @@ const TetrLandingPage = () => {
                 professors & practitioners.
               </p>
               <button className="bg-white text-[#B30437] px-4 py-2 rounded-lg hover:bg-gray-100 transition font-medium flex items-center gap-2 text-sm">
-                OUR PEDAGOGY <img src="/Charters-icon/rightarrow.svg" alt="" width={12} height={12} className="w-3 h-3" />
+                OUR PEDAGOGY <img src="/Charters-icon/rightarrow.svg" alt="arrow" width={12} height={12} className="w-3 h-3" />
               </button>
             </div>
           </div>

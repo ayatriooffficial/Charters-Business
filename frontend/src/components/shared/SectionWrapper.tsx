@@ -31,10 +31,10 @@ const LINE_POSITIONS: Record<HideCorner, React.CSSProperties> = {
 
 // Rotation per corner 
 const LINE_ROTATIONS: Record<HideCorner, number> = {
-    tl: 0,    
-    tr: 90,  
-    bl: 270, 
-    br: 180,  
+    tl: 0,
+    tr: 90,
+    bl: 270,
+    br: 180,
 };
 
 //Icon corner 
@@ -82,7 +82,7 @@ export default function SectionWrapper({
                 <img
                     key={key}
                     src="/joint-angle-icon.svg"
-                    alt=""
+                    alt="icon"
                     aria-hidden="true"
                     style={{
                         position: "absolute",
@@ -101,7 +101,7 @@ export default function SectionWrapper({
                 <img
                     key={key}
                     src={src ?? "/joint-icon.svg"}
-                    alt=""
+                    alt="icon"
                     aria-hidden="true"
                     style={{
                         position: "absolute",

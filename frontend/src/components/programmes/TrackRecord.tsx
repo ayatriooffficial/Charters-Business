@@ -281,7 +281,7 @@ const TrackRecord: React.FC<TrackRecordProps> = ({ data, assets }) => {
               {config?.hiredCompaniesBanner && (
                 <img
                   src={config.hiredCompaniesBanner}
-                  alt=""
+                  alt="Partner Companies Banner"
                   className="w-full sm:h-[50px] md:h-[70px] lg:h-[120px] object-contain"
                   loading="lazy"
                 />

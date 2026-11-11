@@ -97,9 +97,9 @@ const FAQ: React.FC<FAQProps> = ({ data }) => {
                   <span className="text-base sm:text-lg font-medium text-gray-900 pr-4">{faq.question}</span>
                   <div className="flex-shrink-0">
                     {openQuestions.has(faq.id) ? (
-                      <img src="/Charters-icon/uparrow.svg" alt="" width={20} height={20} className="w-5 h-5" />
+                      <img src="/Charters-icon/uparrow.svg" alt="icon" width={20} height={20} className="w-5 h-5" />
                     ) : (
-                      <img src="/Charters-icon/Dropdown.svg" alt="" width={20} height={20} className="w-5 h-5" />
+                      <img src="/Charters-icon/Dropdown.svg" alt="icon" width={20} height={20} className="w-5 h-5" />
                     )}
                   </div>
                 </button>

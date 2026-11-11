@@ -592,7 +592,7 @@ const StrategicExpansion: React.FC = () => {
                                     >
                                         <div className="flex items-center gap-3">
                                             <img src="/dot-icon.svg"
-                                                alt=""
+                                                alt="icon"
                                                 width={20}
                                                 height={20}
                                                 className="w-5 opacity-[0.5] h-5"

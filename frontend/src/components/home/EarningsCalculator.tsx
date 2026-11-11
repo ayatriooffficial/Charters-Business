@@ -66,9 +66,8 @@ function ResultRow({ label, value, orange = false }: ResultRowProps) {
     <div className="flex items-center justify-between gap-4 py-[18px]">
       <span className="text-sm font-normal text-[#5A6B85]">{label}</span>
       <span
-        className={`whitespace-nowrap text-[19px] font-bold ${
-          orange ? "text-[#F5921E]" : "text-[#0F2547]"
-        }`}
+        className={`whitespace-nowrap text-[19px] font-bold ${orange ? "text-[#F5921E]" : "text-[#0F2547]"
+          }`}
         suppressHydrationWarning
       >
         {value}
@@ -185,7 +184,7 @@ export default function EarningsCalculator() {
                   </option>
                 ))}
               </select>
-              <img src="/Charters-icon/Dropdown.svg" alt="" width={18} height={18} className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2" />
+              <img src="/Charters-icon/Dropdown.svg" alt="icon" width={18} height={18} className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2" />
             </div>
           </div>
 

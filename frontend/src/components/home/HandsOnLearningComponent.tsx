@@ -264,7 +264,7 @@ const ContentCard = memo<{
 
                               <img
                                 src="/Charters-icon/group-r-dot.svg"
-                                alt=""
+                                alt="icon"
                                 className="w-3 h-3 mt-[3px] object-cover flex-shrink-0"
                               />
 
@@ -286,7 +286,7 @@ const ContentCard = memo<{
                                           <div className="w-8 h-8 overflow-hidden flex-shrink-0">
                                             <img
                                               src={chip.icon}
-                                              alt=""
+                                              alt="icon"
                                               className="w-full h-full object-cover"
                                               style={{ objectPosition: "top", transform: "scale(1.4)", transformOrigin: "top center" }}
                                             />
@@ -295,7 +295,7 @@ const ContentCard = memo<{
                                           <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center">
                                             <img
                                               src={chip.icon}
-                                              alt=""
+                                              alt="icon"
                                               className="w-full h-full object-contain"
                                             />
                                           </div>

@@ -58,7 +58,7 @@ const PlacementReportDashboard = () => {
                 <div key={index} className="flex items-center gap-2 flex-shrink-0">
                   <img
                     src="/dot-icon.svg"
-                    alt=""
+                    alt="icon"
                     className="w-4 h-4 opacity-[0.5] flex-shrink-0"
                     aria-hidden="true"
                   />

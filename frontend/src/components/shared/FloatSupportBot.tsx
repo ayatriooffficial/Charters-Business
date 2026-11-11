@@ -111,7 +111,7 @@ export default function FloatSupportBot() {
                 className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-gray-100 border border-gray-300 flex items-center justify-center shadow-sm hover:bg-gray-200 transition opacity-0 group-hover:opacity-100"
                 aria-label="Dismiss query pill"
               >
-                <img src="/Charters-icon/Cancel.svg" alt="" width={10} height={10} />
+                <img src="/Charters-icon/Cancel.svg" alt="icon" width={10} height={10} />
               </button>
 
               <button
@@ -183,7 +183,7 @@ export default function FloatSupportBot() {
               className=" cursor-pointer"
               aria-label="Close support chat"
             >
-              <img src="/Charters-icon/Cancel.svg" alt="" width={16} height={16} className="p-1 bg-[#efefef] hover:bg-[#cccccc] rounded-full h-6 w-6" />
+              <img src="/Charters-icon/Cancel.svg" alt="icon" width={16} height={16} className="p-1 bg-[#efefef] hover:bg-[#cccccc] rounded-full h-6 w-6" />
             </button>
           </div>
 
@@ -343,7 +343,7 @@ export default function FloatSupportBot() {
                   className="flex h-auto w-10 items-center justify-center rounded-full bg-[#202124] text-white"
                   aria-label="Send message"
                 >
-                  <img src="/Charters-icon/ic_shareicon.svg" alt="" width={16} height={16} />
+                  <img src="/Charters-icon/ic_shareicon.svg" alt="icon" width={16} height={16} />
                 </button>
               )}
             </div>
