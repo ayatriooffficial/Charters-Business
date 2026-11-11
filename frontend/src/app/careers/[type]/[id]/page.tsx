@@ -35,9 +35,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ? item.description.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().substring(0, 150) + "..."
     : `Apply for the ${item?.title || 'position'} position at Charters' Union.`;
 
-  const title = item 
-    ? `${item.title} | ${isJobs ? 'Jobs' : 'Internships'} at Charters' Union`
-    : `Career Opportunity | ${isJobs ? 'Jobs' : 'Internships'} at Charters' Union`;
+  const title = item
+    ? `${item.title} - ${isJobs ? 'Jobs' : 'Internships'} at Charters' Union`
+    : `Career Opportunity - ${isJobs ? 'Jobs' : 'Internships'} at Charters' Union`;
 
   const description = `Apply for the ${item?.title || 'role'} ${isJobs ? 'job' : 'internship'} at Charters' Union. ${cleanDescription}`;
   const canonicalUrl = `https://chartersunion.com/careers/${type}/${id}`;
@@ -46,11 +46,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const keywords = item
     ? [
-        `${item.title}`,
-        isJobs ? "job at Charters Union" : "internship at Charters Union",
-        item.location,
-        item.category,
-      ]
+      `${item.title}`,
+      isJobs ? "job at Charters Union" : "internship at Charters Union",
+      item.location,
+      item.category,
+    ]
     : isJobs
       ? ["jobs at Charters Union", "career opportunities"]
       : ["internships at Charters Union", "internship opportunities"];

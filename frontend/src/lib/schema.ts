@@ -211,7 +211,7 @@ export const homePageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   "@id": HOME_PAGE_ID,
-  name: "Charters' Union: Job-Ready Training Institute Kolkata | AI Curriculum | 100% Paid Internship 7 Countries | BCom BSc BBA BA Freshers",
+  name: "Charters' Union: Job-Ready Training Institute Kolkata, AI Curriculum, 100% Paid Internship 7 Countries - BCom, BSc, BBA, BA, Freshers",
   url: SITE_URL,
   description:
     "Kolkata's AI-first Job Ready training institute. 3 programs: Certified Business Accountant, Digital Growth & Marketing, Technology & Business Management. AICPA/ACCA/HBS/Google aligned. 4–6 month paid internship in 7 countries. Corporate English. AI interview coaching. Placement support. Book free democlass.",
@@ -388,7 +388,7 @@ export const generateCourseSchema = (programme: Programme) => {
   const courseId = `${courseUrl}#course`;
   const duration = toIsoDuration(programme.card.duration.type);
   const aggregateRating = getValidAggregateRating(programme.card.rating);
-  
+
   const title = programme.card.title;
   let courseCode = undefined;
   if (title.includes("Accountant") || title.includes("CBA")) courseCode = "CBA";

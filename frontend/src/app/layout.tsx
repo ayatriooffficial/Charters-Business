@@ -60,8 +60,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Job-ready Accounting Course | 92% Placement Rate | 7 Months | Charter's Union",
-    template: "%s | Charters' Union",
+    default: "Job-ready Accounting Course, 92% Placement Rate, 7 Months, Charter's Union",
+    template: "%s - Charters' Union",
   },
   description:
     "Get placed in 7 months with practical accounting skills, internship experience, and placement support. 90% placement rate. ₹3.5 LPA average salary. Free counseling call.",
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Job-ready Accounting Course | 92% Placement Rate | 7 Months | Charter's Union",
+    title: "Job-ready Accounting Course, 92% Placement Rate, 7 Months, Charter's Union",
     description:
       "Get placed in 7 months with practical accounting skills, internship experience, and placement support. 90% placement rate. ₹3.5 LPA average salary.",
     url: "/",
@@ -102,7 +102,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Job-ready Accounting Course | 92% Placement Rate | 7 Months | Charter's Union",
+    title: "Job-ready Accounting Course, 92% Placement Rate, 7 Months, Charter's Union",
     description:
       "Get placed in 7 months with practical accounting skills, internship experience, and placement support. 90% placement rate. ₹3.5 LPA average salary.",
     images: [

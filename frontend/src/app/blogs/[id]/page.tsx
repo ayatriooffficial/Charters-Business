@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const blog = await fetchFullBlog(id);
 
-  const title = blog ? `${blog.title} | Charters' Union Blog` : "Blog Article | Charters' Union Blog";
+  const title = blog ? `${blog.title} - Charters' Union Blog` : "Blog Article - Charters' Union Blog";
   const description = blog ? blog.content.substring(0, 155).replace(/[\r\n\t]+/g, " ").trim() + "..." : "Read the latest insights and updates from Charters' Union.";
   const canonicalUrl = `https://chartersunion.com/blogs/${id}`;
   const imageUrl = "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp";
@@ -83,19 +83,19 @@ export default async function BlogDetailPage({ params }: Props) {
 
   const blogSchema = blog && blog.releasedAt
     ? generateBlogPostingSchema({
-        title: blog.title,
-        description: blog.content.substring(0, 155).replace(/[\r\n\t]+/g, " ").trim() + "...",
-        url: `https://chartersunion.com/blogs/${id}`,
-        image: SCHEMA_IMAGE,
-        datePublished: blog.releasedAt,
-        dateModified: blog.releasedAt,
-        author: blog.author,
-      })
+      title: blog.title,
+      description: blog.content.substring(0, 155).replace(/[\r\n\t]+/g, " ").trim() + "...",
+      url: `https://chartersunion.com/blogs/${id}`,
+      image: SCHEMA_IMAGE,
+      datePublished: blog.releasedAt,
+      dateModified: blog.releasedAt,
+      author: blog.author,
+    })
     : null;
 
   const consolidatedSchema = generateStandardPageSchemas({
     path: `/blogs/${id}`,
-    name: blog ? `${blog.title} | Charters' Union Blog` : "Blog Article | Charters' Union Blog",
+    name: blog ? `${blog.title} - Charters' Union Blog` : "Blog Article - Charters' Union Blog",
     description: blog
       ? blog.content.substring(0, 155).replace(/[\r\n\t]+/g, " ").trim() + "..."
       : "Read the latest insights and updates from Charters' Union.",

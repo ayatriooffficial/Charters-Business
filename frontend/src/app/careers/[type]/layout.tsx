@@ -45,15 +45,15 @@ async function getListingSchema(type: string) {
       .substring(0, 150) + '...';
 
   const collectionWebPageSchema = generateWebPageSchema({
-      path: `/careers/${type}`,
-      type: 'CollectionPage',
-      name: isJobs
-        ? "Job Openings at Charters' Union"
-        : "Internship Opportunities at Charters' Union",
-      description: isJobs
-        ? "Browse all available job positions at Charters' Union"
-        : "Explore internship opportunities at Charters' Union",
-    });
+    path: `/careers/${type}`,
+    type: 'CollectionPage',
+    name: isJobs
+      ? "Job Openings at Charters' Union"
+      : "Internship Opportunities at Charters' Union",
+    description: isJobs
+      ? "Browse all available job positions at Charters' Union"
+      : "Explore internship opportunities at Charters' Union",
+  });
   const collectionSchema = {
     ...collectionWebPageSchema,
     mainEntity: { '@id': `${SITE_URL}/careers/${type}#listing` },
@@ -121,12 +121,12 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
 
   const metadataConfig = {
     jobs: {
-      title: "Jobs at Charters' Union | Full-Time Career Opportunities",
+      title: "Jobs at Charters' Union - Full-Time Career Opportunities",
       description: "Explore exciting full-time job openings at Charters' Union and build your career in a dynamic educational environment.",
       canonical: 'https://chartersunion.com/careers/jobs',
     },
     internships: {
-      title: "Internships at Charters' Union | Start Your Career Journey",
+      title: "Internships at Charters' Union - Start Your Career Journey",
       description: "Launch your career with paid internships at Charters' Union and gain real-world industry experience.",
       canonical: 'https://chartersunion.com/careers/internships',
     },
@@ -142,19 +142,19 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
     description: content.description,
     keywords: isJobs
       ? [
-          "jobs at Charters Union",
-          "full-time careers Kolkata",
-          "education job openings",
-          "career opportunities Charters Union",
-          "apply for jobs Charters Union",
-        ]
+        "jobs at Charters Union",
+        "full-time careers Kolkata",
+        "education job openings",
+        "career opportunities Charters Union",
+        "apply for jobs Charters Union",
+      ]
       : [
-          "paid internships",
-          "internship Kolkata",
-          "Charters Union internships",
-          "student internship opportunities",
-          "apply for internship Charters Union",
-        ],
+        "paid internships",
+        "internship Kolkata",
+        "Charters Union internships",
+        "student internship opportunities",
+        "apply for internship Charters Union",
+      ],
     alternates: {
       canonical: content.canonical,
     },

@@ -2,7 +2,7 @@ import { getApprovedBlogs } from "@/lib/api";
 import BlogsClient from "./BlogsClient";
 
 export const metadata = {
-  title: "Blogs | Charters Union",
+  title: "Blogs - Charters Union",
   description:
     "Career insights, education guides, and industry updates from Charters Union of Business.",
 };

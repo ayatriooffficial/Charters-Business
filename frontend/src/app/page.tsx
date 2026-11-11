@@ -32,14 +32,14 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Charters' Union: Job-Ready Training Institute Kolkata | AI Curriculum | 100% Paid Internship 7 Countries | BCom BSc BBA BA Freshers",
+    title: "Charters' Union: Job-Ready Training Institute Kolkata, AI Curriculum, 100% Paid Internship 7 Countries - BCom, BSc, BBA, BA, Freshers",
     description:
       "Kolkata's AI-first 100% Job Guarantee training institute. 3 programs: Certified Business Accountant, Digital Growth & Marketing, Technology & Business Management. USCMA/ACCA/HBS/Google aligned. 4 month paid internship in 7 countries. Corporate English. AI interview coaching. Placement support. Book free democlass.",
     url: "https://chartersunion.com",
     type: "website",
     images: [
       {
-        url: "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp",
+        url: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1789934895/chartersUnion-students-placement_ssvghc.avif",
         width: 1200,
         height: 630,
         alt: "Charters' Union AI-Ready Training Institute Kolkata",
@@ -48,10 +48,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Charters' Union: Job-Ready Training Institute Kolkata | AI Curriculum | Paid Internship 7 Countries | BCom BSc BBA BA Freshers",
+    title: "Charters' Union: Job-Ready Training Institute Kolkata, AI Curriculum, Paid Internship 7 Countries - BCom, BSc, BBA, BA, Freshers",
     description:
       "Kolkata's AI-first job-ready training institute. 3 programs: Certified Business Accountant, Digital Growth & Marketing, Technology & Business Management. AICPA/ACCA/HBS/Google aligned. 4–6 month paid internship in 7 countries. Corporate English. AI interview coaching. Placement support. Book free democlass.",
-    images: ["https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp"],
+    images: ["https://res.cloudinary.com/ducgcl4dg/image/upload/v1789934895/chartersUnion-students-placement_ssvghc.avif"],
   },
 };
 

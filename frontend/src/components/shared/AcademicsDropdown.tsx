@@ -174,9 +174,9 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
                     </div>
 
 
-                    <h3 className="text-gray-800 group-hover:text-gray-900 text-lg font-bold mb-2  leading-tight transition-colors duration-200">
+                    <p className="text-gray-800 group-hover:text-gray-900 text-lg font-bold mb-2  leading-tight transition-colors duration-200">
                       EXPLORE<br />MORE
-                    </h3>
+                    </p>
                   </div>
                 </a>
               </aside>
@@ -189,9 +189,9 @@ const AcademicsDropdown = forwardRef<HTMLDivElement, AcademicsDropdownProps>(({
                   {/* Text Content */}
                   <div className="flex-1 flex flex-col justify-start min-w-0">
                     <div>
-                      <h2 className="text-xl lg:text-2xl font-bold mb-2 text-gray-900 leading-tight">
+                      <p className="text-xl lg:text-2xl font-bold mb-2 text-gray-900 leading-tight">
                         {currentProgramData.card.title}
-                      </h2>
+                      </p>
 
                       <p className="text-[#B30437] text-sm font-semibold mb-4">
                         {currentProgramData.card.duration.type}

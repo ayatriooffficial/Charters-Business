@@ -8,7 +8,7 @@ import CareersBelowFoldSections from "@/components/careers/CareersBelowFoldSecti
 import { generateStandardPageSchemas } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Careers & Placements | Charters' Union",
+  title: "Careers & Placements - Charters' Union",
   description:
     "Benefit from Charters' Union's exceptional track record of graduates' success with measurable outcomes and expert career guidance.",
   keywords: [
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     canonical: "https://chartersunion.com/careers",
   },
   openGraph: {
-    title: "Careers & Placements | Charters' Union",
+    title: "Careers & Placements - Charters' Union",
     description:
       "Benefit from Charters' Union's exceptional track record of graduates' success with measurable outcomes and expert career guidance.",
     url: "https://chartersunion.com/careers",
@@ -34,14 +34,14 @@ export const metadata: Metadata = {
         url: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784325608/Young_Charters_are_at_top_company_gncn4o_q7ifkq.avif",
         width: 1200,
         height: 630,
-        alt: "Careers & Placements | Charters' Union",
+        alt: "Careers & Placements - Charters' Union",
       },
     ],
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Careers & Placements | Charters' Union",
+    title: "Careers & Placements - Charters' Union",
     description:
       "Benefit from Charters' Union's exceptional track record of graduates' success with measurable outcomes and expert career guidance.",
     images: ["https://res.cloudinary.com/ducgcl4dg/image/upload/v1784325608/Young_Charters_are_at_top_company_gncn4o_q7ifkq.avif"],
@@ -82,7 +82,7 @@ export default function CareersPage() {
   ];
   const careersSchemaGraph = generateStandardPageSchemas({
     path: "/careers",
-    name: "Careers & Placements | Charters' Union",
+    name: "Careers & Placements - Charters' Union",
     description:
       "Benefit from Charters' Union's exceptional track record of graduates' success with measurable outcomes and expert career guidance.",
     type: "CollectionPage",

@@ -3,7 +3,7 @@ import CareerPathPageClient from "./CareerPathClient";
 import { generateStandardPageSchemas } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "AI Career Path Assessment & Report | Charters' Union",
+  title: "AI Career Path Assessment & Report - Charters' Union",
   description:
     "Take our AI career path assessment to discover your strengths, explore customized program alignments, and receive a tailored growth plan.",
   keywords: [
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     canonical: "https://chartersunion.com/career-path",
   },
   openGraph: {
-    title: "AI Career Path Assessment & Report | Charters' Union",
+    title: "AI Career Path Assessment & Report - Charters' Union",
     description:
       "Take our AI career path assessment to discover your strengths, explore customized program alignments, and receive a tailored growth plan.",
     url: "https://chartersunion.com/career-path",
@@ -29,14 +29,14 @@ export const metadata: Metadata = {
         url: "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp",
         width: 1200,
         height: 630,
-        alt: "AI Career Path Assessment & Report | Charters' Union",
+        alt: "AI Career Path Assessment & Report - Charters' Union",
       },
     ],
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Career Path Assessment & Report | Charters' Union",
+    title: "AI Career Path Assessment & Report - Charters' Union",
     description:
       "Take our AI career path assessment to discover your strengths, explore customized program alignments, and receive a tailored growth plan.",
     images: ["https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp"],
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
 export default function CareerPathPage() {
   const consolidatedSchema = generateStandardPageSchemas({
     path: "/career-path",
-    name: "AI Career Path Assessment & Report | Charters' Union",
+    name: "AI Career Path Assessment & Report - Charters' Union",
     description:
       "Take our AI career path assessment to discover your strengths, explore customized program alignments, and receive a tailored growth plan.",
     breadcrumbItems: [

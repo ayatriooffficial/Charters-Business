@@ -4,7 +4,7 @@ import { generateStandardPageSchemas } from "@/lib/schema";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Community | Charters' Union",
+  title: "Community - Charters' Union",
   description:
     "Join the vibrant Charters' Union community. Connect with students, alumni, and industry professionals who share your passion for business excellence.",
   keywords: [
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     canonical: "https://chartersunion.com/community",
   },
   openGraph: {
-    title: "Community | Charters' Union",
+    title: "Community - Charters' Union",
     description:
       "Join the vibrant Charters' Union community. Connect with students, alumni, and industry professionals who share your passion for business excellence.",
     url: "https://chartersunion.com/community",
@@ -31,14 +31,14 @@ export const metadata: Metadata = {
         url: "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp",
         width: 1200,
         height: 630,
-        alt: "Community | Charters' Union",
+        alt: "Community - Charters' Union",
       },
     ],
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Community | Charters' Union",
+    title: "Community - Charters' Union",
     description:
       "Join the vibrant Charters' Union community. Connect with students, alumni, and industry professionals who share your passion for business excellence.",
     images: ["https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp"],
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
 export default function CommunityPage() {
   const consolidatedSchema = generateStandardPageSchemas({
     path: "/community",
-    name: "Community | Charters' Union",
+    name: "Community - Charters' Union",
     description:
       "Join the vibrant Charters' Union community. Connect with students, alumni, and industry professionals who share your passion for business excellence.",
     breadcrumbItems: [

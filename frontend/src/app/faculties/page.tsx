@@ -6,14 +6,14 @@ import { Metadata } from "next";
 import { facultyMembers } from "@/data/faculty";
 
 export const metadata: Metadata = {
-  title: "Our Faculty | Charters' Union",
+  title: "Our Faculty - Charters' Union",
   description:
     "Meet our world-class faculty of industry leaders, CEOs, and experts who bring real-world experience to the classroom at Charters' Union.",
   alternates: {
     canonical: "https://chartersunion.com/faculties",
   },
   openGraph: {
-    title: "Our Faculty | Charters' Union",
+    title: "Our Faculty - Charters' Union",
     description:
       "Meet our world-class faculty of industry leaders, CEOs, and experts who bring real-world experience to the classroom at Charters' Union.",
     url: "https://chartersunion.com/faculties",
@@ -24,14 +24,14 @@ export const metadata: Metadata = {
         url: "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp",
         width: 1200,
         height: 630,
-        alt: "Our Faculty | Charters' Union",
+        alt: "Our Faculty - Charters' Union",
       },
     ],
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Our Faculty | Charters' Union",
+    title: "Our Faculty - Charters' Union",
     description:
       "Meet our world-class faculty of industry leaders, CEOs, and experts who bring real-world experience to the classroom at Charters' Union.",
     images: ["https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp"],
@@ -51,7 +51,7 @@ export default function FacultiesPage() {
 
   const facultiesSchemaGraph = generateStandardPageSchemas({
     path: "/faculties",
-    name: "Our Faculty | Charters' Union",
+    name: "Our Faculty - Charters' Union",
     description:
       "Meet our world-class faculty of industry leaders, CEOs, and experts who bring real-world experience to business education.",
     type: "CollectionPage",

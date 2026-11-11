@@ -4,7 +4,7 @@ import { generateStandardPageSchemas } from "@/lib/schema";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us | Charters' Union",
+  title: "About Us - Charters' Union",
   description:
     "Learn about Charters' Union and our mission to transform business education. Discover our world-class faculty, programs, and industry-ready leaders.",
   keywords: [
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     canonical: "https://chartersunion.com/about",
   },
   openGraph: {
-    title: "About Us | Charters' Union",
+    title: "About Us - Charters' Union",
     description:
       "Learn about Charters' Union and our mission to transform business education. Discover our world-class faculty, programs, and industry-ready leaders.",
     url: "https://chartersunion.com/about",
@@ -32,14 +32,14 @@ export const metadata: Metadata = {
         url: "https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp",
         width: 1200,
         height: 630,
-        alt: "About Us | Charters' Union",
+        alt: "About Us - Charters' Union",
       },
     ],
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Us | Charters' Union",
+    title: "About Us - Charters' Union",
     description:
       "Learn about Charters' Union and our mission to transform business education. Discover our world-class faculty, programs, and industry-ready leaders.",
     images: ["https://res.cloudinary.com/ducgcl4dg/image/upload/f_jpg,w_1200,h_630,c_fill/v1768578300/background_bvoits.webp"],
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   const consolidatedSchema = generateStandardPageSchemas({
     path: "/about",
-    name: "About Us | Charters' Union",
+    name: "About Us - Charters' Union",
     description:
       "Learn about Charters' Union and our mission to transform business education. Discover our world-class faculty, programs, and industry-ready leaders.",
     type: "AboutPage",
