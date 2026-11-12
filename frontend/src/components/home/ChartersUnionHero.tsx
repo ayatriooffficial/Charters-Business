@@ -32,7 +32,7 @@ const triggerDownload = async (url: string, filename: string) => {
 };
 const heroData = {
   availableBadge: "Available Now",
-  title: "From Fresher to Global Career: AI in Every Class, Faculty-Guided Paid Internships, Job-Ready Training Built for top MNCs",
+  title: "AI-Powered Corporate Training with Paid Internships in Kolkata",
   description:
     "Kolkata's AI-first Job Ready training institute. 3 programs: Certified Business Accountant, Digital Growth & Marketing, Technology & Business Management. AICPA/ACCA/HBS/Google aligned. 4–6 month paid internship in 7 countries. Corporate English. AI interview coaching. Placement support. Book free democlass.",
   desktopBackgroundImage: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1785502371/ChartersUnion-faculty-alreday-placed-students_l6oqu2.avif",
@@ -91,7 +91,7 @@ function ChartersUnionHero() {
               sizes="100vw"
               width={750}
               height={1334}
-              alt="From Fresher to Global Career: AI in Every Class, Faculty-Guided Paid Internships, Job-Ready Training Built for top MNCs"
+              alt="AI-Powered Corporate Training with Paid Internships in Kolkata"
               fetchPriority="high"
               decoding="sync"
               className="relative w-full h-full object-contain md:object-cover"

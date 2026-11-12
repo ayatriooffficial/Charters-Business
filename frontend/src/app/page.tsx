@@ -24,10 +24,10 @@ import Script from "next/script";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Charters' Union: AI-Powered Job-Ready Training in Kolkata",
+    absolute: "Job-Oriented Courses After B.Com, BA & BBA in Kolkata - Charters'Union",
   },
   description:
-    "Kolkata's AI-first Job Ready training in Accountant, Digital Marketing for B.Com,BCA,BSc,BBA,BA, Freshers. USCMA/HBS/Google aligned. 100% Paid Internship.",
+    "AI-First Job-Ready Professional Training in Accountant, Digital Marketing for B.Com, BBA, BA,  BCA, BSc, Freshers. CMA/HBS/Google/Meta aligned. 100% Paid Internship",
   alternates: {
     canonical: "/",
   },
