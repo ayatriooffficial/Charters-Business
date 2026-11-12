@@ -24,7 +24,7 @@ import Script from "next/script";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Job-Oriented Courses After B.Com, BA & BBA in Kolkata - Charters'Union",
+    absolute: "Job-Oriented Courses in Kolkata with Paid Internship | Charters' Union",
   },
   description:
     "AI-First Job-Ready Professional Training in Accountant, Digital Marketing for B.Com, BBA, BA,  BCA, BSc, Freshers. CMA/HBS/Google/Meta aligned. 100% Paid Internship",
