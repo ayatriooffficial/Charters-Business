@@ -1412,7 +1412,7 @@ export const cba: Programme = {
             id: "curriculum-structure",
             question: "What subjects are included in the Certified Business Accountant syllabus?",
             answer:
-              "General ledger maintenance, trial balance, final financial statements,Corporate Taxation & Statutory Compliance: Direct tax, GST/VAT computation, TDS/TCS, and e-filing, Management, Budgeting, cost management, Ratio analysis, AI & Digital, Automated financial workflows, QuickBooks, and advanced corporate Excel.",
+              "1. Financial Accounting & Reporting (General ledger maintenance, trial balance, final financial statements), 2. Corporate Taxation & Statutory Compliance (Corporate Taxation & Statutory Compliance: Direct tax, GST/VAT computation, TDS/TCS, and e-filing), 3. Management Accounting (Budgeting, cost management, Ratio analysis), 4. AI & Digital Accounting (AI & Digital, Automated financial workflows, QuickBooks, and advanced corporate Excel).",
           },
           {
             id: "specializations",
