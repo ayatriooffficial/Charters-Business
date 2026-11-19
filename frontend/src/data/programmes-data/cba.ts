@@ -1373,52 +1373,34 @@ export const cba: Programme = {
         name: "Program",
         faqs: [
           {
-            id: "what-is-mba",
-            question: "What is the MBA program about?",
+            id: "what-is-cba",
+            question: "What is the Certified Business Accountant (CBA™) course by Charters' Union?",
             answer:
-              "Our MBA program is a comprehensive 2-year full-time course designed to develop business leaders through rigorous academics, practical experience, and industry exposure. The curriculum covers core business disciplines including finance, marketing, operations, strategy, and leadership. Students engage in real-world case studies, live projects, and internships with leading companies.",
+              "The Certified Business Accountant (CBA™) is an advanced, job-aligned professional program designed by Charters' Union to equip students with practical skills in corporate accounting, taxation, financial analysis, and AI-driven business tools modeled after international frameworks (US-CMA, CPA, ACCA, CFA).",
           },
           {
-            id: "who-is-eligible",
-            question: "Who is eligible for the MBA program?",
+            id: "who-is-duration",
+            question: "What is the total duration of the CBA™ accounting certification?",
             answer:
-              "Candidates must have a Bachelor's degree with minimum 50% marks from a recognized university. Work experience is preferred but not mandatory. We welcome candidates from diverse backgrounds including engineering, commerce, arts, and sciences. Prior business knowledge is helpful but not required as we provide foundational courses.",
+              "The program duration 7 months, divided into 3 months of intensive campus training & practical labs, followed by a 4-month guaranteed paid corporate internship.",
           },
           {
             id: "can-join-as-fresher",
             question: "Can I join as a fresher without work experience?",
             answer:
-              "Yes, freshers can join the MBA program! We have specific tracks designed for recent graduates. Our curriculum includes foundational business courses, soft skills development, and extensive internship opportunities to help you build practical experience and transition smoothly into corporate roles.",
+              "Yes, freshers can join the  CBA™ accounting certification? program! We have specific tracks designed for recent graduates. Our curriculum includes foundational business courses, soft skills development, and extensive internship opportunities to help you build practical experience and transition smoothly into corporate roles.",
           },
           {
-            id: "when-are-classes",
-            question: "When are the live classes held?",
+            id: "when-certification-recognized",
+            question: "Is the CBA™ certification recognized by corporate employers?",
             answer:
-              "Classes are conducted from Monday to Friday, typically between 9 AM to 5 PM. The schedule is designed as a full-time residential program with a mix of lectures, case discussions, group projects, and workshops. Weekend activities include guest lectures, industrial visits, and networking events with alumni and industry leaders.",
+              "Yes. The CBA™ certification is audited by third-party analytics and backed by top accreditation standards, making it widely recognized across Big 4 accounting firms, multinational corporations (MNCs), and fast-growing corporate enterprises.",
           },
           {
-            id: "what-if-miss-lecture",
-            question: "What if I miss a lecture?",
+            id: "what-if-program-differ",
+            question: "How does the CBA™ program differ from traditional B.Com or M.Com degrees?",
             answer:
-              "If you miss a live lecture due to genuine reasons, recordings are available on our learning management system. However, since our program emphasizes interactive learning through case discussions and group activities, regular attendance is strongly recommended. Our faculty and teaching assistants are available for doubt clarification during office hours.",
-          },
-          {
-            id: "program-duration",
-            question: "What is the program duration?",
-            answer:
-              "The MBA program is a 2-year full-time course divided into 6 terms. Each term is approximately 3-4 months long with breaks between terms. The program includes classroom learning, summer internships, live projects, and an international immersion experience in the final year.",
-          },
-          {
-            id: "does-give-certificates",
-            question: "Does the program provide certification?",
-            answer:
-              "Yes, upon successful completion of the program, you will receive a Master of Business Administration (MBA) degree from Charter's Business College. This degree is recognized globally and demonstrates your proficiency in business management, strategic thinking, and leadership skills.",
-          },
-          {
-            id: "is-certification-worth-it",
-            question: "Is the MBA degree worth it?",
-            answer:
-              "Absolutely! Our MBA program has a proven track record with 95% placement rate and an average salary jump of 3.05x. Graduates work at top companies like Google, Amazon, Deloitte, and McKinsey. The degree, combined with practical skills, industry exposure, and strong alumni network, significantly enhances your career prospects and opens doors to leadership positions.",
+              "Unlike theoretical university degrees, the CBA™ focuses on 100% practical execution—teaching real-world tax filing, ERP workflows, corporate auditing, and AI accounting tools using Harvard and Columbia business case study methodologies.",
           },
         ],
       },
@@ -1428,21 +1410,21 @@ export const cba: Programme = {
         faqs: [
           {
             id: "curriculum-structure",
-            question: "How is the curriculum structured?",
+            question: "What subjects are included in the Certified Business Accountant syllabus?",
             answer:
-              "The MBA curriculum is divided into three main components: Core Courses (60%), Elective Specializations (25%), and Practical Learning (15%). Core courses cover fundamental business subjects like finance, marketing, operations, and strategy. Electives allow you to specialize in areas like Digital Marketing, Investment Banking, or Entrepreneurship. Practical learning includes case studies, simulations, live projects, and internships.",
+              "General ledger maintenance, trial balance, final financial statements,Corporate Taxation & Statutory Compliance: Direct tax, GST/VAT computation, TDS/TCS, and e-filing, Management, Budgeting, cost management, Ratio analysis, AI & Digital, Automated financial workflows, QuickBooks, and advanced corporate Excel.",
           },
           {
             id: "specializations",
-            question: "What specializations are available?",
+            question: "What accounting software and AI tools will I learn in this course?",
             answer:
-              "We offer multiple specializations including Marketing, Finance, Operations, Human Resources, Strategy & Consulting, Entrepreneurship, Digital Business, and Business Analytics. Students can choose dual specializations to enhance their skill set and career options.",
+              "Students gain hands-on training in industry-standard tools including QuickBooks, Advanced Excel, Tally Prime/modern ERP frameworks, and AI prompt workflows designed to automate routine bookkeeping and financial reporting.",
           },
           {
             id: "curriculum-updates",
-            question: "How often is the curriculum updated?",
+            question: "Does the CBA™ curriculum include real-world case studies?",
             answer:
-              "Our curriculum is reviewed and updated annually based on industry trends, feedback from corporate partners, and emerging business practices. We regularly invite industry experts to co-design courses and ensure our students learn the most relevant and current business concepts and tools.",
+              "Yes. Practical learning is anchored in live corporate datasets and case study methodologies from Harvard and Columbia, preparing students to solve real business finance challenges.",
           },
           {
             id: "international-exposure",
@@ -1454,7 +1436,7 @@ export const cba: Programme = {
             id: "case-studies",
             question: "How many case studies will we analyze?",
             answer:
-              "Throughout the 2-year program, students analyze over 200 case studies from Harvard Business School, INSEAD, and other top institutions. These cases cover real business scenarios from companies like Amazon, Netflix, Tesla, and Indian conglomerates, helping develop analytical and decision-making skills.",
+              "Throughout the 7-Month program, students analyze over 50 case studies from Harvard Business School, INSEAD, and other top institutions. These cases cover real business scenarios from companies like PWC, Delloit, KPMG, and Indian conglomerates, helping develop analytical and decision-making skills.",
           },
         ],
       },
@@ -1464,27 +1446,21 @@ export const cba: Programme = {
         faqs: [
           {
             id: "teaching-methodology",
-            question: "What is the teaching methodology?",
+            question: "Are CBA™ classes available in online and offline modes??",
             answer:
-              "We use a blend of teaching methodologies including interactive lectures, case method discussions, simulations, role plays, group projects, and experiential learning. The focus is on practical application rather than rote learning. Classes are discussion-based with active student participation, encouraging critical thinking and problem-solving.",
+              "Yes. Charters' Union offers on-campus classes at the Kolkata campus as well as live interactive online batches for working professionals and students across India.",
           },
           {
             id: "instructor-quality",
-            question: "What is the quality of instructors?",
+            question: "What is the practical teaching approach used by Charters' Union?",
             answer:
-              "Our faculty comprises experienced academics with PhDs from top institutions and industry practitioners from leading companies. Many professors have worked at Google, McKinsey, Goldman Sachs, and other Fortune 500 companies. They bring both theoretical knowledge and real-world business insights to the classroom.",
+              "The pedagogy follows a Learn by Doing model: 20% conceptual framework paired with 80% practical execution through live software simulation labs, group problem-solving, and peer benchmarking.",
           },
           {
             id: "guest-lectures",
-            question: "Are there guest lectures?",
+            question: "What happens if I miss a live class?",
             answer:
-              "Yes, we regularly host guest lectures by CEOs, entrepreneurs, industry leaders, and alumni. Past speakers include founders of unicorn startups, senior executives from Google and Amazon, and successful entrepreneurs. These sessions provide invaluable insights into industry trends and career paths.",
-          },
-          {
-            id: "class-size",
-            question: "What is the class size?",
-            answer:
-              "Each MBA batch has approximately 60-80 students, ensuring personalized attention and meaningful peer interaction. Classes are conducted in sections of 30-40 students for core courses and smaller groups for electives and workshops.",
+              "All live online sessions are recorded and made available on the student portal, accompanied by class notes, practical datasets, and dedicated doubt-clearing sessions.",
           },
         ],
       },
@@ -1494,21 +1470,21 @@ export const cba: Programme = {
         faqs: [
           {
             id: "mentor-allocation",
-            question: "How are mentors allocated?",
+            question: "Who teaches the Certified Business Accountant (CBA™) classes?",
             answer:
-              "Each student is assigned a faculty mentor and an industry mentor within the first month. Faculty mentors guide academic progress and career planning, while industry mentors provide real-world insights and networking opportunities. Mentors are allocated based on student interests and career goals.",
+              "Classes are mentored by top 1% industry practitioners, including practicing Chartered Accountants (CAs), US-CMAs, CPAs, ACCA holders, CFA charterholders, and corporate finance heads.",
           },
           {
             id: "mentor-sessions",
-            question: "How frequent are mentor sessions?",
+            question: "Will I get 1:1 mentorship and guidance during the program?",
             answer:
-              "Regular one-on-one mentor sessions are conducted bi-weekly throughout the program. Additional sessions are available as needed for career guidance, project discussions, and personal development. Mentors also help with resume building, interview preparation, and job search strategies.",
+              "Yes. Every student is paired with an industry mentor for personalized 1:1 guidance on academic progress, portfolio reviews, and career roadmap building through CareerPathx™.",
           },
           {
             id: "industry-mentors",
-            question: "Who are the industry mentors?",
+            question: "Can students interact directly with mentors for doubt resolution?",
             answer:
-              "Our industry mentors include senior executives from top companies, successful entrepreneurs, and accomplished alumni. They provide guidance on career transitions, industry insights, networking strategies, and help students navigate the corporate world.",
+              "Yes. Students have direct access to mentors during live lab sessions, dedicated weekly Q&A hours, and offline faculty hours on campus.",
           },
         ],
       },
@@ -1518,21 +1494,27 @@ export const cba: Programme = {
         faqs: [
           {
             id: "internship-opportunities",
-            question: "Are internship opportunities provided?",
+            question: "Is the corporate internship guaranteed for all CBA™ students?",
             answer:
-              "Yes, summer internships are a mandatory part of the MBA program. Students complete 8-10 week internships between first and second year with leading companies. Our placement cell facilitates internships with over 150 partner companies across industries including consulting, finance, technology, FMCG, and startups.",
+              "Yes. Charters' Union provides a 100% guaranteed 4-month corporate internship as an integral part of the 7-month program structure.",
           },
           {
             id: "internship-stipend",
-            question: "Do internships offer stipends?",
+            question: "Is the CBA™ internship paid, and how much stipend can I expect?",
             answer:
-              "Yes, most summer internships offer stipends ranging from ₹30,000 to ₹1,00,000 per month depending on the company and role. Top consulting and finance firms offer higher stipends. Many internships convert to Pre-Placement Offers (PPOs) based on performance.",
+              "Yes, the internship is paid. Students earn a competitive monthly stipend while working on real accounting and finance projects for corporate clients.",
           },
           {
             id: "international-internships",
             question: "Can I do international internships?",
             answer:
               "Yes, students can apply for international internships with our global partner companies. We have partnerships with firms in Singapore, Dubai, UK, and USA. However, international internships are competitive and require strong academic performance and relevant skills.",
+          },
+          {
+            id: "internships-responsibilities",
+            question: "What responsibilities do interns handle during their 4-month corporate internship?",
+            answer:
+              "Interns work directly on live financial tasks, such as GST reconciliation, ledger audits, tax returns preparation, monthly financial closes, and management reporting.",
           },
         ],
       },
@@ -1548,15 +1530,33 @@ export const cba: Programme = {
           },
           {
             id: "placement-record",
-            question: "What is the placement record?",
+            question: "What is the placement success rate for CBA™ graduates?",
             answer:
-              "95% of our MBA graduates receive job offers within 3 months of graduation. The average CTC is ₹26.5 LPA with an average salary jump of 3.05x. Highest package in recent years reached ₹61.8 LPA. Our graduates work at top companies including Google, Amazon, Deloitte, KPMG, and leading startups.",
+              "Over 97% of CBA™ students secure full-time job offers by their 4th month of internship, achieving an average salary increase of 2.35x.",
           },
           {
             id: "placement-guarantee",
             question: "Do you guarantee placements?",
             answer:
-              "While we cannot guarantee placements, our track record shows that 95% of students receive job offers with significant salary improvements. We provide extensive support and opportunities, but final placement depends on individual performance, skills, and market conditions. Students must actively participate in the placement process and maintain good academic standing.",
+              "While we cannot guarantee placements, our track record shows that 97% of students receive job offers with significant salary improvements. We provide extensive support and opportunities, but final placement depends on individual performance, skills, and market conditions. Students must actively participate in the placement process and maintain good academic standing.",
+          },
+          {
+            id: "placement-companies",
+            question: "Which top companies recruit Certified Business Accountants from Charters' Union?",
+            answer:
+              "Graduates are placed at leading companies and financial networks, including PwC, KPMG, Deloitte, EY, Accenture, Razorpay, Swiggy, PhonePe, and HSBC.",
+          },
+          {
+            id: "career-acceleration-services",
+            question: "What career acceleration services are provided by CareerPathx™?",
+            answer:
+              "The CareerPathx™ platform offers 1:1 resume builder tools, LinkedIn optimization, mock HR/technical interviews, domain-specific interview prep, and direct employer referral drives.",
+          },
+          {
+            id: "job-roles-certification",
+            question: "What job roles can I apply for after completing the CBA™ certification?",
+            answer:
+              "Graduates qualify for mid-to-senior entry roles such as Corporate Accountant, Financial Analyst, Tax Associate, GST Consultant, Accounts Manager, and Audit Executive.",
           },
           {
             id: "career-services",
@@ -1572,27 +1572,21 @@ export const cba: Programme = {
         faqs: [
           {
             id: "fee-structure",
-            question: "What is the fee structure?",
+            question: "What is the course fee for the Certified Business Accountant (CBA™) program?",
             answer:
-              "The total program fee for the 2-year MBA is competitive with other top business schools. The fee includes tuition, study materials, library access, computer lab facilities, and placement services. Hostel and mess charges are separate. Contact our admissions team for detailed fee structure and payment plans.",
+              "Tuition fees vary depending on the delivery mode. Flexible installment plans and No-Cost EMI options are available to make payments manageable.",
           },
           {
             id: "payment-options",
-            question: "What payment options are available?",
+            question: "Does Charters' Union offer scholarships for the CBA™ program?",
             answer:
-              "We offer multiple payment options including one-time payment with discount, semester-wise installments, EMI options through partner banks, and education loans with major banks. Scholarships and financial aid are available for meritorious and deserving students.",
+              "Yes. Charters' Union provides merit-based and need-based scholarships covering up to 100% of the tuition fee for eligible undergraduate and postgraduate applicants.",
           },
           {
             id: "scholarships",
-            question: "Are scholarships available?",
+            question: "How can I apply for the up to 100% tuition scholarship?",
             answer:
-              "Yes, we offer merit-based and need-based scholarships covering up to 100% of tuition fees. Scholarships are awarded based on entrance exam scores, academic performance, work experience, diversity criteria, and financial need. Women candidates and students from underrepresented backgrounds receive special consideration.",
-          },
-          {
-            id: "education-loan",
-            question: "Can I get education loans?",
-            answer:
-              "Yes, we have tie-ups with major banks including SBI, HDFC, ICICI, and Axis Bank for education loans. The college assists students in the loan application process. Most students secure loans covering 80-100% of the program fee with flexible repayment options starting after course completion.",
+              "Applicants must complete the online registration form and take the 1:1 Career Assessment Test (CareerPathx™) to determine scholarship eligibility.",
           },
         ],
       },
@@ -1602,21 +1596,21 @@ export const cba: Programme = {
         faqs: [
           {
             id: "how-to-apply",
-            question: "How do I apply?",
+            question: "What are the eligibility criteria for enrolling in the CBA™ program?",
             answer:
-              "Applications can be submitted online through our admission portal. The process includes submitting academic transcripts, entrance exam scores (CAT/XAT/GMAT), essays, and letters of recommendation. Shortlisted candidates are invited for group discussion and personal interview rounds.",
+              "1. Open to undergraduates and graduates in B.Com, BBA, Economics, Finance, or related business tracks, 2. Graduates from non-finance backgrounds seeking a structured transition into corporate accounting are also eligible, 3. Basic numerical literacy; prior advanced accounting experience is not required as training starts from fundamental principles.",
           },
           {
             id: "entrance-exams",
-            question: "Which entrance exams are accepted?",
+            question: "How do I submit an application for the CBA™ course?",
             answer:
-              "We accept scores from CAT, XAT, GMAT, and our own entrance test. Candidates must have valid scores from the current or previous year. Minimum percentile requirements vary but typically CAT 85+ percentile, GMAT 650+, or equivalent scores are preferred.",
+              "1. Visit the official page at chartersunion.com/certified-business-accountant, 2. Fill out the application form with your academic details, 3. Schedule your 1:1 Career Assessment Test, 4. Attend the counseling call to finalize your cohort seat and financial aid",
           },
           {
             id: "application-deadline",
-            question: "What is the application deadline?",
+            question: "Is there an entrance exam for admission into the CBA™ cohort?",
             answer:
-              "We conduct admissions in multiple rounds. Round 1 deadline is October 30th, Round 2 is November 15th, and Round 3 is December 31st. Early application is recommended as seats fill up quickly and scholarship opportunities are better in early rounds.",
+              "Admission includes an initial Career Assessment via CareerPathx™ to evaluate analytical capability, learning goals, and scholarship brackets rather than a strict competitive elimination exam.",
           },
         ],
       },
