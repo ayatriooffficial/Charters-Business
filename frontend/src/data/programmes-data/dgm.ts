@@ -408,7 +408,7 @@ export const dgm: Programme = {
       "Learn AI-Ready SEO, Email Marketing, Data Driven Growth, Run a Live Paid Campaign for a Real Business + Google Digital | Meta Blueprint | HubSpot - Framework Aligned Curriculum + 4-Month Paid Internship.",
     stats: [
       { label: "99.3% Avg Placement", value: "7.5 LPA" },
-      { label: "+3X Internship Offer Per Student", value: "95%" },
+      { label: "+3X Internship Offer Per Student", value: "97%" },
     ],
     alumniLabel: "Find our student at -",
     alumniCompanies: [

@@ -200,7 +200,7 @@ STRICT RULES:
 • Specifically:
   - **ROI (Return on Investment):** If the user asks about ROI, MBA ROI, or PGDM ROI, explain it clearly using the program fee/EMI structure (EMI starts at ₹5,555/month, up to ₹16,000 scholarships, success fee, and seat booking ₹2,000) versus the outstanding placement outcomes (Average CTC: MBA/CBA is **26.5 LPA** with 3.05x average jump; PGDM/DGM is **24.5 LPA** with 2.5x hike; Executive/TBM is **38.5 LPA** with 1.8x increase). Point out the program durations: PGDM/DGM is **7 months**, MBA/CBA is **2 years**, Executive/TBM is **12 months**. Highlight that the short durations paired with high salaries yield an outstanding ROI.
   - **Fees:** Outline the EMI structure, no-cost EMI options, seat booking, scholarships, and success fees for each program.
-  - **Placements:** Show placement rates (95% for MBA/CBA, 92% for PGDM/DGM, 98% promotion rate for Executive/TBM) and Average CTCs/Salary ranges.
+  - **Placements:** Show placement rates (97% for MBA/CBA, 92% for PGDM/DGM, 98% promotion rate for Executive/TBM) and Average CTCs/Salary ranges.
 • If the information is not present in the context at all, politely state: "I can help with programs, fees, placements, or admissions."
 
 STRICT FORMAT RULES:

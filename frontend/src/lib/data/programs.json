@@ -16,10 +16,10 @@
         "seat_booking": "₹2000"
       },
       "placement": {
-        "placement_rate": "95%",
-        "highest_ctc": "12.5 LPA",
-        "average_ctc": "16 – 42 LPA",
-        "salary_range": "16 – 42 LPA",
+        "placement_rate": "97%",
+        "highest_ctc": "12.3 LPA",
+        "average_ctc": "1 – 3 LPA",
+        "salary_range": "1 – 3 LPA",
         "salary_growth": "3.05x jump",
         "internship_offers": ">2.7x per student"
       },
@@ -45,9 +45,24 @@
         "ERP Financial Consultant"
       ],
       "keywords": [
-        "CBA™", "Certified Business Accountant", "SAP S/4HANA", "TallyPrime", "GST", "TDS",
-        "AI Career Engine", "95%", "12.5 LPA", "16-42 LPA", "₹5,555", "₹16,000", "7 countries",
-        "100% In-Class Paid Internships", "KPMG", "PwC", "EY", "Deloitte"
+        "CBA™",
+        "Certified Business Accountant",
+        "SAP S/4HANA",
+        "TallyPrime",
+        "GST",
+        "TDS",
+        "AI Career Engine",
+        "97%",
+        "12.3 LPA",
+        "1-3 LPA",
+        "₹5,555",
+        "₹16,000",
+        "7 countries",
+        "100% In-Class Paid Internships",
+        "KPMG",
+        "PwC",
+        "EY",
+        "Deloitte"
       ]
     },
     {
@@ -93,9 +108,24 @@
         "Brand Manager"
       ],
       "keywords": [
-        "DGM™", "Digital Growth & Marketing", "GA4", "Meta", "Google Ads", "ROAS", "SEO",
-        "AI Career Engine", "92%", "24.5 LPA", "15-40 LPA", "₹5,555", "₹16,000", "7 countries",
-        "100% In-Class Paid Internships", "KPMG", "TCS", "Infosys"
+        "DGM™",
+        "Digital Growth & Marketing",
+        "GA4",
+        "Meta",
+        "Google Ads",
+        "ROAS",
+        "SEO",
+        "AI Career Engine",
+        "92%",
+        "24.5 LPA",
+        "15-40 LPA",
+        "₹5,555",
+        "₹16,000",
+        "7 countries",
+        "100% In-Class Paid Internships",
+        "KPMG",
+        "TCS",
+        "Infosys"
       ]
     },
     {
@@ -138,8 +168,19 @@
         "C-Suite Leadership"
       ],
       "keywords": [
-        "TBM™", "Technology & Business Management", "AI workflows", "98%", "38.5 LPA",
-        "28-65 LPA", "₹5,555", "₹16,000", "executive", "CXO mentorship", "McKinsey", "BCG", "Accenture"
+        "TBM™",
+        "Technology & Business Management",
+        "AI workflows",
+        "98%",
+        "38.5 LPA",
+        "28-65 LPA",
+        "₹5,555",
+        "₹16,000",
+        "executive",
+        "CXO mentorship",
+        "McKinsey",
+        "BCG",
+        "Accenture"
       ]
     }
   ]

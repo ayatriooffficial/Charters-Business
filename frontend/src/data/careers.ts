@@ -67,7 +67,7 @@ export const careerPageData: CareerPageData = {
     { value: '500+', label: 'Team Members' },
     { value: '50+', label: 'Open Positions' },
     { value: '10+', label: 'Countries' },
-    { value: '95%', label: 'Employee Satisfaction' }
+    { value: '97%', label: 'Employee Satisfaction' }
   ],
   benefits: {
     title: 'Why Join Charters Business?',

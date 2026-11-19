@@ -785,7 +785,7 @@ export const tbm: Programme = {
       "Designed for working professionals: Weekend classes, online modules, and executive networking to accelerate your career to senior leadership roles.",
     stats: [
       { label: "Average CTC", value: "12 LPA" },
-      { label: "Placement Rate", value: "95%" },
+      { label: "Placement Rate", value: "97%" },
     ],
     alumniLabel: "Find our student at -",
     alumniCompanies: [

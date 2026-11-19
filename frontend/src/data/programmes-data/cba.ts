@@ -607,7 +607,7 @@ export const cba: Programme = {
     stats: [
       { value: "24", label: "MONTHS" },
       { value: "150+", label: "COMPANIES" },
-      { value: "95%", label: "PLACEMENT RATE" },
+      { value: "97%", label: "PLACEMENT RATE" },
     ],
     link: "/CBA™ (Certified Business Accountant)",
     imageUrl: "https://res.cloudinary.com/ducgcl4dg/image/upload/v1784310544/class-of-CBA_Certified_Business_Accountant_v6p16o.avif",
@@ -714,9 +714,9 @@ export const cba: Programme = {
   // Track Record
   trackRecord: {
     stats: [
-      { value: "12.5", unit: "LPA", label: "Highest CTC" },
+      { value: "12.3", unit: "LPA", label: "Highest CTC" },
       { value: ">2.7", unit: "x", label: "Internship offer per student" },
-      { value: "16-42", unit: "LPA", label: "Internship highest salary " },
+      { value: "1-3", unit: "LPA", label: "Internship highest salary " },
       { value: ">95", unit: "%", label: "Joined full-time roles before end internship" },
     ],
     experienceData: [
@@ -771,8 +771,8 @@ export const cba: Programme = {
         id: "placement",
         title: "Outstanding Placement Record and Career Support",
         items: [
-          "**95% placement** rate with top companies across consulting, finance, and technology sectors",
-          "**3.05x average salary** jump post-MBA with CTC ranging from 16-42 LPA",
+          "**97% placement** rate with top companies across consulting, finance, and technology sectors",
+          "**3.05x average salary** jump post-MBA with CTC ranging from 1-3LPA",
           "Alumni at **Google, Amazon, Deloitte, McKinsey, Goldman Sachs** in leadership positions",
           "**300+ recruiting partners** including Fortune 500 companies and unicorn startups",
           "Dedicated **career services team** with resume workshops, mock interviews, and 1:1 coaching",

@@ -266,7 +266,7 @@ export const newsArticles: NewsArticle[] = [
     id: "6",
     title: "charters'union graduates secure positions at Fortune 500 companies",
     excerpt:
-      "95% placement rate showcases quality of business education and industry readiness of graduates",
+      "97% placement rate showcases quality of business education and industry readiness of graduates",
     image: getCloudinaryUrl("news/placement", {
       width: 800,
       quality: "auto",

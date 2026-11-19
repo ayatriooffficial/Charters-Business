@@ -166,7 +166,7 @@ const contentData: Record<string, ContentData> = {
       "Structured career development programs tailored to your goals. Work with career coaches to identify your strengths, overcome challenges, and create actionable plans for your professional growth.",
     stats: {
       main: {
-        value: "95%",
+        value: "97%",
         label: "Career Goals Achievement Rate",
         bgColor: "bg-gradient-to-r from-[#8B5CF6]/20 to-transparent",
       },
