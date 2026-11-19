@@ -1418,7 +1418,7 @@ export const cba: Programme = {
             id: "specializations",
             question: "What accounting software and AI tools will I learn in this course?",
             answer:
-              "Students gain hands-on training in industry-standard tools including QuickBooks, Advanced Excel, Tally Prime/modern ERP frameworks, and AI prompt workflows designed to automate routine bookkeeping and financial reporting.",
+              "Students gain hands-on training in industry-standard AI Agent workflows designed to automate routine GST filing, Reminder, bookkeeping and financial reporting and tools including QuickBooks, Advanced Excel, Tally Prime/modern ERP frameworks.",
           },
           {
             id: "curriculum-updates",
@@ -1446,7 +1446,7 @@ export const cba: Programme = {
         faqs: [
           {
             id: "teaching-methodology",
-            question: "Are CBA™ classes available in online and offline modes??",
+            question: "Are CBA™ classes available in online and offline modes?",
             answer:
               "Yes. Charters' Union offers on-campus classes at the Kolkata campus as well as live interactive online batches for working professionals and students across India.",
           },
@@ -1516,6 +1516,12 @@ export const cba: Programme = {
             answer:
               "Interns work directly on live financial tasks, such as GST reconciliation, ledger audits, tax returns preparation, monthly financial closes, and management reporting.",
           },
+          {
+            id: "internship convert-job-offer",
+            question: "Can the 4-month internship convert into a full-time job offer?",
+            answer:
+              "Yes. A significant portion of Charters' Union interns receive direct Pre-Placement Offers (PPOs) or full-time conversion offers from their host companies before completing the 4-month internship period.",
+          },
         ],
       },
       {
@@ -1550,7 +1556,7 @@ export const cba: Programme = {
             id: "career-acceleration-services",
             question: "What career acceleration services are provided by CareerPathx™?",
             answer:
-              "The CareerPathx™ platform offers 1:1 resume builder tools, LinkedIn optimization, mock HR/technical interviews, domain-specific interview prep, and direct employer referral drives.",
+              "The CareerPathx™ provides end-to-end career support: Offers Corporate English Speaking, Body Language & presentation skills, 1:1 resume builder tools, Barsonal Branding, LinkedIn optimization, mock HR/technical interviews, domain-specific interview prep, and direct employer referral drives.",
           },
           {
             id: "job-roles-certification",
@@ -1604,7 +1610,7 @@ export const cba: Programme = {
             id: "entrance-exams",
             question: "How do I submit an application for the CBA™ course?",
             answer:
-              "1. Visit the official page at chartersunion.com/certified-business-accountant, 2. Fill out the application form with your academic details, 3. Schedule your 1:1 Career Assessment Test, 4. Attend the counseling call to finalize your cohort seat and financial aid",
+              "1. Visit the official page at https://chartersunion.com/certified-business-accountant, 2. Fill out the application form with your academic details, 3. Schedule your 1:1 Career Assessment Test, 4. Attend the counseling call to finalize your cohort seat and financial aid",
           },
           {
             id: "application-deadline",

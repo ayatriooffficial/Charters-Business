@@ -1107,28 +1107,232 @@ export const dgm: Programme = {
         name: "Program",
         faqs: [
           {
-            id: "what-is-pgdm",
-            question: "Who can apply for the DGM™(Digital Growth & Marketing)?",
+            id: "what-is-DGM",
+            question: "What is the Digital Growth & Marketing(DGM™) program by Charters' Union?",
             answer:
-              "Anyone who has completed graduation in any stream such as B.E., B.Tech, B.Sc, B.Com, B.A., BBA, or BCA can apply. Students who are currently pursuing graduation are also eligible. This course is suitable for freshers and working professionals. No prior experience in marketing is required.",
+              "The Digital Growth & Marketing course by Charters' Union is an advanced, job-ready certification program designed to bridge the gap between traditional marketing theory and modern, data-driven digital growth. It combines performance marketing, AI-powered growth tactics, search engine optimization (SEO), social media strategy, and marketing analytics into an integrated execution framework.",
           },
           {
-            id: "pgdm-vs-mba",
-            question: "What are the top digital marketing skills I will learn in this course?",
+            id: "dgm-vs-mba",
+            question: "What is the total duration and structure of the Digital Growth & Marketing(DGM™) course?",
             answer:
-              "The program covers SEO, Paid Ads, Social Media Marketing, Email Marketing, Content Marketing, and Marketing Analytics. You will also learn to use Generative AI for content and performance optimization. The curriculum includes campaign planning and execution. It is designed as per current industry needs.",
+              "The program follows a 7-month structured career track: Phase 1. (3 Months) Intensive core training, practical growth labs, AI marketing tool mastery, and live ad campaign execution, phase 2. (4 Months) A 100% guaranteed paid corporate internship working on real brand campaigns and growth analytics.",
           },
           {
-            id: "eligibility",
-            question: "Is technical or coding knowledge required?",
+            id: "certification-recognized",
+            question: "Is the Digital Growth & Marketing(DGM™) certification industry-recognized?",
             answer:
-              "No coding or technical background is needed for this course. The focus is on marketing tools, platforms, and campaign execution. You will learn how to use tools with guided practice. Basic internet knowledge is helpful but not mandatory.",
+              "Yes. The certification is awarded by Charters' Union, audited for industry relevance, and aligned with global performance standards. It is recognized by top digital agencies, tech startups, e-commerce brands, and multinational corporate marketing teams.",
           },
           {
             id: "practical-learning",
-            question: "Can I join the digital marketing course as a working professional?",
+            question: "How does this growth marketing course differ from traditional digital marketing diplomas?",
             answer:
-              "Yes, this program is designed for both students and working professionals. Flexible batch options such as morning, evening, and weekend classes are available. This allows learners to balance work and study. The course helps professionals switch to Digital Marketing roles.",
+              "Traditional courses focus heavily on organic social posts and basic SEO theory. The Charters' Union program emphasizes growth engineering, funnel optimization, paid acquisition (Meta/Google Ads), conversion rate optimization (CRO), and AI-driven automation, utilizing Harvard and Columbia business case study methodologies.",
+          },
+        ],
+      },
+      {
+        id: "curriculum",
+        name: "Curriculum",
+        faqs: [
+          {
+            id: "curriculum-structure",
+            question: "What modules are included in the Digital Growth & Marketing(DGM™) syllabus?",
+            answer:
+              "The curriculum is structured into five core growth pillars: 1st (Performance Marketing & Paid Acquisition): Google Ads (Search, Display, Shopping), Meta Ads Manager, LinkedIn Ads, and media buying.  2nd (Search & Content Engineering): Technical SEO, Generative Engine Optimization (GEO), keyword strategy, and content marketing funnels. 3th (Growth Hacking & Analytics): Google Analytics 4 (GA4), Google Tag Manager (GTM), Conversion Rate Optimization (CRO), and A/B testing. 4th(Social Media & Influencer Strategy): Brand positioning, viral content frameworks, copy strategy, and creator management. 5th (AI & Automation Tool): Leveraging AI for automated ad copy generation, audience segmentation, predictive analytics, and workflow automation.",
+          },
+          {
+            id: "specializations",
+            question: "What software tools and analytics platforms will I master during the course?",
+            answer:
+              "Students gain hands-on proficiency in industry-standard marketing tools, including Google Ads, Meta Business Suite, GA4, Semrush, Ahrefs, WordPress/Shopify SEO tools, Canva Pro, Mailchimp/Klaviyo, and generative AI platforms for copy and creative testing.",
+          },
+          {
+            id: "curriculum-include-real-world",
+            question: "Does the DGM™ curriculum include real-world case studies?",
+            answer:
+              "Yes. Practical learning is anchored in live corporate datasets and case study methodologies from Harvard and Columbia, preparing students to solve real business finance challenges.",
+          },
+          {
+            id: "live-campaign-management",
+            question: "Does the curriculum involve real money ad spending and live campaign management?",
+            answer:
+              "Yes. Students manage live simulated and real-budget campaigns, optimizing return on ad spend (ROAS), cost per acquisition (CPA), and click-through rates (CTR) to gain verifiable agency-level experience.",
+          },
+          {
+            id: "growth-automation",
+            question: "Will I learn AI tools for Digital Growth & Marketing(DGM™) automation?",
+            answer:
+              "Yes. The program integrates AI workflows throughout the funnel, teaching students how to use AI for audience persona generation, automated copywriting, ad creative variation testing, and automated email marketing sequence setup.",
+          },
+        ],
+      },
+      {
+        id: "teaching",
+        name: "Teaching",
+        faqs: [
+          {
+            id: "teaching-methodology",
+            question: "Are Digital Growth & Marketing classes conducted online or on-campus?",
+            answer:
+              "Charters' Union provides flexible delivery formats: 1st On-Campus Batches: Classroom lectures and practical growth labs at the Kolkata campus (Camac Street). 2nd Live Online Interactive Batches: Real-time online sessions with interactive Q&A designed for working professionals and remote students nationwide.",
+          },
+          {
+            id: "instructor-quality",
+            question: "What is the practical teaching approach used by Charters' Union?",
+            answer:
+              "Learning follows a Learn by Doing framework: 20% core strategic concepts paired with 80% practical execution. Students build real marketing funnels, run A/B split tests, analyze live traffic logs, and present campaign audits.",
+          },
+          {
+            id: "projects-evaluated",
+            question: "How are practical assignments and growth projects evaluated?",
+            answer:
+              "Projects are evaluated against real performance metrics (CTR, Conversion Rate, CAC, and ROAS) by experienced growth marketers, providing actionable feedback to refine your marketing portfolio.",
+          },
+          {
+            id: "guest-lectures",
+            question: "What happens if I miss a live class?",
+            answer:
+              "All live online sessions are recorded and made available on the student portal, accompanied by class notes, practical datasets, and dedicated doubt-clearing sessions.",
+          },
+        ],
+      },
+      {
+        id: "mentors",
+        name: "Mentors & Faculty",
+        faqs: [
+          {
+            id: "instructors-for-gdm",
+            question: "Who are the instructors for the Digital Growth & Marketing(DGM™) program?",
+            answer:
+              "Training is led by top 1% industry growth practitioners, including Performance Marketing Directors, CMOs, Agency Founders, Senior SEO Strategists, and Growth Leads from top D2C brands and tech unicorns.",
+          },
+          {
+            id: "mentor-sessions",
+            question: "Will I get 1:1 mentorship and guidance during the program?",
+            answer:
+              "Yes. Every student is paired with an industry mentor for personalized 1:1 guidance on academic progress, portfolio reviews, and career roadmap building through CareerPathx™.",
+          },
+          {
+            id: "industry-mentors",
+            question: "Do mentors assist in building a professional digital marketing portfolio?",
+            answer:
+              "Yes. Mentors help students document live campaign results, SEO audit reports, and growth case studies into a verified digital portfolio that demonstrates proven ROI to prospective employers.",
+          },
+          {
+            id: "industry-mentors",
+            question: "Can students interact directly with mentors for doubt resolution?",
+            answer:
+              "Yes. Students have direct access to mentors during live lab sessions, dedicated weekly Q&A hours, and offline faculty hours on campus.",
+          },
+        ],
+      },
+      {
+        id: "internships",
+        name: "Internships",
+        faqs: [
+          {
+            id: "internship-opportunities",
+            question: "Is the corporate internship guaranteed for all DGM™ students?",
+            answer:
+              "Yes. Charters' Union provides a 100% guaranteed 4-month corporate internship as an integral part of the 7-month program structure.",
+          },
+          {
+            id: "internship-stipend",
+            question: "Is the DGM™ internship paid, and how much stipend can I expect?",
+            answer:
+              "Yes, the internship is paid. Students earn a competitive monthly stipend while working on real accounting and finance projects for corporate clients.",
+          },
+          {
+            id: "international-internships",
+            question: "Can I do international internships?",
+            answer:
+              "Yes, students can apply for international internships with our global partner companies. We have partnerships with firms in Singapore, Dubai, QATAR, and USA. However, international internships are competitive and require strong academic performance and relevant skills.",
+          },
+          {
+            id: "internships-responsibilities",
+            question: "What real-world projects will I handle during the corporate internship?",
+            answer:
+              "Interns execute live tasks such as Google & Meta ad account management, SEO/GEO/AEO content audits, GA4 tracking setup, email automation workflows, and social media growth strategies for partner enterprises and high-growth startups.",
+          },
+          {
+            id: "internship convert-job-offer",
+            question: "Can the 4-month internship convert into a full-time job offer?",
+            answer:
+              "Yes. A significant portion of Charters' Union interns receive direct Pre-Placement Offers (PPOs) or full-time conversion offers from their host companies before completing the 4-month internship period.",
+          },
+        ],
+      },
+      {
+        id: "placement",
+        name: "Placement Support",
+        faqs: [
+          {
+            id: "placement-assistance",
+            question: "What kind of placement assistance is provided?",
+            answer:
+              "We provide comprehensive placement support including resume workshops, mock interviews, group discussions, case interview preparation, and soft skills training. Our placement cell maintains relationships with 300+ recruiting companies and facilitates on-campus interviews, pre-placement talks, and networking sessions throughout the year.",
+          },
+          {
+            id: "placement-record",
+            question: "What is the placement success rate for DGM™ graduates?",
+            answer:
+              "Over 97% of DGM™ students secure full-time job offers by their 4th month of internship, achieving an average salary increase of 2.35x.",
+          },
+          {
+            id: "placement-guarantee",
+            question: "Do you guarantee placements?",
+            answer:
+              "While we cannot guarantee placements, our track record shows that 97% of students receive job offers with significant salary improvements. We provide extensive support and opportunities, but final placement depends on individual performance, skills, and market conditions. Students must actively participate in the placement process and maintain good academic standing.",
+          },
+          {
+            id: "placement-companies",
+            question: "Which top companies recruit Digital Growth & Marketing(DGM™) from Charters' Union?",
+            answer:
+              "Graduates are placed at leading companies and financial networks, including AYATRIO, Deloitte, Accenture, Razorpay, Swiggy, PhonePe, and HSBC.",
+          },
+          {
+            id: "career-acceleration-services",
+            question: "What career acceleration services are provided by CareerPathx™?",
+            answer:
+              "The CareerPathx™ provides end-to-end career support: Offers Corporate English Speaking, Body Language & presentation skills, 1:1 resume builder tools, Barsonal Branding, LinkedIn optimization, mock HR/technical interviews, domain-specific interview prep, and direct employer referral drives.",
+          },
+          {
+            id: "job-roles-certification",
+            question: "What job roles can I apply for after completing the DGM™ certification?",
+            answer:
+              "Graduates qualify for high-demand job roles such as Performance Marketing Specialist, Growth Engineering Executive, Digital Growth Associate, SEO Analyst, Paid Media Specialist, Conversion Rate Specialist, Content Marketing Manager, and Digital Marketing Executive.",
+          },
+          {
+            id: "career-services",
+            question: "Do you offer lifetime career services?",
+            answer:
+              "Yes! Alumni have lifetime access to our career services including job postings, networking events, skill development workshops, and career counseling. Many alumni return for mid-career transitions and entrepreneurship support.",
+          },
+        ],
+      },
+      {
+        id: "fees",
+        name: "Tuition Fee",
+        faqs: [
+          {
+            id: "fee-structure",
+            question: "What is the course fee for the Digital Growth & Marketing(DGM™) program?",
+            answer:
+              "Tuition fees vary depending on the delivery mode. Flexible installment plans and No-Cost EMI options are available to make payments manageable.",
+          },
+          {
+            id: "payment-options",
+            question: "Does Charters' Union offer scholarships for the CBA™ program?",
+            answer:
+              "Yes. Charters' Union provides merit-based and need-based scholarships covering up to 100% of the tuition fee for eligible undergraduate and postgraduate applicants.",
+          },
+          {
+            id: "scholarships",
+            question: "How can I apply for the up to 100% tuition scholarship?",
+            answer:
+              "Applicants must complete the online registration form and take the 1:1 Career Assessment Test (CareerPathx™) to determine scholarship eligibility.",
           },
         ],
       },
@@ -1138,9 +1342,9 @@ export const dgm: Programme = {
         faqs: [
           {
             id: "how-to-apply",
-            question: "How do I apply for DGM™(Digital Growth & Marketing)?",
+            question: "What are the eligibility criteria for enrolling in the CBA™ program?",
             answer:
-              "Applications can be submitted online through our admission portal. The process includes entrance exam scores, group discussion, and personal interview.",
+              "1. Open to undergraduates and graduates in BA, B.Com, BBA, Economics, Finance, or related business tracks, 2. Graduates from non-Marketing backgrounds seeking a structured transition into corporate digital Marketer are also eligible, 3. Basic numerical literacy; prior advanced marketing experience is not required as training starts from fundamental principles.",
           },
           {
             id: "entrance-exams",
@@ -1148,38 +1352,21 @@ export const dgm: Programme = {
             answer:
               "Yes, if you are currently pursuing your graduation (final year), you can apply for Chartersunion DGM™(Digital Growth & Marketing). The program is open to graduates from any discipline as well as final-year undergraduate students. No prior digital marketing experience is required. It is not available for students who have only completed Class 12 and are not enrolled in a graduation program.",
           },
-        ],
-      },
-      {
-        id: "placement",
-        name: "Placement",
-        faqs: [
           {
-            id: "placement-record",
-            question: "What is the placement record?",
+            id: "entrance-exams",
+            question: "How do I submit an application for the DGM™ course?",
             answer:
-              "97.3% of our certified DGM™(Digital Growth & Marketing) receive job offers with an average CTC of ₹10.4 LPA and average salary jump of 2.5x. Top recruiters include Zomato, TCS, PhonePe, and leading startups.",
+              "1. Visit the official page at https://chartersunion.com/digital-growth-&-marketing, 2. Fill out the application form with your academic details, 3. Schedule your 1:1 Career Assessment Test, 4. Attend the counseling call to finalize your cohort seat and financial aid",
           },
           {
-            id: "internships",
-            question: "Are internships provided?",
+            id: "application-deadline",
+            question: "Is there an entrance exam for admission into the DGM™ cohort?",
             answer:
-              "Yes, 100% internships are mandatory between 3month to 7th month. Our placement cell facilitates internships with 250+ partner companies offering stipends ranging from ₹8,000 to ₹55,000 per month.",
+              "Admission includes an initial Career Assessment via CareerPathx™ to evaluate analytical capability, learning goals, and scholarship brackets rather than a strict competitive elimination exam.",
           },
         ],
       },
-      {
-        id: "fees",
-        name: "Fees",
-        faqs: [
-          {
-            id: "fee-structure",
-            question: "What is the fee structure?",
-            answer:
-              "The program fee is competitive with flexible payment options including month-wise installments and EMI plans. Scholarships are available for meritorious students covering up to 100% tuition. Contact admissions for detailed fee information.",
-          },
-        ],
-      },
+
     ],
   },
   students: {
